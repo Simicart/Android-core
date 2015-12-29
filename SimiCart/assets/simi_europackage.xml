@@ -1,4 +1,4 @@
-   <events>
+<events>
     <event>
         <name>com.simicart.core.checkout.fragment.ReviewOrderFragment</name>	    
 	    <package>com.simicart.plugins.europackage</package>
