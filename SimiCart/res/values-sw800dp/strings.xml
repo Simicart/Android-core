@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pagermargin">-1700</string>
+    <string name="values">sw800dp</string>
+
+</resources>

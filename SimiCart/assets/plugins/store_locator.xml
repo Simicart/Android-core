@@ -1,0 +1,9 @@
+<events>
+   <event>
+        <name>com.simicart.add.navigation.more</name>	    
+	    <package>com.simicart.plugins.locator</package>
+	    <class>StoreLocator</class>
+	    <method>addItem</method>	
+	    <sku>simi_paypalmobile</sku>    
+    </event>
+</events>

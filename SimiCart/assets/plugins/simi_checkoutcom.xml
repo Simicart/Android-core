@@ -1,0 +1,9 @@
+<events>    
+    <event>
+        <name>com.simicart.after.placeorder.webview</name>        	     
+	    <package>com.simicart.plugins.checkout.com</package>
+	    <class>CheckoutCom</class>
+	    <method>onCheckOut</method>
+	    <sku>simi_developer</sku>	    	    
+    </event>                                     
+</events>

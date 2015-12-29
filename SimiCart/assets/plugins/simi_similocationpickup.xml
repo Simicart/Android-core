@@ -1,0 +1,16 @@
+<events>
+    <event>
+        <name>com.simicart.core.customer.fragment.NewAddressBookFragment</name>	    
+	    <package>com.simicart.plugins.locationpickup</package>
+	    <class>LocationPickup</class>
+	    <method>addCreateView</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.core.customer.fragment.AddressBookDetailFragment</name>	    
+	    <package>com.simicart.plugins.locationpickup</package>
+	    <class>LocationPickup</class>
+	    <method>addEditView</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+</events>

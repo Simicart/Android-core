@@ -1,0 +1,9 @@
+<events>
+    <event>
+        <name>com.simicart.after.placeorder.webview</name>        	     
+	    <package>com.simicart.plugins.ccavenue</package>
+	    <class>CCAvenue</class>
+	    <method>onCheckOut</method>
+	    <sku>simi_developer</sku>	    	    
+    </event>                                     
+</events>

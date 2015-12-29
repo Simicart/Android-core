@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <GridView
+        android:id="@+id/grv_product"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:horizontalSpacing="5dp"
+        android:numColumns="2"
+        android:paddingTop="5dp"
+        android:scrollbars="none"
+        android:verticalSpacing="5dp" />
+
+    <!-- Sort -->
+
+    <RelativeLayout
+        android:id="@+id/ln_container_footer"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/core_border_layout"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/ll_to_listview"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="#143453"
+            android:padding="2dp" >
+
+            <ImageView
+                android:id="@+id/img_to_listview"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_to_filter"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="#143453"
+            android:padding="2dp" >
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_to_sort"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="#143453"
+            android:orientation="vertical"
+            android:padding="2dp" >
+
+            <ImageView
+                android:id="@+id/img_sort"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_sort" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!-- grid view list product -->
+
+    <RelativeLayout
+        android:id="@+id/rlt_search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:background="@drawable/core_background_search"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/core_bgr_search"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/rlt_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
+
+            <ImageView
+                android:id="@+id/img_ic_search"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:src="@drawable/core_ic_search" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:imeOptions="actionSearch"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:singleLine="true"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar_load"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:indeterminateDrawable="@drawable/progressbar_indeterminate"
+        android:visibility="gone" />
+
+</RelativeLayout>

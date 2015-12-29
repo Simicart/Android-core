@@ -1,0 +1,10 @@
+   <events>
+    <event>
+        <name>com.simicart.core.checkout.fragment.ReviewOrderFragment</name>	    
+	    <package>com.simicart.plugins.europackage</package>
+	    <class>EuroPackageClass</class>
+	    <method>revieworder_europackage</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+</events>
+  

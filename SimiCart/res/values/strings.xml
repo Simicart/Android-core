@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="type_device">phone</string>
+    <string name="app_name">SimiCart</string>
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Category</string>
+    <string name="title_section3">Account</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- long.detail -->
+    <string name="detail_price">Price :</string>
+    <string name="detail_instock">In Stock.</string>
+    <string name="detail_outstock">Out Stock.</string>
+    <!-- long.detail end -->
+
+
+    <!-- hai.ta home -->
+    <string name="ok_text">OK</string>
+    <string name="no_network_title">No network connection</string>
+    <string name="no_network_message">Please check your network connection</string>
+    <string name="connection_error_title">Connection Error</string>
+    <string name="connection_timeout">Connection timeout</string>
+    <string name="home_title_welcome">Wellcome</string>
+    <string name="home_title_sigin">Sign In</string>
+    <string name="home_title_banner"></string>
+    <string name="home_title_spotproduct">Spot Product</string>
+    <!-- hai.ta end home -->
+
+
+    <!-- category home 2 -->
+    <string name="category1"><B>CATEGORY1</B></string>
+    <string name="category2"><B>CATEGORY2</B></string>
+    <string name="category3"><B>CATEGORY3</B></string>
+    <string name="view_all_category"><B>VIEW All CATEGORY</B></string>
+    <string name="view_now">View now</string>
+    <string name="view_more">View more >></string>
+
+    <!-- product list -->
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="excl_tax">Excl Tax: </string>
+    <string name="incl_tax">Incl Tax: </string>
+    <string name="cancel">Cancel</string>
+    <string name="apply">Apply</string>
+    <string name="popularity">Popularity</string>
+    <string name="brand_a_to_z">Brand A to Z</string>
+    <string name="brand_z_to_a">Brand Z to A</string>
+    <string name="name_a_to_z">Name A to Z</string>
+    <string name="name_z_to_a">Name Z to A</string>
+    <string name="hot_new">Hot New</string>
+    <string name="title_activity_activity_test">ActivityTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="facebook_app_id">1721779108048112</string>
+
+    <!-- youtube -->
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="minVersion">minVersion</string>
+    <string name="isLaunchableActivity">isLaunchableActivity</string>
+
+</resources>

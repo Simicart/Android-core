@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="60"
+        android:orientation="vertical" >
+
+        <com.simicart.core.style.CustomScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:id="@+id/fcart_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" >
+
+                <com.simicart.core.style.NoScrollListView
+                    android:id="@+id/cart_item_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:listSelector="#FFFFFF"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:paddingTop="5dp" />
+            </RelativeLayout>
+        </com.simicart.core.style.CustomScrollView>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line_vertical"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#CACACA" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="40"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:id="@+id/rlt_reward_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:visibility="gone" >
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlt_reward_card"
+                android:layout_marginRight="20dp"
+                 >
+
+                <TableLayout
+                    android:id="@+id/ll_pricetotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true" >
+                </TableLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/line_price"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/rl_price"
+                android:background="#fafafa" />
+
+            <View
+                android:id="@+id/line_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@+id/line_price"
+                android:layout_marginBottom="20dp"
+                android:background="#E8E8E8" />
+
+            <RelativeLayout
+                android:id="@+id/fcart_rl_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_bottom"
+                 >
+
+                <com.simicart.core.material.ButtonRectangle
+                    android:id="@+id/checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_button_tablet"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

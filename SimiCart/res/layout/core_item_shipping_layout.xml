@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp" >
+
+    <TextView
+        android:id="@+id/shipping_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/shipping_price"
+        android:text="Name" />
+
+    <CheckBox
+        android:id="@+id/shipping_checkbox"
+     	 android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
+        android:button="@android:color/transparent"
+        android:focusable="false"        
+        android:focusableInTouchMode="false" />
+
+    <TextView
+        android:id="@+id/shipping_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/shipping_checkbox"        
+        android:text="$5" />
+
+    <TextView
+        android:id="@+id/shipping_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/shipping_title"
+        android:layout_below="@+id/shipping_title"
+        android:text="value"
+        android:textSize="12sp" />
+
+</RelativeLayout>

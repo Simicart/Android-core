@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView 
+        android:id="@+id/downloading_file_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="name"/>
+    
+    <TextView 
+        android:id="@+id/downloading_file_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="size"
+        android:layout_below="@+id/downloading_file_name"
+        android:layout_marginTop="10dp"/>
+    
+    <TextView 
+        android:id="@+id/downloading_file_downloaded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="donwloaded"
+        android:layout_below="@+id/downloading_file_size"/>
+    
+    <Button 
+        android:id="@+id/downloading_cancel"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_delete"/>
+    
+    <ProgressBar
+        android:id="@+id/downloading_pgr"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/downloading_file_downloaded"
+        android:layout_marginTop="5dp" />
+
+</RelativeLayout>

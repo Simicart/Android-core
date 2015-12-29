@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_list_limit">10</string>
+    <string name="order_list_limit">10</string>
+    <string name="connector_url">dev-vn.magestore.com/simicart/1800/index.php/connector/</string>
+    <string name="spotproduct_url">dev-vn.magestore.com/simicart/1800/index.php/spotproduct/</string>
+    <string name="featured_url">dev-vn.magestore.com/simicart/1800/index.php/feature/</string>
+    <string name="country_code">US</string>
+    <string name="country_name">"United States</string>
+    <string name="locale_identifier">en_US</string>
+    <string name="currency_symbol">$</string>
+</resources>

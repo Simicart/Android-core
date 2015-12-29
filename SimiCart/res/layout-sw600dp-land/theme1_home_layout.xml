@@ -1,0 +1,319 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+
+    <com.simicart.core.style.CustomScrollView
+        android:id="@+id/home_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <!-- Banner -->
+
+            <RelativeLayout
+                android:id="@+id/core_home_banner_relatvie"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_banner_theme1"
+                android:background="@drawable/top_line_border" >
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager_banner_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_banner_theme1"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@android:color/transparent"
+                    android:overScrollMode="never" />
+            </RelativeLayout>
+            <!-- category 1 & 2 -->
+
+            <LinearLayout
+                android:id="@+id/ll_spotcategory"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_category_theme1"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_category_theme1"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="3" >
+
+                    <!-- category 1 -->
+
+                    <RelativeLayout
+                        android:id="@+id/rlt_category1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/theme1_background_cat" >
+
+                        <ViewFlipper
+                            android:id="@+id/vfp_category1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/height_category_theme1" />
+
+                        <Button
+                            android:id="@+id/bt_category1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@null" />
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_centerVertical="true"
+                            android:background="#88ffffff"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tv_category1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#000000"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:id="@+id/tv_viewmore1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_category1"
+                                android:layout_centerHorizontal="true"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <!-- category 2 -->
+
+                    <RelativeLayout
+                        android:id="@+id/rlt_category2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/theme1_background_cat" >
+
+                        <ViewFlipper
+                            android:id="@+id/vfp_category2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/height_category_theme1" />
+
+                        <Button
+                            android:id="@+id/bt_category2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@null" />
+
+                        <RelativeLayout
+                            android:id="@+id/ll_category2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_centerVertical="true"
+                            android:background="#88ffffff"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tv_category2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#000000"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_viewmore2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_category2"
+                                android:layout_centerHorizontal="true"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_category_theme1"
+                    android:layout_marginLeft="3dp"
+                    android:layout_weight="1"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="3" >
+
+                    <!-- category 3 -->
+
+                    <RelativeLayout
+                        android:id="@+id/rlt_category3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/theme1_background_cat" >
+
+                        <ViewFlipper
+                            android:id="@+id/vfp_category3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/height_category_theme1" />
+
+                        <Button
+                            android:id="@+id/bt_category3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@null" />
+
+                        <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp"
+                            android:layout_centerVertical="true"
+                            android:background="#88ffffff"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tv_category3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:id="@+id/tv_viewmore3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_category3"
+                                android:layout_centerHorizontal="true"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:textColor="#000000"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <!-- view all category -->
+
+                    <RelativeLayout
+                        android:id="@+id/rlt_view_all_category"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_weight="2" >
+
+                        <ViewFlipper
+                            android:id="@+id/vfp_allcategory"
+                            android:layout_width="fill_parent"
+                            android:layout_height="@dimen/height_category_theme1" />
+
+                        <Button
+                            android:id="@+id/bt_all_category"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:background="@drawable/theme1_backgroudn_viewallcategory" />
+
+                        <RelativeLayout
+                            android:id="@+id/ll_view_all_category"
+                            android:layout_width="fill_parent"
+                            android:layout_height="60dp"
+                            android:layout_centerVertical="true"
+                            android:background="@android:color/transparent"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tv_view_all_category"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentTop="true"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="10dp"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:textColor="#ffffff"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tv_viewnow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_view_all_category"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/theme1_background_viewnow"
+                                android:ellipsize="end"
+                                android:gravity="center"
+                                android:lines="1"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="2dp"
+                                android:text="view"
+                                android:textColor="#000111"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!-- banner category -->
+
+            <LinearLayout
+                android:id="@+id/ll_spot_product"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <com.simicart.theme.matrixtheme.home.adapter.Theme1CustomScrollView
+                    android:id="@+id/lv_category_bottom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="170dp"
+                    android:scrollbars="none" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+                    </LinearLayout>
+                </com.simicart.theme.matrixtheme.home.adapter.Theme1CustomScrollView>
+            </LinearLayout>
+        </LinearLayout>
+    </com.simicart.core.style.CustomScrollView>
+
+</LinearLayout>

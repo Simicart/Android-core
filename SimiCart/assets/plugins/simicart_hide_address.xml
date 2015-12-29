@@ -1,0 +1,9 @@
+<events>
+      <event>
+        <name>com.simicart.splashscreen.controller.SplashController</name>	    
+	    <package>com.simicart.plugins.hiddenaddress</package>
+	    <class>HiddenAddress</class>
+	    <method>requestHiddenAddress</method>	
+	    <sku>simi_developer</sku>    
+    </event>            
+</events>

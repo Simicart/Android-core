@@ -1,0 +1,374 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp" >
+            </View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="14" >
+
+                <RelativeLayout
+                    android:id="@+id/core_home_banner_relatvie"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="5"
+                    android:background="@drawable/top_line_border" >
+
+                    <com.simicart.core.banner.animation.SliderLayout
+                        android:id="@+id/banner_slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/theme1_background_cat" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_spotcategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="6"
+                    android:orientation="vertical"
+                    android:weightSum="4" >
+
+                    <LinearLayout
+                        android:id="@+id/ll_spotcategory1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_weight="2"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:weightSum="3" >
+
+                        <RelativeLayout
+                            android:id="@+id/rlt_category1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="3dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/theme1_background_cat" >
+
+                            <ViewFlipper
+                                android:id="@+id/vfp_category1"
+                                android:layout_width="fill_parent"
+                                android:layout_height="110dp" >
+                            </ViewFlipper>
+
+                            <Button
+                                android:id="@+id/bt_category1"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="@null" />
+
+                            <RelativeLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:background="#88ffffff"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/tv_category1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+                                    android:ellipsize="end"
+                                    android:gravity="center"
+                                    android:lines="1"
+                                    android:text="NO CATEGORY"
+                                    android:textColor="#000000"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_viewmore1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_category1"
+                                    android:layout_centerHorizontal="true"
+                                    android:ellipsize="end"
+                                    android:lines="1"
+                                    android:textColor="#000000"
+                                    android:textSize="8sp" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rlt_category2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/theme1_background_cat" >
+
+                            <ViewFlipper
+                                android:id="@+id/vfp_category2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="110dp" >
+                            </ViewFlipper>
+
+                            <Button
+                                android:id="@+id/bt_category2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="@null" />
+
+                            <RelativeLayout
+                                android:id="@+id/ll_category2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:background="#88ffffff"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/tv_category2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+                                    android:ellipsize="end"
+                                    android:gravity="center"
+                                    android:lines="1"
+                                    android:text="NO CATEGORY"
+                                    android:textColor="#000000"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_viewmore2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_category2"
+                                    android:layout_centerHorizontal="true"
+                                    android:ellipsize="end"
+                                    android:lines="1"
+                                    android:textColor="#000000"
+                                    android:textSize="8sp" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_spotcategory2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_weight="2"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:weightSum="3" >
+
+                        <RelativeLayout
+                            android:id="@+id/rlt_category3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginRight="3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/theme1_background_cat" >
+
+                            <ViewFlipper
+                                android:id="@+id/vfp_category3"
+                                android:layout_width="fill_parent"
+                                android:layout_height="110dp" >
+                            </ViewFlipper>
+
+                            <Button
+                                android:id="@+id/bt_category3"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="@null" />
+
+                            <RelativeLayout
+                                android:layout_width="fill_parent"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:background="#88ffffff"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/tv_category3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+                                    android:ellipsize="end"
+                                    android:gravity="center"
+                                    android:lines="1"
+                                    android:text="NO CATEGORY"
+                                    android:textColor="#000000"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_viewmore3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/tv_category3"
+                                    android:layout_centerHorizontal="true"
+                                    android:ellipsize="end"
+                                    android:lines="1"
+                                    android:textColor="#000000"
+                                    android:textSize="8sp" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rlt_view_all_category"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_marginLeft="3dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/theme1_background_cat" >
+
+                            <ViewFlipper
+                                android:id="@+id/vfp_allcategory"
+                                android:layout_width="fill_parent"
+                                android:layout_height="110dp" >
+                            </ViewFlipper>
+
+                            <Button
+                                android:id="@+id/bt_all_category"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:background="@drawable/theme1_backgroudn_viewallcategory" />
+
+                            <RelativeLayout
+                                android:id="@+id/ll_view_all_category"
+                                android:layout_width="fill_parent"
+                                android:layout_height="50dp"
+                                android:layout_centerVertical="true"
+                                android:background="@android:color/transparent"
+                                android:orientation="horizontal" >
+
+                                <TextView
+                                    android:id="@+id/tv_view_all_category"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+                                    android:ellipsize="end"
+                                    android:gravity="center"
+                                    android:lines="1"
+                                    android:text="NO CATEGORY"
+                                    android:textColor="#ffffff"
+                                    android:textSize="10sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_viewnow"
+                                    android:layout_width="70dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_below="@+id/tv_view_all_category"
+                                    android:layout_centerHorizontal="true"
+                                    android:background="@drawable/theme1_background_viewnow"
+                                    android:ellipsize="end"
+                                    android:gravity="center"
+                                    android:lines="1"
+                                    android:padding="2dp"
+                                    android:textColor="#000111"
+                                    android:textSize="8sp" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- category 1 & 2 -->
+
+
+                <!-- category 3 & view all -->
+                <!-- banner category -->
+
+                <LinearLayout
+                    android:id="@+id/ll_spot_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+
+                    <com.simicart.theme.matrixtheme.home.adapter.Theme1CustomScrollView
+                        android:id="@+id/lv_category_bottom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="120dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="3dp"
+                        android:fadeScrollbars="false"
+                        android:scrollbarStyle="insideOverlay" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+                        </LinearLayout>
+                    </com.simicart.theme.matrixtheme.home.adapter.Theme1CustomScrollView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlt_search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/core_background_search"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <LinearLayout
+                android:id="@+id/ll_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="1dp"
+                android:background="@drawable/core_bgr_search"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rlt_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+
+                <ImageView
+                    android:id="@+id/img_ic_search"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/core_ic_search" />
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:imeOptions="actionSearch"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>
