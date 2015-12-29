@@ -51,7 +51,7 @@ import com.simicart.core.slidemenu.fragment.SlideMenuFragment;
 
 @SuppressLint("DefaultLocale")
 public class MainActivity extends FragmentActivity {
-
+//adfsflkjsdf
 	public final static int PAUSE = 2;
 	public final static int RESUME = 1;
 	public final static int START = 3;
