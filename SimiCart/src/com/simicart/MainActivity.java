@@ -57,7 +57,7 @@ public class MainActivity extends FragmentActivity {
 	public final static int START = 3;
 	public final static int CREATE = 4;
 	public final static int DESTROY = 5;
-	public final static int BACK = 6;
+	public final static int BACK = 6; 
 
 	private SlideMenuFragment mNavigationDrawerFragment;
 	public static Activity context;
