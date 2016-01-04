@@ -22,6 +22,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
@@ -57,7 +58,7 @@ public class MainActivity extends FragmentActivity {
 	public final static int START = 3;
 	public final static int CREATE = 4;
 	public final static int DESTROY = 5;
-	public final static int BACK = 6; 
+	public final static int BACK = 6;
 
 	private SlideMenuFragment mNavigationDrawerFragment;
 	public static Activity context;
@@ -71,6 +72,7 @@ public class MainActivity extends FragmentActivity {
 	private int requestCode;
 	private int resultCode;
 	private Intent data;
+	private int mCounter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +126,7 @@ public class MainActivity extends FragmentActivity {
 				.newInstance(mNavigationDrawerFragment);
 		ft.replace(Rconfig.getInstance().id("menu_top"), fragment);
 		ft.commit();
+		ViewServer.get(this).addWindow(this);
 	}
 
 	private void autoSignin() {
@@ -177,6 +180,7 @@ public class MainActivity extends FragmentActivity {
 		} catch (ShortcutBadgeException e) {
 		}
 		super.onResume();
+		ViewServer.get(this).setFocusedWindow(this);
 	}
 
 	@Override
@@ -400,6 +404,7 @@ public class MainActivity extends FragmentActivity {
 		Runtime.getRuntime().freeMemory();
 
 		super.onDestroy();
+		ViewServer.get(this).removeWindow(this);
 	}
 
 	public int getRequestCode() {
@@ -433,5 +438,11 @@ public class MainActivity extends FragmentActivity {
 			block = new EventBlock();
 			block.dispatchEvent("com.simicart.leftmenu.mainactivity.onactivityresult.resultbarcode");
 		}
+	}
+
+	public void nextActivity(View v) {
+		Intent intent = new Intent(this, getClass());
+		intent.putExtra("counter", 1);
+		startActivity(intent);
 	}
 }
