@@ -126,6 +126,7 @@ public class ListProductFragment extends SimiFragment {
 			mSearchController.setDelegate(mSearchBlock);
 			filterEvent = new FilterEvent(mSearchController);
 			mSearchBlock.setmQuery(mQuery);
+			mSearchBlock.getEdittextSearch().setText("");
 			mSearchBlock.setFilterEvent(filterEvent);
 			mSearchController.onResume();
 		}
