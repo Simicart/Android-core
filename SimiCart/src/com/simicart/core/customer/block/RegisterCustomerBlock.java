@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
@@ -84,13 +85,13 @@ public class RegisterCustomerBlock extends SimiBlock implements
 				"et_suffix_show"));
 		edt_name = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_fullname"));
-		edt_name.setHint(Config.getInstance().getText("Full Name") + "(*)");
+		edt_name.setHint(mContext.getResources().getString(R.string.full_name) + "(*)");
 		edt_email = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_email"));
-		edt_email.setHint(Config.getInstance().getText("Email") + "(*)");
+		edt_email.setHint(mContext.getResources().getString(R.string.email) + "(*)");
 		edt_pass = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_pass"));
-		edt_pass.setHint(Config.getInstance().getText("Password") + "(*)");
+		edt_pass.setHint(mContext.getResources().getString(R.string.password) + "(*)");
 		edt_confirmPass = (EditText) mView.findViewById(Rconfig.getInstance()
 				.id("et_confirm_pass"));
 		edt_confirmPass.setHint(Config.getInstance()
@@ -131,7 +132,7 @@ public class RegisterCustomerBlock extends SimiBlock implements
 		tv_dateBirth.setTextColor(Config.getInstance().getContent_color());
 		btn_register = (ButtonRectangle) mView.findViewById(Rconfig
 				.getInstance().id("bt_register"));
-		btn_register.setText(Config.getInstance().getText("Register"));
+		btn_register.setText(mContext.getResources().getString(R.string.register));
 		btn_register.setTextColor(Color.WHITE);
 		btn_register.setBackgroundColor(Config.getInstance().getColorMain());
 		btn_register.setTextSize(Constants.SIZE_TEXT_BUTTON);
@@ -160,16 +161,16 @@ public class RegisterCustomerBlock extends SimiBlock implements
 	}
 
 	private void createPrefix() {
-		edt_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
+		edt_prefix.setHint(mContext.getResources().getString(R.string.prefix) + " (*)");
 		switch (mCustomer.getPrefix().toLowerCase()) {
 		case "":
 			edt_prefix.setVisibility(View.GONE);
 			break;
 		case "req":
-			edt_prefix.setHint(Config.getInstance().getText("Prefix") + "(*)");
+			edt_prefix.setHint(mContext.getResources().getString(R.string.prefix) + "(*)");
 			break;
 		case "opt":
-			edt_prefix.setHint(Config.getInstance().getText("Prefix"));
+			edt_prefix.setHint(mContext.getResources().getString(R.string.prefix));
 			break;
 		default:
 			break;
@@ -177,16 +178,16 @@ public class RegisterCustomerBlock extends SimiBlock implements
 	}
 
 	private void createSuffix() {
-		edt_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
+		edt_suffix.setHint(mContext.getResources().getString(R.string.suffix) + " (*)");
 		switch (mCustomer.getSuffix().toLowerCase()) {
 		case "":
 			edt_suffix.setVisibility(View.GONE);
 			break;
 		case "req":
-			edt_suffix.setHint(Config.getInstance().getText("Suffix") + "(*)");
+			edt_suffix.setHint(mContext.getResources().getString(R.string.suffix) + "(*)");
 			break;
 		case "opt":
-			edt_suffix.setHint(Config.getInstance().getText("Suffix"));
+			edt_suffix.setHint(mContext.getResources().getString(R.string.suffix));
 			break;
 		default:
 			break;
@@ -194,18 +195,18 @@ public class RegisterCustomerBlock extends SimiBlock implements
 	}
 
 	private void createTaxVat() {
-		edt_taxvat.setHint(Config.getInstance().getText("Tax/VAT number")
+		edt_taxvat.setHint(mContext.getResources().getString(R.string.tax_vat_number)
 				+ " (*)");
 		switch (mCustomer.getTaxvat().toLowerCase()) {
 		case "":
 			edt_taxvat.setVisibility(View.GONE);
 			break;
 		case "req":
-			edt_taxvat.setHint(Config.getInstance().getText("Tax/VAT number")
+			edt_taxvat.setHint(mContext.getResources().getString(R.string.tax_vat_number)
 					+ "(*)");
 			break;
 		case "opt":
-			edt_taxvat.setHint(Config.getInstance().getText("Tax/VAT number"));
+			edt_taxvat.setHint(mContext.getResources().getString(R.string.tax_vat_number));
 			break;
 		default:
 			break;
@@ -213,7 +214,7 @@ public class RegisterCustomerBlock extends SimiBlock implements
 	}
 
 	private void createGender() {
-		tv_gender.setText(Config.getInstance().getText("Gender") + "(*):");
+		tv_gender.setText(mContext.getResources().getString(R.string.gender) + "(*):");
 		GenderAdapter adapter = new GenderAdapter(mContext);
 		sp_gender.setAdapter(adapter);
 		switch (mCustomer.getGender().toLowerCase()) {
@@ -221,10 +222,10 @@ public class RegisterCustomerBlock extends SimiBlock implements
 			rl_gender.setVisibility(View.GONE);
 			break;
 		case "req":
-			tv_gender.setText(Config.getInstance().getText("Gender") + "(*):");
+			tv_gender.setText(mContext.getResources().getString(R.string.gender) + "(*):");
 			break;
 		case "opt":
-			tv_gender.setText(Config.getInstance().getText("Gender") + ":");
+			tv_gender.setText(mContext.getResources().getString(R.string.gender) + ":");
 			break;
 		default:
 			break;
@@ -243,11 +244,11 @@ public class RegisterCustomerBlock extends SimiBlock implements
 			layout_date_of_birt.setVisibility(View.GONE);
 			break;
 		case "req":
-			tv_dateBirth.setHint(Config.getInstance().getText("Date of Birth")
+			tv_dateBirth.setHint(mContext.getResources().getString(R.string.date_of_birth)
 					+ "(*)");
 			break;
 		case "opt":
-			tv_dateBirth.setHint(Config.getInstance().getText("Date of Birth"));
+			tv_dateBirth.setHint(mContext.getResources().getString(R.string.date_of_birth));
 			break;
 
 		default:
@@ -284,13 +285,11 @@ public class RegisterCustomerBlock extends SimiBlock implements
 				layout_date_of_birt.setVisibility(View.GONE);
 				break;
 			case "req":
-				tv_dateBirth.setText(Config.getInstance().getText(
-						"Date of Birth")
+				tv_dateBirth.setText(mContext.getResources().getString(R.string.date_of_birth)
 						+ "(*): " + selectedDate);
 				break;
 			case "opt":
-				tv_dateBirth.setText(Config.getInstance().getText(
-						"Date of Birth")
+				tv_dateBirth.setText(mContext.getResources().getString(R.string.date_of_birth)
 						+ ": " + selectedDate);
 				break;
 			default:

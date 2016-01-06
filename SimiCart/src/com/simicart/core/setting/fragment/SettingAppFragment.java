@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
@@ -74,7 +75,7 @@ public class SettingAppFragment extends SimiFragment {
 
 		tv_language = (TextView) rootView.findViewById(Rconfig.getInstance()
 				.id("tv_language"));
-		tv_language.setText(Config.getInstance().getText("Language"));
+		tv_language.setText(mContext.getResources().getString(R.string.language));
 		tv_language.setTextColor(Config.getInstance().getContent_color());
 		tv_language_selected = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_language_selected"));
@@ -82,7 +83,7 @@ public class SettingAppFragment extends SimiFragment {
 				.getInstance().id("rl_language"));
 		tv_currency = (TextView) rootView.findViewById(Rconfig.getInstance()
 				.id("tv_currency"));
-		tv_currency.setText(Config.getInstance().getText("Currency"));
+		tv_currency.setText(mContext.getResources().getString(R.string.currency));
 		tv_currency.setTextColor(Config.getInstance().getContent_color());
 		tv_currency_selected = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_currency_selected"));
@@ -93,8 +94,7 @@ public class SettingAppFragment extends SimiFragment {
 		tv_notification.setBackgroundColor(Config.getInstance()
 				.getApp_backrground());
 		tv_notification.setTextColor(Config.getInstance().getContent_color());
-		tv_notification.setText(Config.getInstance().getText(
-				"Show notifications"));
+		tv_notification.setText(mContext.getResources().getString(R.string.show_notification));
 		rl_notification = (RelativeLayout) rootView.findViewById(Rconfig
 				.getInstance().id("rl_notification"));
 		rl_notification.setBackgroundColor(Config.getInstance()
@@ -102,7 +102,7 @@ public class SettingAppFragment extends SimiFragment {
 		tv_locator = (TextView) rootView.findViewById(Rconfig.getInstance().id(
 				"tv_locator"));
 		tv_locator.setTextColor(Config.getInstance().getContent_color());
-		tv_locator.setText(Config.getInstance().getText("Location Setting"));
+		tv_locator.setText(mContext.getResources().getString(R.string.location_setting));
 		rl_locator = (LayoutRipple) rootView.findViewById(Rconfig.getInstance()
 				.id("rl_locator"));
 

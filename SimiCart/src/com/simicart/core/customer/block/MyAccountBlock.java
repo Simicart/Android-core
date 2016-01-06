@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.DataLocal;
@@ -53,7 +54,7 @@ public class MyAccountBlock extends SimiBlock {
 				.id("rl_profile"));
 		lb_profile = (TextView) mView.findViewById(Rconfig.getInstance().id(
 				"lb_profile"));
-		lb_profile.setText(Config.getInstance().getText("Profile"));
+		lb_profile.setText(mContext.getResources().getString(R.string.profile));
 		lb_profile.setTextColor(Config.getInstance().getContent_color());
 
 		rlt_addressBook = (LayoutRipple) mView.findViewById(Rconfig
@@ -61,20 +62,20 @@ public class MyAccountBlock extends SimiBlock {
 		lb_addressBook = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("lb_addressBook"));
 		lb_addressBook.setTextColor(Config.getInstance().getContent_color());
-		lb_addressBook.setText(Config.getInstance().getText("Address Book"));
+		lb_addressBook.setText(mContext.getResources().getString(R.string.address_book));
 
 		rlt_orderHistory = (LayoutRipple) mView.findViewById(Rconfig
 				.getInstance().id("rl_orderHistory"));
 		lb_orderHistory = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("lb_orderHistory"));
-		lb_orderHistory.setText(Config.getInstance().getText("Order History"));
+		lb_orderHistory.setText(mContext.getResources().getString(R.string.order_history));
 		lb_orderHistory.setTextColor(Config.getInstance().getContent_color());
 
 		rlt_signOut = (LayoutRipple) mView.findViewById(Rconfig.getInstance()
 				.id("rl_logout"));
 		lb_logout = (TextView) mView.findViewById(Rconfig.getInstance().id(
 				"lb_logout"));
-		lb_logout.setText(Config.getInstance().getText("Sign Out"));
+		lb_logout.setText(mContext.getResources().getString(R.string.sign_out));
 		lb_logout.setTextColor(Config.getInstance().getContent_color());
 
 		LinearLayout ll_space = (LinearLayout) mView.findViewById(Rconfig

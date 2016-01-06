@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
@@ -80,19 +81,17 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 
 		cb_remember_password = (CheckBox) mView.findViewById(Rconfig
 				.getInstance().id("cb_re_password"));
-		cb_remember_password.setText(Config.getInstance().getText(
-				"Remember password"));
+		cb_remember_password.setText(mContext.getResources().getString(R.string.remember_password));
 		cb_remember_password.setTextColor(Config.getInstance()
 				.getContent_color());
 
 		 txt_label_create_account = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("lable_createAccount"));
-		 txt_label_create_account.setText(Config.getInstance().getText(
-				"Don't have an account?"));
+		 txt_label_create_account.setText(mContext.getResources().getString(R.string.dont_have_an_account));
 
 		btn_SignIn = (ButtonRectangle) mView.findViewById(Rconfig.getInstance()
 				.id("bt_signIn"));
-		btn_SignIn.setText(Config.getInstance().getText("Sign In"));
+		btn_SignIn.setText(mContext.getResources().getString(R.string.sign_in));
 		btn_SignIn.setTextColor(Config.getInstance().getButton_text_color());
 		btn_SignIn.setBackgroundColor(Config.getInstance()
 				.getButton_background());
@@ -105,7 +104,7 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 		// initial Email Field
 		edt_Email = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_email"));
-		edt_Email.setHint(Config.getInstance().getText("Email"));
+		edt_Email.setHint(mContext.getResources().getString(R.string.email));
 
 		edt_Email.setTextColor(Config.getInstance().getContent_color());
 		edt_Email.setHintTextColor(Config.getInstance().getHintContent_color());
@@ -113,7 +112,7 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 		// initial Password Field
 		edt_Password = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_pass"));
-		edt_Password.setHint(Config.getInstance().getText("Password"));
+		edt_Password.setHint(mContext.getResources().getString(R.string.password));
 		edt_Password.setTextColor(Config.getInstance().getContent_color());
 		edt_Password.setHintTextColor(Config.getInstance()
 				.getHintContent_color());

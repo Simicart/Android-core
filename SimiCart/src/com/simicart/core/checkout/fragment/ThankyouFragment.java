@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.controller.ConfigCheckout;
@@ -86,8 +87,7 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 				.getInstance().id("layout_order"));
 		btn_continue_shopping = (ButtonRectangle) rootView.findViewById(Rconfig
 				.getInstance().id("btn_continue_shopping"));
-		btn_continue_shopping.setText(Config.getInstance().getText(
-				"CONTINUE SHOPPING"));
+		btn_continue_shopping.setText(getActivity().getResources().getString(R.string.continue_shopping));
 		btn_continue_shopping.setTextColor(Color.parseColor("#ffffff"));
 		btn_continue_shopping.setBackgroundColor(Config.getInstance()
 				.getColorMain());

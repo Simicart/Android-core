@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -73,11 +74,11 @@ public class SearchHomeBlock extends SimiBlock {
 
 		et_search = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_search"));
-		et_search.setHint(Config.getInstance().getText("Search products"));
+		et_search.setHint(mContext.getResources().getString(R.string.home_search_product));
 		if (!mCatName.equals("")
 				&& !mCatName.equals(Config.getInstance()
 						.getText("all products"))) {
-			et_search.setHint(Config.getInstance().getText("Searching for")
+			et_search.setHint(mContext.getResources().getString(R.string.searching_for)
 					+ "" + mCatName);
 			et_search.setTypeface(null, Typeface.BOLD);
 		}

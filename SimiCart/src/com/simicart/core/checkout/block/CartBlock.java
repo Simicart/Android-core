@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.adapter.CartListAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -67,7 +68,7 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 		// check out button
 		btn_Checkout = (ButtonRectangle) mView.findViewById(Rconfig
 				.getInstance().id("checkout"));
-		btn_Checkout.setText(Config.getInstance().getText("CHECKOUT"));
+		btn_Checkout.setText(mContext.getResources().getString(R.string.checkout));
 		btn_Checkout.setTextColor(Color.parseColor("#FFFFFF"));
 		btn_Checkout.setTextSize(Constants.SIZE_TEXT_BUTTON);
 		btn_Checkout.setOnClickListener(mListenerController
@@ -159,8 +160,7 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 		((ViewGroup) mView).removeAllViewsInLayout();
 		TextView tv_notify = new TextView(mContext);
 		tv_notify.setTextColor(Config.getInstance().getContent_color());
-		tv_notify.setText(Config.getInstance().getText(
-				"Your shopping cart is empty"));
+		tv_notify.setText(mContext.getResources().getString(R.string.your_shopping_cart_is_empty));
 		tv_notify.setTypeface(null, Typeface.BOLD);
 		if (DataLocal.isTablet) {
 			tv_notify.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
@@ -197,27 +197,25 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 
 		tv_cancel = (TextView) pp_checkout.findViewById(Rconfig.getInstance()
 				.id("method_cancel"));
-		tv_cancel.setText(Config.getInstance().getText("Cancel"));
+		tv_cancel.setText(mContext.getResources().getString(R.string.cancel));
 		tv_cancel.setOnTouchListener(mPCheckoutController.getOnCancel());
 
 		tv_excustomer = (TextView) pp_checkout.findViewById(Rconfig
 				.getInstance().id("method_excustomer"));
-		tv_excustomer.setText(Config.getInstance().getText(
-				"Checkout as existing customer"));
+		tv_excustomer.setText(mContext.getResources().getString(R.string.checkout_as_existing_customer));
 		tv_excustomer
 				.setOnTouchListener(mPCheckoutController.getOnExcustomer());
 
 		tv_newcustomer = (TextView) pp_checkout.findViewById(Rconfig
 				.getInstance().id("method_newcustomer"));
-		tv_newcustomer.setText(Config.getInstance().getText(
-				"Checkout as new customer"));
+		tv_newcustomer.setText(mContext.getResources().getString(R.string.checkout_as_new_customer));
 		tv_newcustomer.setOnTouchListener(mPCheckoutController
 				.getOnNewcustomer());
 
 		tv_guest = (TextView) pp_checkout.findViewById(Rconfig.getInstance()
 				.id("method_guest"));
 		if (Config.getInstance().getGuest_checkout() == 1) {
-			tv_guest.setText(Config.getInstance().getText("Checkout as guest"));
+			tv_guest.setText(mContext.getResources().getString(R.string.checkout_as_guest));
 			tv_guest.setOnTouchListener(mPCheckoutController.getOnAsguest());
 		} else {
 			tv_guest.setVisibility(View.GONE);

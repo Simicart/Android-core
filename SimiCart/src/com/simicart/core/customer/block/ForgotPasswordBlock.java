@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
@@ -41,7 +42,7 @@ public class ForgotPasswordBlock extends SimiBlock implements
 		lable_email = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("lable_email"));
 		lable_email.setTextColor(Color.GRAY);
-		lable_email.setText(Config.getInstance().getText("ENTER YOUR EMAIL")
+		lable_email.setText(mContext.getResources().getString(R.string.enter_your_email)
 				.toUpperCase()
 				+ ":");
 
@@ -56,7 +57,7 @@ public class ForgotPasswordBlock extends SimiBlock implements
 		// Email Field
 		edt_Email = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_email"));
-		edt_Email.setHint(Config.getInstance().getText("Email"));
+		edt_Email.setHint(mContext.getResources().getString(R.string.email));
 		
 		lable_email.setTextColor(Config.getInstance().getContent_color());
 		edt_Email.setTextColor(Config.getInstance().getContent_color());

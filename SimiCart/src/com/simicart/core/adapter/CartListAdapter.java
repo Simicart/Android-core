@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.checkout.delegate.CartAdapterDelegate;
 import com.simicart.core.checkout.entity.Cart;
 import com.simicart.core.checkout.entity.Option;
@@ -88,7 +89,7 @@ public class CartListAdapter extends BaseAdapter {
 		TextView tv_quantity = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("tv_quantity"));
 		tv_quantity.setTextColor(Config.getInstance().getContent_color());
-		tv_quantity.setText(Config.getInstance().getText("Quantity"));
+		tv_quantity.setText(mContext.getResources().getString(R.string.quantity));
 		RelativeLayout rl_quanity = (RelativeLayout) convertView
 				.findViewById(Rconfig.getInstance().id("rl_item_cart_quantity"));
 
@@ -146,8 +147,8 @@ public class CartListAdapter extends BaseAdapter {
 		ll_stock.setBackgroundColor(Config.getInstance().getColorMain());
 		TextView txt_out_stock = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("txt_out_stock"));
-		txt_out_stock.setText(Config.getInstance().getText("Out Stock"));
-		if (cart.getStock().equals(Config.getInstance().getText("Out Stock"))) {
+		txt_out_stock.setText(mContext.getResources().getString(R.string.out_stock));
+		if (cart.getStock().equals(mContext.getResources().getString(R.string.out_stock))) {
 			ll_stock.setVisibility(View.VISIBLE);
 		} else {
 			ll_stock.setVisibility(View.GONE);
