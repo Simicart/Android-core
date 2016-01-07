@@ -366,11 +366,11 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 	public void showSearchScreen(String key, String tag) {
 		if (key != null && !key.equals("")) {
 			hidePopupListView();
-			ListProductFragment fragment = ListProductFragment.newInstance();
-			fragment.setQuerySearch(key);
-			fragment.setTag_search(tag);
-			fragment.setCategoryId(cate_id);
-			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
+			ListProductFragment fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS,cate_id, tag, key, null, null, null, null );
+//			fragment.setQuerySearch(key);
+//			fragment.setTag_search(tag);
+//			fragment.setCategoryId(cate_id);
+//			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}
@@ -816,10 +816,10 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			showSearchScreen(edit_search.getText().toString(), tag_search);
 		} else {
 			ListProductFragment searchFragment = ListProductFragment
-					.newInstance();
-			searchFragment.setUrlSearch(ConstantsSearch.url_query);
-			searchFragment.setCategoryId(cate_id);
-			searchFragment.setQuerySearch(edit_search.getText().toString());
+					.newInstance(ConstantsSearch.url_query, cate_id, null, null, null,edit_search.getText().toString(), null, null );
+//			searchFragment.setUrlSearch(ConstantsSearch.url_query);
+//			searchFragment.setCategoryId(cate_id);
+//			searchFragment.setQuerySearch(edit_search.getText().toString());
 			SimiManager.getIntance().replaceFragment(searchFragment);
 		}
 		hidePopupListView();

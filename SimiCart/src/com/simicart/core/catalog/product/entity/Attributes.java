@@ -1,9 +1,15 @@
 package com.simicart.core.catalog.product.entity;
 
+import java.io.Serializable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class Attributes extends SimiEntity {
+public class Attributes extends SimiEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String mTitle;
 	private String mValue;
 

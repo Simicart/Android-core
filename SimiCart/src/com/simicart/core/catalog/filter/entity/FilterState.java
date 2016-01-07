@@ -1,10 +1,16 @@
 package com.simicart.core.catalog.filter.entity;
 
+import java.io.Serializable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.filter.common.FilterConstant;
 
-public class FilterState extends SimiEntity {
+public class FilterState extends SimiEntity implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String mAttribute;
 	protected String mTitle;
 	protected String mLabel;

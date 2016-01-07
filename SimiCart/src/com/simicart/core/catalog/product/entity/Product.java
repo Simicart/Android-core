@@ -1,5 +1,6 @@
 package com.simicart.core.catalog.product.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -13,7 +14,11 @@ import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 
-public class Product extends SimiEntity {
+public class Product extends SimiEntity implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String mStock;
 	protected String mID;
 	protected int mMaxQty;

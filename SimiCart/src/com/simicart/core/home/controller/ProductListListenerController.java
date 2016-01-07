@@ -31,10 +31,10 @@ public class ProductListListenerController {
 				String id = mProductList.get(position).getData("product_id");
 				if (id != null) {
 					ProductDetailParentFragment fragment = ProductDetailParentFragment
-							.newInstance();
+							.newInstance(id,listID);
 					Log.e("LONGTB", "id" + id);
-					fragment.setProductID(id);
-					fragment.setListIDProduct(listID);
+//					fragment.setProductID(id);
+//					fragment.setListIDProduct(listID);
 					SimiManager.getIntance().addFragment(fragment);
 					SimiManager.getIntance().hideKeyboard();
 				}

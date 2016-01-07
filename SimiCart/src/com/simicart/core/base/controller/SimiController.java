@@ -1,12 +1,17 @@
 package com.simicart.core.base.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.simicart.core.base.model.SimiModel;
 import com.simicart.core.base.model.entity.SimiEntity;
 
-public abstract class SimiController {
+public abstract class SimiController implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected ArrayList<SimiEntity> mCollections;
 	protected SimiModel mModel;
 

@@ -14,6 +14,7 @@ import com.simicart.core.catalog.filter.block.FilterBlock;
 import com.simicart.core.catalog.filter.controller.FilterController;
 import com.simicart.core.catalog.filter.entity.FilterEntity;
 import com.simicart.core.catalog.filter.entity.FilterState;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class FilterFragment extends SimiFragment {
@@ -23,43 +24,57 @@ public class FilterFragment extends SimiFragment {
 	protected ArrayList<FilterEntity> mFilterEntity;
 	protected FilterRequestDelegate mDelegate;
 	protected ArrayList<FilterState> mStates;
-	protected String tag_search ;
+	protected String tag_search;
 	private String catName = "";
-	
-	
-	public void setCatName(String catName) {
-		this.catName = catName;
-	}
 
-	public static FilterFragment newInstance() {
+	public static FilterFragment newInstance(String tag, String name, ArrayList<FilterState> states, ArrayList<FilterEntity> filterEntity) {
 		FilterFragment fragment = new FilterFragment();
+		
+		 Bundle bundle = new Bundle();
+		 setData(Constants.KeyData.TAG, tag, Constants.KeyData.TYPE_STRING, bundle);
+		 setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
+		 setData(Constants.KeyData.LIST_FILTER_STATE, states, Constants.KeyData.TYPE_LIST_MODEL, bundle);
+		 setData(Constants.KeyData.LIST_FILTER_ENTITY, filterEntity, Constants.KeyData.TYPE_LIST_MODEL, bundle);
+		    fragment.setArguments(bundle);
 		return fragment;
 	}
-	
-	public void setTag_search(String tag_search) {
-		this.tag_search = tag_search;
-	}
 
-	public void setState(ArrayList<FilterState> states) {
-		mStates = states;
-	}
-
+//	public void setTag_search(String tag_search) {
+//		this.tag_search = tag_search;
+//	}
+//
+//	public void setCatName(String catName) {
+//		this.catName = catName;
+//	}
+//
+//	public void setState(ArrayList<FilterState> states) {
+//		mStates = states;
+//	}
+//
+//
+//	public void setFilterEntity(ArrayList<FilterEntity> filterEntity) {
+//		mFilterEntity = filterEntity;
+//	}
 	public void setDelegate(FilterRequestDelegate delegate) {
 		mDelegate = delegate;
 	}
 
-	public void setFilterEntity(ArrayList<FilterEntity> filterEntity) {
-		mFilterEntity = filterEntity;
-	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(
-					Rconfig.getInstance().layout("plugins_filter_layout"), null,
-					false);
-		
+				Rconfig.getInstance().layout("plugins_filter_layout"), null,
+				false);
+
 		Context context = getActivity();
+		//data 
+		
+		tag_search = (String) getData(Constants.KeyData.TAG, Constants.KeyData.TYPE_STRING, getArguments());
+		catName = (String) getData(Constants.KeyData.NAME, Constants.KeyData.TYPE_STRING, getArguments());
+		mStates =  (ArrayList<FilterState>) getData(Constants.KeyData.LIST_FILTER_STATE, Constants.KeyData.TYPE_LIST_MODEL, getArguments());
+		mFilterEntity =  (ArrayList<FilterEntity>) getData(Constants.KeyData.LIST_FILTER_ENTITY, Constants.KeyData.TYPE_LIST_MODEL, getArguments());
+		
 		mBlock = new FilterBlock(view, context);
 		mBlock.setName_category(catName);
 		mBlock.initView();

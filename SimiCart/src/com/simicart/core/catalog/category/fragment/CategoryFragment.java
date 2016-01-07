@@ -12,6 +12,7 @@ import com.simicart.core.catalog.category.block.CategoryBlock;
 import com.simicart.core.catalog.category.block.CategoryDetailBlock;
 import com.simicart.core.catalog.category.controller.CategoryController;
 import com.simicart.core.catalog.category.controller.CategoryDetailController;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 
@@ -24,17 +25,17 @@ public class CategoryFragment extends SimiFragment {
 	protected CategoryDetailController mCategoryDetailController;
 	protected CategoryDetailBlock mCategoryDetailBlock;
 
-	public static CategoryFragment newInstance(String name, String id) {
-		CategoryFragment fragment = new CategoryFragment(name, id);
+	public static CategoryFragment newInstance(String id, String name) {
+		CategoryFragment fragment = new CategoryFragment();
+		Bundle bundle= new Bundle();
+			setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
+		  	setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
+		    fragment.setArguments(bundle);
+
 		return fragment;
 	}
 
 	public CategoryFragment() {
-	}
-
-	public CategoryFragment(String name, String id) {
-		mCategoryID = id;
-		mCategoryName = name;
 	}
 
 	@Override
@@ -46,6 +47,8 @@ public class CategoryFragment extends SimiFragment {
 				container, false);
 		Context context = getActivity();
 
+		mCategoryID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
+		mCategoryName = (String) getData(Constants.KeyData.NAME, Constants.KeyData.TYPE_STRING, getArguments());
 		// request ListProduct
 		// LinearLayout ll_categoryParent = (LinearLayout) view
 		// .findViewById(Rconfig.getInstance().id("ll_categoryParent"));

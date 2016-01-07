@@ -345,4 +345,38 @@ public class Constants {
 	public static boolean DIRECT_TODETAIL = false;
 
 	public static String DEEP_LINK = "connector/catalog/deep_link";
+	
+public final static class KeyData {
+		
+		public static final String ID = "id";
+		public static final String LIST_ID="list_id";
+		public static final String PRODUCT= "product";
+		public static final String RATING_STAR="rating_star";
+		public static final String LIST_RATING_STAR = "list_rating_star";
+		public static final String DESCRIPTION="description";
+		public static final String ATTRIBUTES= "attributes";
+		public static final String LIST_ATTRIBUTES = "list_attributes";
+		public static final String NAME = "name";
+		public static final String URL="url";
+		public static final String TAG="tag";
+		public static final String QUERY= "query";
+		public static final String JSON_FILTER = "json_filter";
+		public static final String KEY ="key";
+		public static final String SORT_ID= "sort_id";
+		public static final String SORT_TYPE= "sort_type";
+		public static final String SORT_TAG= "sort_tag";
+		public static final String SORT_OPTION = "sort_option";
+		public static final String CAT_NAME = "cat_name";
+		public static final String LIST_FILTER_STATE = "list_filter_state";
+		public static final String LIST_FILTER_ENTITY  = "list_filter_entity";
+		public static final String CUSTOMER_REVIEW = "Customer_review";
+		
+		public static final String TYPE_STRING ="type_string";
+		public static final String TYPE_INT = "type_int";
+		public static final String TYPE_LIST_INT = "type_list_int";
+		public static final String TYPE_LIST_STRING = "type_list_string";
+		public static final String TYPE_LIST_MODEL = "type_list_MODEL";
+		public static final String TYPE_MODEL = "type_model";
+		
+	}
 }

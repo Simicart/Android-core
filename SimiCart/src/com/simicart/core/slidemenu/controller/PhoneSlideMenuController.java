@@ -139,11 +139,11 @@ public class PhoneSlideMenuController {
 				Log.e("Open deep link", "1");
 				ArrayList<String> listID = new ArrayList<String>();
 				listID.add(DataLocal.deepLinkItemID);
-				fragment = ProductDetailParentFragment.newInstance();
-				((ProductDetailParentFragment) fragment)
-						.setProductID(DataLocal.deepLinkItemID);
-				((ProductDetailParentFragment) fragment)
-						.setListIDProduct(listID);
+				fragment = ProductDetailParentFragment.newInstance(DataLocal.deepLinkItemID,listID);
+//				((ProductDetailParentFragment) fragment)
+//						.setProductID(DataLocal.deepLinkItemID);
+//				((ProductDetailParentFragment) fragment)
+//						.setListIDProduct(listID);
 				SimiManager.getIntance().replaceFragment(fragment);
 			} else if (DataLocal.deepLinkItemType == 2) {
 				Log.e("Open deep link", "2");
@@ -162,15 +162,15 @@ public class PhoneSlideMenuController {
 						SimiManager.getIntance().replaceFragment(fragment);
 					}
 				} else {
-					fragment = ListProductFragment.newInstance();
-					((ListProductFragment) fragment)
-							.setCategoryId(DataLocal.deepLinkItemID);
-					((ListProductFragment) fragment)
-							.setUrlSearch(ConstantsSearch.url_category);
-					if (DataLocal.isTablet) {
-						((ListProductFragment) fragment)
-								.setTag_search(TagSearch.TAG_GRIDVIEW);
-					}
+					fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, DataLocal.deepLinkItemID, null, null, null, null, null, null);
+//					((ListProductFragment) fragment)
+//							.setCategoryId(DataLocal.deepLinkItemID);
+//					((ListProductFragment) fragment)
+//							.setUrlSearch(ConstantsSearch.url_category);
+//					if (DataLocal.isTablet) {
+//						((ListProductFragment) fragment)
+//								.setTag_search(TagSearch.TAG_GRIDVIEW);
+//					}
 					SimiManager.getIntance().replaceFragment(fragment);
 				}
 			}

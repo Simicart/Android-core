@@ -12,6 +12,7 @@ import com.simicart.core.catalog.product.controller.ProductDetailChildController
 import com.simicart.core.catalog.product.controller.ProductDetailParentController;
 import com.simicart.core.catalog.product.delegate.ProductDelegate;
 import com.simicart.core.catalog.product.delegate.ProductDetailAdapterDelegate;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class ProductDetailChildFragment extends SimiFragment {
@@ -39,8 +40,12 @@ public class ProductDetailChildFragment extends SimiFragment {
 		isBlured = blured;
 	}
 
-	public static ProductDetailChildFragment newInstance() {
+	public static ProductDetailChildFragment newInstance(String id) {
 		ProductDetailChildFragment fragment = new ProductDetailChildFragment();
+		
+		Bundle bundle= new Bundle();
+		  setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
+		    fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -52,9 +57,9 @@ public class ProductDetailChildFragment extends SimiFragment {
 		mParentController = controller;
 	}
 
-	public void setProductID(String id) {
-		mID = id;
-	}
+//	public void setProductID(String id) {
+//		mID = id;
+//	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,6 +68,8 @@ public class ProductDetailChildFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_product_detail_child"),
 				null, false);
 		SimiManager.getIntance().setChildFragment(getChildFragmentManager());
+		
+		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
 
 		mBlock = new ProductDetailChildBlock(view, getActivity(),
 				getChildFragmentManager());

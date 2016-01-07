@@ -92,9 +92,9 @@ public class FragmentPagerBanner extends Fragment {
 								&& !bannerEntity.getProductId().toLowerCase()
 										.equals("null")) {
 							fragment = ProductDetailParentFragment
-									.newInstance();
-							((ProductDetailParentFragment) fragment)
-									.setProductID(bannerEntity.getProductId());
+									.newInstance(bannerEntity.getProductId(),null);
+//							((ProductDetailParentFragment) fragment)
+//									.setProductID(bannerEntity.getProductId());
 							SimiManager.getIntance().addFragment(fragment);
 						}
 					} else if (bannerEntity.getType().equals(TYPE_CATEGORY)) {
@@ -122,16 +122,17 @@ public class FragmentPagerBanner extends Fragment {
 												fragment);
 									}
 								} else {
-									fragment = ListProductFragment.newInstance();
-									((ListProductFragment) fragment)
-											.setCategoryId(bannerEntity
-													.getCategoryId());
-									((ListProductFragment) fragment)
-											.setUrlSearch(ConstantsSearch.url_category);
-									if (DataLocal.isTablet) {
-										((ListProductFragment) fragment)
-												.setTag_search(TagSearch.TAG_GRIDVIEW);
-									}
+									fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, bannerEntity
+											.getCategoryId(), null, null, null, null, null, null);
+//									((ListProductFragment) fragment)
+//											.setCategoryId(bannerEntity
+//													.getCategoryId());
+//									((ListProductFragment) fragment)
+//											.setUrlSearch(ConstantsSearch.url_category);
+//									if (DataLocal.isTablet) {
+//										((ListProductFragment) fragment)
+//												.setTag_search(TagSearch.TAG_GRIDVIEW);
+//									}
 									SimiManager.getIntance().addFragment(
 											fragment);
 								}

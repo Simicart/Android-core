@@ -15,6 +15,7 @@ import com.simicart.core.config.Constants;
 public class CategoryHomeListener {
 
 	protected ArrayList<Category> listCategory;
+	protected String urlSearch;
 
 	public void setListCategory(ArrayList<Category> listCategory) {
 		this.listCategory = listCategory;
@@ -38,15 +39,20 @@ public class CategoryHomeListener {
 					SimiManager.getIntance().replaceFragment(fragment);
 					SimiManager.getIntance().hideKeyboard();
 				} else {
-					ListProductFragment fragment = ListProductFragment
-							.newInstance();
-					fragment.setCategoryId(idCat);
-					fragment.setCategoryName(name);
 					if (idCat.equals("-1")) {
-						fragment.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+						urlSearch = Constants.GET_ALL_PRODUCTS;
 					} else {
-						fragment.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+						urlSearch = Constants.GET_CATEGORY_PRODUCTS;
 					}
+					ListProductFragment fragment = ListProductFragment
+							.newInstance(urlSearch, idCat, null, null, name, null, null, null);
+//					fragment.setCategoryId(idCat);
+//					fragment.setCategoryName(name);
+//					if (idCat.equals("-1")) {
+//						fragment.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+//					} else {
+//						fragment.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+//					}
 					SimiManager.getIntance().replaceFragment(fragment);
 					SimiManager.getIntance().hideKeyboard();
 				}

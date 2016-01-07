@@ -1,12 +1,18 @@
 package com.simicart.core.base.model.entity;
 
+import java.io.Serializable;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
 
-public class SimiEntity {
+public class SimiEntity implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected JSONObject mJSON;
 	protected Bundle bundle = new Bundle();
 	

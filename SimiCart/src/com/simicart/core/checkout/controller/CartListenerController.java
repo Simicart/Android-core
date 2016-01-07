@@ -93,9 +93,9 @@ public class CartListenerController implements CartAdapterDelegate {
 			String id = cart.getProduct_id();
 			if (Utils.validateString(id)) {
 				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance();
-				fragment.setProductID(id);
-				fragment.setListIDProduct(listID);
+						.newInstance(id,listID);
+//				fragment.setProductID(id);
+//				fragment.setListIDProduct(listID);
 				SimiManager.getIntance().replaceFragment(fragment);
 				SimiManager.getIntance().removeDialog();
 			}

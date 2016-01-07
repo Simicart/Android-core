@@ -46,10 +46,10 @@ public class ProductDetailParentAdapter extends FragmentPagerAdapter implements
 		
 		String id = mListID.get(position);
 		ProductDetailChildFragment fragment = ProductDetailChildFragment
-				.newInstance();
+				.newInstance(id);
 		fragment.setAdapterDelegate(this);
 		fragment.setController(mController);
-		fragment.setProductID(id);
+//		fragment.setProductID(id);
 		return fragment;
 	}
 

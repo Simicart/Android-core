@@ -78,14 +78,20 @@ public class CategoryController extends SimiController {
 				SimiManager.getIntance().addFragment(fragment);
 			}
 		} else {
-			ListProductFragment searchFragment = ListProductFragment.newInstance();
+			String urlSearch = "";
 			if (category.getCategoryId().equals("-1")) {
-				searchFragment.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+				urlSearch= Constants.GET_ALL_PRODUCTS;
 			} else {
-				searchFragment.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+				urlSearch = Constants.GET_CATEGORY_PRODUCTS;
 			}
-			searchFragment.setCategoryId(category.getCategoryId());
-			searchFragment.setCatName(category.getCategoryName());
+			ListProductFragment searchFragment = ListProductFragment.newInstance(urlSearch,category.getCategoryId(), null, null,category.getCategoryName(), null, null, null );
+//			if (category.getCategoryId().equals("-1")) {
+//				searchFragment.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+//			} else {
+//				searchFragment.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+//			}
+//			searchFragment.setCategoryId(category.getCategoryId());
+//			searchFragment.setCatName(category.getCategoryName());
 			SimiManager.getIntance().replaceFragment(searchFragment);
 		}
 	}

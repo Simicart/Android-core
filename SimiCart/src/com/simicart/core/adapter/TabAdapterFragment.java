@@ -50,36 +50,36 @@ public class TabAdapterFragment extends FragmentStatePagerAdapter {
 	}
 
 	private void addFragment() {
-		BasicInforFragment fragment_basic = BasicInforFragment.newInstance();
-		fragment_basic.setProduct(mProduct);
+		BasicInforFragment fragment_basic = BasicInforFragment.newInstance(mProduct);
+//		fragment_basic.setProduct(mProduct);
 
 		mListFragment.add(fragment_basic);
 
 		if (Utils.validateString(mProduct.getDecripition())) {
 			DescriptionFragment fragment_description = DescriptionFragment
-					.newInstance();
-			fragment_description.setDescription(mProduct.getDecripition());
+					.newInstance(mProduct.getDecripition());
+//			fragment_description.setDescription(mProduct.getDecripition());
 			mListFragment.add(fragment_description);
 		}
 
 		if (!mProduct.getAttributes().isEmpty()) {
-			TechSpecsFragment fragment_tech = TechSpecsFragment.newInstance();
-			fragment_tech.setAttributes(mProduct.getAttributes());
+			TechSpecsFragment fragment_tech = TechSpecsFragment.newInstance(mProduct.getAttributes());
+//			fragment_tech.setAttributes(mProduct.getAttributes());
 			mListFragment.add(fragment_tech);
 		}
 
 		if (mProduct.getRate() > 0 && mProduct.getReviewNumber() > 0) {
 			CustomerReviewFragment fragment_review = CustomerReviewFragment
-					.newInstance();
-			fragment_review.setProductID(mProduct.getId());
-			fragment_review.setRatingStar(mProduct.getStar());
-			fragment_review.setProduct(mProduct);
+					.newInstance(mProduct.getId(), mProduct, mProduct.getStar());
+//			fragment_review.setProductID(mProduct.getId());
+//			fragment_review.setRatingStar(mProduct.getStar());
+//			fragment_review.setProduct(mProduct);
 			mListFragment.add(fragment_review);
 		}
 
 		RelatedProductFragment fragment_related = RelatedProductFragment
-				.newInstance();
-		fragment_related.setID(mProduct.getId());
+				.newInstance(mProduct.getId());
+//		fragment_related.setID(mProduct.getId());
 		mListFragment.add(fragment_related);
 
 	}

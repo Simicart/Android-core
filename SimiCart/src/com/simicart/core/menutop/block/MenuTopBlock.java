@@ -155,9 +155,9 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 	}
 
 	protected void showSearchScreen(String query) {
-		ListProductFragment fragment = ListProductFragment.newInstance();
-		fragment.setQuerySearch(query);
-		fragment.setUrlSearch(ConstantsSearch.url_query);
+		ListProductFragment fragment = ListProductFragment.newInstance(ConstantsSearch.url_query, null, null, null, null, query, null, null);
+//		fragment.setQuerySearch(query);
+//		fragment.setUrlSearch(ConstantsSearch.url_query);
 		fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
 		SimiManager.getIntance().replaceFragment(fragment);
 	}

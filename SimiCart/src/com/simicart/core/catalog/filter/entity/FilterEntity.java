@@ -1,5 +1,6 @@
 package com.simicart.core.catalog.filter.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -10,7 +11,12 @@ import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.filter.common.FilterConstant;
 import com.simicart.core.common.Utils;
 
-public class FilterEntity extends SimiEntity {
+public class FilterEntity extends SimiEntity implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	protected String mAttribute;
 
