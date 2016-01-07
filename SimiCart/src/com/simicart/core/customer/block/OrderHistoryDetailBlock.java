@@ -13,6 +13,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
@@ -57,38 +58,38 @@ public class OrderHistoryDetailBlock extends SimiBlock implements
 		view_order_date.setBackgroundColor(Config.getInstance().getApp_backrground());
 		TextView lb_date = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("lb_date"));
-		lb_date.setText(Config.getInstance().getText("Order Date"));
+		lb_date.setText(mContext.getResources().getString(R.string.order_date));
 		lb_date.setTextColor(Config.getInstance().getContent_color());
 		TextView lb_orderT = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("lb_orderT"));
-		lb_orderT.setText(Config.getInstance().getText("Order #"));
+		lb_orderT.setText(mContext.getResources().getString(R.string.order_number));
 		lb_orderT.setTextColor(Config.getInstance().getContent_color());
 		TextView lb_total = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("lb_total"));
-		lb_total.setText(Config.getInstance().getText("Order Total"));
+		lb_total.setText(mContext.getResources().getString(R.string.order_total));
 		lb_total.setTextColor(Config.getInstance().getContent_color());
 
 		TextView lb_shipto = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("lb_shipto"));
 		lb_shipto
-				.setText(Config.getInstance().getText("SHIP TO").toUpperCase());
+				.setText(mContext.getResources().getString(R.string.ship_to).toUpperCase());
 		lb_shipto.setTextColor(Config.getInstance().getSection_text_color());
 		lb_shipto.setBackgroundColor(Color.parseColor(Config.getInstance().getSection_color()));
 		TextView lb_items = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("lb_items"));
-		lb_items.setText(Config.getInstance().getText("ITEMS").toUpperCase());
+		lb_items.setText(mContext.getResources().getString(R.string.items).toUpperCase());
 		lb_items.setTextColor(Config.getInstance().getSection_text_color());
 		lb_items.setBackgroundColor(Color.parseColor(Config.getInstance().getSection_color()));
 		TextView lb_payment = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("lb_payment"));
-		lb_payment.setText(Config.getInstance().getText("PAYMENT")
+		lb_payment.setText(mContext.getResources().getString(R.string.payment)
 				.toUpperCase());
 		lb_payment.setTextColor(Config.getInstance().getSection_text_color());
 		lb_payment.setBackgroundColor(Color.parseColor(Config.getInstance().getSection_color()));
 		bt_reorder = (ButtonRectangle) mView.findViewById(Rconfig.getInstance()
 				.id("bt_reorder"));
 		bt_reorder.setTextColor(Color.WHITE);
-		bt_reorder.setText(Config.getInstance().getText("Reorder"));
+		bt_reorder.setText(mContext.getResources().getString(R.string.reorder));
 		bt_reorder.setTextSize(16);
 		bt_reorder.setBackgroundColor(Config.getInstance().getColorMain());
 	}
@@ -262,7 +263,7 @@ public class OrderHistoryDetailBlock extends SimiBlock implements
 				p_couponCode.setText(Config.getInstance()
 						.getText("Coupon Code")
 						+ ": "
-						+ Config.getInstance().getText("NONE").toUpperCase());
+						+ mContext.getResources().getString(R.string.none).toUpperCase());
 			} else {
 				p_couponCode.setText(Config.getInstance()
 						.getText("Coupon Code")

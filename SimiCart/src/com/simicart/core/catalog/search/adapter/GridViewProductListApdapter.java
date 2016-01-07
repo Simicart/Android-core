@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.DrawableManager;
@@ -206,8 +207,7 @@ public class GridViewProductListApdapter extends BaseAdapter {
 			holder.layout_stock.setVisibility(View.GONE);
 		} else {
 			holder.layout_stock.setVisibility(View.VISIBLE);
-			holder.txt_outstock.setText(Config.getInstance().getText(
-					"Out Stock"));
+			holder.txt_outstock.setText(mContext.getResources().getString(R.string.out_stock));
 		}
 
 		ProductPriceViewProductGridV03 price_view = new ProductPriceViewProductGridV03(

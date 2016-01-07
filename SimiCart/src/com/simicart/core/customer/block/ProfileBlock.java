@@ -22,6 +22,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
@@ -104,7 +105,7 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 		btn_save = (ButtonRectangle) mView.findViewById(Rconfig.getInstance()
 				.id("bt_save"));
 		btn_save.setTextSize(Constants.SIZE_TEXT_BUTTON);
-		btn_save.setText(Config.getInstance().getText("Save"));
+		btn_save.setText(mContext.getResources().getString(R.string.save));
 		btn_save.setTextColor(Color.parseColor("#ffffff"));
 		btn_save.setBackgroundColor(Config.getInstance().getColorMain());
 		// tv_profile = (TextView) mView.findViewById(Rconfig.getInstance().id(
@@ -114,12 +115,12 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 		// full name
 		edt_fullname = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_fullname"));
-		edt_fullname.setHint(Config.getInstance().getText("Name") + "(*)");
+		edt_fullname.setHint(mContext.getResources().getString(R.string.name) + "(*)");
 
 		// email
 		edt_email = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_email"));
-		edt_email.setHint(Config.getInstance().getText("Email") + "(*)");
+		edt_email.setHint(mContext.getResources().getString(R.string.email) + "(*)");
 
 		// edt_taxVAT = (EditText) mView.findViewById(Rconfig.getInstance().id(
 		// "et_taxvat_show"));
@@ -135,7 +136,7 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 		// new password
 		edt_newPass = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_new_pass"));
-		edt_newPass.setHint(Config.getInstance().getText("New Password"));
+		edt_newPass.setHint(mContext.getResources().getString(R.string.new_password));
 
 		// confirm password
 		edt_confirmPass = (EditText) mView.findViewById(Rconfig.getInstance()
@@ -235,7 +236,7 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 	protected void createPrefix() {
 		edt_prefix = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_prefix_show"));
-		edt_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
+		edt_prefix.setHint(mContext.getResources().getString(R.string.prefix) + " (*)");
 		// if (DataLocal.isLanguageRTL) {
 		// setPositionRTL(edt_prefix);
 		// }
@@ -244,10 +245,10 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 			edt_prefix.setVisibility(View.GONE);
 			break;
 		case "req":
-			edt_prefix.setHint(Config.getInstance().getText("Prefix") + "(*)");
+			edt_prefix.setHint(mContext.getResources().getString(R.string.prefix) + "(*)");
 			break;
 		case "opt":
-			edt_prefix.setHint(Config.getInstance().getText("Prefix"));
+			edt_prefix.setHint(mContext.getResources().getString(R.string.prefix));
 			break;
 
 		default:
@@ -267,10 +268,10 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 			edt_suffix.setVisibility(View.GONE);
 			break;
 		case "req":
-			edt_suffix.setHint(Config.getInstance().getText("Suffix") + "(*)");
+			edt_suffix.setHint(mContext.getResources().getString(R.string.suffix) + "(*)");
 			break;
 		case "opt":
-			edt_suffix.setHint(Config.getInstance().getText("Suffix"));
+			edt_suffix.setHint(mContext.getResources().getString(R.string.suffix));
 			break;
 		default:
 			break;
@@ -289,11 +290,11 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 			edt_taxVAT.setVisibility(View.GONE);
 			break;
 		case "req":
-			edt_taxVAT.setHint(Config.getInstance().getText("Tax/VAT number")
+			edt_taxVAT.setHint(mContext.getResources().getString(R.string.tax_vat_number)
 					+ "(*)");
 			break;
 		case "opt":
-			edt_taxVAT.setHint(Config.getInstance().getText("Tax/VAT number"));
+			edt_taxVAT.setHint(mContext.getResources().getString(R.string.tax_vat_number));
 			break;
 		default:
 			break;
@@ -316,11 +317,11 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 			layout_date_ofbirt.setVisibility(View.GONE);
 			break;
 		case "req":
-			tv_dateBirth.setHint(Config.getInstance().getText("Date of Birth")
+			tv_dateBirth.setHint(mContext.getResources().getString(R.string.date_of_birth)
 					+ "(*)");
 			break;
 		case "opt":
-			tv_dateBirth.setHint(Config.getInstance().getText("Date of Birth"));
+			tv_dateBirth.setHint(mContext.getResources().getString(R.string.date_of_birth));
 			break;
 
 		default:
@@ -358,20 +359,18 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 			case "req":
 				if (DataLocal.isLanguageRTL) {
 					tv_dateBirth.setText(selectedDate + " :(*)"
-							+ Config.getInstance().getText("Date of Birth"));
+							+ mContext.getResources().getString(R.string.date_of_birth));
 				} else {
-					tv_dateBirth.setText(Config.getInstance().getText(
-							"Date of Birth")
+					tv_dateBirth.setText(mContext.getResources().getString(R.string.date_of_birth)
 							+ "(*): " + selectedDate);
 				}
 				break;
 			case "opt":
 				if (DataLocal.isLanguageRTL) {
 					tv_dateBirth.setText(selectedDate + " :"
-							+ Config.getInstance().getText("Date of Birth"));
+							+ mContext.getResources().getString(R.string.date_of_birth));
 				} else {
-					tv_dateBirth.setText(Config.getInstance().getText(
-							"Date of Birth")
+					tv_dateBirth.setText(mContext.getResources().getString(R.string.date_of_birth)
 							+ ": " + selectedDate);
 				}
 				break;
@@ -399,17 +398,17 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 		case "req":
 			if (DataLocal.isLanguageRTL) {
 				tv_gender.setText(":(*)"
-						+ Config.getInstance().getText("Gender"));
+						+ mContext.getResources().getString(R.string.gender));
 			} else {
-				tv_gender.setText(Config.getInstance().getText("Gender")
+				tv_gender.setText(mContext.getResources().getString(R.string.gender)
 						+ "(*):");
 			}
 			break;
 		case "opt":
 			if (DataLocal.isLanguageRTL) {
-				tv_gender.setText(":" + Config.getInstance().getText("Gender"));
+				tv_gender.setText(":" + mContext.getResources().getString(R.string.gender));
 			} else {
-				tv_gender.setText(Config.getInstance().getText("Gender") + ":");
+				tv_gender.setText(mContext.getResources().getString(R.string.gender) + ":");
 			}
 			break;
 		default:
@@ -455,13 +454,11 @@ public class ProfileBlock extends SimiBlock implements ProfileDelegate {
 					tv_dateBirth.setVisibility(View.GONE);
 					break;
 				case "req":
-					tv_dateBirth.setText(Config.getInstance().getText(
-							"Date of Birth")
+					tv_dateBirth.setText(mContext.getResources().getString(R.string.date_of_birth)
 							+ "(*): " + selectedDate);
 					break;
 				case "opt":
-					tv_dateBirth.setText(Config.getInstance().getText(
-							"Date of Birth")
+					tv_dateBirth.setText(mContext.getResources().getString(R.string.date_of_birth)
 							+ ": " + selectedDate);
 					break;
 				default:
