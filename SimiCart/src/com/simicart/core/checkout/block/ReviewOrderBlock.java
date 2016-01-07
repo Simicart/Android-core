@@ -29,6 +29,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.adapter.ProductOrderAdapter;
@@ -121,7 +122,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 	protected void initButtonPlaceNowView() {
 		bt_placenow = (ButtonRectangle) mView.findViewById(Rconfig
 				.getInstance().id("bt_placenow2"));
-		bt_placenow.setText(Config.getInstance().getText("Place Now"));
+		bt_placenow.setText(mContext.getResources().getString(R.string.place_now));
 		bt_placenow.setTextColor(Color.WHITE);
 		bt_placenow.setTextSize(Constants.SIZE_TEXT_BUTTON);
 		bt_placenow.setBackgroundColor(Config.getInstance().getColorMain());
@@ -131,8 +132,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 		// billing address
 		TextView tv_billing_address = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("tv_billing_address"));
-		tv_billing_address.setText(Config.getInstance().getText(
-				"Billing Address"));
+		tv_billing_address.setText(mContext.getResources().getString(R.string.billing_address));
 		tv_billing_address.setTextColor(Config.getInstance()
 				.getSection_text_color());
 		tv_billing_address.setBackgroundColor(Color.parseColor(Config
@@ -150,8 +150,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 		// shipping address
 		TextView tv_shipping_address = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("tv_shipping_address"));
-		tv_shipping_address.setText(Config.getInstance().getText(
-				"Shipping Address"));
+		tv_shipping_address.setText(mContext.getResources().getString(R.string.shipping_address));
 		tv_shipping_address.setTextColor(Config.getInstance()
 				.getSection_text_color());
 		tv_shipping_address.setBackgroundColor(Color.parseColor(Config
@@ -169,8 +168,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 				.findViewById(Rconfig.getInstance().id("shipping_method_rl"));
 		TextView tv_shippingMethod = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("shipping_methods"));
-		tv_shippingMethod.setText(Config.getInstance().getText(
-				"Shipping Method"));
+		tv_shippingMethod.setText(mContext.getResources().getString(R.string.shipping_method));
 		layout_shipping.setBackgroundColor(Color.parseColor(Config
 				.getInstance().getSection_color()));
 		tv_shippingMethod.setBackgroundColor(Color.parseColor(Config
@@ -203,8 +201,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 		edt_couponCode = (EditText) mView.findViewById(Rconfig.getInstance()
 				.id("edt_counponCode"));
 		edt_couponCode.setHighlightColor(Color.parseColor("#b2b2b2"));
-		edt_couponCode.setHint(Config.getInstance().getText(
-				"Enter a coupon code"));
+		edt_couponCode.setHint(mContext.getResources().getString(R.string.enter_a_coupon_code));
 	}
 
 	protected void initShipmentDetailsView() {
@@ -214,8 +211,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 				.getInstance().getSection_color()));
 		tv_shipment_details.setTextColor(Config.getInstance()
 				.getSection_text_color());
-		tv_shipment_details.setText(Config.getInstance().getText(
-				"Shipment Details"));
+		tv_shipment_details.setText(mContext.getResources().getString(R.string.shipment_details));
 		setProductList();
 	}
 
@@ -227,7 +223,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 		TextView tv_label_payment_method = (TextView) mView
 				.findViewById(Rconfig.getInstance().id("tv_payment"));
 		tv_label_payment_method
-				.setText(Config.getInstance().getText("Payment"));
+				.setText(mContext.getResources().getString(R.string.payment));
 		rl_payment.setBackgroundColor(Color.parseColor(Config.getInstance()
 				.getSection_color()));
 		tv_label_payment_method.setBackgroundColor(Color.parseColor(Config
@@ -455,7 +451,7 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 		// label
 		TextView lb_feeDetail = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("tv_feeDetail"));
-		lb_feeDetail.setText(Config.getInstance().getText("FEE DETAIL")
+		lb_feeDetail.setText(mContext.getResources().getString(R.string.fee_detail)
 				.toUpperCase());
 		lb_feeDetail.setVisibility(View.GONE);
 
@@ -640,17 +636,15 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 		TextView tv_shippingMethod = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("shipping_methods"));
 		if (shippingName.equals("")) {
-			tv_shippingMethod.setText(Config.getInstance().getText(
-					"Shipping Method"));
+			tv_shippingMethod.setText(mContext.getResources().getString(R.string.shipping_method));
 		} else {
 			if (DataLocal.isLanguageRTL) {
 				tv_shippingMethod.setText(Config.getInstance().getText(
 						shippingName)
 						+ " :"
-						+ Config.getInstance().getText("Shipping Method"));
+						+ mContext.getResources().getString(R.string.shipping_method));
 			} else {
-				tv_shippingMethod.setText(Config.getInstance().getText(
-						"Shipping Method")
+				tv_shippingMethod.setText(mContext.getResources().getString(R.string.shipping_method)
 						+ ": " + Config.getInstance().getText(shippingName));
 			}
 		}
@@ -661,16 +655,14 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 		TextView tv_label_payment_method = (TextView) mView
 				.findViewById(Rconfig.getInstance().id("tv_payment"));
 		if (paymentName.equals("")) {
-			tv_label_payment_method.setText(Config.getInstance().getText(
-					"Payment"));
+			tv_label_payment_method.setText(mContext.getResources().getString(R.string.payment));
 		} else {
 			if (DataLocal.isLanguageRTL) {
 				tv_label_payment_method.setText(Config.getInstance().getText(
 						paymentName)
-						+ " :" + Config.getInstance().getText("Payment"));
+						+ " :" + mContext.getResources().getString(R.string.payment));
 			} else {
-				tv_label_payment_method.setText(Config.getInstance().getText(
-						"Payment")
+				tv_label_payment_method.setText(mContext.getResources().getString(R.string.payment)
 						+ ": " + Config.getInstance().getText(paymentName));
 			}
 		}

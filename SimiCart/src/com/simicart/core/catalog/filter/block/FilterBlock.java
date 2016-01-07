@@ -22,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
@@ -82,7 +83,7 @@ public class FilterBlock extends SimiBlock implements FilterDelegate {
 		// label select a filter
 		tv_label = (TextView) mView.findViewById(Rconfig.getInstance().id(
 				"tv_label"));
-		tv_label.setText(Config.getInstance().getText("Select a filter"));
+		tv_label.setText(mContext.getResources().getString(R.string.select_a_filter));
 		txt_name_category = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("txt_category_filter"));
 		rlt_category_name = (RelativeLayout) mView.findViewById(Rconfig
@@ -118,10 +119,10 @@ public class FilterBlock extends SimiBlock implements FilterDelegate {
 				AdapterDialog adapter = new AdapterDialog(mContext, arr_str,
 						entity);
 				mDialog = new AlertDialog.Builder(mContext)
-						.setTitle(Config.getInstance().getText("Filter"))
+						.setTitle(mContext.getResources().getString(R.string.filter))
 						.setAdapter(adapter, null)
 						.setPositiveButton(
-								Config.getInstance().getText("Cancel"),
+								mContext.getResources().getString(R.string.cancel),
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
@@ -227,7 +228,7 @@ public class FilterBlock extends SimiBlock implements FilterDelegate {
 				.findViewById(Rconfig.getInstance().id("ll_selected_filter"));
 		if (null != states && states.size() > 0) {
 			btn_clearAll.setVisibility(View.VISIBLE);
-			btn_clearAll.setText(Config.getInstance().getText("Clear All"));
+			btn_clearAll.setText(mContext.getResources().getString(R.string.clear_all));
 
 			ll_selectedFilter.setVisibility(View.VISIBLE);
 			// label

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.catalog.product.entity.CustomerReview;
 import com.simicart.core.config.Config;
@@ -59,7 +60,7 @@ public class CustomerReviewMoreFragment extends SimiFragment {
 		TextView review_customer = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("tv_nameReviewCustomer"));
 		review_customer.setTextColor(Config.getInstance().getContent_color());
-		review_customer.setText(Config.getInstance().getText("by") + " "
+		review_customer.setText(getActivity().getResources().getString(R.string.by) + " "
 				+ mCustomerReview.getCustomer_name());
 
 		convertView.setBackgroundColor(Config.getInstance()

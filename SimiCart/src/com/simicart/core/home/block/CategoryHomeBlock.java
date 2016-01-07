@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devsmart.android.ui.HorizontalListView;
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
@@ -52,7 +53,7 @@ public class CategoryHomeBlock extends SimiBlock implements
 		int padd = Utils.getValueDp(2);
 		tv_name.setPadding(Utils.getValueDp(7), Utils.getValueDp(10),
 				Utils.getValueDp(7), Utils.getValueDp(10));
-		tv_name.setText(Config.getInstance().getText("Category").toUpperCase());
+		tv_name.setText(mContext.getResources().getString(R.string.category).toUpperCase());
 		if (DataLocal.isLanguageRTL) {
 			tv_name.setGravity(Gravity.RIGHT);
 		}

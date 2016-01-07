@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
@@ -52,7 +53,7 @@ public class OrderHistoryBlock extends SimiBlock implements
 				LayoutParams.MATCH_PARENT);
 		params.addRule(RelativeLayout.CENTER_IN_PARENT);
 		tv_empty.setGravity(Gravity.CENTER);
-		tv_empty.setText(Config.getInstance().getText("Order history is empty"));
+		tv_empty.setText(mContext.getResources().getString(R.string.order_history_is_empty));
 		tv_empty.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
 		tv_empty.setTextColor(Config.getInstance().getContent_color());
 		((LinearLayout) mView).addView(tv_empty, params);

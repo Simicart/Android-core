@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.price.ProductPriceViewProductListV03;
@@ -104,8 +105,7 @@ public class ProductListAdapter extends BaseAdapter {
 			holder.layoutStock.setVisibility(View.GONE);
 		} else {
 			holder.layoutStock.setVisibility(View.VISIBLE);
-			holder.txt_outstock.setText(Config.getInstance().getText(
-					"Out Stock"));
+			holder.txt_outstock.setText(mContext.getResources().getString(R.string.out_stock));
 		}
 
 		ProductPriceViewProductListV03 price_view = new ProductPriceViewProductListV03(

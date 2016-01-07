@@ -18,6 +18,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -99,7 +100,7 @@ public class ProductDetailParentBlock extends SimiBlock implements
 
 		TextView tv_more = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("tv_more"));
-		tv_more.setText(Config.getInstance().getText("More"));
+		tv_more.setText(mContext.getResources().getString(R.string.more));
 		tv_more.setTextColor(Config.getInstance().getContent_color());
 		ImageView img_icon_more = (ImageView) mView.findViewById(Rconfig
 				.getInstance().id("img_more"));
@@ -200,7 +201,7 @@ public class ProductDetailParentBlock extends SimiBlock implements
 			bg_button.setColorFilter(Config.getInstance().getColorMain(),
 					PorterDuff.Mode.SRC_ATOP);
 			btn_option.setVisibility(View.VISIBLE);
-			btn_option.setText(Config.getInstance().getText("Options"));
+			btn_option.setText(mContext.getResources().getString(R.string.options));
 			btn_option.setTextColor(Color.parseColor("#FFFFFF"));
 			btn_option.setClickable(true);
 			btn_option.setTextSize(Constants.SIZE_TEXT_BUTTON);
@@ -215,14 +216,14 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		if (stock) {
 			bg_button.setColorFilter(Config.getInstance().getColorMain(),
 					PorterDuff.Mode.SRC_ATOP);
-			btn_addtocart.setText(Config.getInstance().getText("Add To Cart"));
+			btn_addtocart.setText(mContext.getResources().getString(R.string.add_to_cart));
 			btn_addtocart.setTextColor(Color.parseColor("#FFFFFF"));
 			btn_addtocart.setBackgroundColor(Config.getInstance()
 					.getColorMain());
 			btn_addtocart.setTextSize(Constants.SIZE_TEXT_BUTTON);
 		} else {
 			bg_button.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP);
-			btn_addtocart.setText(Config.getInstance().getText("Out Stock"));
+			btn_addtocart.setText(mContext.getResources().getString(R.string.out_stock));
 			btn_addtocart.setTextColor(Color.parseColor("#FFFFFF"));
 			btn_addtocart.setBackgroundColor(Color.GRAY);
 			btn_addtocart.setTextSize(Constants.SIZE_TEXT_BUTTON);

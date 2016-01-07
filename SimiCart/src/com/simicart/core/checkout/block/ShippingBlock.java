@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
@@ -105,7 +106,7 @@ public class ShippingBlock extends SimiBlock implements ShippingDelegate {
 					String price_method = "<font  color='"+Config.getInstance().getPrice_color()+"'>"
 							+ Config.getInstance().getPrice(price)
 							+ "</font> <font color='"+Config.getInstance().getContent_color_string()+"'>+"
-							+"("+ Config.getInstance().getText("Incl. Tax")
+							+"("+ mContext.getResources().getString(R.string.incl_tax)
 							+ "</font> <font  color='"+Config.getInstance().getPrice_color()+"'> "
 							+ Config.getInstance().getPrice(incl_tax)
 							+ "</font>" +"<font color='"+ Config.getInstance().getContent_color_string() + "'>"+")"+"</font>";

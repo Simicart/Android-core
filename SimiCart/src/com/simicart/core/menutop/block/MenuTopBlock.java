@@ -16,6 +16,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.search.entity.TagSearch;
@@ -133,7 +134,7 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 
 		final EditText et_search = (EditText) mView.findViewById(Rconfig
 				.getInstance().id("et_search"));
-		et_search.setHint(Config.getInstance().getText("Search"));
+		et_search.setHint(mContext.getResources().getString(R.string.search));
 		// et_search.setHintTextColor(Color.parseColor("#C7C7C7"));
 		et_search.setHintTextColor(Config.getInstance()
 				.getTop_menu_icon_color());

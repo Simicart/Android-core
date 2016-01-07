@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
@@ -57,22 +58,22 @@ public class OrderHisAdapter extends BaseAdapter {
 		TextView lb_status = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_status"));
 		lb_status.setTextColor(Config.getInstance().getContent_color());
-		lb_status.setText(Config.getInstance().getText("Order Status"));
+		lb_status.setText(context.getResources().getString(R.string.order_status));
 
 		TextView lb_date = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_date"));
 		lb_date.setTextColor(Config.getInstance().getContent_color());
-		lb_date.setText(Config.getInstance().getText("Order Date"));
+		lb_date.setText(context.getResources().getString(R.string.order_date));
 
 		TextView lb_recipient = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_recipient"));
 		lb_recipient.setTextColor(Config.getInstance().getContent_color());
-		lb_recipient.setText(Config.getInstance().getText("Recipient"));
+		lb_recipient.setText(context.getResources().getString(R.string.recipient));
 
 		TextView lb_items = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_items"));
 		lb_items.setTextColor(Config.getInstance().getContent_color());
-		lb_items.setText(Config.getInstance().getText("Items"));
+		lb_items.setText(context.getResources().getString(R.string.items));
 
 		// text
 		TextView tv_status = (TextView) convertView.findViewById(Rconfig

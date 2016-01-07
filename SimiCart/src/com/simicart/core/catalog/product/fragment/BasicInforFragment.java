@@ -10,6 +10,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.catalog.product.entity.Product;
@@ -68,9 +69,9 @@ public class BasicInforFragment extends SimiFragment {
 				.getInstance().id("tv_Stock"));
 		tv_Stock.setTextColor(Config.getInstance().getContent_color());
 		if (mProduct.getStock()) {
-			tv_Stock.setText(Config.getInstance().getText("In Stock") + ".");
+			tv_Stock.setText(getActivity().getResources().getString(R.string.in_stock) + ".");
 		} else {
-			tv_Stock.setText(Config.getInstance().getText("Out Stock") + ".");
+			tv_Stock.setText(getActivity().getResources().getString(R.string.out_stock) + ".");
 		}
 
 		TextView tv_shortDescription = (TextView) rootView.findViewById(Rconfig
