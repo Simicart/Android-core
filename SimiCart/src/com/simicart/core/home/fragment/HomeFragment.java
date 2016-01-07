@@ -2,6 +2,7 @@ package com.simicart.core.home.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.simicart.core.home.block.ProductListBlock;
 import com.simicart.core.home.block.SearchHomeBlock;
 import com.simicart.core.home.controller.CategoryHomeController;
 import com.simicart.core.home.controller.ProductListController;
+import com.simicart.core.home.model.HomeModel;
 
 public class HomeFragment extends SimiFragment {
 
@@ -64,42 +66,66 @@ public class HomeFragment extends SimiFragment {
 			mSearchHomeBlock.setTag(TagSearch.TAG_LISTVIEW);
 			mSearchHomeBlock.initView();
 		}
+
+		// Max add code
+		Intent i = getActivity().getIntent();
+		String bannerData = i.getStringExtra("banner_data");
+		String homecateData = i.getStringExtra("homecate_data");
+		String spotData = i.getStringExtra("spot_data");
+		HomeModel homM = new HomeModel();
+		// end code Max
+
 		// init banner
 		RelativeLayout rlt_banner = (RelativeLayout) rootView
 				.findViewById(Rconfig.getInstance().id("rlt_banner_home"));
 		mBannerBlock = new BannerBlock(rlt_banner, context);
 		mBannerBlock.initView();
-		if (null == mBannerController) {
-			mBannerController = new BannerController(mBannerBlock);
-			mBannerController.onStart();
+		if (bannerData != null) {
+			mBannerBlock.drawView(homM.convertBannerdata(bannerData));
 		} else {
-			mBannerController.setDelegate(mBannerBlock);
-			mBannerController.onResume();
+			if (null == mBannerController) {
+				mBannerController = new BannerController(mBannerBlock);
+				mBannerController.onStart();
+			} else {
+				mBannerController.setDelegate(mBannerBlock);
+				mBannerController.onResume();
+			}
 		}
+
 		// init category
 		LinearLayout ll_category = (LinearLayout) rootView.findViewById(Rconfig
 				.getInstance().id("ll_category"));
 		mCategoryHomeBlock = new CategoryHomeBlock(ll_category, context);
-		if (mCategoryHomeController == null) {
-			mCategoryHomeController = new CategoryHomeController();
-			mCategoryHomeController.setDelegate(mCategoryHomeBlock);
-			mCategoryHomeController.onStart();
+		mCategoryHomeBlock.initView();
+		if (homecateData != null) {
+			mCategoryHomeBlock.drawView(homM.convertHomeCatedata(homecateData));
 		} else {
-			mCategoryHomeController.setDelegate(mCategoryHomeBlock);
-			mCategoryHomeController.onResume();
+			if (mCategoryHomeController == null) {
+				mCategoryHomeController = new CategoryHomeController();
+				mCategoryHomeController.setDelegate(mCategoryHomeBlock);
+				mCategoryHomeController.onStart();
+			} else {
+				mCategoryHomeController.setDelegate(mCategoryHomeBlock);
+				mCategoryHomeController.onResume();
+			}
 		}
 
 		// init spotproduct
 		LinearLayout ll_spotproduct = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("ll_spotproduct"));
 		mProductListBlock = new ProductListBlock(ll_spotproduct, context);
-		if (null == mProductListController) {
-			mProductListController = new ProductListController();
-			mProductListController.setDelegate(mProductListBlock);
-			mProductListController.onStart();
+		mProductListBlock.initView();
+		if (spotData != null) {
+			mProductListBlock.onUpdate(homM.convertSpotdata(spotData));
 		} else {
-			mProductListController.setDelegate(mProductListBlock);
-			mProductListController.onResume();
+			if (null == mProductListController) {
+				mProductListController = new ProductListController();
+				mProductListController.setDelegate(mProductListBlock);
+				mProductListController.onStart();
+			} else {
+				mProductListController.setDelegate(mProductListBlock);
+				mProductListController.onResume();
+			}
 		}
 
 		return rootView;

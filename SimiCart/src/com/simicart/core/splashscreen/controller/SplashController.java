@@ -12,6 +12,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.simicart.core.base.delegate.ModelDelegate;
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.cms.entity.Cms;
 import com.simicart.core.common.ReadXMLLanguage;
@@ -26,6 +27,7 @@ import com.simicart.core.event.base.ReadXML;
 import com.simicart.core.event.base.UtilsEvent;
 import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.block.EventBlock;
+import com.simicart.core.home.model.HomeModel;
 import com.simicart.core.splashscreen.delegate.SplashDelegate;
 import com.simicart.core.splashscreen.model.CMSPageModel;
 import com.simicart.core.splashscreen.model.PluginModel;
@@ -47,18 +49,48 @@ public class SplashController {
 	public void create() {
 		initCommon();
 
-		String id = DataLocal.getCurrencyID();
 		flagHome = false;
+
+		// Max add 1 request
+		final HomeModel homM = new HomeModel();
+		homM.setDelegate(new ModelDelegate() {
+
+			@Override
+			public void callBack(String message, boolean isSuccess) {
+				int count_data_home = homM.getCollection().getCollection()
+						.size();
+				if (count_data_home <= 0) {
+					String id = DataLocal.getCurrencyID();
+					if (id != null && !id.equals("")) {						
+						saveCurrency(id);
+					} else {						
+						getCMSPage();
+						getPlugin();
+						// getStore();
+						getStoreView();
+					}
+				} else {
+					SimiManager.getIntance().toV2MainActivity(
+							homM.getBannerData(), homM.getHomeCategoriesData(),
+							homM.getSpotProductData());
+				}
+			}
+		});
+
+		String id = DataLocal.getCurrencyID();
+		String store_id = DataLocal.getStoreID();
 		if (id != null && !id.equals("")) {
-			Log.e("AAAAAAA SplashController", "saveCurrency" + id);
-			saveCurrency(id);
-		} else {
-			Log.e("BBBBBBB SplashController", "saveCurrency" + id);
-			getCMSPage();
-			getPlugin();
-			// getStore();
-			getStoreView();
+			homM.addParam("currency", id);
 		}
+
+		if (Utils.validateString(store_id) && store_id != null
+				&& !store_id.equals("")) {
+			homM.addParam("store_id", store_id);
+		}
+		homM.addParam("limit", "15");
+		homM.addParam("width", "200");
+		homM.addParam("height", "200");
+		homM.request();
 	}
 
 	private void saveCurrency(String id) {
