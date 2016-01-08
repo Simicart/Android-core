@@ -14,6 +14,7 @@ import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.Utils;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.home.fragment.HomeFragment;
 import com.simicart.plugins.two.checkout.model.UpdatePaymentModel;
@@ -32,32 +33,37 @@ public class FragmentWeb extends SimiFragment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static FragmentWeb newInstance(String data, String url) {
+	public static FragmentWeb newInstance(String url, String urlAction, String urlBack, String data, String invoiceNumber) {
 		FragmentWeb fragmetWeb = new FragmentWeb();
-		fragmetWeb.setData(data);
-		fragmetWeb.setUrl(url);
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.URL_ACTION, urlAction, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.URL_BACK, urlBack, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.DATA, data, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
+		fragmetWeb.setArguments(bundle);
 		return fragmetWeb;
 	}
 
-	public void setData(String data) {
-		this.data = data;
-	}
-
-	public void setUrl(String url) {
-		this.Url = url;
-	}
-
-	public void setUrlAction(String url) {
-		this.url_action = url;
-	}
-
-	public void setUrlBack(String url) {
-		this.url_back = url;
-	}
-
-	public void setInvoiceNumber(String invoice_number) {
-		this.invoice_number = invoice_number;
-	}
+//	public void setData(String data) {
+//		this.data = data;
+//	}
+//
+//	public void setUrl(String url) {
+//		this.Url = url;
+//	}
+//
+//	public void setUrlAction(String url) {
+//		this.url_action = url;
+//	}
+//
+//	public void setUrlBack(String url) {
+//		this.url_back = url;
+//	}
+//
+//	public void setInvoiceNumber(String invoice_number) {
+//		this.invoice_number = invoice_number;
+//	}
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater,
@@ -74,6 +80,13 @@ public class FragmentWeb extends SimiFragment {
 				RelativeLayout.LayoutParams.MATCH_PARENT);
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
 
+		//getdata
+		Url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		url_action = (String) getData(Constants.KeyData.URL_ACTION, Constants.KeyData.TYPE_STRING, getArguments());
+		url_back = (String) getData(Constants.KeyData.URL_BACK, Constants.KeyData.TYPE_STRING, getArguments());
+		data = (String) getData(Constants.KeyData.DATA, Constants.KeyData.TYPE_STRING, getArguments());
+		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		
 		mImageView.setLayoutParams(lp);
 		// add loading View
 		webview.addView(mImageView);

@@ -14,6 +14,7 @@ import com.simicart.core.checkout.block.ReviewOrderBlock;
 import com.simicart.core.checkout.block.ShippingBlock;
 import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.checkout.controller.ReviewOrderController;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.entity.MyAddress;
@@ -28,23 +29,28 @@ public class ReviewOrderFragment extends SimiFragment {
 	protected MyAddress mShippingAddress;
 	protected int mAfterControll;
 
-	public static ReviewOrderFragment newInstance() {
+	public static ReviewOrderFragment newInstance(int afterControll, MyAddress shippingAdd, MyAddress billingAdd) {
 		ReviewOrderFragment fragment = new ReviewOrderFragment();
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.AFTER_CONTROL, afterControll, Constants.KeyData.TYPE_INT, bundle);
+		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAdd, Constants.KeyData.TYPE_MODEL, bundle);
+		setData(Constants.KeyData.BILLING_ADDRESS, billingAdd, Constants.KeyData.TYPE_MODEL, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
-	public void setAfterControll(int controll) {
-		mAfterControll = controll;
-	}
-
-	public void setBilingAddress(MyAddress address) {
-		mBillingAddress = address;
-	}
-
-	public void setShippingAddress(MyAddress address) {
-		mShippingAddress = address;
-	}
+//	public void setAfterControll(int controll) {
+//		mAfterControll = controll;
+//	}
+//
+//	public void setBilingAddress(MyAddress address) {
+//		mBillingAddress = address;
+//	}
+//
+//	public void setShippingAddress(MyAddress address) {
+//		mShippingAddress = address;
+//	}
 
 	public int getAftercontroll() {
 		return mAfterControll;
@@ -72,6 +78,12 @@ public class ReviewOrderFragment extends SimiFragment {
 					container, false);
 		}
 		Context context = getActivity();
+		
+		//getdata
+		mAfterControll = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
+		mShippingAddress = (MyAddress) getData(Constants.KeyData.SHIPPING_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
+		mBillingAddress = (MyAddress) getData(Constants.KeyData.BILLING_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
+		
 		mBlock = new ReviewOrderBlock(view, context);
 		mBlock.initView();
 		

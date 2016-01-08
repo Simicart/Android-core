@@ -10,6 +10,7 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.checkout.block.CreditCardBlock;
 import com.simicart.core.checkout.controller.CreditCardController;
 import com.simicart.core.checkout.entity.PaymentMethod;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class CreditCardFragment extends SimiFragment {
@@ -19,8 +20,12 @@ public class CreditCardFragment extends SimiFragment {
 	protected PaymentMethod mPaymentMethod;
 	protected boolean isCheckedMethod;
 
-	public static CreditCardFragment newInstance() {
+	public static CreditCardFragment newInstance(boolean isCheckedMethod,PaymentMethod paymentMethod) {
 		CreditCardFragment fragment = new CreditCardFragment();
+			Bundle bundle= new Bundle();
+			setData(Constants.KeyData.CHECK_METHOD, isCheckedMethod, Constants.KeyData.TYPE_BOOLEAN, bundle);
+			setData(Constants.KeyData.PAYMENT_METHOD, paymentMethod, Constants.KeyData.TYPE_MODEL, bundle);
+		    fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -32,6 +37,9 @@ public class CreditCardFragment extends SimiFragment {
 				container, false);
 		Context context = getActivity();
 
+		isCheckedMethod = (boolean) getData(Constants.KeyData.CHECK_METHOD, Constants.KeyData.TYPE_BOOLEAN, getArguments());
+		mPaymentMethod = (PaymentMethod) getData(Constants.KeyData.PAYMENT_METHOD, Constants.KeyData.TYPE_MODEL, getArguments());
+		
 		mBlock = new CreditCardBlock(view, context);
 		mBlock.setPaymentMethod(mPaymentMethod);
 		mBlock.setCheckedMethod(isCheckedMethod);
@@ -51,11 +59,11 @@ public class CreditCardFragment extends SimiFragment {
 		return view;
 	}
 
-	public void setPaymentMethod(PaymentMethod paymentMethod) {
-		this.mPaymentMethod = paymentMethod;
-	}
+//	public void setPaymentMethod(PaymentMethod paymentMethod) {
+//		this.mPaymentMethod = paymentMethod;
+//	}
 
-	public void setIsCheckedMethod(boolean isCheckedMethod) {
-		this.isCheckedMethod = isCheckedMethod;
-	}
+//	public void setIsCheckedMethod(boolean isCheckedMethod) {
+//		this.isCheckedMethod = isCheckedMethod;
+//	}
 }

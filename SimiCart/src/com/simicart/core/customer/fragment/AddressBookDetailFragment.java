@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.AddressBookDetailBlock;
@@ -19,16 +20,19 @@ public class AddressBookDetailFragment extends SimiFragment {
 	protected AddressBookDetailBlock mBlock;
 	protected AddressBookDetailController mController;
 
-	public void setAddressbook(MyAddress addressbook) {
-		this.addressbook = addressbook;
-	}
+//	public void setAddressbook(MyAddress addressbook) {
+//		this.addressbook = addressbook;
+//	}
 	
 	public MyAddress getAddressbook() {
 		return addressbook;
 	}
 
-	public static AddressBookDetailFragment newInstance() {
+	public static AddressBookDetailFragment newInstance(MyAddress addressbook) {
 		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.BOOK_ADDRESS, addressbook, Constants.KeyData.TYPE_MODEL, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -47,6 +51,8 @@ public class AddressBookDetailFragment extends SimiFragment {
 		}
 		Context context = getActivity();
 
+		addressbook = (MyAddress) getData(Constants.KeyData.BOOK_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
+		
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
 		mBlock.initView();

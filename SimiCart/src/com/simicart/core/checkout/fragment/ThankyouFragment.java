@@ -24,6 +24,7 @@ import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.checkout.entity.Condition;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.fragment.OrderHistoryDetailFragment;
@@ -45,17 +46,21 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 	
 	private String invoice_number = "";
 
-	public void setJsonObject(JSONObject jsonObject) {
-		this.jsonObject = jsonObject;
-	}
+//	public void setJsonObject(JSONObject jsonObject) {
+//		this.jsonObject = jsonObject;
+//	}
+//
+//	public void setMessage(String message) {
+//		this.message = message;
+//	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public static ThankyouFragment newInstance() {
+	public static ThankyouFragment newInstance(String message, JSONObject jsonObject) {
 		ThankyouFragment fragment = new ThankyouFragment();
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.MESSAGE, message, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.JSON_FILTER, jsonObject, Constants.KeyData.TYPE_MODEL, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -65,6 +70,10 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 		View view = inflater.inflate(
 				Rconfig.getInstance().layout("core_thankyou_layout"),
 				container, false);
+		
+		message = (String) getData(Constants.KeyData.MESSAGE, Constants.KeyData.TYPE_STRING, getArguments());
+		jsonObject = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_MODEL, getArguments());
+		
 		view.setBackgroundColor(Config.getInstance().getApp_backrground());
 		view.setOnKeyListener(this);
 		parseJson(jsonObject);
@@ -134,8 +143,8 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 			@Override
 			public void onClick(View v) {
 				OrderHistoryDetailFragment fragment = OrderHistoryDetailFragment
-						.newInstance(ConfigCheckout.TARGET_REVIEWORDER);
-				fragment.setID(invoice_number.trim());
+						.newInstance(ConfigCheckout.TARGET_REVIEWORDER, invoice_number.trim());
+//				fragment.setID(invoice_number.trim());
 				if (DataLocal.isTablet) {
 					SimiManager.getIntance().replacePopupFragment(fragment);
 				} else {

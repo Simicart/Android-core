@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -19,12 +20,15 @@ public class CMSFragment extends SimiFragment {
 
 	protected String mContent;
 
-	public void setContent(String content) {
-		mContent = content;
-	}
+//	public void setContent(String content) {
+//		mContent = content;
+//	}
 
-	public static CMSFragment newInstance() {
+	public static CMSFragment newInstance(String content) {
 		CMSFragment fragment = new CMSFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.CONTENT, content, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -37,6 +41,8 @@ public class CMSFragment extends SimiFragment {
 						"core_information_description_layout"), container,
 				false);
 
+		mContent = (String) getData(Constants.KeyData.CONTENT, Constants.KeyData.TYPE_STRING, getArguments());
+		
 		LinearLayout l_scrollView = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 

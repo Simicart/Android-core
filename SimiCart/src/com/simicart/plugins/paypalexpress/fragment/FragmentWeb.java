@@ -21,6 +21,7 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.checkout.entity.ShippingMethod;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.plugins.paypalexpress.model.RequestAddressModel;
@@ -34,18 +35,20 @@ public class FragmentWeb extends SimiFragment {
 	SimiDelegate mDelegate;
 	public static FragmentWeb newInstance(String url, String address) {
 		FragmentWeb fragmetWeb = new FragmentWeb();
-		fragmetWeb.setUrl(url);
-		fragmetWeb.setReviewAddress(address);
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.REVIEW_ADDRESS, address, Constants.KeyData.TYPE_STRING, bundle);
+		fragmetWeb.setArguments(bundle);
 		return fragmetWeb;
 	}
 
-	public void setUrl(String url) {
-		this.Url = url + "#m";
-	}
-
-	public void setReviewAddress(String check) {
-		this.review_address = check;
-	}
+//	public void setUrl(String url) {
+//		this.Url = url + "#m";
+//	}
+//
+//	public void setReviewAddress(String check) {
+//		this.review_address = check;
+//	}
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater,
@@ -63,6 +66,9 @@ public class FragmentWeb extends SimiFragment {
 				RelativeLayout.LayoutParams.MATCH_PARENT);
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
 
+		review_address = (String) getData(Constants.KeyData.REVIEW_ADDRESS, Constants.KeyData.TYPE_STRING, getArguments());
+		String url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		Url = url + "#m";
 		mImageView.setLayoutParams(lp);
 		// add loading View
 		webview.addView(mImageView);

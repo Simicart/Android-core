@@ -13,17 +13,21 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class ConditionFragment extends SimiFragment {
 	protected String mContent;
 
-	public void setContent(String content) {
-		mContent = content;
-	}
+//	public void setContent(String content) {
+//		mContent = content;
+//	}
 
-	public static ConditionFragment newInstance() {
+	public static ConditionFragment newInstance(String content) {
 		ConditionFragment fragment = new ConditionFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.CONTENT, content, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -37,6 +41,8 @@ public class ConditionFragment extends SimiFragment {
 						"core_information_description_layout"), container,
 				false);
 
+		mContent = (String) getData(Constants.KeyData.CONTENT, Constants.KeyData.TYPE_STRING, getArguments());
+		
 		LinearLayout l_scrollView = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 

@@ -1,9 +1,15 @@
 package com.simicart.core.checkout.entity;
 
+import java.io.Serializable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class PaymentMethod extends SimiEntity {
+public class PaymentMethod extends SimiEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int mshowType = -1;
 	private String mTitle;
 	private String mContent;

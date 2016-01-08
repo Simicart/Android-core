@@ -23,43 +23,56 @@ import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.catalog.search.fragment.ListProductFragment;
 import com.simicart.core.catalog.search.model.ConstantsSearch;
 import com.simicart.core.common.DrawableManager;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.slidemenu.fragment.CateSlideMenuFragment;
 import com.simicart.theme.matrixtheme.home.adapter.Theme1PagerAdapter;
 
-public class FragmentPagerBanner extends Fragment {
+public class FragmentPagerBanner extends SimiFragment {
 
 	private String mUrlImage;
 	private String mUrlAd;
 	private Context context;
 	private BannerEntity bannerEntity;
+	private int position;
+	private float scale;
+	private boolean isBlured;
 	private String TYPE_PRODUCT = "1";
 	private String TYPE_CATEGORY = "2";
 	private String TYPE_WEB = "3";
 
-	public void setUrlImage(String url) {
-		mUrlImage = url;
-	}
+//	public void setUrlImage(String url) {
+//		mUrlImage = url;
+//	}
 
-	public void setUrlAd(String url) {
-		mUrlAd = url;
-	}
+//	public void setUrlAd(String url) {
+//		mUrlAd = url;
+//	}
 
-	public void setBannerEntity(BannerEntity bannerEntity) {
-		this.bannerEntity = bannerEntity;
-	}
+//	public void setBannerEntity(BannerEntity bannerEntity) {
+//		this.bannerEntity = bannerEntity;
+//	}
 
-	public static Fragment newInstance(Context context, int pos, float scale,
-			boolean IsBlured) {
-		Bundle b = new Bundle();
-		b.putInt("pos", pos);
-		b.putFloat("scale", scale);
-		b.putBoolean("IsBlured", IsBlured);
-		return Fragment.instantiate(context,
-				FragmentPagerBanner.class.getName(), b);
-	}
-
+//	public static Fragment newInstance(Context context, int pos, float scale,
+//			boolean IsBlured) {
+//		Bundle b = new Bundle();
+//		b.putInt("pos", pos);
+//		b.putFloat("scale", scale);
+//		b.putBoolean("IsBlured", IsBlured);
+//		return Fragment.instantiate(context,
+//				FragmentPagerBanner.class.getName(), b);
+//	}
+public static FragmentPagerBanner newInstance(int postion, float scale, boolean isBlured, BannerEntity bannerEntity){
+	FragmentPagerBanner fragment = new FragmentPagerBanner();
+	Bundle bundle= new Bundle();
+	setData(Constants.KeyData.POSITON, postion, Constants.KeyData.TYPE_INT, bundle);
+	setData(Constants.KeyData.SCALE, scale, Constants.KeyData.TYPE_FLOAT, bundle);
+	setData(Constants.KeyData.CHECK_BLURED, isBlured, Constants.KeyData.TYPE_BOOLEAN, bundle);
+	setData(Constants.KeyData.BANNERENTITY, bannerEntity, Constants.KeyData.TYPE_MODEL, bundle);
+	fragment.setArguments(bundle);
+	return fragment;
+}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -80,6 +93,13 @@ public class FragmentPagerBanner extends Fragment {
 					imageview);
 
 		}
+		
+		//getdata
+		position = (int) getData(Constants.KeyData.POSITON, Constants.KeyData.TYPE_INT, getArguments());
+		scale = (float) getData(Constants.KeyData.SCALE, Constants.KeyData.TYPE_FLOAT, getArguments());
+		isBlured = (boolean) getData(Constants.KeyData.CHECK_BLURED, Constants.KeyData.TYPE_BOOLEAN, getArguments());
+		bannerEntity = (BannerEntity) getData(Constants.KeyData.BANNERENTITY, Constants.KeyData.TYPE_MODEL, getArguments());
+		
 		imageview.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -173,9 +193,9 @@ public class FragmentPagerBanner extends Fragment {
 
 		MyLinearLayout root = (MyLinearLayout) rootView.findViewById(Rconfig
 				.getInstance().id("root"));
-		float scale = this.getArguments().getFloat("scale");
+//		float scale = this.getArguments().getFloat("scale");
 		root.setScaleBoth(scale);
-		boolean isBlured = this.getArguments().getBoolean("IsBlured");
+//		boolean isBlured = this.getArguments().getBoolean("IsBlured");
 		if (isBlured) {
 			ViewHelper.setAlpha(root, Theme1PagerAdapter.getMinAlpha());
 			ViewHelper.setRotationY(root, Theme1PagerAdapter.getMinDegree());

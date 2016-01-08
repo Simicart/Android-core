@@ -1,9 +1,15 @@
 package com.simicart.core.banner.entity;
 
+import java.io.Serializable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class BannerEntity extends SimiEntity {
+public class BannerEntity extends SimiEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String mImagePath;
 	protected String uURL;
 	protected String mType;

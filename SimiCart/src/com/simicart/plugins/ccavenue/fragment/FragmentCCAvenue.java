@@ -17,6 +17,7 @@ import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class FragmentCCAvenue extends SimiFragment {
@@ -30,29 +31,33 @@ public class FragmentCCAvenue extends SimiFragment {
 	public static final String MES_FAIL = "Failure: Your order has been canceled";
 	public static final String MES_ERROR = "Have some errors, please try again";
 
-	String Url = "";
+	String url = "";
 	String invoice_number;
 
-	public static FragmentCCAvenue newInstance() {
+	public static FragmentCCAvenue newInstance(String url, String invoiceNumber) {
 		FragmentCCAvenue fragment = new FragmentCCAvenue();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
 	public String getUrl() {
-		return Url;
+		return invoice_number;
 	}
 
-	public void setUrl(String url) {
-		this.Url = url;
-	}
+//	public void setUrl(String url) {
+//		this.Url = url;
+//	}
 
 	public String getInvoice_number() {
 		return invoice_number;
 	}
 
-	public void setInvoice_number(String invoice_number) {
-		this.invoice_number = invoice_number;
-	}
+//	public void setInvoice_number(String invoice_number) {
+//		this.invoice_number = invoice_number;
+//	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +65,10 @@ public class FragmentCCAvenue extends SimiFragment {
 		View rootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_webview_layout"), container,
 				false);
+		
+		url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		
 		final WebView webview = (WebView) rootView.findViewById(Rconfig
 				.getInstance().id("webview_Ad"));
 		final View mImageView = inflater.inflate(
@@ -80,7 +89,7 @@ public class FragmentCCAvenue extends SimiFragment {
 				WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 		webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 
-		String url_site = Url;
+		String url_site = invoice_number;
 		webview.loadUrl(url_site);
 
 		webview.setWebViewClient(new WebViewClient() {

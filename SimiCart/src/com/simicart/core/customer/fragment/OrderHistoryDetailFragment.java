@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.checkout.controller.ConfigCheckout;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.OrderHistoryDetailBlock;
@@ -18,19 +19,23 @@ public class OrderHistoryDetailFragment extends SimiFragment {
 	protected String mID;
 	protected OrderHistoryDetailBlock mBlock;
 	protected OrderHistoryDetailController mController;
-	
 
-	public void setID(String id) {
-		mID = id;
-	}
+	// public void setID(String id) {
+	// mID = id;
+	// }
 
-	public static OrderHistoryDetailFragment newInstance() {
+	// public static OrderHistoryDetailFragment newInstance() {
+	// OrderHistoryDetailFragment fragment = new OrderHistoryDetailFragment();
+	// return fragment;
+	// }
+	public static OrderHistoryDetailFragment newInstance(int targer, String id) {
 		OrderHistoryDetailFragment fragment = new OrderHistoryDetailFragment();
-		return fragment;
-	}
-	public static OrderHistoryDetailFragment newInstance(int targer) {
-		OrderHistoryDetailFragment fragment = new OrderHistoryDetailFragment();
-		fragment.setTargetFragment(fragment, targer);
+		if (targer != 0) {
+			fragment.setTargetFragment(fragment, targer);
+		}
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -51,6 +56,10 @@ public class OrderHistoryDetailFragment extends SimiFragment {
 					false);
 		}
 		Context context = getActivity();
+
+		mID = (String) getData(Constants.KeyData.ID,
+				Constants.KeyData.TYPE_STRING, getArguments());
+
 		mBlock = new OrderHistoryDetailBlock(rootView, context);
 		mBlock.initView();
 		if (null == mController) {

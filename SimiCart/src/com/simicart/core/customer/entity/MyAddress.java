@@ -1,5 +1,6 @@
 package com.simicart.core.customer.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,11 @@ import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 
-public class MyAddress extends SimiEntity {
+public class MyAddress extends SimiEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String mAddressID = "-1";
 	private String mStateID;
 	private String mPrefix;

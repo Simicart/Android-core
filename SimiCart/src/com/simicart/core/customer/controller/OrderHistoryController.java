@@ -140,8 +140,8 @@ public class OrderHistoryController extends SimiController {
 
 		String id = orderHis.getOrder_id();
 		OrderHistoryDetailFragment fragment = OrderHistoryDetailFragment
-				.newInstance();
-		fragment.setID(id);
+				.newInstance(0, id);
+//		fragment.setID(id);
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().addFragmentSub(fragment);
 		} else {

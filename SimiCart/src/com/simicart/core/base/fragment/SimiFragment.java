@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -21,6 +23,9 @@ public class SimiFragment extends Fragment {
 
 	public static SimiFragment newInstance() {
 		SimiFragment fragment = new SimiFragment();
+//		Bundle bundle= new Bundle();
+//		setData(Constants.KeyData.CHECK_POPUP, isShowPopup, Constants.KeyData.TYPE_BOOLEAN, bundle);
+//		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -48,6 +53,13 @@ public class SimiFragment extends Fragment {
 			}
 		}
 	}
+	
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+		
+		isShowPopup = (boolean) getData(Constants.KeyData.CHECK_POPUP, Constants.KeyData.TYPE_BOOLEAN, getArguments());
+	}
 
 	public void setScreenName(String name) {
 		this.screenName = name;
@@ -59,6 +71,7 @@ public class SimiFragment extends Fragment {
 				"com.simicart.core.base.fragment.SimiFragment.setName", cache);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void setData(String key, Object object, String type, Bundle bundle) {
 
 		switch (type) {
@@ -70,9 +83,13 @@ public class SimiFragment extends Fragment {
 			bundle.putInt(key, (int) object);
 
 			break;
+		case Constants.KeyData.TYPE_FLOAT:
+			bundle.putFloat(key,(float) object);
+
+			break;
 		case Constants.KeyData.TYPE_LIST_STRING:
 			bundle.putStringArrayList(key, (ArrayList<String>) object);
-
+			
 			break;
 		case Constants.KeyData.TYPE_LIST_INT:
 			bundle.putIntegerArrayList(key, (ArrayList<Integer>) object);
@@ -80,13 +97,19 @@ public class SimiFragment extends Fragment {
 			break;
 		case Constants.KeyData.TYPE_MODEL:
 			bundle.putSerializable(key, (Serializable) object);
+			
+		case Constants.KeyData.TYPE_MODEL_PAR:
+			bundle.putParcelable(key, (Parcelable) object);
 
 			break;
 		case Constants.KeyData.TYPE_LIST_MODEL:
 			bundle.putSerializable(key, (Serializable) object);
 
 			break;
+		case Constants.KeyData.TYPE_BOOLEAN:
+			bundle.putBoolean(key, (boolean) object);
 
+			break;
 		default:
 			break;
 		}
@@ -105,6 +128,10 @@ public class SimiFragment extends Fragment {
 			object = bundle.getInt(key, 0);
 
 			break;
+		case Constants.KeyData.TYPE_FLOAT:
+			object = bundle.getFloat(key, 0);
+
+			break;
 		case Constants.KeyData.TYPE_LIST_STRING:
 			object = bundle.getStringArrayList(key);
 
@@ -117,11 +144,19 @@ public class SimiFragment extends Fragment {
 			object = bundle.getSerializable(key);
 
 			break;
+		case Constants.KeyData.TYPE_MODEL_PAR:
+			object = bundle.getParcelable(key);
+
+			break;
 		case Constants.KeyData.TYPE_LIST_MODEL:
 			object = bundle.getSerializable(key);
 
 			break;
+		case Constants.KeyData.TYPE_BOOLEAN:
+			object = bundle.getBoolean(key);
 
+			break;
+			
 		default:
 			break;
 		}

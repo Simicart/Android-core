@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.CountryAllowedBlock;
 import com.simicart.core.customer.controller.CountryAllowedAController;
@@ -22,27 +23,32 @@ public class CountryFragment extends SimiFragment {
 	ChooseCountryDelegate chooseDelegate;
 	protected int type;
 
-	public static CountryFragment newInstance() {
+	public static CountryFragment newInstance(int type, ArrayList<String> list_country) {
 		CountryFragment fragment = new CountryFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.TYPE, type, Constants.KeyData.TYPE_INT, bundle);
+		setData(Constants.KeyData.LIST_COUNTRY, list_country, Constants.KeyData.TYPE_LIST_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
-	public void setFragmentType(boolean value) {
-		isCheckout = value;
-	}
-
-	public void setList_country(ArrayList<String> list_country) {
-		this.mListCountry = list_country;
-	}
+//	public void setFragmentType(boolean value) {
+//		isCheckout = value;
+//	}
+//
+//	public void setList_country(ArrayList<String> list_country) {
+//		this.mListCountry = list_country;
+//	}
 
 	public void setChooseDelegate(ChooseCountryDelegate chooseDelegate) {
 		this.chooseDelegate = chooseDelegate;
 	}
 
-	public void setType(int type) {
-		this.type = type;
-	}
+//	public void setType(int type) {
+//		this.type = type;
+//	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -50,6 +56,11 @@ public class CountryFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_choose_country"), container,
 				false);
 		Context context = getActivity();
+		
+		//getdata
+		type = (int) getData(Constants.KeyData.TYPE, Constants.KeyData.TYPE_INT, getArguments());
+		mListCountry = (ArrayList<String>) getData(Constants.KeyData.LIST_COUNTRY, Constants.KeyData.TYPE_LIST_STRING, getArguments());
+		
 		mBlock = new CountryAllowedBlock(view, context);
 		mBlock.setListContry(mListCountry);
 		mController = new CountryAllowedAController();

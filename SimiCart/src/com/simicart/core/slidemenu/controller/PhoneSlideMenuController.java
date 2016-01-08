@@ -139,7 +139,7 @@ public class PhoneSlideMenuController {
 				Log.e("Open deep link", "1");
 				ArrayList<String> listID = new ArrayList<String>();
 				listID.add(DataLocal.deepLinkItemID);
-				fragment = ProductDetailParentFragment.newInstance(DataLocal.deepLinkItemID,listID);
+				fragment = ProductDetailParentFragment.newInstance(DataLocal.deepLinkItemID, listID);
 //				((ProductDetailParentFragment) fragment)
 //						.setProductID(DataLocal.deepLinkItemID);
 //				((ProductDetailParentFragment) fragment)
@@ -444,8 +444,8 @@ public class PhoneSlideMenuController {
 		for (Cms cms : DataLocal.listCms) {
 			if (name.equals(cms.getTitle())) {
 				String content = cms.getContent();
-				fragment = CMSFragment.newInstance();
-				((CMSFragment) fragment).setContent(content);
+				fragment = CMSFragment.newInstance(content);
+//				((CMSFragment) fragment).setContent(content);
 			}
 		}
 		// initial CMSFragment by using content field.

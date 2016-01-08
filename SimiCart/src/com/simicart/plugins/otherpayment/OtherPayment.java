@@ -71,23 +71,23 @@ public class OtherPayment {
 										.getMessageFail());
 							} else {
 								OtherPaymentFragment fragment = OtherPaymentFragment
-										.newInstance();
-								fragment.setPayment(OtherPaymentConfig
-										.getInstance().getListPayment().get(i));
-								fragment.setInvoiceNumber(checkoutData
-										.getInvoice_number());
-								fragment.setUrlAction(url);
+										.newInstance(url, checkoutData.getInvoice_number(), OtherPaymentConfig.getInstance().getListPayment().get(i));
+//								fragment.setPayment(OtherPaymentConfig
+//										.getInstance().getListPayment().get(i));
+//								fragment.setInvoiceNumber(checkoutData
+//										.getInvoice_number());
+//								fragment.setUrlAction(url);
 								SimiManager.getIntance().replaceFragment(
 										fragment);
 							}
 						} else {
 							OtherPaymentFragment fragment = OtherPaymentFragment
-									.newInstance();
-							fragment.setPayment(OtherPaymentConfig
-									.getInstance().getListPayment().get(i));
-							fragment.setInvoiceNumber(checkoutData
-									.getInvoice_number());
-							fragment.setUrlAction(url);
+									.newInstance(url, checkoutData.getInvoice_number(), OtherPaymentConfig.getInstance().getListPayment().get(i));
+//							fragment.setPayment(OtherPaymentConfig
+//									.getInstance().getListPayment().get(i));
+//							fragment.setInvoiceNumber(checkoutData
+//									.getInvoice_number());
+//							fragment.setUrlAction(url);
 							SimiManager.getIntance().replaceFragment(fragment);
 						}
 					} else {
