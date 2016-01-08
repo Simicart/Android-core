@@ -8,11 +8,15 @@ import android.content.Context;
 
 import com.simicart.core.config.Constants;
 import com.simicart.core.event.base.EventListener;
+import com.simicart.core.event.base.ReadXML;
 
 public class PluginModel {
 	private Context mContext;
 
 	public void setData(JSONObject jobs) {
+		ReadXML readXml = new ReadXML(mContext);
+		readXml.read();
+
 		JSONArray dataOaj;
 		try {
 			dataOaj = jobs.getJSONArray("plugin");
