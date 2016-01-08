@@ -65,6 +65,7 @@ public class ProductBaseAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
+		Product product = getItem(position);
 		if (convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(
@@ -77,11 +78,39 @@ public class ProductBaseAdapter extends BaseAdapter {
 					.getInstance().id("layout_price"));
 			holder.img_avartar = (ImageView) convertView.findViewById(Rconfig
 					.getInstance().id("product_list_image"));
+
+			if (product.getPriceV2() != null) {
+				ProductPriceViewProductGridV03 viewPrice = new ProductPriceViewProductGridV03(
+						product);
+				viewPrice.setShowOnePrice(true);
+				View view = viewPrice.getViewPrice();
+				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+				if (null != view) {
+					holder.ll_price.removeAllViewsInLayout();
+					holder.ll_price.addView(view, params);
+				}
+			} else {
+				Log.e("ProductBaseAdapter ", " get Price Home");
+				ProductPriceView viewPrice = new ProductPriceView(product);
+				View view = viewPrice.getViewPriceHome();
+				if (null != view) {
+					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+							LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+					if (DataLocal.isLanguageRTL) {
+						holder.ll_price.setGravity(Gravity.RIGHT);
+					} else {
+						holder.ll_price.setGravity(Gravity.LEFT);
+					}
+					holder.ll_price.removeAllViewsInLayout();
+					holder.ll_price.addView(view, params);
+				}
+			}
+
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		Product product = getItem(position);
 
 		// name
 		holder.tv_name.setText(product.getName());
@@ -99,34 +128,6 @@ public class ProductBaseAdapter extends BaseAdapter {
 				holder.ll_price.setGravity(Gravity.RIGHT);
 			} else {
 				holder.ll_price.setGravity(Gravity.LEFT);
-			}
-		}
-
-		if (product.getPriceV2() != null) {
-			ProductPriceViewProductGridV03 viewPrice = new ProductPriceViewProductGridV03(
-					product);
-			viewPrice.setShowOnePrice(true);
-			View view = viewPrice.getViewPrice();
-			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-			if (null != view) {
-				holder.ll_price.removeAllViewsInLayout();
-				holder.ll_price.addView(view, params);
-			}
-		} else {
-			Log.e("ProductBaseAdapter ", " get Price Home");
-			ProductPriceView viewPrice = new ProductPriceView(product);
-			View view = viewPrice.getViewPriceHome();
-			if (null != view) {
-				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-				if (DataLocal.isLanguageRTL) {
-					holder.ll_price.setGravity(Gravity.RIGHT);
-				} else {
-					holder.ll_price.setGravity(Gravity.LEFT);
-				}
-				holder.ll_price.removeAllViewsInLayout();
-				holder.ll_price.addView(view, params);
 			}
 		}
 
