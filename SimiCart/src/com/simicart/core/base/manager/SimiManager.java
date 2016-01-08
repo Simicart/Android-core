@@ -1,6 +1,5 @@
 package com.simicart.core.base.manager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -24,9 +23,7 @@ import android.widget.Toast;
 
 import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
-import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.network.request.multi.SimiRequestQueue;
-import com.simicart.core.catalog.product.entity.ProductList;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
@@ -549,20 +546,15 @@ public class SimiManager {
 	}
 
 	// Max add to open Main with only one request
-	public void toV2MainActivity(String bannerData,
-			String homecateData, String spotData) {
+	public void toV2MainActivity(String check) {
 		Intent i = new Intent(mCurrentActivity, MainActivity.class);
 		Bundle extras = mCurrentActivity.getIntent().getExtras();
 		if (extras != null) {
 			i.putExtras(extras);
 		}
 		
-		if (bannerData != null)
-			i.putExtra("banner_data", bannerData);
-		if (homecateData != null)
-			i.putExtra("homecate_data", homecateData);
-		if (spotData != null){}
-			i.putExtra("spot_data", spotData);
+		if (check != null)
+			i.putExtra("home_check", check);		
 		mCurrentActivity.startActivity(i);
 		mCurrentActivity.finish();
 	}
