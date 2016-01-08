@@ -6,24 +6,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.security.KeyStore;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -45,7 +32,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.simicart.core.base.fragment.SimiFragment;
-import com.simicart.core.base.network.request.MySSLSocketFactory;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
@@ -138,7 +124,7 @@ public class FragmentRewardCard extends SimiFragment {
 		if (!background_passbook.equals("")) {
 			bg_passbook.setColor(Color.parseColor("#"
 					+ background_passbook.trim()));
-		}else{
+		} else {
 			bg_passbook.setColor(Color.parseColor("#FF6600"));
 		}
 		bg_passbook.setCornerRadius(Utils.getValueDp(15));
@@ -194,7 +180,8 @@ public class FragmentRewardCard extends SimiFragment {
 		protected String doInBackground(String... params) {
 			String url = params[0];
 			byte[] data;
-			HttpClient httpclient = getNewHttpClient();
+			// HttpClient httpclient = getNewHttpClient();
+			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(url);
 			String userAgent = System.getProperty("http.agent");
 			String cookie = Config.getInstance().getCookie();
@@ -232,36 +219,37 @@ public class FragmentRewardCard extends SimiFragment {
 		}
 	}
 
-	public static DefaultHttpClient getNewHttpClient() {
-		DefaultHttpClient httpClient = null;
-		try {
-			if (httpClient == null) {
-				HttpParams params = new BasicHttpParams();
-				HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-				HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-				SchemeRegistry registry = new SchemeRegistry();
-				registry.register(new Scheme("http", PlainSocketFactory
-						.getSocketFactory(), 80));
-
-				KeyStore trustStore = KeyStore.getInstance(KeyStore
-						.getDefaultType());
-				trustStore.load(null, null);
-				SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
-				sf.setHostnameVerifier((X509HostnameVerifier) SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-				registry.register(new Scheme("https", sf, 443));
-
-				ClientConnectionManager ccm = new ThreadSafeClientConnManager(
-						params, registry);
-				httpClient = new DefaultHttpClient(ccm, params);
-			}
-			return httpClient;
-		} catch (Exception e) {
-			if (httpClient == null) {
-				httpClient = new DefaultHttpClient();
-			}
-			return httpClient;
-		}
-	}
+	// public static DefaultHttpClient getNewHttpClient() {
+	// DefaultHttpClient httpClient = null;
+	// try {
+	// if (httpClient == null) {
+	// HttpParams params = new BasicHttpParams();
+	// HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+	// HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+	// SchemeRegistry registry = new SchemeRegistry();
+	// registry.register(new Scheme("http", PlainSocketFactory
+	// .getSocketFactory(), 80));
+	//
+	// KeyStore trustStore = KeyStore.getInstance(KeyStore
+	// .getDefaultType());
+	// trustStore.load(null, null);
+	// SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
+	// sf.setHostnameVerifier((X509HostnameVerifier)
+	// SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+	// registry.register(new Scheme("https", sf, 443));
+	//
+	// ClientConnectionManager ccm = new ThreadSafeClientConnManager(
+	// params, registry);
+	// httpClient = new DefaultHttpClient(ccm, params);
+	// }
+	// return httpClient;
+	// } catch (Exception e) {
+	// if (httpClient == null) {
+	// httpClient = new DefaultHttpClient();
+	// }
+	// return httpClient;
+	// }
+	// }
 
 	@SuppressWarnings("unused")
 	private static boolean launchPassWallet(Context applicationContext,

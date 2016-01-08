@@ -19,6 +19,10 @@ public class CoreResponse {
 		mData = data;
 	}
 
+	public void setDataJSON(JSONObject json) {
+		mJSON = json;
+	}
+
 	public JSONObject getDataJSON() {
 		return mJSON;
 	}
@@ -56,6 +60,7 @@ public class CoreResponse {
 		}
 
 		try {
+			mJSON = null;
 			mJSON = new JSONObject(mData);
 			Log.e("CoreResponse Result :", mJSON.toString());
 

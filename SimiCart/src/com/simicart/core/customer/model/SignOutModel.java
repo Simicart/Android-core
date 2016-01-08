@@ -10,7 +10,6 @@ public class SignOutModel extends SimiModel {
 	protected void paserData() {
 		// TODO Auto-generated method stub
 		super.paserData();
-		DataLocal.dataJson.clear();
 	}
 
 	@Override

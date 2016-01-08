@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
-import com.simicart.core.base.network.request.multi.SimiRequestQueue;
+import com.simicart.core.base.network.request.SimiRequestQueue;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
@@ -50,9 +50,6 @@ public class SimiManager {
 	protected SimiRequestQueue mRequestQueue;
 	protected Boolean isShowedNotify = false;
 
-	// private final int THEME_DEFAULT = 0;
-	// private final int THEME_MATRIX = 1;
-	// private final int THEME_ZTHEME = 2;
 
 	public SimiRequestQueue getRequestQueue() {
 		return mRequestQueue;

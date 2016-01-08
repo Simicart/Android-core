@@ -10,20 +10,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.KeyStore;
-
-import org.apache.http.HttpVersion;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -45,9 +31,10 @@ import android.view.Display;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.simicart.MainActivity;
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.network.request.MySSLSocketFactory;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 
@@ -157,8 +144,83 @@ public class DrawableManager {
 		return null;
 	}
 
+	public static void addBitmapToMemoryCache(String key, Bitmap bitmap) {
+
+		String key_md5 = Utils.md5(key);
+
+		if (null != mMemoryCache) {
+			if (getBitmapFromMemCache(key_md5) == null) {
+				mMemoryCache.put(key_md5, bitmap);
+			}
+		}
+
+		synchronized (mDiskCackeLock) {
+			if (mDiskLruCache != null) {
+
+				DiskLruCache.Editor editor = null;
+				try {
+					if (mDiskLruCache.get(key_md5) == null) {
+						editor = mDiskLruCache.edit(key_md5);
+						if (null == editor) {
+							Log.e("DrawableManager  addBitMapToMemory ",
+									"EDITOR NULL");
+							return;
+						}
+
+						if (writeBitmapToFile(bitmap, editor)) {
+							mDiskLruCache.flush();
+							editor.commit();
+						} else {
+							editor.abort();
+						}
+					}
+				} catch (Exception e) {
+
+					Log.e("DrawableManager  addBitMapToMemory ", "Exception "
+							+ e.getMessage());
+
+					try {
+						mDiskLruCache.remove(key_md5);
+					} catch (IOException ex) {
+						Log.e("DrawableManager addBitMapToMemory ",
+								"DiskLruCache REMOVE IOException "
+										+ ex.getMessage());
+					}
+
+				}
+			}
+		}
+	}
+
+	protected static boolean writeBitmapToFile(Bitmap bitmap,
+			DiskLruCache.Editor editor) throws IOException,
+			FileNotFoundException {
+		OutputStream out = null;
+		try {
+			out = new BufferedOutputStream(editor.newOutputStream(0), 8 * 1024);
+			CompressFormat mCompressFormat = CompressFormat.JPEG;
+			return bitmap.compress(mCompressFormat, 80, out);
+		}
+
+		finally {
+			if (out != null) {
+				out.close();
+			}
+		}
+	}
+
+	public static Bitmap getBitmapFromMemCache(String key) {
+
+		String key_md5 = Utils.md5(key);
+
+		return mMemoryCache.get(key_md5);
+	}
+
 	public static void fetchDrawableDetailOnThread(final String urlString,
 			final ImageView imageView) {
+
+		// Context context = imageView.getContext();
+		// Glide.with(context).load(urlString).into(imageView);
 
 		init();
 
@@ -239,6 +301,9 @@ public class DrawableManager {
 	public static void fetchDrawableOnThread(final String urlString,
 			final ImageView imageView) {
 
+		// Context context = imageView.getContext();
+		// Glide.with(context).load(urlString).into(imageView);
+
 		init();
 
 		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
@@ -286,80 +351,12 @@ public class DrawableManager {
 		getBitmap(handler, urlString);
 	}
 
-	public static void addBitmapToMemoryCache(String key, Bitmap bitmap) {
-
-		String key_md5 = Utils.md5(key);
-
-		if (null != mMemoryCache) {
-			if (getBitmapFromMemCache(key_md5) == null) {
-				mMemoryCache.put(key_md5, bitmap);
-			}
-		}
-
-		synchronized (mDiskCackeLock) {
-			if (mDiskLruCache != null) {
-
-				DiskLruCache.Editor editor = null;
-				try {
-					if (mDiskLruCache.get(key_md5) == null) {
-						editor = mDiskLruCache.edit(key_md5);
-						if (null == editor) {
-							Log.e("DrawableManager  addBitMapToMemory ",
-									"EDITOR NULL");
-							return;
-						}
-
-						if (writeBitmapToFile(bitmap, editor)) {
-							mDiskLruCache.flush();
-							editor.commit();
-						} else {
-							editor.abort();
-						}
-					}
-				} catch (Exception e) {
-
-					Log.e("DrawableManager  addBitMapToMemory ", "Exception "
-							+ e.getMessage());
-
-					try {
-						mDiskLruCache.remove(key_md5);
-					} catch (IOException ex) {
-						Log.e("DrawableManager addBitMapToMemory ",
-								"DiskLruCache REMOVE IOException "
-										+ ex.getMessage());
-					}
-
-				}
-			}
-		}
-	}
-
-	protected static boolean writeBitmapToFile(Bitmap bitmap,
-			DiskLruCache.Editor editor) throws IOException,
-			FileNotFoundException {
-		OutputStream out = null;
-		try {
-			out = new BufferedOutputStream(editor.newOutputStream(0), 8 * 1024);
-			CompressFormat mCompressFormat = CompressFormat.JPEG;
-			return bitmap.compress(mCompressFormat, 80, out);
-		}
-
-		finally {
-			if (out != null) {
-				out.close();
-			}
-		}
-	}
-
-	public static Bitmap getBitmapFromMemCache(String key) {
-
-		String key_md5 = Utils.md5(key);
-
-		return mMemoryCache.get(key_md5);
-	}
-
 	public static void fetchDrawableOnThreadForZTheme(final String urlString,
 			final ImageView imageView) {
+		// Log.e("DrawableManager ","fetchDrawableOnThreadForZTheme(String, ImageView)");
+		// Context context = SimiManager.getIntance().getCurrentActivity();
+		// GLideTransform transform = new GLideTransform(context);
+		// Glide.with(context).load(urlString).transform(transform).into(imageView);
 
 		init();
 
@@ -412,6 +409,34 @@ public class DrawableManager {
 		getBitmap(handler, urlString);
 	}
 
+	public static class GLideTransform extends BitmapTransformation {
+		public GLideTransform(Context context) {
+			super(context);
+		}
+
+		@Override
+		public String getId() {
+			// TODO Auto-generated method stub
+			return "detail";
+		}
+
+		@Override
+		protected Bitmap transform(BitmapPool arg0, Bitmap bitmap, int arg2,
+				int arg3) {
+			Display display = SimiManager.getIntance().getCurrentActivity()
+					.getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			final int w = (size.x * 4) / 5;
+			final int h = (size.y * 4) / 5;
+
+			Log.e("DrawableManager ", "transform " + w + h);
+
+			return Utils.scaleToFill(bitmap, w, h);
+		}
+
+	}
+
 	@SuppressWarnings("deprecation")
 	public static void fetchDrawableOnThread(final String urlString,
 			final TextView textview) {
@@ -438,6 +463,9 @@ public class DrawableManager {
 
 	public static void fetchItemDrawableOnThread(final String urlString,
 			final ImageView imageView) {
+
+		// Context context = imageView.getContext();
+		// Glide.with(context).load(urlString).into(imageView);
 
 		final Handler handler = new Handler() {
 			@Override
@@ -513,36 +541,6 @@ public class DrawableManager {
 			return null;
 		}
 
-	}
-
-	public static DefaultHttpClient getNewHttpClient() {
-		DefaultHttpClient httpClient = null;
-		try {
-			if (httpClient == null) {
-				KeyStore trustStore = KeyStore.getInstance(KeyStore
-						.getDefaultType());
-				trustStore.load(null, null);
-				SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
-				sf.setHostnameVerifier(SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-				HttpParams params = new BasicHttpParams();
-				HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-				HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-				SchemeRegistry registry = new SchemeRegistry();
-				registry.register(new Scheme("http", PlainSocketFactory
-						.getSocketFactory(), 80));
-				registry.register(new Scheme("https", sf, 443));
-				ClientConnectionManager ccm = new ThreadSafeClientConnManager(
-						params, registry);
-				httpClient = new DefaultHttpClient(ccm, params);
-			}
-			return httpClient;
-
-		} catch (Exception e) {
-			if (httpClient == null) {
-				httpClient = new DefaultHttpClient();
-			}
-			return httpClient;
-		}
 	}
 
 }

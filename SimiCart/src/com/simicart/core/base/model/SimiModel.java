@@ -16,18 +16,15 @@ import com.simicart.core.base.delegate.NetWorkDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
-import com.simicart.core.base.network.request.CoreRequest;
-import com.simicart.core.base.network.request.multi.SimiJSONRequest;
-import com.simicart.core.base.network.request.multi.SimiRequest;
-import com.simicart.core.base.network.request.multi.SimiRequest.Priority;
+import com.simicart.core.base.network.request.SimiJSONRequest;
+import com.simicart.core.base.network.request.SimiRequest;
+import com.simicart.core.base.network.request.SimiRequest.Priority;
 import com.simicart.core.base.network.response.CoreResponse;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 
 public class SimiModel {
-
 	private NetWorkDelegate mDelegate;
-	private CoreRequest coreRequest;
 	private ModelDelegate bDelegate;
 	protected JSONObject mJSON;
 	protected SimiCollection collection = null;
@@ -35,11 +32,8 @@ public class SimiModel {
 	protected boolean isShowNotify = true;
 	protected HashMap<String, Object> mHashMap;
 	protected boolean isDebug = false;
-
 	protected SimiRequest mRequest;
 	protected Priority mCurrentPriority = Priority.NORMAL;
-	protected boolean isMultiRequest = true;
-
 	protected boolean enableCache = false;
 
 	public void setPriority(Priority priority) {
@@ -68,15 +62,6 @@ public class SimiModel {
 				if (isSuccess) {
 					beforePaser();
 					mJSON = coreResponse.getDataJSON();
-					if (enableCache
-							&& !DataLocal.dataJson.containsKey(url_action + "/"
-									+ mHashMap.toString())) {
-						Log.e("CACHE DATA",
-								"" + url_action + "/" + mHashMap.toString());
-						DataLocal.dataJson.put(
-								url_action + "/" + mHashMap.toString(),
-								coreResponse);
-					}
 					paserData();
 					afterPaser();
 				}
@@ -137,23 +122,11 @@ public class SimiModel {
 				Object value = entry.getValue();
 				String key = String.valueOf(entry.getKey());
 				if (value instanceof String) {
-					if (isMultiRequest) {
-						mRequest.addParams(key, String.valueOf(value));
-					} else {
-						coreRequest.addParams(key, String.valueOf(value));
-					}
+					mRequest.addParams(key, String.valueOf(value));
 				} else if (value instanceof JSONObject) {
-					if (isMultiRequest) {
-						mRequest.addParams(key, (JSONObject) value);
-					} else {
-						coreRequest.addParams(key, (JSONObject) value);
-					}
+					mRequest.addParams(key, (JSONObject) value);
 				} else if (value instanceof JSONArray) {
-					if (isMultiRequest) {
-						mRequest.addParams(key, (JSONArray) value);
-					} else {
-						coreRequest.addParams(key, (JSONArray) value);
-					}
+					mRequest.addParams(key, (JSONArray) value);
 				}
 			}
 		}
@@ -204,22 +177,11 @@ public class SimiModel {
 	 */
 	public void request() {
 		this.initRequest();
-		if (enableCache
-				&& DataLocal.dataJson.containsKey(url_action + "/"
-						+ mHashMap.toString())) {
-			CoreResponse coreResponse = DataLocal.dataJson.get(url_action + "/"
-					+ mHashMap.toString());
-			mDelegate.callBack(coreResponse, true);
+		if (enableCache) {
+			getDataFromCache();
 		} else {
-			if (isMultiRequest) {
-				SimiManager.getIntance().getRequestQueue().add(mRequest);
-			} else {
-				this.coreRequest.request();
-			}
+			SimiManager.getIntance().getRequestQueue().add(mRequest);
 		}
-	}
-
-	protected void setEnableCache() {
 	}
 
 	private void initRequest() {
@@ -227,20 +189,34 @@ public class SimiModel {
 		setUrlAction();
 		setShowNotifi();
 		setEnableCache();
-		if (isMultiRequest) {
-			mRequest = new SimiJSONRequest(url_action, mDelegate);
-			mRequest.setPriority(mCurrentPriority);
-			mRequest.setShowNotify(isShowNotify);
-		} else {
-			this.coreRequest = new CoreRequest(mDelegate);
-			if (isDebug) {
-				coreRequest.setDebugMode(isDebug);
-			}
-			this.coreRequest.setUrlAction(url_action);
-			this.coreRequest.setShowNotify(isShowNotify);
-		}
-
+		mRequest = new SimiJSONRequest(url_action, mDelegate);
+		mRequest.setPriority(mCurrentPriority);
+		mRequest.setShowNotify(isShowNotify);
+		mRequest.setShouldCache(enableCache);
 		addParams();
+	}
+
+	private void getDataFromCache() {
+		JSONObject json = SimiManager.getIntance().getRequestQueue()
+				.getDataFromCacheL1(mRequest);
+		if (null != json) {
+			CoreResponse coreResponse = new CoreResponse();
+			coreResponse.setDataJSON(json);
+
+			Log.e("SimiModel getDataFromCache ", json.toString());
+
+			mDelegate.callBack(coreResponse, true);
+		} else {
+			SimiManager.getIntance().getRequestQueue().add(mRequest);
+		}
+	}
+
+	public void refreshRequest() {
+		SimiManager.getIntance().getRequestQueue().add(mRequest);
+	}
+
+	protected void setEnableCache() {
+
 	}
 
 	public JSONObject getDataJSON() {

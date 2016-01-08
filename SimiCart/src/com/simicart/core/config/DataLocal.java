@@ -49,8 +49,6 @@ public class DataLocal {
 	public static String deepLinkItemHasChild = "";
 	public static int deepLinkItemType = 0;
 
-	public static HashMap<String, CoreResponse> dataJson;
-
 	public static void init(Context context) {
 		mContext = context;
 		mSharedPre = mContext.getSharedPreferences(NAME_REFERENCE,
@@ -60,7 +58,6 @@ public class DataLocal {
 		listCarts = new ArrayList<Cart>();
 		listCurrency = new ArrayList<CurrencyEntity>();
 
-		dataJson = new HashMap<>();
 	}
 
 	public static String getCatID() {

@@ -28,7 +28,6 @@ public class SignInModel extends SimiModel {
 		// TODO Auto-generated method stub
 		super.paserData();
 		try {
-			DataLocal.dataJson.clear();
 			JSONArray arr = mJSON.getJSONArray(Constants.DATA);
 			JSONObject json = arr.getJSONObject(0);
 			mUserName = json.getString(Constants.USER_NAME);
