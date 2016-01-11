@@ -11,14 +11,11 @@ import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.category.entity.Category;
 import com.simicart.core.catalog.product.entity.ProductList;
-import com.simicart.core.home.model.page.CMSModel;
-import com.simicart.core.home.model.page.PluginModel;
-import com.simicart.core.home.model.page.StoreViewModel;
 
 public class HomeModel extends SimiModel {
-	private String bannerCollection = null;
-	private String homeCategoriesCollection = null;
-	private String mProductList = null;
+	private SimiCollection banner = null;
+	private SimiCollection home_cate = null;
+	private ArrayList<ProductList> home_spot = null;
 
 	@Override
 	protected void setShowNotifi() {
@@ -30,19 +27,9 @@ public class HomeModel extends SimiModel {
 		super.paserData();
 		if (collection != null) {
 			JSONObject jobs = collection.getCollection().get(0).getJSONObject();
-
-			StoreViewModel storeViewM = new StoreViewModel();
-			storeViewM.setData(jobs);
-
-			CMSModel cmsM = new CMSModel();
-			cmsM.setData(jobs);
-
-			PluginModel pluginM = new PluginModel();
-			pluginM.setData(jobs);
-
-			this.createBannerData(jobs);
-			this.createHomeCategoriesData(jobs);
-			this.setSpotProductData(jobs);
+			this.banner = this.createBannerdata(jobs);
+			this.home_spot = this.createSpotdata(jobs);
+			this.home_cate = this.createHomeCatedata(jobs);
 		}
 
 	}
@@ -57,68 +44,23 @@ public class HomeModel extends SimiModel {
 		this.enableCache = true;
 	}
 
-	public String getBannerData() {
-		return this.bannerCollection;
+	public SimiCollection getBannerData() {
+		return this.banner;
 	}
 
-	public void createBannerData(JSONObject jobs) {
-		try {
-			JSONArray dataOAj = jobs.getJSONArray("home_banner");
-
-			// this.bannerCollection = new SimiCollection();
-			// for (int i = 0; i < dataOAj.length(); i++) {
-			// SimiEntity entity = new SimiEntity();
-			// entity.setJSONObject(dataOAj.getJSONObject(i));
-			// this.bannerCollection.addEntity(entity);
-			// }
-			this.bannerCollection = dataOAj.toString();
-
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public SimiCollection getHomeCateData() {
+		return this.home_cate;
 	}
 
-	public String getHomeCategoriesData() {
-		return this.homeCategoriesCollection;
+	public ArrayList<ProductList> getHomeSpotData() {
+		return this.home_spot;
 	}
 
-	public void createHomeCategoriesData(JSONObject jobs) {
-		try {
-			JSONArray dataOAj = jobs.getJSONArray("home_categories");
-			// this.homeCategoriesCollection = new SimiCollection();
-			// for (int i = 0; i < dataOAj.length(); i++) {
-			// SimiEntity entity = new SimiEntity();
-			// entity.setJSONObject(dataOAj.getJSONObject(i));
-			// this.homeCategoriesCollection.addEntity(entity);
-			// }
-			this.homeCategoriesCollection = dataOAj.toString();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public String getSpotProductData() {
-		return this.mProductList;
-	}
-
-	public void setSpotProductData(JSONObject jobs) {
-
-		try {
-			JSONArray dataOAj = jobs.getJSONArray("home_spot_product");
-			this.mProductList = dataOAj.toString();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	public SimiCollection convertBannerdata(String jSonData) {
+	public SimiCollection createBannerdata(JSONObject jSonData) {
 		if (jSonData == null)
 			return null;
 		try {
-			JSONArray jsAr = new JSONArray(jSonData);
+			JSONArray jsAr = jSonData.getJSONArray("banner");
 			SimiCollection collection = new SimiCollection();
 			for (int i = 0; i < jsAr.length(); i++) {
 				SimiEntity entity = new SimiEntity();
@@ -134,11 +76,11 @@ public class HomeModel extends SimiModel {
 		return null;
 	}
 
-	public ArrayList<ProductList> convertSpotdata(String jSonData) {
+	public ArrayList<ProductList> createSpotdata(JSONObject jSonData) {
 		if (jSonData == null)
 			return null;
 		try {
-			JSONArray jsAr = new JSONArray(jSonData);
+			JSONArray jsAr = jSonData.getJSONArray("spot_product");
 			ArrayList<ProductList> mProductList = new ArrayList<ProductList>();
 			for (int i = 0; i < jsAr.length(); i++) {
 				ProductList product = new ProductList();
@@ -154,11 +96,11 @@ public class HomeModel extends SimiModel {
 		return null;
 	}
 
-	public SimiCollection convertHomeCatedata(String jSonData) {
+	public SimiCollection createHomeCatedata(JSONObject jSonData) {
 		if (jSonData == null)
 			return null;
 		try {
-			JSONArray jsAr = new JSONArray(jSonData);
+			JSONArray jsAr = jSonData.getJSONArray("categories");
 			SimiCollection collection = new SimiCollection();
 			for (int i = 0; i < jsAr.length(); i++) {
 				Category category = new Category();
@@ -173,5 +115,4 @@ public class HomeModel extends SimiModel {
 
 		return null;
 	}
-
 }
