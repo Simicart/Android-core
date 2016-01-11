@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 
 import com.simicart.core.banner.block.BannerBlock;
 import com.simicart.core.banner.controller.BannerController;
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.config.DataLocal;
@@ -69,10 +71,11 @@ public class HomeFragment extends SimiFragment {
 
 		// Max add code
 		Intent i = getActivity().getIntent();
-		String bannerData = i.getStringExtra("banner_data");
-		String homecateData = i.getStringExtra("homecate_data");
-		String spotData = i.getStringExtra("spot_data");
-		HomeModel homM = new HomeModel();
+		String home_check = i.getStringExtra("home_check");
+		boolean enable_request = false;
+		if (home_check != null && home_check.equals("1")) {
+			enable_request = true;
+		}
 		// end code Max
 
 		// init banner
@@ -80,9 +83,7 @@ public class HomeFragment extends SimiFragment {
 				.findViewById(Rconfig.getInstance().id("rlt_banner_home"));
 		mBannerBlock = new BannerBlock(rlt_banner, context);
 		mBannerBlock.initView();
-		if (bannerData != null) {
-			mBannerBlock.drawView(homM.convertBannerdata(bannerData));
-		} else {
+		if (!enable_request) {
 			if (null == mBannerController) {
 				mBannerController = new BannerController(mBannerBlock);
 				mBannerController.onStart();
@@ -97,9 +98,7 @@ public class HomeFragment extends SimiFragment {
 				.getInstance().id("ll_category"));
 		mCategoryHomeBlock = new CategoryHomeBlock(ll_category, context);
 		mCategoryHomeBlock.initView();
-		if (homecateData != null) {
-			mCategoryHomeBlock.drawView(homM.convertHomeCatedata(homecateData));
-		} else {
+		if (!enable_request) {
 			if (mCategoryHomeController == null) {
 				mCategoryHomeController = new CategoryHomeController();
 				mCategoryHomeController.setDelegate(mCategoryHomeBlock);
@@ -115,9 +114,7 @@ public class HomeFragment extends SimiFragment {
 				.findViewById(Rconfig.getInstance().id("ll_spotproduct"));
 		mProductListBlock = new ProductListBlock(ll_spotproduct, context);
 		mProductListBlock.initView();
-		if (spotData != null) {
-			mProductListBlock.onUpdate(homM.convertSpotdata(spotData));
-		} else {
+		if (!enable_request) {
 			if (null == mProductListController) {
 				mProductListController = new ProductListController();
 				mProductListController.setDelegate(mProductListBlock);
@@ -128,6 +125,31 @@ public class HomeFragment extends SimiFragment {
 			}
 		}
 
+		// Max add 8/1/15
+		if (enable_request) {
+			final HomeModel homM = new HomeModel();
+			final SimiBlock homeBlock = new SimiBlock(rootView, context);
+			homeBlock.showLoading();
+			homM.setDelegate(new ModelDelegate() {
+
+				@Override
+				public void callBack(String message, boolean isSuccess) {
+					if (isSuccess) {
+						homeBlock.dismissLoading();
+						mBannerBlock.drawView(homM.getBannerData());
+
+						mCategoryHomeBlock.drawView(homM.getHomeCateData());
+
+						mProductListBlock.onUpdate(homM.getHomeSpotData());
+					}
+				}
+			});
+			homM.addParam("limit", "10");
+			homM.addParam("width", "200");
+			homM.addParam("height", "200");
+			homM.request();
+		}
+		// end Max
 		return rootView;
 	}
 }

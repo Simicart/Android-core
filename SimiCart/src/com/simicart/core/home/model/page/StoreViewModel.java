@@ -16,7 +16,7 @@ import com.simicart.core.store.entity.Stores;
 public class StoreViewModel {
 	public void setData(JSONObject jobs){
 		try {
-			JSONObject js_storeView = jobs.getJSONArray("home_store_view").getJSONObject(0);
+			JSONObject js_storeView = jobs.getJSONArray("store_view").getJSONObject(0);
 			
 			String check = "0";
 			if (js_storeView.has("view_products_default")) {

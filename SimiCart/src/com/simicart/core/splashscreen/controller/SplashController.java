@@ -27,11 +27,11 @@ import com.simicart.core.event.base.ReadXML;
 import com.simicart.core.event.base.UtilsEvent;
 import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.block.EventBlock;
-import com.simicart.core.home.model.HomeModel;
 import com.simicart.core.splashscreen.delegate.SplashDelegate;
 import com.simicart.core.splashscreen.model.CMSPageModel;
 import com.simicart.core.splashscreen.model.PluginModel;
 import com.simicart.core.splashscreen.model.SaveCurrencyModel;
+import com.simicart.core.splashscreen.model.SplashModel;
 import com.simicart.core.splashscreen.model.StoreViewModel;
 import com.simicart.core.store.entity.Stores;
 
@@ -52,7 +52,8 @@ public class SplashController {
 		flagHome = false;
 
 		// Max add 1 request
-		final HomeModel homM = new HomeModel();
+		final SplashModel homM = new SplashModel();
+		homM.setContext(mContext);
 		homM.setDelegate(new ModelDelegate() {
 
 			@Override
@@ -70,9 +71,7 @@ public class SplashController {
 						getStoreView();
 					}
 				} else {
-					SimiManager.getIntance().toV2MainActivity(
-							homM.getBannerData(), homM.getHomeCategoriesData(),
-							homM.getSpotProductData());
+					SimiManager.getIntance().toV2MainActivity("1");
 				}
 			}
 		});
@@ -86,10 +85,7 @@ public class SplashController {
 		if (Utils.validateString(store_id) && store_id != null
 				&& !store_id.equals("")) {
 			homM.addParam("store_id", store_id);
-		}
-		homM.addParam("limit", "15");
-		homM.addParam("width", "200");
-		homM.addParam("height", "200");
+		}		
 		homM.request();
 	}
 

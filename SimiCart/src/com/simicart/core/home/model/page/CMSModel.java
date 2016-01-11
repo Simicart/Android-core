@@ -12,7 +12,7 @@ public class CMSModel {
 		DataLocal.listCms.clear();		
 		JSONArray cmsOAj;
 		try {
-			cmsOAj = jobs.getJSONArray("home_cms");
+			cmsOAj = jobs.getJSONArray("cms");
 			for (int i = 0; i < cmsOAj.length(); i++) {
 				Cms cms = new Cms();
 				cms.setJSONObject(cmsOAj.getJSONObject(i));
