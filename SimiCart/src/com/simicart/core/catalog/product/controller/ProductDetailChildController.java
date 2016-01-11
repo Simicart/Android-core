@@ -62,18 +62,18 @@ public class ProductDetailChildController extends SimiController {
 
 	protected void requestData(final String id) {
 		mDelegate.showLoading();
-		if (productDelegate != null) {
-			productDelegate.getLayoutMore().setVisibility(View.GONE);
-		}
+		// if (productDelegate != null) {
+		// productDelegate.getLayoutMore().setVisibility(View.GONE);
+		// }
 		mModel = new ProductModel();
 		ModelDelegate delegate = new ModelDelegate() {
 
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
-				if (productDelegate != null) {
-					productDelegate.getLayoutMore().setVisibility(View.VISIBLE);
-				}
+//				if (productDelegate != null) {
+//					productDelegate.getLayoutMore().setVisibility(View.VISIBLE);
+//				}
 				if (isSuccess) {
 					mDelegate.updateView(mModel.getCollection());
 
@@ -101,7 +101,12 @@ public class ProductDetailChildController extends SimiController {
 
 	public void onUpdateTopBottom() {
 		if (null != mModel && null != mController) {
+			Log.e("ProductDetailChildController ", "onUpdateTopBottom");
 			mController.onUpdateTopBottom((ProductModel) mModel);
+		}
+		else
+		{
+			Log.e("ProductDetailChildController ", "onUpdateTopBottom NULL");
 		}
 	}
 

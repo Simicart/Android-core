@@ -34,13 +34,11 @@ public class ProductDetailImageFragment extends SimiFragment {
 	}
 
 	public static ProductDetailImageFragment newInstance(String url) {
-		Log.e("ProductDetailImageFragment - newInstance:", "start newInstance");
 		try {
 			ProductDetailImageFragment fragment = new ProductDetailImageFragment(
 					url);
 			return fragment;
 		} catch (Exception e) {
-			Log.e("ProductDetailImageFragment - newInstance:", e.getMessage());
 		}
 		return new ProductDetailImageFragment(url);
 	}

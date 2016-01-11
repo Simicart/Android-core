@@ -20,6 +20,7 @@ import com.simicart.core.base.network.request.SimiJSONRequest;
 import com.simicart.core.base.network.request.SimiRequest;
 import com.simicart.core.base.network.request.SimiRequest.Priority;
 import com.simicart.core.base.network.response.CoreResponse;
+import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 
@@ -46,7 +47,6 @@ public class SimiModel {
 
 	public SimiModel() {
 		mHashMap = new HashMap<String, Object>();
-
 	}
 
 	public JSONObject getJSON() {
@@ -177,6 +177,15 @@ public class SimiModel {
 	 */
 	public void request() {
 		this.initRequest();
+		String class_name = this.getClass().getName();
+
+		String cache_key = class_name + url_action;
+		String post_body = mRequest.getPostBody().toString();
+		if (Utils.validateString(post_body)) {
+			cache_key = cache_key + post_body;
+		}
+		Log.e("SimiModel CACHE KEY ", cache_key);
+		mRequest.setCacheKey(cache_key);
 		if (enableCache) {
 			getDataFromCache();
 		} else {
@@ -193,6 +202,7 @@ public class SimiModel {
 		mRequest.setPriority(mCurrentPriority);
 		mRequest.setShowNotify(isShowNotify);
 		mRequest.setShouldCache(enableCache);
+
 		addParams();
 	}
 
@@ -201,7 +211,7 @@ public class SimiModel {
 				.getDataFromCacheL1(mRequest);
 		if (null != json) {
 			CoreResponse coreResponse = new CoreResponse();
-			coreResponse.setDataJSON(json);
+			coreResponse.parse(json.toString());
 
 			Log.e("SimiModel getDataFromCache ", json.toString());
 

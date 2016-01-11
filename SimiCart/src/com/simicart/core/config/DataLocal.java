@@ -1,13 +1,11 @@
 package com.simicart.core.config;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.network.response.CoreResponse;
 import com.simicart.core.checkout.entity.Cart;
 import com.simicart.core.cms.entity.Cms;
 import com.simicart.core.customer.entity.ConfigCustomerAddress;

@@ -55,8 +55,6 @@ public class ProductDetailParentFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_product_detail_parent"),
 				container, false);
 
-		Log.e("LONGTB", "ID PARENT SET" + mID);
-
 		mBlock = new ProductDetailParentBlock(view, getActivity());
 		mBlock.initView();
 		if (null == mController) {

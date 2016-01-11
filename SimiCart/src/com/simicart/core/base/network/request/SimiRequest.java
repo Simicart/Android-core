@@ -55,6 +55,7 @@ public class SimiRequest implements Comparable<SimiRequest> {
 	protected Priority mCurrentPriority = Priority.NORMAL;
 	protected boolean isShowNotify = true;
 	protected boolean mShouldCache = false;
+	protected String mCacheKey;
 
 	public void setShouldCache(boolean should_cache) {
 		mShouldCache = should_cache;
@@ -163,8 +164,12 @@ public class SimiRequest implements Comparable<SimiRequest> {
 		this.mUrl = mUrl;
 	}
 
+	public void setCacheKey(String cacheKey) {
+		mCacheKey = cacheKey;
+	}
+
 	public String getCacheKey() {
-		return mUrl;
+		return mCacheKey;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -210,19 +215,11 @@ public class SimiRequest implements Comparable<SimiRequest> {
 
 	@Override
 	public int compareTo(SimiRequest another) {
-		Log.e("SimiRequest ", mUrl + " comparreTo " + another.getUrl());
 		Priority left = this.getPriority();
 		Priority right = another.getPriority();
 		int tmp1 = this.mSequence - another.mSequence;
 		int tmp2 = right.ordinal() - left.ordinal();
-
-		Log.e("SimiRequest ", "compareTo TEMP1 " + ": " + tmp1);
-		Log.e("SimiRequest ", "compareTo TEMP2 " + ": " + tmp2);
-
 		int result = left == right ? tmp1 : tmp2;
-
-		Log.e("SimiRequest ", "compare RESULT " + result);
-
 		return result;
 	}
 

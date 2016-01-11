@@ -32,7 +32,6 @@ public class ProductListListenerController {
 				if (id != null) {
 					ProductDetailParentFragment fragment = ProductDetailParentFragment
 							.newInstance();
-					Log.e("LONGTB", "id" + id);
 					fragment.setProductID(id);
 					fragment.setListIDProduct(listID);
 					SimiManager.getIntance().addFragment(fragment);

@@ -79,7 +79,6 @@ public class SearchController extends SimiController implements
 
 	@Override
 	public void onStart() {
-		Log.e("Onstart", "Request product list Onstart");
 		createListener();
 		requestProduct();
 	}

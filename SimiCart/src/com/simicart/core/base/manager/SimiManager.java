@@ -81,7 +81,6 @@ public class SimiManager {
 						.getWindowToken(), 0);
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 	}
 
@@ -184,33 +183,16 @@ public class SimiManager {
 			EventBlock block = new EventBlock();
 			block.dispatchEvent("com.simicart.leftmenu.slidemenucontroller.onnavigate.checkdirectdetail");
 			fragment = eventFragment(fragment);
-
-			Log.e("SimiManager addFragment ", "NAME " + nameFragment);
-
 			FragmentTransaction ft = mManager.beginTransaction();
 			ft.setCustomAnimations(
 					Rconfig.getInstance().getId("in_from_right", "anim"),
 					Rconfig.getInstance().getId("out_to_left", "anim"), Rconfig
 							.getInstance().getId("in_from_left", "anim"),
 					Rconfig.getInstance().getId("out_to_right", "anim"));
-
-			Log.e("SimiManager addFragment ", "001 ");
-
 			ft.replace(Rconfig.getInstance().id("container"), fragment);
-
-			Log.e("SimiManager addFragment ", "002 ");
-
 			ft.addToBackStack(nameFragment);
-			Log.e("SimiManager addFragment ", "003 ");
-
 			ft.commit();
-
-			Log.e("SimiManager addFragment ", "004 ");
-
 			mManager.executePendingTransactions();
-
-			Log.e("SimiManager addFragment ", "005 ");
-
 		}
 	}
 
