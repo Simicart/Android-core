@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp" 
+    android:padding="@dimen/size_10" 
     android:background="#FFFFFF">
 
     <RatingBar
@@ -11,25 +11,25 @@
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="@dimen/size_10" />
 
     <TextView
         android:id="@+id/tv_reviewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/size_10"
         android:text="Title"
-        android:textSize="14dp"
+        android:textSize="@dimen/size_14"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tv_reviewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="@dimen/size_20"
         android:ellipsize="end"
         android:text="Content short"
-        android:textSize="14dp" />
+        android:textSize="@dimen/size_14" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,16 +40,16 @@
             android:id="@+id/tv_reviewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/size_5"
             android:text="2007-08-26 16:02:56"
-            android:textSize="12dp" />
+            android:textSize="@dimen/size_12" />
 
         <TextView
             android:id="@+id/tv_nameReviewCustomer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="By Susan"
-            android:textSize="12dp" />
+            android:textSize="@dimen/size_12" />
     </LinearLayout>
 
 </LinearLayout>

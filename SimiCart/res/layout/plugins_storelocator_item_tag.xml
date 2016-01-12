@@ -2,19 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
+    android:paddingLeft="@dimen/size_5"
+    android:paddingRight="@dimen/size_5"
     android:orientation="vertical" >
 
     <LinearLayout
         android:id="@+id/item_tag"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="@dimen/size_35"
+        android:layout_marginTop="@dimen/size_15"
         android:background="@drawable/plugins_locator_drawble_search" >
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
             android:gravity="center"
@@ -22,13 +22,13 @@
 
             <ImageView
                 android:id="@+id/icon_item"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
                 android:src="@drawable/plugins_locator_ic_store" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical" >

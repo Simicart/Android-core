@@ -10,7 +10,7 @@
     <!-- đặt thuộc tính màu và độ rộng của đường viền -->
 
     <stroke
-        android:width="0.5dp"
+        android:width="5dp"
         android:color="#CACACA" >
     </stroke>
 

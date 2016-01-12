@@ -7,7 +7,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="43dp"
+        android:layout_marginBottom="@dimen/size_43"
         android:scrollbars="none" >
 
         <RelativeLayout
@@ -24,11 +24,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/core_review_line_border"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp"
-                    android:textSize="16sp"
+                    android:paddingBottom="@dimen/size_10"
+                    android:paddingLeft="@dimen/size_5"
+                    android:paddingRight="@dimen/size_10"
+                    android:paddingTop="@dimen/size_10"
+                    android:textSize="@dimen/text_16"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -47,20 +47,20 @@
 
                         <ImageView
                             android:id="@+id/img_edit_b_address"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="@dimen/size_20"
+                            android:layout_height="@dimen/size_20"
                             android:layout_alignParentRight="true"
                             android:layout_alignParentTop="true"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="@dimen/size_10"
+                            android:layout_marginTop="@dimen/size_10"
                             android:contentDescription="@null" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="30dp"
+                            android:layout_marginRight="@dimen/size_30"
                             android:orientation="vertical"
-                            android:padding="10dp" >
+                            android:padding="@dimen/size_10" >
 
                             <!-- billing name -->
 
@@ -71,10 +71,10 @@
 
                                 <ImageView
                                     android:id="@+id/img_b_name"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/size_20"
+                                    android:layout_height="@dimen/size_20"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_marginRight="3dp"
+                                    android:layout_marginRight="@dimen/size_3"
                                     android:contentDescription="@null" />
 
                                 <TextView
@@ -82,23 +82,23 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:padding="2dp"
-                                    android:textSize="14sp" />
+                                    android:padding="@dimen/size_2"
+                                    android:textSize="@dimen/text_14" />
                             </LinearLayout>
                             <!-- billing street -->
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
+                                android:layout_marginTop="@dimen/size_3"
                                 android:orientation="horizontal" >
 
                                 <ImageView
                                     android:id="@+id/img_b_street"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/size_20"
+                                    android:layout_height="@dimen/size_20"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_marginRight="3dp"
+                                    android:layout_marginRight="@dimen/size_3"
                                     android:contentDescription="@null" />
 
                                 <TextView
@@ -106,7 +106,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/text_14" />
                             </LinearLayout>
 
                             <!-- billing phone -->
@@ -114,15 +114,15 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
+                                android:layout_marginTop="@dimen/size_3"
                                 android:orientation="horizontal" >
 
                                 <ImageView
                                     android:id="@+id/img_b_phone"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/size_20"
+                                    android:layout_height="@dimen/size_20"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_marginRight="3dp"
+                                    android:layout_marginRight="@dimen/size_3"
                                     android:contentDescription="@null" />
 
                                 <TextView
@@ -130,7 +130,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/text_14" />
                             </LinearLayout>
 
                             <!-- billing email -->
@@ -138,15 +138,15 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="3dp"
+                                android:layout_marginTop="@dimen/size_3"
                                 android:orientation="horizontal" >
 
                                 <ImageView
                                     android:id="@+id/img_b_email"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="@dimen/size_20"
+                                    android:layout_height="@dimen/size_20"
                                     android:layout_gravity="center_vertical"
-                                    android:layout_marginRight="3dp"
+                                    android:layout_marginRight="@dimen/size_3"
                                     android:contentDescription="@null" />
 
                                 <TextView
@@ -154,7 +154,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
-                                    android:textSize="14sp" />
+                                    android:textSize="@dimen/text_14" />
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
@@ -168,11 +168,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/core_review_line_border"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp"
-                    android:textSize="16sp"
+                    android:paddingBottom="@dimen/size_10"
+                    android:paddingLeft="@dimen/size_5"
+                    android:paddingRight="@dimen/size_10"
+                    android:paddingTop="@dimen/size_10"
+                    android:textSize="@dimen/text_16"
                     android:textStyle="bold" />
 
                 <RelativeLayout
@@ -183,35 +183,35 @@
 
                     <ImageView
                         android:id="@+id/img_edit_s_address"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
                         android:layout_alignParentRight="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="@dimen/size_10"
+                        android:layout_marginTop="@dimen/size_10"
                         android:contentDescription="@null" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="@dimen/size_30"
                         android:orientation="vertical"
-                        android:padding="10dp" >
+                        android:padding="@dimen/size_10" >
 
                         <!-- shipping name -->
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
+                            android:layout_marginTop="@dimen/size_3"
                             android:orientation="horizontal" >
 
                             <ImageView
                                 android:id="@+id/img_s_name"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginRight="3dp"
+                                android:layout_marginRight="@dimen/size_3"
                                 android:contentDescription="@null" />
 
                             <TextView
@@ -219,7 +219,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/text_14" />
                         </LinearLayout>
 
                         <!-- shipping street -->
@@ -227,15 +227,15 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
+                            android:layout_marginTop="@dimen/size_3"
                             android:orientation="horizontal" >
 
                             <ImageView
                                 android:id="@+id/img_s_street"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginRight="3dp"
+                                android:layout_marginRight="@dimen/size_3"
                                 android:contentDescription="@null" />
 
                             <TextView
@@ -243,7 +243,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/text_14" />
                         </LinearLayout>
 
                         <!-- shipping phone -->
@@ -251,15 +251,15 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
+                            android:layout_marginTop="@dimen/size_3"
                             android:orientation="horizontal" >
 
                             <ImageView
                                 android:id="@+id/img_s_phone"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginRight="3dp"
+                                android:layout_marginRight="@dimen/size_3"
                                 android:contentDescription="@null" />
 
                             <TextView
@@ -267,7 +267,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/text_14" />
                         </LinearLayout>
 
                         <!-- shipping email -->
@@ -275,15 +275,15 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
+                            android:layout_marginTop="@dimen/size_3"
                             android:orientation="horizontal" >
 
                             <ImageView
                                 android:id="@+id/img_s_email"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginRight="3dp"
+                                android:layout_marginRight="@dimen/size_3"
                                 android:contentDescription="@null" />
 
                             <TextView
@@ -291,7 +291,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:textSize="14sp" />
+                                android:textSize="@dimen/text_14" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -301,18 +301,18 @@
                     android:id="@+id/shipping_method_rl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="@dimen/size_5"
+                    android:layout_marginTop="@dimen/size_5"
                     android:background="@drawable/core_review_line_border" >
 
                     <ImageView
                         android:id="@+id/ic_expand"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
+                        android:layout_width="@dimen/size_10"
+                        android:layout_height="@dimen/size_10"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="@dimen/size_10"
+                        android:layout_marginRight="@dimen/size_10"
                         android:contentDescription="@null"
                         android:src="@drawable/ic_down" />
 
@@ -323,12 +323,12 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/ic_expand"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="@dimen/size_10"
+                        android:paddingLeft="@dimen/size_5"
+                        android:paddingRight="@dimen/size_10"
+                        android:paddingTop="@dimen/size_10"
                         android:singleLine="true"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_16"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -337,7 +337,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="@dimen/size_10"
                     android:visibility="gone" >
                 </LinearLayout>
                 <!-- payment -->
@@ -346,17 +346,17 @@
                     android:id="@+id/payment_method_rl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="@dimen/size_5"
                     android:background="@drawable/core_review_line_border" >
 
                     <ImageView
                         android:id="@+id/ic_expand_payment"
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
+                        android:layout_width="@dimen/size_10"
+                        android:layout_height="@dimen/size_10"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="@dimen/size_10"
+                        android:layout_marginRight="@dimen/size_10"
                         android:contentDescription="@null"
                         android:src="@drawable/ic_down" />
 
@@ -367,12 +367,12 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/ic_expand_payment"
-                        android:paddingBottom="10dp"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="10dp"
-                        android:paddingTop="10dp"
+                        android:paddingBottom="@dimen/size_10"
+                        android:paddingLeft="@dimen/size_5"
+                        android:paddingRight="@dimen/size_10"
+                        android:paddingTop="@dimen/size_10"
                         android:singleLine="true"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/text_16"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
@@ -381,7 +381,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="@dimen/size_10"
                     android:visibility="gone" >
                 </LinearLayout>
 
@@ -398,11 +398,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/core_review_line_border"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp"
-                    android:textSize="16sp"
+                    android:paddingBottom="@dimen/size_10"
+                    android:paddingLeft="@dimen/size_5"
+                    android:paddingRight="@dimen/size_10"
+                    android:paddingTop="@dimen/size_10"
+                    android:textSize="@dimen/text_16"
                     android:textStyle="bold" />
 
                 <com.simicart.core.style.NoScrollListView
@@ -411,7 +411,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="false"
                     android:divider="#e8e8e8"
-                    android:dividerHeight="0.2dp"
+                    android:dividerHeight="@dimen/size_02"
                     android:focusable="false" >
                 </com.simicart.core.style.NoScrollListView>
 
@@ -422,16 +422,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/core_review_line_border"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="10dp"
-                    android:paddingTop="10dp"
-                    android:textSize="16sp"
+                    android:paddingBottom="@dimen/size_10"
+                    android:paddingLeft="@dimen/size_5"
+                    android:paddingRight="@dimen/size_10"
+                    android:paddingTop="@dimen/size_10"
+                    android:textSize="@dimen/text_16"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.2dp"
+                    android:layout_height="@dimen/size_02"
                     android:background="#e8e8e8" />
 
                 <LinearLayout
@@ -439,34 +439,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/size_5"
                     android:orientation="vertical" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="0.2dp"
+                    android:layout_height="@dimen/size_02"
                     android:background="#e8e8e8" />
 
                 <View
                     android:id="@+id/view_temp"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp" />
+                    android:layout_height="@dimen/size_20" />
 
                 <!-- coupon code -->
 
                 <EditText
                     android:id="@+id/edt_counponCode"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/size_40"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginRight="@dimen/size_10"
                     android:background="@drawable/core_coupon_line_border"
                     android:imeOptions="actionDone"
                     android:inputType="text"
-                    android:padding="10dp"
-                    android:textSize="15sp" />
+                    android:padding="@dimen/size_10"
+                    android:textSize="@dimen/text_15" />
 
                 <!-- confirm -->
 
@@ -474,7 +474,7 @@
                     android:id="@+id/ll_confirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="@dimen/size_20"
                     android:orientation="vertical" >
                 </LinearLayout>
             </LinearLayout>
@@ -487,7 +487,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingLeft="2dp" >
+        android:paddingLeft="@dimen/size_2" >
 
         <com.simicart.core.material.ButtonRectangle
             android:id="@+id/bt_placenow2"

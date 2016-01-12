@@ -13,7 +13,7 @@
         android:topRightRadius="5dp" />
     
 	<!-- <stroke
-	    android:width="0.5dp"
+	    android:width="5dp"
 	    android:color="#eaeaea"
 	    /> -->
 </shape>

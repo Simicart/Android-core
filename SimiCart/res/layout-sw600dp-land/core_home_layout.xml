@@ -29,13 +29,13 @@
                     <!-- ViewFlipper
                         android:id="@+id/banner_slider"
                         android:layout_width="match_parent"
-                        android:layout_height="280dp"
-                        android:layout_marginTop="1dp" /> -->
+                        android:layout_height="@dimen/size_280"
+                        android:layout_marginTop="@dimen/size_1" /> -->
                         <com.simicart.core.banner.animation.SliderLayout
                         android:id="@+id/banner_slider"
                         android:layout_width="match_parent"
-                        android:layout_height="280dp"
-                        android:layout_marginTop="1dp" />
+                        android:layout_height="@dimen/size_280"
+                        android:layout_marginTop="@dimen/size_1" />
                 </RelativeLayout>
 
                 <LinearLayout
@@ -57,31 +57,31 @@
         <RelativeLayout
             android:id="@+id/rlt_search"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:background="@drawable/core_background_search"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp" >
+            android:paddingLeft="@dimen/text_13"
+            android:paddingRight="@dimen/text_13" >
 
             <LinearLayout
                 android:id="@+id/ll_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_margin="1dp"
+                android:layout_margin="@dimen/size_1"
                 android:background="@drawable/core_bgr_search"
                 android:orientation="horizontal" >
 
                 <RelativeLayout
                     android:id="@+id/rlt_layout"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="0.5" />
 
                 <ImageView
                     android:id="@+id/img_ic_search"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="5dp"
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30"
+                    android:padding="@dimen/text_13"
                     android:src="@drawable/core_ic_search" />
 
                 <EditText
@@ -92,8 +92,8 @@
                     android:background="@android:color/transparent"
                     android:ems="10"
                     android:imeOptions="actionSearch"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:paddingLeft="@dimen/size_10"
+                    android:paddingRight="@dimen/size_10"
                     android:singleLine="true"
                     android:textColor="#FFFFFF" />
             </LinearLayout>

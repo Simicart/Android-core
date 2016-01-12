@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="@dimen/size_5"
+        android:layout_marginRight="@dimen/size_5"
+        android:layout_marginTop="@dimen/size_5"
         android:background="#ffffff" >
 
         <TextView
@@ -20,14 +20,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginBottom="@dimen/size_10"
+            android:layout_marginLeft="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_10" />
 
         <ImageView
             android:id="@+id/img_checksearch"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="@dimen/size_5"
+            android:layout_height="@dimen/size_5"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/core_radiobox" />

@@ -13,16 +13,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            android:paddingLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10" >
 
             <TextView
                 android:id="@+id/label_shipping"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="@dimen/size_10"
                 android:text="TextView"
-                android:textSize="20dp"
+                android:textSize="@dimen/size_20"
                 android:textStyle="bold" />
 
             <com.simicart.core.style.NoScrollListView

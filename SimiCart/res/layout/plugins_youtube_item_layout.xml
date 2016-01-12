@@ -7,16 +7,16 @@
         android:id="@+id/youtube_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"
-        android:paddingBottom="5dp"
+        android:layout_marginTop="@dimen/size_5"
+        android:padding="@dimen/size_10"
+        android:paddingBottom="@dimen/size_5"
         android:text="Title"
         android:textSize="20sp" />
 
     <RelativeLayout
         android:id="@+id/rl_youtube_fragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/size_200"
         android:layout_below="@+id/youtube_title"
         android:background="#000000" >
 
@@ -33,8 +33,8 @@
             android:scaleType="fitXY" />
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
             android:layout_centerInParent="true"
             android:src="@drawable/play_youtube" />
     </RelativeLayout>

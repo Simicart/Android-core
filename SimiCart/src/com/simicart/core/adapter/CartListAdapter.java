@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.magestore.simicart.R;
+import com.simicart.core.catalog.product.fragment.ProductDetailParentFragment;
 import com.simicart.core.checkout.delegate.CartAdapterDelegate;
 import com.simicart.core.checkout.entity.Cart;
 import com.simicart.core.checkout.entity.Option;

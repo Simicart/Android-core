@@ -19,18 +19,18 @@
 
             <com.facebook.share.widget.LikeView
                 android:id="@+id/btn_fbLike"
-                android:layout_width="70dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/size_70"
+                android:layout_height="@dimen/size_30"
                 android:layout_centerInParent="true" >
             </com.facebook.share.widget.LikeView>
 
             <RelativeLayout
                 android:id="@+id/fb_like_cloud"
-                android:layout_width="40dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/size_40"
+                android:layout_height="@dimen/size_25"
                 android:layout_below="@+id/btn_fbLike"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="@dimen/size_28"
+                android:layout_marginTop="@dimen/size_30"
                 android:background="@drawable/bg_boxlike" >
 
                 <ProgressBar
@@ -48,7 +48,7 @@
                     android:layout_centerInParent="true"
                     android:text="12"
                     android:textColor="#ff333333"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_12"
                     android:textStyle="bold" />
             </RelativeLayout>
         </RelativeLayout>
@@ -61,8 +61,8 @@
 
             <ImageView
                 android:id="@+id/btn_fbComment"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="@dimen/size_30"
                 android:layout_centerInParent="true"
                 android:src="@drawable/plugin_facebookconnect_ic_fb_comment" />
         </RelativeLayout>
@@ -76,8 +76,8 @@
 
             <ImageView
                 android:id="@+id/btn_fbShare"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="@dimen/size_30"
                 android:layout_centerInParent="true"
                 android:src="@drawable/plugin_facebookconnect_ic_fb_share" />
         </RelativeLayout>
