@@ -1,7 +1,5 @@
 package com.simicart.core.catalog.product.entity;
 
-import java.io.Serializable;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
