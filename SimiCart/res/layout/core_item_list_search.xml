@@ -84,22 +84,41 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/tv_productItemName"
                 android:layout_marginTop="5dp"
-                android:orientation="vertical" >
+                android:orientation="vertical" 
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/ll_price_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="2" >
+
+                    <TextView
+                        android:id="@+id/tv_regular"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_special"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_exclTax"
+                    android:id="@+id/tv_minimal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="left"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_inclTax"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textColor="#ab452f"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:textSize="14sp" />
             </LinearLayout>
         </RelativeLayout>
