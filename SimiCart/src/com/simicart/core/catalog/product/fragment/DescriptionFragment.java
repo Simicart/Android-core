@@ -50,6 +50,7 @@ public class DescriptionFragment extends SimiFragment {
 		webView.getSettings().setUseWideViewPort(true);
 		webView.getSettings().setDisplayZoomControls(true);
 		webView.getSettings().setLoadsImagesAutomatically(true);
+		webView.getSettings().setDefaultTextEncodingName("utf-8");
 		if (mDescription.contains("<div")) {
 			String text = "<html><body style=\"color:black;font-family:Helvetica;font-size:42px;font-weight: lighter;\"'background-color:transparent' >"
 					+ "<p align=\"justify\" style=\"font-weight: normal\">"

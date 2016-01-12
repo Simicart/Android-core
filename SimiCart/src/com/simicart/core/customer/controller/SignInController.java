@@ -227,7 +227,6 @@ public class SignInController extends SimiController {
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
-					showToastSignIn();
 					DataLocal.isNewSignIn = true;
 					DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
 
@@ -240,6 +239,7 @@ public class SignInController extends SimiController {
 						DataLocal.saveEmailPassRemember(email, password);
 					}
 					DataLocal.saveSignInState(true);
+					showToastSignIn();
 					if (null != cartQty && !cartQty.equals("0")) {
 						SimiManager.getIntance().onUpdateCartQty(cartQty);
 					}
@@ -345,7 +345,7 @@ public class SignInController extends SimiController {
 		TextView txt_toast = (TextView) layout_toast.findViewById(Rconfig
 				.getInstance().id("txt_custom_toast"));
 		Toast toast = new Toast(SimiManager.getIntance().getCurrentContext());
-		txt_toast.setText(Config.getInstance().getText("Login Success"));
+		txt_toast.setText(String.format(Config.getInstance().getText("Welcome %s! Start shopping now"), DataLocal.getUsername())); 
 		toast.setView(layout_toast);
 		toast.setDuration(Toast.LENGTH_LONG);
 		toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 400);

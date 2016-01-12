@@ -272,9 +272,7 @@ public class FragmentRewardPoint extends SimiFragment {
 				// set content to view
 				txt_number_point.setText(itempointData.getLoyalty_point() + "");
 				txt_availble_point.setVisibility(View.VISIBLE);
-				txt_number_redeem.setText(Config.getInstance().getText("Equal")
-						+ " " + loyalty_redeem + " "
-						+ Config.getInstance().getText("to redeem"));
+				txt_number_redeem.setText(String.format(Config.getInstance().getText("Equal %s to redeem"), loyalty_redeem));
 				txt_coint.setText(itempointData.getSpending_discount());
 
 				System.out.println("xx");
