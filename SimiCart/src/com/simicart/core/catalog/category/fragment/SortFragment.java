@@ -39,7 +39,7 @@ public class SortFragment extends SimiFragment {
 			setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.SORT_TAG, sortTag, Constants.KeyData.TYPE_STRING, bundle);
-			setData(Constants.KeyData.JSON_FILTER, json, Constants.KeyData.TYPE_MODEL, bundle);
+			setData(Constants.KeyData.JSON_FILTER, json, Constants.KeyData.TYPE_JSONOBJECT, bundle);
 			setData(Constants.KeyData.KEY, key, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.QUERY, query, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.SORT_TYPE, sortType, Constants.KeyData.TYPE_STRING, bundle);
@@ -78,15 +78,16 @@ public class SortFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_sort_layout"), container,
 				false);
 		Context context = getActivity();
-
+		if(getArguments() != null){
 		mCategoryID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
 		mCategoryName = (String) getData(Constants.KeyData.NAME, Constants.KeyData.TYPE_STRING, getArguments());
 		url_search = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
 		KEY = (String) getData(Constants.KeyData.KEY, Constants.KeyData.TYPE_STRING, getArguments());
 		sort_tag = (String) getData(Constants.KeyData.SORT_TAG, Constants.KeyData.TYPE_STRING, getArguments());
-		jsonFilter = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_MODEL, getArguments());
+		jsonFilter = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
 		mQuery = (String) getData(Constants.KeyData.QUERY, Constants.KeyData.TYPE_STRING, getArguments());
 		mSortType = (String) getData(Constants.KeyData.SORT_TYPE, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		listSort = new ArrayList<Sort>();
 		String key[] = { "None", "Price: Low to High", "Price: High to Low",

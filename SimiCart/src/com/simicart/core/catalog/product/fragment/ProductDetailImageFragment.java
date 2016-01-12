@@ -53,8 +53,9 @@ public class ProductDetailImageFragment extends SimiFragment {
 		View rootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_product_detail_image"),
 				container, false);
-		
+		if(getArguments() != null){
 		mURL = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		try {
 
 			// ImageView

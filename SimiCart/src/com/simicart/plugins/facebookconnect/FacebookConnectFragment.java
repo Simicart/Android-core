@@ -70,8 +70,9 @@ public class FacebookConnectFragment extends SimiFragment {
 				"btn_fbShare"));
 		img_comment = (ImageView) rootView.findViewById(Rconfig.getInstance()
 				.id("btn_fbComment"));
-		
+		if(getArguments() != null){
 		urlProduct = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		handleEvent();
 		int sizeLike = Utils.getValueDp(30);

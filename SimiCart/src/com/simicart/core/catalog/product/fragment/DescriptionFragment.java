@@ -41,7 +41,9 @@ public class DescriptionFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
+		if(getArguments() != null){
 		mDescription = (String) getData(Constants.KeyData.DESCRIPTION, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		Log.d("quangdd","mDescription"+mDescription);
 		
 		LinearLayout l_scrollView = (LinearLayout) rootView

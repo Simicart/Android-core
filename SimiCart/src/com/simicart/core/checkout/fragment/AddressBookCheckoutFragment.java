@@ -25,8 +25,10 @@ public class AddressBookCheckoutFragment extends AddressBookFragment {
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.AFTER_CONTROL, afterControl, Constants.KeyData.TYPE_INT, bundle);
 		setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
-		setData(Constants.KeyData.BILLING_ADDRESS, billingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
-		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
+//		setData(Constants.KeyData.BILLING_ADDRESS, billingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
+		bundle.putParcelable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
+//		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
+		bundle.putParcelable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -71,10 +73,12 @@ public class AddressBookCheckoutFragment extends AddressBookFragment {
 		Context context = getActivity();
 
 		//getdata
+		if(getArguments() != null){
 			mAfterController = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
 			addressFor = (int) getData(Constants.KeyData.ADDRESS_FOR, Constants.KeyData.TYPE_INT, getArguments());
-			mBillingAddress = (MyAddress) getData(Constants.KeyData.BILLING_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
-			mShippingAddress = (MyAddress) getData(Constants.KeyData.SHIPPING_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
+			mBillingAddress = getArguments().getParcelable(Constants.KeyData.BILLING_ADDRESS);
+			mShippingAddress = getArguments().getParcelable(Constants.KeyData.SHIPPING_ADDRESS);
+		}
 				
 		mBlock = new AddressBookBlock(view, context);
 		mBlock.setIsCheckout(true);

@@ -65,10 +65,12 @@ public class FragmentWeb extends SimiFragment {
 				RelativeLayout.LayoutParams.MATCH_PARENT,
 				RelativeLayout.LayoutParams.MATCH_PARENT);
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
-
+		if(getArguments() != null){
 		review_address = (String) getData(Constants.KeyData.REVIEW_ADDRESS, Constants.KeyData.TYPE_STRING, getArguments());
 		String url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		
 		Url = url + "#m";
+		}
 		mImageView.setLayoutParams(lp);
 		// add loading View
 		webview.addView(mImageView);

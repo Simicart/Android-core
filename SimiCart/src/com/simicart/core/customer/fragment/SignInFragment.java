@@ -73,15 +73,16 @@ public class SignInFragment extends SimiFragment {
 		Context context = getActivity();
 		
 		//getdata
+		if(getArguments() != null){
 		mEmail = (String) getData(Constants.KeyData.EMAIL, Constants.KeyData.TYPE_STRING, getArguments());
 		mPassword = (String) getData(Constants.KeyData.PASSWORD, Constants.KeyData.TYPE_STRING, getArguments());
 		isCheckout = (boolean) getData(Constants.KeyData.CHECK_BOO, Constants.KeyData.TYPE_BOOLEAN, getArguments());
-
+		}
 		mBlock = new SignInBlock(view, context);
-		if(!mEmail.isEmpty()&& mEmail != null){
+		if( mEmail != null){
 		mBlock.setEmail(mEmail);
 		}
-		if(!mPassword.isEmpty()&& mPassword != null){
+		if(mPassword != null){
 		mBlock.setPassword(mPassword);
 		}
 		mBlock.initView();

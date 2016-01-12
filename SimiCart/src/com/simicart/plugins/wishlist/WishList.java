@@ -247,7 +247,7 @@ public class WishList {
 					}
 					SimiManager.getIntance().replaceFragment(fragment);
 				} else {
-					SignInFragment fragment = SignInFragment.newInstance();
+					SignInFragment fragment = SignInFragment.newInstance(null, null, false);
 					SimiManager.getIntance().replacePopupFragment(fragment);
 				}
 			}

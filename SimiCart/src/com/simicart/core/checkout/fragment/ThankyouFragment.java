@@ -59,7 +59,7 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.MESSAGE, message, Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.JSON_FILTER, jsonObject, Constants.KeyData.TYPE_MODEL, bundle);
+		setData(Constants.KeyData.JSON_FILTER, jsonObject, Constants.KeyData.TYPE_JSONOBJECT, bundle);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -70,9 +70,10 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 		View view = inflater.inflate(
 				Rconfig.getInstance().layout("core_thankyou_layout"),
 				container, false);
-		
+		if(getArguments() != null){
 		message = (String) getData(Constants.KeyData.MESSAGE, Constants.KeyData.TYPE_STRING, getArguments());
-		jsonObject = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_MODEL, getArguments());
+		jsonObject = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		}
 		
 		view.setBackgroundColor(Config.getInstance().getApp_backrground());
 		view.setOnKeyListener(this);

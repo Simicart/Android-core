@@ -35,7 +35,7 @@ public class CategoryHomeListener {
 
 				if (hasChild) {
 					CategoryFragment fragment = CategoryFragment.newInstance(
-							name, idCat);
+							idCat, name);
 					SimiManager.getIntance().replaceFragment(fragment);
 					SimiManager.getIntance().hideKeyboard();
 				} else {

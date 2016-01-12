@@ -65,9 +65,10 @@ public class FragmentCCAvenue extends SimiFragment {
 		View rootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_webview_layout"), container,
 				false);
-		
+		if(getArguments() != null){
 		url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
 		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		final WebView webview = (WebView) rootView.findViewById(Rconfig
 				.getInstance().id("webview_Ad"));

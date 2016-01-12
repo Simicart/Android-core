@@ -2,10 +2,13 @@ package com.simicart.core.checkout.entity;
 
 import java.io.Serializable;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class PaymentMethod extends SimiEntity implements Serializable{
+public class PaymentMethod extends SimiEntity implements Parcelable{
 	/**
 	 * 
 	 */
@@ -137,6 +140,18 @@ public class PaymentMethod extends SimiEntity implements Serializable{
 
 	public String getPlacecc_id() {
 		return mPlaceCCId;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -31,7 +31,8 @@ public class CustomerReviewFragment extends SimiFragment {
 		
 		Bundle args = new Bundle();
 		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, args);
-		setData(Constants.KeyData.PRODUCT, mProduct, Constants.KeyData.TYPE_MODEL, args);
+//		setData(Constants.KeyData.PRODUCT, mProduct, Constants.KeyData.TYPE_MODEL, args);
+		args.putParcelable(Constants.KeyData.PRODUCT, mProduct);
 		setData(Constants.KeyData.LIST_RATING_STAR, stars, Constants.KeyData.TYPE_LIST_INT, args);
 	    fragment.setArguments(args);
 		return fragment;
@@ -59,9 +60,11 @@ public class CustomerReviewFragment extends SimiFragment {
 		Context context = getActivity();
 		
 		//data
+		if(getArguments() != null){
 		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
-		mProduct = (Product) getData(Constants.KeyData.PRODUCT, Constants.KeyData.TYPE_MODEL, getArguments());
+		mProduct = getArguments().getParcelable(Constants.KeyData.PRODUCT);
 		mRatingStar = (ArrayList<Integer>) getData(Constants.KeyData.LIST_RATING_STAR, Constants.KeyData.TYPE_LIST_INT, getArguments());
+		}
 		
 		mBlock = new CustomerReviewBlock(view, context);
 		mBlock.setProduct(mProduct);

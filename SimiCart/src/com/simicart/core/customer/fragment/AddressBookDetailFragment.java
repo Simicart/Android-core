@@ -31,7 +31,8 @@ public class AddressBookDetailFragment extends SimiFragment {
 	public static AddressBookDetailFragment newInstance(MyAddress addressbook) {
 		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
 		Bundle bundle= new Bundle();
-		setData(Constants.KeyData.BOOK_ADDRESS, addressbook, Constants.KeyData.TYPE_MODEL, bundle);
+//		setData(Constants.KeyData.BOOK_ADDRESS, addressbook, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.BOOK_ADDRESS, addressbook);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -50,8 +51,9 @@ public class AddressBookDetailFragment extends SimiFragment {
 							false);
 		}
 		Context context = getActivity();
-
-		addressbook = (MyAddress) getData(Constants.KeyData.BOOK_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
+		if(getArguments() != null){
+		addressbook = getArguments().getParcelable(Constants.KeyData.BOOK_ADDRESS);
+		}
 		
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);

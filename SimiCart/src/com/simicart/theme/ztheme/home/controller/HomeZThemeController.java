@@ -115,8 +115,7 @@ public class HomeZThemeController extends SimiController {
 	protected void selecteCat(Category category) {
 		SimiFragment fragment = null;
 		if (category.hasChild()) {
-			fragment = CategoryFragment.newInstance(category.getCategoryName(),
-					category.getCategoryId());
+			fragment = CategoryFragment.newInstance(category.getCategoryId(), category.getCategoryName());
 			if (DataLocal.isTablet) {
 				CateSlideMenuFragment.getIntance().replaceFragmentCategoryMenu(
 						fragment);

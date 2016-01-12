@@ -69,7 +69,8 @@ public static FragmentPagerBanner newInstance(int postion, float scale, boolean 
 	setData(Constants.KeyData.POSITON, postion, Constants.KeyData.TYPE_INT, bundle);
 	setData(Constants.KeyData.SCALE, scale, Constants.KeyData.TYPE_FLOAT, bundle);
 	setData(Constants.KeyData.CHECK_BLURED, isBlured, Constants.KeyData.TYPE_BOOLEAN, bundle);
-	setData(Constants.KeyData.BANNERENTITY, bannerEntity, Constants.KeyData.TYPE_MODEL, bundle);
+//	setData(Constants.KeyData.BANNERENTITY, bannerEntity, Constants.KeyData.TYPE_MODEL, bundle);
+	bundle.putParcelable(Constants.KeyData.BANNERENTITY, bannerEntity);
 	fragment.setArguments(bundle);
 	return fragment;
 }
@@ -95,10 +96,12 @@ public static FragmentPagerBanner newInstance(int postion, float scale, boolean 
 		}
 		
 		//getdata
+		if(getArguments() != null){
 		position = (int) getData(Constants.KeyData.POSITON, Constants.KeyData.TYPE_INT, getArguments());
 		scale = (float) getData(Constants.KeyData.SCALE, Constants.KeyData.TYPE_FLOAT, getArguments());
 		isBlured = (boolean) getData(Constants.KeyData.CHECK_BLURED, Constants.KeyData.TYPE_BOOLEAN, getArguments());
-		bannerEntity = (BannerEntity) getData(Constants.KeyData.BANNERENTITY, Constants.KeyData.TYPE_MODEL, getArguments());
+		bannerEntity = getArguments().getParcelable(Constants.KeyData.BANNERENTITY);
+		}
 		
 		imageview.setOnClickListener(new OnClickListener() {
 
@@ -129,21 +132,18 @@ public static FragmentPagerBanner newInstance(int postion, float scale, boolean 
 								if (bannerEntity.getHasChild().equals("1")) {
 									if (DataLocal.isTablet) {
 										fragment = CategoryFragment.newInstance(
-												bannerEntity.getCategoryName(),
-												bannerEntity.getCategoryId());
+												bannerEntity.getCategoryId(), bannerEntity.getCategoryName());
 										CateSlideMenuFragment.getIntance()
 												.replaceFragmentCategoryMenu(
 														fragment);
 									} else {
 										fragment = CategoryFragment.newInstance(
-												bannerEntity.getCategoryName(),
-												bannerEntity.getCategoryId());
+												bannerEntity.getCategoryId(), bannerEntity.getCategoryName());
 										SimiManager.getIntance().addFragment(
 												fragment);
 									}
 								} else {
-									fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, bannerEntity
-											.getCategoryId(), null, null, null, null, null, null);
+									fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, bannerEntity.getCategoryId(), null, null, null, null, null, null);
 //									((ListProductFragment) fragment)
 //											.setCategoryId(bannerEntity
 //													.getCategoryId());

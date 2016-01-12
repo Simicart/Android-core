@@ -61,7 +61,7 @@ public class ListProductFragment extends SimiFragment {
 		setData(Constants.KeyData.SORT_ID, sortId,
 				Constants.KeyData.TYPE_STRING, bundle);
 		setData(Constants.KeyData.JSON_FILTER, jsonFilter,
-				Constants.KeyData.TYPE_MODEL, bundle);
+				Constants.KeyData.TYPE_JSONOBJECT, bundle);
 
 		fragment.setArguments(bundle);
 		return fragment;
@@ -81,7 +81,7 @@ public class ListProductFragment extends SimiFragment {
 		Context context = getActivity();
 
 		// data
-
+		if(getArguments() != null){
 		mSortID = (String) getData(Constants.KeyData.SORT_ID,
 				Constants.KeyData.TYPE_STRING, getArguments());
 		mCatName = (String) getData(Constants.KeyData.NAME,
@@ -89,7 +89,7 @@ public class ListProductFragment extends SimiFragment {
 		mCatID = (String) getData(Constants.KeyData.ID,
 				Constants.KeyData.TYPE_STRING, getArguments());
 		jsonFilter = (JSONObject) getData(Constants.KeyData.JSON_FILTER,
-				Constants.KeyData.TYPE_MODEL, getArguments());
+				Constants.KeyData.TYPE_JSONOBJECT, getArguments());
 		mQuery = (String) getData(Constants.KeyData.QUERY,
 				Constants.KeyData.TYPE_STRING, getArguments());
 		url_search = (String) getData(Constants.KeyData.URL,
@@ -98,6 +98,7 @@ public class ListProductFragment extends SimiFragment {
 				Constants.KeyData.TYPE_STRING, getArguments());
 		tag_search = (String) getData(Constants.KeyData.TAG,
 				Constants.KeyData.TYPE_STRING, getArguments());
+		}
 
 		Log.d("quangdd1", "=murl_search :" + url_search +"=mSortID :" + mSortID + "=mCatName :" + mCatName + "=mCatID :"
 				+ mCatID + "=mQuery :" + mQuery + "=mKey :" + mKey

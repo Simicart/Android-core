@@ -416,7 +416,7 @@ public class FragmentRewardPoint extends SimiFragment {
 				case MotionEvent.ACTION_UP:
 					rlt_layout_card.setBackgroundColor(Color
 							.parseColor("#FFFFFF"));
-					FragmentRewardCard rewardCard = new FragmentRewardCard(
+					FragmentRewardCard rewardCard = FragmentRewardCard.instance(
 							passBookLogo, loyalty_redeem, passbook_text,
 							background_passbook, passbook_foreground,
 							passbook_barcode);

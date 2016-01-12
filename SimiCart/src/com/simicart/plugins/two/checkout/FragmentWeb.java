@@ -81,11 +81,13 @@ public class FragmentWeb extends SimiFragment {
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
 
 		//getdata
+		if(getArguments() != null){
 		Url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
 		url_action = (String) getData(Constants.KeyData.URL_ACTION, Constants.KeyData.TYPE_STRING, getArguments());
 		url_back = (String) getData(Constants.KeyData.URL_BACK, Constants.KeyData.TYPE_STRING, getArguments());
 		data = (String) getData(Constants.KeyData.DATA, Constants.KeyData.TYPE_STRING, getArguments());
 		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		mImageView.setLayoutParams(lp);
 		// add loading View

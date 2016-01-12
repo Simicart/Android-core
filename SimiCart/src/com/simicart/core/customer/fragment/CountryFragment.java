@@ -58,8 +58,10 @@ public class CountryFragment extends SimiFragment {
 		Context context = getActivity();
 		
 		//getdata
+		if(getArguments() != null){
 		type = (int) getData(Constants.KeyData.TYPE, Constants.KeyData.TYPE_INT, getArguments());
 		mListCountry = (ArrayList<String>) getData(Constants.KeyData.LIST_COUNTRY, Constants.KeyData.TYPE_LIST_STRING, getArguments());
+		}
 		
 		mBlock = new CountryAllowedBlock(view, context);
 		mBlock.setListContry(mListCountry);

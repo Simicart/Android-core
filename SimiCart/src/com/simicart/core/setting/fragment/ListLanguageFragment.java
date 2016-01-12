@@ -54,7 +54,9 @@ public class ListLanguageFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_choose_country"), container,
 				false);
 		Context context = getActivity();
+		if(getArguments() != null){
 		current_item = (String) getData(Constants.KeyData.CURRENT_ITEM, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 
 		mBlock = new ListViewIndexableBlock(view, context);
 		mBlock.setList(mList);

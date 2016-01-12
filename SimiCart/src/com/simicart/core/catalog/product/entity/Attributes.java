@@ -2,10 +2,13 @@ package com.simicart.core.catalog.product.entity;
 
 import java.io.Serializable;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class Attributes extends SimiEntity implements Serializable{
+public class Attributes extends SimiEntity implements Parcelable{
 	/**
 	 * 
 	 */
@@ -34,6 +37,18 @@ public class Attributes extends SimiEntity implements Serializable{
 
 	public void setTitle(String title) {
 		this.mTitle = title;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

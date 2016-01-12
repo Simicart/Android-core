@@ -150,15 +150,13 @@ public class PhoneSlideMenuController {
 				if (DataLocal.deepLinkItemHasChild.equals("1")) {
 					if (DataLocal.isTablet) {
 						fragment = CategoryFragment.newInstance(
-								DataLocal.deepLinkItemName,
-								DataLocal.deepLinkItemID);
+								DataLocal.deepLinkItemID, DataLocal.deepLinkItemName);
 						CateSlideMenuFragment.getIntance()
 								.replaceFragmentCategoryMenu(fragment);
 						CateSlideMenuFragment.getIntance().openMenu();
 					} else {
 						fragment = CategoryFragment.newInstance(
-								DataLocal.deepLinkItemName,
-								DataLocal.deepLinkItemID);
+								DataLocal.deepLinkItemID, DataLocal.deepLinkItemName);
 						SimiManager.getIntance().replaceFragment(fragment);
 					}
 				} else {

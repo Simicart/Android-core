@@ -68,8 +68,9 @@ public class ProductDetailChildFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_product_detail_child"),
 				null, false);
 		SimiManager.getIntance().setChildFragment(getChildFragmentManager());
-		
+		if(getArguments() != null){
 		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 
 		mBlock = new ProductDetailChildBlock(view, getActivity(),
 				getChildFragmentManager());

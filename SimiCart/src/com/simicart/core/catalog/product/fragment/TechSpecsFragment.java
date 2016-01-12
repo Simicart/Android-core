@@ -29,7 +29,8 @@ public class TechSpecsFragment extends SimiFragment {
 		TechSpecsFragment fragment = new TechSpecsFragment();
 		
 		Bundle args = new Bundle();
-		setData(Constants.KeyData.LIST_ATTRIBUTES, attributes, Constants.KeyData.TYPE_LIST_MODEL, args);
+//		setData(Constants.KeyData.LIST_ATTRIBUTES, attributes, Constants.KeyData.TYPE_LIST_MODEL, args);
+		args.putParcelableArrayList(Constants.KeyData.LIST_ATTRIBUTES, attributes);
 	    fragment.setArguments(args);
 		return fragment;
 	}
@@ -46,8 +47,9 @@ public class TechSpecsFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-		
-		mAttributes = (ArrayList<Attributes>) getData(Constants.KeyData.LIST_ATTRIBUTES, Constants.KeyData.TYPE_LIST_MODEL, getArguments());
+		if(getArguments() != null){
+		mAttributes = getArguments().getParcelableArrayList(Constants.KeyData.LIST_ATTRIBUTES);
+		}
 		Log.d("quangdd","mAttributes"+mAttributes.get(0).toString());
 		
 		LinearLayout ll_techSpecs = (LinearLayout) rootView

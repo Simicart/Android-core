@@ -58,7 +58,7 @@ public class SimiFragment extends Fragment {
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		
-		isShowPopup = (boolean) getData(Constants.KeyData.CHECK_POPUP, Constants.KeyData.TYPE_BOOLEAN, getArguments());
+//		isShowPopup = (boolean) getData(Constants.KeyData.CHECK_POPUP, Constants.KeyData.TYPE_BOOLEAN, getArguments());
 	}
 
 	public void setScreenName(String name) {
@@ -95,14 +95,18 @@ public class SimiFragment extends Fragment {
 			bundle.putIntegerArrayList(key, (ArrayList<Integer>) object);
 
 			break;
-		case Constants.KeyData.TYPE_MODEL:
-			bundle.putSerializable(key, (Serializable) object);
-			
-		case Constants.KeyData.TYPE_MODEL_PAR:
-			bundle.putParcelable(key, (Parcelable) object);
-
-			break;
-		case Constants.KeyData.TYPE_LIST_MODEL:
+//		case Constants.KeyData.TYPE_MODEL:
+//			bundle.putSerializable(key, (Serializable) object);
+//			
+//		case Constants.KeyData.TYPE_MODEL_PAR:
+//			bundle.putParcelable(key, (Parcelable) object);
+//
+//			break;
+//		case Constants.KeyData.TYPE_LIST_MODEL:
+//			bundle.putSerializable(key, (Serializable) object);
+//
+//			break;
+			case Constants.KeyData.TYPE_JSONOBJECT:
 			bundle.putSerializable(key, (Serializable) object);
 
 			break;
@@ -140,18 +144,22 @@ public class SimiFragment extends Fragment {
 			object = bundle.getIntegerArrayList(key);
 
 			break;
-		case Constants.KeyData.TYPE_MODEL:
+			case Constants.KeyData.TYPE_JSONOBJECT:
 			object = bundle.getSerializable(key);
 
 			break;
-		case Constants.KeyData.TYPE_MODEL_PAR:
-			object = bundle.getParcelable(key);
-
-			break;
-		case Constants.KeyData.TYPE_LIST_MODEL:
-			object = bundle.getSerializable(key);
-
-			break;
+//		case Constants.KeyData.TYPE_MODEL:
+//			object = bundle.getSerializable(key);
+//
+//			break;
+//		case Constants.KeyData.TYPE_MODEL_PAR:
+//			object = bundle.getParcelable(key);
+//
+//			break;
+//		case Constants.KeyData.TYPE_LIST_MODEL:
+//			object = bundle.getSerializable(key);
+//
+//			break;
 		case Constants.KeyData.TYPE_BOOLEAN:
 			object = bundle.getBoolean(key);
 

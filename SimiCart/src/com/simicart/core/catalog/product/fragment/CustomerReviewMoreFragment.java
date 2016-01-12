@@ -27,7 +27,8 @@ public class CustomerReviewMoreFragment extends SimiFragment {
 		CustomerReviewMoreFragment fragment = new CustomerReviewMoreFragment();
 		
 		Bundle args = new Bundle();
-	    setData(Constants.KeyData.CUSTOMER_REVIEW, mCustomerReview, Constants.KeyData.TYPE_MODEL, args);
+//	    setData(Constants.KeyData.CUSTOMER_REVIEW, mCustomerReview, Constants.KeyData.TYPE_MODEL, args);
+		args.putParcelable(Constants.KeyData.CUSTOMER_REVIEW, mCustomerReview);
 	    fragment.setArguments(args);
 
 		return fragment;
@@ -40,8 +41,9 @@ public class CustomerReviewMoreFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_customer_review_more"), container,
 				false);
-
-		mCustomerReview = (CustomerReview) getData(Constants.KeyData.CUSTOMER_REVIEW, Constants.KeyData.TYPE_MODEL, getArguments());
+		if(getArguments() != null){
+		mCustomerReview = getArguments().getParcelable(Constants.KeyData.CUSTOMER_REVIEW);
+		}
 		
 		RatingBar ratingBar = (RatingBar) convertView.findViewById(Rconfig
 				.getInstance().id("rtb_review"));

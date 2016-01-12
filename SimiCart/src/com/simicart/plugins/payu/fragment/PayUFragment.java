@@ -74,9 +74,10 @@ public class PayUFragment extends SimiFragment {
 
 		mImageView.setLayoutParams(lp);
 		// add loading View
-		
+		if(getArguments() != null){
 		url_payu = (String) getData(Constants.KeyData.URL_PAYU, Constants.KeyData.TYPE_STRING, getArguments());
 		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		webview.addView(mImageView);
 		webview.getSettings().setJavaScriptEnabled(true);

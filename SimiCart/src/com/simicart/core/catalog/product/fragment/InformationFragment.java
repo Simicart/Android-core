@@ -33,7 +33,8 @@ public class InformationFragment extends SimiFragment {
 	public static InformationFragment newInstance(Product product) {
 		InformationFragment fragment = new InformationFragment();
 		Bundle bundle= new Bundle();
-		  setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, bundle);
+//		  setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.PRODUCT, product);
 		    fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -53,8 +54,9 @@ public class InformationFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_information_layout"),
 				container, false);
 		Context context = getActivity();
-		
-		mProduct = (Product) getData(Constants.KeyData.PRODUCT, Constants.KeyData.TYPE_MODEL, getArguments());
+		if(getArguments() != null){
+		mProduct = getArguments().getParcelable(Constants.KeyData.PRODUCT);
+		}
 		if (null != mProduct) {
 			initView();
 			// RelativeLayout ll_plugin = (RelativeLayout) mRootView

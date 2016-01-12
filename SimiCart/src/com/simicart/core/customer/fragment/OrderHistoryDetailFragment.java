@@ -56,9 +56,10 @@ public class OrderHistoryDetailFragment extends SimiFragment {
 					false);
 		}
 		Context context = getActivity();
-
+		if(getArguments() != null){
 		mID = (String) getData(Constants.KeyData.ID,
 				Constants.KeyData.TYPE_STRING, getArguments());
+		}
 
 		mBlock = new OrderHistoryDetailBlock(rootView, context);
 		mBlock.initView();

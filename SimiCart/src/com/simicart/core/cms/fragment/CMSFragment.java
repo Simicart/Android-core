@@ -40,8 +40,9 @@ public class CMSFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-
+		if(getArguments() != null){
 		mContent = (String) getData(Constants.KeyData.CONTENT, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		LinearLayout l_scrollView = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));

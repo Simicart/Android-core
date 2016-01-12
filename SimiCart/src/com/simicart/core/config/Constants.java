@@ -392,6 +392,7 @@ public final static class KeyData {
 		public static final String INVOICE_NUMBER="invoice_number";
 		public static final String DATA ="data";
 		public static final String STORE_OBJECT = "store_object";
+		public static final String SEARCH_OBJECT= "search_object";
 		public static final String LOCATION = "location";
 		public static final String OTHERPAYMENTENTITY = "other_payment_entity";
 		public static final String REVIEW_ADDRESS= "review_address";
@@ -399,17 +400,28 @@ public final static class KeyData {
 		public static final String SCALE="scale";
 		public static final String CHECK_BLURED = "check_blured";
 		public static final String BANNERENTITY= "bannerentity";
+		public static final String PAYMENT_METHOD = "payment_method";
+		public static final String COUNTRY = "country";
+		public static final String CITY = "city";
+		public static final String STATE = "state";
+		public static final String ZIPCODE = "zipcode";
+		public static final String  PASSBOOK_FOREGROUND= "passbook_foreground";
+		public static final String  PASSBOOK_BARCODE= "passbook_barcode";
+		public static final String  BACKGROUND= "background";
+		public static final String  NAMEAPP= "nameapp";
+		public static final String  LOYALTY_REDEEM= "loyalty_redeem";
+		public static final String  PASSBOOKLOGO= "passBookLogo";
 		
 		public static final String TYPE_STRING ="type_string";
 		public static final String TYPE_INT = "type_int";
 		public static final String TYPE_FLOAT = "type_float";
 		public static final String TYPE_LIST_INT = "type_list_int";
 		public static final String TYPE_LIST_STRING = "type_list_string";
-		public static final String TYPE_LIST_MODEL = "type_list_model";
-		public static final String TYPE_MODEL = "type_model";
-		public static final String TYPE_MODEL_PAR = "type_model_par";
+//		public static final String TYPE_LIST_MODEL = "type_list_model";
+//		public static final String TYPE_MODEL = "type_model";
+//		public static final String TYPE_MODEL_PAR = "type_model_par";
+		public static final String TYPE_JSONOBJECT = "json_object";
 		public static final String TYPE_BOOLEAN = "type_boolean";
-		public static final String PAYMENT_METHOD = "payment_method";
 		
 	}
 }

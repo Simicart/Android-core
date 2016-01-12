@@ -55,7 +55,7 @@ public class MapViewFragment extends SimiFragment {
 	public static MapViewFragment newInstance(StoreObject storeObject) {
 		MapViewFragment map = new MapViewFragment();
 		Bundle bundle= new Bundle();
-		setData(Constants.KeyData.STORE_OBJECT, storeObject, Constants.KeyData.TYPE_MODEL, bundle);
+		setData(Constants.KeyData.STORE_OBJECT, storeObject, Constants.KeyData.TYPE_JSONOBJECT, bundle);
 		map.setArguments(bundle);
 //		map.storeObject = storeObject;
 		return map;
@@ -73,8 +73,9 @@ public class MapViewFragment extends SimiFragment {
 		view = inflater.inflate(
 				Rconfig.getInstance().getId("plugins_storelocator_map_view",
 						"layout"), null);
-		
-		storeObject = (StoreObject) getData(Constants.KeyData.STORE_OBJECT, Constants.KeyData.TYPE_MODEL, getArguments());
+		if(getArguments() != null){
+		storeObject = (StoreObject) getData(Constants.KeyData.STORE_OBJECT, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		}
 		
 		store_maker = new ArrayList<StoreObject>();
 		try {

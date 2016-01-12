@@ -34,8 +34,10 @@ public class ReviewOrderFragment extends SimiFragment {
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.AFTER_CONTROL, afterControll, Constants.KeyData.TYPE_INT, bundle);
-		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAdd, Constants.KeyData.TYPE_MODEL, bundle);
-		setData(Constants.KeyData.BILLING_ADDRESS, billingAdd, Constants.KeyData.TYPE_MODEL, bundle);
+//		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAdd, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.SHIPPING_ADDRESS, shippingAdd);
+//		setData(Constants.KeyData.BILLING_ADDRESS, billingAdd, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.BILLING_ADDRESS, billingAdd);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -80,9 +82,11 @@ public class ReviewOrderFragment extends SimiFragment {
 		Context context = getActivity();
 		
 		//getdata
+		if(getArguments() != null){
 		mAfterControll = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
-		mShippingAddress = (MyAddress) getData(Constants.KeyData.SHIPPING_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
-		mBillingAddress = (MyAddress) getData(Constants.KeyData.BILLING_ADDRESS, Constants.KeyData.TYPE_MODEL, getArguments());
+		mShippingAddress = getArguments().getParcelable(Constants.KeyData.SHIPPING_ADDRESS);
+		mBillingAddress = getArguments().getParcelable(Constants.KeyData.BILLING_ADDRESS);
+		}
 		
 		mBlock = new ReviewOrderBlock(view, context);
 		mBlock.initView();

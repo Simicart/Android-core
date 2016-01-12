@@ -7,11 +7,14 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 
-public class MyAddress extends SimiEntity implements Serializable{
+public class MyAddress extends SimiEntity implements Parcelable{
 	/**
 	 * 
 	 */
@@ -429,6 +432,18 @@ public class MyAddress extends SimiEntity implements Serializable{
 		}
 
 		return params;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

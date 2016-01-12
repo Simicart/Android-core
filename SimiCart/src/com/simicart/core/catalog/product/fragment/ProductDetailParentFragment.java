@@ -71,8 +71,10 @@ public class ProductDetailParentFragment extends SimiFragment {
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
+		if(getArguments() != null){
 		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
 		mListID = (ArrayList<String>) getData(Constants.KeyData.LIST_ID, Constants.KeyData.TYPE_LIST_STRING, getArguments());
+		}
 		Log.d("quangdd", "ID :" + mID + "====" + "mListID :" + mListID);
 		
 		mBlock = new ProductDetailParentBlock(view, getActivity());

@@ -89,11 +89,13 @@ public class FragmentCheckoutCom extends SimiFragment {
 				false);
 		
 		//getdata
+		if(getArguments() != null){
 		data = (String) getData(Constants.KeyData.DATA, Constants.KeyData.TYPE_STRING, getArguments());
 		url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
 		url_action = (String) getData(Constants.KeyData.URL_ACTION, Constants.KeyData.TYPE_STRING, getArguments());
 		url_back = (String) getData(Constants.KeyData.URL_BACK, Constants.KeyData.TYPE_STRING, getArguments());
 		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		final WebView webview = (WebView) rootView.findViewById(Rconfig
 				.getInstance().id("webview_Ad"));

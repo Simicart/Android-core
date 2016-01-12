@@ -69,12 +69,12 @@ public class CategoryController extends SimiController {
 		if (category.hasChild()) {
 			if (DataLocal.isTablet) {
 				fragment = CategoryFragment.newInstance(
-						category.getCategoryName(), category.getCategoryId());
+						category.getCategoryId(), category.getCategoryName());
 				CateSlideMenuFragment.getIntance().replaceFragmentCategoryMenu(
 						fragment);
 			} else {
 				fragment = CategoryFragment.newInstance(
-						category.getCategoryName(), category.getCategoryId());
+						category.getCategoryId(), category.getCategoryName());
 				SimiManager.getIntance().addFragment(fragment);
 			}
 		} else {

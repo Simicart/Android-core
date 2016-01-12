@@ -256,16 +256,14 @@ public class NotificationController {
 				if (notificationData.getHasChild().equals("1")) {
 					if (DataLocal.isTablet) {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryName(),
-								notificationData.getCategoryID());
+								notificationData.getCategoryID(), notificationData.getCategoryName());
 						CateSlideMenuFragment.getIntance()
 								.replaceFragmentCategoryMenu(fragment);
 						CateSlideMenuFragment.getIntance().openMenu();
 						return;
 					} else {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryName(),
-								notificationData.getCategoryID());
+								notificationData.getCategoryID(), notificationData.getCategoryName());
 					}
 				} else {
 					fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, notificationData

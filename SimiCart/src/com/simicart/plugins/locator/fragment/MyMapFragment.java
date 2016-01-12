@@ -54,7 +54,8 @@ public class MyMapFragment extends SimiFragment {
 	public static MyMapFragment newInstance(Location mLocation) {
 		MyMapFragment map = new MyMapFragment();
 		Bundle bundle= new Bundle();
-		setData(Constants.KeyData.LOCATION, mLocation, Constants.KeyData.TYPE_MODEL_PAR, bundle);
+//		setData(Constants.KeyData.LOCATION, mLocation, Constants.KeyData.TYPE_MODEL_PAR, bundle);
+		bundle.putParcelable(Constants.KeyData.LOCATION, mLocation);
 		map.setArguments(bundle);
 		return map;
 	}
@@ -71,8 +72,9 @@ public class MyMapFragment extends SimiFragment {
 		view = inflater.inflate(
 				Rconfig.getInstance().getId("plugins_storelocator_map_view", "layout"),
 				null);
-		
-		_mLocation = (Location) getData(Constants.KeyData.LOCATION, Constants.KeyData.TYPE_MODEL_PAR, getArguments());
+		if(getArguments() != null){
+		_mLocation = getArguments().getParcelable(Constants.KeyData.LOCATION);
+		}
 		
 		store_maker = new ArrayList<StoreObject>();
 		txt_km = (TextView) view.findViewById(Rconfig.getInstance()

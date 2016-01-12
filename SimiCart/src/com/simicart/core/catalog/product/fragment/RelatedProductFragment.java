@@ -40,8 +40,9 @@ public class RelatedProductFragment extends SimiFragment {
 						"core_information_related_product_layout"), container,
 				false);
 		Context context = getActivity();
-		
+		if(getArguments() != null){
 		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		
 		mBlock = new RelatedProductBlock(view, context);
 		mBlock.initView();

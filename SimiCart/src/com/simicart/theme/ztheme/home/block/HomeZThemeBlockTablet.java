@@ -86,7 +86,7 @@ public class HomeZThemeBlockTablet extends HomeZThemeBlock implements
 	public void showCatSub(CategoryZTheme category) {
 		if (category.hasChild()) {
 			CategoryFragment fragment = CategoryFragment.newInstance(
-					category.getCategoryName(), category.getCategoryId());
+					category.getCategoryId(), category.getCategoryName());
 			CateSlideMenuFragment.getIntance().openMenu();
 			CateSlideMenuFragment.getIntance().replaceFragmentCategoryMenu(
 					fragment);

@@ -7,11 +7,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.filter.common.FilterConstant;
 import com.simicart.core.common.Utils;
 
-public class FilterEntity extends SimiEntity implements Serializable {
+public class FilterEntity extends SimiEntity implements Parcelable {
 
 	/**
 	 * 
@@ -77,6 +80,18 @@ public class FilterEntity extends SimiEntity implements Serializable {
 
 	public void setmValueFilters(ArrayList<ValueFilterEntity> mValueFilters) {
 		this.mValueFilters = mValueFilters;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
