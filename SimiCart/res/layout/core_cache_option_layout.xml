@@ -14,11 +14,11 @@
 
         <ImageView
             android:id="@+id/imv_arr"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/size_10"
             android:src="@drawable/ic_action_expand" />
 
         <TextView
@@ -26,23 +26,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_10"
             android:layout_toLeftOf="@+id/imv_arr"
             android:ellipsize="end"
             android:lines="1"
-            android:paddingRight="10dp" />
+            android:paddingRight="@dimen/size_10" />
 
         <TextView
             android:id="@+id/core_cache_option_layout_tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_10"
             android:layout_toLeftOf="@+id/core_cache_option_layout_tv_required"
             android:gravity="center_vertical"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="@dimen/size_10" />
     </RelativeLayout>
 
     <!-- body cache option -->

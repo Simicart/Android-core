@@ -5,7 +5,7 @@
     </item>
     <item android:id="@+id/shape_bacground">
         <shape android:shape="rectangle" >
-            <corners android:radius="2dp" />
+            <corners android:radius="@dimen/size_2" />
 
             <solid android:color="#FFF" />
         </shape>

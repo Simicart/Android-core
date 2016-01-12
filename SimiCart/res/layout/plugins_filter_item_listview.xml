@@ -11,18 +11,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:textSize="14sp" />
+        android:layout_marginLeft="@dimen/size_5"
+        android:paddingBottom="@dimen/size_20"
+        android:paddingTop="@dimen/size_20"
+        android:textSize="@dimen/text_14" />
 
     <ImageView
         android:id="@+id/img_show_more"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/size_20"
+        android:layout_height="@dimen/size_20"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="@dimen/size_5"
         android:src="@drawable/ic_action_expand"
         android:contentDescription="@null" />
 

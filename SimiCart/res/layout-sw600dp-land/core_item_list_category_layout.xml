@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/iv_showmore"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="@dimen/size_10"
+        android:layout_height="@dimen/size_10"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:src="@drawable/ic_menu_extended" />
@@ -18,14 +18,14 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:paddingBottom="10dp"
-        android:paddingRight="40dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="@dimen/size_10"
+        android:paddingRight="@dimen/size_40"
+        android:paddingTop="@dimen/size_10"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="@dimen/size_1"
         android:layout_alignParentBottom="true"
         android:background="#08FFFFFF" />
 

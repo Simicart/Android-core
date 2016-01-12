@@ -17,10 +17,10 @@
     <!-- các thuộc tính căn chỉnh -->
 
     <padding
-        android:bottom="0.5dp"
-        android:left="0.5dp"
-        android:right="0.5dp"
-        android:top="0.5dp" >
+        android:bottom="5dp"
+        android:left="5dp"
+        android:right="5dp"
+        android:top="5dp" >
     </padding>
 
     <!-- và đây là bán kính đường tròn ở 4 góc -->

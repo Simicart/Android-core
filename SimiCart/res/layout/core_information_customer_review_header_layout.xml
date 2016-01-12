@@ -8,57 +8,57 @@
         android:id="@+id/tv_titleHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="18dp"
+        android:layout_marginTop="@dimen/size_10"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:textSize="@dimen/text_ab"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/txt_stock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textSize="14dp" />
+        android:layout_marginBottom="@dimen/size_10"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:textSize="@dimen/size_14" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="@dimen/size_1"
+        android:layout_marginBottom="@dimen/size_10"
         android:background="#E8E8E8" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="@dimen/size_10"
         android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" >
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10" >
 
         <TextView
             android:id="@+id/txt_titleReview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16dp" />
+            android:textSize="@dimen/size_16" />
 
         <RatingBar
             android:id="@+id/rtb_reviewHeader"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/size_10"
             android:numStars="5"
-            android:paddingTop="4dp"
+            android:paddingTop="@dimen/size_4"
             android:rating="4.4" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
         android:weightSum="5" >
 
         <TextView
@@ -67,37 +67,37 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center_vertical"
-            android:paddingRight="10dp"
+            android:paddingRight="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
 
         <ProgressBar
             android:id="@+id/progressBar5"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="4" />
 
         <TextView
             android:id="@+id/tv_quantity5"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:paddingLeft="10dp"
+            android:paddingLeft="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:paddingTop="@dimen/size_10"
         android:weightSum="5" >
 
         <TextView
@@ -106,37 +106,37 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center_vertical"
-            android:paddingRight="10dp"
+            android:paddingRight="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
 
         <ProgressBar
             android:id="@+id/progressBar4"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="4" />
 
         <TextView
             android:id="@+id/tv_quantity4"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:paddingLeft="10dp"
+            android:paddingLeft="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:paddingTop="@dimen/size_10"
         android:weightSum="5" >
 
         <TextView
@@ -145,37 +145,37 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center_vertical"
-            android:paddingRight="10dp"
+            android:paddingRight="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
 
         <ProgressBar
             android:id="@+id/progressBar3"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="4" />
 
         <TextView
             android:id="@+id/tv_quantity3"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:paddingLeft="10dp"
+            android:paddingLeft="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:paddingTop="@dimen/size_10"
         android:weightSum="5" >
 
         <TextView
@@ -184,38 +184,38 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center_vertical"
-            android:paddingRight="10dp"
+            android:paddingRight="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
 
         <ProgressBar
             android:id="@+id/progressBar2"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="4" />
 
         <TextView
             android:id="@+id/tv_quantity2"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:paddingLeft="10dp"
+            android:paddingLeft="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="10dp"
+        android:paddingBottom="@dimen/size_10"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:paddingTop="@dimen/size_10"
         android:weightSum="5" >
 
         <TextView
@@ -224,29 +224,29 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center_vertical"
-            android:paddingRight="10dp"
+            android:paddingRight="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
 
         <ProgressBar
             android:id="@+id/progressBar1"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="4" />
 
         <TextView
             android:id="@+id/tv_quantity1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:paddingLeft="10dp"
+            android:paddingLeft="@dimen/size_10"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#627899"
-            android:textSize="15sp" />
+            android:textSize="@dimen/text_15" />
     </LinearLayout>
 
 </LinearLayout>

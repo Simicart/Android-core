@@ -12,6 +12,7 @@ import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.NewAddressBookBlock;
 import com.simicart.core.customer.controller.NewAddressBookController;
 import com.simicart.core.customer.entity.MyAddress;
+import com.simicart.plugins.wishlist.fragment.MyWishListFragment;
 
 public class NewAddressBookFragment extends SimiFragment {
 	// click add new address from my account

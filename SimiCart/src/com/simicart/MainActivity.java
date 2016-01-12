@@ -78,7 +78,7 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// report bug
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
+//		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		SimiManager.getIntance().setCurrentActivity(this);
 		SimiManager.getIntance().setCurrentContext(getApplicationContext());
 		getActionBar().hide();

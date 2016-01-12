@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingLeft="5dp"
-    android:paddingRight="20dp"
-    android:paddingTop="10dp" >
+    android:paddingBottom="@dimen/size_10"
+    android:paddingLeft="@dimen/size_5"
+    android:paddingRight="@dimen/size_20"
+    android:paddingTop="@dimen/size_10" >
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -25,9 +25,9 @@
                 android:layout_height="wrap_content" >
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/size_5"
                     android:layout_weight="1.7"
                     android:orientation="vertical" >
 
@@ -40,10 +40,10 @@
                             android:id="@+id/txt_name_store"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="7dp"
+                            android:layout_marginLeft="@dimen/size_7"
                             android:layout_weight="1"
                             android:textColor="@android:color/black"
-                            android:textSize="20dp"
+                            android:textSize="@dimen/size_20"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -51,10 +51,10 @@
                         android:id="@+id/location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp" >
+                        android:layout_marginTop="@dimen/size_5" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="0.2"
                             android:gravity="center"
@@ -62,13 +62,13 @@
 
                             <ImageView
                                 android:id="@+id/imageView1"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:src="@drawable/plugins_locator_grey_maker" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -78,7 +78,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -86,10 +86,10 @@
                         android:id="@+id/phone_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp" >
+                        android:layout_marginTop="@dimen/size_10" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="0.2"
                             android:gravity="center"
@@ -97,13 +97,13 @@
 
                             <ImageView
                                 android:id="@+id/iv_locator_phone"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:src="@drawable/plugins_locator_phone" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -113,7 +113,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/holo_orange_dark"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -121,10 +121,10 @@
                         android:id="@+id/email_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp" >
+                        android:layout_marginTop="@dimen/size_10" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="0.2"
                             android:gravity="center"
@@ -132,13 +132,13 @@
 
                             <ImageView
                                 android:id="@+id/iv_locator_email"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:src="@drawable/plugins_locator_email_disable" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -148,7 +148,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/holo_blue_dark"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -156,10 +156,10 @@
                         android:id="@+id/home"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp" >
+                        android:layout_marginTop="@dimen/size_10" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="0.2"
                             android:gravity="center"
@@ -167,13 +167,13 @@
 
                             <ImageView
                                 android:id="@+id/iv_locator_home"
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
+                                android:layout_width="@dimen/size_20"
+                                android:layout_height="@dimen/size_20"
                                 android:src="@drawable/plugins_locator_home" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -183,14 +183,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:textColor="@android:color/holo_blue_dark"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="170dp"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/size_170"
                     android:layout_weight="1"
                     android:orientation="vertical" >
 
@@ -203,16 +203,16 @@
                         android:orientation="vertical" >
 
                         <LinearLayout
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
+                            android:layout_width="@dimen/size_120"
+                            android:layout_height="@dimen/size_120"
                             android:background="@drawable/plugins_locator_circle"
                             android:gravity="center"
                             android:orientation="vertical" >
 
                             <com.simicart.plugins.locator.RoundedImageView
                                 android:id="@+id/image_map"
-                                android:layout_width="110dp"
-                                android:layout_height="110dp"
+                                android:layout_width="@dimen/size_10"
+                                android:layout_height="@dimen/size_10"
                                 android:scaleType="centerCrop" />
                         </LinearLayout>
                     </LinearLayout>
@@ -220,14 +220,14 @@
                     <LinearLayout
                         android:id="@+id/map"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="@dimen/size_30"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="@dimen/size_10"
                         android:background="@drawable/plugins_locator_show_map"
-                        android:padding="5dp" >
+                        android:padding="@dimen/size_5" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -240,7 +240,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="3"
                             android:orientation="vertical" >
@@ -252,7 +252,7 @@
                                 android:gravity="center"
                                 android:text="Get Directions"
                                 android:textColor="@android:color/holo_blue_dark"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
@@ -262,10 +262,10 @@
                 android:id="@+id/decrep_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
+                android:layout_marginTop="@dimen/size_10" >
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:gravity="center|top"
@@ -273,13 +273,13 @@
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
                         android:src="@drawable/plugins_locator_question" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
                     android:orientation="vertical" >
@@ -289,7 +289,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@android:color/black"
-                        android:textSize="13dp" />
+                        android:textSize="@dimen/size_13" />
 
                     <TextView
                         android:id="@+id/read_more"
@@ -298,7 +298,7 @@
                         android:gravity="center|right"
                         android:text=">> Read more"
                         android:textColor="@android:color/holo_blue_dark"
-                        android:textSize="11dp"
+                        android:textSize="@dimen/size_11"
                         android:visibility="visible" />
                 </LinearLayout>
             </LinearLayout>
@@ -306,10 +306,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp" >
+                android:layout_marginTop="@dimen/size_5" >
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:gravity="center|top"
@@ -317,13 +317,13 @@
 
                     <ImageView
                         android:id="@+id/iv_locator_time"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
                         android:src="@drawable/plugins_locator_time" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
                     android:orientation="vertical" >
@@ -334,7 +334,7 @@
                         android:layout_height="wrap_content"
                         android:text="Openning hours"
                         android:textColor="@android:color/black"
-                        android:textSize="12dp"
+                        android:textSize="@dimen/size_12"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -342,7 +342,7 @@
                         android:layout_height="wrap_content" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -354,11 +354,11 @@
                                 android:gravity="center|left"
                                 android:text="Sunday:"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -369,7 +369,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|left"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -378,7 +378,7 @@
                         android:layout_height="wrap_content" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -390,11 +390,11 @@
                                 android:gravity="center|left"
                                 android:text="Monday:"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -405,7 +405,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|left"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -414,7 +414,7 @@
                         android:layout_height="wrap_content" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -426,11 +426,11 @@
                                 android:gravity="center|left"
                                 android:text="Tuesday:"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -441,7 +441,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|left"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -450,7 +450,7 @@
                         android:layout_height="wrap_content" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -462,11 +462,11 @@
                                 android:gravity="center|left"
                                 android:text="Wednesday:"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -477,7 +477,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|left"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -486,7 +486,7 @@
                         android:layout_height="wrap_content" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -498,11 +498,11 @@
                                 android:gravity="center|left"
                                 android:text="Thursday:"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -513,7 +513,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|left"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -522,7 +522,7 @@
                         android:layout_height="wrap_content" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -534,11 +534,11 @@
                                 android:gravity="center|left"
                                 android:text="Friday:"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -549,7 +549,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|left"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -558,7 +558,7 @@
                         android:layout_height="wrap_content" >
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -570,11 +570,11 @@
                                 android:gravity="center|left"
                                 android:text="Saturday:"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/size_0"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:orientation="vertical" >
@@ -585,7 +585,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center|left"
                                 android:textColor="@android:color/black"
-                                android:textSize="13dp" />
+                                android:textSize="@dimen/size_13" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -595,10 +595,10 @@
                 android:id="@+id/special_Layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp" >
+                android:layout_marginTop="@dimen/size_5" >
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:gravity="center|top"
@@ -606,13 +606,13 @@
 
                     <ImageView
                         android:id="@+id/iv_locator_date"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
                         android:src="@drawable/plugins_locator_date" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
                     android:orientation="vertical" >
@@ -623,14 +623,14 @@
                         android:layout_height="wrap_content"
                         android:text="Special Days"
                         android:textColor="@android:color/black"
-                        android:textSize="13dp"
+                        android:textSize="@dimen/size_13"
                         android:textStyle="bold" />
 
                     <com.simicart.core.style.NoScrollListView
                         android:id="@+id/list_special"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="@dimen/size_5"
                         android:divider="@android:color/transparent" >
                     </com.simicart.core.style.NoScrollListView>
                 </LinearLayout>
@@ -640,10 +640,10 @@
                 android:id="@+id/holiday_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp" >
+                android:layout_marginTop="@dimen/size_5" >
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:gravity="center|top"
@@ -651,13 +651,13 @@
 
                     <ImageView
                         android:id="@+id/iv_locator_holiday"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
                         android:src="@drawable/plugins_locator_holiday" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/size_0"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5"
                     android:orientation="vertical" >
@@ -668,14 +668,14 @@
                         android:layout_height="wrap_content"
                         android:text="Holiday"
                         android:textColor="@android:color/black"
-                        android:textSize="13dp"
+                        android:textSize="@dimen/size_13"
                         android:textStyle="bold" />
 
                     <com.simicart.core.style.NoScrollListView
                         android:id="@+id/list_holyday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="@dimen/size_5"
                         android:divider="@android:color/transparent" >
                     </com.simicart.core.style.NoScrollListView>
                 </LinearLayout>

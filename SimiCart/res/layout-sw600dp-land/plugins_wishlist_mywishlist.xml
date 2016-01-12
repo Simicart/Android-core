@@ -10,19 +10,19 @@
         android:id="@+id/grid_wishlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:horizontalSpacing="1dp"
+        android:layout_marginTop="@dimen/size_40"
+        android:horizontalSpacing="@dimen/size_1"
         android:background="#FFFFFF"
         android:numColumns="2"
-        android:verticalSpacing="1dp" />
+        android:verticalSpacing="@dimen/size_1" />
 
     <RelativeLayout
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/size_40"
         android:layout_alignParentTop="true"
         android:background="#F2EEEEEE"
-        android:padding="10dp" >
+        android:padding="@dimen/size_10" >
 
         <RelativeLayout
             android:id="@+id/rl_share_all_wishlist"
@@ -37,15 +37,15 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_10"
                 android:gravity="center"
-                android:textSize="16dp" />
+                android:textSize="@dimen/size_16" />
 
             <ImageView
                 android:id="@+id/im_share_all"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/tx_share_all"
                 android:src="@drawable/ic_share" />

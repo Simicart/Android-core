@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp" >
+    android:paddingLeft="@dimen/size_0"
+    android:paddingRight="@dimen/size_0" >
 
     <RelativeLayout
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="@dimen/size_180"
+        android:layout_height="@dimen/size_180"
         android:background="@drawable/core_home_border_relative" >
 
         <ImageView
@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp" />
+            android:paddingLeft="@dimen/size_2"
+            android:paddingRight="@dimen/size_2" />
     </RelativeLayout>
 
     <TextView
@@ -28,6 +28,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:singleLine="true"
-        android:textSize="16sp" />
+        android:textSize="@dimen/text_16" />
 
 </LinearLayout>
