@@ -275,10 +275,10 @@ public class SearchStore extends SimiFragment {
 					search_object.setState(et_state.getText().toString());
 					search_object.setZipcode(et_code.getText().toString());
 					StoreLocatorFragment fragment = StoreLocatorFragment
-							.newInstans(country_code, et_city.getText()
+							.newInstansce(country_code, et_city.getText()
 									.toString(), et_state.getText().toString(),
-									et_code.getText().toString(), tag);
-					fragment.setSearch_object(search_object);
+									et_code.getText().toString(), tag, search_object);
+//					fragment.setSearch_object(search_object);
 					SimiManager.getIntance().addFragment(fragment);
 					SimiManager.getIntance().removeDialog();
 					Utils.hideKeyboard(v);
@@ -303,8 +303,8 @@ public class SearchStore extends SimiFragment {
 				search_object.setState("");
 				search_object.setPosition_country(0);
 				StoreLocatorFragment fragment = StoreLocatorFragment
-						.newInstans(null, null, null, null, _item);
-				fragment.setSearch_object(search_object);
+						.newInstansce(null, null, null, null, _item, search_object);
+//				fragment.setSearch_object(search_object);
 				SimiManager.getIntance().addFragment(fragment);
 				SimiManager.getIntance().removeDialog();
 			}
@@ -494,20 +494,20 @@ public class SearchStore extends SimiFragment {
 						StoreLocatorFragment fragment;
 						tag = item;
 						if (position == 0) {
-							fragment = StoreLocatorFragment.newInstans(
+							fragment = StoreLocatorFragment.newInstansce(
 									country_code, et_city.getText().toString(),
 									et_state.getText().toString(), et_code
-											.getText().toString(), "");
+											.getText().toString(), "", null);
 							_item = "";
 						} else {
-							fragment = StoreLocatorFragment.newInstans(
+							fragment = StoreLocatorFragment.newInstansce(
 									country_code, et_city.getText().toString(),
 									et_state.getText().toString(), et_code
-											.getText().toString(), item);
+											.getText().toString(), item, search_object);
 							_item = item;
 						}
 						search_object.setTag(position);
-						fragment.setSearch_object(search_object);
+//						fragment.setSearch_object(search_object);
 						SimiManager.getIntance().addFragment(fragment);
 						SimiManager.getIntance().removeDialog();
 						count_tag = position;

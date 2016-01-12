@@ -127,10 +127,10 @@ public class SearchHomeBlock extends SimiBlock {
 
 	public void showSearchScreen(String key, String tag) {
 		if (key != null && !key.equals("")) {
-			ListProductFragment fragment = ListProductFragment.newInstance();
-			fragment.setQuerySearch(key);
-			fragment.setTag_search(tag);
-			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
+			ListProductFragment fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS, null, tag, null, null,key, null, null );
+//			fragment.setQuerySearch(key);
+//			fragment.setTag_search(tag);
+//			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}

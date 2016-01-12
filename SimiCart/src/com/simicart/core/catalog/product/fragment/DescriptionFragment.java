@@ -2,6 +2,7 @@ package com.simicart.core.catalog.product.fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 @SuppressLint("SetJavaScriptEnabled")
@@ -18,12 +20,17 @@ public class DescriptionFragment extends SimiFragment {
 
 	protected String mDescription;
 
-	public void setDescription(String description) {
-		mDescription = description;
-	}
+//	public void setDescription(String description) {
+//		mDescription = description;
+//	}
 
-	public static DescriptionFragment newInstance() {
+	public static DescriptionFragment newInstance(String description) {
 		DescriptionFragment fragment = new DescriptionFragment();
+		
+		Bundle args = new Bundle();
+	    setData(Constants.KeyData.DESCRIPTION, description, Constants.KeyData.TYPE_STRING, args);
+	    fragment.setArguments(args);
+
 		return fragment;
 	}
 
@@ -34,7 +41,11 @@ public class DescriptionFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-
+		if(getArguments() != null){
+		mDescription = (String) getData(Constants.KeyData.DESCRIPTION, Constants.KeyData.TYPE_STRING, getArguments());
+		}
+		Log.d("quangdd","mDescription"+mDescription);
+		
 		LinearLayout l_scrollView = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 

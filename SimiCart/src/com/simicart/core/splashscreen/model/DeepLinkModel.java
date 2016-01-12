@@ -1,5 +1,7 @@
 package com.simicart.core.splashscreen.model;
 
+import java.io.Serializable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,7 +11,12 @@ import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class DeepLinkModel extends SimiModel {
+public class DeepLinkModel extends SimiModel implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void paserData() {
 		try {
 			JSONObject obj = this.getDataJSON().getJSONObject("data");

@@ -17,6 +17,7 @@ import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.otherpayment.entity.OtherPaymentEntity;
 
@@ -25,20 +26,26 @@ public class OtherPaymentFragment extends SimiFragment {
 	protected String mInvoiceNumber;
 	protected String mUrlAction = "";
 
-	public void setInvoiceNumber(String mInvoiceNumber) {
-		this.mInvoiceNumber = mInvoiceNumber;
-	}
+//	public void setInvoiceNumber(String mInvoiceNumber) {
+//		this.mInvoiceNumber = mInvoiceNumber;
+//	}
+//
+//	public void setUrlAction(String mUrlAction) {
+//		this.mUrlAction = mUrlAction;
+//	}
+//
+//	public void setPayment(OtherPaymentEntity mPayment) {
+//		this.mPayment = mPayment;
+//	}
 
-	public void setUrlAction(String mUrlAction) {
-		this.mUrlAction = mUrlAction;
-	}
-
-	public void setPayment(OtherPaymentEntity mPayment) {
-		this.mPayment = mPayment;
-	}
-
-	public static OtherPaymentFragment newInstance() {
+	public static OtherPaymentFragment newInstance(String urlAction, String invoiceNumber, OtherPaymentEntity payment) {
 		OtherPaymentFragment fragment = new OtherPaymentFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL_ACTION, urlAction, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
+//		setData(Constants.KeyData.OTHERPAYMENTENTITY, payment, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.OTHERPAYMENTENTITY, payment);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -57,6 +64,13 @@ public class OtherPaymentFragment extends SimiFragment {
 				RelativeLayout.LayoutParams.MATCH_PARENT);
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
 
+		//getdata
+		if(getArguments() != null){
+		mUrlAction = (String) getData(Constants.KeyData.URL_ACTION, Constants.KeyData.TYPE_STRING, getArguments());
+		mInvoiceNumber = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments()); 
+		mPayment = getArguments().getParcelable(Constants.KeyData.OTHERPAYMENTENTITY);
+		}
+		
 		mImageView.setLayoutParams(lp);
 		// add loading View
 		webview.addView(mImageView);

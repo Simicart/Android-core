@@ -93,11 +93,11 @@ public class ScanCode {
 								.getString("product_id");
 						listID.add(product_id);
 						ProductDetailParentFragment fragment = ProductDetailParentFragment
-								.newInstance();
+								.newInstance(product_id,listID);
 						fragment.setTargetFragment(fragment,
 								Constants.TARGET_PRODUCTDETAIL);
-						fragment.setProductID(product_id);
-						fragment.setListIDProduct(listID);
+//						fragment.setProductID(product_id);
+//						fragment.setListIDProduct(listID);
 						SimiManager.getIntance().addFragment(fragment);
 						MainActivity.mCheckToDetailAfterScan = true;
 						MainActivity.mBackEntryCountDetail = SimiManager

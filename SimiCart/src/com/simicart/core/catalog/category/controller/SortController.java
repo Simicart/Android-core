@@ -61,14 +61,14 @@ public class SortController extends SimiController {
 					int position, long id) {
 				System.out.println("Test Sort");
 				ListProductFragment fragment = ListProductFragment
-						.newInstance();
-				fragment.setUrlSearch(url_search);
-				fragment.setCategoryId(mCategoryID);
-				fragment.setQuerySearch(mQuery);
-				fragment.setJsonFilter(jsonFilter);
-				fragment.setTag_search(tag_sort);
-				fragment.setKey(key);
-				fragment.setmSortID(mListSort.get(position).getId() +"");
+						.newInstance(url_search, mCategoryID, tag_sort, key, null, mQuery,mListSort.get(position).getId() +"", jsonFilter );
+//				fragment.setUrlSearch(url_search);
+//				fragment.setCategoryId(mCategoryID);
+//				fragment.setQuerySearch(mQuery);
+//				fragment.setJsonFilter(jsonFilter);
+//				fragment.setTag_search(tag_sort);
+//				fragment.setKey(key);
+//				fragment.setmSortID(mListSort.get(position).getId() +"");
 //				fragment.setSortOption("" + mListSort.get(position).getId());
 				SimiManager.getIntance().replaceFragment(fragment);
 				mDelegate.setSort_option(mListSort.get(position).getTitle());

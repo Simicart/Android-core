@@ -87,8 +87,8 @@ public class PopupCheckoutController extends SimiController {
 				}
 				case MotionEvent.ACTION_UP: {
 					mBlockDelegate.dismissPopupCheckout();
-					SignInFragment fragment = SignInFragment.newInstance();
-					fragment.setCheckout(true);
+					SignInFragment fragment = SignInFragment.newInstance(null, null, true);
+//					fragment.setCheckout(true);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
@@ -119,8 +119,8 @@ public class PopupCheckoutController extends SimiController {
 					mBlockDelegate.dismissPopupCheckout();
 
 					NewAddressBookFragment fragment = NewAddressBookFragment
-							.newInstance();
-					fragment.setAfterControler(NewAddressBookFragment.NEW_CUSTOMER);
+							.newInstance(NewAddressBookFragment.NEW_CUSTOMER, 0, null, null);
+//					fragment.setAfterControler(NewAddressBookFragment.NEW_CUSTOMER);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
@@ -152,8 +152,8 @@ public class PopupCheckoutController extends SimiController {
 					mBlockDelegate.dismissPopupCheckout();
 
 					NewAddressBookFragment fragment = NewAddressBookFragment
-							.newInstance();
-					fragment.setAfterControler(NewAddressBookFragment.NEW_AS_GUEST);
+							.newInstance(NewAddressBookFragment.NEW_AS_GUEST, 0, null, null);
+//					fragment.setAfterControler(NewAddressBookFragment.NEW_AS_GUEST);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {

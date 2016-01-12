@@ -132,19 +132,19 @@ public class NewAddressBookController extends SimiController implements
 
 					}
 				}
-				ReviewOrderFragment fragment = ReviewOrderFragment
-						.newInstance();
+				MyAddress shippingAdd = null, billingAdd = null;
+				int afterControll = 0;
 				Utils.hideKeyboard(arg0);
 				if (isCompleteRequired(address)) {
 					if (android.util.Patterns.EMAIL_ADDRESS.matcher(
 							address.getEmail()).matches()) {
 						if (mAfterController == NewAddressBookFragment.NEW_AS_GUEST
 								|| mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
-							fragment.setBilingAddress(address);
-							fragment.setShippingAddress(address);
-							fragment.setAfterControll(mAfterController);
+							shippingAdd = address;
+							billingAdd = address;
+							afterControll = mAfterController;
 							SimiManager.getIntance().replacePopupFragment(
-									fragment);
+									ReviewOrderFragment.newInstance(afterControll, shippingAdd, billingAdd));
 						} else if (mAfterController == NewAddressBookFragment.NEW_CUSTOMER) {
 							ProfileEntity profile = mDelegate
 									.getProfileEntity();
@@ -154,24 +154,24 @@ public class NewAddressBookController extends SimiController implements
 								String password = profile.getCurrentPass();
 								DataLocal.saveData(email, password);
 								DataLocal.saveData(name, email, password);
-								fragment.setBilingAddress(address);
-								fragment.setAfterControll(mAfterController);
-								fragment.setShippingAddress(address);
-								fragment.setAfterControll(mAfterController);
+								billingAdd = address;
+//								fragment.setAfterControll(mAfterController);
+								shippingAdd = address;
+								afterControll = mAfterController;
 
 								if (addressFor == AddressBookCheckoutFragment.BILLING_ADDRESS) {
-									fragment.setBilingAddress(address);
-									fragment.setShippingAddress(mShippingAddress);
+									billingAdd = address;
+									shippingAdd = mShippingAddress;
 								} else if (addressFor == AddressBookCheckoutFragment.SHIPPING_ADDRESS) {
-									fragment.setShippingAddress(address);
-									fragment.setBilingAddress(mBillingAddress);
+									shippingAdd = address;
+									billingAdd = mBillingAddress;
 								} else {
-									fragment.setShippingAddress(address);
-									fragment.setBilingAddress(address);
+									billingAdd = address;
+									shippingAdd = address;
 								}
 								SimiManager.getIntance().removeDialog();
 								SimiManager.getIntance().replaceFragment(
-										fragment);
+										ReviewOrderFragment.newInstance(afterControll, shippingAdd, billingAdd));
 							}
 						} else {
 							OnRequestChangeAddress(address);
@@ -188,6 +188,62 @@ public class NewAddressBookController extends SimiController implements
 					SimiManager.getIntance().showNotify(null,
 							"Please select all (*) fields", "OK");
 				}
+				ReviewOrderFragment fragment = ReviewOrderFragment
+						.newInstance(afterControll, shippingAdd, billingAdd);
+//				Utils.hideKeyboard(arg0);
+//				if (isCompleteRequired(address)) {
+//					if (android.util.Patterns.EMAIL_ADDRESS.matcher(
+//							address.getEmail()).matches()) {
+//						if (mAfterController == NewAddressBookFragment.NEW_AS_GUEST
+//								|| mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
+//							fragment.setBilingAddress(address);
+//							fragment.setShippingAddress(address);
+//							fragment.setAfterControll(mAfterController);
+//							SimiManager.getIntance().replacePopupFragment(
+//									fragment);
+//						} else if (mAfterController == NewAddressBookFragment.NEW_CUSTOMER) {
+//							ProfileEntity profile = mDelegate
+//									.getProfileEntity();
+//							if (null != profile) {
+//								String name = profile.getName();
+//								String email = profile.getEmail();
+//								String password = profile.getCurrentPass();
+//								DataLocal.saveData(email, password);
+//								DataLocal.saveData(name, email, password);
+//								fragment.setBilingAddress(address);
+////								fragment.setAfterControll(mAfterController);
+//								fragment.setShippingAddress(address);
+//								fragment.setAfterControll(mAfterController);
+//
+//								if (addressFor == AddressBookCheckoutFragment.BILLING_ADDRESS) {
+//									fragment.setBilingAddress(address);
+//									fragment.setShippingAddress(mShippingAddress);
+//								} else if (addressFor == AddressBookCheckoutFragment.SHIPPING_ADDRESS) {
+//									fragment.setShippingAddress(address);
+//									fragment.setBilingAddress(mBillingAddress);
+//								} else {
+//									fragment.setShippingAddress(address);
+//									fragment.setBilingAddress(address);
+//								}
+//								SimiManager.getIntance().removeDialog();
+//								SimiManager.getIntance().replaceFragment(
+//										fragment);
+//							}
+//						} else {
+//							OnRequestChangeAddress(address);
+//						}
+//						ConfigCheckout.getInstance().setStatusAddressBook(true);
+//					} else {
+//						SimiManager.getIntance().showNotify(
+//								null,
+//								Config.getInstance().getText(
+//										"Invalid email address"),
+//								Config.getInstance().getText("OK"));
+//					}
+//				} else {
+//					SimiManager.getIntance().showNotify(null,
+//							"Please select all (*) fields", "OK");
+//				}
 			}
 		};
 
@@ -309,32 +365,52 @@ public class NewAddressBookController extends SimiController implements
 						}
 
 						if (null != newAddress) {
+							
+							MyAddress shippingAdd = null, billingAdd = null;
 							if (mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
-								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance();
 								switch (addressFor) {
 								case AddressBookCheckoutFragment.ALL_ADDRESS:
-									fragment.setBilingAddress(newAddress);
-									fragment.setShippingAddress(newAddress);
+									billingAdd = newAddress;
+									shippingAdd = newAddress;
 									break;
 								case AddressBookCheckoutFragment.BILLING_ADDRESS:
-									fragment.setBilingAddress(newAddress);
-									fragment.setShippingAddress(mShippingAddress);
+									billingAdd = newAddress;
+									shippingAdd = mShippingAddress;
 									break;
 								case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
-									fragment.setBilingAddress(mBillingAddress);
-									fragment.setShippingAddress(newAddress);
+									billingAdd = mBillingAddress;
+									shippingAdd = newAddress;
 									break;
 								default:
 									break;
 								}
+								ReviewOrderFragment fragment = ReviewOrderFragment
+										.newInstance(0, shippingAdd, billingAdd);
+//								switch (addressFor) {
+//								case AddressBookCheckoutFragment.ALL_ADDRESS:
+//									billingAdd = newAddress;
+//									shippingAdd  = newAddress;
+//									break;
+//								case AddressBookCheckoutFragment.BILLING_ADDRESS:
+//									billingAdd = newAddress;
+//									shippingAdd = mShippingAddress;
+//									break;
+//								case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
+//									billingAdd = mBillingAddress;
+//									shippingAdd = newAddress;
+//									break;
+//								default:
+//									break;
+//								}
 								SimiManager.getIntance().replacePopupFragment(
 										fragment);
 							} else {
+								billingAdd = newAddress;
+								shippingAdd = newAddress;
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance();
-								fragment.setBilingAddress(newAddress);
-								fragment.setShippingAddress(newAddress);
+										.newInstance(0 , shippingAdd, billingAdd);
+//								fragment.setBilingAddress(newAddress);
+//								fragment.setShippingAddress(newAddress);
 								SimiManager.getIntance().replacePopupFragment(
 										fragment);
 							}
@@ -485,10 +561,10 @@ public class NewAddressBookController extends SimiController implements
 
 	protected void changeFragmentCountry(int type,
 			ArrayList<String> list_country) {
-		CountryFragment fragment = CountryFragment.newInstance();
+		CountryFragment fragment = CountryFragment.newInstance(type, list_country);
 		fragment.setChooseDelegate(this);
-		fragment.setList_country(list_country);
-		fragment.setType(type);
+//		fragment.setList_country(list_country);
+//		fragment.setType(type);
 		SimiManager.getIntance().replacePopupFragment(fragment);
 	}
 

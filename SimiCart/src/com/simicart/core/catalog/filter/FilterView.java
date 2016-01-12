@@ -59,11 +59,11 @@ public class FilterView {
 	}
 
 	protected void onFilter(String catName) {
-		FilterFragment fragment = FilterFragment.newInstance();
+		FilterFragment fragment = FilterFragment.newInstance(null,catName, mStates, mFilterEntity );
 		fragment.setDelegate(mDelegate);
-		fragment.setFilterEntity(mFilterEntity);
-		fragment.setCatName(catName);
-		fragment.setState(mStates);
+//		fragment.setFilterEntity(mFilterEntity);
+//		fragment.setCatName(catName);
+//		fragment.setState(mStates);
 		SimiManager.getIntance().replacePopupFragment(fragment);
 	}
 

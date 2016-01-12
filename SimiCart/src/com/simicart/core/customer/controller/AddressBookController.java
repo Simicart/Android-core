@@ -98,8 +98,8 @@ public class AddressBookController extends SimiController {
 		Log.e("AddressBookController : ",
 				"Address ID : " + addressbook.getAddressId());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
-				.newInstance();
-		fragment.setAddressbook(addressbook);
+				.newInstance(addressbook);
+//		fragment.setAddressbook(addressbook);
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
 		} else {

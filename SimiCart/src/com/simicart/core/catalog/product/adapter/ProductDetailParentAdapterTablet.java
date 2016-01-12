@@ -69,11 +69,11 @@ public class ProductDetailParentAdapterTablet extends
 	public Fragment getItem(int position) {
 		String id = mListID.get(position);
 		ProductDetailChildFragment fragment = ProductDetailChildFragment
-				.newInstance();
+				.newInstance(id);
 		fragment.setAdapterDelegate(this);
 		fragment.setProductDelegate(productDelegate);
 		fragment.setController(mController);
-		fragment.setProductID(id);
+//		fragment.setProductID(id);
 		return fragment;
 	}
 

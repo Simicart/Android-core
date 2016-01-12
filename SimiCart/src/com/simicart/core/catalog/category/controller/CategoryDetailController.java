@@ -17,6 +17,7 @@ public class CategoryDetailController extends SimiController {
 	protected String mID;
 	protected OnClickListener mClicker;
 	protected String mCatename;
+	protected String urlSearch;
 
 	@Override
 	public void onStart() {
@@ -30,16 +31,22 @@ public class CategoryDetailController extends SimiController {
 
 			@Override
 			public void onClick(View v) {
-				ListProductFragment searchFragment = ListProductFragment
-						.newInstance();
-				searchFragment.setCategoryId(mID);
-				searchFragment.setCategoryName(mCatename);
+				
 				if (mID.equals("-1")) {
-					searchFragment.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+					urlSearch = Constants.GET_ALL_PRODUCTS;
 				} else {
-					searchFragment
-							.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+					urlSearch = Constants.GET_CATEGORY_PRODUCTS;
 				}
+				ListProductFragment searchFragment = ListProductFragment
+						.newInstance(urlSearch, mID, null, null, mCatename, null, null, null);
+//				searchFragment.setCategoryId(mID);
+//				searchFragment.setCategoryName(mCatename);
+//				if (mID.equals("-1")) {
+//					searchFragment.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+//				} else {
+//					searchFragment
+//							.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+//				}
 				SimiManager.getIntance().replaceFragment(searchFragment);
 			}
 		};

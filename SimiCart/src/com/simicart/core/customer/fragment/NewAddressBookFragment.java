@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.NewAddressBookBlock;
@@ -23,10 +24,24 @@ public class NewAddressBookFragment extends SimiFragment {
 	// click new address from check out
 	public static final int NEW_ADDRESS_CHECKOUT = 3;
 
-	public static NewAddressBookFragment newInstance() {
+	public static NewAddressBookFragment newInstance(int afterControl, int addressFor, MyAddress billingAddress, MyAddress shippingAddress) {
 		NewAddressBookFragment fragment = new NewAddressBookFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.AFTER_CONTROL, afterControl, Constants.KeyData.TYPE_INT, bundle);
+		setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
+//		setData(Constants.KeyData.BILLING_ADDRESS, billingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
+		bundle.putParcelable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
+//		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
+		bundle.putParcelable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
+	public static NewAddressBookFragment newInstance() {
+		NewAddressBookFragment fragment = new NewAddressBookFragment();
+		
+		return fragment;
+	}
+	
 
 	protected NewAddressBookBlock mBlock;
 	protected NewAddressBookController mController;
@@ -36,13 +51,26 @@ public class NewAddressBookFragment extends SimiFragment {
 	protected MyAddress mBillingAddress;
 	protected MyAddress mShippingAddress;
 
-	public void setBillingAddress(MyAddress mBillingAddress) {
-		this.mBillingAddress = mBillingAddress;
+//	public void setBillingAddress(MyAddress mBillingAddress) {
+//		this.mBillingAddress = mBillingAddress;
+//	}
+//
+//	public void setShippingAddress(MyAddress mShippingAddress) {
+//		this.mShippingAddress = mShippingAddress;
+//	}
+//	
+//	public void setAfterControler(int afterControl) {
+//		this.afterControl = afterControl;
+//	}
+	
+	public int getAfterControl() {
+		return afterControl;
 	}
-
-	public void setShippingAddress(MyAddress mShippingAddress) {
-		this.mShippingAddress = mShippingAddress;
-	}
+//
+//	public void setAddressFor(int addressFor) {
+//		this.addressFor = addressFor;
+//	}
+	
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +86,15 @@ public class NewAddressBookFragment extends SimiFragment {
 							false);
 		}
 		Context context = getActivity();
+		
+		//getdata
+		if(getArguments() != null){
+		afterControl = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
+		addressFor = (int) getData(Constants.KeyData.ADDRESS_FOR, Constants.KeyData.TYPE_INT, getArguments());
+		mBillingAddress = getArguments().getParcelable(Constants.KeyData.BILLING_ADDRESS);
+		mShippingAddress = getArguments().getParcelable(Constants.KeyData.SHIPPING_ADDRESS);
+		}
+		
 		mBlock = new NewAddressBookBlock(view, context);
 		mBlock.setAfterController(afterControl);
 		mBlock.initView();
@@ -82,15 +119,4 @@ public class NewAddressBookFragment extends SimiFragment {
 		return view;                                                                               
 	}
 
-	public void setAfterControler(int afterControl) {
-		this.afterControl = afterControl;
-	}
-	
-	public int getAfterControl() {
-		return afterControl;
-	}
-
-	public void setAddressFor(int addressFor) {
-		this.addressFor = addressFor;
-	}
 }

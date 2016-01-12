@@ -23,6 +23,7 @@ import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.Utils;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class FacebookConnectFragment extends SimiFragment {
@@ -36,16 +37,19 @@ public class FacebookConnectFragment extends SimiFragment {
 	FacebookLikesButton fbLikes;
 	private static 	CallbackManager callbackManager;
 
-	public void setUrlProduct(String urlProduct) {
-		this.urlProduct = urlProduct;
-	}
+//	public void setUrlProduct(String urlProduct) {
+//		this.urlProduct = urlProduct;
+//	}
 
 	public void setContext(Context mContext) {
 		this.mContext = mContext;
 	}
 
-	public static FacebookConnectFragment newInstance() {
+	public static FacebookConnectFragment newInstance(String url) {
 		FacebookConnectFragment fragment = new FacebookConnectFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -66,6 +70,10 @@ public class FacebookConnectFragment extends SimiFragment {
 				"btn_fbShare"));
 		img_comment = (ImageView) rootView.findViewById(Rconfig.getInstance()
 				.id("btn_fbComment"));
+		if(getArguments() != null){
+		urlProduct = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		}
+		
 		handleEvent();
 		int sizeLike = Utils.getValueDp(30);
 		final int sizeComment_w = Utils.getValueDp(40);

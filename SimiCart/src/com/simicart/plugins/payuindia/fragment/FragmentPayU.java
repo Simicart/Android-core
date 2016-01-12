@@ -17,6 +17,7 @@ import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class FragmentPayU extends SimiFragment {
@@ -32,26 +33,30 @@ public class FragmentPayU extends SimiFragment {
 	String Url = "";
 	String invoice_number;
 	
-	public static FragmentPayU newInstance(){
+	public static FragmentPayU newInstance(String url, String invoiceNumber){
 		FragmentPayU fragment = new FragmentPayU();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 	
 	public String getUrl() {
 		return Url;
 	}
-
-	public void setUrl(String url) {
-		this.Url = url;
-	}
+//
+//	public void setUrl(String url) {
+//		this.Url = url;
+//	}
 
 	public String getInvoice_number() {
 		return invoice_number;
 	}
 
-	public void setInvoice_number(String invoice_number) {
-		this.invoice_number = invoice_number;
-	}
+//	public void setInvoice_number(String invoice_number) {
+//		this.invoice_number = invoice_number;
+//	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,7 +72,11 @@ public class FragmentPayU extends SimiFragment {
 				RelativeLayout.LayoutParams.MATCH_PARENT,
 				RelativeLayout.LayoutParams.MATCH_PARENT);
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
-
+		if(getArguments() != null){
+		Url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		}
+		
 		mImageView.setLayoutParams(lp);
 		
 		webview.addView(mImageView);

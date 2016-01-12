@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,21 +18,28 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.catalog.product.entity.Attributes;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class TechSpecsFragment extends SimiFragment {
 
 	protected ArrayList<Attributes> mAttributes;
 
-	public static TechSpecsFragment newInstance() {
+	public static TechSpecsFragment newInstance(ArrayList<Attributes> attributes) {
 		TechSpecsFragment fragment = new TechSpecsFragment();
+		
+		Bundle args = new Bundle();
+//		setData(Constants.KeyData.LIST_ATTRIBUTES, attributes, Constants.KeyData.TYPE_LIST_MODEL, args);
+		args.putParcelableArrayList(Constants.KeyData.LIST_ATTRIBUTES, attributes);
+	    fragment.setArguments(args);
 		return fragment;
 	}
 
-	public void setAttributes(ArrayList<Attributes> attributes) {
-		mAttributes = attributes;
-	}
+//	public void setAttributes(ArrayList<Attributes> attributes) {
+//		mAttributes = attributes;
+//	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -39,6 +47,11 @@ public class TechSpecsFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
+		if(getArguments() != null){
+		mAttributes = getArguments().getParcelableArrayList(Constants.KeyData.LIST_ATTRIBUTES);
+		}
+		Log.d("quangdd","mAttributes"+mAttributes.get(0).toString());
+		
 		LinearLayout ll_techSpecs = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 

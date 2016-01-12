@@ -455,8 +455,8 @@ public class DownloadAdapter extends BaseAdapter {
 				// TODO Auto-generated method stub
 				String id = item.getOrderID();
 				OrderHistoryDetailFragment fragment = OrderHistoryDetailFragment
-						.newInstance();
-				fragment.setID(id);
+						.newInstance(0, id);
+//				fragment.setID(id);
 				SimiManager.getIntance().replaceFragment(fragment);
 
 			}

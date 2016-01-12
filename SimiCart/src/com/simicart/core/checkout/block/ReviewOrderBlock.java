@@ -360,8 +360,8 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 					@Override
 					public void onClick(View v) {
 						ConditionFragment fragment = ConditionFragment
-								.newInstance();
-						fragment.setContent(content);
+								.newInstance(content);
+//						fragment.setContent(content);
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					}
 				});
