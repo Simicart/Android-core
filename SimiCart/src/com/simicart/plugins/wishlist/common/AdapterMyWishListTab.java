@@ -272,9 +272,9 @@ public class AdapterMyWishListTab extends BaseAdapter implements RefreshWishlist
 				for (int i = 0; i < mWishLists.size(); i++) {
 					listID.add(mWishLists.get(i).getProduct_id());
 				}
-				ProductDetailParentFragment fragment = ProductDetailParentFragment.newInstance();
-				fragment.setProductID(itemWishList.getProduct_id());
-				fragment.setListIDProduct(listID);
+				ProductDetailParentFragment fragment = ProductDetailParentFragment.newInstance(itemWishList.getProduct_id(),listID);
+//				fragment.setProductID(itemWishList.getProduct_id());
+//				fragment.setListIDProduct(listID);
 				SimiManager.getIntance().replaceFragment(fragment);
 			}
 		});

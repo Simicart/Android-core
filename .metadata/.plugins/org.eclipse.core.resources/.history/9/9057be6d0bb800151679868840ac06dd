@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="30" >
+
+        <ListView
+            android:id="@+id/list_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/layout_search"
+            android:layout_alignParentTop="true" >
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/layout_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#7f8c8d" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.7"
+                    android:gravity="center|right"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/plugins_locator_search" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/storelocator_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:text="Search By Area"
+                        android:textColor="@android:color/black"
+                        android:textSize="14dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateDrawable="@drawable/progressbar_indeterminate" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/container2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="70"
+        android:background="@drawable/background_fragment" >
+
+        <LinearLayout
+            android:id="@+id/progressBar_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateDrawable="@drawable/progressbar_indeterminate" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -26,8 +26,8 @@ public class FacebookPlugin {
 		if(method.equals("resultfacebook")){
 			SimiManager.getIntance().backPreviousFragment();
 			FacebookConnectFragment fragment = FacebookConnectFragment
-					.newInstance();
-			fragment.setUrlProduct(url_product);
+					.newInstance(url_product);
+//			fragment.setUrlProduct(url_product);
 			fragment.setContext(mContext);
 			FragmentTransaction ft = SimiManager.getIntance().getManager()
 					.beginTransaction();
@@ -65,8 +65,8 @@ public class FacebookPlugin {
 			public void onClick(View v) {
 				SimiManager.getIntance().removeDialog();
 				FacebookConnectFragment fragment = FacebookConnectFragment
-						.newInstance();
-				fragment.setUrlProduct(url_product);
+						.newInstance(url_product);
+//				fragment.setUrlProduct(url_product);
 				fragment.setContext(mContext);
 				FragmentTransaction ft = SimiManager.getIntance().getManager()
 						.beginTransaction();

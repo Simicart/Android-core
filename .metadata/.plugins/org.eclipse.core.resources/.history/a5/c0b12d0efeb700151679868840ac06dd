@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EBEBEB"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/lable_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/layout_addadress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/core_line_border_white"
+            android:padding="7dp" >
+
+            <ImageView
+                android:id="@+id/iv_extend"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_extend" />
+
+            <ImageView
+                android:id="@+id/iv_add"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_action_add" />
+
+            <TextView
+                android:id="@+id/addAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/iv_extend"
+                android:layout_toRightOf="@+id/iv_add"
+                android:gravity="center"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_chooseAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"
+            android:textColor="#CACACA"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_listAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/core_line_border_white" >
+    </ListView>
+
+</LinearLayout>

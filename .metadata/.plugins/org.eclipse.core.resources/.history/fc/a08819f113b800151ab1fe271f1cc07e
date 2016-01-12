@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_rewardsetting_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBEBEB"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txt_rewardsetting_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="20dp"
+            android:text="EMAIL SUBCRIPTIONS"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlt_pointupdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/txt_pointupdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="10dp"
+            android:text="Point Balance Update"
+            android:textColor="#000000" />
+
+        <Switch
+            android:id="@+id/switch_pointupdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/plugin_reward_button_setting"
+            android:checked="false" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_rewardsetting_subscribe_updatepoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBEBEB"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txt_rewardsetting_subscribe_updatepoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Subscribe to receive updates on your point balance"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlt_pointtransaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/txt_pointtransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="10dp"
+            android:text="Expired Point Transaction"
+            android:textColor="#000000" />
+
+        <Switch
+            android:id="@+id/switch_pointtransaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/plugin_reward_button_setting"
+            android:checked="false" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_rewardsetting_subscribe_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EBEBEB"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/txt_rewardsetting_subscribe_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="Subscribe to receive notification of expiring points in advance"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Save"
+        android:textColor="#ffffff"
+        android:textSize="18dp" />
+
+</LinearLayout>

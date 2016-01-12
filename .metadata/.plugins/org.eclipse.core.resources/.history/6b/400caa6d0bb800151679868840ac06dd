@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <!-- Image for avartar -->
+
+    <RelativeLayout
+        android:id="@+id/rel_product_list"
+        android:layout_width="match_parent"
+        android:layout_height="230dp" >
+
+        <ImageView
+            android:id="@+id/img_avartar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:src="@drawable/default_logo" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/core_grid_background_listproduct" />
+    </RelativeLayout>
+
+    <!-- name product -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#90ffffff"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="6"
+            android:background="@null"
+            android:ellipsize="end"
+            android:gravity="center_vertical|center_horizontal"
+            android:lines="1"
+            android:paddingBottom="2dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="NOKIA 11100C 12Gb"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_excl"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="123.00"
+                android:textColor="#0d0c0c"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tv_incl"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="123.00"
+                android:textColor="#0d0c0c"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

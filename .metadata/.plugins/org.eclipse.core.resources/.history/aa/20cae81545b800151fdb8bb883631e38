@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_list_search"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ListView
+        android:id="@+id/lv_list_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="@dimen/size_20"
+        android:paddingLeft="@dimen/size_5"
+        android:paddingRight="@dimen/size_5"
+        android:scrollbars="none"
+        android:visibility="visible" >
+    </ListView>
+
+    <GridView
+        android:id="@+id/grv_product"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:horizontalSpacing="@dimen/size_7"
+        android:numColumns="auto_fit"
+        android:padding="@dimen/size_7"
+        android:scrollbars="none"
+        android:verticalSpacing="@dimen/size_20"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rlt_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_40"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/core_background_search"
+        android:paddingLeft="@dimen/size_5"
+        android:paddingRight="@dimen/size_5" >
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/size_1"
+            android:layout_weight="1"
+            android:background="@drawable/core_bgr_search"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/rlt_layout"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5" />
+
+            <ImageView
+                android:id="@+id/img_ic_search"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_30"
+                android:padding="@dimen/size_5"
+                android:src="@drawable/ic_search" />
+
+            <EditText
+                android:id="@+id/edittext_search"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:imeOptions="actionSearch"
+                android:paddingLeft="@dimen/size_10"
+                android:paddingRight="@dimen/size_10"
+                android:singleLine="true"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/menu_bottom_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_45"
+        android:layout_alignParentBottom="true"
+        android:background="#E6f2f2f2"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:id="@+id/ll_change_view_data"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:padding="@dimen/size_5" >
+
+            <ImageView
+                android:id="@+id/img_change_view"
+                android:layout_width="@dimen/size_25"
+                android:layout_height="@dimen/size_25"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_to_filter"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/size_5" >
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_to_sort"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical"
+            android:padding="@dimen/size_5" >
+
+            <ImageView
+                android:id="@+id/img_sort"
+                android:layout_width="@dimen/size_5"
+                android:layout_height="@dimen/size_5"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_sort" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar_load"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_40"
+        android:layout_above="@+id/menu_bottom_search"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#FFFFFF"
+        android:indeterminateDrawable="@drawable/progressbar_indeterminate"
+        android:visibility="visible" />
+
+</RelativeLayout>

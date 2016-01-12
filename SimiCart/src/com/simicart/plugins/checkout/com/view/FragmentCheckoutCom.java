@@ -15,6 +15,7 @@ import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.home.fragment.HomeFragment;
 import com.simicart.plugins.checkout.com.model.UpdatePaymentModel;
@@ -22,7 +23,7 @@ import com.simicart.plugins.checkout.com.model.UpdatePaymentModel;
 public class FragmentCheckoutCom extends SimiFragment {
 
 	String data = "";
-	String Url = "";
+	String url = "";
 	String url_back = "";
 	String url_action = "";
 
@@ -32,46 +33,51 @@ public class FragmentCheckoutCom extends SimiFragment {
 		return data;
 	}
 
-	public void setData(String data) {
-		this.data = data;
-	}
+//	public void setData(String data) {
+//		this.data = data;
+//	}
 
 	public String getUrl() {
-		return Url;
+		return url;
 	}
 
-	public void setUrl(String url) {
-		this.Url = url;
-	}
+//	public void setUrl(String url) {
+//		this.Url = url;
+//	}
 
 	public String getInvoice_number() {
 		return invoice_number;
 	}
 
-	public void setInvoice_number(String invoice_number) {
-		this.invoice_number = invoice_number;
-	}
+//	public void setInvoice_number(String invoice_number) {
+//		this.invoice_number = invoice_number;
+//	}
 
 	public String getUrl_back() {
 		return url_back;
 	}
 
-	public void setUrl_back(String url_back) {
-		this.url_back = url_back;
-	}
+//	public void setUrl_back(String url_back) {
+//		this.url_back = url_back;
+//	}
 
 	public String getUrl_action() {
 		return url_action;
 	}
 
-	public void setUrl_action(String url_action) {
-		this.url_action = url_action;
-	}
+//	public void setUrl_action(String url_action) {
+//		this.url_action = url_action;
+//	}
 
-	public static FragmentCheckoutCom newInstance(String data, String url) {
+	public static FragmentCheckoutCom newInstance(String url, String urlAciton, String urlBack, String data, String invoiceNumber) {
 		FragmentCheckoutCom fragmentCheckoutCom = new FragmentCheckoutCom();
-		fragmentCheckoutCom.setData(data);
-		fragmentCheckoutCom.setUrl(url);
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.URL_BACK, urlBack, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.URL_ACTION, urlAciton, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.DATA, data, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
+		fragmentCheckoutCom.setArguments(bundle);
 		return fragmentCheckoutCom;
 	}
 
@@ -81,6 +87,16 @@ public class FragmentCheckoutCom extends SimiFragment {
 		rootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_webview_layout"), container,
 				false);
+		
+		//getdata
+		if(getArguments() != null){
+		data = (String) getData(Constants.KeyData.DATA, Constants.KeyData.TYPE_STRING, getArguments());
+		url = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		url_action = (String) getData(Constants.KeyData.URL_ACTION, Constants.KeyData.TYPE_STRING, getArguments());
+		url_back = (String) getData(Constants.KeyData.URL_BACK, Constants.KeyData.TYPE_STRING, getArguments());
+		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		}
+		
 		final WebView webview = (WebView) rootView.findViewById(Rconfig
 				.getInstance().id("webview_Ad"));
 		final View mImageView = inflater.inflate(
@@ -101,7 +117,7 @@ public class FragmentCheckoutCom extends SimiFragment {
 				WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 		webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 
-		String url_site = Url + data;
+		String url_site = url + data;
 		webview.loadUrl(url_site);
 
 		webview.setWebViewClient(new WebViewClient() {

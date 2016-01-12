@@ -30,6 +30,7 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.NoScrollListView;
 import com.simicart.plugins.locator.DataLocator;
@@ -56,7 +57,10 @@ public class StoreDetail extends SimiFragment {
 
 	public static StoreDetail newInstance(StoreObject storeObject) {
 		StoreDetail detail = new StoreDetail();
-		detail.storeObject = storeObject;
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.STORE_OBJECT, storeObject, Constants.KeyData.TYPE_JSONOBJECT, bundle);
+		detail.setArguments(bundle);
+//		detail.storeObject = storeObject;
 		// Log.e("StoreObject", storeObject.getList_special().get(0).getDate());
 		// Log.e("StoreObject2",
 		// storeObject.getList_holiday().get(0).getDate());
@@ -147,6 +151,11 @@ public class StoreDetail extends SimiFragment {
 				.getIdLayout("lb_thursday"));
 		lb_friday = (TextView) view.findViewById(Rconfig.getInstance()
 				.getIdLayout("lb_friday"));
+		
+		//getdata
+		if(getArguments() != null){
+		storeObject = (StoreObject) getData(Constants.KeyData.STORE_OBJECT, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		}
 		
 		lb_monday.setText(Config.getInstance().getText("Monday") + ":");
 		lb_saturday.setText(Config.getInstance().getText("Saturday") + ":");

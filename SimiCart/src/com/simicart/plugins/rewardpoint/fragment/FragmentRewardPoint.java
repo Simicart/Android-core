@@ -272,9 +272,7 @@ public class FragmentRewardPoint extends SimiFragment {
 				// set content to view
 				txt_number_point.setText(itempointData.getLoyalty_point() + "");
 				txt_availble_point.setVisibility(View.VISIBLE);
-				txt_number_redeem.setText(Config.getInstance().getText("Equal")
-						+ " " + loyalty_redeem + " "
-						+ Config.getInstance().getText("to redeem"));
+				txt_number_redeem.setText(String.format(Config.getInstance().getText("Equal %s to redeem"), loyalty_redeem));
 				txt_coint.setText(itempointData.getSpending_discount());
 
 				System.out.println("xx");
@@ -416,7 +414,7 @@ public class FragmentRewardPoint extends SimiFragment {
 				case MotionEvent.ACTION_UP:
 					rlt_layout_card.setBackgroundColor(Color
 							.parseColor("#FFFFFF"));
-					FragmentRewardCard rewardCard = new FragmentRewardCard(
+					FragmentRewardCard rewardCard = FragmentRewardCard.instance(
 							passBookLogo, loyalty_redeem, passbook_text,
 							background_passbook, passbook_foreground,
 							passbook_barcode);

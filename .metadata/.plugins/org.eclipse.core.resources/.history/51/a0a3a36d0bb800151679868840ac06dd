@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:bottom="0dp"
+        android:left="-10dp"
+        android:right="-10dp"
+        android:top="-10dp">
+        <shape android:shape="rectangle" >
+            <solid android:color="#0000" >
+            </solid>
+
+            <!-- đặt thuộc tính màu và độ rộng của đường viền -->
+            <stroke
+                android:width="0.5dp"
+                android:color="#CACACA" >
+
+            </stroke>
+
+            <!-- các thuộc tính căn chỉnh -->
+            <padding
+                android:bottom="10dp"
+                android:left="10dp"
+                android:right="10dp"
+                android:top="10dp" >
+            </padding>
+        </shape>
+    </item>
+
+</layer-list>

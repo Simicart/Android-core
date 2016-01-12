@@ -248,9 +248,8 @@ public class PaymentMethodBlock extends SimiBlock implements
 						&& paymentMethod.getData(Constants.CONTENT) == null) {
 
 				} else if (show_type == 1) {
-					CreditCardFragment fcreditCard = CreditCardFragment
-							.newInstance();
-
+					
+					boolean checkMethod = false;
 					if (PaymentMethod
 							.getInstance()
 							.getCurrentMethod()
@@ -258,12 +257,27 @@ public class PaymentMethodBlock extends SimiBlock implements
 							.equals(paymentMethod.getPayment_method()
 									.toLowerCase())) {
 
-						fcreditCard.setIsCheckedMethod(true);
+						checkMethod = true;
 					} else {
 						PaymentMethod.getInstance().setCurrentMethod(
 								paymentMethod.getPayment_method());
 					}
-					fcreditCard.setPaymentMethod(paymentMethod);
+					CreditCardFragment fcreditCard = CreditCardFragment
+							.newInstance(checkMethod, paymentMethod);
+
+//					if (PaymentMethod
+//							.getInstance()
+//							.getCurrentMethod()
+//							.toLowerCase()
+//							.equals(paymentMethod.getPayment_method()
+//									.toLowerCase())) {
+//
+//						fcreditCard.setIsCheckedMethod(true);
+//					} else {
+//						PaymentMethod.getInstance().setCurrentMethod(
+//								paymentMethod.getPayment_method());
+//					}
+//					fcreditCard.setPaymentMethod(paymentMethod);
 					SimiManager.getIntance().replacePopupFragment(fcreditCard);
 				}
 				ConfigCheckout.checkPaymentMethod = true;

@@ -49,6 +49,7 @@ public class CategoryHomeTheme1Block extends SimiBlock implements
 	private TextView tv_viewmore3;
 	private TextView tv_view_all_category;
 
+	private String urlSearch ="";
 	public CategoryHomeTheme1Block(View view, Context context) {
 		super(view, context);
 
@@ -430,8 +431,7 @@ public class CategoryHomeTheme1Block extends SimiBlock implements
 	private void viewCategory(final Theme1Category category) {
 		SimiFragment fragment = null;
 		if (category.isHasChild()) {
-			fragment = CategoryFragment.newInstance(category.getCategoryName(),
-					category.getCategoryID());
+			fragment = CategoryFragment.newInstance(category.getCategoryID(), category.getCategoryName());
 			if (DataLocal.isTablet) {
 				CateSlideMenuFragment.getIntance().replaceFragmentCategoryMenu(
 						fragment);
@@ -440,22 +440,30 @@ public class CategoryHomeTheme1Block extends SimiBlock implements
 				SimiManager.getIntance().replaceFragment(fragment);
 			}
 		} else {
-			fragment = ListProductFragment.newInstance();
-			((ListProductFragment) fragment).setCategoryId(category
-					.getCategoryID());
-			((ListProductFragment) fragment).setCategoryName(category
-					.getCategoryName());
 			if (category.getCategoryID().equals("-1")) {
-				((ListProductFragment) fragment)
-						.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+				urlSearch = Constants.GET_ALL_PRODUCTS;
 			} else {
-				((ListProductFragment) fragment)
-						.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+				urlSearch = Constants.GET_CATEGORY_PRODUCTS;
 			}
-			if (DataLocal.isTablet) {
-				((ListProductFragment) fragment)
-						.setTag_search(TagSearch.TAG_GRIDVIEW);
-			}
+			
+			fragment = ListProductFragment.newInstance(urlSearch,category
+					.getCategoryID(), null, null, category
+					.getCategoryName(), null, null, null );
+//			((ListProductFragment) fragment).setCategoryId(category
+//					.getCategoryID());
+//			((ListProductFragment) fragment).setCategoryName(category
+//					.getCategoryName());
+//			if (category.getCategoryID().equals("-1")) {
+//				((ListProductFragment) fragment)
+//						.setUrlSearch(Constants.GET_ALL_PRODUCTS);
+//			} else {
+//				((ListProductFragment) fragment)
+//						.setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+//			}
+//			if (DataLocal.isTablet) {
+//				((ListProductFragment) fragment)
+//						.setTag_search(TagSearch.TAG_GRIDVIEW);
+//			}
 			SimiManager.getIntance().removeDialog();
 			SimiManager.getIntance().replaceFragment(fragment);
 		}

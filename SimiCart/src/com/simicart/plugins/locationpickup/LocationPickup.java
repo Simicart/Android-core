@@ -15,20 +15,23 @@ public class LocationPickup {
 		this.mCacheFragment = caheFragment;
 		SimiFragment fragment;
 		if (method.equals("addCreateView")) {
-			fragment = LocationPickupFragment.newInstance();
 			int afterControl = ((NewAddressBookFragment) caheFragment
 					.getFragment()).getAfterControl();
-			((LocationPickupFragment) fragment).setAfterControler(afterControl);
+			fragment = LocationPickupFragment.newInstance(afterControl, 0 , null, null);
+			
+//			((LocationPickupFragment) fragment).setAfterControler(afterControl);
 
 //			fragment = new TestFragment();
 
 			this.mCacheFragment.setFragment(fragment);
 		}
 		if (method.equals("addEditView")) {
-			fragment = LocationPickupEditFragment.newInstance();
 			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
 					.getFragment()).getAddressbook();
-			((LocationPickupEditFragment) fragment).setAddressbook(myaddress);
+			fragment = LocationPickupEditFragment.newInstance(myaddress);
+//			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
+//					.getFragment()).getAddressbook();
+//			((LocationPickupEditFragment) fragment).setAddressbook(myaddress);
 			this.mCacheFragment.setFragment(fragment);
 		}
 	}

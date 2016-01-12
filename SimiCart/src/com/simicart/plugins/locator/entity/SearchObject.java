@@ -1,6 +1,9 @@
 package com.simicart.plugins.locator.entity;
 
-public class SearchObject {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class SearchObject implements Parcelable{
 	private String city;
 	private String state;
 	private String zipcode;
@@ -63,5 +66,17 @@ public class SearchObject {
 	
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel paramParcel, int paramInt) {
+		// TODO Auto-generated method stub
+		
 	}
 }

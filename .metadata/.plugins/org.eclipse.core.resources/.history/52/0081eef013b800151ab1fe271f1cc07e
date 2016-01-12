@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlt_dialog_option"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rlt_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/core_bg_item_option" >
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:textColor="#f38e44"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:textColor="#f38e44"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scl_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlt_header"
+        android:scrollbars="none" >
+    </ScrollView>
+
+</RelativeLayout>

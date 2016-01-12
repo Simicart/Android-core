@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll_review_before"
+        android:layout_alignLeft="@+id/ll_review_before"
+        android:layout_alignRight="@+id/ll_review_before"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/core_background_cart_popup"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/method_excustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_line_border"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:padding="5dp"
+            android:paddingBottom="10dp"
+            android:text="Checkout as existing customer"
+            android:textColor="#17658c"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/method_newcustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_line_border"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:padding="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="Checkout as new customer"
+            android:textColor="#17658c"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/method_guest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:padding="5dp"
+            android:text="Checkout as guest"
+            android:textColor="#17658c"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_review_before"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/core_background_cart_popup"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/method_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:padding="5dp"
+            android:text="Cancel"
+            android:textColor="#17658c"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>

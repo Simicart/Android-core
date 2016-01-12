@@ -42,12 +42,12 @@ public class CheckoutCom {
 	}
 
 	private void onCheckOut(PaymentMethod paymentMethod) {
-		FragmentCheckoutCom fragment = FragmentCheckoutCom.newInstance(data,
-				LIVE_URL);
-		fragment.setUrl_action(paymentMethod.getData("url_action"));
-		fragment.setUrl_back(paymentMethod.getData("url_back"));
-		fragment.setData(data);
-		fragment.setInvoice_number(this.invoice_number);
+		FragmentCheckoutCom fragment = FragmentCheckoutCom.newInstance(LIVE_URL, paymentMethod.getData("url_action"), 
+				paymentMethod.getData("url_back"), data, invoice_number);
+//		fragment.setUrl_action(paymentMethod.getData("url_action"));
+//		fragment.setUrl_back(paymentMethod.getData("url_back"));
+//		fragment.setData(data);
+//		fragment.setInvoice_number(this.invoice_number);
 		SimiManager.getIntance().addFragment(fragment);
 	}
 }

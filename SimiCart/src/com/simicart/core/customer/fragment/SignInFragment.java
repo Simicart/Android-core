@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.SignInBlock;
@@ -25,11 +26,34 @@ public class SignInFragment extends SimiFragment {
 	protected int resultCode;
 	protected Intent data;
 
+	public static SignInFragment newInstance(String email, String pass, boolean checkout) {
+		SignInFragment fragment = new SignInFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.EMAIL, email, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.PASSWORD, pass, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.CHECK_BOO, checkout, Constants.KeyData.TYPE_BOOLEAN, bundle);
+		fragment.setArguments(bundle);
+		return fragment;
+	}
 	public static SignInFragment newInstance() {
 		SignInFragment fragment = new SignInFragment();
+		
 		return fragment;
 	}
 
+	//
+//	public void setCheckout(boolean isCheckout) {
+//		this.isCheckout = isCheckout;
+//	}
+//
+//	public void setEmail(String mEmail) {
+//		this.mEmail = mEmail;
+//	}
+//
+//	public void setPassword(String mPassword) {
+//		this.mPassword = mPassword;
+//	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,10 +71,20 @@ public class SignInFragment extends SimiFragment {
 					container, false);
 		}
 		Context context = getActivity();
-
+		
+		//getdata
+		if(getArguments() != null){
+		mEmail = (String) getData(Constants.KeyData.EMAIL, Constants.KeyData.TYPE_STRING, getArguments());
+		mPassword = (String) getData(Constants.KeyData.PASSWORD, Constants.KeyData.TYPE_STRING, getArguments());
+		isCheckout = (boolean) getData(Constants.KeyData.CHECK_BOO, Constants.KeyData.TYPE_BOOLEAN, getArguments());
+		}
 		mBlock = new SignInBlock(view, context);
+		if( mEmail != null){
 		mBlock.setEmail(mEmail);
+		}
+		if(mPassword != null){
 		mBlock.setPassword(mPassword);
+		}
 		mBlock.initView();
 
 		if (null == mController) {
@@ -71,18 +105,6 @@ public class SignInFragment extends SimiFragment {
 		mBlock.setPasswordWatcher(mController.getPassWatcher());
 		mBlock.setOnCheckBox(mController.getOnCheckBox());
 		return view;
-	}
-
-	public void setCheckout(boolean isCheckout) {
-		this.isCheckout = isCheckout;
-	}
-
-	public void setEmail(String mEmail) {
-		this.mEmail = mEmail;
-	}
-
-	public void setPassword(String mPassword) {
-		this.mPassword = mPassword;
 	}
 
 	public SignInController getController() {

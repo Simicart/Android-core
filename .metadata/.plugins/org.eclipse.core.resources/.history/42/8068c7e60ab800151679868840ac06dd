@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/framelayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="20dp"
+    android:paddingTop="10dp" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1.7"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/txt_name_store"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="7dp"
+                            android:layout_weight="1"
+                            android:textColor="@android:color/black"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:id="@+id/imageView1"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/plugins_locator_grey_maker" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/phone_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:id="@+id/iv_locator_phone"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/plugins_locator_phone" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_phone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/holo_orange_dark"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/email_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:id="@+id/iv_locator_email"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/plugins_locator_email_disable" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_email"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/holo_blue_dark"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/home"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:id="@+id/iv_locator_home"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/plugins_locator_home" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_web"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textColor="@android:color/holo_blue_dark"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/map"
+                        android:layout_alignParentTop="true"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:background="@drawable/plugins_locator_circle"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <com.simicart.plugins.locator.RoundedImageView
+                                android:id="@+id/image_map"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                android:scaleType="centerCrop" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/plugins_locator_show_map"
+                        android:padding="5dp" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/plugins_locator_direct" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/direction"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="Get Directions"
+                                android:textColor="@android:color/holo_blue_dark"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/decrep_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:gravity="center|top"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/plugins_locator_question" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txtDescrip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/read_more"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|right"
+                        android:text=">> Read more"
+                        android:textColor="@android:color/holo_blue_dark"
+                        android:textSize="11dp"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:gravity="center|top"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/iv_locator_time"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/plugins_locator_time" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txt_open_hour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Openning hours"
+                        android:textColor="@android:color/black"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/lb_sunday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:text="Sunday:"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_sun"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/lb_monday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:text="Monday:"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_mon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/lb_tuesday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:text="Tuesday:"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_tus"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/lb_wednesday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:text="Wednesday:"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_wen"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/lb_thursday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:text="Thursday:"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_thur"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/lb_friday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:text="Friday:"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_fri"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/lb_saturday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:text="Saturday:"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/txt_sat"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|left"
+                                android:textColor="@android:color/black"
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/special_Layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:gravity="center|top"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/iv_locator_date"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/plugins_locator_date" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txt_special"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Special Days"
+                        android:textColor="@android:color/black"
+                        android:textSize="13dp"
+                        android:textStyle="bold" />
+
+                    <com.simicart.core.style.NoScrollListView
+                        android:id="@+id/list_special"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:divider="@android:color/transparent" >
+                    </com.simicart.core.style.NoScrollListView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/holiday_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2"
+                    android:gravity="center|top"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/iv_locator_holiday"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/plugins_locator_holiday" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txt_holiday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Holiday"
+                        android:textColor="@android:color/black"
+                        android:textSize="13dp"
+                        android:textStyle="bold" />
+
+                    <com.simicart.core.style.NoScrollListView
+                        android:id="@+id/list_holyday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:divider="@android:color/transparent" >
+                    </com.simicart.core.style.NoScrollListView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

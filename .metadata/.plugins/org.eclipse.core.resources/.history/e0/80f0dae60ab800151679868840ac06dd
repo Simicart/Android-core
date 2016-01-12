@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ExpandableListView
+            android:id="@+id/lv_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:clipToPadding="false"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:groupIndicator="@null"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:scrollbarStyle="outsideOverlay" >
+        </ExpandableListView>
+
+        <RelativeLayout
+            android:id="@+id/rlt_search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/core_background_search"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
+
+            <LinearLayout
+                android:id="@+id/ll_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="1dp"
+                android:background="@drawable/core_bgr_search"
+                android:orientation="horizontal" >
+
+                <RelativeLayout
+                    android:id="@+id/rlt_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5" />
+
+                <ImageView
+                    android:id="@+id/img_ic_search"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/core_ic_search" />
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:imeOptions="actionSearch"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

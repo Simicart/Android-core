@@ -97,10 +97,11 @@ public class BannerAnimation {
 										&& !banner_ad.getProductId()
 												.toLowerCase().equals("null")) {
 									fragment = ProductDetailParentFragment
-											.newInstance();
-									((ProductDetailParentFragment) fragment)
-											.setProductID(banner_ad
-													.getProductId());
+											.newInstance(banner_ad
+													.getProductId(),null);
+//									((ProductDetailParentFragment) fragment)
+//											.setProductID(banner_ad
+//													.getProductId());
 									SimiManager.getIntance().addFragment(
 											fragment);
 								}
@@ -142,15 +143,17 @@ public class BannerAnimation {
 											}
 										} else {
 											fragment = ListProductFragment
-													.newInstance();
-											((ListProductFragment) fragment)
-													.setCategoryId(banner_ad
-															.getCategoryId());
-											((ListProductFragment) fragment).setUrlSearch(ConstantsSearch.url_category);
-											if (DataLocal.isTablet) {
-												((ListProductFragment) fragment)
-														.setTag_search(TagSearch.TAG_GRIDVIEW);
-											}
+													.newInstance(ConstantsSearch.url_category,banner_ad
+															.getCategoryId(), null, null, null, null, null, null);
+//											((ListProductFragment) fragment)
+//													.setCategoryId(banner_ad
+//															.getCategoryId());
+//											((ListProductFragment) fragment)
+//													.setUrlSearch(ConstantsSearch.url_category);
+//											if (DataLocal.isTablet) {
+//												((ListProductFragment) fragment)
+//														.setTag_search(TagSearch.TAG_GRIDVIEW);
+//											}
 											SimiManager.getIntance()
 													.addFragment(fragment);
 										}

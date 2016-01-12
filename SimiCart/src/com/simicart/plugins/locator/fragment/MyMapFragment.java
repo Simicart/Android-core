@@ -32,6 +32,7 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.locator.DataLocator;
 import com.simicart.plugins.locator.MathForDummies;
@@ -52,7 +53,10 @@ public class MyMapFragment extends SimiFragment {
 
 	public static MyMapFragment newInstance(Location mLocation) {
 		MyMapFragment map = new MyMapFragment();
-		map._mLocation = mLocation;
+		Bundle bundle= new Bundle();
+//		setData(Constants.KeyData.LOCATION, mLocation, Constants.KeyData.TYPE_MODEL_PAR, bundle);
+		bundle.putParcelable(Constants.KeyData.LOCATION, mLocation);
+		map.setArguments(bundle);
 		return map;
 	}
 
@@ -68,6 +72,10 @@ public class MyMapFragment extends SimiFragment {
 		view = inflater.inflate(
 				Rconfig.getInstance().getId("plugins_storelocator_map_view", "layout"),
 				null);
+		if(getArguments() != null){
+		_mLocation = getArguments().getParcelable(Constants.KeyData.LOCATION);
+		}
+		
 		store_maker = new ArrayList<StoreObject>();
 		txt_km = (TextView) view.findViewById(Rconfig.getInstance()
 				.getIdLayout("txt_km"));

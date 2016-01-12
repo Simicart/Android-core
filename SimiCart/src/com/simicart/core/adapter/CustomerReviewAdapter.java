@@ -85,8 +85,8 @@ public class CustomerReviewAdapter extends ArrayAdapter<CustomerReview> {
 			@Override
 			public void onClick(View v) {
 				CustomerReviewMoreFragment fragment = CustomerReviewMoreFragment
-						.newInstance();
-				fragment.setCustomerReview(customerReview);
+						.newInstance(customerReview);
+//				fragment.setCustomerReview(customerReview);
 				SimiManager.getIntance().addPopupFragment(fragment);
 			}
 		});

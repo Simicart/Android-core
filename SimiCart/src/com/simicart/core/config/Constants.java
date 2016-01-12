@@ -345,4 +345,83 @@ public class Constants {
 	public static boolean DIRECT_TODETAIL = false;
 
 	public static String DEEP_LINK = "connector/catalog/deep_link";
+	
+public final static class KeyData {
+		
+		public static final String ID = "id";
+		public static final String LIST_ID="list_id";
+		public static final String PRODUCT= "product";
+		public static final String RATING_STAR="rating_star";
+		public static final String LIST_RATING_STAR = "list_rating_star";
+		public static final String DESCRIPTION="description";
+		public static final String ATTRIBUTES= "attributes";
+		public static final String LIST_ATTRIBUTES = "list_attributes";
+		public static final String NAME = "name";
+		public static final String URL="url";
+		public static final String URL_BACK="url_back";
+		public static final String URL_ACTION="url_action";
+		public static final String URL_PAYU = "url_payu";
+		public static final String TAG="tag";
+		public static final String QUERY= "query";
+		public static final String JSON_FILTER = "json_filter";
+		public static final String KEY ="key";
+		public static final String SORT_ID= "sort_id";
+		public static final String SORT_TYPE= "sort_type";
+		public static final String SORT_TAG= "sort_tag";
+		public static final String SORT_OPTION = "sort_option";
+		public static final String CAT_NAME = "cat_name";
+		public static final String LIST_FILTER_STATE = "list_filter_state";
+		public static final String LIST_FILTER_ENTITY  = "list_filter_entity";
+		public static final String LIST_COUNTRY = "list_country";
+		public static final String CUSTOMER_REVIEW = "Customer_review";
+		public static final String CHECK_METHOD = "check_method";
+		public static final String CONTENT = "content";
+		public static final String AFTER_CONTROL = "after_control";
+		public static final String ADDRESS_FOR = "address_for";
+		public static final String BILLING_ADDRESS = "billing_address";
+		public static final String SHIPPING_ADDRESS = "shipping_address";
+		public static final String BOOK_ADDRESS = "book_address";
+		public static final String MESSAGE = "message";
+		public static final String FRAGMENT_TYPE = "fragment_type";
+		public static final String TYPE = "type";
+		public static final String EMAIL = "email";
+		public static final String PASSWORD = "password";
+		public static final String CHECK_BOO = "check_boo";
+		public static final String CHECK_POPUP = "check_popup";
+		public static final String CURRENT_ITEM = "current_item";
+		public static final String INVOICE_NUMBER="invoice_number";
+		public static final String DATA ="data";
+		public static final String STORE_OBJECT = "store_object";
+		public static final String SEARCH_OBJECT= "search_object";
+		public static final String LOCATION = "location";
+		public static final String OTHERPAYMENTENTITY = "other_payment_entity";
+		public static final String REVIEW_ADDRESS= "review_address";
+		public static final String POSITON = "position";
+		public static final String SCALE="scale";
+		public static final String CHECK_BLURED = "check_blured";
+		public static final String BANNERENTITY= "bannerentity";
+		public static final String PAYMENT_METHOD = "payment_method";
+		public static final String COUNTRY = "country";
+		public static final String CITY = "city";
+		public static final String STATE = "state";
+		public static final String ZIPCODE = "zipcode";
+		public static final String  PASSBOOK_FOREGROUND= "passbook_foreground";
+		public static final String  PASSBOOK_BARCODE= "passbook_barcode";
+		public static final String  BACKGROUND= "background";
+		public static final String  NAMEAPP= "nameapp";
+		public static final String  LOYALTY_REDEEM= "loyalty_redeem";
+		public static final String  PASSBOOKLOGO= "passBookLogo";
+		
+		public static final String TYPE_STRING ="type_string";
+		public static final String TYPE_INT = "type_int";
+		public static final String TYPE_FLOAT = "type_float";
+		public static final String TYPE_LIST_INT = "type_list_int";
+		public static final String TYPE_LIST_STRING = "type_list_string";
+//		public static final String TYPE_LIST_MODEL = "type_list_model";
+//		public static final String TYPE_MODEL = "type_model";
+//		public static final String TYPE_MODEL_PAR = "type_model_par";
+		public static final String TYPE_JSONOBJECT = "json_object";
+		public static final String TYPE_BOOLEAN = "type_boolean";
+		
+	}
 }

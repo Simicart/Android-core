@@ -296,10 +296,10 @@ public class AddressBookDetailController extends SimiController implements
 
 	protected void changeFragmentCountry(int type,
 			ArrayList<String> list_country) {
-		CountryFragment fragment_country = CountryFragment.newInstance();
+		CountryFragment fragment_country = CountryFragment.newInstance(type, list_country);
 		fragment_country.setChooseDelegate(this);
-		fragment_country.setList_country(list_country);
-		fragment_country.setType(type);
+//		fragment_country.setList_country(list_country);
+//		fragment_country.setType(type);
 		SimiManager.getIntance().replacePopupFragment(fragment_country);
 	}
 

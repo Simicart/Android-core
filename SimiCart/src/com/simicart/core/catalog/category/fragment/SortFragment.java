@@ -15,6 +15,7 @@ import com.simicart.core.catalog.category.block.SortBlock;
 import com.simicart.core.catalog.category.controller.SortController;
 import com.simicart.core.catalog.category.entity.Sort;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class SortFragment extends SimiFragment {
@@ -29,42 +30,46 @@ public class SortFragment extends SimiFragment {
 	protected JSONObject jsonFilter;
 	private String url_search ="";
 	private String KEY = "";
-	
-	public void setUrl_search(String url_search) {
-		this.url_search = url_search;
-	}
-	public void setKey(String key) {
-		this.KEY = key;
-	}
-
 	protected String sort_tag;
 
-	public static SortFragment newInstance(String name, String id) {
-		SortFragment fragment = new SortFragment(name, id);
+	public static SortFragment newInstance(String url, String id, String name, String sortTag, JSONObject json, String key, String query, String sortType) {
+			SortFragment fragment = new SortFragment();
+			Bundle bundle= new Bundle();
+			setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+			setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
+			setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
+			setData(Constants.KeyData.SORT_TAG, sortTag, Constants.KeyData.TYPE_STRING, bundle);
+			setData(Constants.KeyData.JSON_FILTER, json, Constants.KeyData.TYPE_JSONOBJECT, bundle);
+			setData(Constants.KeyData.KEY, key, Constants.KeyData.TYPE_STRING, bundle);
+			setData(Constants.KeyData.QUERY, query, Constants.KeyData.TYPE_STRING, bundle);
+			setData(Constants.KeyData.SORT_TYPE, sortType, Constants.KeyData.TYPE_STRING, bundle);
+		    fragment.setArguments(bundle);
 		return fragment;
 	}
 	
+//	public void setUrl_search(String url_search) {
+//		this.url_search = url_search;
+//	}
+//	public void setKey(String key) {
+//		this.KEY = key;
+//	}
+//
+//
+//	public void setSort_tag(String sort_tag) {
+//		this.sort_tag = sort_tag;
+//	}
+//
+//	public void setJSONFilter(JSONObject json) {
+//		jsonFilter = json;
+//	}
+//
+//	public void setQuery(String mQuery) {
+//		this.mQuery = mQuery;
+//	}
 
-	public void setSort_tag(String sort_tag) {
-		this.sort_tag = sort_tag;
-	}
-
-	public void setJSONFilter(JSONObject json) {
-		jsonFilter = json;
-	}
-
-	public SortFragment(String name, String id) {
-		mCategoryID = id;
-		mCategoryName = name;
-	}
-
-	public void setQuery(String mQuery) {
-		this.mQuery = mQuery;
-	}
-
-	public void setSortType(String sortType) {
-		this.mSortType = sortType;
-	}
+//	public void setSortType(String sortType) {
+//		this.mSortType = sortType;
+//	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,7 +78,17 @@ public class SortFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_sort_layout"), container,
 				false);
 		Context context = getActivity();
-
+		if(getArguments() != null){
+		mCategoryID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
+		mCategoryName = (String) getData(Constants.KeyData.NAME, Constants.KeyData.TYPE_STRING, getArguments());
+		url_search = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		KEY = (String) getData(Constants.KeyData.KEY, Constants.KeyData.TYPE_STRING, getArguments());
+		sort_tag = (String) getData(Constants.KeyData.SORT_TAG, Constants.KeyData.TYPE_STRING, getArguments());
+		jsonFilter = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		mQuery = (String) getData(Constants.KeyData.QUERY, Constants.KeyData.TYPE_STRING, getArguments());
+		mSortType = (String) getData(Constants.KeyData.SORT_TYPE, Constants.KeyData.TYPE_STRING, getArguments());
+		}
+		
 		listSort = new ArrayList<Sort>();
 		String key[] = { "None", "Price: Low to High", "Price: High to Low",
 				"Name: A to Z", "Name: Z to A" };

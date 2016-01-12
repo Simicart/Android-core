@@ -14,6 +14,7 @@ import com.simicart.core.catalog.product.block.ProductMorePluginBlock;
 import com.simicart.core.catalog.product.controller.ProductMorePluginController;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.PagerSlidingTabStrip;
 
@@ -29,14 +30,18 @@ public class InformationFragment extends SimiFragment {
 		super.onCreate(savedInstanceState);
 	}
 
-	public static InformationFragment newInstance() {
+	public static InformationFragment newInstance(Product product) {
 		InformationFragment fragment = new InformationFragment();
+		Bundle bundle= new Bundle();
+//		  setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.PRODUCT, product);
+		    fragment.setArguments(bundle);
 		return fragment;
 	}
 
-	public void setProduct(Product product) {
-		mProduct = product;
-	}
+//	public void setProduct(Product product) {
+//		mProduct = product;
+//	}
 
 	public Product getProduct() {
 		return mProduct;
@@ -49,6 +54,9 @@ public class InformationFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_information_layout"),
 				container, false);
 		Context context = getActivity();
+		if(getArguments() != null){
+		mProduct = getArguments().getParcelable(Constants.KeyData.PRODUCT);
+		}
 		if (null != mProduct) {
 			initView();
 			// RelativeLayout ll_plugin = (RelativeLayout) mRootView

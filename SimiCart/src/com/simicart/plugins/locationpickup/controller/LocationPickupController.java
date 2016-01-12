@@ -54,32 +54,51 @@ public class LocationPickupController extends NewAddressBookController{
 						}
 
 						if (null != newAddress) {
+							MyAddress shippingAdd = null, billingAdd = null;
 							if (mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
-								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance();
 								switch (addressFor) {
 								case AddressBookCheckoutFragment.ALL_ADDRESS:
-									fragment.setBilingAddress(newAddress);
-									fragment.setShippingAddress(newAddress);
+									billingAdd = newAddress;
+									shippingAdd = newAddress;
 									break;
 								case AddressBookCheckoutFragment.BILLING_ADDRESS:
-									fragment.setBilingAddress(newAddress);
-									fragment.setShippingAddress(mShippingAddress);
+									billingAdd =newAddress;
+									shippingAdd = mShippingAddress;
 									break;
 								case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
-									fragment.setBilingAddress(mBillingAddress);
-									fragment.setShippingAddress(newAddress);
+									billingAdd =mBillingAddress;
+									shippingAdd = newAddress;
 									break;
 								default:
 									break;
 								}
+								ReviewOrderFragment fragment = ReviewOrderFragment
+										.newInstance(0, shippingAdd, billingAdd);
+//								switch (addressFor) {
+//								case AddressBookCheckoutFragment.ALL_ADDRESS:
+//									fragment.setBilingAddress(newAddress);
+//									fragment.setShippingAddress(newAddress);
+//									break;
+//								case AddressBookCheckoutFragment.BILLING_ADDRESS:
+//									fragment.setBilingAddress(newAddress);
+//									fragment.setShippingAddress(mShippingAddress);
+//									break;
+//								case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
+//									fragment.setBilingAddress(mBillingAddress);
+//									fragment.setShippingAddress(newAddress);
+//									break;
+//								default:
+//									break;
+//								}
 								SimiManager.getIntance().replacePopupFragment(
 										fragment);
 							} else {
+								billingAdd = newAddress;
+								shippingAdd = newAddress;
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance();
-								fragment.setBilingAddress(newAddress);
-								fragment.setShippingAddress(newAddress);
+										.newInstance(0, shippingAdd, billingAdd);
+//								fragment.setBilingAddress(newAddress);
+//								fragment.setShippingAddress(newAddress);
 								SimiManager.getIntance().replacePopupFragment(
 										fragment);
 							}

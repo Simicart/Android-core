@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.magestore.simicart.R;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.DrawableManager;
@@ -95,7 +94,6 @@ public class GridViewProductListApdapter extends BaseAdapter {
 	public View getView(int pos, View convertView, ViewGroup parent) {
 		mInflater = (LayoutInflater) mContext
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		Product product = mListProduct.get(pos);
 		ViewHolder holder;
 		if (convertView == null) {
 			if (numColum == 4) {
@@ -174,16 +172,6 @@ public class GridViewProductListApdapter extends BaseAdapter {
 				holder.txt_price_tablet = (TextView) convertView
 						.findViewById(Rconfig.getInstance().id("tv_excl"));
 			}
-			
-			ProductPriceViewProductGridV03 price_view = new ProductPriceViewProductGridV03(
-					product);
-			price_view.setShowOnePrice(true);
-			View view = price_view.getViewPrice();
-			if (null != view && null != holder.ll_price) {
-				holder.ll_price.removeAllViewsInLayout();
-				holder.ll_price.addView(view);
-			}
-			
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -208,6 +196,7 @@ public class GridViewProductListApdapter extends BaseAdapter {
 			}
 		}
 
+		Product product = mListProduct.get(pos);
 		if (DataLocal.isTablet) {
 			holder.txt_price_tablet.setText(Config.getInstance().getPrice(
 					product.getPrice() + ""));
@@ -217,7 +206,17 @@ public class GridViewProductListApdapter extends BaseAdapter {
 			holder.layout_stock.setVisibility(View.GONE);
 		} else {
 			holder.layout_stock.setVisibility(View.VISIBLE);
-			holder.txt_outstock.setText(mContext.getResources().getString(R.string.out_stock));
+			holder.txt_outstock.setText(Config.getInstance().getText(
+					"Out Stock"));
+		}
+
+		ProductPriceViewProductGridV03 price_view = new ProductPriceViewProductGridV03(
+				product);
+		price_view.setShowOnePrice(true);
+		View view = price_view.getViewPrice();
+		if (null != view && null != holder.ll_price) {
+			holder.ll_price.removeAllViewsInLayout();
+			holder.ll_price.addView(view);
 		}
 
 		String name = product.getName();

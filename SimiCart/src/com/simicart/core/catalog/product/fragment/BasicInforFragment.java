@@ -2,6 +2,7 @@ package com.simicart.core.catalog.product.fragment;
 
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.price.ProductPriceViewDetail;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.event.block.CacheBlock;
@@ -24,14 +26,19 @@ import com.simicart.core.event.block.EventBlock;
 public class BasicInforFragment extends SimiFragment {
 	protected Product mProduct;
 
-	public static BasicInforFragment newInstance() {
+	public static BasicInforFragment newInstance(Product product) {
 		BasicInforFragment fragment = new BasicInforFragment();
+		
+		Bundle args = new Bundle();
+//	    setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, args);
+		args.putParcelable(Constants.KeyData.PRODUCT, product);
+	    fragment.setArguments(args);
 		return fragment;
 	}
-
-	public void setProduct(Product product) {
-		mProduct = product;
-	}
+//
+//	public void setProduct(Product product) {
+//		mProduct = product;
+//	}
 
 	public Product getProduct() {
 		return mProduct;
@@ -43,7 +50,11 @@ public class BasicInforFragment extends SimiFragment {
 		rootView = inflater.inflate(
 				Rconfig.getInstance().layout(
 						"core_information_basic_inf_layout"), container, false);
-
+		if(getArguments() != null){
+		mProduct = getArguments().getParcelable(Constants.KeyData.PRODUCT);
+		Log.d("quangdd","mProduct"+mProduct.toString());
+		}
+		
 		TextView tv_Name = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_Name"));
 		tv_Name.setText(mProduct.getName().trim());

@@ -25,8 +25,17 @@ public class Config {
 //	private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
 
 //	 private String mBaseUrl =
+<<<<<<< HEAD
 //	 "http://dev-vn.magestore.com/simicart/1800/index.php";
 //	 private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
+=======
+//	 "https://www.toysrus.co.za/";
+//	 private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
+	 private String mBaseUrl =
+			 "http://dev-vn.magestore.com/simicart/1800/index.php";
+			 private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
+
+>>>>>>> origin/trunk
 
 	// site magento normal
 	// private String mBaseUrl = "http://dev-shopping.simicart.com";

@@ -17,6 +17,7 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.catalog.product.controller.ProductDetailParentController;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.TouchImageViewTwo;
@@ -30,23 +31,15 @@ public class ProductDetailImageFragment extends SimiFragment {
 		mParentController = delegate;
 	}
 
-	public ProductDetailImageFragment() {
-	}
-
 	public static ProductDetailImageFragment newInstance(String url) {
-		Log.e("ProductDetailImageFragment - newInstance:", "start newInstance");
-		try {
-			ProductDetailImageFragment fragment = new ProductDetailImageFragment(
-					url);
+		
+			ProductDetailImageFragment fragment = new ProductDetailImageFragment();
+			
+			 	Bundle bundle= new Bundle();
+			 	setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
+			    fragment.setArguments(bundle);
 			return fragment;
-		} catch (Exception e) {
-			Log.e("ProductDetailImageFragment - newInstance:", e.getMessage());
-		}
-		return new ProductDetailImageFragment(url);
-	}
-
-	public ProductDetailImageFragment(String url) {
-		mURL = url;
+		
 	}
 
 	@Override
@@ -60,6 +53,9 @@ public class ProductDetailImageFragment extends SimiFragment {
 		View rootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_product_detail_image"),
 				container, false);
+		if(getArguments() != null){
+		mURL = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		try {
 
 			// ImageView

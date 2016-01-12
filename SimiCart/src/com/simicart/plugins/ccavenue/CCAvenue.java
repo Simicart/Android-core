@@ -30,9 +30,9 @@ public class CCAvenue {
 			e.printStackTrace();
 		}
 
-		FragmentCCAvenue fragment = FragmentCCAvenue.newInstance();
-		fragment.setUrl(data);
-		fragment.setInvoice_number(checkoutData.getInvoice_number());
+		FragmentCCAvenue fragment = FragmentCCAvenue.newInstance(data, checkoutData.getInvoice_number());
+//		fragment.setUrl(data);
+//		fragment.setInvoice_number(checkoutData.getInvoice_number());
 		SimiManager.getIntance().addFragment(fragment);
 	}
 }

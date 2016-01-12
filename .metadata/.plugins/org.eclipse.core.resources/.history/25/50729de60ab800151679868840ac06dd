@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp" >
+
+            <TextView
+                android:id="@+id/tv_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/tv_Stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/plugin_rlt_rewardpoint"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_descrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
+                android:id="@+id/layout_ship_term"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/tv_ship_term"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:id="@+id/ic_expand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="7dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_extend_ship" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
