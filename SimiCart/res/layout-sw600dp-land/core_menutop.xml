@@ -14,12 +14,12 @@
 
         <ImageView
             android:id="@+id/img_menu"
-            android:layout_width="@dimen/size_40"
-            android:layout_height="@dimen/size_40"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:contentDescription="@null"
-            android:padding="@dimen/text_13"
+            android:padding="5dp"
             android:src="@drawable/ic_menu" />
 
 		<LinearLayout
@@ -33,7 +33,7 @@
 
 		<LinearLayout
 		    android:id="@+id/ll_logo_land"
-		    android:layout_width="@dimen/size_0" 
+		    android:layout_width="0dp" 
 		    android:layout_weight="0.95"
 		    android:layout_height="wrap_content"
 		    android:orientation="vertical">
@@ -48,13 +48,13 @@
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/ll_search_land"
-		    android:layout_width="@dimen/size_0"
+		    android:layout_width="0dp"
 		    android:layout_weight="0.05"
 		    android:layout_height="wrap_content"
 		    android:orientation="horizontal"
 		    android:layout_gravity="center_vertical"
 		    android:gravity="center_vertical"
-		    android:layout_marginRight="@dimen/text_13">
+		    android:layout_marginRight="5dp">
         <RelativeLayout
             android:id="@+id/layout_right"
             android:layout_width="wrap_content"
@@ -65,10 +65,10 @@
 
             <ImageView
                 android:id="@+id/img_ic_search2"
-                android:layout_width="@dimen/size_40"
-                android:layout_height="@dimen/size_40"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_centerVertical="true"
-                android:padding="@dimen/text_13"
+                android:padding="5dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/icon_search_arrow" />
             
@@ -77,19 +77,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/size_10"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/background_search_tablet"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:padding="@dimen/text_13"
+                android:padding="5dp"
                 android:layout_gravity="center"
                 android:visibility="gone" >
                
              <ImageView
                     android:id="@+id/img_ic_search"
-                    android:layout_width="@dimen/size_40"
-                    android:layout_height="@dimen/size_40"
-                    android:padding="@dimen/size_8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
                     android:src="@drawable/ic_search_tablet" />
 
                 <EditText
@@ -104,9 +104,9 @@
 
                 <ImageView
                     android:id="@+id/img_ic_cancel"
-                    android:layout_width="@dimen/size_40"
-                    android:layout_height="@dimen/size_40"
-                    android:padding="@dimen/size_2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="2dp"
                     android:src="@drawable/icon_delete_white" />
             </LinearLayout>
         </RelativeLayout>
@@ -115,7 +115,7 @@
         
 		<RelativeLayout
                 android:id="@+id/layout_cart"
-                android:layout_width="@dimen/size_50"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:gravity="center" >
@@ -128,15 +128,15 @@
 
                     <Button
                         android:id="@+id/btn_cartnavigation"
-                        android:layout_width="@dimen/size_30"
-                        android:layout_height="@dimen/size_30"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/ic_cart"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_horizontal"
-                        android:paddingLeft="@dimen/size_0"
-                        android:paddingRight="@dimen/size_2" />
+                        android:paddingLeft="0dp"
+                        android:paddingRight="2dp" />
 
                     <TextView
                         android:id="@+id/cart_qty"
@@ -149,7 +149,7 @@
                         android:paddingLeft="3dip"
                         android:paddingRight="3dip"
                         android:textColor="#FFF"
-                        android:textSize="@dimen/text_12"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         android:visibility="gone" />
                 </RelativeLayout>

@@ -11,10 +11,9 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:contentDescription="@null"
-        android:layout_marginLeft="@dimen/size_30"
-        android:layout_marginRight="@dimen/size_30"
-        android:scaleType="center"
         android:src="@drawable/default_logo" />
 
 </RelativeLayout>

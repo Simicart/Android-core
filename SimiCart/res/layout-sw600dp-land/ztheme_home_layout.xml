@@ -15,9 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:dividerHeight="@dimen/size_0"
-            android:paddingLeft="@dimen/text_13"
-            android:paddingRight="@dimen/text_13"
+            android:dividerHeight="0dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:scrollbarStyle="outsideOverlay" >
         </ListView>
 

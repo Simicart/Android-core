@@ -6,7 +6,7 @@
     android:orientation="horizontal" >
 
     <LinearLayout
-        android:layout_width="@dimen/size_0"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="60"
         android:orientation="vertical" >
@@ -19,30 +19,30 @@
                 android:id="@+id/fcart_rl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/text_13"
-                android:paddingTop="@dimen/text_13" >
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" >
 
                 <com.simicart.core.style.NoScrollListView
                     android:id="@+id/cart_item_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:listSelector="#FFFFFF"
-                    android:paddingBottom="@dimen/text_13"
-                    android:paddingLeft="@dimen/text_13"
-                    android:paddingRight="@dimen/size_0"
-                    android:paddingTop="@dimen/text_13" />
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="0dp"
+                    android:paddingTop="5dp" />
             </RelativeLayout>
         </com.simicart.core.style.CustomScrollView>
     </LinearLayout>
 
     <View
         android:id="@+id/line_vertical"
-        android:layout_width="@dimen/size_1"
+        android:layout_width="1dp"
         android:layout_height="match_parent"
         android:background="#CACACA" />
 
     <LinearLayout
-        android:layout_width="@dimen/size_0"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="40"
         android:orientation="vertical" >
@@ -55,9 +55,9 @@
                 android:id="@+id/rlt_reward_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/size_10"
-                android:paddingLeft="@dimen/size_20"
-                android:paddingRight="@dimen/size_20"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:visibility="gone" >
             </RelativeLayout>
 
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rlt_reward_card"
-                android:layout_marginRight="@dimen/size_20"
+                android:layout_marginRight="20dp"
                  >
 
                 <TableLayout
@@ -80,16 +80,16 @@
             <View
                 android:id="@+id/line_price"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/text_13"
+                android:layout_height="0.5dp"
                 android:layout_below="@+id/rl_price"
                 android:background="#fafafa" />
 
             <View
                 android:id="@+id/line_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/text_13"
+                android:layout_height="0.5dp"
                 android:layout_below="@+id/line_price"
-                android:layout_marginBottom="@dimen/size_20"
+                android:layout_marginBottom="20dp"
                 android:background="#E8E8E8" />
 
             <RelativeLayout

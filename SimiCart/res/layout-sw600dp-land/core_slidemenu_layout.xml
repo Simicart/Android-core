@@ -14,9 +14,9 @@
         <com.simicart.core.style.PagerSlidingTabStrip
             android:id="@+id/pager_title_strip"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
-            app:pstsTabPaddingLeftRight="@dimen/text_13" />
+            app:pstsTabPaddingLeftRight="35dp" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"

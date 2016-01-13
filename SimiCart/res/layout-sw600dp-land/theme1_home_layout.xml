@@ -29,8 +29,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_banner_theme1"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/size_3"
-                    android:layout_marginTop="@dimen/size_6"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="6dp"
                     android:background="@android:color/transparent"
                     android:overScrollMode="never" />
             </RelativeLayout>
@@ -40,8 +40,8 @@
                 android:id="@+id/ll_spotcategory"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_category_theme1"
-                android:layout_marginBottom="@dimen/size_3"
-                android:layout_marginTop="@dimen/size_3"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:weightSum="2" >
@@ -49,7 +49,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_category_theme1"
-                    android:layout_marginRight="@dimen/size_3"
+                    android:layout_marginRight="3dp"
                     android:layout_weight="1"
                     android:baselineAligned="false"
                     android:orientation="horizontal"
@@ -61,7 +61,7 @@
                         android:id="@+id/rlt_category1"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_marginRight="@dimen/size_3"
+                        android:layout_marginRight="3dp"
                         android:layout_weight="2"
                         android:background="@drawable/theme1_background_cat" >
 
@@ -78,7 +78,7 @@
 
                         <RelativeLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="@dimen/size_50"
+                            android:layout_height="50dp"
                             android:layout_centerVertical="true"
                             android:background="#88ffffff"
                             android:orientation="horizontal" >
@@ -89,7 +89,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="@dimen/text_13"
+                                android:layout_marginTop="5dp"
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:lines="1"
@@ -105,7 +105,7 @@
                                 android:ellipsize="end"
                                 android:lines="1"
                                 android:textColor="#000000"
-                                android:textSize="@dimen/text_14" />
+                                android:textSize="14sp" />
                         </RelativeLayout>
                     </RelativeLayout>
 
@@ -115,7 +115,7 @@
                         android:id="@+id/rlt_category2"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="@dimen/size_3"
+                        android:layout_marginLeft="3dp"
                         android:layout_weight="1"
                         android:background="@drawable/theme1_background_cat" >
 
@@ -133,7 +133,7 @@
                         <RelativeLayout
                             android:id="@+id/ll_category2"
                             android:layout_width="fill_parent"
-                            android:layout_height="@dimen/size_50"
+                            android:layout_height="50dp"
                             android:layout_centerVertical="true"
                             android:background="#88ffffff"
                             android:orientation="horizontal" >
@@ -144,12 +144,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="@dimen/text_13"
+                                android:layout_marginTop="5dp"
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:lines="1"
                                 android:textColor="#000000"
-                                android:textSize="@dimen/text_12" />
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/tv_viewmore2"
@@ -160,7 +160,7 @@
                                 android:ellipsize="end"
                                 android:lines="1"
                                 android:textColor="#000000"
-                                android:textSize="@dimen/text_14" />
+                                android:textSize="14sp" />
                         </RelativeLayout>
                     </RelativeLayout>
                 </LinearLayout>
@@ -168,7 +168,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/height_category_theme1"
-                    android:layout_marginLeft="@dimen/size_3"
+                    android:layout_marginLeft="3dp"
                     android:layout_weight="1"
                     android:baselineAligned="false"
                     android:orientation="horizontal"
@@ -180,7 +180,7 @@
                         android:id="@+id/rlt_category3"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_marginRight="@dimen/size_3"
+                        android:layout_marginRight="3dp"
                         android:layout_weight="1"
                         android:background="@drawable/theme1_background_cat" >
 
@@ -197,7 +197,7 @@
 
                         <RelativeLayout
                             android:layout_width="fill_parent"
-                            android:layout_height="@dimen/size_50"
+                            android:layout_height="50dp"
                             android:layout_centerVertical="true"
                             android:background="#88ffffff"
                             android:orientation="horizontal" >
@@ -208,7 +208,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="@dimen/text_13"
+                                android:layout_marginTop="5dp"
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:lines="1"
@@ -223,7 +223,7 @@
                                 android:ellipsize="end"
                                 android:lines="1"
                                 android:textColor="#000000"
-                                android:textSize="@dimen/text_14" />
+                                android:textSize="14sp" />
                         </RelativeLayout>
                     </RelativeLayout>
 
@@ -233,7 +233,7 @@
                         android:id="@+id/rlt_view_all_category"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="@dimen/size_3"
+                        android:layout_marginLeft="3dp"
                         android:layout_weight="2" >
 
                         <ViewFlipper
@@ -250,7 +250,7 @@
                         <RelativeLayout
                             android:id="@+id/ll_view_all_category"
                             android:layout_width="fill_parent"
-                            android:layout_height="@dimen/size_60"
+                            android:layout_height="60dp"
                             android:layout_centerVertical="true"
                             android:background="@android:color/transparent"
                             android:orientation="horizontal" >
@@ -261,12 +261,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentTop="true"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="@dimen/size_10"
+                                android:layout_marginTop="10dp"
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:lines="1"
                                 android:textColor="#ffffff"
-                                android:textSize="@dimen/text_14" />
+                                android:textSize="14sp" />
 
                             <TextView
                                 android:id="@+id/tv_viewnow"
@@ -274,18 +274,18 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tv_view_all_category"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="@dimen/text_13"
+                                android:layout_marginTop="5dp"
                                 android:background="@drawable/theme1_background_viewnow"
                                 android:ellipsize="end"
                                 android:gravity="center"
                                 android:lines="1"
-                                android:paddingBottom="@dimen/size_2"
-                                android:paddingLeft="@dimen/text_13"
-                                android:paddingRight="@dimen/text_13"
-                                android:paddingTop="@dimen/size_2"
+                                android:paddingBottom="2dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:paddingTop="2dp"
                                 android:text="view"
                                 android:textColor="#000111"
-                                android:textSize="@dimen/text_14" />
+                                android:textSize="14sp" />
                         </RelativeLayout>
                     </RelativeLayout>
                 </LinearLayout>
@@ -295,15 +295,15 @@
             <LinearLayout
                 android:id="@+id/ll_spot_product"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_170"
-                android:layout_marginTop="@dimen/size_3"
+                android:layout_height="170dp"
+                android:layout_marginTop="3dp"
                 android:gravity="center"
                 android:orientation="vertical" >
 
                 <com.simicart.theme.matrixtheme.home.adapter.Theme1CustomScrollView
                     android:id="@+id/lv_category_bottom"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/size_170"
+                    android:layout_height="170dp"
                     android:scrollbars="none" >
 
                     <LinearLayout

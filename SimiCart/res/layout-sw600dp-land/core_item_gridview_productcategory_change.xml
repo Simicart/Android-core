@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/layout_header_grid"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_40"
+        android:layout_height="40dp"
         android:background="@android:color/transparent"
         android:visibility="gone" />
 
@@ -17,8 +17,8 @@
         android:id="@+id/rel_product_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/text_13"
-        android:layout_marginRight="@dimen/text_13"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:background="@drawable/core_border_imagegrid" >
 
         <ImageView
@@ -44,7 +44,7 @@
                 android:id="@+id/layout_stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_130"
+                android:layout_marginTop="130dp"
                 android:background="#915c83"
                 android:gravity="center_vertical|center_horizontal"
                 android:orientation="vertical" >
@@ -52,11 +52,11 @@
                 <TextView
                     android:id="@+id/txt_out_stock"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/text_13"
+                    android:layout_height="15dp"
                     android:gravity="center"
                     android:text="Out Stock"
                     android:textColor="#ffffff"
-                    android:textSize="@dimen/text_12" />
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
@@ -74,17 +74,17 @@
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_13"
+            android:layout_marginTop="5dp"
             android:layout_weight="6"
             android:background="@null"
             android:ellipsize="end"
             android:gravity="center_vertical|center_horizontal"
             android:lines="1"
-            android:paddingBottom="@dimen/size_2"
-            android:paddingLeft="@dimen/text_13"
-            android:paddingRight="@dimen/text_13"
+            android:paddingBottom="2dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="NOKIA 11100C 12Gb"
-            android:textSize="@dimen/text_13" />
+            android:textSize="13sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,7 +95,7 @@
             <TextView
                 android:id="@+id/tv_excl"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size_20"
+                android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
@@ -107,9 +107,9 @@
             <TextView
                 android:id="@+id/tv_incl"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size_20"
+                android:layout_height="20dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/size_20"
+                android:layout_marginLeft="20dp"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:lines="1"
