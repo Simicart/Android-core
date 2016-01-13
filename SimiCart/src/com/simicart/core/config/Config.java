@@ -27,6 +27,7 @@ public class Config {
 	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
 	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 
+<<<<<<< HEAD
 	// private String mBaseUrl = "https://www.papagayoweb.com";
 	// private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
 
@@ -39,6 +40,11 @@ public class Config {
 	// "http://dev-vn.magestore.com/simicart/1800/index.php";
 	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
 
+=======
+	 private String mBaseUrl =
+			 "http://demo.magestore.com/simicart/simipos2/index.php";
+			 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+>>>>>>> 587343947617d92705ff526feab5577f550214d2
 	// site magento normal
 	// private String mBaseUrl = "http://dev-shopping.simicart.com";
 	// private String mSecretKey = "ffd194ec50278a876e39d986fa85bf3f";
@@ -63,6 +69,13 @@ public class Config {
 
 	// // demo ultimate
 
+<<<<<<< HEAD
+=======
+	// // demo super
+//	 private String mBaseUrl =
+//	 "http://demo.magestore.com/simicart/simipos3/index.php";
+//	 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+>>>>>>> 587343947617d92705ff526feab5577f550214d2
 
 	// // demo zara
 	// private String mBaseUrl =
