@@ -29,9 +29,9 @@ public class Config {
 //	 private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
 //	 "https://www.toysrus.co.za/";
 //	 private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
-	 private String mBaseUrl =
-			 "http://dev-vn.magestore.com/simicart/1800/index.php";
-			 private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
+//	 private String mBaseUrl =
+//			 "http://dev-vn.magestore.com/simicart/1800/index.php";
+//			 private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
 
 
 	// site magento normal
@@ -59,9 +59,9 @@ public class Config {
 	// // demo ultimate
 
 	// // demo super
-	// private String mBaseUrl =`
-	// "http://demo.magestore.com/simicart/simipos3/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	 private String mBaseUrl =
+	 "http://demo.magestore.com/simicart/simipos3/index.php";
+	 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// // demo zara
 	// private String mBaseUrl =

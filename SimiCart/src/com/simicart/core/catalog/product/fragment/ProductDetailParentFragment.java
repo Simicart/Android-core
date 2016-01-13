@@ -62,11 +62,9 @@ public class ProductDetailParentFragment extends SimiFragment {
 		View view = inflater.inflate(
 				Rconfig.getInstance().layout("core_product_detail_parent"),
 				container, false);
-		
 		return view;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
