@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
-import com.simicart.core.base.network.request.multi.SimiRequestQueue;
+import com.simicart.core.base.network.request.SimiRequestQueue;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
@@ -49,10 +49,8 @@ public class SimiManager {
 
 	protected SimiRequestQueue mRequestQueue;
 	protected Boolean isShowedNotify = false;
-
-	// private final int THEME_DEFAULT = 0;
-	// private final int THEME_MATRIX = 1;
-	// private final int THEME_ZTHEME = 2;
+	protected boolean isRefreshCart = true;
+	protected int mQtyCartPrevious;
 
 	public SimiRequestQueue getRequestQueue() {
 		return mRequestQueue;
@@ -84,7 +82,6 @@ public class SimiManager {
 						.getWindowToken(), 0);
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 	}
 
@@ -117,7 +114,29 @@ public class SimiManager {
 	}
 
 	public void onUpdateCartQty(String qty) {
+		int i_qty = 0;
+		try {
+			i_qty = Integer.parseInt(qty);
+
+		} catch (Exception e) {
+
+		}
+
+		Log.e("SimiManager ", "onUpdateCartQty " + "Previous "
+				+ mQtyCartPrevious + "Current " + i_qty);
+
+		if (mQtyCartPrevious != i_qty) {
+			mQtyCartPrevious = i_qty;
+			isRefreshCart = true;
+		} else {
+			isRefreshCart = false;
+		}
+
 		mMenuTopController.updateCartQty(qty);
+	}
+
+	public boolean isRereshCart() {
+		return isRefreshCart;
 	}
 
 	public void showCartLayout(boolean show) {
@@ -187,33 +206,16 @@ public class SimiManager {
 			EventBlock block = new EventBlock();
 			block.dispatchEvent("com.simicart.leftmenu.slidemenucontroller.onnavigate.checkdirectdetail");
 			fragment = eventFragment(fragment);
-
-			Log.e("SimiManager addFragment ", "NAME " + nameFragment);
-
 			FragmentTransaction ft = mManager.beginTransaction();
 			ft.setCustomAnimations(
 					Rconfig.getInstance().getId("in_from_right", "anim"),
 					Rconfig.getInstance().getId("out_to_left", "anim"), Rconfig
 							.getInstance().getId("in_from_left", "anim"),
 					Rconfig.getInstance().getId("out_to_right", "anim"));
-
-			Log.e("SimiManager addFragment ", "001 ");
-
 			ft.replace(Rconfig.getInstance().id("container"), fragment);
-
-			Log.e("SimiManager addFragment ", "002 ");
-
 			ft.addToBackStack(nameFragment);
-			Log.e("SimiManager addFragment ", "003 ");
-
 			ft.commit();
-
-			Log.e("SimiManager addFragment ", "004 ");
-
 			mManager.executePendingTransactions();
-
-			Log.e("SimiManager addFragment ", "005 ");
-
 		}
 	}
 

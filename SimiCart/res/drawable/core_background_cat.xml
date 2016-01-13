@@ -10,14 +10,14 @@
     <!-- đặt thuộc tính màu và độ rộng của đường viền -->
 
    <!--  <stroke
-        android:width="5dp"
+        android:width="0.5dp"
         android:color="#88CACACA" >
     </stroke>
 
     các thuộc tính căn chỉnh
     <padding
-        android:bottom="5dp"
-        android:top="5dp" 
+        android:bottom="0.5dp"
+        android:top="0.5dp" 
         >
     </padding> -->
 

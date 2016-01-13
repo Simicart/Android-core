@@ -201,18 +201,12 @@ public class CartListenerController implements CartAdapterDelegate {
 					int cartQty = model.getQty();
 					SimiManager.getIntance().onUpdateCartQty(
 							String.valueOf(cartQty));
-					ConfigCheckout.getInstance().setmQty("" + cartQty);
 					DataLocal.listCarts.clear();
 					mBlockDelegate.updateView(((EditCartItemModel) model)
 							.getCollection());
 					mBlockDelegate
 							.onUpdateTotalPrice(((EditCartItemModel) model)
 									.getTotalPrice());
-					ConfigCheckout.getInstance().setCheckStatusCart(false);
-					ConfigCheckout.getInstance().setCollectionCart(
-							((EditCartItemModel) model).getCollection());
-					ConfigCheckout.getInstance().setTotalPriceCart(
-							((EditCartItemModel) model).getTotalPrice());
 				}
 				// else {
 				// SimiManager.getIntance().showNotify(null, message, "Ok");

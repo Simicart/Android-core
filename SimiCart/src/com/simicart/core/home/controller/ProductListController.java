@@ -25,7 +25,6 @@ public class ProductListController extends SimiController {
 
 	@Override
 	public void onStart() {
-		Log.e("Time start ", "");
 		mDelegate.showLoading();
 		ModelDelegate delegate = new ModelDelegate() {
 

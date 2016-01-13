@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/size_10" >
+    android:padding="10dp" >
 
     <TextView 
         android:id="@+id/downloading_file_name"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="size"
         android:layout_below="@+id/downloading_file_name"
-        android:layout_marginTop="@dimen/size_10"/>
+        android:layout_marginTop="10dp"/>
     
     <TextView 
         android:id="@+id/downloading_file_downloaded"
@@ -28,8 +28,8 @@
     
     <Button 
         android:id="@+id/downloading_cancel"
-        android:layout_width="@dimen/size_20"
-        android:layout_height="@dimen/size_20"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/ic_delete"/>
@@ -40,6 +40,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/downloading_file_downloaded"
-        android:layout_marginTop="@dimen/size_5" />
+        android:layout_marginTop="5dp" />
 
 </RelativeLayout>

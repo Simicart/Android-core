@@ -86,17 +86,17 @@ public class HomeZThemeBlockTablet extends HomeZThemeBlock implements
 	public void showCatSub(CategoryZTheme category) {
 		if (category.hasChild()) {
 			CategoryFragment fragment = CategoryFragment.newInstance(
-					category.getCategoryId(), category.getCategoryName());
+					category.getCategoryName(), category.getCategoryId());
 			CateSlideMenuFragment.getIntance().openMenu();
 			CateSlideMenuFragment.getIntance().replaceFragmentCategoryMenu(
 					fragment);
 		} else {
-			ListProductFragment fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, category.getCategoryId(), null, null, null, null, null, null);
-//			fragment.setCategoryId(category.getCategoryId());
-//			fragment.setUrlSearch(ConstantsSearch.url_category);
-//			if (DataLocal.isTablet) {
-//				fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
-//			}
+			ListProductFragment fragment = ListProductFragment.newInstance();
+			fragment.setCategoryId(category.getCategoryId());
+			fragment.setUrlSearch(ConstantsSearch.url_category);
+			if (DataLocal.isTablet) {
+				fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
+			}
 			SimiManager.getIntance().replaceFragment(fragment);
 		}
 	}

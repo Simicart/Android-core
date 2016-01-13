@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.magestore.simicart.R;
-import com.simicart.core.adapter.CartListAdapter;
 
 public class ButtonRectangle extends Button {
 

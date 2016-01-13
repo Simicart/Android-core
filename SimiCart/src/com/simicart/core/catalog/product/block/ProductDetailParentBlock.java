@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,15 +51,6 @@ public class ProductDetailParentBlock extends SimiBlock implements
 	protected CirclePageIndicator mIndicator;
 	protected OnClickListener onDoneOption;
 
-	// private RelativeLayout rlt_left_overlay;
-	// private RelativeLayout rlt_right_overlay;
-	// private RelativeLayout.LayoutParams rlt_param_left = new
-	// RelativeLayout.LayoutParams(Utils.getValueDp(200),
-	// RelativeLayout.LayoutParams.MATCH_PARENT);
-	// private RelativeLayout.LayoutParams rlt_param_right = new
-	// RelativeLayout.LayoutParams(Utils.getValueDp(600),
-	// RelativeLayout.LayoutParams.MATCH_PARENT);
-
 	public ProductDetailParentBlock(View view, Context context) {
 		super(view, context);
 
@@ -93,10 +85,11 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		rlt_top.setBackgroundColor(Color.parseColor(Config.getInstance()
 				.getSection_color()));
 		rlt_top.getBackground().setAlpha(100);
+
 		// details
 		ll_more = (LinearLayout) mView.findViewById(Rconfig.getInstance().id(
 				"ll_more"));
-		ll_more.setVisibility(View.INVISIBLE);
+		// ll_more.setVisibility(View.INVISIBLE);
 
 		TextView tv_more = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("tv_more"));
@@ -145,14 +138,6 @@ public class ProductDetailParentBlock extends SimiBlock implements
 			mIndicator.setScaleY(1.5f);
 		}
 		mIndicator.setOrientation(LinearLayout.VERTICAL);
-		// = (RelativeLayout)
-		// mView.findViewById(Rconfig.getInstance().id("rlt_overlay_left"));
-		// rlt_right_overlay = (RelativeLayout)
-		// mView.findViewById(Rconfig.getInstance().id("rlt_overlay_right"));
-		// rlt_param_left.setMargins(0, Utils.getValueDp(50), 0, 0);
-		// // rlt_param_right.setMargins(0, Utils.getValueDp(50), 0, 0);
-		// rlt_rlt_left_overlayleft_overlay.setLayoutParams(rlt_param_left);
-		// // rlt_right_overlay.setLayoutParams(rlt_param_right);
 	}
 
 	@Override
@@ -161,13 +146,20 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		if (null != collection) {
 			mProduct = getProductFromCollection(collection);
 			if (null != mProduct) {
+
+				Log.e("ProductDetailParentBlock ",
+						"drawView " + mProduct.getId());
+
 				ll_bottom.setVisibility(View.VISIBLE);
 				rlt_top.setVisibility(View.VISIBLE);
 
 				showNameProduct();
 				showOption();
 				showAddToCart();
+			} else {
+				Log.e("ProductDetailParentBlock ", "drawView NULL");
 			}
+
 		}
 		ll_more.setVisibility(View.VISIBLE);
 	}
@@ -179,7 +171,12 @@ public class ProductDetailParentBlock extends SimiBlock implements
 			tv_name_product.setTextColor(Config.getInstance()
 					.getContent_color());
 			if (Utils.validateString(name_product)) {
+
+				Log.e("ProductDetailParentBlock ", "showNameProduct "
+						+ name_product + tv_name_product.getVisibility());
+
 				tv_name_product.setText(name_product.trim());
+
 			}
 		}
 	}
@@ -213,6 +210,11 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		boolean stock = mProduct.getStock();
 		Drawable bg_button = mContext.getResources().getDrawable(
 				Rconfig.getInstance().drawable("core_background_button"));
+
+		Log.e("ProductDetailParentBlock ",
+				"showAddToCart TOP " + rlt_top.getVisibility() + " BOTTOM "
+						+ ll_bottom.getVisibility() + "NORMAL " + View.VISIBLE);
+
 		if (stock) {
 			bg_button.setColorFilter(Config.getInstance().getColorMain(),
 					PorterDuff.Mode.SRC_ATOP);
@@ -236,20 +238,17 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		if (isVisible) {
 			if (rlt_top.getVisibility() == View.VISIBLE
 					&& ll_bottom.getVisibility() == View.VISIBLE) {
+
+				Log.e("ProductDetailParentBlock ", "onVisibleTopBottom GONE ");
+
 				tv_name_product.setVisibility(View.GONE);
 				rlt_top.setVisibility(View.GONE);
-				// rlt_param_left.setMargins(0, 0, 0, 0);
-				// rlt_param_right.setMargins(0, 0, 0, 0);
-				// rlt_left_overlay.setLayoutParams(rlt_param_left);
-				// rlt_right_overlay.setLayoutParams(rlt_param_right);
 				ll_bottom.setVisibility(View.GONE);
 			} else {
+				Log.e("ProductDetailParentBlock ",
+						"onVisibleTopBottom VISIBLE ");
 				tv_name_product.setVisibility(View.VISIBLE);
 				rlt_top.setVisibility(View.VISIBLE);
-				// rlt_param_left.setMargins(0, Utils.getValueDp(50), 0, 0);
-				// rlt_param_right.setMargins(0, Utils.getValueDp(50), 0, 0);
-				// rlt_left_overlay.setLayoutParams(rlt_param_left);
-				// rlt_right_overlay.setLayoutParams(rlt_param_right);
 				ll_bottom.setVisibility(View.VISIBLE);
 				showNameProduct();
 			}

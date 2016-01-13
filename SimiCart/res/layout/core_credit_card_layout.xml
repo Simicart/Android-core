@@ -4,13 +4,13 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    android:padding="@dimen/size_10" >
+    android:padding="10dp" >
 
     <TextView
         android:id="@+id/credit_card_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/size_10"
+        android:layout_marginLeft="10dp"
         android:text="Credit Card"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -28,8 +28,8 @@
     <kankan.wheel.widget.WheelView
         android:id="@+id/select_cart"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_100"
-        android:paddingLeft="@dimen/size_20"
+        android:layout_height="100dp"
+        android:paddingLeft="20dp"
         android:visibility="gone" />
 
     <EditText
@@ -56,20 +56,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="@dimen/size_10"
-        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:weightSum="4"
         android:visibility="gone" >
 
         <kankan.wheel.widget.WheelView
             android:id="@+id/month"
             android:layout_weight="3"
-            android:layout_width="@dimen/size_0"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" />
 
         <kankan.wheel.widget.WheelView
             android:id="@+id/year"
-            android:layout_width="@dimen/size_0"
+            android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content" />
     </LinearLayout>

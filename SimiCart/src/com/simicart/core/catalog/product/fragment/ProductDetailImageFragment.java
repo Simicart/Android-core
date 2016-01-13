@@ -32,14 +32,17 @@ public class ProductDetailImageFragment extends SimiFragment {
 	}
 
 	public static ProductDetailImageFragment newInstance(String url) {
-		
-			ProductDetailImageFragment fragment = new ProductDetailImageFragment();
-			
-			 	Bundle bundle= new Bundle();
-			 	setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
-			    fragment.setArguments(bundle);
+		try {
+			ProductDetailImageFragment fragment = new ProductDetailImageFragment(
+					url);
 			return fragment;
-		
+		} catch (Exception e) {
+		}
+		return new ProductDetailImageFragment(url);
+	}
+
+	public ProductDetailImageFragment(String url) {
+		mURL = url;			
 	}
 
 	@Override

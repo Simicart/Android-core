@@ -227,13 +227,13 @@ public class SignInController extends SimiController {
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
+					SimiManager.getIntance().getRequestQueue().clearCacheL1();
+					showToastSignIn();
 					DataLocal.isNewSignIn = true;
 					DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
 
 					String name = ((SignInModel) mModel).getName();
 					String cartQty = ((SignInModel) mModel).getCartQty();
-					ConfigCheckout.getInstance().setCheckStatusCart(true);
-					ConfigCheckout.getInstance().setmQty(cartQty);
 					if (null != name) {
 						DataLocal.saveData(name, email, password);
 						DataLocal.saveEmailPassRemember(email, password);
@@ -269,8 +269,6 @@ public class SignInController extends SimiController {
 									int carQty = ((CartModel) mModel).getQty();
 									SimiManager.getIntance().onUpdateCartQty(
 											String.valueOf(carQty));
-									ConfigCheckout.getInstance().setmQty(
-											"" + carQty);
 
 									ArrayList<SimiEntity> entity = mModel
 											.getCollection().getCollection();

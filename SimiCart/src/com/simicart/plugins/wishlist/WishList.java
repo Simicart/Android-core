@@ -151,8 +151,8 @@ public class WishList {
 
 	public WishList(String method, CacheFragment cache) {
 		if (method.equals("afterSignIn") && !product_ID.equals("")) {
-			ProductDetailParentFragment fragment = ProductDetailParentFragment.newInstance(product_ID,null);
-//			fragment.setProductID(product_ID);
+			ProductDetailParentFragment fragment = ProductDetailParentFragment.newInstance();
+			fragment.setProductID(product_ID);
 			product_ID = "";
 			cache.setFragment(fragment);
 		}
@@ -247,7 +247,7 @@ public class WishList {
 					}
 					SimiManager.getIntance().replaceFragment(fragment);
 				} else {
-					SignInFragment fragment = SignInFragment.newInstance(null, null, false);
+					SignInFragment fragment = SignInFragment.newInstance();
 					SimiManager.getIntance().replacePopupFragment(fragment);
 				}
 			}

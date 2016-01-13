@@ -18,7 +18,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
@@ -75,7 +74,7 @@ public class SettingAppFragment extends SimiFragment {
 
 		tv_language = (TextView) rootView.findViewById(Rconfig.getInstance()
 				.id("tv_language"));
-		tv_language.setText(mContext.getResources().getString(R.string.language));
+		tv_language.setText(Config.getInstance().getText("Language"));
 		tv_language.setTextColor(Config.getInstance().getContent_color());
 		tv_language_selected = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_language_selected"));
@@ -83,7 +82,7 @@ public class SettingAppFragment extends SimiFragment {
 				.getInstance().id("rl_language"));
 		tv_currency = (TextView) rootView.findViewById(Rconfig.getInstance()
 				.id("tv_currency"));
-		tv_currency.setText(mContext.getResources().getString(R.string.currency));
+		tv_currency.setText(Config.getInstance().getText("Currency"));
 		tv_currency.setTextColor(Config.getInstance().getContent_color());
 		tv_currency_selected = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_currency_selected"));
@@ -94,7 +93,8 @@ public class SettingAppFragment extends SimiFragment {
 		tv_notification.setBackgroundColor(Config.getInstance()
 				.getApp_backrground());
 		tv_notification.setTextColor(Config.getInstance().getContent_color());
-		tv_notification.setText(mContext.getResources().getString(R.string.show_notification));
+		tv_notification.setText(Config.getInstance().getText(
+				"Show notifications"));
 		rl_notification = (RelativeLayout) rootView.findViewById(Rconfig
 				.getInstance().id("rl_notification"));
 		rl_notification.setBackgroundColor(Config.getInstance()
@@ -102,7 +102,7 @@ public class SettingAppFragment extends SimiFragment {
 		tv_locator = (TextView) rootView.findViewById(Rconfig.getInstance().id(
 				"tv_locator"));
 		tv_locator.setTextColor(Config.getInstance().getContent_color());
-		tv_locator.setText(mContext.getResources().getString(R.string.location_setting));
+		tv_locator.setText(Config.getInstance().getText("Location Setting"));
 		rl_locator = (LayoutRipple) rootView.findViewById(Rconfig.getInstance()
 				.id("rl_locator"));
 
@@ -332,8 +332,8 @@ public class SettingAppFragment extends SimiFragment {
 	}
 
 	protected void changeCurrency() {
-		ListCurrencyFragment fragment = ListCurrencyFragment.newInstance(currency);
-//		fragment.setCurrent_item(currency);
+		ListCurrencyFragment fragment = ListCurrencyFragment.newInstance();
+		fragment.setCurrent_item(currency);
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
 		} else {
@@ -342,8 +342,8 @@ public class SettingAppFragment extends SimiFragment {
 	}
 
 	protected void changeLanguage() {
-		ListLanguageFragment fragment = ListLanguageFragment.newInstance(tv_language_selected.getText().toString());
-//		fragment.setCurrent_item(tv_language_selected.getText().toString());
+		ListLanguageFragment fragment = ListLanguageFragment.newInstance();
+		fragment.setCurrent_item(tv_language_selected.getText().toString());
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
 		} else {

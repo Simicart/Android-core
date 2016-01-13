@@ -13,26 +13,26 @@
             android:id="@+id/fcart_rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/size_5"
-            android:paddingTop="@dimen/size_5" >
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
 
             <com.simicart.core.style.NoScrollListView
                 android:id="@+id/cart_item_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:listSelector="#FFFFFF"
-                android:paddingBottom="@dimen/size_5"
-                android:paddingLeft="@dimen/size_5"
-                android:paddingRight="@dimen/size_0"
-                android:paddingTop="@dimen/size_5" />
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="0dp"
+                android:paddingTop="5dp" />
 
             <RelativeLayout
                 android:id="@+id/rlt_reward_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cart_item_list"
-                android:layout_marginLeft="@dimen/size_10"
-                android:layout_marginRight="@dimen/size_10" >
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" >
             </RelativeLayout>
 
             <TableLayout
@@ -41,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/rlt_reward_card"
-                android:layout_marginBottom="@dimen/size_20"
-                android:layout_marginRight="@dimen/size_10" >
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="10dp" >
             </TableLayout>
         </RelativeLayout>
     </com.simicart.core.style.CustomScrollView>
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingLeft="@dimen/size_2" >
+        android:paddingLeft="2dp" >
 
         <com.simicart.core.material.ButtonRectangle
             android:id="@+id/checkout"

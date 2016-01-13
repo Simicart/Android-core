@@ -6,24 +6,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.security.KeyStore;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.PlainSocketFactory;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-import org.apache.http.protocol.HTTP;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -45,11 +32,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.simicart.core.base.fragment.SimiFragment;
-import com.simicart.core.base.network.request.MySSLSocketFactory;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.rewardpoint.utils.Constant;
 
@@ -75,30 +60,17 @@ public class FragmentRewardCard extends SimiFragment {
 
 	private LinearLayout layout_passbook;
 
-//	public FragmentRewardCard(String passBookLogo, String loyalty_redeem,
-//			String nameapp, String background, String passbook_foreground,
-//			String passbook_barcode) {
-//		this.passBookLogo = passBookLogo;
-//		this.loyalty_redeem = loyalty_redeem;
-//		this.passbook_text = nameapp;
-//		this.background_passbook = background;
-//		this.passbook_foreground = passbook_foreground.trim();
-//		this.passbook_barcode = passbook_barcode.trim();
-//	}
-	public static FragmentRewardCard instance(String passBookLogo, String loyalty_redeem,
+	public FragmentRewardCard(String passBookLogo, String loyalty_redeem,
 			String nameapp, String background, String passbook_foreground,
-			String passbook_barcode){
-		FragmentRewardCard fragmentRewardCard = new FragmentRewardCard();
-		Bundle bundle = new Bundle();
-		setData(Constants.KeyData.PASSBOOKLOGO, passBookLogo, Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.LOYALTY_REDEEM, loyalty_redeem, Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.NAMEAPP, nameapp, Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.BACKGROUND, background, Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.PASSBOOK_FOREGROUND, passbook_foreground, Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.PASSBOOK_BARCODE, passbook_barcode, Constants.KeyData.TYPE_STRING, bundle);
-		
-		return fragmentRewardCard;
+			String passbook_barcode) {
+		this.passBookLogo = passBookLogo;
+		this.loyalty_redeem = loyalty_redeem;
+		this.passbook_text = nameapp;
+		this.background_passbook = background;
+		this.passbook_foreground = passbook_foreground.trim();
+		this.passbook_barcode = passbook_barcode.trim();
 	}
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -112,17 +84,6 @@ public class FragmentRewardCard extends SimiFragment {
 						.layout("plugins_rewardpoint_cardfragment"), container,
 				false);
 		mContext = getActivity();
-		
-		//getdata
-		if(getArguments() != null){
-		passBookLogo = (String) getData(Constants.KeyData.PASSBOOKLOGO, Constants.KeyData.TYPE_STRING, getArguments());
-		loyalty_redeem = (String) getData(Constants.KeyData.LOYALTY_REDEEM, Constants.KeyData.TYPE_STRING, getArguments());
-		passbook_text = (String) getData(Constants.KeyData.NAMEAPP, Constants.KeyData.TYPE_STRING, getArguments());
-		background_passbook = (String) getData(Constants.KeyData.BACKGROUND, Constants.KeyData.TYPE_STRING, getArguments());
-		passbook_foreground = (String) getData(Constants.KeyData.PASSBOOK_FOREGROUND, Constants.KeyData.TYPE_STRING, getArguments());
-		passbook_barcode = (String) getData(Constants.KeyData.PASSBOOK_BARCODE, Constants.KeyData.TYPE_STRING, getArguments());
-		}
-		
 		img_logo = (ImageView) view.findViewById(Rconfig.getInstance().id(
 				"img_logo_passbook"));
 		img_barcode = (ImageView) view.findViewById(Rconfig.getInstance().id(
@@ -163,7 +124,7 @@ public class FragmentRewardCard extends SimiFragment {
 		if (!background_passbook.equals("")) {
 			bg_passbook.setColor(Color.parseColor("#"
 					+ background_passbook.trim()));
-		}else{
+		} else {
 			bg_passbook.setColor(Color.parseColor("#FF6600"));
 		}
 		bg_passbook.setCornerRadius(Utils.getValueDp(15));
@@ -219,7 +180,8 @@ public class FragmentRewardCard extends SimiFragment {
 		protected String doInBackground(String... params) {
 			String url = params[0];
 			byte[] data;
-			HttpClient httpclient = getNewHttpClient();
+			// HttpClient httpclient = getNewHttpClient();
+			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(url);
 			String userAgent = System.getProperty("http.agent");
 			String cookie = Config.getInstance().getCookie();
@@ -257,36 +219,37 @@ public class FragmentRewardCard extends SimiFragment {
 		}
 	}
 
-	public static DefaultHttpClient getNewHttpClient() {
-		DefaultHttpClient httpClient = null;
-		try {
-			if (httpClient == null) {
-				HttpParams params = new BasicHttpParams();
-				HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
-				HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
-				SchemeRegistry registry = new SchemeRegistry();
-				registry.register(new Scheme("http", PlainSocketFactory
-						.getSocketFactory(), 80));
-
-				KeyStore trustStore = KeyStore.getInstance(KeyStore
-						.getDefaultType());
-				trustStore.load(null, null);
-				SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
-				sf.setHostnameVerifier((X509HostnameVerifier) SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-				registry.register(new Scheme("https", sf, 443));
-
-				ClientConnectionManager ccm = new ThreadSafeClientConnManager(
-						params, registry);
-				httpClient = new DefaultHttpClient(ccm, params);
-			}
-			return httpClient;
-		} catch (Exception e) {
-			if (httpClient == null) {
-				httpClient = new DefaultHttpClient();
-			}
-			return httpClient;
-		}
-	}
+	// public static DefaultHttpClient getNewHttpClient() {
+	// DefaultHttpClient httpClient = null;
+	// try {
+	// if (httpClient == null) {
+	// HttpParams params = new BasicHttpParams();
+	// HttpProtocolParams.setVersion(params, HttpVersion.HTTP_1_1);
+	// HttpProtocolParams.setContentCharset(params, HTTP.UTF_8);
+	// SchemeRegistry registry = new SchemeRegistry();
+	// registry.register(new Scheme("http", PlainSocketFactory
+	// .getSocketFactory(), 80));
+	//
+	// KeyStore trustStore = KeyStore.getInstance(KeyStore
+	// .getDefaultType());
+	// trustStore.load(null, null);
+	// SSLSocketFactory sf = new MySSLSocketFactory(trustStore);
+	// sf.setHostnameVerifier((X509HostnameVerifier)
+	// SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+	// registry.register(new Scheme("https", sf, 443));
+	//
+	// ClientConnectionManager ccm = new ThreadSafeClientConnManager(
+	// params, registry);
+	// httpClient = new DefaultHttpClient(ccm, params);
+	// }
+	// return httpClient;
+	// } catch (Exception e) {
+	// if (httpClient == null) {
+	// httpClient = new DefaultHttpClient();
+	// }
+	// return httpClient;
+	// }
+	// }
 
 	@SuppressWarnings("unused")
 	private static boolean launchPassWallet(Context applicationContext,

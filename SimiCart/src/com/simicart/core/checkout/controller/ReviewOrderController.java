@@ -318,8 +318,6 @@ public class ReviewOrderController extends SimiController implements
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
-					ConfigCheckout.getInstance().setCheckStatusCart(true);
-					ConfigCheckout.getInstance().setmQty("" + 0);
 					PaymentMethod.getInstance().setPlacePaymentMethod("");
 
 					PaymentMethod.getInstance().setPlacePaymentMethod("");

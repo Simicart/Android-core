@@ -12,7 +12,7 @@
         <RelativeLayout
             android:id="@+id/rlt_category_filter"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50" >
+            android:layout_height="50dp" >
             <TextView
                 android:id="@+id/txt_category_filter"
                 android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
                 android:layout_centerInParent="true"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                android:textSize="@dimen/size_20" />
+                android:textSize="20dp" />
         </RelativeLayout>
 
         <!-- selected filter -->
@@ -35,12 +35,12 @@
                 android:id="@+id/tv_selected_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size_5"
-                android:layout_marginLeft="@dimen/size_5"
-                android:layout_marginTop="@dimen/size_5"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
                 android:text="Selected filter"
                 android:textColor="#000000"
-                android:textSize="@dimen/text_20"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
 
@@ -48,17 +48,17 @@
                 android:id="@+id/lv_selected_filters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_2"
+                android:layout_marginTop="2dp"
                 android:scrollbars="none" />
 
             <Button
                 android:id="@+id/btn_clear_all"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/size_5"
+                android:layout_height="35dp"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/size_10"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/background_edittext"
-                android:textSize="@dimen/text_14" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <!-- filter -->
@@ -67,18 +67,18 @@
             android:id="@+id/tv_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/size_5"
-            android:layout_marginLeft="@dimen/size_5"
-            android:layout_marginTop="@dimen/size_5"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
             android:textColor="#000000"
-            android:textSize="@dimen/text_20"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <com.simicart.core.style.NoScrollListView
             android:id="@+id/lv_filters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_2"
+            android:layout_marginTop="2dp"
             android:scrollbars="none" />
     </LinearLayout>
 

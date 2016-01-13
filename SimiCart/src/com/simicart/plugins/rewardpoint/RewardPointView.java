@@ -513,7 +513,10 @@ public class RewardPointView {
 		txt_content.setTag("txt_content");
 		txt_content.setId(Constant.ID_TEXTVIEW_CONTENT);
 		// txt_content.setText("Each of 1 Point gets $1.00 discount");
-		txt_content.setText(String.format(Config.getInstance().getText("Each of %s gets %s discount"), pointStepLabel, pointStepDiscount));
+		txt_content.setText(Config.getInstance().getText("Each of") + " "
+				+ pointStepLabel + " " + Config.getInstance().getText("gets")
+				+ " " + pointStepDiscount + " "
+				+ Config.getInstance().getText("discount"));
 
 		txt_content.setTextSize(17);
 		txt_content.setTextColor(Color.parseColor("#000000"));

@@ -34,9 +34,9 @@ public class PayU {
 						"params");
 				if (Utils.validateString(url_payu)) {
 					Log.e("PayU ", "006");
-					PayUFragment fragment = PayUFragment.newInstance(url_payu, checkoutData.getInvoice_number());
-//					fragment.setUrl_payu(url_payu);
-//					fragment.setInvoice_number(checkoutData.getInvoice_number());
+					PayUFragment fragment = PayUFragment.newInstance();
+					fragment.setUrl_payu(url_payu);
+					fragment.setInvoice_number(checkoutData.getInvoice_number());
 					SimiManager.getIntance().addFragment(fragment);
 				}
 				Log.e("PayU ", "007");

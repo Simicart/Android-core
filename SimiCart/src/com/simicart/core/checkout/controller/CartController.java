@@ -21,21 +21,12 @@ public class CartController extends SimiController {
 
 	@Override
 	public void onStart() {
-		if (ConfigCheckout.getInstance().getmQty() > 0) {
-			if (ConfigCheckout.getInstance().getCartFirstRequest() == true) {
-				request();
-				ConfigCheckout.getInstance().setCartFirstRequest(false);
-			} else {
-				if (ConfigCheckout.getInstance().getStatusCart() == true) {
-					request();
-					ConfigCheckout.getInstance().setCheckStatusCart(false);
-				} else {
-					resumeJson();
-				}
-			}
-		} else {
-			mDelegate.visibleAllView();
-		}
+		request();
+	}
+
+	@Override
+	public void onResume() {
+		request();
 	}
 
 	private void request() {
@@ -47,7 +38,6 @@ public class CartController extends SimiController {
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
-					ConfigCheckout.getInstance().setMessageCart(message);
 					mDelegate.setMessage(message);
 					mDelegate.updateView(mModel.getCollection());
 					mDelegate.onUpdateTotalPrice(((CartModel) mModel)
@@ -80,58 +70,6 @@ public class CartController extends SimiController {
 			// TODO: handle exception
 		}
 		return mOrderWebview;
-	}
-
-	private void resumeJson() {
-		if (ConfigCheckout.getInstance().getMessageCart() != null)
-			mDelegate.setMessage(ConfigCheckout.getInstance().getMessageCart());
-		if (ConfigCheckout.getInstance().getCollectionCart() != null)
-			mDelegate.updateView(ConfigCheckout.getInstance()
-					.getCollectionCart());
-		if (ConfigCheckout.getInstance().getTotalPriceCart() != null)
-			mDelegate.onUpdateTotalPrice(ConfigCheckout.getInstance()
-					.getTotalPriceCart());
-		SimiManager.getIntance().onUpdateCartQty(
-				String.valueOf(ConfigCheckout.getInstance().getmQty()));
-
-		if (ConfigCheckout.getInstance().getCollectionCart() != null) {
-			String url = getUrl(ConfigCheckout.getInstance()
-					.getCollectionCart().getJSON());
-			mDelegate.setCheckoutWebView(url);
-		} else {
-			mDelegate.setCheckoutWebView("");
-		}
-	}
-
-	@Override
-	public void onResume() {
-		if (ConfigCheckout.getInstance().getStatusCart()) {
-			if (mModel != null && mModel.getCollection() != null) {
-				mDelegate.updateView(mModel.getCollection());
-				mDelegate.onUpdateTotalPrice(((CartModel) mModel)
-						.getTotalPrice());
-				String url = getUrl(mModel.getCollection().getJSON());
-				mDelegate.setCheckoutWebView(url);
-			}
-		} else {
-			if (ConfigCheckout.getInstance().getCollectionCart() != null) {
-				mDelegate.updateView(ConfigCheckout.getInstance()
-						.getCollectionCart());
-			} else {
-				mDelegate.visibleAllView();
-			}
-			if (ConfigCheckout.getInstance().getTotalPriceCart() != null) {
-				mDelegate.onUpdateTotalPrice(ConfigCheckout.getInstance()
-						.getTotalPriceCart());
-			}
-			if (ConfigCheckout.getInstance().getCollectionCart() != null) {
-				String url = getUrl(ConfigCheckout.getInstance()
-						.getCollectionCart().getJSON());
-				mDelegate.setCheckoutWebView(url);
-			} else {
-				mDelegate.setCheckoutWebView("");
-			}
-		}
 	}
 
 	public void setDelegate(CartDelegate delegate) {

@@ -14,15 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/size_10"
-            android:paddingRight="@dimen/size_10" >
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
 
             <RelativeLayout
                 android:id="@+id/rl_categoryParentLable"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_50"
-                android:paddingBottom="@dimen/size_10"
-                android:paddingTop="@dimen/size_10" >
+                android:layout_height="50dp"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" >
 
                 <TextView
                     android:id="@+id/tv_category"
@@ -30,15 +30,15 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/size_10"
+                    android:layout_marginRight="10dp"
                     android:layout_toLeftOf="@+id/layout_showmore"
                     android:ellipsize="end"
                     android:lines="1"
-                    android:textSize="@dimen/text_16" />
+                    android:textSize="16sp" />
 
                 <RelativeLayout
                     android:id="@+id/layout_showmore"
-                    android:layout_width="@dimen/size_100"
+                    android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true" >
 
@@ -48,16 +48,16 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/iv_showmore"
-                        android:textSize="@dimen/text_12"
+                        android:textSize="12sp"
                         android:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_showmore"
-                        android:layout_width="@dimen/size_20"
-                        android:layout_height="@dimen/size_20"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginTop="@dimen/size_5"
+                        android:layout_marginTop="5dp"
                         android:src="@drawable/ic_view_all"
                         android:visibility="gone" />
                 </RelativeLayout>
@@ -66,7 +66,7 @@
             <LinearLayout
                 android:id="@+id/ll_listParent"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_160"
+                android:layout_height="160dp"
                 android:orientation="vertical"
                 android:visibility="gone" >
             </LinearLayout>
@@ -74,7 +74,7 @@
             <View
                 android:id="@+id/v_line"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_01" />
+                android:layout_height="0.1dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,16 +87,16 @@
                 android:id="@+id/lv_categories"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/size_10"
-                android:layout_marginRight="@dimen/size_10" >
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" >
             </com.simicart.core.style.NoScrollListView>
 
             <View
                 android:id="@+id/v_line2"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_01"
-                android:layout_marginLeft="@dimen/size_10"
-                android:layout_marginRight="@dimen/size_10" />
+                android:layout_height="0.1dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp" />
         </LinearLayout>
     </LinearLayout>
 

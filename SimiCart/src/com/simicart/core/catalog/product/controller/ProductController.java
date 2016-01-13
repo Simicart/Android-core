@@ -274,12 +274,10 @@ public class ProductController extends SimiController implements
 				mDelegate.dismissDialogLoading();
 				if (isSuccess) {
 					int mQty = getCartQtyFromJsonobject(model.getDataJSON());
-					ConfigCheckout.getInstance().setmQty(String.valueOf(mQty));
 					SimiManager.getIntance().onUpdateCartQty(mQty + "");
 
 					SimiManager.getIntance().showToast(
 							Config.getInstance().getText("Added to Cart"));
-					ConfigCheckout.getInstance().setCheckStatusCart(true);
 				} else {
 					// SimiManager.getIntance().showNotify(message);
 					SimiManager.getIntance().showToast(message);

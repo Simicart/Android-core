@@ -8,10 +8,10 @@
   
   <ImageView android:id="@+id/flag"
       android:layout_gravity="center_vertical"
-	  android:layout_width="@dimen/size_60"
-	  android:layout_height="@dimen/size_50"
+	  android:layout_width="60dp"
+	  android:layout_height="50dp"
 	  android:background="#F000"
-	  android:padding="@dimen/size_1"
+	  android:padding="1dp"
 	  android:scaleType="fitXY"
 	  android:cropToPadding="true"/>
     
@@ -20,7 +20,7 @@
 	  android:layout_width="wrap_content"
 	  android:layout_height="wrap_content"
 	  android:text="VISA"
-	  android:layout_marginLeft="@dimen/size_10"
-	  android:textSize="@dimen/text_18"
+	  android:layout_marginLeft="10dp"
+	  android:textSize="18sp"
 	  android:textColor="#F000"/>
 </LinearLayout>

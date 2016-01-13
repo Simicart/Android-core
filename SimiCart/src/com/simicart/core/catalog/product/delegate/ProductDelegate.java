@@ -19,7 +19,7 @@ public interface ProductDelegate extends SimiDelegate {
 	public void onVisibleTopBottom(boolean isVisible);
 
 	public void updateViewPager(VerticalViewPager2 viewpager);
-	
-	public LinearLayout getLayoutMore ();
+
+	public LinearLayout getLayoutMore();
 
 }

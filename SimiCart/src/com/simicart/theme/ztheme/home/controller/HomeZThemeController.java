@@ -102,20 +102,21 @@ public class HomeZThemeController extends SimiController {
 	}
 
 	protected void selecteSpot(SpotProductZTheme spotProductZTheme) {
-		ListProductFragment fragment = ListProductFragment.newInstance(ConstantsSearch.url_spot_ztheme, null, null, spotProductZTheme.getKey(), spotProductZTheme.getName(), null, null, null);
-//		fragment.setUrlSearch(ConstantsSearch.url_spot_ztheme);
-//		fragment.setCategoryName(spotProductZTheme.getName());
-//		fragment.setKey(spotProductZTheme.getKey());
-//		if (DataLocal.isTablet) {
-//			fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
-//		}
+		ListProductFragment fragment = ListProductFragment.newInstance();
+		fragment.setUrlSearch(ConstantsSearch.url_spot_ztheme);
+		fragment.setCategoryName(spotProductZTheme.getName());
+		fragment.setKey(spotProductZTheme.getKey());
+		if (DataLocal.isTablet) {
+			fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
+		}
 		SimiManager.getIntance().replaceFragment(fragment);
 	}
 
 	protected void selecteCat(Category category) {
 		SimiFragment fragment = null;
 		if (category.hasChild()) {
-			fragment = CategoryFragment.newInstance(category.getCategoryId(), category.getCategoryName());
+			fragment = CategoryFragment.newInstance(category.getCategoryName(),
+					category.getCategoryId());
 			if (DataLocal.isTablet) {
 				CateSlideMenuFragment.getIntance().replaceFragmentCategoryMenu(
 						fragment);
@@ -124,25 +125,19 @@ public class HomeZThemeController extends SimiController {
 				SimiManager.getIntance().replaceFragment(fragment);
 			}
 		} else {
-			String urlSearch ="";
-			if (category.getCategoryId().equals("-1")) {
-				urlSearch = Constants.GET_ALL_PRODUCTS;
-			} else {
-				urlSearch = Constants.GET_CATEGORY_PRODUCTS;
-			}
-			fragment = ListProductFragment.newInstance(urlSearch, category.getCategoryId(), null, null, category.getCategoryName(), null, null, null);
+			fragment = ListProductFragment.newInstance();
 //			((ListProductFragment) fragment).setmCatID(category.getCategoryId());
-//			((ListProductFragment) fragment).setCategoryId(category.getCategoryId());
-//			((ListProductFragment) fragment).setCatName(category.getCategoryName());
-//			if (category.getCategoryId().equals("-1")) {
-//				((ListProductFragment) fragment).setUrlSearch(Constants.GET_ALL_PRODUCTS);
-//			} else {
-//				((ListProductFragment) fragment).setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
-//			}
-//			if (DataLocal.isTablet) {
-//				((ListProductFragment) fragment)
-//						.setTag_search(TagSearch.TAG_GRIDVIEW);
-//			}
+			((ListProductFragment) fragment).setCategoryId(category.getCategoryId());
+			((ListProductFragment) fragment).setCatName(category.getCategoryName());
+			if (category.getCategoryId().equals("-1")) {
+				((ListProductFragment) fragment).setUrlSearch(Constants.GET_ALL_PRODUCTS);
+			} else {
+				((ListProductFragment) fragment).setUrlSearch(Constants.GET_CATEGORY_PRODUCTS);
+			}
+			if (DataLocal.isTablet) {
+				((ListProductFragment) fragment)
+						.setTag_search(TagSearch.TAG_GRIDVIEW);
+			}
 			SimiManager.getIntance().removeDialog();
 			SimiManager.getIntance().replaceFragment(fragment);
 		}

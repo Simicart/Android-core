@@ -14,11 +14,11 @@
             android:id="@+id/lable_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:paddingBottom="@dimen/size_5"
-            android:paddingTop="@dimen/size_5"
-            android:textSize="@dimen/text_20"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <RelativeLayout
@@ -26,20 +26,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/core_line_border_white"
-            android:padding="@dimen/size_7" >
+            android:padding="7dp" >
 
             <ImageView
                 android:id="@+id/iv_extend"
-                android:layout_width="@dimen/size_25"
-                android:layout_height="@dimen/size_25"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_extend" />
 
             <ImageView
                 android:id="@+id/iv_add"
-                android:layout_width="@dimen/size_30"
-                android:layout_height="@dimen/size_30"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_action_add" />
@@ -52,18 +52,18 @@
                 android:layout_toLeftOf="@+id/iv_extend"
                 android:layout_toRightOf="@+id/iv_add"
                 android:gravity="center"
-                android:textSize="@dimen/text_18" />
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/tv_chooseAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_30"
+            android:layout_marginTop="30dp"
             android:gravity="center_horizontal"
-            android:padding="@dimen/size_10"
+            android:padding="10dp"
             android:textColor="#CACACA"
-            android:textSize="@dimen/text_15" />
+            android:textSize="15sp" />
     </LinearLayout>
 
     <ListView

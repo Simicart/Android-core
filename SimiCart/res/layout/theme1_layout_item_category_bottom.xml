@@ -7,12 +7,12 @@
 
     <RelativeLayout
         android:id="@+id/rlt_animate"
-        android:layout_width="@dimen/size_120"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/size_2"
-        android:paddingLeft="@dimen/size_2"
-        android:paddingRight="@dimen/size_3"
-        android:paddingTop="@dimen/size_2" >
+        android:paddingBottom="2dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="3dp"
+        android:paddingTop="2dp" >
     </RelativeLayout>
 
 </LinearLayout>

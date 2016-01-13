@@ -1,24 +1,11 @@
 package com.simicart.plugins.locator.fragment;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.HttpConnectionParams;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 
@@ -35,7 +22,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -71,7 +57,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.network.request.CoreAPIService;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
@@ -1088,61 +1073,61 @@ public class StoreLocatorFragment extends SimiFragment {
 
 	public static JSONObject getJon(JSONObject data, String url) {
 		JSONObject mJSONRet = null;
-		InputStream is = null;
-		String json = "";
-		HttpResponse httpResponse;
-		String message = "Some errors occurred. Please try again later";
-		try {
-			HttpPost httpPost = new HttpPost(url);
-			httpPost.setHeader("Token", Config.getInstance().getSecretKey());
-			List<NameValuePair> nameValuePairs = getPostData(data.toString());
-			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
-			Log.e("Param", nameValuePairs.toString());
-			HttpConnectionParams.setConnectionTimeout(
-					CoreAPIService.getNewHttpClient().getParams(), 6000);
-			HttpConnectionParams.setSoTimeout(
-					CoreAPIService.getNewHttpClient().getParams(), 60000);
-			CoreAPIService.getNewHttpClient().getParams().setParameter(
-					ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
-			httpResponse = CoreAPIService.getNewHttpClient().execute(httpPost);
-			StatusLine statusLine = httpResponse.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			HttpEntity httpEntity;
-			if (statusCode < 400) {
-				httpEntity = httpResponse.getEntity();
-				is = httpEntity.getContent();
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(is, "UTF_8"), 8192);
-
-				StringBuilder sb = new StringBuilder();
-				String line = null;
-				while ((line = reader.readLine()) != null) {
-					sb.append(line + "\n");
-				}
-				is.close();
-				json = sb.toString();
-				Log.e("SB String", sb.toString());
-				mJSONRet = new JSONObject(json);
-				return mJSONRet;
-			} else {
-				if (statusCode == 500) {
-					message = "Internal Server Error";
-				} else if (statusCode == 503) {
-					message = "Service Unavailable";
-				} else {
-					message = "Some errors occurred. Please try again later";
-				}
-				httpResponse.getEntity().getContent().close();
-				throw new IOException(statusLine.getReasonPhrase());
-			}
-
-		} catch (ConnectTimeoutException e) {
-			message = "The request timed out";
-		} catch (IOException e) {
-			message = e.getMessage();
-		} catch (JSONException e) {
-			message = "A connection failure occurred";
-		}
+//		InputStream is = null;
+//		String json = "";
+//		HttpResponse httpResponse;
+//		String message = "Some errors occurred. Please try again later";
+//		try {
+//			HttpPost httpPost = new HttpPost(url);
+//			httpPost.setHeader("Token", Config.getInstance().getSecretKey());
+//			List<NameValuePair> nameValuePairs = getPostData(data.toString());
+//			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
+//			Log.e("Param", nameValuePairs.toString());
+//			HttpConnectionParams.setConnectionTimeout(
+//					CoreAPIService.getNewHttpClient().getParams(), 6000);
+//			HttpConnectionParams.setSoTimeout(
+//					CoreAPIService.getNewHttpClient().getParams(), 60000);
+//			CoreAPIService.getNewHttpClient().getParams().setParameter(
+//					ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
+//			httpResponse = CoreAPIService.getNewHttpClient().execute(httpPost);
+//			StatusLine statusLine = httpResponse.getStatusLine();
+//			int statusCode = statusLine.getStatusCode();
+//			HttpEntity httpEntity;
+//			if (statusCode < 400) {
+//				httpEntity = httpResponse.getEntity();
+//				is = httpEntity.getContent();
+//				BufferedReader reader = new BufferedReader(
+//						new InputStreamReader(is, "UTF_8"), 8192);
+//
+//				StringBuilder sb = new StringBuilder();
+//				String line = null;
+//				while ((line = reader.readLine()) != null) {
+//					sb.append(line + "\n");
+//				}
+//				is.close();
+//				json = sb.toString();
+//				Log.e("SB String", sb.toString());
+//				mJSONRet = new JSONObject(json);
+//				return mJSONRet;
+//			} else {
+//				if (statusCode == 500) {
+//					message = "Internal Server Error";
+//				} else if (statusCode == 503) {
+//					message = "Service Unavailable";
+//				} else {
+//					message = "Some errors occurred. Please try again later";
+//				}
+//				httpResponse.getEntity().getContent().close();
+//				throw new IOException(statusLine.getReasonPhrase());
+//			}
+//
+//		} catch (ConnectTimeoutException e) {
+//			message = "The request timed out";
+//		} catch (IOException e) {
+//			message = e.getMessage();
+//		} catch (JSONException e) {
+//			message = "A connection failure occurred";
+//		}
 		return mJSONRet;
 	}
 

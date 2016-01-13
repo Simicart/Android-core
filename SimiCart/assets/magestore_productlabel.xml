@@ -1,0 +1,31 @@
+<events>
+    <event>
+        <name>com.simicart.image.product.home</name>	    
+	    <package>com.simicart.plugins.productlabel</package>
+	    <class>ProductLabel</class>
+	    <method>addViewProductHome</method>	
+	    <sku>magestore_productlabel</sku>    
+    </event>  
+    <event>
+        <name>com.simicart.image.product.list</name>	    
+	    <package>com.simicart.plugins.productlabel</package>
+	    <class>ProductLabel</class>
+	    <method>addViewProductInList</method>	
+	    <sku>magestore_productlabel</sku>    
+    </event>    
+    <event>
+        <name>com.simicart.image.product.grid</name>	    
+	    <package>com.simicart.plugins.productlabel</package>
+	    <class>ProductLabel</class>
+	    <method>addViewProductInGrid</method>	
+	    <sku>magestore_productlabel</sku>    
+    </event>
+    <event>
+        <name>com.simicart.image.product.grid4col</name>	    
+	    <package>com.simicart.plugins.productlabel</package>
+	    <class>ProductLabel</class>
+	    <method>addViewProductInGrid4Col</method>	
+	    <sku>magestore_productlabel</sku>    
+    </event>        
+    
+</events>

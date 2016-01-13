@@ -28,16 +28,13 @@ public class AutoSignInFacebook {
 				if (isSuccess) {
 					DataLocal.saveTypeSignIn("facebook");
 					DataLocal.saveSignInState(true);
-					ConfigCheckout.getInstance().setCheckStatusCart(true);
 					String name = model.getName();
 					String cartQty = model.getCartQty();
-					ConfigCheckout.getInstance().setmQty(cartQty);
 					if (null != name) {
 						DataLocal.saveData(name, email, "");
 					}
 					if (null != cartQty) {
 						SimiManager.getIntance().onUpdateCartQty(cartQty);
-						ConfigCheckout.getInstance().setmQty(cartQty);
 					}
 				}
 			}

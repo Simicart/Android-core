@@ -11,6 +11,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:indeterminateDrawable="@drawable/progressbar_indeterminate"
-        android:layout_marginTop="@dimen/size_5" />
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>

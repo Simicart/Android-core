@@ -26,7 +26,6 @@ public class AutoSignInController extends SimiController {
 					if (isSuccess) {
 						DataLocal.isNewSignIn = true;
 						DataLocal.saveSignInState(true);
-						ConfigCheckout.getInstance().setCheckStatusCart(true);
 						String name = model.getName();
 						String cartQty = model.getCartQty();
 						if (null != name) {
@@ -41,7 +40,6 @@ public class AutoSignInController extends SimiController {
 								model.getJSON().toString());
 						if (null != cartQty) {
 							DataLocal.qtyCartAuto = cartQty;
-							ConfigCheckout.getInstance().setmQty(cartQty);
 							SimiManager.getIntance().onUpdateCartQty(cartQty);
 						}
 					} else {

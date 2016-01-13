@@ -42,11 +42,11 @@
             android:ellipsize="end"
             android:gravity="center_vertical|center_horizontal"
             android:lines="1"
-            android:paddingBottom="@dimen/size_2"
+            android:paddingBottom="2dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:text="NOKIA 11100C 12Gb"
-            android:textSize="@dimen/text_13" />
+            android:textSize="13sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -37,9 +37,9 @@ public class PayU {
 			Log.e("PayU JSONException ", e.getMessage());
 		}
 
-		FragmentPayU fragmentPayU = FragmentPayU.newInstance(url, checkoutData.getInvoice_number());
-//		fragmentPayU.setUrl(url);
-//		fragmentPayU.setInvoice_number(checkoutData.getInvoice_number());
+		FragmentPayU fragmentPayU = FragmentPayU.newInstance();
+		fragmentPayU.setUrl(url);
+		fragmentPayU.setInvoice_number(checkoutData.getInvoice_number());
 		SimiManager.getIntance().addPopupFragment(fragmentPayU);
 	}
 }

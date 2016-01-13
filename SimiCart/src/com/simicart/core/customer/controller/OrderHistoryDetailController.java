@@ -100,7 +100,6 @@ public class OrderHistoryDetailController extends SimiController {
 		mDelegate.updateView(mModel.getCollection());
 	}
 
-	@SuppressWarnings("deprecation")
 	protected void changeColorReOrder(int color) {
 		// GradientDrawable gdDefault = new GradientDrawable();
 		// gdDefault.setColor(color);
@@ -130,9 +129,7 @@ public class OrderHistoryDetailController extends SimiController {
 					}
 					SimiManager.getIntance().onUpdateCartQty(
 							String.valueOf(numberQty));
-					ConfigCheckout.getInstance().setmQty(numberQty + "");
 					SimiManager.getIntance().showToast(message);
-					ConfigCheckout.getInstance().statusCart = true;
 					SimiManager.getIntance().showToast(message);
 				}
 			}

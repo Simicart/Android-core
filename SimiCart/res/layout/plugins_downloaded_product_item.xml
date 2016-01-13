@@ -6,15 +6,15 @@
 
     <RelativeLayout
         android:id="@+id/rl_delete"
-        android:layout_width="@dimen/size_70"
+        android:layout_width="70dp"
         android:layout_height="match_parent"
         android:background="#66212121"
         android:gravity="center" >
 
         <ImageView
             android:id="@+id/iv_delete"
-            android:layout_width="@dimen/size_20"
-            android:layout_height="@dimen/size_20"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerInParent="true"
             android:src="@drawable/recycle_bin" />
     </RelativeLayout>
@@ -23,16 +23,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff"
-        android:padding="@dimen/size_10" >
+        android:padding="10dp" >
 
         <TextView
             android:id="@+id/text_downloaded_filename"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="@dimen/size_10"
-            android:paddingLeft="@dimen/size_5"
-            android:textSize="@dimen/text_14" />
+            android:padding="10dp"
+            android:paddingLeft="15dp"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </com.daimajia.swipe.SwipeLayout>

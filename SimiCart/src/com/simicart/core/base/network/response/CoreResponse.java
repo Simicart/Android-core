@@ -19,6 +19,10 @@ public class CoreResponse {
 		mData = data;
 	}
 
+	public void setDataJSON(JSONObject json) {
+		mJSON = json;
+	}
+
 	public JSONObject getDataJSON() {
 		return mJSON;
 	}
@@ -27,8 +31,6 @@ public class CoreResponse {
 		mData = json;
 		try {
 			mJSON = new JSONObject(json);
-			Log.e("CoreResponse Result :", mJSON.toString());
-
 			if (mJSON.has(Constants.STATUS)) {
 				mStatus = mJSON.getString(Constants.STATUS);
 			}
@@ -56,8 +58,8 @@ public class CoreResponse {
 		}
 
 		try {
+			mJSON = null;
 			mJSON = new JSONObject(mData);
-			Log.e("CoreResponse Result :", mJSON.toString());
 
 			if (mJSON.has(Constants.STATUS)) {
 				mStatus = mJSON.getString(Constants.STATUS);

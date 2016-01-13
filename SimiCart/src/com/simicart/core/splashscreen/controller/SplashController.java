@@ -116,7 +116,6 @@ public class SplashController {
 		UtilsEvent.itemsList.clear();
 		DataLocal.listCms.clear();
 		EventListener.setEvent("simi_developer");
-		DataLocal.dataJson.clear();
 	}
 
 	private void getPlugin() {

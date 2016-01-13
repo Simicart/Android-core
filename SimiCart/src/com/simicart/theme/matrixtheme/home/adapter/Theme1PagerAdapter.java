@@ -67,12 +67,12 @@ public class Theme1PagerAdapter extends FragmentPagerAdapter implements
 			IsBlured = false;
 
 		}
-		int realPosition = (position % mBanners.size());
-		FragmentPagerBanner curFragment = FragmentPagerBanner.newInstance(position, scale, IsBlured, mBanners.get(realPosition));
+		Fragment curFragment = FragmentPagerBanner.newInstance(context,
+				position, scale, IsBlured);
 
-		
-//		((FragmentPagerBanner) curFragment).setBannerEntity(mBanners
-//				.get(realPosition));
+		int realPosition = (position % mBanners.size());
+		((FragmentPagerBanner) curFragment).setBannerEntity(mBanners
+				.get(realPosition));
 		// String url = mBanners.get(realPosition).getImage();
 		// if (url != null) {
 		// ((FragmentPagerBanner) curFragment).setUrlImage(url);

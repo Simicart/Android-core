@@ -3,6 +3,8 @@ package com.simicart.core.catalog.search.model;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.util.Log;
+
 import com.simicart.core.base.model.SimiModel;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.catalog.product.entity.Product;
@@ -12,14 +14,11 @@ public class ModelSearchBase extends SimiModel {
 	@Override
 	protected void paserData() {
 		try {
+			Log.e("ModelSearchBase ", "paserData" + mJSON.toString());
 			JSONArray list = this.mJSON.getJSONArray("data");
-			System.out.println(mJSON);
 			if (null == collection) {
 				collection = new SimiCollection();
 			}
-			// else{
-			// collection.getCollection().clear();
-			// }
 			collection.setJSON(mJSON);
 			for (int i = 0; i < list.length(); i++) {
 				Product product = new Product();
@@ -28,6 +27,7 @@ public class ModelSearchBase extends SimiModel {
 			}
 
 		} catch (JSONException e) {
+			Log.e("ModelSearchBase ", "paserData Exception " + e.getMessage());
 
 		}
 	}

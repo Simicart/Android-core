@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -86,50 +87,6 @@ public class ProductDetailParentController extends ProductController implements 
 			}
 		};
 
-		// onTouchAddToCart = new OnTouchListener() {
-		//
-		// @SuppressWarnings("deprecation")
-		// @Override
-		// public boolean onTouch(View v, MotionEvent event) {
-		// Drawable bg_button = SimiManager
-		// .getIntance()
-		// .getCurrentContext()
-		// .getResources()
-		// .getDrawable(
-		// Rconfig.getInstance().drawable(
-		// "core_background_button"));
-		//
-		// switch (event.getAction()) {
-		// case MotionEvent.ACTION_DOWN: {
-		// bg_button.setColorFilter(Color.GRAY,
-		// PorterDuff.Mode.SRC_ATOP);
-		// v.setBackgroundDrawable(bg_button);
-		// break;
-		// }
-		// case MotionEvent.ACTION_UP: {
-		// checkOptionDerect = false;
-		// onAddToCart();
-		// bg_button.setColorFilter(Config.getInstance()
-		// .getColorMain(), PorterDuff.Mode.SRC_ATOP);
-		// v.setBackgroundDrawable(bg_button);
-		// break;
-		// }
-		//
-		// case MotionEvent.ACTION_CANCEL: {
-		// if (null != mProduct && mProduct.getStock()) {
-		// bg_button.setColorFilter(Config.getInstance()
-		// .getColorMain(), PorterDuff.Mode.SRC_ATOP);
-		// v.setBackgroundDrawable(bg_button);
-		// }
-		// break;
-		// }
-		// default:
-		// break;
-		// }
-		// return true;
-		// }
-		// };
-
 		onTouchDetails = new OnTouchListener() {
 
 			@Override
@@ -165,46 +122,6 @@ public class ProductDetailParentController extends ProductController implements 
 				onShowOption();
 			}
 		};
-		// onTouchOptions = new OnTouchListener() {
-		//
-		// @SuppressWarnings("deprecation")
-		// @Override
-		// public boolean onTouch(View v, MotionEvent event) {
-		// Drawable bg_button = SimiManager
-		// .getIntance()
-		// .getCurrentContext()
-		// .getResources()
-		// .getDrawable(
-		// Rconfig.getInstance().drawable(
-		// "core_background_button"));
-		// switch (event.getAction()) {
-		// case MotionEvent.ACTION_DOWN: {
-		// bg_button.setColorFilter(Color.GRAY,
-		// PorterDuff.Mode.SRC_ATOP);
-		// v.setBackgroundDrawable(bg_button);
-		// break;
-		// }
-		// case MotionEvent.ACTION_UP: {
-		// checkOptionDerect = true;
-		// onShowOption();
-		// bg_button.setColorFilter(Config.getInstance()
-		// .getColorMain(), PorterDuff.Mode.SRC_ATOP);
-		// v.setBackgroundDrawable(bg_button);
-		// break;
-		// }
-		//
-		// case MotionEvent.ACTION_CANCEL: {
-		// bg_button.setColorFilter(Config.getInstance()
-		// .getColorMain(), PorterDuff.Mode.SRC_ATOP);
-		// v.setBackgroundDrawable(bg_button);
-		// break;
-		// }
-		// default:
-		// break;
-		// }
-		// return true;
-		// }
-		// };
 
 		onDoneClick = new OnClickListener() {
 
@@ -276,7 +193,9 @@ public class ProductDetailParentController extends ProductController implements 
 	}
 
 	public void onUpdateTopBottom(ProductModel model) {
+		Log.e("ProductDetailParentController ", "onUpdateTopBottom 001");
 		if (statusTopBottom) {
+			Log.e("ProductDetailParentController ", "onUpdateTopBottom 002");
 			mModel = model;
 			onUpdatePriceView(model);
 			mProduct = getProductFromCollection();
