@@ -57,14 +57,11 @@ public class Config {
 	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// // demo ultimate
-	 private String mBaseUrl =
-	 "http://demo.magestore.com/simicart/simipos2/index.php";
-	 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// // demo super
-	// private String mBaseUrl =`
-	// "http://demo.magestore.com/simicart/simipos3/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	 private String mBaseUrl =
+	 "http://demo.magestore.com/simicart/simipos3/index.php";
+	 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// // demo zara
 	// private String mBaseUrl =

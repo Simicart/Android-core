@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/popup_container2"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_0"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="10"
         android:background="@drawable/bottom_line_border" >
@@ -30,7 +30,7 @@
     <FrameLayout
         android:id="@+id/popup_container"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_0"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="90"
         android:background="@drawable/core_background_fragment"

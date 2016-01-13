@@ -42,7 +42,6 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="center_horizontal"
-                    android:paddingLeft="@dimen/size_0"
                     android:paddingRight="@dimen/size_2" />
 
                 <TextView
@@ -53,8 +52,8 @@
                     android:layout_alignRight="@+id/btn_cartnavigation"
                     android:background="@drawable/cicle_background"
                     android:gravity="center"
-                    android:paddingLeft="3dip"
-                    android:paddingRight="3dip"
+                    android:paddingLeft="@dimen/size_3"
+                    android:paddingRight="@dimen/size_3"
                     android:textColor="#FFF"
                     android:textSize="@dimen/text_12"
                     android:textStyle="bold"
