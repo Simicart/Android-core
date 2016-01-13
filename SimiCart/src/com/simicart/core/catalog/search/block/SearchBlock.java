@@ -46,6 +46,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.magestore.simicart.R;
 import com.simicart.core.adapter.ProductListAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
@@ -238,7 +239,7 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 
 		edit_search = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"edittext_search"));
-		edit_search.setHint(Config.getInstance().getText("Search product"));
+		edit_search.setHint(mContext.getResources().getString(R.string.home_search_product));
 		edit_search.setHintTextColor(Color.parseColor("#32000000"));
 		if (!cate_name.equals("") && cate_name != null) {
 			edit_search.setHint(cate_name);
@@ -365,11 +366,11 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 	public void showSearchScreen(String key, String tag) {
 		if (key != null && !key.equals("")) {
 			hidePopupListView();
-			ListProductFragment fragment = ListProductFragment.newInstance();
-			fragment.setQuerySearch(key);
-			fragment.setTag_search(tag);
-			fragment.setCategoryId(cate_id);
-			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
+			ListProductFragment fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS,cate_id, tag, key, null, null, null, null );
+//			fragment.setQuerySearch(key);
+//			fragment.setTag_search(tag);
+//			fragment.setCategoryId(cate_id);
+//			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}
@@ -574,7 +575,7 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			if (DataLocal.isTablet) {
 				txt_total_item.setText("");
 				if (i_qty > 1) {
-					qty = qty + " " + Config.getInstance().getText("items");
+					qty = qty + " " + mContext.getResources().getString(R.string.items);
 				} else {
 					qty = qty + " " + Config.getInstance().getText("item");
 				}
@@ -584,7 +585,7 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 					totalResult = Integer.parseInt(qty);
 					Toast toast = new Toast(mView.getContext());
 					if (i_qty > 1) {
-						qty = qty + " " + Config.getInstance().getText("items");
+						qty = qty + " " + mContext.getResources().getString(R.string.items);
 					} else {
 						qty = qty + " " + Config.getInstance().getText("item");
 					}
@@ -815,10 +816,10 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			showSearchScreen(edit_search.getText().toString(), tag_search);
 		} else {
 			ListProductFragment searchFragment = ListProductFragment
-					.newInstance();
-			searchFragment.setUrlSearch(ConstantsSearch.url_query);
-			searchFragment.setCategoryId(cate_id);
-			searchFragment.setQuerySearch(edit_search.getText().toString());
+					.newInstance(ConstantsSearch.url_query, cate_id, null, null, null,edit_search.getText().toString(), null, null );
+//			searchFragment.setUrlSearch(ConstantsSearch.url_query);
+//			searchFragment.setCategoryId(cate_id);
+//			searchFragment.setQuerySearch(edit_search.getText().toString());
 			SimiManager.getIntance().replaceFragment(searchFragment);
 		}
 		hidePopupListView();

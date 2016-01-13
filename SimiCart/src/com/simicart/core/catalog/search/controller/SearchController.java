@@ -496,9 +496,9 @@ public class SearchController extends SimiController implements
 					"product_id");
 			if (productId != null) {
 				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance();
-				fragment.setProductID(productId);
-				fragment.setListIDProduct(mDelegate.getListProductId());
+						.newInstance(productId,mDelegate.getListProductId());
+//				fragment.setProductID(productId);
+//				fragment.setListIDProduct(mDelegate.getListProductId());
 				SimiManager.getIntance().replaceFragment(fragment);
 			}
 		}
@@ -511,9 +511,9 @@ public class SearchController extends SimiController implements
 			String productId = listProduct.get(position).getData("product_id");
 			if (productId != null) {
 				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance();
-				fragment.setProductID(productId);
-				fragment.setListIDProduct(mDelegate.getListProductId());
+						.newInstance(productId,mDelegate.getListProductId());
+//				fragment.setProductID(productId);
+//				fragment.setListIDProduct(mDelegate.getListProductId());
 				SimiManager.getIntance().replaceFragment(fragment);
 			}
 		}
@@ -574,19 +574,23 @@ public class SearchController extends SimiController implements
 	}
 
 	private void toSortLayout(String query) {
-		SortFragment fragment = SortFragment.newInstance(mName, mID);
+		
+		String param_key = "";
 		if (!getValueListParam(ConstantsSearch.PARAM_URL).equals("")) {
-			fragment.setUrl_search(getValueListParam(ConstantsSearch.PARAM_URL));
+			param_key = getValueListParam(ConstantsSearch.PARAM_URL);
 		}
-		String param_key = getValueListParam(ConstantsSearch.PARAM_KEY);
-		if (param_key != null && !param_key.equals("")) {
-			fragment.setKey(param_key);
-		}
-		fragment.setJSONFilter(jsonFilter);
-		fragment.setSortType(mSortType);
-		fragment.setJSONFilter(jsonFilter);
-		fragment.setSort_tag(mDelegate.getTagSearch());
-		fragment.setQuery(query);
+		SortFragment fragment = SortFragment.newInstance(getValueListParam(ConstantsSearch.PARAM_URL), mID, mName, mDelegate.getTagSearch(), jsonFilter, param_key, query, mSortType);
+//		if (!getValueListParam(ConstantsSearch.PARAM_URL).equals("")) {
+//			fragment.setUrl_search(getValueListParam(ConstantsSearch.PARAM_URL));
+//		}
+//		
+//		if (param_key != null && !param_key.equals("")) {
+//			fragment.setKey(param_key);
+//		}
+//		fragment.setSortType(mSortType);
+//		fragment.setJSONFilter(jsonFilter);
+//		fragment.setSort_tag(mDelegate.getTagSearch());
+//		fragment.setQuery(query);
 		SimiManager.getIntance().replacePopupFragment(fragment);
 	}
 

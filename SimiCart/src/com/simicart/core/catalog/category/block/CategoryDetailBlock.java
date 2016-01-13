@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devsmart.android.ui.HorizontalListView;
+import com.magestore.simicart.R;
 import com.simicart.core.adapter.ProductBaseAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.SimiDelegate;
@@ -84,7 +85,7 @@ public class CategoryDetailBlock extends SimiBlock implements SimiDelegate {
 			tv_CategoryName.setTextColor(Config.getInstance()
 					.getContent_color());
 		}
-		tv_viewmore.setText(Config.getInstance().getText("View more"));
+		tv_viewmore.setText(mContext.getResources().getString(R.string.view_more));
 		iv_showmore = (ImageView) mView.findViewById(Rconfig.getInstance().id(
 				"iv_showmore"));
 		Drawable icon = mContext.getResources().getDrawable(

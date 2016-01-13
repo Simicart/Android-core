@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.price.ProductPriceViewProductListV03;
@@ -27,7 +28,6 @@ public class ProductListAdapter extends BaseAdapter {
 
 	protected ArrayList<Product> mProducts;
 	protected Context mContext;
-
 	public ProductListAdapter(Context context, ArrayList<Product> ProductList) {
 		mContext = context;
 		mProducts = ProductList;
@@ -45,7 +45,7 @@ public class ProductListAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Product product = (Product) getItem(position);
-
+		
 		ViewHolder holder;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(mContext)
@@ -85,7 +85,14 @@ public class ProductListAdapter extends BaseAdapter {
 					.getInstance().id("txt_out_stock"));
 			holder.txt_outstock.setTextColor(Config.getInstance()
 					.getOut_stock_text());
-
+				ProductPriceViewProductListV03 price_view = new ProductPriceViewProductListV03(
+						product);
+				View view = price_view.getViewPrice();
+				if (null != view) {
+					holder.ll_price.removeAllViewsInLayout();
+					holder.ll_price.addView(view);
+			}
+			
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -104,17 +111,9 @@ public class ProductListAdapter extends BaseAdapter {
 			holder.layoutStock.setVisibility(View.GONE);
 		} else {
 			holder.layoutStock.setVisibility(View.VISIBLE);
-			holder.txt_outstock.setText(Config.getInstance().getText(
-					"Out Stock"));
+			holder.txt_outstock.setText(mContext.getResources().getString(R.string.out_stock));
 		}
 
-		ProductPriceViewProductListV03 price_view = new ProductPriceViewProductListV03(
-				product);
-		View view = price_view.getViewPrice();
-		if (null != view) {
-			holder.ll_price.removeAllViewsInLayout();
-			holder.ll_price.addView(view);
-		}
 
 		RelativeLayout rl_product_list = (RelativeLayout) convertView
 				.findViewById(Rconfig.getInstance().id("rel_product_list"));

@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
@@ -59,15 +60,13 @@ public class AddressBookBlock extends SimiBlock {
 		TextView tv_chooseAddress = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("tv_chooseAddress"));
 		if (isCheckout) {
-			tv_chooseAddress.setText(Config.getInstance().getText(
-					"OR CHOOSE AN ADDRESS"));
+			tv_chooseAddress.setText(mContext.getResources().getString(R.string.or_choose_an_address));
 		} else {
-			tv_chooseAddress.setText(Config.getInstance().getText(
-					"OR CHOOSE AN ADDRESS FOR EDITING"));
+			tv_chooseAddress.setText(mContext.getResources().getString(R.string.or_choose_an_address_for_editing));
 		}
 		tv_addAddress = (TextView) mView.findViewById(Rconfig.getInstance().id(
 				"addAddress"));
-		tv_addAddress.setText(Config.getInstance().getText("Add an address"));
+		tv_addAddress.setText(mContext.getResources().getString(R.string.add_an_address));
 
 		lv_Address = (ListView) mView.findViewById(Rconfig.getInstance().id(
 				"lv_listAddress"));

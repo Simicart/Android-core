@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.product.entity.CustomerReview;
 import com.simicart.core.catalog.product.fragment.CustomerReviewMoreFragment;
@@ -76,7 +77,7 @@ public class CustomerReviewAdapter extends ArrayAdapter<CustomerReview> {
 		TextView review_customer = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("tv_nameReviewCustomer"));
 		review_customer.setTextColor(Config.getInstance().getContent_color());
-		review_customer.setText(Config.getInstance().getText("by") + " "
+		review_customer.setText(mContext.getResources().getString(R.string.by) + " "
 				+ customerReview.getCustomer_name());
 
 		convertView.setOnClickListener(new OnClickListener() {
@@ -84,8 +85,8 @@ public class CustomerReviewAdapter extends ArrayAdapter<CustomerReview> {
 			@Override
 			public void onClick(View v) {
 				CustomerReviewMoreFragment fragment = CustomerReviewMoreFragment
-						.newInstance();
-				fragment.setCustomerReview(customerReview);
+						.newInstance(customerReview);
+//				fragment.setCustomerReview(customerReview);
 				SimiManager.getIntance().addPopupFragment(fragment);
 			}
 		});

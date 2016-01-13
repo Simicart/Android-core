@@ -1,16 +1,25 @@
 package com.simicart.core.catalog.filter.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.filter.common.FilterConstant;
 import com.simicart.core.common.Utils;
 
-public class FilterEntity extends SimiEntity {
+public class FilterEntity extends SimiEntity implements Parcelable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	protected String mAttribute;
 
@@ -71,6 +80,18 @@ public class FilterEntity extends SimiEntity {
 
 	public void setmValueFilters(ArrayList<ValueFilterEntity> mValueFilters) {
 		this.mValueFilters = mValueFilters;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

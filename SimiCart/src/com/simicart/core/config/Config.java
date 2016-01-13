@@ -12,8 +12,8 @@ import android.graphics.Color;
 @SuppressLint("DefaultLocale")
 public class Config {
 	private String mThemeColor = "#3498DB";
-	// private String mBaseUrl = "http://www.1800sports.in/index.php";
-	// private String mSecretKey = "40c6edef56f5aee17734365738dc79b1";
+	// private String mBaseUrl = "https://anggrek-liar.com/";
+	// private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
 
 	// private String mBaseUrl = "http://www.kiranaondoor.com/index.php";
 	// private String mSecretKey = "075116eb405249fd026299a5c06d4bee";
@@ -24,9 +24,20 @@ public class Config {
 	// private String mBaseUrl = "https://www.papagayoweb.com";
 	// private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
 
-
 	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
 	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+
+	// private String mBaseUrl = "https://www.papagayoweb.com";
+	// private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
+
+	// private String mBaseUrl =
+	// "http://dev-vn.magestore.com/simicart/1800/index.php";
+	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
+	// "https://www.toysrus.co.za/";
+	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
+	// private String mBaseUrl =
+	// "http://dev-vn.magestore.com/simicart/1800/index.php";
+	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
 
 	// site magento normal
 	// private String mBaseUrl = "http://dev-shopping.simicart.com";
@@ -51,14 +62,7 @@ public class Config {
 	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// // demo ultimate
-	// private String mBaseUrl =
-	// "http://demo.magestore.com/simicart/simipos2/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
-	// // demo super
-	// private String mBaseUrl =`
-	// "http://demo.magestore.com/simicart/simipos3/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// // demo zara
 	// private String mBaseUrl =

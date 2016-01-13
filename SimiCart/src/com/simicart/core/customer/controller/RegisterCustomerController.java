@@ -184,12 +184,13 @@ public class RegisterCustomerController extends SimiController {
 
 	private void replaceFragment() {
 		RegisterCustomer register = mDelegate.getRegisterCustomer();
-
-		SignInFragment fragment = SignInFragment.newInstance();
 		String email = register.getEmail();
-		fragment.setEmail(email);
 		String pass = register.getPass();
-		fragment.setPassword(pass);
+		SignInFragment fragment = SignInFragment.newInstance(email, pass, false);
+//		String email = register.getEmail();
+//		fragment.setEmail(email);
+//		String pass = register.getPass();
+//		fragment.setPassword(pass);
 		DataLocal.saveData(email, pass);
 		DataLocal.saveEmailPassRemember(email, pass);
 		SimiManager.getIntance().backPreviousFragment();

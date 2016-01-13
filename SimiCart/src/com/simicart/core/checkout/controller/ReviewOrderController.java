@@ -193,11 +193,11 @@ public class ReviewOrderController extends SimiController implements
 			@Override
 			public void onClick(View v) {
 				AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-						.newInstance();
-				fragment.setAddressFor(AddressBookCheckoutFragment.SHIPPING_ADDRESS);
-				fragment.setBillingAddress(mBillingAddress);
-				fragment.setShippingAddress(mShippingAddress);
-				fragment.setAfterController(mAfterControll);
+						.newInstance(mAfterControll, AddressBookCheckoutFragment.SHIPPING_ADDRESS, mBillingAddress, mShippingAddress);
+//				fragment.setAddressFor(AddressBookCheckoutFragment.SHIPPING_ADDRESS);
+//				fragment.setBillingAddress(mBillingAddress);
+//				fragment.setShippingAddress(mShippingAddress);
+//				fragment.setAfterController(mAfterControll);
 				SimiManager.getIntance().replacePopupFragment(fragment);
 			}
 		};
@@ -212,11 +212,11 @@ public class ReviewOrderController extends SimiController implements
 				Log.e("ReviewOrderController onChooseBillingAddress : ",
 						"DataLocal size : " + DataLocal.listCarts.size());
 				AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-						.newInstance();
-				fragment.setAddressFor(AddressBookCheckoutFragment.BILLING_ADDRESS);
-				fragment.setBillingAddress(mBillingAddress);
-				fragment.setShippingAddress(mShippingAddress);
-				fragment.setAfterController(mAfterControll);
+						.newInstance(mAfterControll, AddressBookCheckoutFragment.BILLING_ADDRESS, mBillingAddress, mShippingAddress);
+//				fragment.setAddressFor(AddressBookCheckoutFragment.BILLING_ADDRESS);
+//				fragment.setBillingAddress(mBillingAddress);
+//				fragment.setShippingAddress(mShippingAddress);
+//				fragment.setAfterController(mAfterControll);
 				SimiManager.getIntance().replacePopupFragment(fragment);
 			}
 		};
@@ -332,7 +332,9 @@ public class ReviewOrderController extends SimiController implements
 						DataLocal.saveSignInState(true);
 						SimiManager.getIntance().onUpdateItemSignIn();
 					}
-					ThankyouFragment fragment = ThankyouFragment.newInstance();
+//					ThankyouFragment fragment = ThankyouFragment.newInstance();
+					String mMessage ="";
+					JSONObject jsonObject;
 					SimiManager.getIntance().onUpdateCartQty(null);
 					int showtype = paymentmethod.getShow_type();
 					switch (showtype) {
@@ -341,15 +343,15 @@ public class ReviewOrderController extends SimiController implements
 							recieveNotification(((PlaceOrderModel) mModel)
 									.getNotificationEntity());
 						} else {
-							fragment.setMessage(message);
-							fragment.setJsonObject(mModel.getCollection()
-									.getJSON());
+							mMessage = message;
+							jsonObject = mModel.getCollection()
+									.getJSON();
 							if (DataLocal.isTablet) {
 								SimiManager.getIntance().replacePopupFragment(
-										fragment);
+										ThankyouFragment.newInstance(mMessage, jsonObject));
 							} else {
 								SimiManager.getIntance().replaceFragment(
-										fragment);
+										ThankyouFragment.newInstance(mMessage, jsonObject));
 							}
 							// SimiManager.getIntance().showToast(message);
 						}
@@ -391,15 +393,15 @@ public class ReviewOrderController extends SimiController implements
 									.getNotificationEntity());
 						} else {
 							// SimiManager.getIntance().showToast(message);
-							fragment.setMessage(message);
-							fragment.setJsonObject(mModel.getCollection()
-									.getJSON());
+							mMessage = message;
+							jsonObject = mModel.getCollection()
+									.getJSON();
 							if (DataLocal.isTablet) {
 								SimiManager.getIntance().replacePopupFragment(
-										fragment);
+										ThankyouFragment.newInstance(mMessage, jsonObject));
 							} else {
 								SimiManager.getIntance().replaceFragment(
-										fragment);
+										ThankyouFragment.newInstance(mMessage, jsonObject));
 							}
 						}
 						break;

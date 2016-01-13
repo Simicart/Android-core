@@ -1,9 +1,18 @@
 package com.simicart.core.banner.entity;
 
+import java.io.Serializable;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class BannerEntity extends SimiEntity {
+public class BannerEntity extends SimiEntity implements Parcelable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String mImagePath;
 	protected String uURL;
 	protected String mType;
@@ -93,5 +102,17 @@ public class BannerEntity extends SimiEntity {
 	
 	public void setCategoryId(String mCategoryId) {
 		this.mCategoryId = mCategoryId;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel paramParcel, int paramInt) {
+		// TODO Auto-generated method stub
+		
 	}
 }

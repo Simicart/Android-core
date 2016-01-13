@@ -3,6 +3,7 @@ package com.simicart.core.catalog.product.fragment;
 import java.util.ArrayList;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
@@ -18,6 +19,7 @@ import com.simicart.core.catalog.product.adapter.ProductDetailParentAdapterTable
 import com.simicart.core.catalog.product.block.ProductDetailParentBlock;
 import com.simicart.core.catalog.product.controller.ProductDetailParentController;
 import com.simicart.core.common.Utils;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.CirclePageIndicator;
@@ -29,18 +31,24 @@ public class ProductDetailParentFragment extends SimiFragment {
 	protected ProductDetailParentBlock mBlock;
 	protected ProductDetailParentController mController;
 
-	public static ProductDetailParentFragment newInstance() {
+	public static ProductDetailParentFragment newInstance(String id,
+			ArrayList<String> ids) {
 		ProductDetailParentFragment fragment = new ProductDetailParentFragment();
+
+		Bundle args = new Bundle();
+		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, args);
+		setData(Constants.KeyData.LIST_ID, ids, Constants.KeyData.TYPE_LIST_STRING, args);
+		fragment.setArguments(args);
 		return fragment;
 	}
 
-	public void setProductID(String id) {
-		mID = id;
-	}
-
-	public void setListIDProduct(ArrayList<String> ids) {
-		mListID = ids;
-	}
+	// public void setProductID(String id) {
+	// mID = id;
+	// }
+	//
+	// public void setListIDProduct(ArrayList<String> ids) {
+	// mListID = ids;
+	// }
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +62,19 @@ public class ProductDetailParentFragment extends SimiFragment {
 		View view = inflater.inflate(
 				Rconfig.getInstance().layout("core_product_detail_parent"),
 				container, false);
+		return view;
+	}
 
+
+	@Override
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+		super.onViewCreated(view, savedInstanceState);
+
+		if(getArguments() != null){
+		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
+		mListID = (ArrayList<String>) getData(Constants.KeyData.LIST_ID, Constants.KeyData.TYPE_LIST_STRING, getArguments());
+		}
+		
 		mBlock = new ProductDetailParentBlock(view, getActivity());
 		mBlock.initView();
 		if (null == mController) {
@@ -158,8 +178,6 @@ public class ProductDetailParentFragment extends SimiFragment {
 			pager_parent.setCurrentItem(position);
 			mController.setAdapterDelegate(adapter);
 		}
-
-		return view;
 	}
 
 	protected int getPosition() {

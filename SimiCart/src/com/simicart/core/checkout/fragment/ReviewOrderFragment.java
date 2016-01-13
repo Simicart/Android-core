@@ -14,6 +14,7 @@ import com.simicart.core.checkout.block.ReviewOrderBlock;
 import com.simicart.core.checkout.block.ShippingBlock;
 import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.checkout.controller.ReviewOrderController;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.entity.MyAddress;
@@ -28,23 +29,30 @@ public class ReviewOrderFragment extends SimiFragment {
 	protected MyAddress mShippingAddress;
 	protected int mAfterControll;
 
-	public static ReviewOrderFragment newInstance() {
+	public static ReviewOrderFragment newInstance(int afterControll, MyAddress shippingAdd, MyAddress billingAdd) {
 		ReviewOrderFragment fragment = new ReviewOrderFragment();
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.AFTER_CONTROL, afterControll, Constants.KeyData.TYPE_INT, bundle);
+//		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAdd, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.SHIPPING_ADDRESS, shippingAdd);
+//		setData(Constants.KeyData.BILLING_ADDRESS, billingAdd, Constants.KeyData.TYPE_MODEL, bundle);
+		bundle.putParcelable(Constants.KeyData.BILLING_ADDRESS, billingAdd);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
-	public void setAfterControll(int controll) {
-		mAfterControll = controll;
-	}
-
-	public void setBilingAddress(MyAddress address) {
-		mBillingAddress = address;
-	}
-
-	public void setShippingAddress(MyAddress address) {
-		mShippingAddress = address;
-	}
+//	public void setAfterControll(int controll) {
+//		mAfterControll = controll;
+//	}
+//
+//	public void setBilingAddress(MyAddress address) {
+//		mBillingAddress = address;
+//	}
+//
+//	public void setShippingAddress(MyAddress address) {
+//		mShippingAddress = address;
+//	}
 
 	public int getAftercontroll() {
 		return mAfterControll;
@@ -72,6 +80,14 @@ public class ReviewOrderFragment extends SimiFragment {
 					container, false);
 		}
 		Context context = getActivity();
+		
+		//getdata
+		if(getArguments() != null){
+		mAfterControll = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
+		mShippingAddress = getArguments().getParcelable(Constants.KeyData.SHIPPING_ADDRESS);
+		mBillingAddress = getArguments().getParcelable(Constants.KeyData.BILLING_ADDRESS);
+		}
+		
 		mBlock = new ReviewOrderBlock(view, context);
 		mBlock.initView();
 		

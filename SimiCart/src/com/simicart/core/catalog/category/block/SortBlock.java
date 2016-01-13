@@ -9,6 +9,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.adapter.SortAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -45,7 +46,7 @@ public class SortBlock extends SimiBlock implements SortDelegate {
 		TextView sort_title = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("sort_title"));
 		sort_title.setText(Html.fromHtml("<b>"
-				+ Config.getInstance().getText("Sort") + "</b>"));
+				+ mContext.getResources().getString(R.string.sort) + "</b>"));
 		lv_sort = (ListView) mView.findViewById(Rconfig.getInstance().id(
 				"sort_list"));
 	}
@@ -61,7 +62,7 @@ public class SortBlock extends SimiBlock implements SortDelegate {
 //		sortAdapter.setListSort(listSort);
 		TextView sort_title = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("sort_title"));
-		sort_title.setText(Config.getInstance().getText("Sort"));
+		sort_title.setText(mContext.getResources().getString(R.string.sort));
 		lv_sort.setAdapter(sortAdapter);
 	}
 

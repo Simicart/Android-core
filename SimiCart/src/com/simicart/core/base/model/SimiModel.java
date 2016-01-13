@@ -1,5 +1,6 @@
 package com.simicart.core.base.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -24,7 +25,13 @@ import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 
-public class SimiModel {
+
+public class SimiModel implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private NetWorkDelegate mDelegate;
 	private ModelDelegate bDelegate;
 	protected JSONObject mJSON;

@@ -1,5 +1,6 @@
 package com.simicart.core.catalog.product.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
@@ -26,7 +27,7 @@ import com.simicart.core.common.price.ProductPriceViewV03;
 import com.simicart.core.style.VerticalViewPager2;
 
 @SuppressLint("DefaultLocale")
-public class ProductDetailParentController extends ProductController {
+public class ProductDetailParentController extends ProductController implements Serializable{
 
 	protected OnClickListener onTouchAddToCart;
 	protected OnTouchListener onTouchDetails;
@@ -186,8 +187,8 @@ public class ProductDetailParentController extends ProductController {
 	}
 
 	protected void onShowDetail() {
-		InformationFragment fragment = InformationFragment.newInstance();
-		fragment.setProduct(getProductFromCollection());
+		InformationFragment fragment = InformationFragment.newInstance(getProductFromCollection());
+//		fragment.setProduct(getProductFromCollection());
 		SimiManager.getIntance().addPopupFragment(fragment);
 	}
 

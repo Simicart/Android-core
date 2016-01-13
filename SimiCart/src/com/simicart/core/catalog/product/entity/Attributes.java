@@ -1,9 +1,16 @@
 package com.simicart.core.catalog.product.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class Attributes extends SimiEntity {
+public class Attributes extends SimiEntity implements Parcelable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String mTitle;
 	private String mValue;
 
@@ -28,6 +35,18 @@ public class Attributes extends SimiEntity {
 
 	public void setTitle(String title) {
 		this.mTitle = title;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

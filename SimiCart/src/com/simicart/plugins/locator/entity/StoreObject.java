@@ -1,8 +1,13 @@
 package com.simicart.plugins.locator.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class StoreObject {
+public class StoreObject implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String storeID;
 	private String name;
 	private String address;

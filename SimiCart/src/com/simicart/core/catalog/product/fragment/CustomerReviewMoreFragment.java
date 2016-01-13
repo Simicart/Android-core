@@ -9,20 +9,28 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.catalog.product.entity.CustomerReview;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class CustomerReviewMoreFragment extends SimiFragment {
 	protected CustomerReview mCustomerReview;
 
-	public void setCustomerReview(CustomerReview mCustomerReview) {
-		this.mCustomerReview = mCustomerReview;
-	}
+//	public void setCustomerReview(CustomerReview mCustomerReview) {
+//		this.mCustomerReview = mCustomerReview;
+//	}
 
-	public static CustomerReviewMoreFragment newInstance() {
+	public static CustomerReviewMoreFragment newInstance(CustomerReview mCustomerReview) {
 		CustomerReviewMoreFragment fragment = new CustomerReviewMoreFragment();
+		
+		Bundle args = new Bundle();
+//	    setData(Constants.KeyData.CUSTOMER_REVIEW, mCustomerReview, Constants.KeyData.TYPE_MODEL, args);
+		args.putParcelable(Constants.KeyData.CUSTOMER_REVIEW, mCustomerReview);
+	    fragment.setArguments(args);
+
 		return fragment;
 	}
 
@@ -33,7 +41,10 @@ public class CustomerReviewMoreFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_customer_review_more"), container,
 				false);
-
+		if(getArguments() != null){
+		mCustomerReview = getArguments().getParcelable(Constants.KeyData.CUSTOMER_REVIEW);
+		}
+		
 		RatingBar ratingBar = (RatingBar) convertView.findViewById(Rconfig
 				.getInstance().id("rtb_review"));
 		ratingBar.setRating(Float.parseFloat(mCustomerReview.getRate()));
@@ -59,7 +70,7 @@ public class CustomerReviewMoreFragment extends SimiFragment {
 		TextView review_customer = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("tv_nameReviewCustomer"));
 		review_customer.setTextColor(Config.getInstance().getContent_color());
-		review_customer.setText(Config.getInstance().getText("by") + " "
+		review_customer.setText(getActivity().getResources().getString(R.string.by) + " "
 				+ mCustomerReview.getCustomer_name());
 
 		convertView.setBackgroundColor(Config.getInstance()

@@ -59,6 +59,7 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.locator.DataLocator;
@@ -108,19 +109,21 @@ public class StoreLocatorFragment extends SimiFragment {
 	private SearchObject search_object;
 	private boolean check_trigger;
 
-	public void setSearch_object(SearchObject search_object) {
-		this.search_object = search_object;
-	}
+//	public void setSearch_object(SearchObject search_object) {
+//		this.search_object = search_object;
+//	}
 
 	// end haita
-	public static StoreLocatorFragment newInstans(String country, String city,
-			String state, String zipcode, String tag) {
+	public static StoreLocatorFragment newInstansce(String country, String city,
+			String state, String zipcode, String tag, SearchObject search_object) {
 		StoreLocatorFragment fragment = new StoreLocatorFragment();
-		fragment.country = country;
-		fragment.city = city;
-		fragment.state = state;
-		fragment.zipcode = zipcode;
-		fragment.tag = tag;
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.COUNTRY, country, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.CITY, city, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.STATE, state, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.ZIPCODE, zipcode, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.TAG, tag, Constants.KeyData.TYPE_STRING, bundle);
+		bundle.putParcelable(Constants.KeyData.SEARCH_OBJECT, search_object);
 		return fragment;
 
 	}
@@ -149,6 +152,16 @@ public class StoreLocatorFragment extends SimiFragment {
 		}
 		// end request
 
+		//getdata
+		if(getArguments() != null){
+		country = (String) getData(Constants.KeyData.COUNTRY, Constants.KeyData.TYPE_STRING, getArguments());
+		city = (String) getData(Constants.KeyData.CITY, Constants.KeyData.TYPE_STRING, getArguments());
+		state = (String) getData(Constants.KeyData.STATE, Constants.KeyData.TYPE_STRING, getArguments());
+		zipcode = (String) getData(Constants.KeyData.ZIPCODE, Constants.KeyData.TYPE_STRING, getArguments());
+		tag = (String) getData(Constants.KeyData.TAG, Constants.KeyData.TYPE_STRING, getArguments());
+		search_object = getArguments().getParcelable(Constants.KeyData.SEARCH_OBJECT);
+		}
+		
 		SimiManager.getIntance().setChildFragment(getChildFragmentManager());
 		if (DataLocal.isTablet) {
 			view = inflater.inflate(
