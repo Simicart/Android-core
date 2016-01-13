@@ -1,0 +1,30 @@
+<events>
+      <event>
+        <name>com.simicart.mainActivity.onCreate</name>	    
+	    <package>com.simicart.plugins.mobileanalytics</package>
+	    <class>AppAnalytics</class>
+	    <method>requestGetGA_ID</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.core.base.fragment.SimiFragment.setName</name>	    
+	    <package>com.simicart.plugins.mobileanalytics</package>
+	    <class>AppAnalytics</class>
+	    <method>sendScreen</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.banner.touchEvent</name>	    
+	    <package>com.simicart.plugins.mobileanalytics</package>
+	    <class>AppAnalytics</class>
+	    <method>sendEvent</method>	
+	    <sku>simi_developer</sku>    
+    </event> 
+     <event>
+        <name>com.simicart.paymentmethod.placeordersuccess</name>	    
+	    <package>com.simicart.plugins.mobileanalytics</package>
+	    <class>AppAnalytics</class>
+	    <method>sendOrder</method>	
+	    <sku>simi_developer</sku>    
+    </event>   
+</events>

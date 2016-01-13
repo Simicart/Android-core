@@ -24,8 +24,6 @@ public class Config {
 	// private String mBaseUrl = "https://www.papagayoweb.com";
 	// private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
 
-//	private String mBaseUrl = "https://www.toysrus.co.za/";
-//	private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
 
 	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
 	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";

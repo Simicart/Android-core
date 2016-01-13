@@ -42,6 +42,7 @@ public class SignOutController extends SimiController {
 					mDelegate.dismissDialogLoading();
 				}
 				if (isSuccess) {
+					SimiManager.getIntance().getRequestQueue().clearCacheL1();
 					showToastSignOut();
 					DataLocal.isNewSignIn = false;
 					EventController event = new EventController();
@@ -50,8 +51,6 @@ public class SignOutController extends SimiController {
 							"");
 					DataLocal.saveSignInState(false);
 					DataLocal.clearEmailPassowrd();
-					ConfigCheckout.getInstance().setmQty("" + 0);
-					ConfigCheckout.getInstance().setCheckStatusCart(true);
 					SimiManager.getIntance().onUpdateCartQty("");
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().clearAllChidFragment();
@@ -59,7 +58,7 @@ public class SignOutController extends SimiController {
 					} else {
 						SimiManager.getIntance().backPreviousFragment();
 					}
-					
+
 					PaymentMethod.getInstance().setPlacePaymentMethod("");
 					PaymentMethod.getInstance().setPlace_cc_number("");
 					PaymentMethod.getInstance().setPlacecc_id("");

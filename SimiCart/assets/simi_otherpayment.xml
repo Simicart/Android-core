@@ -1,0 +1,16 @@
+<events>
+    <event>
+        <name>com.simicart.mainActivity.onCreate</name>	    
+	    <package>com.simicart.plugins.otherpayment</package>
+	    <class>OtherPayment</class>
+	    <method>requestConfig</method>	
+	    <sku>simi_developer</sku>   
+    </event>
+    <event>
+        <name>com.simicart.after.placeorder.webview</name>        	     
+	    <package>com.simicart.plugins.otherpayment</package>
+	    <class>OtherPayment</class>
+	    <method>onCheckOut</method>
+	    <sku>simi_developer</sku>	    	    
+    </event>        
+</events>

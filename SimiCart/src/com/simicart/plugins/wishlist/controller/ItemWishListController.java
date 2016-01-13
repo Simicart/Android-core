@@ -25,8 +25,7 @@ public class ItemWishListController {
 	protected MyWishListDelegate mDelegate;
 	protected SimiModel mModel;
 	protected RefreshWishlistDelegate refreshWishlistDelegate;
-	
-	
+
 	public void setRefreshWishlistDelegate(
 			RefreshWishlistDelegate refreshWishlistDelegate) {
 		this.refreshWishlistDelegate = refreshWishlistDelegate;
@@ -83,7 +82,8 @@ public class ItemWishListController {
 		}
 	}
 
-	public void controllerAddToCart(String wishlist_item_id, final String product_id,final int position) {
+	public void controllerAddToCart(String wishlist_item_id,
+			final String product_id, final int position) {
 		mDelegate.showDialogLoading();
 		mModel = new AddToCartFromWishListModel();
 		mModel.setDelegate(new ModelDelegate() {
@@ -105,13 +105,9 @@ public class ItemWishListController {
 					}
 					int cart_qty = ((AddToCartFromWishListModel) mModel)
 							.getCartQty();
-					
-					
-					
+
 					SimiManager.getIntance().onUpdateCartQty(
 							String.valueOf(cart_qty));
-					ConfigCheckout.getInstance().setmQty(String.valueOf(cart_qty));
-					ConfigCheckout.getInstance().setCheckStatusCart(true);
 					mDelegate.updateData(items);
 					mDelegate
 							.setWishlist_qty(((AddToCartFromWishListModel) mModel)
@@ -120,7 +116,7 @@ public class ItemWishListController {
 							"Added to Cart and Removed from Wishlist");
 
 				} else {
-					if(DataLocal.isTablet){
+					if (DataLocal.isTablet) {
 						mDelegate.showDetail(product_id);
 					}
 					String mes = "Error! Please try again.";
@@ -137,8 +133,9 @@ public class ItemWishListController {
 		mModel.request();
 	}
 
-	public void controllerAddAndShowNext(String addID, String showID, String product_id) {
-		controllerAddToCart(addID, product_id,0);
+	public void controllerAddAndShowNext(String addID, String showID,
+			String product_id) {
+		controllerAddToCart(addID, product_id, 0);
 		if (null != showID) {
 			mDelegate.showDetail(showID);
 		}

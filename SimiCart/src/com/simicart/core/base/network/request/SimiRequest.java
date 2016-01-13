@@ -17,6 +17,7 @@ import android.util.Log;
 
 import com.simicart.core.base.delegate.NetWorkDelegate;
 import com.simicart.core.base.helper.SimiHelper;
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.network.response.CoreResponse;
 
 public class SimiRequest implements Comparable<SimiRequest> {
@@ -169,6 +170,12 @@ public class SimiRequest implements Comparable<SimiRequest> {
 	}
 
 	public String getCacheKey() {
+		boolean isRefreshCart = SimiManager.getIntance().isRereshCart();
+		if(mUrl.contains("get_cart") && isRefreshCart)
+		{
+			return null;
+		}
+		
 		return mCacheKey;
 	}
 

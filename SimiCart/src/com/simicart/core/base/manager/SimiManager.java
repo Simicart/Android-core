@@ -49,7 +49,8 @@ public class SimiManager {
 
 	protected SimiRequestQueue mRequestQueue;
 	protected Boolean isShowedNotify = false;
-
+	protected boolean isRefreshCart = true;
+	protected int mQtyCartPrevious;
 
 	public SimiRequestQueue getRequestQueue() {
 		return mRequestQueue;
@@ -113,7 +114,29 @@ public class SimiManager {
 	}
 
 	public void onUpdateCartQty(String qty) {
+		int i_qty = 0;
+		try {
+			i_qty = Integer.parseInt(qty);
+
+		} catch (Exception e) {
+
+		}
+
+		Log.e("SimiManager ", "onUpdateCartQty " + "Previous "
+				+ mQtyCartPrevious + "Current " + i_qty);
+
+		if (mQtyCartPrevious != i_qty) {
+			mQtyCartPrevious = i_qty;
+			isRefreshCart = true;
+		} else {
+			isRefreshCart = false;
+		}
+
 		mMenuTopController.updateCartQty(qty);
+	}
+
+	public boolean isRereshCart() {
+		return isRefreshCart;
 	}
 
 	public void showCartLayout(boolean show) {

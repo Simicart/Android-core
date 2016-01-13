@@ -207,8 +207,6 @@ public class FacebookLogin {
 					DataLocal.saveSignInState(true);
 
 					String cartQty = ((FacebookModel) mModel).getCartQty();
-					ConfigCheckout.getInstance().setCheckStatusCart(true);
-					ConfigCheckout.getInstance().setmQty(cartQty);
 					if (null != cartQty && !cartQty.equals("0")) {
 						SimiManager.getIntance().onUpdateCartQty(cartQty);
 					}
@@ -228,10 +226,6 @@ public class FacebookLogin {
 									int carQty = ((CartModel) mModel).getQty();
 									SimiManager.getIntance().onUpdateCartQty(
 											String.valueOf(carQty));
-									ConfigCheckout.getInstance()
-											.setCheckStatusCart(true);
-									ConfigCheckout.getInstance().setmQty(
-											carQty + "");
 									ArrayList<SimiEntity> entity = mModel
 											.getCollection().getCollection();
 									if (null != entity && entity.size() > 0) {

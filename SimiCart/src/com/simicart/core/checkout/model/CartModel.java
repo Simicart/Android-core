@@ -6,7 +6,6 @@ import org.json.JSONObject;
 
 import com.simicart.core.base.model.SimiModel;
 import com.simicart.core.base.model.collection.SimiCollection;
-import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.checkout.entity.Cart;
 import com.simicart.core.checkout.entity.TotalPrice;
 import com.simicart.core.config.Constants;
@@ -31,10 +30,8 @@ public class CartModel extends SimiModel {
 				Cart cart = new Cart();
 				cart.setJSONObject(list.getJSONObject(i));
 				mQty += cart.getQty();
-				ConfigCheckout.getInstance().setmQty("" + mQty);
 				collection.addEntity(cart);
 			}
-			ConfigCheckout.getInstance().setCollectionCart(collection);
 
 			try {
 				if (mJSON.has(Constants.OTHER)) {
@@ -43,8 +40,6 @@ public class CartModel extends SimiModel {
 						collection.setJSONOther(jsonPrice);
 						mTotalPrice = new TotalPrice();
 						mTotalPrice.setJSONObject(jsonPrice);
-						ConfigCheckout.getInstance().setTotalPriceCart(
-								mTotalPrice);
 					}
 				}
 			} catch (JSONException e) {
@@ -63,6 +58,11 @@ public class CartModel extends SimiModel {
 
 	public TotalPrice getTotalPrice() {
 		return mTotalPrice;
+	}
+
+	@Override
+	protected void setEnableCache() {
+		enableCache = true;
 	}
 
 }
