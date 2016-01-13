@@ -389,7 +389,7 @@
                     android:id="@+id/rlt_layout_reward_revieworder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
-                </RelativeLayout>initShipmentDetailsView
+                </RelativeLayout>
 
                 <!-- Shipment details -->
 

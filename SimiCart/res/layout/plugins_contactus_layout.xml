@@ -38,7 +38,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_call"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
         <!-- Message -->
 
@@ -63,7 +63,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_message"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
 
         <!-- Email -->
@@ -89,7 +89,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_email"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
         <!-- Website -->
 
@@ -115,7 +115,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_web"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
 
     </LinearLayout>

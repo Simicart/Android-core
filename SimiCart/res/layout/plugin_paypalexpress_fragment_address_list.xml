@@ -24,7 +24,7 @@
                 android:paddingBottom="@dimen/size_10"
                 android:paddingTop="@dimen/size_10"
                 android:text="Please confirm your addresses"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_20"
                 android:textStyle="bold" />
 
             <TextView

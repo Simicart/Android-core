@@ -29,7 +29,7 @@
                 <RelativeLayout
                     android:id="@+id/core_home_banner_relatvie"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_0"
+                    android:layout_height="0dp"
                     android:layout_weight="5"
                     android:background="@drawable/top_line_border" >
 
@@ -45,7 +45,7 @@
                 <LinearLayout
                     android:id="@+id/ll_spotcategory"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_0"
+                    android:layout_height="0dp"
                     android:layout_weight="6"
                     android:orientation="vertical"
                     android:weightSum="4" >
@@ -53,7 +53,7 @@
                     <LinearLayout
                         android:id="@+id/ll_spotcategory1"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_0"
+                        android:layout_height="0dp"
                         android:layout_marginBottom="@dimen/size_3"
                         android:layout_marginTop="@dimen/size_3"
                         android:layout_weight="2"

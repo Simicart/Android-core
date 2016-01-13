@@ -40,7 +40,7 @@
                 android:layout_marginTop="@dimen/size_5"
                 android:text="Selected filter"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="@dimen/text_20"
                 android:textStyle="bold"
                 android:visibility="gone" />
 
@@ -71,7 +71,7 @@
             android:layout_marginLeft="@dimen/size_5"
             android:layout_marginTop="@dimen/size_5"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_20"
             android:textStyle="bold" />
 
         <com.simicart.core.style.NoScrollListView

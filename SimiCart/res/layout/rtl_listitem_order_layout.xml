@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/size_10"
-    android:paddingRight="@dimen/size_0" >
+    android:paddingLeft="@dimen/size_10" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +22,7 @@
 
                 <TextView
                     android:id="@+id/tv_status"
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="PENDING"
@@ -31,7 +30,7 @@
 
                 <TextView
                     android:id="@+id/lb_status"
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Order Status"
@@ -46,14 +45,14 @@
 
                 <TextView
                     android:id="@+id/tv_date"
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="29-040-2014 08:24:45" />
 
                 <TextView
                     android:id="@+id/lb_date"
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Order Date"
@@ -68,14 +67,14 @@
 
                 <TextView
                     android:id="@+id/tv_recipient"
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="Alo 1234" />
 
                 <TextView
                     android:id="@+id/lb_recipient"
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Recipient"
@@ -89,13 +88,13 @@
                 android:weightSum="5" >
 
                 <TextView
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3" />
 
                 <TextView
                     android:id="@+id/lb_items"
-                    android:layout_width="@dimen/size_0"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:text="Items"
@@ -108,7 +107,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/size_10"
-                android:paddingRight="@dimen/size_0"
                 android:paddingTop="@dimen/size_5" >
 
                 <TextView

@@ -11,7 +11,7 @@
         android:padding="@dimen/size_10"
         android:paddingBottom="@dimen/size_5"
         android:text="Title"
-        android:textSize="20sp" />
+        android:textSize="@dimen/text_20" />
 
     <RelativeLayout
         android:id="@+id/rl_youtube_fragment"
