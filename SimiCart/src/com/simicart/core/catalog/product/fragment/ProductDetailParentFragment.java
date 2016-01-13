@@ -56,21 +56,15 @@ public class ProductDetailParentFragment extends SimiFragment {
 		super.setScreenName("Product Detail Screen - ProductID: " + mID);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(
 				Rconfig.getInstance().layout("core_product_detail_parent"),
 				container, false);
-<<<<<<< HEAD
 		
-		Log.e("LONGTB", "ID PARENT SET" + mID);
-=======
-
 		return view;
 	}
->>>>>>> origin/trunk
 
 	@SuppressWarnings("unchecked")
 	@Override
