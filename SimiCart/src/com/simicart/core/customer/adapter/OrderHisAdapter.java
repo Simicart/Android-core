@@ -58,22 +58,22 @@ public class OrderHisAdapter extends BaseAdapter {
 		TextView lb_status = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_status"));
 		lb_status.setTextColor(Config.getInstance().getContent_color());
-		lb_status.setText(context.getResources().getString(R.string.order_status));
+		lb_status.setText(Config.getInstance().getText("Order Status"));
 
 		TextView lb_date = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_date"));
 		lb_date.setTextColor(Config.getInstance().getContent_color());
-		lb_date.setText(context.getResources().getString(R.string.order_date));
+		lb_date.setText(Config.getInstance().getText("Order Date"));
 
 		TextView lb_recipient = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_recipient"));
 		lb_recipient.setTextColor(Config.getInstance().getContent_color());
-		lb_recipient.setText(context.getResources().getString(R.string.recipient));
+		lb_recipient.setText(Config.getInstance().getText("Recipient"));
 
 		TextView lb_items = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("lb_items"));
 		lb_items.setTextColor(Config.getInstance().getContent_color());
-		lb_items.setText(context.getResources().getString(R.string.items));
+		lb_items.setText(Config.getInstance().getText("Items"));
 
 		// text
 		TextView tv_status = (TextView) convertView.findViewById(Rconfig

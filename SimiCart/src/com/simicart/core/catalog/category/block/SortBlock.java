@@ -46,7 +46,7 @@ public class SortBlock extends SimiBlock implements SortDelegate {
 		TextView sort_title = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("sort_title"));
 		sort_title.setText(Html.fromHtml("<b>"
-				+ mContext.getResources().getString(R.string.sort) + "</b>"));
+				+ Config.getInstance().getText("Sort") + "</b>"));
 		lv_sort = (ListView) mView.findViewById(Rconfig.getInstance().id(
 				"sort_list"));
 	}
@@ -62,7 +62,7 @@ public class SortBlock extends SimiBlock implements SortDelegate {
 //		sortAdapter.setListSort(listSort);
 		TextView sort_title = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("sort_title"));
-		sort_title.setText(mContext.getResources().getString(R.string.sort));
+		sort_title.setText(Config.getInstance().getText("Sort"));
 		lv_sort.setAdapter(sortAdapter);
 	}
 

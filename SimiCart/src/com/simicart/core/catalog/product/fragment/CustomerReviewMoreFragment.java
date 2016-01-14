@@ -70,7 +70,7 @@ public class CustomerReviewMoreFragment extends SimiFragment {
 		TextView review_customer = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("tv_nameReviewCustomer"));
 		review_customer.setTextColor(Config.getInstance().getContent_color());
-		review_customer.setText(getActivity().getResources().getString(R.string.by) + " "
+		review_customer.setText(Config.getInstance().getText("By") + " "
 				+ mCustomerReview.getCustomer_name());
 
 		convertView.setBackgroundColor(Config.getInstance()
