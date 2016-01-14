@@ -27,57 +27,6 @@ public class Config {
 	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
 	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 
-<<<<<<< HEAD
-	// private String mBaseUrl = "https://www.papagayoweb.com";
-	// private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
-
-	// private String mBaseUrl =
-	// "http://dev-vn.magestore.com/simicart/1800/index.php";
-	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
-	// "https://www.toysrus.co.za/";
-	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
-	// private String mBaseUrl =
-	// "http://dev-vn.magestore.com/simicart/1800/index.php";
-	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
-
-=======
-	 private String mBaseUrl =
-			 "http://demo.magestore.com/simicart/simipos2/index.php";
-			 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
->>>>>>> 587343947617d92705ff526feab5577f550214d2
-	// site magento normal
-	// private String mBaseUrl = "http://dev-shopping.simicart.com";
-	// private String mSecretKey = "ffd194ec50278a876e39d986fa85bf3f";
-
-	// private String mBaseUrl = "http://kronos-staging.collateralmed.com/";
-	// private String mSecretKey = "f2f93252a3c9ce1aa66d622a55e4ea82";
-
-	// site neww
-	// private String mBaseUrl = "http://shopping.simicart.com/";
-	// private String mSecretKey = "563ab49ee2bc73005e7b23c6";
-
-	// Matrix
-	// 563788c5e2bc73065f7b23c6
-
-	// Zara theme
-	// 5630f016e2bc736e4b11af5a
-
-	// demo lite
-	// private String mBaseUrl =
-	// "http://demo.magestore.com/simicart/simipos1/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
-
-	// // demo ultimate
-
-<<<<<<< HEAD
-=======
-	// // demo super
-//	 private String mBaseUrl =
-//	 "http://demo.magestore.com/simicart/simipos3/index.php";
-//	 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
->>>>>>> 587343947617d92705ff526feab5577f550214d2
-
-	// // demo zara
 	// private String mBaseUrl =
 	// "http://demo.magestore.com/simicart/simipos4/index.php";
 	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
