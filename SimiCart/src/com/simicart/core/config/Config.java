@@ -12,7 +12,7 @@ import android.graphics.Color;
 @SuppressLint("DefaultLocale")
 public class Config {
 	private String mThemeColor = "#3498DB";
-	// private String mBaseUrl = "https://anggrek-liar.com/";
+	//  private String mBaseUrl = "https://anggrek-liar.com/";
 	//  private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
 
 	// private String mBaseUrl = "http://www.kiranaondoor.com/index.php";
