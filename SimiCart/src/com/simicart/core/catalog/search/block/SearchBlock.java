@@ -46,7 +46,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.magestore.simicart.R;
 import com.simicart.core.adapter.ProductListAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;

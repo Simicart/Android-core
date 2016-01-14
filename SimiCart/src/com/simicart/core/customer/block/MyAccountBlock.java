@@ -1,5 +1,11 @@
 package com.simicart.core.customer.block;
 
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.DataLocal;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.material.LayoutRipple;
+
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -9,13 +15,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.magestore.simicart.R;
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.DataLocal;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.material.LayoutRipple;
 
 public class MyAccountBlock extends SimiBlock {
 	protected TextView lable_myAccount;

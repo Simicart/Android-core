@@ -2,17 +2,6 @@ package com.simicart.core.customer.block;
 
 import java.util.ArrayList;
 
-import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
@@ -25,6 +14,16 @@ import com.simicart.core.customer.entity.CountryAllowed;
 import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.entity.StateOfCountry;
 import com.simicart.core.material.ButtonRectangle;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class AddressBookDetailBlock extends SimiBlock implements
 		AddressBookDetailDelegate {

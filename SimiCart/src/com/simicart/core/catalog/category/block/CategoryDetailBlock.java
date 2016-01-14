@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devsmart.android.ui.HorizontalListView;
-import com.magestore.simicart.R;
 import com.simicart.core.adapter.ProductBaseAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.SimiDelegate;

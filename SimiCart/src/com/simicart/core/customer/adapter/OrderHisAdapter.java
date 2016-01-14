@@ -2,6 +2,11 @@ package com.simicart.core.customer.adapter;
 
 import java.util.ArrayList;
 
+import com.simicart.core.config.Config;
+import com.simicart.core.config.DataLocal;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.entity.OrderHistory;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -12,12 +17,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.magestore.simicart.R;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.DataLocal;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.customer.entity.OrderHistory;
 
 public class OrderHisAdapter extends BaseAdapter {
 

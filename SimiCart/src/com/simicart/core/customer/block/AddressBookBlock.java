@@ -2,6 +2,15 @@ package com.simicart.core.customer.block;
 
 import java.util.ArrayList;
 
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.model.collection.SimiCollection;
+import com.simicart.core.base.model.entity.SimiEntity;
+import com.simicart.core.common.Utils;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.adapter.AddressBookAdapter;
+import com.simicart.core.customer.entity.MyAddress;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,16 +21,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.magestore.simicart.R;
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.model.collection.SimiCollection;
-import com.simicart.core.base.model.entity.SimiEntity;
-import com.simicart.core.common.Utils;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.customer.adapter.AddressBookAdapter;
-import com.simicart.core.customer.entity.MyAddress;
 
 public class AddressBookBlock extends SimiBlock {
 

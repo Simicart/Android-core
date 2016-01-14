@@ -2,18 +2,9 @@ package com.simicart.core.home.block;
 
 import java.util.ArrayList;
 
-import android.content.Context;
-import android.util.TypedValue;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.devsmart.android.ui.HorizontalListView;
-import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
@@ -24,6 +15,14 @@ import com.simicart.core.config.DataLocal;
 import com.simicart.core.home.adapter.HomeCategoryAdapter;
 import com.simicart.core.home.controller.CategoryHomeListener;
 import com.simicart.core.home.delegate.CategoryHomeDelegate;
+
+import android.content.Context;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class CategoryHomeBlock extends SimiBlock implements
 		CategoryHomeDelegate {

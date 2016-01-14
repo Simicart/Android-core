@@ -1,5 +1,14 @@
 package com.simicart.core.home.block;
 
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.collection.SimiCollection;
+import com.simicart.core.catalog.search.fragment.ListProductFragment;
+import com.simicart.core.common.Utils;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
+import com.simicart.core.config.Rconfig;
+
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -15,16 +24,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
-import com.magestore.simicart.R;
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.model.collection.SimiCollection;
-import com.simicart.core.catalog.search.fragment.ListProductFragment;
-import com.simicart.core.common.Utils;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
-import com.simicart.core.config.Rconfig;
 
 public class SearchHomeBlock extends SimiBlock {
 

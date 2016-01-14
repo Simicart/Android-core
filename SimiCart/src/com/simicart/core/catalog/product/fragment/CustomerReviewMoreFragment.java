@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.magestore.simicart.R;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.catalog.product.entity.CustomerReview;
 import com.simicart.core.config.Config;

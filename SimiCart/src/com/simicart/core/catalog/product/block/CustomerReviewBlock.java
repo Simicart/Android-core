@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.magestore.simicart.R;
 import com.simicart.core.adapter.CustomerReviewAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;

@@ -1,5 +1,14 @@
 package com.simicart.core.customer.block;
 
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
+import com.simicart.core.config.DataLocal;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.delegate.SignInDelegate;
+import com.simicart.core.material.ButtonRectangle;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -14,16 +23,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.magestore.simicart.R;
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
-import com.simicart.core.config.DataLocal;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.customer.delegate.SignInDelegate;
-import com.simicart.core.material.ButtonRectangle;
 
 public class SignInBlock extends SimiBlock implements SignInDelegate {
 

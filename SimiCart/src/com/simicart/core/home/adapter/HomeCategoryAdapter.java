@@ -2,6 +2,13 @@ package com.simicart.core.home.adapter;
 
 import java.util.ArrayList;
 
+import com.simicart.core.catalog.category.entity.Category;
+import com.simicart.core.common.DrawableManager;
+import com.simicart.core.common.Utils;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.DataLocal;
+import com.simicart.core.config.Rconfig;
+
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -9,16 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
-
-import com.magestore.simicart.R;
-import com.simicart.core.catalog.category.entity.Category;
-import com.simicart.core.common.DrawableManager;
-import com.simicart.core.common.Utils;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.DataLocal;
-import com.simicart.core.config.Rconfig;
+import android.widget.TextView;
 
 public class HomeCategoryAdapter extends BaseAdapter {
 

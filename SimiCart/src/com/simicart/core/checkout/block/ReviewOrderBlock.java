@@ -4,6 +4,26 @@ import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.checkout.adapter.ProductOrderAdapter;
+import com.simicart.core.checkout.controller.ConfigCheckout;
+import com.simicart.core.checkout.delegate.ReviewOrderDelegate;
+import com.simicart.core.checkout.entity.Condition;
+import com.simicart.core.checkout.entity.ShippingMethod;
+import com.simicart.core.checkout.entity.TotalPrice;
+import com.simicart.core.checkout.fragment.ConditionFragment;
+import com.simicart.core.common.Utils;
+import com.simicart.core.common.ViewIdGenerator;
+import com.simicart.core.common.price.TotalPriceView;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
+import com.simicart.core.config.DataLocal;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.entity.MyAddress;
+import com.simicart.core.material.ButtonRectangle;
+import com.simicart.core.style.CustomScrollView;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -28,27 +48,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-
-import com.magestore.simicart.R;
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.checkout.adapter.ProductOrderAdapter;
-import com.simicart.core.checkout.controller.ConfigCheckout;
-import com.simicart.core.checkout.delegate.ReviewOrderDelegate;
-import com.simicart.core.checkout.entity.Condition;
-import com.simicart.core.checkout.entity.ShippingMethod;
-import com.simicart.core.checkout.entity.TotalPrice;
-import com.simicart.core.checkout.fragment.ConditionFragment;
-import com.simicart.core.common.Utils;
-import com.simicart.core.common.ViewIdGenerator;
-import com.simicart.core.common.price.TotalPriceView;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
-import com.simicart.core.config.DataLocal;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.customer.entity.MyAddress;
-import com.simicart.core.material.ButtonRectangle;
-import com.simicart.core.style.CustomScrollView;
 
 @SuppressLint("DefaultLocale")
 public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {

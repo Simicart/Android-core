@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.magestore.simicart.R;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.product.entity.CustomerReview;
 import com.simicart.core.catalog.product.fragment.CustomerReviewMoreFragment;

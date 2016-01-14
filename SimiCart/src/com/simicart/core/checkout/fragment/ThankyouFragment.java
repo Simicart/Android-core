@@ -3,10 +3,20 @@ package com.simicart.core.checkout.fragment;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import android.R.array;
+import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.checkout.controller.ConfigCheckout;
+import com.simicart.core.common.Utils;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
+import com.simicart.core.config.DataLocal;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.fragment.OrderHistoryDetailFragment;
+import com.simicart.core.material.ButtonRectangle;
+import com.simicart.core.material.LayoutRipple;
+
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -16,21 +26,6 @@ import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.magestore.simicart.R;
-import com.simicart.core.base.fragment.SimiFragment;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.checkout.controller.ConfigCheckout;
-import com.simicart.core.checkout.entity.Condition;
-import com.simicart.core.common.Utils;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
-import com.simicart.core.config.DataLocal;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.customer.fragment.OrderHistoryDetailFragment;
-import com.simicart.core.customer.fragment.OrderHistoryFragment;
-import com.simicart.core.material.ButtonRectangle;
-import com.simicart.core.material.LayoutRipple;
 
 public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 
