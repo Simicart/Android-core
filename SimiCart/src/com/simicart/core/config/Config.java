@@ -13,7 +13,7 @@ import android.graphics.Color;
 public class Config {
 	private String mThemeColor = "#3498DB";
 	// private String mBaseUrl = "https://anggrek-liar.com/";
-	// private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
+	//  private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
 
 	// private String mBaseUrl = "http://www.kiranaondoor.com/index.php";
 	// private String mSecretKey = "075116eb405249fd026299a5c06d4bee";
