@@ -3,6 +3,7 @@ package com.simicart.core.catalog.search.fragment;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -60,7 +61,7 @@ public class ListProductFragment extends SimiFragment {
 				bundle);
 		setData(Constants.KeyData.SORT_ID, sortId,
 				Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.JSON_FILTER, jsonFilter,
+		setData(Constants.KeyData.JSON_FILTER, jsonFilter.toString(),
 				Constants.KeyData.TYPE_JSONOBJECT, bundle);
 
 		fragment.setArguments(bundle);
@@ -88,8 +89,14 @@ public class ListProductFragment extends SimiFragment {
 				Constants.KeyData.TYPE_STRING, getArguments());
 		mCatID = (String) getData(Constants.KeyData.ID,
 				Constants.KeyData.TYPE_STRING, getArguments());
-		jsonFilter = (JSONObject) getData(Constants.KeyData.JSON_FILTER,
+		String json = (String) getData(Constants.KeyData.JSON_FILTER,
 				Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		try {
+			jsonFilter = new JSONObject(json);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mQuery = (String) getData(Constants.KeyData.QUERY,
 				Constants.KeyData.TYPE_STRING, getArguments());
 		url_search = (String) getData(Constants.KeyData.URL,

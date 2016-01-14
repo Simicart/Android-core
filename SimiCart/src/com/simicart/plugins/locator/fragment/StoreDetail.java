@@ -58,7 +58,8 @@ public class StoreDetail extends SimiFragment {
 	public static StoreDetail newInstance(StoreObject storeObject) {
 		StoreDetail detail = new StoreDetail();
 		Bundle bundle= new Bundle();
-		setData(Constants.KeyData.STORE_OBJECT, storeObject, Constants.KeyData.TYPE_JSONOBJECT, bundle);
+//		setData(Constants.KeyData.STORE_OBJECT, storeObject, Constants.KeyData.TYPE_JSONOBJECT, bundle);
+		bundle.putParcelable(Constants.KeyData.STORE_OBJECT, storeObject);
 		detail.setArguments(bundle);
 //		detail.storeObject = storeObject;
 		// Log.e("StoreObject", storeObject.getList_special().get(0).getDate());
@@ -154,7 +155,7 @@ public class StoreDetail extends SimiFragment {
 		
 		//getdata
 		if(getArguments() != null){
-		storeObject = (StoreObject) getData(Constants.KeyData.STORE_OBJECT, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		storeObject = getArguments().getParcelable(Constants.KeyData.STORE_OBJECT);
 		}
 		
 		lb_monday.setText(Config.getInstance().getText("Monday") + ":");

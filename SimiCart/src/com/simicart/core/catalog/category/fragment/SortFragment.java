@@ -2,6 +2,7 @@ package com.simicart.core.catalog.category.fragment;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -39,7 +40,7 @@ public class SortFragment extends SimiFragment {
 			setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.SORT_TAG, sortTag, Constants.KeyData.TYPE_STRING, bundle);
-			setData(Constants.KeyData.JSON_FILTER, json, Constants.KeyData.TYPE_JSONOBJECT, bundle);
+			setData(Constants.KeyData.JSON_FILTER, json.toString(), Constants.KeyData.TYPE_JSONOBJECT, bundle);
 			setData(Constants.KeyData.KEY, key, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.QUERY, query, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.SORT_TYPE, sortType, Constants.KeyData.TYPE_STRING, bundle);
@@ -84,7 +85,14 @@ public class SortFragment extends SimiFragment {
 		url_search = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
 		KEY = (String) getData(Constants.KeyData.KEY, Constants.KeyData.TYPE_STRING, getArguments());
 		sort_tag = (String) getData(Constants.KeyData.SORT_TAG, Constants.KeyData.TYPE_STRING, getArguments());
-		jsonFilter = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		String json = (String) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		try {
+			jsonFilter = new JSONObject(json);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		mQuery = (String) getData(Constants.KeyData.QUERY, Constants.KeyData.TYPE_STRING, getArguments());
 		mSortType = (String) getData(Constants.KeyData.SORT_TYPE, Constants.KeyData.TYPE_STRING, getArguments());
 		}

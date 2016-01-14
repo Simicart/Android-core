@@ -107,7 +107,7 @@ public class SimiFragment extends Fragment {
 //
 //			break;
 			case Constants.KeyData.TYPE_JSONOBJECT:
-			bundle.putSerializable(key, (Serializable) object);
+			bundle.putString(key, (String) object);
 
 			break;
 		case Constants.KeyData.TYPE_BOOLEAN:
@@ -145,7 +145,7 @@ public class SimiFragment extends Fragment {
 
 			break;
 			case Constants.KeyData.TYPE_JSONOBJECT:
-			object = bundle.getSerializable(key);
+			object = bundle.getString(key, "");
 
 			break;
 //		case Constants.KeyData.TYPE_MODEL:

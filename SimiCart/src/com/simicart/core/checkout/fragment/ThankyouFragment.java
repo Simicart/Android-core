@@ -1,6 +1,7 @@
 package com.simicart.core.checkout.fragment;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.simicart.core.base.fragment.SimiFragment;
@@ -54,7 +55,7 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.MESSAGE, message, Constants.KeyData.TYPE_STRING, bundle);
-		setData(Constants.KeyData.JSON_FILTER, jsonObject, Constants.KeyData.TYPE_JSONOBJECT, bundle);
+		setData(Constants.KeyData.JSON_FILTER, jsonObject.toString(), Constants.KeyData.TYPE_JSONOBJECT, bundle);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -67,7 +68,13 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 				container, false);
 		if(getArguments() != null){
 		message = (String) getData(Constants.KeyData.MESSAGE, Constants.KeyData.TYPE_STRING, getArguments());
-		jsonObject = (JSONObject) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		String json = (String) getData(Constants.KeyData.JSON_FILTER, Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+		try {
+			jsonObject = new JSONObject(json);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 		
 		view.setBackgroundColor(Config.getInstance().getApp_backrground());
