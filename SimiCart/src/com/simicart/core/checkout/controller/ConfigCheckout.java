@@ -1,7 +1,6 @@
 package com.simicart.core.checkout.controller;
 
 import com.simicart.core.base.model.collection.SimiCollection;
-import com.simicart.core.checkout.entity.TotalPrice;
 
 public class ConfigCheckout {
 
