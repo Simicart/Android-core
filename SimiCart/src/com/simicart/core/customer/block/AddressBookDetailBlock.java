@@ -178,7 +178,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	}
 
 	private void createPrefix() {
-		et_prefix.setHint(mContext.getResources().getString(R.string.prefix) + " (*)");
+		et_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
 		String prefix = mAddressBookDetail.getPrefix();
 		if (null != prefix && !prefix.equals("") && !prefix.equals("null")) {
 			et_prefix.setText(prefix);
@@ -189,10 +189,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_prefix.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_prefix.setHint(mContext.getResources().getString(R.string.prefix));
+			et_prefix.setHint(Config.getInstance().getText("Prefix"));
 			break;
 		case "opt":
-			et_prefix.setHint(mContext.getResources().getString(R.string.prefix));
+			et_prefix.setHint(Config.getInstance().getText("Prefix"));
 			break;
 		default:
 			break;
@@ -206,11 +206,11 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				&& !fullname.equals("null")) {
 			et_fullname.setText(fullname);
 		}
-		et_fullname.setHint(mContext.getResources().getString(R.string.full_name) + " (*)");
+		et_fullname.setHint(Config.getInstance().getText("Full name") + " (*)");
 	}
 
 	private void createSuffix() {
-		et_suffix.setHint(mContext.getResources().getString(R.string.suffix) + " (*)");
+		et_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
 		String suffix = mAddressBookDetail.getSuffix();
 		if (null != suffix && !suffix.equals("") && !suffix.equals("null")) {
 			et_suffix.setText(suffix);
@@ -221,10 +221,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_suffix.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_suffix.setHint(mContext.getResources().getString(R.string.suffix) + " (*)");
+			et_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
 			break;
 		case "opt":
-			et_suffix.setHint(mContext.getResources().getString(R.string.suffix));
+			et_suffix.setHint(Config.getInstance().getText("Suffix"));
 			break;
 		default:
 			break;
@@ -232,7 +232,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	}
 
 	private void createStreet() {
-		et_street.setHint(mContext.getResources().getString(R.string.street) + " (*)");
+		et_street.setHint(Config.getInstance().getText("Street") + " (*)");
 		String street = mAddressBookDetail.getStreet();
 		if (null != street && !street.equals("") && !street.equals("null")) {
 			et_street.setText(street);
@@ -243,10 +243,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_street.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_street.setHint(mContext.getResources().getString(R.string.street) + " (*)");
+			et_street.setHint(Config.getInstance().getText("Street") + " (*)");
 			break;
 		case "opt":
-			et_street.setHint(mContext.getResources().getString(R.string.street));
+			et_street.setHint(Config.getInstance().getText("Street"));
 			break;
 		default:
 			break;
@@ -255,7 +255,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	private void createCity() {
 
-		et_city.setHint(mContext.getResources().getString(R.string.city) + " (*)");
+		et_city.setHint(Config.getInstance().getText("City") + " (*)");
 		String city = mAddressBookDetail.getCity();
 		if (null != city && !city.equals("") && !city.equals("null")) {
 			et_city.setText(city);
@@ -266,10 +266,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_city.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_city.setHint(mContext.getResources().getString(R.string.prefix) + " (*)");
+			et_city.setHint(Config.getInstance().getText("Prefix") + " (*)");
 			break;
 		case "opt":
-			et_city.setHint(mContext.getResources().getString(R.string.prefix));
+			et_city.setHint(Config.getInstance().getText("Prefix"));
 			break;
 		default:
 			break;
@@ -278,7 +278,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	private void createZipCode() {
 
-		et_zipcode.setHint(mContext.getResources().getString(R.string.post_zip_code)
+		et_zipcode.setHint(Config.getInstance().getText("Post/Zip Code")
 				+ " (*)");
 		String zipcode = mAddressBookDetail.getZipCode();
 
@@ -291,11 +291,11 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_zipcode.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_zipcode.setHint(mContext.getResources().getString(R.string.post_zip_code)
+			et_zipcode.setHint(Config.getInstance().getText("Post/Zip Code")
 					+ " (*)");
 			break;
 		case "opt":
-			et_zipcode.setHint(mContext.getResources().getString(R.string.post_zip_code));
+			et_zipcode.setHint(Config.getInstance().getText("Post/Zip Code"));
 			break;
 		default:
 			break;
@@ -303,7 +303,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	}
 
 	private void createPhone() {
-		et_phone.setHint(mContext.getResources().getString(R.string.phone) + " (*)");
+		et_phone.setHint(Config.getInstance().getText("Phone") + " (*)");
 		String phone = mAddressBookDetail.getPhone();
 		if (null != phone && !phone.equals("") && !phone.equals("null")) {
 			et_phone.setText(mAddressBookDetail.getPhone());
@@ -314,10 +314,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_phone.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_phone.setHint(mContext.getResources().getString(R.string.phone) + " (*)");
+			et_phone.setHint(Config.getInstance().getText("Phone") + " (*)");
 			break;
 		case "opt":
-			et_phone.setHint(mContext.getResources().getString(R.string.phone));
+			et_phone.setHint(Config.getInstance().getText("Phone"));
 			break;
 		default:
 			break;
@@ -338,7 +338,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	}
 
 	private void createCompany() {
-		et_company.setHint(mContext.getResources().getString(R.string.company) + " (*)");
+		et_company.setHint(Config.getInstance().getText("Company") + " (*)");
 		String company = mAddressBookDetail.getCompany();
 		if (null != company && !company.equals("") && !company.equals("null")) {
 			et_company.setText(company);
@@ -350,10 +350,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			break;
 		case "req":
 			et_company
-					.setHint(mContext.getResources().getString(R.string.company) + " (*)");
+					.setHint(Config.getInstance().getText("Company") + " (*)");
 			break;
 		case "opt":
-			et_company.setHint(mContext.getResources().getString(R.string.company));
+			et_company.setHint(Config.getInstance().getText("Company"));
 			break;
 		default:
 			break;
@@ -388,7 +388,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		if (states.size() <= 0) {
 			et_state.setVisibility(View.VISIBLE);
 			rl_state.setVisibility(View.GONE);
-			et_state.setHint(mContext.getResources().getString(R.string.state));
+			et_state.setHint(Config.getInstance().getText("State"));
 		} else {
 			rl_state.setVisibility(View.VISIBLE);
 			et_state.setVisibility(View.GONE);
@@ -405,10 +405,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_state.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_state.setHint(mContext.getResources().getString(R.string.state) + "(*)");
+			et_state.setHint(Config.getInstance().getText("State") + "(*)");
 			break;
 		case "opt":
-			et_state.setHint(mContext.getResources().getString(R.string.state));
+			et_state.setHint(Config.getInstance().getText("State"));
 			break;
 		default:
 			break;
@@ -419,7 +419,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	@SuppressWarnings("deprecation")
 	private void createButtonSave() {
 		bt_save.setTextColor(Color.WHITE);
-		bt_save.setText(mContext.getResources().getString(R.string.save));
+		bt_save.setText(Config.getInstance().getText("Save"));
 		bt_save.setBackgroundColor(Config.getInstance().getColorMain());
 		bt_save.setTextSize(Constants.SIZE_TEXT_BUTTON);
 	}
@@ -429,7 +429,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	}
 
 	private void createFax() {
-		et_fax.setHint(mContext.getResources().getString(R.string.fax) + " (*)");
+		et_fax.setHint(Config.getInstance().getText("Fax") + " (*)");
 		String fax = mAddressBookDetail.getFax();
 		if (null != fax && !fax.equals("") && !fax.equals("null")) {
 			et_fax.setText(fax);
@@ -440,10 +440,10 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_fax.setVisibility(View.GONE);
 			break;
 		case "req":
-			et_fax.setHint(mContext.getResources().getString(R.string.fax) + " (*)");
+			et_fax.setHint(Config.getInstance().getText("Fax") + " (*)");
 			break;
 		case "opt":
-			et_fax.setHint(mContext.getResources().getString(R.string.fax));
+			et_fax.setHint(Config.getInstance().getText("Fax"));
 			break;
 		default:
 			break;
@@ -485,7 +485,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	private void createTaxVatCheckOut() {
 		et_tax_checkout.setVisibility(View.VISIBLE);
 
-		et_tax_checkout.setHint(mContext.getResources().getString(R.string.tax_vat_number)
+		et_tax_checkout.setHint(Config.getInstance().getText("Tax/VAT number")
 				+ " (*)");
 
 		String vatNumber = mAddressBookDetail.getTaxvatCheckout();
@@ -501,11 +501,11 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_tax_checkout.setVisibility(View.GONE);
 			return;
 		case "req":
-			et_tax_checkout.setHint(mContext.getResources().getString(R.string.vat_number)
+			et_tax_checkout.setHint(Config.getInstance().getText("VAT number")
 					+ " (*)");
 			break;
 		case "opt":
-			et_tax_checkout.setHint(mContext.getResources().getString(R.string.vat_number));
+			et_tax_checkout.setHint(Config.getInstance().getText("VAT number"));
 			break;
 		default:
 			break;

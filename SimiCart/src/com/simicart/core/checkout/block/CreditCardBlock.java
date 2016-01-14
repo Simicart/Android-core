@@ -64,13 +64,13 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 
 		et_card_number = (EditText) mView.findViewById(Rconfig.getInstance()
 				.id("card_number"));
-		et_card_number.setHint(mContext.getResources().getString(R.string.card_number)
+		et_card_number.setHint(Config.getInstance().getText("Card Number")
 				+ ":");
 		et_cvv = (EditText) mView.findViewById(Rconfig.getInstance().id("cvv"));
 
 		et_expired = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"expired"));
-		et_expired.setText(mContext.getResources().getString(R.string.expired) + ": MM/YY");
+		et_expired.setText(Config.getInstance().getText("Expired") + ": MM/YY");
 
 		Log.e("CreditCardBlock : ", " Previous NUMBER "
 				+ PaymentMethod.getInstance().getPlace_cc_number());
@@ -106,7 +106,7 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 
 		bt_save = (Button) mView.findViewById(Rconfig.getInstance().id(
 				"card_save"));
-		bt_save.setText(mContext.getResources().getString(R.string.save));
+		bt_save.setText(Config.getInstance().getText("Save"));
 		bt_save.setTextColor(Color.WHITE);
 		GradientDrawable gdDefault = new GradientDrawable();
 		gdDefault.setColor(Config.getInstance().getColorMain());

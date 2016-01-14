@@ -60,13 +60,13 @@ public class AddressBookBlock extends SimiBlock {
 		TextView tv_chooseAddress = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("tv_chooseAddress"));
 		if (isCheckout) {
-			tv_chooseAddress.setText(mContext.getResources().getString(R.string.or_choose_an_address));
+			tv_chooseAddress.setText(Config.getInstance().getText("Or choose an address"));
 		} else {
-			tv_chooseAddress.setText(mContext.getResources().getString(R.string.or_choose_an_address_for_editing));
+			tv_chooseAddress.setText(Config.getInstance().getText("Or choose an address for editing"));
 		}
 		tv_addAddress = (TextView) mView.findViewById(Rconfig.getInstance().id(
 				"addAddress"));
-		tv_addAddress.setText(mContext.getResources().getString(R.string.add_an_address));
+		tv_addAddress.setText(Config.getInstance().getText("Add an address"));
 
 		lv_Address = (ListView) mView.findViewById(Rconfig.getInstance().id(
 				"lv_listAddress"));

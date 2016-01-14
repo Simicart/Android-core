@@ -174,23 +174,23 @@ public class CustomerReviewBlock extends SimiBlock implements
 
 		TextView star5 = (TextView) header.findViewById(Rconfig.getInstance()
 				.id("tv_star5"));
-		star5.setText("5 " + mContext.getResources().getString(R.string.star));
+		star5.setText("5 " + Config.getInstance().getText("Star"));
 
 		TextView star4 = (TextView) header.findViewById(Rconfig.getInstance()
 				.id("tv_star4"));
-		star4.setText("4 " + mContext.getResources().getString(R.string.star));
+		star4.setText("4 " + Config.getInstance().getText("Star"));
 
 		TextView star3 = (TextView) header.findViewById(Rconfig.getInstance()
 				.id("tv_star3"));
-		star3.setText("3 " + mContext.getResources().getString(R.string.star));
+		star3.setText("3 " + Config.getInstance().getText("Star"));
 
 		TextView star2 = (TextView) header.findViewById(Rconfig.getInstance()
 				.id("tv_star2"));
-		star2.setText("2 " + mContext.getResources().getString(R.string.star));
+		star2.setText("2 " + Config.getInstance().getText("Star"));
 
 		TextView star1 = (TextView) header.findViewById(Rconfig.getInstance()
 				.id("tv_star1"));
-		star1.setText("1 " + mContext.getResources().getString(R.string.star));
+		star1.setText("1 " + Config.getInstance().getText("Star"));
 
 		TextView tv_title = (TextView) header.findViewById(Rconfig
 				.getInstance().id("tv_titleHeader"));
@@ -201,14 +201,14 @@ public class CustomerReviewBlock extends SimiBlock implements
 				.getInstance().id("txt_stock"));
 		txt_stock.setTextColor(Config.getInstance().getContent_color());
 		if (mProduct.getStock()) {
-			txt_stock.setText(mContext.getResources().getString(R.string.in_stock));
+			txt_stock.setText(Config.getInstance().getText("In Stock"));
 		} else {
-			txt_stock.setText(mContext.getResources().getString(R.string.out_stock));
+			txt_stock.setText(Config.getInstance().getText("Out Stock"));
 		}
 
 		TextView tvTitle = (TextView) header.findViewById(Rconfig.getInstance()
 				.id("txt_titleReview"));
-		tvTitle.setText(mContext.getResources().getString(R.string.customer_reviews));
+		tvTitle.setText(Config.getInstance().getText("Customer Reviews"));
 		tvTitle.setTextColor(Config.getInstance().getContent_color());
 
 		lv_customerReview.addHeaderView(header);

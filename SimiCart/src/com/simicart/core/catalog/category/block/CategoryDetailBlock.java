@@ -85,7 +85,7 @@ public class CategoryDetailBlock extends SimiBlock implements SimiDelegate {
 			tv_CategoryName.setTextColor(Config.getInstance()
 					.getContent_color());
 		}
-		tv_viewmore.setText(mContext.getResources().getString(R.string.view_more));
+		tv_viewmore.setText(Config.getInstance().getText("View more"));
 		iv_showmore = (ImageView) mView.findViewById(Rconfig.getInstance().id(
 				"iv_showmore"));
 		Drawable icon = mContext.getResources().getDrawable(

@@ -135,7 +135,7 @@ public class ProductListAdapter extends BaseAdapter {
 			holder.layoutStock.setVisibility(View.GONE);
 		} else {
 			holder.layoutStock.setVisibility(View.VISIBLE);
-			holder.txt_outstock.setText(mContext.getResources().getString(R.string.out_stock));
+			holder.txt_outstock.setText(Config.getInstance().getText("Out Stock"));
 		}
 
 

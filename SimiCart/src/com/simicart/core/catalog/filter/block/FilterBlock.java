@@ -83,7 +83,7 @@ public class FilterBlock extends SimiBlock implements FilterDelegate {
 		// label select a filter
 		tv_label = (TextView) mView.findViewById(Rconfig.getInstance().id(
 				"tv_label"));
-		tv_label.setText(mContext.getResources().getString(R.string.select_a_filter));
+		tv_label.setText(Config.getInstance().getText("Select a filter"));
 		txt_name_category = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("txt_category_filter"));
 		rlt_category_name = (RelativeLayout) mView.findViewById(Rconfig
@@ -119,10 +119,10 @@ public class FilterBlock extends SimiBlock implements FilterDelegate {
 				AdapterDialog adapter = new AdapterDialog(mContext, arr_str,
 						entity);
 				mDialog = new AlertDialog.Builder(mContext)
-						.setTitle(mContext.getResources().getString(R.string.filter))
+						.setTitle(Config.getInstance().getText("Filter"))
 						.setAdapter(adapter, null)
 						.setPositiveButton(
-								mContext.getResources().getString(R.string.cancel),
+								Config.getInstance().getText("Cancel"),
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
@@ -228,7 +228,7 @@ public class FilterBlock extends SimiBlock implements FilterDelegate {
 				.findViewById(Rconfig.getInstance().id("ll_selected_filter"));
 		if (null != states && states.size() > 0) {
 			btn_clearAll.setVisibility(View.VISIBLE);
-			btn_clearAll.setText(mContext.getResources().getString(R.string.clear_all));
+			btn_clearAll.setText(Config.getInstance().getText("Clear All"));
 
 			ll_selectedFilter.setVisibility(View.VISIBLE);
 			// label

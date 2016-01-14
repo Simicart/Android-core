@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.magestore.simicart.R;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 
 public class OptionFragment extends SimiFragment {
@@ -54,11 +55,11 @@ public class OptionFragment extends SimiFragment {
 
 		TextView tv_cancel = (TextView) mRootView.findViewById(Rconfig
 				.getInstance().id("tv_cancel"));
-		tv_cancel.setText(getActivity().getResources().getString(R.string.cancel));
+		tv_cancel.setText(Config.getInstance().getText("Cancel"));
 
 		TextView tv_done = (TextView) mRootView.findViewById(Rconfig
 				.getInstance().id("tv_done"));
-		tv_done.setText(getActivity().getResources().getString(R.string.done));
+		tv_done.setText(Config.getInstance().getText("Done"));
 
 		ScrollView scroll_view = (ScrollView) mRootView.findViewById(Rconfig
 				.getInstance().id("scl_body"));

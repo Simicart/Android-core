@@ -80,9 +80,9 @@ public class BasicInforFragment extends SimiFragment {
 				.getInstance().id("tv_Stock"));
 		tv_Stock.setTextColor(Config.getInstance().getContent_color());
 		if (mProduct.getStock()) {
-			tv_Stock.setText(getActivity().getResources().getString(R.string.in_stock) + ".");
+			tv_Stock.setText(Config.getInstance().getText("In Stock") + ".");
 		} else {
-			tv_Stock.setText(getActivity().getResources().getString(R.string.out_stock) + ".");
+			tv_Stock.setText(Config.getInstance().getText("Out Stock") + ".");
 		}
 
 		TextView tv_shortDescription = (TextView) rootView.findViewById(Rconfig

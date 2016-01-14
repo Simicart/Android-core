@@ -224,7 +224,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createPrefix(int control) {
-		edt_prefix.setHint(mContext.getResources().getString(R.string.prefix) + " (*)");
+		edt_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
 		String check = DataLocal.ConfigCustomerAddress.getPrefix()
 				.toLowerCase();
 		setPropertyHidden(edt_prefix, check, "Prefix");
@@ -236,7 +236,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createSuffix(int control) {
-		edt_suffix.setHint(mContext.getResources().getString(R.string.suffix) + " (*)");
+		edt_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
 		String check = DataLocal.ConfigCustomerAddress.getSuffix()
 				.toLowerCase();
 		setPropertyHidden(edt_suffix, check, "Suffix");
@@ -275,13 +275,13 @@ public class NewAddressBookBlock extends SimiBlock implements
 					edt_email.setKeyListener(null);
 				}
 			} else {
-				edt_email.setHint(mContext.getResources().getString(R.string.email)
+				edt_email.setHint(Config.getInstance().getText("Email")
 						+ " (*)");
 			}
 		} else {
 			if (control == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT
 					&& !DataLocal.isSignInComplete()) {
-				edt_email.setHint(mContext.getResources().getString(R.string.email)
+				edt_email.setHint(Config.getInstance().getText("Email")
 						+ " (*)");
 			} else {
 				String email = DataLocal.getEmail();
@@ -308,11 +308,11 @@ public class NewAddressBookBlock extends SimiBlock implements
 			tv_date_birth.setVisibility(View.GONE);
 			return;
 		case "req":
-			tv_date_birth.setHint(mContext.getResources().getString(R.string.date_of_birth)
+			tv_date_birth.setHint(Config.getInstance().getText("Date of Birth")
 					+ " (*):");
 			break;
 		case "opt":
-			tv_date_birth.setHint(mContext.getResources().getString(R.string.date_of_birth)
+			tv_date_birth.setHint(Config.getInstance().getText("Date of Birth")
 					+ ":");
 			break;
 		default:
@@ -337,12 +337,12 @@ public class NewAddressBookBlock extends SimiBlock implements
 					tv_date_birth.setVisibility(View.GONE);
 					break;
 				case "req":
-					tv_date_birth.setText(mContext.getResources().getString(R.string.date_of_birth)
+					tv_date_birth.setText(Config.getInstance().getText("Date of Birth")
 							+ " (*): " + selectedDate);
 					mSelectedDate = selectedDate;
 					break;
 				case "opt":
-					tv_date_birth.setText(mContext.getResources().getString(R.string.date_of_birth)
+					tv_date_birth.setText(Config.getInstance().getText("Date of Birth")
 							+ ": " + selectedDate);
 					mSelectedDate = selectedDate;
 					break;
@@ -401,10 +401,10 @@ public class NewAddressBookBlock extends SimiBlock implements
 			edt_state.setVisibility(View.GONE);
 			break;
 		case "req":
-			edt_state.setHint(mContext.getResources().getString(R.string.state) + "(*)");
+			edt_state.setHint(Config.getInstance().getText("State") + "(*)");
 			break;
 		case "opt":
-			edt_state.setHint(mContext.getResources().getString(R.string.state));
+			edt_state.setHint(Config.getInstance().getText("State"));
 			break;
 		default:
 			break;
@@ -413,7 +413,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 
 	protected void createButtonSave() {
 		btn_save.setTextColor(Color.WHITE);
-		btn_save.setText(mContext.getResources().getString(R.string.save));
+		btn_save.setText(Config.getInstance().getText("Save"));
 		btn_save.setTextSize(Constants.SIZE_TEXT_BUTTON);
 		btn_save.setBackgroundColor(Config.getInstance().getColorMain());
 	}
@@ -427,7 +427,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 				"sp_gender"));
 		tv_gender = (TextView) rl_gender.findViewById(Rconfig.getInstance().id(
 				"tv_gender"));
-		tv_gender.setText(mContext.getResources().getString(R.string.gender) + " (*):");
+		tv_gender.setText(Config.getInstance().getText("Gender") + " (*):");
 		tv_gender.setVisibility(View.VISIBLE);
 		GenderAdapter adapter = new GenderAdapter(mContext);
 		sp_gender.setAdapter(adapter);
@@ -438,10 +438,10 @@ public class NewAddressBookBlock extends SimiBlock implements
 			rl_gender.setVisibility(View.GONE);
 			return;
 		case "req":
-			tv_gender.setText(mContext.getResources().getString(R.string.gender) + " (*):");
+			tv_gender.setText(Config.getInstance().getText("Gender") + " (*):");
 			break;
 		case "opt":
-			tv_gender.setText(mContext.getResources().getString(R.string.gender) + ":");
+			tv_gender.setText(Config.getInstance().getText("Gender") + ":");
 			break;
 		default:
 			break;
@@ -479,7 +479,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 
 	protected void createPassAndPassConfirm(int control) {
 		if (control == NewAddressBookFragment.NEW_CUSTOMER) {
-			edt_pass.setHint(mContext.getResources().getString(R.string.password) + " (*)");
+			edt_pass.setHint(Config.getInstance().getText("Password") + " (*)");
 			edt_confirmPass.setHint(Config.getInstance().getText(
 					"Confirm Password")
 					+ " (*)");
@@ -618,7 +618,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 		if (null != password) {
 			if (password.length() < 6) {
 				SimiManager.getIntance().showNotify(
-						mContext.getResources().getString(R.string.please_enter_6_or_more_characters));
+						Config.getInstance().getText("Please enter 6 or more characters") + ".");
 				return null;
 			}
 			profile.setCurrentPass(password);
@@ -636,16 +636,16 @@ public class NewAddressBookBlock extends SimiBlock implements
 
 		if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 			SimiManager.getIntance().showNotify(null,
-					mContext.getResources().getString(R.string.invalid_email_address),
-					mContext.getResources().getString(R.string.ok));
+					Config.getInstance().getText("Invalid email address"),
+					Config.getInstance().getText("OK"));
 			return null;
 
 		}
 		if (!password.equals(confirmpassword)) {
 			SimiManager.getIntance().showNotify(
 					null,
-					mContext.getResources().getString(R.string.password_and_confirm_password_dont_match),
-					mContext.getResources().getString(R.string.ok));
+					Config.getInstance().getText("Password and Confirm password don't match" + "."),
+					Config.getInstance().getText("OK"));
 			return null;
 
 		}
@@ -674,7 +674,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 			}
 		} else {
 			edt_state.setVisibility(View.VISIBLE);
-			edt_state.setHint(mContext.getResources().getString(R.string.state));
+			edt_state.setHint(Config.getInstance().getText("State"));
 			rl_state.setVisibility(View.GONE);
 		}
 		if (mController != null) {
