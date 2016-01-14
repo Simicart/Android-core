@@ -179,12 +179,12 @@ public class CategoryCustomAdapter extends BaseAdapter {
 
 	protected void viewOrderProduct(OrderProduct orderProduct) {
 		if (orderProduct.getSpotKey() != null) {
-			ListProductFragment fragment = ListProductFragment.newInstance();
-			fragment.setKey(orderProduct.getSpotKey());
-			fragment.setUrlSearch(ConstantsSearch.url_spot_matrixtheme);
-			if (DataLocal.isTablet) {
-				fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
-			}
+			ListProductFragment fragment = ListProductFragment.newInstance(ConstantsSearch.url_spot_matrixtheme, null, null, orderProduct.getSpotKey(), null, null, null, null);
+//			fragment.setKey(orderProduct.getSpotKey());
+//			fragment.setUrlSearch(ConstantsSearch.url_spot_matrixtheme);
+//			if (DataLocal.isTablet) {
+//				fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
+//			}
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}

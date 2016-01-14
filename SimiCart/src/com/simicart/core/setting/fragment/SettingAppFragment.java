@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
@@ -93,8 +94,7 @@ public class SettingAppFragment extends SimiFragment {
 		tv_notification.setBackgroundColor(Config.getInstance()
 				.getApp_backrground());
 		tv_notification.setTextColor(Config.getInstance().getContent_color());
-		tv_notification.setText(Config.getInstance().getText(
-				"Show notifications"));
+		tv_notification.setText(Config.getInstance().getText("Show Notification"));
 		rl_notification = (RelativeLayout) rootView.findViewById(Rconfig
 				.getInstance().id("rl_notification"));
 		rl_notification.setBackgroundColor(Config.getInstance()
@@ -332,8 +332,8 @@ public class SettingAppFragment extends SimiFragment {
 	}
 
 	protected void changeCurrency() {
-		ListCurrencyFragment fragment = ListCurrencyFragment.newInstance();
-		fragment.setCurrent_item(currency);
+		ListCurrencyFragment fragment = ListCurrencyFragment.newInstance(currency);
+//		fragment.setCurrent_item(currency);
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
 		} else {
@@ -342,8 +342,8 @@ public class SettingAppFragment extends SimiFragment {
 	}
 
 	protected void changeLanguage() {
-		ListLanguageFragment fragment = ListLanguageFragment.newInstance();
-		fragment.setCurrent_item(tv_language_selected.getText().toString());
+		ListLanguageFragment fragment = ListLanguageFragment.newInstance(tv_language_selected.getText().toString());
+//		fragment.setCurrent_item(tv_language_selected.getText().toString());
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
 		} else {

@@ -1,6 +1,7 @@
 package com.simicart.core.adapter;
 
 import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;

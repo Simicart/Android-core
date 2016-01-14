@@ -404,7 +404,7 @@ public class PhoneSlideMenuController {
 			fragment = HomeFragment.newInstance();
 			break;
 		case "Category":
-			fragment = CategoryFragment.newInstance("all categories", "-1");
+			fragment = CategoryFragment.newInstance("-1", "all categories");
 			break;
 		case "Order History":
 			fragment = OrderHistoryFragment.newInstance();

@@ -111,7 +111,7 @@ public class ControllerAddWishList implements OptionProductDelegate {
 							}
 						} else {
 							SignInFragment fragment = SignInFragment
-									.newInstance();
+									.newInstance(null,null, false);
 							SimiManager.getIntance().addPopupFragment(fragment);
 							WishList.product_ID = productWishList.getProduct()
 									.getId();

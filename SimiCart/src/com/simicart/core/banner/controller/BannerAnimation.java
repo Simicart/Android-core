@@ -121,10 +121,7 @@ public class BannerAnimation {
 										if (banner_ad.getHasChild().equals("1")) {
 											if (DataLocal.isTablet) {
 												fragment = CategoryFragment.newInstance(
-														banner_ad
-																.getCategoryName(),
-														banner_ad
-																.getCategoryId());
+														banner_ad.getCategoryId(), banner_ad.getCategoryName());
 												CateSlideMenuFragment
 														.getIntance()
 														.replaceFragmentCategoryMenu(
@@ -134,10 +131,7 @@ public class BannerAnimation {
 														.openMenu();
 											} else {
 												fragment = CategoryFragment.newInstance(
-														banner_ad
-																.getCategoryName(),
-														banner_ad
-																.getCategoryId());
+														banner_ad.getCategoryId(), banner_ad.getCategoryName());
 												SimiManager.getIntance()
 														.addFragment(fragment);
 											}

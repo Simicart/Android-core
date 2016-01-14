@@ -3,7 +3,10 @@ package com.simicart.plugins.locator.entity;
 import java.io.Serializable;
 import java.util.List;
 
-public class StoreObject implements Serializable{
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class StoreObject implements Parcelable{
 	/**
 	 * 
 	 */
@@ -405,6 +408,18 @@ public class StoreObject implements Serializable{
 
 	public void setList_holiday(List<SpecialObject> list_holiday) {
 		this.list_holiday = list_holiday;
+	}
+
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel paramParcel, int paramInt) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

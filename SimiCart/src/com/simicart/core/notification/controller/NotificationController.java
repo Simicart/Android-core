@@ -245,9 +245,9 @@ public class NotificationController {
 					&& !notificationData.getProductID().equals("")
 					&& !notificationData.getProductID().toLowerCase()
 							.equals("null")) {
-				fragment = ProductDetailParentFragment.newInstance();
-				((ProductDetailParentFragment) fragment)
-						.setProductID(notificationData.getProductID());
+				fragment = ProductDetailParentFragment.newInstance(notificationData.getProductID(),null);
+//				((ProductDetailParentFragment) fragment)
+//						.setProductID(notificationData.getProductID());
 			}
 		} else if (notificationData.getType().equals("2")) {
 			if (notificationData.getCategoryID() != null
@@ -256,25 +256,24 @@ public class NotificationController {
 				if (notificationData.getHasChild().equals("1")) {
 					if (DataLocal.isTablet) {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryName(),
-								notificationData.getCategoryID());
+								notificationData.getCategoryID(), notificationData.getCategoryName());
 						CateSlideMenuFragment.getIntance()
 								.replaceFragmentCategoryMenu(fragment);
 						CateSlideMenuFragment.getIntance().openMenu();
 						return;
 					} else {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryName(),
-								notificationData.getCategoryID());
+								notificationData.getCategoryID(), notificationData.getCategoryName());
 					}
 				} else {
-					fragment = ListProductFragment.newInstance();
-					((ListProductFragment) fragment).setCategoryId(notificationData
-							.getCategoryID());
-					((ListProductFragment) fragment)
-							.setCategoryName(notificationData.getCategoryName());
-					((ListProductFragment) fragment)
-							.setUrlSearch(ConstantsSearch.url_category);
+					fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, notificationData
+							.getCategoryID(), null, null, notificationData.getCategoryName(), null, null, null);
+//					((ListProductFragment) fragment).setCategoryId(notificationData
+//							.getCategoryID());
+//					((ListProductFragment) fragment)
+//							.setCategoryName(notificationData.getCategoryName());
+//					((ListProductFragment) fragment)
+//							.setUrlSearch(ConstantsSearch.url_category);
 				}
 			}
 		} else {
