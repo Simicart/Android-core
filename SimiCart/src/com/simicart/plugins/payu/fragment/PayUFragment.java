@@ -18,6 +18,7 @@ import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
 public class PayUFragment extends SimiFragment {
@@ -34,21 +35,24 @@ public class PayUFragment extends SimiFragment {
 		return url_payu;
 	}
 
-	public void setUrl_payu(String url_payu) {
-		this.url_payu = url_payu;
-	}
+//	public void setUrl_payu(String url_payu) {
+//		this.url_payu = url_payu;
+//	}
 
 	public String getInvoice_number() {
 		return invoice_number;
 	}
 
-	public void setInvoice_number(String invoice_number) {
-		this.invoice_number = invoice_number;
-	}
+//	public void setInvoice_number(String invoice_number) {
+//		this.invoice_number = invoice_number;
+//	}
 
-	public static PayUFragment newInstance() {
+	public static PayUFragment newInstance(String urlPayu, String invoiceNumber) {
 		PayUFragment fragment = new PayUFragment();
-
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.URL_PAYU, urlPayu, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -70,6 +74,11 @@ public class PayUFragment extends SimiFragment {
 
 		mImageView.setLayoutParams(lp);
 		// add loading View
+		if(getArguments() != null){
+		url_payu = (String) getData(Constants.KeyData.URL_PAYU, Constants.KeyData.TYPE_STRING, getArguments());
+		invoice_number = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments());
+		}
+		
 		webview.addView(mImageView);
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.getSettings().setBuiltInZoomControls(true);

@@ -1,6 +1,7 @@
 package com.simicart.core.adapter;
 
 import java.util.ArrayList;
+
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -15,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.magestore.simicart.R;
+
 import com.simicart.core.catalog.product.entity.PriceV2;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.DrawableManager;

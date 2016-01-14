@@ -373,9 +373,9 @@ public class AdapterMyWishList extends BaseAdapter implements RefreshWishlistDel
 					listID.add(mWishLists.get(i).getProduct_id());
 				}
 				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance();
-				fragment.setProductID(itemWishList.getProduct_id());
-				fragment.setListIDProduct(listID);
+						.newInstance(itemWishList.getProduct_id(),listID);
+//				fragment.setProductID(itemWishList.getProduct_id());
+//				fragment.setListIDProduct(listID);
 				SimiManager.getIntance().removeDialog();
 				SimiManager.getIntance().replaceFragment(fragment);
 			}

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.setting.block.ListViewIndexableBlock;
@@ -25,12 +26,15 @@ public class ListLanguageFragment extends SimiFragment {
 		return current_item;
 	}
 
-	public void setCurrent_item(String current_item) {
-		this.current_item = current_item;
-	}
+//	public void setCurrent_item(String current_item) {
+//		this.current_item = current_item;
+//	}
 
-	public static ListLanguageFragment newInstance() {
+	public static ListLanguageFragment newInstance(String currentItem) {
 		ListLanguageFragment fragment = new ListLanguageFragment();
+		Bundle bundle= new Bundle();
+		setData(Constants.KeyData.CURRENT_ITEM, currentItem, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		fragment.setListLanguage(DataLocal.listStores);
 		return fragment;
 	}
@@ -50,6 +54,9 @@ public class ListLanguageFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_choose_country"), container,
 				false);
 		Context context = getActivity();
+		if(getArguments() != null){
+		current_item = (String) getData(Constants.KeyData.CURRENT_ITEM, Constants.KeyData.TYPE_STRING, getArguments());
+		}
 
 		mBlock = new ListViewIndexableBlock(view, context);
 		mBlock.setList(mList);

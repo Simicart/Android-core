@@ -14,12 +14,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:contentDescription="@null"
-<<<<<<< HEAD
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:scaleType="center"
-=======
->>>>>>> 587343947617d92705ff526feab5577f550214d2
         android:src="@drawable/default_logo" />
 
 </RelativeLayout>

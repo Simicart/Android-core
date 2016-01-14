@@ -83,18 +83,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/tv_productItemName"
-<<<<<<< HEAD
-<<<<<<< HEAD
-                android:layout_marginTop="@dimen/size_05"
-=======
-                android:layout_marginTop="5dp"
->>>>>>> 180af3598b89b6dc08c7956700d3dff8e01e1933
-                android:orientation="vertical" 
-                android:weightSum="2">
-=======
                 android:layout_marginTop="5dp"
                 android:orientation="vertical" >
->>>>>>> eaa00abea01e1ecbed2921938fe068775b4c7fbd
 
                 <TextView
                     android:id="@+id/tv_exclTax"
@@ -107,21 +97,10 @@
                 <TextView
                     android:id="@+id/tv_inclTax"
                     android:layout_width="match_parent"
-<<<<<<< HEAD
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-<<<<<<< HEAD
-                    android:textSize="@dimen/text_14" />
-=======
-                    android:textSize="14sp" />
->>>>>>> 180af3598b89b6dc08c7956700d3dff8e01e1933
-=======
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:textColor="#ab452f"
                     android:textSize="14sp" />
->>>>>>> eaa00abea01e1ecbed2921938fe068775b4c7fbd
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

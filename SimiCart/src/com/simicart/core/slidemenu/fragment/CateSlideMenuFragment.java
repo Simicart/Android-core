@@ -37,7 +37,7 @@ public class CateSlideMenuFragment extends SimiFragment {
 				false);
 		view.setBackgroundColor(Config.getInstance().getMenu_background());
 		CategoryFragment fragment = CategoryFragment.newInstance(
-				"all categories", "-1");
+				"-1", "all categories");
 		replaceFragmentCategoryMenu(fragment);
 		return view;
 	}
