@@ -122,6 +122,9 @@ public class SimiManager {
 
 		}
 
+		Log.e("SimiManager ", "onUpdateCartQty " + "Previous "
+				+ mQtyCartPrevious + "Current " + i_qty);
+
 		if (mQtyCartPrevious != i_qty) {
 			mQtyCartPrevious = i_qty;
 			isRefreshCart = true;
@@ -551,9 +554,9 @@ public class SimiManager {
 		if (extras != null) {
 			i.putExtras(extras);
 		}
-
+		
 		if (check != null)
-			i.putExtra("home_check", check);
+			i.putExtra("home_check", check);		
 		mCurrentActivity.startActivity(i);
 		mCurrentActivity.finish();
 	}

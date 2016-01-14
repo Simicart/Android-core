@@ -24,7 +24,8 @@ import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 
-public class SimiModel {
+
+public class SimiModel{	
 	private NetWorkDelegate mDelegate;
 	private ModelDelegate bDelegate;
 	protected JSONObject mJSON;
@@ -212,6 +213,9 @@ public class SimiModel {
 		if (null != json) {
 			CoreResponse coreResponse = new CoreResponse();
 			coreResponse.parse(json.toString());
+
+			Log.e("SimiModel getDataFromCache ", json.toString());
+
 			mDelegate.callBack(coreResponse, true);
 		} else {
 			SimiManager.getIntance().getRequestQueue().add(mRequest);
