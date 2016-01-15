@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/iv_showmore"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/size_20"
+        android:layout_height="@dimen/size_20"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:src="@drawable/ic_extend" />
@@ -19,9 +19,9 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:paddingBottom="10dp"
-        android:paddingRight="40dp"
-        android:paddingTop="10dp"
-        android:textSize="14sp" />
+        android:paddingBottom="@dimen/size_10"
+        android:paddingRight="@dimen/size_40"
+        android:paddingTop="@dimen/size_10"
+        android:textSize="@dimen/text_14" />
 
 </RelativeLayout>

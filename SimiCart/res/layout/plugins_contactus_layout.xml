@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" >
+        android:paddingLeft="@dimen/size_5"
+        android:paddingRight="@dimen/size_5" >
 
         <!-- Call -->
 
@@ -21,13 +21,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@drawable/bottom_line_border"
-            android:padding="15dp" >
+            android:padding="@dimen/size_5" >
 
             
             <ImageView
                 android:id="@+id/img_call"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/size_5"
+                android:layout_height="@dimen/size_5"
                 android:layout_centerVertical="true"
                  />
 
@@ -36,9 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_call"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
         <!-- Message -->
 
@@ -47,12 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_line_border"
-            android:padding="15dp" >
+            android:padding="@dimen/size_5" >
 
             <ImageView
                 android:id="@+id/img_message"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_5"
                 android:layout_centerVertical="true"
                  />
 
@@ -61,9 +61,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_message"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
 
         <!-- Email -->
@@ -73,12 +73,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@drawable/bottom_line_border"
-            android:padding="15dp" >
+            android:padding="@dimen/size_5" >
 
             <ImageView
                 android:id="@+id/img_email"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_5"
                 android:layout_centerVertical="true"
                  />
 
@@ -87,9 +87,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_email"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
         <!-- Website -->
 
@@ -99,12 +99,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@drawable/bottom_line_border"
-            android:padding="15dp" >
+            android:padding="@dimen/size_5" >
 
             <ImageView
                 android:id="@+id/img_web"
-                android:layout_width="30dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_5"
                 android:layout_centerVertical="true"
                  />
 
@@ -113,9 +113,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="@dimen/size_30"
                 android:layout_toRightOf="@id/img_web"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
         </RelativeLayout>
 
     </LinearLayout>

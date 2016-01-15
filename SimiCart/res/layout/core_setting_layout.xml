@@ -11,47 +11,47 @@
 
         <ImageView
             android:id="@+id/im_language"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/size_5"
             android:src="@drawable/ic_lang" />
 
         <TextView
             android:id="@+id/tv_language"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_language_selected"
             android:layout_toRightOf="@+id/im_language"
             android:gravity="center_vertical"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_18" />
 
         <TextView
             android:id="@+id/tv_language_selected"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/size_10"
             android:layout_toLeftOf="@+id/im_language_extend"
             android:gravity="center_vertical"
             android:textColor="#CACACA"
-            android:textSize="16sp" />
+            android:textSize="@dimen/text_16" />
 
         <ImageView
             android:id="@+id/im_language_extend"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/size_10"
             android:src="@drawable/ic_extend" />
     </com.simicart.core.material.LayoutRipple>
 
     <View
         android:id="@+id/v_language"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/size_05"
         android:background="#E8E8E8" />
 
     <com.simicart.core.material.LayoutRipple
@@ -61,47 +61,47 @@
 
         <ImageView
             android:id="@+id/im_currency"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/size_5"
             android:src="@drawable/ic_currency" />
 
         <TextView
             android:id="@+id/tv_currency"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_currency_selected"
             android:layout_toRightOf="@+id/im_currency"
             android:gravity="center_vertical"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_18" />
 
         <TextView
             android:id="@+id/tv_currency_selected"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/size_10"
             android:layout_toLeftOf="@+id/im_currency_extend"
             android:gravity="center_vertical"
             android:textColor="#CACACA"
-            android:textSize="16sp" />
+            android:textSize="@dimen/text_16" />
 
         <ImageView
             android:id="@+id/im_currency_extend"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/size_10"
             android:src="@drawable/ic_extend" />
     </com.simicart.core.material.LayoutRipple>
 
     <View
         android:id="@+id/v_currency"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/size_05"
         android:background="#E8E8E8" />
 
     <RelativeLayout
@@ -112,30 +112,30 @@
 
         <ImageView
             android:id="@+id/im_notification"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/size_5"
             android:src="@drawable/ic_notification" />
 
         <TextView
             android:id="@+id/tv_notification"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/size_20"
             android:layout_toRightOf="@+id/im_notification"
             android:background="#FFFFFF"
             android:gravity="center_vertical"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_18" />
 
         <ToggleButton
             android:id="@+id/tb_notification"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_40"
+            android:layout_height="@dimen/size_20"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/size_10"
             android:background="@drawable/toggle_selector"
             android:checked="false"
             android:text=""
@@ -146,7 +146,7 @@
     <View
         android:id="@+id/v_notification"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/size_05"
         android:background="#E8E8E8" />
 
     <com.simicart.core.material.LayoutRipple
@@ -156,36 +156,36 @@
 
         <ImageView
             android:id="@+id/im_locator"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_centerVertical="true"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/size_5"
             android:src="@drawable/ic_location_setting" />
 
         <TextView
             android:id="@+id/tv_locator"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/size_40"
             android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/size_20"
             android:layout_toRightOf="@+id/im_locator"
             android:gravity="center_vertical"
-            android:textSize="18sp" />
+            android:textSize="@dimen/text_18" />
 
         <ImageView
             android:id="@+id/im_locator_extend"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/size_10"
             android:src="@drawable/ic_extend" />
     </com.simicart.core.material.LayoutRipple>
 
     <View
         android:id="@+id/v_locator"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/size_05"
         android:background="#E8E8E8" />
 
     <View

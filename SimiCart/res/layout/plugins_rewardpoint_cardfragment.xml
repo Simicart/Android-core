@@ -7,45 +7,45 @@
     <LinearLayout
         android:id="@+id/layout_passbook"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="@dimen/size_250"
+        android:layout_marginLeft="@dimen/size_5"
+        android:layout_marginRight="@dimen/size_5"
+        android:layout_marginTop="@dimen/size_20"
         android:background="@drawable/reward_card_layout"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp" >
+            android:layout_height="@dimen/size_100" >
 
             <ImageView
                 android:id="@+id/img_logo_passbook"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/size_50"
+                android:layout_height="@dimen/size_50"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="25dp" />
+                android:layout_marginLeft="@dimen/size_5"
+                android:layout_marginRight="@dimen/size_10"
+                android:layout_marginTop="@dimen/size_5" />
 
             <TextView
                 android:id="@+id/txt_passbook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="@dimen/size_5"
                 android:layout_toRightOf="@+id/img_logo_passbook"
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="@dimen/text_20" />
 
             <TextView
                 android:id="@+id/txt_balance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginBottom="3dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginBottom="@dimen/size_3"
+                android:layout_marginRight="@dimen/size_5"
+                android:layout_marginTop="@dimen/size_5"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="@dimen/text_15" />
 
             <TextView
                 android:id="@+id/txt_balance_content"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txt_balance"
-                android:layout_marginRight="15dp"
+                android:layout_marginRight="@dimen/size_5"
                 android:textColor="#ffffff"
                 android:textSize="22sp" />
         </RelativeLayout>
@@ -61,35 +61,35 @@
         <View
             android:id="@+id/view"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/size_1"
             android:background="#ffffff" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="4"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/size_5"
+            android:layout_marginLeft="@dimen/size_5"
+            android:layout_marginRight="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_5"
             android:orientation="vertical"
             android:background="@drawable/reward_card_layout_code" >
 
             <ImageView
                 android:id="@+id/img_code"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/size_0"
                 android:layout_weight="3"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginLeft="@dimen/size_5"
+                android:layout_marginRight="@dimen/size_5"
                 />
             <TextView
                 android:id="@+id/txt_barcode"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/size_0"
                 android:layout_weight="1"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginTop="@dimen/size_2"
+                android:layout_marginBottom="@dimen/size_2"
 				android:layout_gravity="center_horizontal"
                 />
         </LinearLayout>
@@ -97,9 +97,9 @@
     
     <ImageView
         android:id="@+id/img_addto_passbook"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="@dimen/size_200"
+        android:layout_height="@dimen/size_50"
+        android:layout_marginTop="@dimen/size_10"
         android:src="@drawable/reward_ic_button_addto_passbook"
         android:layout_gravity="center_horizontal"
         />

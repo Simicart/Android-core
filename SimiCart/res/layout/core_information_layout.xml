@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dip"
             android:layout_gravity="bottom"
-            app:pstsTabPaddingLeftRight="35dp" />
+            app:pstsTabPaddingLeftRight="@dimen/size_5" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
@@ -31,8 +31,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp" >
+        android:layout_marginBottom="@dimen/size_5"
+        android:layout_marginRight="@dimen/size_5" >
 
         <com.simicart.core.style.material.floatingactionbutton.FloatingActionsMenu
             android:id="@+id/more_plugins_action"

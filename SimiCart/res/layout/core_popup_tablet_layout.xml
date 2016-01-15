@@ -13,16 +13,17 @@
         android:background="@drawable/bottom_line_border" >
 
         <ImageView
+            
             android:id="@+id/bt_back"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
             android:layout_alignParentLeft="true"
             android:src="@drawable/core_back" />
 
         <ImageView
             android:id="@+id/bt_exit"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
             android:layout_alignParentRight="true"
             android:src="@drawable/core_exit" />
     </RelativeLayout>
@@ -34,8 +35,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="90"
         android:background="@drawable/core_background_fragment"
-        android:minHeight="1000dp"
-        android:minWidth="500dp" >
+        android:minHeight="@dimen/size_1000"
+        android:minWidth="@dimen/size_500" >
     </FrameLayout>
 
 </LinearLayout>

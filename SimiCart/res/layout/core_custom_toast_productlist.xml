@@ -10,7 +10,7 @@
         android:id="@+id/txt_custom_toast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="5dp"
+        android:padding="@dimen/size_5"
         android:textColor="#ffffff"
         android:layout_centerInParent="true"
         />

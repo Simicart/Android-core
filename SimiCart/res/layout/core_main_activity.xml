@@ -15,14 +15,14 @@
         <!-- android:id="@+id/menu_top" -->
         <!-- android:name="com.simicart.core.menutop.fragment.FragmentMenuTop" -->
         <!-- android:layout_width="match_parent" -->
-        <!-- android:layout_height="45dp" -->
+        <!-- android:layout_height="@dimen/size_5" -->
         <!-- tools:layout="@layout/core_menutop" > -->
         <!-- </fragment> -->
 
         <FrameLayout
             android:id="@+id/menu_top"
             android:layout_width="match_parent"
-            android:layout_height="50dp" >
+            android:layout_height="@dimen/size_50" >
         </FrameLayout>
 
         <FrameLayout
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/navigation_drawer"
         android:name="com.simicart.core.slidemenu.fragment.SlideMenuFragment"
-        android:layout_width="280dp"
+        android:layout_width="@dimen/size_280"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         tools:layout="@layout/core_slidemenu_layout" />

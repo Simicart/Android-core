@@ -10,16 +10,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
+        android:layout_marginLeft="@dimen/size_5"
+        android:paddingBottom="@dimen/size_20"
+        android:paddingTop="@dimen/size_20"
      />
 
     <ImageView
         android:id="@+id/img_delete"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginRight="5dp"
+        android:layout_width="@dimen/size_20"
+        android:layout_height="@dimen/size_20"
+        android:layout_marginRight="@dimen/size_5"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:background="@drawable/bg_circle"

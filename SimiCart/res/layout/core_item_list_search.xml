@@ -3,23 +3,23 @@
     android:id="@+id/l_listItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginBottom="@dimen/size_10"
+    android:layout_marginTop="@dimen/size_10"
     android:background="@drawable/item_listview_style" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="@dimen/size_20"
         android:orientation="horizontal" >
 
         <RelativeLayout
             android:id="@+id/rel_product_list"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:paddingBottom="12dp"
-            android:paddingRight="24dp"
-            android:paddingTop="12dp" >
+            android:layout_width="@dimen/size_110"
+            android:layout_height="@dimen/size_110"
+            android:paddingBottom="@dimen/size_12"
+            android:paddingRight="@dimen/size_24"
+            android:paddingTop="@dimen/size_12" >
 
             <ImageView
                 android:id="@+id/iv_productItemImage"
@@ -28,7 +28,7 @@
                 android:layout_centerVertical="true"
                 android:background="@drawable/core_home_border_relative"
                 android:contentDescription="@null"
-                android:padding="0.5dp"
+                android:padding="@dimen/size_5"
                 android:src="@drawable/default_logo" />
 
             <LinearLayout
@@ -41,9 +41,9 @@
                 <LinearLayout
                     android:id="@+id/layout_stock"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="@dimen/size_20"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="75dp"
+                    android:layout_marginTop="@dimen/size_75"
                     android:background="#915c83"
                     android:orientation="vertical" >
 
@@ -54,7 +54,7 @@
                         android:gravity="center_horizontal"
                         android:text="Out Stock"
                         android:textColor="#ffffff"
-                        android:textSize="9sp" />
+                        android:textSize="@dimen/text_9" />
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
@@ -64,17 +64,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingLeft="5dp" >
+            android:paddingLeft="@dimen/size_5" >
 
             <TextView
                 android:id="@+id/tv_productItemName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/size_10"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="1"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_16"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -83,35 +83,54 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/tv_productItemName"
-                android:layout_marginTop="5dp"
-                android:orientation="vertical" >
+                android:layout_marginTop="@dimen/size_05"
+                android:orientation="vertical" 
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:id="@+id/ll_price_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="2" >
+
+                    <TextView
+                        android:id="@+id/tv_regular"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_special"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="14sp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tv_exclTax"
+                    android:id="@+id/tv_minimal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:gravity="left"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_inclTax"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:textColor="#ab452f"
-                    android:textSize="14sp" />
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_14" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/ic_expand"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/size_20"
+        android:layout_height="@dimen/size_20"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="@dimen/size_5"
         android:contentDescription="@null"
         android:src="@drawable/ic_extend" />
 
