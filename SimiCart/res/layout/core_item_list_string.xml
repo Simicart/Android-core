@@ -10,17 +10,17 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="30dp"
-        android:padding="15dp"
+        android:layout_marginRight="@dimen/size_30"
+        android:padding="@dimen/size_5"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
         android:id="@+id/im_check"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/size_30"
+        android:layout_height="@dimen/size_30"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="@dimen/size_5"
         android:src="@drawable/ic_action_accept"
         android:visibility="gone" />
 

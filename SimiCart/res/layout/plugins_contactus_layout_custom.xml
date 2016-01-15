@@ -8,15 +8,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bottom_line_border">
-            <!-- android:paddingBottom="24dp" -->
+            <!-- android:paddingBottom="@dimen/size_24" -->
 
             <ImageView
                 android:id="@+id/img_contactUs"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="@dimen/size_60"
+                android:layout_marginTop="@dimen/size_24"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="12dp"/>
+                android:layout_marginLeft="@dimen/size_12"/>
 
             <TextView
                 android:id="@+id/tv_contactUs"
@@ -24,22 +24,22 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/img_contactUs"
 	            android:layout_centerHorizontal="true"
-	            android:layout_marginTop="5dp"/>
+	            android:layout_marginTop="@dimen/size_5"/>
             
             <ImageView
                 android:id="@+id/img_contactUsList"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginLeft="12dp"
-    			android:layout_marginBottom="12dp"
-    			android:layout_marginTop="12dp" 
+                android:layout_width="@dimen/size_32"
+                android:layout_height="@dimen/size_32"
+                android:layout_marginLeft="@dimen/size_12"
+    			android:layout_marginBottom="@dimen/size_12"
+    			android:layout_marginTop="@dimen/size_12" 
     			android:layout_centerVertical="true"/>
             
             <TextView
                 android:id="@+id/tv_contactUsList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="@dimen/size_10"
                 android:layout_toRightOf="@+id/img_contactUsList"
                 android:gravity="center"
                 android:layout_centerVertical="true"/>

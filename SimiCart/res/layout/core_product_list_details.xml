@@ -8,15 +8,15 @@
 
     <RelativeLayout
         android:id="@+id/rel_product_list_spot"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginLeft="2dp"
+        android:layout_width="@dimen/size_100"
+        android:layout_height="@dimen/size_100"
+        android:layout_marginLeft="@dimen/size_2"
         android:background="@drawable/core_home_border_relative" >
 
         <ImageView
             android:id="@+id/product_list_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="@dimen/size_100"
             android:layout_centerInParent="true"
             android:contentDescription="@null"
             android:src="@drawable/default_logo" />
@@ -24,20 +24,20 @@
 
     <RelativeLayout
         android:id="@+id/rel_product_list_content"
-        android:layout_width="120dp"
+        android:layout_width="@dimen/size_120"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" >
+        android:layout_marginTop="@dimen/size_5" >
 
         <TextView
             android:id="@+id/product_list_name"
-            android:layout_width="120dp"
+            android:layout_width="@dimen/size_120"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="left"
-            android:paddingLeft="6dp"
+            android:paddingLeft="@dimen/size_6"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="13sp" />
+            android:textSize="@dimen/text_13" />
 
         <LinearLayout
             android:id="@+id/layout_price"
@@ -46,7 +46,7 @@
             android:layout_below="@+id/product_list_name"
             android:gravity="left"
             android:orientation="vertical"
-            android:paddingLeft="6dp" />
+            android:paddingLeft="@dimen/size_6" />
     </RelativeLayout>
 
 </LinearLayout>

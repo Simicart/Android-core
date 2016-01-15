@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"
+                android:paddingBottom="@dimen/size_10"
                 android:visibility="gone" >
 
                 <LinearLayout
@@ -36,7 +36,7 @@
                         android:id="@+id/txt_number_point"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
+                        android:paddingTop="@dimen/size_10"
                         android:textColor="#e32636"
                         android:textSize="30sp" />
 
@@ -45,21 +45,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="AVAILABLE POINTS"
-                        android:textSize="18sp"
+                        android:textSize="@dimen/text_18"
                         android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/txt_point_redeem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="13sp" />
+                        android:textSize="@dimen/text_13" />
                 </LinearLayout>
 
                 <View
                     android:id="@+id/view1"
-                    android:layout_width="1dp"
+                    android:layout_width="@dimen/size_1"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/size_10"
                     android:background="#ACACAC" />
 
                 <LinearLayout
@@ -72,13 +72,13 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="10dp"
-                        android:paddingTop="10dp" >
+                        android:paddingBottom="@dimen/size_10"
+                        android:paddingTop="@dimen/size_10" >
 
                         <ImageView
                             android:id="@+id/img_point"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="@dimen/size_70"
+                            android:layout_height="@dimen/size_70"
                             android:layout_centerHorizontal="true"
                             android:src="@drawable/plugin_reward_ic_coint" />
 
@@ -88,7 +88,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:textColor="#636363"
-                            android:textSize="17dp" />
+                            android:textSize="@dimen/size_17" />
                     </RelativeLayout>
 
                     <TextView
@@ -111,11 +111,11 @@
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:maxHeight="20dp"
-                    android:minHeight="20dp" />
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:maxHeight="@dimen/size_20"
+                    android:minHeight="@dimen/size_20" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -126,22 +126,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/size_5"
+                        android:layout_marginLeft="@dimen/size_20"
+                        android:layout_marginTop="@dimen/size_5"
                         android:text="0"
-                        android:textSize="20dp" />
+                        android:textSize="@dimen/size_20" />
 
                     <TextView
                         android:id="@+id/txt_maxpoint"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/size_5"
+                        android:layout_marginRight="@dimen/size_20"
+                        android:layout_marginTop="@dimen/size_5"
                         android:text="10"
-                        android:textSize="20dp" />
+                        android:textSize="@dimen/size_20" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -157,23 +157,23 @@
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/size_1"
                 android:background="#ACACAC" />
 
             <RelativeLayout
                 android:id="@+id/layout_card"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/size_40"
                 android:gravity="center" >
 
                 <ImageView
                     android:id="@+id/img_iconcart"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_5"
                     android:src="@drawable/plugin_reward_ic_card" />
 
                 <TextView
@@ -181,15 +181,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_10"
                     android:layout_toRightOf="@+id/img_iconcart"
-                    android:textSize="17dp" />
+                    android:textSize="@dimen/size_17" />
 
                 <ImageView
                     android:id="@+id/img_arrowright1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/size_5"
+                    android:layout_height="@dimen/size_5"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_extend" />
@@ -198,22 +198,22 @@
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/size_1"
                 android:background="#ACACAC" />
 
             <RelativeLayout
                 android:id="@+id/layout_history"
                 android:layout_width="match_parent"
-                android:layout_height="40dp" >
+                android:layout_height="@dimen/size_40" >
 
                 <ImageView
                     android:id="@+id/img_icon_history"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_5"
                     android:src="@drawable/plugin_reward_ic_history" />
 
                 <TextView
@@ -221,15 +221,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_10"
                     android:layout_toRightOf="@+id/img_icon_history"
-                    android:textSize="17dp" />
+                    android:textSize="@dimen/size_17" />
 
                 <ImageView
                     android:id="@+id/img_arrowright2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/size_5"
+                    android:layout_height="@dimen/size_5"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_extend" />
@@ -238,23 +238,23 @@
             <View
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/size_1"
                 android:background="#ACACAC" />
 
             <RelativeLayout
                 android:id="@+id/layout_setting"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/size_40"
                 android:gravity="center" >
 
                 <ImageView
                     android:id="@+id/img_iconsetting"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_5"
                     android:src="@drawable/plugin_reward_ic_setting" />
 
                 <TextView
@@ -262,15 +262,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_10"
                     android:layout_toRightOf="@+id/img_iconsetting"
-                    android:textSize="17dp" />
+                    android:textSize="@dimen/size_17" />
 
                 <ImageView
                     android:id="@+id/img_arrowright3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="@dimen/size_5"
+                    android:layout_height="@dimen/size_5"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_extend" />
@@ -279,7 +279,7 @@
             <View
                 android:id="@+id/view5"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/size_1"
                 android:background="#ACACAC" />
         </LinearLayout>
 
@@ -292,7 +292,7 @@
             <RelativeLayout
                 android:id="@+id/layout_earnpoint"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/size_50"
                 android:background="#EBEBEB"
                 android:visibility="gone" >
 
@@ -300,10 +300,10 @@
                     android:id="@+id/txt_earnpoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_20"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_ab" />
             </RelativeLayout>
 
             <TextView
@@ -311,13 +311,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:padding="10dp"
+                android:padding="@dimen/size_10"
                 android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/layout_spendpoint"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/size_50"
                 android:background="#EBEBEB"
                 android:visibility="gone" >
 
@@ -325,10 +325,10 @@
                     android:id="@+id/txt_spendpoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_20"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_ab" />
             </RelativeLayout>
 
             <TextView
@@ -336,13 +336,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
-                android:padding="10dp"
+                android:padding="@dimen/size_10"
                 android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/layout_ours_policies"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/size_50"
                 android:background="#EBEBEB"
                 android:visibility="gone" >
 
@@ -350,10 +350,10 @@
                     android:id="@+id/txt_ours_policies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_margin="@dimen/size_10"
+                    android:layout_marginTop="@dimen/size_20"
                     android:textColor="#000000"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/text_ab" />
             </RelativeLayout>
 
             <LinearLayout
@@ -369,15 +369,15 @@
             android:id="@+id/btn_reward_signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_40"
             android:textColor="#FFFFFF"
             android:visibility="gone" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/size_30"
             android:background="#EBEBEB" />
     </LinearLayout>
 

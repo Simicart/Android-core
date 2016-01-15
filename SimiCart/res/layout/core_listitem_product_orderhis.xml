@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp" >
+    android:padding="@dimen/size_10" >
 
     <RelativeLayout
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="@dimen/size_60"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginRight="@dimen/size_10"
         android:background="@drawable/core_home_border_relative" >
 
         <ImageView
@@ -26,7 +26,7 @@
         android:weightSum="6" >
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/size_0"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:orientation="vertical" >
@@ -35,14 +35,14 @@
                 android:id="@+id/name_product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_16"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/price_product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp" />
+                android:textSize="@dimen/text_14" />
         </LinearLayout>
 
         <TextView
@@ -51,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="right"
-            android:paddingLeft="5dp"
-            android:textSize="16sp"
+            android:paddingLeft="@dimen/size_5"
+            android:textSize="@dimen/text_16"
             android:textStyle="bold" />
     </LinearLayout>
 
