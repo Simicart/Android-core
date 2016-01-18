@@ -61,9 +61,10 @@ public class ListProductFragment extends SimiFragment {
 				bundle);
 		setData(Constants.KeyData.SORT_ID, sortId,
 				Constants.KeyData.TYPE_STRING, bundle);
+		if(jsonFilter != null){
 		setData(Constants.KeyData.JSON_FILTER, jsonFilter.toString(),
 				Constants.KeyData.TYPE_JSONOBJECT, bundle);
-
+		}
 		fragment.setArguments(bundle);
 		return fragment;
 	}

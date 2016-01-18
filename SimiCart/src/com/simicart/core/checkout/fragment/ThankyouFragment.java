@@ -55,7 +55,9 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.MESSAGE, message, Constants.KeyData.TYPE_STRING, bundle);
+		if(jsonObject != null){
 		setData(Constants.KeyData.JSON_FILTER, jsonObject.toString(), Constants.KeyData.TYPE_JSONOBJECT, bundle);
+		}
 		fragment.setArguments(bundle);
 		return fragment;
 	}

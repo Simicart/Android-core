@@ -40,7 +40,9 @@ public class SortFragment extends SimiFragment {
 			setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.SORT_TAG, sortTag, Constants.KeyData.TYPE_STRING, bundle);
+			if(json != null){
 			setData(Constants.KeyData.JSON_FILTER, json.toString(), Constants.KeyData.TYPE_JSONOBJECT, bundle);
+			}
 			setData(Constants.KeyData.KEY, key, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.QUERY, query, Constants.KeyData.TYPE_STRING, bundle);
 			setData(Constants.KeyData.SORT_TYPE, sortType, Constants.KeyData.TYPE_STRING, bundle);
