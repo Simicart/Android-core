@@ -2,17 +2,15 @@ package com.simicart.plugins.barcode;
 
 import java.util.ArrayList;
 
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 
 import com.simicart.MainActivity;
+import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.product.fragment.ProductDetailParentFragment;
 import com.simicart.core.config.Config;
@@ -28,6 +26,7 @@ public class ScanCode {
 	SlideMenuData mSlideMenuData;
 	ArrayList<ItemNavigation> mItems;
 	private String type = "";
+	private ScanCodeModel mModel;
 
 	public ScanCode(String method, SlideMenuData menuData) {
 		this.mSlideMenuData = menuData;
@@ -73,7 +72,7 @@ public class ScanCode {
 	}
 
 	private void checkResultBarcode() {
-		String content = MainActivity.instance.getData().getStringExtra(
+		String code = MainActivity.instance.getData().getStringExtra(
 				"SCAN_RESULT");
 		final String fomat = MainActivity.instance.getData().getStringExtra(
 				"SCAN_RESULT_FORMAT");
@@ -82,31 +81,26 @@ public class ScanCode {
 		} else {
 			type = "0";
 		}
-		if (type != "" && content != "") {
-			String url = getUrl(content, type);
-			try {
-				JSONObject object = new GetJsonFromUrl().execute(url).get();
-				if (object != null) {
-					if (object.getString("status").equals("SUCCESS")) {
+		if (type != "" && code != "") {
+			mModel = new ScanCodeModel();
+			mModel.setDelegate(new ModelDelegate() {
+
+				@Override
+				public void callBack(String message, boolean isSuccess) {
+					if (isSuccess) {
+						String product_id = mModel.getProductID();
 						ArrayList<String> listID = new ArrayList<String>();
-						String product_id = object.getJSONObject("data")
-								.getString("product_id");
 						listID.add(product_id);
 						ProductDetailParentFragment fragment = ProductDetailParentFragment
-								.newInstance(product_id,listID);
+								.newInstance(product_id, listID);
 						fragment.setTargetFragment(fragment,
 								Constants.TARGET_PRODUCTDETAIL);
-//						fragment.setProductID(product_id);
-//						fragment.setListIDProduct(listID);
 						SimiManager.getIntance().addFragment(fragment);
 						MainActivity.mCheckToDetailAfterScan = true;
 						MainActivity.mBackEntryCountDetail = SimiManager
 								.getIntance().getManager()
 								.getBackStackEntryCount();
-						int xxx = MainActivity.mBackEntryCountDetail;
-						System.out.println(xxx);
 					} else {
-						String message = object.getString("message");
 						Intent intent = new Intent(Constants.SCANNER);
 						intent.putExtra("SCAN_MODE", Constants.SCAN_MODE);
 						intent.putExtra("SCAN_MODE",
@@ -115,18 +109,40 @@ public class ScanCode {
 						SimiManager.getIntance().getCurrentActivity()
 								.startActivityForResult(intent, 1111);
 					}
+
 				}
-			} catch (Exception e) {
-				Intent intent = new Intent(Constants.SCANNER);
-				intent.putExtra("SCAN_MODE", Constants.SCAN_MODE);
-				intent.putExtra("SCAN_MODE", Constants.SCAN_MODE_BARCODE);
-				intent.putExtra("QR_CODE_ERROR", e.getMessage());
-				SimiManager
-						.getIntance()
-						.getCurrentActivity()
-						.startActivityForResult(intent,
-								Constants.RESULT_BARCODE);
-			}
+			});
+
+			mModel.addParam("code", code);
+			mModel.addParam("type", type);
+			mModel.request();
+
+			// String url = getUrl(code, type);
+			// try {
+			// JSONObject object = new GetJsonFromUrl().execute(url).get();
+			//
+			//
+			//
+			// if (object != null) {
+			// if (object.getString("status").equals("SUCCESS")) {
+
+			// } else {
+			//
+			// }
+			// }
+			//
+			// } catch (Exception e) {
+			// Intent intent = new Intent(Constants.SCANNER);
+			// intent.putExtra("SCAN_MODE", Constants.SCAN_MODE);
+			// intent.putExtra("SCAN_MODE", Constants.SCAN_MODE_BARCODE);
+			// intent.putExtra("QR_CODE_ERROR", e.getMessage());
+			// SimiManager
+			// .getIntance()
+			// .getCurrentActivity()
+			// .startActivityForResult(intent,
+			// Constants.RESULT_BARCODE);
+			// }
+
 		}
 	}
 
@@ -212,22 +228,4 @@ public class ScanCode {
 		// }
 	}
 
-	private String getUrl(String code, String type) {
-		return Config.getInstance().getBaseUrl()
-				+ "simibarcode/index/checkCode/data/%7B%22code%22:%22" + code
-				+ "%22,%22type%22:%22" + type + "%22%7D";
-	}
-
-	public class GetJsonFromUrl extends AsyncTask<String, Void, JSONObject> {
-
-		@Override
-		protected JSONObject doInBackground(String... params) {
-			String urlExucute = params[0];
-			JSONObject json = new JsonParser().getJSONFromUrl(urlExucute);
-			if (json != null) {
-				return json;
-			}
-			return null;
-		}
-	}
 }
