@@ -116,10 +116,11 @@ public class SimiManager {
 	public void onUpdateCartQty(String qty) {
 		int i_qty = 0;
 		try {
+			qty = qty.trim();
 			i_qty = Integer.parseInt(qty);
 
 		} catch (Exception e) {
-
+			Log.e("SimiManager ", "onUpdateCartQty " + e.getMessage());
 		}
 
 		Log.e("SimiManager ", "onUpdateCartQty " + "Previous "
@@ -127,6 +128,7 @@ public class SimiManager {
 
 		if (mQtyCartPrevious != i_qty) {
 			mQtyCartPrevious = i_qty;
+			Log.e("SimiManager ", "onUpdateCartQty  TRUEEEEEEEEEEE");
 			isRefreshCart = true;
 		} else {
 			isRefreshCart = false;
@@ -137,6 +139,10 @@ public class SimiManager {
 
 	public boolean isRereshCart() {
 		return isRefreshCart;
+	}
+
+	public void setIsRefreshCart(boolean is_refresh_cart) {
+		isRefreshCart = is_refresh_cart;
 	}
 
 	public void showCartLayout(boolean show) {
@@ -554,9 +560,9 @@ public class SimiManager {
 		if (extras != null) {
 			i.putExtras(extras);
 		}
-		
+
 		if (check != null)
-			i.putExtra("home_check", check);		
+			i.putExtra("home_check", check);
 		mCurrentActivity.startActivity(i);
 		mCurrentActivity.finish();
 	}

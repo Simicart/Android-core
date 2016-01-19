@@ -28,7 +28,6 @@ import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.product.entity.ProductOption;
 import com.simicart.core.catalog.product.model.AddToCartModel;
 import com.simicart.core.catalog.product.model.ProductModel;
-import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.common.options.ProductOptionParentView;
 import com.simicart.core.common.options.base.CacheOptionView;
 import com.simicart.core.common.options.delegate.OptionProductDelegate;
@@ -275,12 +274,11 @@ public class ProductController extends SimiController implements
 				if (isSuccess) {
 					int mQty = getCartQtyFromJsonobject(model.getDataJSON());
 					SimiManager.getIntance().onUpdateCartQty(mQty + "");
-
 					SimiManager.getIntance().showToast(
 							Config.getInstance().getText("Added to Cart"));
 				} else {
 					// SimiManager.getIntance().showNotify(message);
-					SimiManager.getIntance().showToast(message);
+					// SimiManager.getIntance().showToast(message);
 					// View view_option = onShowOptionView();
 					// mDelegate.onUpdateOptionView(view_option);
 				}

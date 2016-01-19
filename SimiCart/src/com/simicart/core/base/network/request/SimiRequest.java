@@ -171,11 +171,17 @@ public class SimiRequest implements Comparable<SimiRequest> {
 
 	public String getCacheKey() {
 		boolean isRefreshCart = SimiManager.getIntance().isRereshCart();
-		if(mUrl.contains("get_cart") && isRefreshCart)
-		{
+
+		Log.e("SimiRequest ", "getCacheKey " + isRefreshCart);
+
+		if (mUrl.contains("get_cart") && isRefreshCart) {
 			return null;
 		}
-		
+
+		return mCacheKey;
+	}
+
+	public String getCacheKeyForSaveResponse() {
 		return mCacheKey;
 	}
 

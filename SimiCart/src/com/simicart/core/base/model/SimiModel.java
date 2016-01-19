@@ -213,11 +213,10 @@ public class SimiModel{
 		if (null != json) {
 			CoreResponse coreResponse = new CoreResponse();
 			coreResponse.parse(json.toString());
-
 			Log.e("SimiModel getDataFromCache ", json.toString());
-
 			mDelegate.callBack(coreResponse, true);
 		} else {
+			Log.e("SimiModel ", "getDataFromCache " + "NULLLLLLL");
 			SimiManager.getIntance().getRequestQueue().add(mRequest);
 		}
 	}

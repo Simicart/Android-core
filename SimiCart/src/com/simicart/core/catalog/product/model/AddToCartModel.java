@@ -16,4 +16,5 @@ public class AddToCartModel extends SimiModel {
 		url_action = Constants.ADD_TO_CART;
 	}
 
+
 }
