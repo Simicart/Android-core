@@ -39,9 +39,9 @@ public class ProductListAdapter extends BaseAdapter {
 		mProducts = ProductList;
 	}
 
-	public ArrayList<Product> getProductList() {
-		return mProducts;
-	}
+//	public ArrayList<Product> getProductList() {
+//		return mProducts;
+//	}
 
 	public void setProductList(ArrayList<Product> products) {
 		mProducts = products;
@@ -115,6 +115,7 @@ public class ProductListAdapter extends BaseAdapter {
 				|| mTypeProduct.equals(PRODUCT_PRICE_TYPE_2)) {
 			mTypeProduct = PRODUCT_PRICE_TYPE_2;
 			 getViewPriceType2(holder, product);
+			 
 		} else if (mTypeProduct.equals("grouped")
 				|| mTypeProduct.equals(PRODUCT_PRICE_TYPE_3)) {
 			mTypeProduct = PRODUCT_PRICE_TYPE_3;
@@ -161,12 +162,21 @@ public class ProductListAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return this.mProducts.size();
+		int size = 0;
+		if(mProducts != null){
+			size = mProducts.size();
+		}
+		return size;
+		
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mProducts.get(position);
+		Product product = new Product();
+		if(mProducts != null){
+			product = mProducts.get(position);
+		}
+		return product;
 	}
 
 	@Override
@@ -277,16 +287,18 @@ public class ProductListAdapter extends BaseAdapter {
 		holder.tv_minimal_price.setVisibility(View.GONE);
 
 		PriceV2 priceV2 = mProduct.getPriceV2();
-
+		if(priceV2 != null){
 		float incl_tax_minimal = priceV2.getInclTaxMinimal();
 		float minimal_price = priceV2.getMinimalPrice();
 		String minimal_price_label = priceV2.getMinimalPriceLabel();
+		
 		if (incl_tax_minimal > -1) {
 			holder.tv_regular_price.setText(Html.fromHtml(getHtmlForPrice(
 					incl_tax_minimal, minimal_price_label)));
 		} else {
 			holder.tv_regular_price.setText(Html.fromHtml(getHtmlForPrice(
 					minimal_price, minimal_price_label)));
+		}
 		}
 	}
 
