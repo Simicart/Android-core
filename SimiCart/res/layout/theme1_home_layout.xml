@@ -72,7 +72,7 @@
                             <ViewFlipper
                                 android:id="@+id/vfp_category1"
                                 android:layout_width="fill_parent"
-                                android:layout_height="@dimen/size_10" >
+                                android:layout_height="@dimen/size_110" >
                             </ViewFlipper>
 
                             <Button
@@ -125,7 +125,7 @@
                             <ViewFlipper
                                 android:id="@+id/vfp_category2"
                                 android:layout_width="fill_parent"
-                                android:layout_height="@dimen/size_10" >
+                                android:layout_height="@dimen/size_110" >
                             </ViewFlipper>
 
                             <Button
@@ -191,7 +191,7 @@
                             <ViewFlipper
                                 android:id="@+id/vfp_category3"
                                 android:layout_width="fill_parent"
-                                android:layout_height="@dimen/size_10" >
+                                android:layout_height="@dimen/size_110" >
                             </ViewFlipper>
 
                             <Button
@@ -244,7 +244,7 @@
                             <ViewFlipper
                                 android:id="@+id/vfp_allcategory"
                                 android:layout_width="fill_parent"
-                                android:layout_height="@dimen/size_10" >
+                                android:layout_height="@dimen/size_110" >
                             </ViewFlipper>
 
                             <Button
@@ -301,7 +301,7 @@
                 <LinearLayout
                     android:id="@+id/ll_spot_product"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_0"
+                    android:layout_height="0dp"
                     android:layout_weight="3"
                     android:gravity="center"
                     android:orientation="vertical" >
