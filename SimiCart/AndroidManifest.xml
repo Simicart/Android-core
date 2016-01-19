@@ -204,6 +204,18 @@
         <activity android:name="com.paypal.android.sdk.payments.PayPalFuturePaymentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentConsentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity" />
+        
+        <activity android:name="com.simicart.plugins.braintree.BrainTreeSimicart" />
+        <activity android:name="com.braintreepayments.api.dropin.BraintreePaymentActivity" />
+        <!-- Required to use PayPal -->
+        <activity android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.PayPalTouchActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- Required to use 3D Secure -->
+        <activity android:name="com.braintreepayments.api.threedsecure.ThreeDSecureWebViewActivity" />
 
         <receiver
             android:name="com.simicart.core.notification.GCMReceiver"
