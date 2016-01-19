@@ -117,32 +117,6 @@ public class ScanCode {
 			mModel.addParam("type", type);
 			mModel.request();
 
-			// String url = getUrl(code, type);
-			// try {
-			// JSONObject object = new GetJsonFromUrl().execute(url).get();
-			//
-			//
-			//
-			// if (object != null) {
-			// if (object.getString("status").equals("SUCCESS")) {
-
-			// } else {
-			//
-			// }
-			// }
-			//
-			// } catch (Exception e) {
-			// Intent intent = new Intent(Constants.SCANNER);
-			// intent.putExtra("SCAN_MODE", Constants.SCAN_MODE);
-			// intent.putExtra("SCAN_MODE", Constants.SCAN_MODE_BARCODE);
-			// intent.putExtra("QR_CODE_ERROR", e.getMessage());
-			// SimiManager
-			// .getIntance()
-			// .getCurrentActivity()
-			// .startActivityForResult(intent,
-			// Constants.RESULT_BARCODE);
-			// }
-
 		}
 	}
 
@@ -192,40 +166,6 @@ public class ScanCode {
 		SimiManager.getIntance().getCurrentActivity()
 				.startActivityForResult(intent, Constants.RESULT_BARCODE);
 		MainActivity.mCheckToDetailAfterScan = false;
-	}
-
-	@SuppressWarnings("unused")
-	private void addItemLeftMenu(boolean theme) {
-		// if (theme == true) {
-		// // parent
-		// ItemNavigation parentBarcode = new ItemNavigation();
-		// parentBarcode.setSparator(true);
-		// parentBarcode.setName(ConstantBarcode.SCAN_NOW);
-		// parentBarcode.setType(ItemNavigation.BASIC_TYPE);
-		// mItems.add(parentBarcode);
-		// // child
-		// ItemNavigation mItemNavigation = new ItemNavigation();
-		// mItemNavigation.setType(ItemNavigation.PLUGIN_TYPE);
-		// Drawable icon = SimiManager.getIntance().getCurrentContext()
-		// .getResources()
-		// .getDrawable(Rconfig.getInstance().drawable("ic_barcode"));
-		// icon.setColorFilter(Config.getInstance().getColorMenu(),
-		// PorterDuff.Mode.SRC_ATOP);
-		// mItemNavigation.setName(ConstantBarcode.QR_BAR_CODE);
-		// mItemNavigation.setIcon(icon);
-		// mItems.add(mItemNavigation);
-		// } else {
-		// mItems = mSlideMenuData.getItemNavigations();
-		// Drawable ic_barcode = mContext.getResources().getDrawable(
-		// Rconfig.getInstance().drawable("ic_barcode"));
-		// ic_barcode.setColorFilter(Config.getInstance().getColorMenu(),
-		// PorterDuff.Mode.SRC_ATOP);
-		// ItemNavigation itemCategory = new ItemNavigation();
-		// itemCategory.setIcon(ic_barcode);
-		// itemCategory.setName(ConstantBarcode.QR_BAR_CODE);
-		// itemCategory.setType(ItemNavigation.BASIC_TYPE);
-		// mItems.add(itemCategory);
-		// }
 	}
 
 }
