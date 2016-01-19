@@ -1,0 +1,10 @@
+<events>
+    <event>
+        <name>com.simicart.core.home.fragment.HomeFragment</name>	    
+	    <package>com.simicart.theme.matrixtheme</package>
+	    <class>MatrixTheme</class>
+	    <method>changeHome</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+</events>
+ 
