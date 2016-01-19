@@ -1,17 +1,17 @@
 package com.simicart.core.banner.animation.SliderTypes;
 
+import java.io.File;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.magestore.simicart.R;
-import com.simicart.MainActivity;
+import com.simicart.core.config.Rconfig;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-
-import java.io.File;
 
 /**
  * When you want to make your own slider view, you must extends from this class.
@@ -178,7 +178,7 @@ public abstract class BaseSliderView {
      * @param v the whole view
      * @param targetImageView where to place image
      */
-    protected void bindEventAndShow(final View v, ImageView targetImageView){
+    protected void bindEventAndShow(final View v, final ImageView targetImageView){
         final BaseSliderView me = this;
 
         v.setOnClickListener(new View.OnClickListener() {
@@ -240,6 +240,11 @@ public abstract class BaseSliderView {
             public void onError() {
                 if(mLoadListener != null){
                     mLoadListener.onEnd(false,me);
+                }
+                if(v.findViewById(R.id.loading_bar) != null){
+                    v.findViewById(R.id.loading_bar).setVisibility(View.INVISIBLE);
+                    targetImageView.setImageResource(Rconfig.getInstance().drawable("fake_banner"));
+                    targetImageView.setScaleType(android.widget.ImageView.ScaleType.FIT_XY);
                 }
             }
         });

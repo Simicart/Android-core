@@ -1,7 +1,5 @@
 package com.simicart.plugins.hiddenaddress;
 
-import android.util.Log;
-
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.entity.ConfigCustomerAddress;
@@ -25,9 +23,6 @@ public class HiddenAddress {
 					ConfigCustomerAddress address = (ConfigCustomerAddress) model
 							.getCollection().getCollection().get(0);
 					if (null != address) {
-						Log.e("HiddenAddress requestHidenAddress : ",
-								"--------->"
-										+ address.getJSONObject().toString());
 						DataLocal.ConfigCustomerAddress = address;
 					}
 				}
