@@ -70,7 +70,7 @@ public static FragmentPagerBanner newInstance(int postion, float scale, boolean 
 	setData(Constants.KeyData.SCALE, scale, Constants.KeyData.TYPE_FLOAT, bundle);
 	setData(Constants.KeyData.CHECK_BLURED, isBlured, Constants.KeyData.TYPE_BOOLEAN, bundle);
 //	setData(Constants.KeyData.BANNERENTITY, bannerEntity, Constants.KeyData.TYPE_MODEL, bundle);
-	bundle.putParcelable(Constants.KeyData.BANNERENTITY, bannerEntity);
+	bundle.putSerializable(Constants.KeyData.BANNERENTITY, bannerEntity);
 	fragment.setArguments(bundle);
 	return fragment;
 }
@@ -100,7 +100,7 @@ public static FragmentPagerBanner newInstance(int postion, float scale, boolean 
 		position = (int) getData(Constants.KeyData.POSITON, Constants.KeyData.TYPE_INT, getArguments());
 		scale = (float) getData(Constants.KeyData.SCALE, Constants.KeyData.TYPE_FLOAT, getArguments());
 		isBlured = (boolean) getData(Constants.KeyData.CHECK_BLURED, Constants.KeyData.TYPE_BOOLEAN, getArguments());
-		bannerEntity = getArguments().getParcelable(Constants.KeyData.BANNERENTITY);
+		bannerEntity = (BannerEntity) getArguments().getSerializable(Constants.KeyData.BANNERENTITY);
 		}
 		
 		imageview.setOnClickListener(new OnClickListener() {

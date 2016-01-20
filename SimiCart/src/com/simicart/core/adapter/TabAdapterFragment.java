@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.model.entity.BusEntity;
+import com.simicart.core.catalog.product.entity.Attributes;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.product.fragment.BasicInforFragment;
 import com.simicart.core.catalog.product.fragment.CustomerReviewFragment;
@@ -15,9 +18,12 @@ import com.simicart.core.catalog.product.fragment.RelatedProductFragment;
 import com.simicart.core.catalog.product.fragment.TechSpecsFragment;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.event.base.UtilsEvent;
 import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.block.EventBlock;
+
+import de.greenrobot.event.EventBus;
 
 public class TabAdapterFragment extends FragmentStatePagerAdapter {
 	protected Product mProduct;
@@ -63,6 +69,12 @@ public class TabAdapterFragment extends FragmentStatePagerAdapter {
 		}
 
 		if (!mProduct.getAttributes().isEmpty()) {
+//			Log.d("quang123", "123 :"+mProduct.getAttributes().get(0).toString());
+//			BusEntity<ArrayList<Attributes>> busEntity = new BusEntity<>();
+//			busEntity.setKey(Constants.KeyBus.LIST_ATTRIBUTES);
+//			busEntity.setValue(mProduct.getAttributes());
+//			EventBus.getDefault().post(busEntity);
+			
 			TechSpecsFragment fragment_tech = TechSpecsFragment.newInstance(mProduct.getAttributes());
 //			fragment_tech.setAttributes(mProduct.getAttributes());
 			mListFragment.add(fragment_tech);

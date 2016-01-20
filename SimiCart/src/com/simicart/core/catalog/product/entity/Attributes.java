@@ -3,12 +3,11 @@ package com.simicart.core.catalog.product.entity;
 import java.io.Serializable;
 
 import android.os.Parcel;
-import android.os.Parcelable;
 
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class Attributes extends SimiEntity implements Parcelable{
+public class Attributes extends SimiEntity implements Serializable{
 	/**
 	 * 
 	 */
@@ -39,18 +38,36 @@ public class Attributes extends SimiEntity implements Parcelable{
 		this.mTitle = title;
 	}
 
-	@Override
-	public int describeContents() {
-		// TODO Auto-generated method stub
-		return 0;
+	public Attributes(Parcel in) {
+		mTitle = in.readString();
+		mValue = in.readString();
 	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		// TODO Auto-generated method stub
-		
+	public Attributes() {
+		// TODO Auto-generated constructor stub
 	}
-
+//
+//	@Override
+//	public void writeToParcel(Parcel dest, int flags) {
+//		dest.writeString(mTitle);
+//		dest.writeString(mValue);
+//	}
+//
+//	static final Parcelable.Creator<Attributes> CREATOR = new Parcelable.Creator<Attributes>() {
+//
+//		public Attributes createFromParcel(Parcel in) {
+//			return new Attributes(in);
+//		}
+//
+//		public Attributes[] newArray(int size) {
+//			return new Attributes[size];
+//		}
+//	};
+//
+//	@Override
+//	public int describeContents() {
+//		return 0;
+//	}
+//
 
 
 }

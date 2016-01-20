@@ -1,9 +1,12 @@
 package com.simicart.plugins.locator.entity;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+import java.io.Serializable;
 
-public class SearchObject implements Parcelable{
+public class SearchObject implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String city;
 	private String state;
 	private String zipcode;
@@ -68,15 +71,4 @@ public class SearchObject implements Parcelable{
 		this.zipcode = zipcode;
 	}
 
-	@Override
-	public int describeContents() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel paramParcel, int paramInt) {
-		// TODO Auto-generated method stub
-		
-	}
 }

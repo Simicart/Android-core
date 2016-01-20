@@ -1,19 +1,20 @@
 package com.simicart.core.base.fragment;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.event.fragment.CacheFragment;
 import com.simicart.core.event.fragment.EventFragment;
+
+import de.greenrobot.event.EventBus;
 
 public class SimiFragment extends Fragment {
 
@@ -171,10 +172,19 @@ public class SimiFragment extends Fragment {
 
 		return object;
 	}
+	public void onEvent(BusEntity event){
+		 /* Do something */
+		}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		EventBus.getDefault().register(this);
+	}
+	@Override
+	public void onDestroy() {
+		EventBus.getDefault().unregister(this);
+		super.onDestroy();
+		
 	}
 }

@@ -1,13 +1,19 @@
 package com.simicart.core.catalog.product.entity;
 
+import java.io.Serializable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class PriceV2 extends SimiEntity {
+public class PriceV2 extends SimiEntity implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private float mPrice = -1;
 	private float mRegularPrice = -1;
 	private float mExclTaxSpecial = -1;

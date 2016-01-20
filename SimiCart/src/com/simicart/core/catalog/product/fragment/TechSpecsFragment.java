@@ -30,7 +30,7 @@ public class TechSpecsFragment extends SimiFragment {
 		
 		Bundle args = new Bundle();
 //		setData(Constants.KeyData.LIST_ATTRIBUTES, attributes, Constants.KeyData.TYPE_LIST_MODEL, args);
-		args.putParcelableArrayList(Constants.KeyData.LIST_ATTRIBUTES, attributes);
+		args.putSerializable(Constants.KeyData.LIST_ATTRIBUTES, attributes);
 	    fragment.setArguments(args);
 		return fragment;
 	}
@@ -47,9 +47,9 @@ public class TechSpecsFragment extends SimiFragment {
 						"core_information_description_layout"), container,
 				false);
 		if(getArguments() != null){
-		mAttributes = getArguments().getParcelableArrayList(Constants.KeyData.LIST_ATTRIBUTES);
+		mAttributes = (ArrayList<Attributes>) getArguments().getSerializable(Constants.KeyData.LIST_ATTRIBUTES);
 		}
-		Log.d("quangdd","mAttributes"+mAttributes.get(0).toString());
+		Log.d("quang123","mAttributes : "+mAttributes.get(0).toString());
 		
 		LinearLayout ll_techSpecs = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
@@ -86,4 +86,12 @@ public class TechSpecsFragment extends SimiFragment {
 
 		return rootView;
 	}
+//	@Override
+//	public void onEvent(BusEntity event) {
+//		super.onEvent(event);
+//		if(event.getKey() == Constants.KeyBus.LIST_ATTRIBUTES){
+//			mAttributes = (ArrayList<Attributes>) event.getValue();
+//			Log.d("quang123", ""+mAttributes.get(0).toString());
+//		}
+//	}
 }

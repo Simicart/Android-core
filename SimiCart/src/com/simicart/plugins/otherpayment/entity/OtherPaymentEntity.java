@@ -2,12 +2,9 @@ package com.simicart.plugins.otherpayment.entity;
 
 import java.io.Serializable;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.simicart.core.base.model.entity.SimiEntity;
 
-public class OtherPaymentEntity extends SimiEntity implements Parcelable{
+public class OtherPaymentEntity extends SimiEntity implements Serializable{
 	/**
 	 * 
 	 */
@@ -169,15 +166,4 @@ public class OtherPaymentEntity extends SimiEntity implements Parcelable{
 		this.mCheckUrl = mCheckUrl;
 	}
 
-	@Override
-	public int describeContents() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel paramParcel, int paramInt) {
-		// TODO Auto-generated method stub
-		
-	}
 }

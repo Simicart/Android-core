@@ -123,7 +123,7 @@ public class StoreLocatorFragment extends SimiFragment {
 		setData(Constants.KeyData.STATE, state, Constants.KeyData.TYPE_STRING, bundle);
 		setData(Constants.KeyData.ZIPCODE, zipcode, Constants.KeyData.TYPE_STRING, bundle);
 		setData(Constants.KeyData.TAG, tag, Constants.KeyData.TYPE_STRING, bundle);
-		bundle.putParcelable(Constants.KeyData.SEARCH_OBJECT, search_object);
+		bundle.putSerializable(Constants.KeyData.SEARCH_OBJECT, search_object);
 		return fragment;
 
 	}
@@ -159,7 +159,7 @@ public class StoreLocatorFragment extends SimiFragment {
 		state = (String) getData(Constants.KeyData.STATE, Constants.KeyData.TYPE_STRING, getArguments());
 		zipcode = (String) getData(Constants.KeyData.ZIPCODE, Constants.KeyData.TYPE_STRING, getArguments());
 		tag = (String) getData(Constants.KeyData.TAG, Constants.KeyData.TYPE_STRING, getArguments());
-		search_object = getArguments().getParcelable(Constants.KeyData.SEARCH_OBJECT);
+		search_object = (SearchObject) getArguments().getSerializable(Constants.KeyData.SEARCH_OBJECT);
 		}
 		
 		SimiManager.getIntance().setChildFragment(getChildFragmentManager());

@@ -44,7 +44,7 @@ public class OtherPaymentFragment extends SimiFragment {
 		setData(Constants.KeyData.URL_ACTION, urlAction, Constants.KeyData.TYPE_STRING, bundle);
 		setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
 //		setData(Constants.KeyData.OTHERPAYMENTENTITY, payment, Constants.KeyData.TYPE_MODEL, bundle);
-		bundle.putParcelable(Constants.KeyData.OTHERPAYMENTENTITY, payment);
+		bundle.putSerializable(Constants.KeyData.OTHERPAYMENTENTITY, payment);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -68,7 +68,7 @@ public class OtherPaymentFragment extends SimiFragment {
 		if(getArguments() != null){
 		mUrlAction = (String) getData(Constants.KeyData.URL_ACTION, Constants.KeyData.TYPE_STRING, getArguments());
 		mInvoiceNumber = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments()); 
-		mPayment = getArguments().getParcelable(Constants.KeyData.OTHERPAYMENTENTITY);
+		mPayment = (OtherPaymentEntity) getArguments().getSerializable(Constants.KeyData.OTHERPAYMENTENTITY);
 		}
 		
 		mImageView.setLayoutParams(lp);

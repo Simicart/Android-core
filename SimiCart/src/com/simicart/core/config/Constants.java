@@ -346,7 +346,12 @@ public class Constants {
 
 	public static String DEEP_LINK = "connector/catalog/deep_link";
 	
-public final static class KeyData {
+	public final static class KeyBus {
+		
+		public static final String LIST_ATTRIBUTES = "list_attributes";
+	}
+	
+	public final static class KeyData {
 		
 		public static final String ID = "id";
 		public static final String LIST_ID="list_id";
@@ -355,7 +360,6 @@ public final static class KeyData {
 		public static final String LIST_RATING_STAR = "list_rating_star";
 		public static final String DESCRIPTION="description";
 		public static final String ATTRIBUTES= "attributes";
-		public static final String LIST_ATTRIBUTES = "list_attributes";
 		public static final String NAME = "name";
 		public static final String URL="url";
 		public static final String URL_BACK="url_back";
@@ -372,6 +376,7 @@ public final static class KeyData {
 		public static final String CAT_NAME = "cat_name";
 		public static final String LIST_FILTER_STATE = "list_filter_state";
 		public static final String LIST_FILTER_ENTITY  = "list_filter_entity";
+		public static final String LIST_ATTRIBUTES = "list_attributes";
 		public static final String LIST_COUNTRY = "list_country";
 		public static final String CUSTOMER_REVIEW = "Customer_review";
 		public static final String CHECK_METHOD = "check_method";

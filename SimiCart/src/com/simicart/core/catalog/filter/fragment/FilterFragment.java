@@ -34,9 +34,9 @@ public class FilterFragment extends SimiFragment {
 		 setData(Constants.KeyData.TAG, tag, Constants.KeyData.TYPE_STRING, bundle);
 		 setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
 //		 setData(Constants.KeyData.LIST_FILTER_STATE, states, Constants.KeyData.TYPE_LIST_MODEL, bundle);
-		 bundle.putParcelableArrayList(Constants.KeyData.LIST_FILTER_STATE, states);
+		 bundle.putSerializable(Constants.KeyData.LIST_FILTER_STATE, states);
 //		 setData(Constants.KeyData.LIST_FILTER_ENTITY, filterEntity, Constants.KeyData.TYPE_LIST_MODEL, bundle);
-		 bundle.putParcelableArrayList(Constants.KeyData.LIST_FILTER_ENTITY, filterEntity);
+		 bundle.putSerializable(Constants.KeyData.LIST_FILTER_ENTITY, filterEntity);
 		    fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -74,8 +74,8 @@ public class FilterFragment extends SimiFragment {
 		if(getArguments() != null){
 		tag_search = (String) getData(Constants.KeyData.TAG, Constants.KeyData.TYPE_STRING, getArguments());
 		catName = (String) getData(Constants.KeyData.NAME, Constants.KeyData.TYPE_STRING, getArguments());
-		mStates =  getArguments().getParcelableArrayList(Constants.KeyData.LIST_FILTER_STATE);
-		mFilterEntity =  getArguments().getParcelableArrayList(Constants.KeyData.LIST_FILTER_ENTITY);
+		mStates =  (ArrayList<FilterState>) getArguments().getSerializable(Constants.KeyData.LIST_FILTER_STATE);
+		mFilterEntity =  (ArrayList<FilterEntity>) getArguments().getSerializable(Constants.KeyData.LIST_FILTER_ENTITY);
 		}
 		
 		mBlock = new FilterBlock(view, context);

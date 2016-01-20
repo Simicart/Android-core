@@ -1,12 +1,17 @@
 package com.simicart.core.catalog.product.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CacheOption {
+public class CacheOption implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String option_type_id = "-1";
 	private int position = -1;
 	private int number = 0;

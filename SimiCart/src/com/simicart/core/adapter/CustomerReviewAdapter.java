@@ -50,6 +50,10 @@ public class CustomerReviewAdapter extends ArrayAdapter<CustomerReview> {
 		final CustomerReview customerReview = getmCustomerReview()
 				.get(position);
 
+		
+		
+		
+		
 		RatingBar ratingBar = (RatingBar) convertView.findViewById(Rconfig
 				.getInstance().id("rtb_review"));
 		ratingBar.setRating(Float.parseFloat(customerReview.getRate()));
