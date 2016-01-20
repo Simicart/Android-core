@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.slidemenu.block.PhoneSlideMenuBlock;
 import com.simicart.core.slidemenu.controller.PhoneSlideMenuController;
@@ -20,10 +21,17 @@ public class PhoneSlideMenuFragment extends SimiFragment {
 	protected PhoneSlideMenuBlock mBlock;
 	protected CloseSlideMenuDelegate mCloseDelegate;
 
-	public void setCloseDelegate(CloseSlideMenuDelegate delegate) {
-		mCloseDelegate = delegate;
+//	public void setCloseDelegate(CloseSlideMenuDelegate delegate) {
+//		mCloseDelegate = delegate;
+//	}
+	public static PhoneSlideMenuFragment instance (CloseSlideMenuDelegate closeDelegate){
+		PhoneSlideMenuFragment fragment = new PhoneSlideMenuFragment();
+//		Bundle bundle = new Bundle();
+//		bundle.putSerializable(Constants.KeyData.I_CLOSESLIDEMENUDELEGATE, closeDelegate);
+//		fragment.setArguments(bundle);
+		fragment.mCloseDelegate = closeDelegate;
+		return fragment;
 	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -32,6 +40,8 @@ public class PhoneSlideMenuFragment extends SimiFragment {
 				false);
 		view.setBackgroundColor(Config.getInstance().getMenu_background());
 		Context context = getActivity();
+		
+//		mCloseDelegate = (CloseSlideMenuDelegate) getArguments().getSerializable(Constants.KeyData.I_CLOSESLIDEMENUDELEGATE);
 		mBlock = new PhoneSlideMenuBlock(view, context);
 		mBlock.initView();
 		mController = new PhoneSlideMenuController(mBlock, context);

@@ -416,6 +416,7 @@ public class Constants {
 		public static final String  NAMEAPP= "nameapp";
 		public static final String  LOYALTY_REDEEM= "loyalty_redeem";
 		public static final String  PASSBOOKLOGO= "passBookLogo";
+		public static final String I_CLOSESLIDEMENUDELEGATE = "CloseSlideMenuDelegate";
 		
 		public static final String TYPE_STRING ="type_string";
 		public static final String TYPE_INT = "type_int";
@@ -427,6 +428,7 @@ public class Constants {
 //		public static final String TYPE_MODEL_PAR = "type_model_par";
 		public static final String TYPE_JSONOBJECT = "json_object";
 		public static final String TYPE_BOOLEAN = "type_boolean";
+		
 		
 	}
 }

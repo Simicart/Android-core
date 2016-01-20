@@ -1,5 +1,7 @@
 package com.simicart.core.slidemenu.delegate;
 
-public interface CloseSlideMenuDelegate {
+import java.io.Serializable;
+
+public interface CloseSlideMenuDelegate extends Serializable{
 	public void closeSlideMenu();
 }

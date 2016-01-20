@@ -111,8 +111,8 @@ public class SlideMenuFragment extends SimiFragment implements
 			Log.e("SlideMenuFragment ", "initView Tablet");
 			initSlideTablet();
 		} else {
-			PhoneSlideMenuFragment fragment = new PhoneSlideMenuFragment();
-			fragment.setCloseDelegate(this);
+			PhoneSlideMenuFragment fragment = PhoneSlideMenuFragment.instance(this);
+//			fragment.setCloseDelegate(this);
 			replaceFragment(fragment);
 		}
 	}
@@ -121,8 +121,8 @@ public class SlideMenuFragment extends SimiFragment implements
 
 	public void initSlideTablet() {
 		ArrayList<SimiFragment> simiFragments = new ArrayList<>();
-		PhoneSlideMenuFragment phoneSlideMenuFragment = new PhoneSlideMenuFragment();
-		phoneSlideMenuFragment.setCloseDelegate(this);
+		PhoneSlideMenuFragment phoneSlideMenuFragment =  PhoneSlideMenuFragment.instance(this);
+//		phoneSlideMenuFragment.setCloseDelegate(this);
 		simiFragments.add(phoneSlideMenuFragment);
 		CateSlideMenuFragment categoryFragment = CateSlideMenuFragment
 				.getIntance();
