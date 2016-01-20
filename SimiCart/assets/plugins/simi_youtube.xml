@@ -1,0 +1,16 @@
+<events>
+ 	<event>
+        <name>com.simicart.core.adapter.TabAdapterFragment</name>	    
+	    <package>com.simicart.plugins.youtube</package>
+	    <class>Youtube</class>
+	    <method>addTabVideo</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.core.catalog.product.block.ProductMorePluginBlock</name>	    
+	    <package>com.simicart.plugins.youtube</package>
+	    <class>Youtube</class>
+	    <method>addButtonMore</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+</events>

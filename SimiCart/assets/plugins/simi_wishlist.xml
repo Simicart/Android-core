@@ -1,0 +1,59 @@
+<events>
+     <event>
+        <name>com.simicart.add.navigation.account</name>	    
+	    <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>addItem</method>	
+	    <sku>simi_developer</sku>    
+    </event>     
+    <event>
+        <name>com.simicart.remove.navigation.myaccount</name>	    
+	    <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>removeItem</method>	
+	    <sku>simi_developer</sku>    
+    </event> 
+    <event>
+        <name>com.simicart.core.catalog.product.block.option</name>	    
+	    <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>onChangeOption</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+ <!--    <event>
+        <name>com.simicart.core.customer.block.MyAccountBlock</name>	    
+	    <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>addWishlistForMyAccount</method>	
+	    <sku>simi_developer</sku>    
+    </event> -->
+    <event>
+        <name>com.simicart.core.catalog.product.block.ProductMorePluginBlock</name>	    
+	    <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>addButtonWishList</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.NavigationDrawerFragment.onDrawerOpen</name>	    
+	    <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>onDrawerOpen</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.event.wishlist.afterSignIn</name>	    
+	    <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>afterSignIn</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    
+    <event>
+        <name>com.simicart.core.customer.controller.SignInController</name>
+         <package>com.simicart.plugins.wishlist</package>
+	    <class>WishList</class>
+	    <method>updateWishListQty</method>	
+	    <sku>simi_developer</sku>
+    </event>
+</events>

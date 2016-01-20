@@ -1,0 +1,37 @@
+<events>
+    <event>
+        <name>com.simicart.core.customer.fragment.SignInFragment</name>	    
+	    <package>com.simicart.plugins.facebooklogin</package>
+	    <class>FacebookLogin</class>
+	    <method>createFragment</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.core.customer.fragment.SignInFragment</name>	    
+	    <package>com.simicart.plugins.facebooklogin</package>
+	    <class>FacebookLogin</class>
+	    <method>onActivityResult</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+     <event>
+        <name>com.simicart.core.customer.block.SignInBlock</name>	    
+	    <package>com.simicart.plugins.facebooklogin</package>
+	    <class>FacebookLogin</class>
+	    <method>addButton</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    <event>
+        <name>com.simicart.MainActivity.onActivityResult</name>	    
+	    <package>com.simicart.plugins.facebooklogin</package>
+	    <class>FacebookLogin</class>
+	    <method>onActivityResult</method>	
+	    <sku>simi_developer</sku> 
+    </event>
+    <event>
+        <name>com.simicart.autoSignIn</name>	    
+	    <package>com.simicart.plugins.facebooklogin</package>
+	    <class>AutoSignInFacebook</class>
+	    <method>autoSignIn</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+</events>
