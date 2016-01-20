@@ -30,7 +30,7 @@ public class BasicInforFragment extends SimiFragment {
 		
 		Bundle args = new Bundle();
 //	    setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, args);
-		args.putParcelable(Constants.KeyData.PRODUCT, product);
+		args.putSerializable(Constants.KeyData.PRODUCT, product);
 	    fragment.setArguments(args);
 		return fragment;
 	}
@@ -50,7 +50,7 @@ public class BasicInforFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_basic_inf_layout"), container, false);
 		if(getArguments() != null){
-		mProduct = getArguments().getParcelable(Constants.KeyData.PRODUCT);
+		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
 		Log.d("quangdd","mProduct"+mProduct.toString());
 		}
 		

@@ -1,5 +1,7 @@
 package com.simicart.core.catalog.product.entity;
 
+import java.io.Serializable;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -48,6 +50,7 @@ public class Attributes extends SimiEntity implements Parcelable{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 
 }

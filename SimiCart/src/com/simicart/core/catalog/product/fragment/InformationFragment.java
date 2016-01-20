@@ -34,7 +34,7 @@ public class InformationFragment extends SimiFragment {
 		InformationFragment fragment = new InformationFragment();
 		Bundle bundle= new Bundle();
 //		  setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, bundle);
-		bundle.putParcelable(Constants.KeyData.PRODUCT, product);
+		bundle.putSerializable(Constants.KeyData.PRODUCT, product);
 		    fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -55,7 +55,7 @@ public class InformationFragment extends SimiFragment {
 				container, false);
 		Context context = getActivity();
 		if(getArguments() != null){
-		mProduct = getArguments().getParcelable(Constants.KeyData.PRODUCT);
+		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
 		}
 		if (null != mProduct) {
 			initView();

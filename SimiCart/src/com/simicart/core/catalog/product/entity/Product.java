@@ -16,7 +16,7 @@ import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 
-public class Product extends SimiEntity implements Parcelable {
+public class Product extends SimiEntity implements Serializable {
 	/**
 	 * 
 	 */
@@ -623,18 +623,6 @@ public class Product extends SimiEntity implements Parcelable {
 
 	public void setMinimal_price_label(String minimal_price_label) {
 		this.mMinimalPriceLabel = minimal_price_label;
-	}
-
-	@Override
-	public int describeContents() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

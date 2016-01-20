@@ -39,7 +39,6 @@ public class TechSpecsFragment extends SimiFragment {
 //		mAttributes = attributes;
 //	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
