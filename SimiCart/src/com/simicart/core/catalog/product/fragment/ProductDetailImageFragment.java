@@ -88,7 +88,7 @@ public class ProductDetailImageFragment extends SimiFragment {
 			}
 
 		} catch (Exception e) {
-			Log.e("ProductDetailImageFragment - OncreateView:", e.getMessage());
+//			Log.e("ProductDetailImageFragment - OncreateView:", e.getMessage());
 		}
 		return rootView;
 	}

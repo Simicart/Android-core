@@ -236,9 +236,10 @@ public class ProfileController extends SimiController {
 					SimiManager.getIntance().onUpdateItemSignIn();
 					SimiManager.getIntance().showNotify("SUCCESS", message,
 							"OK");
-				} else {
-					SimiManager.getIntance().showNotify("FAIL", message, "OK");
-				}
+				} 
+//					else {
+//					SimiManager.getIntance().showNotify("FAIL", message, "OK");
+//				}
 			}
 		});
 		mModel.addParam("user_email", profile.getEmail());

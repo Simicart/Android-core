@@ -18,7 +18,8 @@ public class ShippingMethod extends SimiEntity {
 	public boolean isS_method_selected() {
 
 		if (null == isSelected) {
-			isSelected = getData(Constants.METHOD_SELECTED);
+			// isSelected = getData(Constants.METHOD_SELECTED);
+            return false;
 		}
 		if (isSelected.equals("TRUE") || isSelected.equals("true")) {
 			return true;

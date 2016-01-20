@@ -6,7 +6,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils.TruncateAt;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -180,8 +182,13 @@ public class NotificationController {
 		}
 
 		alertboxDowload.setContentView(view);
+		TextView tv = (TextView) alertboxDowload
+                .findViewById(android.R.id.title);
+		tv.setMaxLines(2);
+		tv.setEllipsize(TruncateAt.END);
+		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 		alertboxDowload.setTitle(Config.getInstance().getText(
-				notificationData.getTitle()));
+                notificationData.getTitle()));
 		alertboxDowload.setCancelable(false);
 
 		TextView tv_close = (TextView) view.findViewById(Rconfig.getInstance()

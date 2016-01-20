@@ -97,6 +97,7 @@ public class AddressBookController extends SimiController {
 		addressbook.setJSONObject(entity.getJSONObject());
 		Log.e("AddressBookController : ",
 				"Address ID : " + addressbook.getAddressId());
+		Log.d("==quang", "addressbook : "+addressbook.getCompany());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
 				.newInstance(addressbook);
 //		fragment.setAddressbook(addressbook);

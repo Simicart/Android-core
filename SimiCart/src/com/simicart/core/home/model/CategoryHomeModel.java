@@ -36,4 +36,9 @@ public class CategoryHomeModel extends SimiModel {
 		this.enableCache = true;
 	}
 
+	@Override
+	protected void setShowNotifi() {
+		super.setShowNotifi();
+		isShowNotify = false;
+	}
 }

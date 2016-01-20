@@ -168,13 +168,19 @@ public class ProductDetailParentController extends ProductController implements 
 	protected boolean checkSelectedAllOption() {
 		if (getProductFromCollection().getStock()) {
 			ArrayList<CacheOption> options = getCacheOptions();
+		
 			if (null == options) {
+				if(mProduct.getOptions() !=  null){
 				options = mProduct.getOptions();
+				Log.d("===quang", ""+options.size());
+				
+				
 				for (CacheOption option : options) {
 					if (option.isRequired() && !option.isCompleteRequired()) {
 						onShowOption();
 						return false;
 					}
+				}
 				}
 			}
 

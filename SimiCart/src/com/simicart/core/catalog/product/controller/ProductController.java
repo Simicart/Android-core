@@ -361,13 +361,15 @@ public class ProductController extends SimiController implements
 	}
 
 	protected boolean checkSelectedCacheOption(ArrayList<CacheOption> options) {
+		if(options != null){
 		for (CacheOption cacheOption : options) {
 			if (cacheOption.isRequired() && !cacheOption.isCompleteRequired()) {
 				return false;
 			}
 		}
-
+		}
 		return true;
+		
 	}
 
 	protected JSONArray convertCacheOptionToParams(

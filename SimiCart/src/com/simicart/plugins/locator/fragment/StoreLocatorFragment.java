@@ -759,8 +759,9 @@ public class StoreLocatorFragment extends SimiFragment {
 	}
 
 	private void initData(List<StoreObject> list) {
+		if(list != null){
 		list_store_object = list;
-
+	
 		for (int i = 0; i < list.size(); i++) {
 			mStore_maker.add(list.get(i));
 		}
@@ -771,8 +772,9 @@ public class StoreLocatorFragment extends SimiFragment {
 				.getInstance().id("ll_coreLoading"));
 		adapter = new ListAdapter(SimiManager.getIntance().getCurrentContext(),
 				list_store_object, foot);
+		}
 		list_store.setAdapter(adapter);
-
+		
 	}
 
 	private void initDataNew(List<StoreObject> list) {

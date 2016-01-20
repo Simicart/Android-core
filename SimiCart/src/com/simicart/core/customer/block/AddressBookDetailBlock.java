@@ -178,11 +178,12 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	private void createPrefix() {
 		et_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
+		if(null != mAddressBookDetail){
 		String prefix = mAddressBookDetail.getPrefix();
 		if (null != prefix && !prefix.equals("") && !prefix.equals("null")) {
 			et_prefix.setText(prefix);
 		}
-
+		}
 		switch (mAddress.getPrefix()) {
 		case "":
 			et_prefix.setVisibility(View.GONE);
@@ -196,9 +197,11 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		default:
 			break;
 		}
+		
 	}
 
 	private void createFullname() {
+		if(mAddressBookDetail != null){
 		String fullname = mAddressBookDetail.getName();
 
 		if (null != fullname && !fullname.equals("")
@@ -206,15 +209,17 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			et_fullname.setText(fullname);
 		}
 		et_fullname.setHint(Config.getInstance().getText("Full name") + " (*)");
+		}
 	}
 
 	private void createSuffix() {
 		et_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
+		if(mAddressBookDetail != null){
 		String suffix = mAddressBookDetail.getSuffix();
 		if (null != suffix && !suffix.equals("") && !suffix.equals("null")) {
 			et_suffix.setText(suffix);
 		}
-
+		}
 		switch (mAddress.getSuffix()) {
 		case "":
 			et_suffix.setVisibility(View.GONE);
@@ -232,11 +237,12 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	private void createStreet() {
 		et_street.setHint(Config.getInstance().getText("Street") + " (*)");
+		if(mAddressBookDetail != null){
 		String street = mAddressBookDetail.getStreet();
 		if (null != street && !street.equals("") && !street.equals("null")) {
 			et_street.setText(street);
 		}
-
+		}
 		switch (mAddress.getStreet()) {
 		case "":
 			et_street.setVisibility(View.GONE);
@@ -255,11 +261,12 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	private void createCity() {
 
 		et_city.setHint(Config.getInstance().getText("City") + " (*)");
+		if(mAddressBookDetail != null){
 		String city = mAddressBookDetail.getCity();
 		if (null != city && !city.equals("") && !city.equals("null")) {
 			et_city.setText(city);
 		}
-
+		}
 		switch (mAddress.getCity()) {
 		case "":
 			et_city.setVisibility(View.GONE);
@@ -279,12 +286,13 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 		et_zipcode.setHint(Config.getInstance().getText("Post/Zip Code")
 				+ " (*)");
+		if(mAddressBookDetail != null){
 		String zipcode = mAddressBookDetail.getZipCode();
 
 		if (null != zipcode && !zipcode.equals("") && !zipcode.equals("null")) {
 			et_zipcode.setText(zipcode);
 		}
-
+		}
 		switch (mAddress.getZipcode()) {
 		case "":
 			et_zipcode.setVisibility(View.GONE);
@@ -303,11 +311,12 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	private void createPhone() {
 		et_phone.setHint(Config.getInstance().getText("Phone") + " (*)");
+		if(mAddressBookDetail != null){
 		String phone = mAddressBookDetail.getPhone();
 		if (null != phone && !phone.equals("") && !phone.equals("null")) {
 			et_phone.setText(mAddressBookDetail.getPhone());
 		}
-
+		}
 		switch (mAddress.getTelephone()) {
 		case "":
 			et_phone.setVisibility(View.GONE);
@@ -324,11 +333,13 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	}
 
 	private void createEmail() {
+		if(mAddressBookDetail != null){
 		String email = mAddressBookDetail.getEmail();
 
 		if (null != email && !email.equals("") && !email.equals("null")) {
 			et_email.setText(mAddressBookDetail.getEmail());
 			et_email.setKeyListener(null);
+		}
 		}
 	}
 
@@ -338,7 +349,9 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	private void createCompany() {
 		et_company.setHint(Config.getInstance().getText("Company") + " (*)");
+		if(mAddressBookDetail != null){
 		String company = mAddressBookDetail.getCompany();
+		
 		if (null != company && !company.equals("") && !company.equals("null")) {
 			et_company.setText(company);
 		}
@@ -357,13 +370,16 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		default:
 			break;
 		}
+		}
 	}
 
 	private void createCountry() {
+		if(mAddressBookDetail != null){
 		String countryname = mAddressBookDetail.getCountryName();
 		if (null != countryname && !countryname.equals("")
 				&& !countryname.equals("null")) {
 			tv_country.setText(countryname);
+		}
 		}
 		switch (mAddress.getCountry()) {
 		case "":
@@ -379,6 +395,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 	}
 
 	private void createState(ArrayList<CountryAllowed> listCountry) {
+		if(mAddressBookDetail != null && listCountry != null){
 		ArrayList<String> states = getStateFromCountry(
 				mAddressBookDetail.getCountryName(), listCountry);
 		et_state.setVisibility(View.VISIBLE);
@@ -392,12 +409,13 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			rl_state.setVisibility(View.VISIBLE);
 			et_state.setVisibility(View.GONE);
 		}
-
+		}
+		if(mAddressBookDetail != null){
 		String state = mAddressBookDetail.getStateName();
 		if (null != state && !state.equals("") && !state.equals("null")) {
 			tv_state.setText(mAddressBookDetail.getStateName());
 		}
-
+		}
 		switch (mAddress.getState()) {
 		case "":
 			rl_state.setVisibility(View.GONE);
@@ -429,9 +447,11 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	private void createFax() {
 		et_fax.setHint(Config.getInstance().getText("Fax") + " (*)");
+		if(mAddressBookDetail != null){
 		String fax = mAddressBookDetail.getFax();
 		if (null != fax && !fax.equals("") && !fax.equals("null")) {
 			et_fax.setText(fax);
+		}
 		}
 		String check = mAddress.getFax().toLowerCase();
 		switch (check) {
@@ -486,13 +506,13 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 		et_tax_checkout.setHint(Config.getInstance().getText("Tax/VAT number")
 				+ " (*)");
-
+		if(mAddressBookDetail != null){
 		String vatNumber = mAddressBookDetail.getTaxvatCheckout();
 		if (Utils.validateString(vatNumber)) {
 			Log.e("AddressBookDetailBlock : ", "TaxVATNumber : " + vatNumber);
 			et_tax_checkout.setText(vatNumber);
 		}
-
+		}
 		String check = DataLocal.ConfigCustomerAddress.getVat_id()
 				.toLowerCase();
 		switch (check) {
@@ -568,6 +588,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		if (null != company) {
 			addressBookDetail.setCompany(company);
 		}
+		if(mAddressBookDetail != null){
 		String id = mAddressBookDetail.getAddressId();
 		if (null != id) {
 			Log.e("AddressBookDetailBlock ID ", id);
@@ -592,6 +613,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			if (null != countrycode) {
 				addressBookDetail.setCountryCode(countrycode);
 			}
+		}
 		}
 		return addressBookDetail;
 	}

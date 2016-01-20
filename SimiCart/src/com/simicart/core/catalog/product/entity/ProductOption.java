@@ -1,5 +1,6 @@
 package com.simicart.core.catalog.product.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -10,7 +11,11 @@ import org.json.JSONObject;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class ProductOption extends SimiEntity {
+public class ProductOption extends SimiEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String mID;
 	protected String mTypeID = "-1";
 	protected int mPosition = -1;
