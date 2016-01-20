@@ -1,0 +1,23 @@
+<events>   
+    <event>
+        <name>com.simicart.core.catalog.product.block.ProductDetailParentBlock</name>        	     
+	    <package>com.simicart.plugins.paypalexpress</package>
+	    <class>Express</class>
+	    <method>addButtonPayPalToDetail</method>
+	    <sku>simi_developer</sku>	    	    
+    </event>
+    <event>
+        <name>com.simicart.core.checkout.block.CartBlock</name>        	     
+	    <package>com.simicart.plugins.paypalexpress</package>
+	    <class>Express</class>
+	    <method>addButtonPayPalToCart</method>
+	    <sku>simi_developer</sku>	    	    
+    </event>
+    <event>
+        <name>com.simicart.after.placeorder.webview</name>        	     
+	    <package>com.simicart.plugins.paypalexpress</package>
+	    <class>Express</class>
+	    <method>callPayPalExpressServer</method>
+	    <sku>simi_developer</sku>	    	    
+    </event>
+</events>

@@ -1,0 +1,9 @@
+<events>
+    <event>
+        <name>com.simicart.core.customer.block.NewAddressBookBlock</name>	    
+	    <package>com.simicart.plugins.addressautofill</package>
+	    <class>AddressAutoFill</class>
+	    <method>addCreateView</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+</events>

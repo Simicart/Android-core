@@ -6,6 +6,7 @@ import android.view.View.OnClickListener;
 import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.customer.delegate.ForgotPasswordDelegate;
 import com.simicart.core.customer.model.ForgotPasswordModel;
@@ -30,14 +31,14 @@ public class ForgotPasswordController extends SimiController {
 			@Override
 			public void onClick(View v) {
 
-				onSend();
+				onSend(v);
 			}
 		};
 
 	}
 
-	protected void onSend() {
-
+	protected void onSend(View v) {
+		Utils.hideKeyboard(v);
 		String email = mDelegate.getEmail();
 		if (null == email || email.equals("")) {
 			SimiManager.getIntance().showNotify(null,

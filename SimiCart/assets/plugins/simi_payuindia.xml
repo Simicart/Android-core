@@ -1,0 +1,9 @@
+<events>
+    <event>
+        <name>com.simicart.after.placeorder.webview</name>        	     
+	    <package>com.simicart.plugins.payuindia</package>
+	    <class>PayU</class>
+	    <method>onCheckOut</method>
+	    <sku>simi_developer</sku>	    	    
+    </event>                                     
+</events>

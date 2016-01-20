@@ -78,8 +78,8 @@
 
             <ImageView
                 android:id="@+id/iv_forgot_pass"
-                android:layout_width="@dimen/size_5"
-                android:layout_height="@dimen/size_5"
+                android:layout_width="@dimen/size_25"
+                android:layout_height="@dimen/size_25"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="@dimen/size_7"
                 android:layout_marginLeft="@dimen/size_3"
