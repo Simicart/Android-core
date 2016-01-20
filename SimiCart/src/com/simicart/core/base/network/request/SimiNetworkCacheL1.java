@@ -43,6 +43,14 @@ public class SimiNetworkCacheL1 implements SimiNetworkCache {
 
 					mCacheL1.put(key_md5, response);
 				}
+				else
+				{
+					Log.e("SimiNetworkCacheL1 ", "PUT DATA NOT NULLL");
+				}
+			}
+			else
+			{
+				Log.e("SimiNetworkCacheL1 ", "PUT NULLLLLLLLLLL");
 			}
 		}
 

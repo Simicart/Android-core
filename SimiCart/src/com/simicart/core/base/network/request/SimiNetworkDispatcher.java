@@ -76,7 +76,7 @@ public class SimiNetworkDispatcher extends Thread {
 				String url_cache = request.getCacheKey();
 				Log.e("SimiNetworkDispatcher ","CACHE " + url_cache );
 				response.parse();
-				mCache.put(request.getCacheKey(), response.getDataJSON());
+				mCache.put(url_cache, response.getDataJSON());
 			}
 
 			SimiManager.getIntance().getRequestQueue().getNetworkQueue()
