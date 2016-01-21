@@ -9,6 +9,7 @@ import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
 public class PaymentMethod extends SimiEntity implements Parcelable {
+	
 	/**
 	 * 
 	 */
