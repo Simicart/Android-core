@@ -8,7 +8,7 @@ import android.os.Parcelable;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.config.Constants;
 
-public class PaymentMethod extends SimiEntity implements Parcelable{
+public class PaymentMethod extends SimiEntity implements Parcelable {
 	/**
 	 * 
 	 */
@@ -28,6 +28,7 @@ public class PaymentMethod extends SimiEntity implements Parcelable{
 	private String mPlaceCCId = "";
 
 	private static PaymentMethod instance;
+	private String mCheckPaymentMethod;
 
 	public static PaymentMethod getInstance() {
 		if (null == instance) {
@@ -151,7 +152,14 @@ public class PaymentMethod extends SimiEntity implements Parcelable{
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	public String getmCheckPaymentMethod() {
+		return mCheckPaymentMethod;
+	}
+
+	public void setmCheckPaymentMethod(String mCheckPaymentMethod) {
+		this.mCheckPaymentMethod = mCheckPaymentMethod;
+	}
 }

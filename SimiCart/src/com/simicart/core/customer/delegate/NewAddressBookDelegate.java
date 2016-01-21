@@ -16,6 +16,7 @@ public interface NewAddressBookDelegate extends SimiDelegate {
 	public void updateState(String state);
 	
 	public void createView(int controll);
+	
 	public Spinner getGender();
 
 }
