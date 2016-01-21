@@ -25,6 +25,7 @@ public class PaymentMethod extends SimiEntity implements Serializable{
 	private String mPlaceCCId = "";
 
 	private static PaymentMethod instance;
+	private String mCheckPaymentMethod;
 
 	public static PaymentMethod getInstance() {
 		if (null == instance) {
@@ -139,5 +140,26 @@ public class PaymentMethod extends SimiEntity implements Serializable{
 		return mPlaceCCId;
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public int describeContents() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public String getmCheckPaymentMethod() {
+		return mCheckPaymentMethod;
+	}
+>>>>>>> quannh
+
+	public void setmCheckPaymentMethod(String mCheckPaymentMethod) {
+		this.mCheckPaymentMethod = mCheckPaymentMethod;
+	}
 }

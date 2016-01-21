@@ -60,8 +60,8 @@
 
     <ImageView
         android:id="@+id/image_expand"
-        android:layout_width="@dimen/size_5"
-        android:layout_height="@dimen/size_5"
+        android:layout_width="@dimen/size_25"
+        android:layout_height="@dimen/size_25"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:src="@drawable/ic_extend" />

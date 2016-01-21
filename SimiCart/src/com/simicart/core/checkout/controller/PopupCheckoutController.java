@@ -2,6 +2,7 @@ package com.simicart.core.checkout.controller;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -117,9 +118,9 @@ public class PopupCheckoutController extends SimiController {
 				}
 				case MotionEvent.ACTION_UP: {
 					mBlockDelegate.dismissPopupCheckout();
-
+					Log.e("New Customer", "cccccccccc"+NewAddressBookFragment.NEW_CUSTOMER);
 					NewAddressBookFragment fragment = NewAddressBookFragment
-							.newInstance(NewAddressBookFragment.NEW_CUSTOMER, 0, null, null);
+							.newInstance(1, 0, null, null);
 //					fragment.setAfterControler(NewAddressBookFragment.NEW_CUSTOMER);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
@@ -150,7 +151,7 @@ public class PopupCheckoutController extends SimiController {
 				}
 				case MotionEvent.ACTION_UP: {
 					mBlockDelegate.dismissPopupCheckout();
-
+					Log.e("As guuest Customer", "dddddd"+NewAddressBookFragment.NEW_AS_GUEST);
 					NewAddressBookFragment fragment = NewAddressBookFragment
 							.newInstance(NewAddressBookFragment.NEW_AS_GUEST, 0, null, null);
 //					fragment.setAfterControler(NewAddressBookFragment.NEW_AS_GUEST);

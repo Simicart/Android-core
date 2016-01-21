@@ -2,6 +2,7 @@ package com.simicart.core.customer.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class NewAddressBookFragment extends SimiFragment {
 	public static final int NEW_ADDRESS_CHECKOUT = 3;
 
 	public static NewAddressBookFragment newInstance(int afterControl, int addressFor, MyAddress billingAddress, MyAddress shippingAddress) {
+		Log.e("contructor NewAddressBookFragment", afterControl+"gggg");
 		NewAddressBookFragment fragment = new NewAddressBookFragment();
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.AFTER_CONTROL, afterControl, Constants.KeyData.TYPE_INT, bundle);
@@ -37,6 +39,7 @@ public class NewAddressBookFragment extends SimiFragment {
 		fragment.setArguments(bundle);
 		return fragment;
 	}
+	
 	public static NewAddressBookFragment newInstance() {
 		NewAddressBookFragment fragment = new NewAddressBookFragment();
 		
@@ -48,7 +51,7 @@ public class NewAddressBookFragment extends SimiFragment {
 	protected NewAddressBookController mController;
 	protected int addressFor = -1;
 
-	public int afterControl = NEW_ADDRESS;
+	public int afterControl;// = NEW_ADDRESS;
 	protected MyAddress mBillingAddress;
 	protected MyAddress mShippingAddress;
 
@@ -67,6 +70,7 @@ public class NewAddressBookFragment extends SimiFragment {
 	public int getAfterControl() {
 		return afterControl;
 	}
+	
 //
 //	public void setAddressFor(int addressFor) {
 //		this.addressFor = addressFor;
@@ -91,12 +95,14 @@ public class NewAddressBookFragment extends SimiFragment {
 		//getdata
 		if(getArguments() != null){
 		afterControl = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
+		Log.e("getAgru", afterControl+"");
 		addressFor = (int) getData(Constants.KeyData.ADDRESS_FOR, Constants.KeyData.TYPE_INT, getArguments());
 		mBillingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
 		mShippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
 		}
 		
 		mBlock = new NewAddressBookBlock(view, context);
+		Log.e("new Address Book Fragment ", afterControl+"xxx");
 		mBlock.setAfterController(afterControl);
 		mBlock.initView();
 		if (null == mController) {

@@ -40,8 +40,8 @@ public class RegisterCustomerBlock extends SimiBlock implements
 	protected EditText edt_taxvat;
 	protected EditText edt_pass;
 	protected EditText edt_confirmPass;
-	// protected TextView tv_labelRegister;
-	// protected TextView tv_labelRequired;
+//	 protected TextView tv_labelRegister;
+//	 protected TextView tv_labelRequired;
 	protected TextView tv_dateBirth;
 	protected RelativeLayout rl_gender;
 	protected Spinner sp_gender;
