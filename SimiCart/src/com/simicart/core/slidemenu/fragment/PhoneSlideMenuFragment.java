@@ -24,7 +24,7 @@ public class PhoneSlideMenuFragment extends SimiFragment {
 //	public void setCloseDelegate(CloseSlideMenuDelegate delegate) {
 //		mCloseDelegate = delegate;
 //	}
-	public static PhoneSlideMenuFragment instance (CloseSlideMenuDelegate closeDelegate){
+	public static PhoneSlideMenuFragment newInstance (CloseSlideMenuDelegate closeDelegate){
 		PhoneSlideMenuFragment fragment = new PhoneSlideMenuFragment();
 //		Bundle bundle = new Bundle();
 //		bundle.putSerializable(Constants.KeyData.I_CLOSESLIDEMENUDELEGATE, closeDelegate);
