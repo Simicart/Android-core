@@ -490,7 +490,7 @@ public class SearchController extends SimiController implements
 	}
 
 	private void selectemItemList(int position) {
-		if (position != -1) {
+		if (position != 0) {
 			ArrayList<Product> listProduct = mDelegate.getListProduct();
 			String productId = listProduct.get(position - 1).getData(
 					"product_id");
@@ -506,7 +506,7 @@ public class SearchController extends SimiController implements
 	}
 
 	private void selectemItemGrid(int position) {
-		if (position != -1) {
+		if (position != 0) {
 			ArrayList<Product> listProduct = mDelegate.getListProduct();
 			String productId = listProduct.get(position).getData("product_id");
 			if (productId != null) {

@@ -18,7 +18,6 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.category.fragment.CategoryFragment;
 import com.simicart.core.catalog.product.fragment.ProductDetailParentFragment;
-import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.catalog.search.fragment.ListProductFragment;
 import com.simicart.core.catalog.search.model.ConstantsSearch;
 import com.simicart.core.cms.entity.Cms;
@@ -75,6 +74,7 @@ public class PhoneSlideMenuController {
 	}
 
 	public void closeSlideMenuTablet() {
+		if(mCloseDelegate != null)
 		mCloseDelegate.closeSlideMenu();
 	}
 
