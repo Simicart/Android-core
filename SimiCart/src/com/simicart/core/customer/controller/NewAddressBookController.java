@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.http.NameValuePair;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -269,7 +270,7 @@ public class NewAddressBookController extends SimiController implements
 				}
 			}
 		};
-
+Log.e("New Address Book Controller", mAfterController+"bbbb");
 		mDelegate.createView(mAfterController);
 	}
 

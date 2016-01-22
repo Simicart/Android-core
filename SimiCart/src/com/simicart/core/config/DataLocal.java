@@ -1,12 +1,16 @@
 package com.simicart.core.config;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.entity.Cart;
+import com.simicart.core.checkout.entity.CreditcardEntity;
+import com.simicart.core.checkout.entity.ObjectSerializer;
 import com.simicart.core.cms.entity.Cms;
 import com.simicart.core.customer.entity.ConfigCustomerAddress;
 import com.simicart.core.setting.entity.CurrencyEntity;
@@ -41,7 +45,8 @@ public class DataLocal {
 	public static boolean isNewSignIn = false;
 	public static String qtyCartAuto = "";
 	public static ArrayList<CurrencyEntity> listCurrency;
-
+	private static String EMAIL_CARD_CREDIT_CARD = "EmailCardCreditCard";
+	private static String SIMI_CREDIT_CARD = "SimiCreditCard";
 	public static String deepLinkItemID = "";
 	public static String deepLinkItemName = "";
 	public static String deepLinkItemHasChild = "";
@@ -168,6 +173,7 @@ public class DataLocal {
 		editor.putString(EMAIL_KEY, email);
 		editor.putString(PASS_WORD_KEY, pass);
 		editor.commit();
+		saveEmailCreditCart(email);
 	}
 
 	public static void saveCheckRemember(boolean check) {
@@ -228,6 +234,48 @@ public class DataLocal {
 	public static String getPasswordRemember() {
 		String password = mSharedPre.getString(PASS_WORK_REMEMBER, null);
 		return password;
+	}
+	public static void saveEmailCreditCart(String email) {
+		SharedPreferences.Editor editor = mSharedPre.edit();
+		editor.putString(EMAIL_CARD_CREDIT_CARD, email);
+		editor.commit();
+	}
+
+	public static String getEmailCreditCart() {
+		String email = "";
+		if (DataLocal.isSignInComplete()) {
+			email = mSharedPre.getString(EMAIL_CARD_CREDIT_CARD, "");
+		}
+		return email;
+	}
+
+	public static void saveHashMapCreditCart(
+			HashMap<String, HashMap<String, CreditcardEntity>> hashMap) {
+		SharedPreferences.Editor editor = mSharedPre.edit();
+		try {
+			editor.putString(SIMI_CREDIT_CARD,
+					ObjectSerializer.serialize(hashMap));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		editor.commit();
+	}
+
+	@SuppressWarnings("unchecked")
+	public static HashMap<String, HashMap<String, CreditcardEntity>> getHashMapCreditCart() {
+		HashMap<String, HashMap<String, CreditcardEntity>> creditCard = null;
+		try {
+			creditCard = (HashMap<String, HashMap<String, CreditcardEntity>>) ObjectSerializer
+					.deserialize(mSharedPre.getString(
+							SIMI_CREDIT_CARD,
+							ObjectSerializer
+									.serialize(new HashMap<String, HashMap<String, CreditcardEntity>>())));
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return creditCard;
 	}
 
 	public static void clearEmailPassowrd() {
