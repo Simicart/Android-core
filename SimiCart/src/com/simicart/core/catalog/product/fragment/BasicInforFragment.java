@@ -109,10 +109,11 @@ public class BasicInforFragment extends SimiFragment {
 
 		return rootView;
 	}
+	
 	@Override
 	public void onEvent(BusEntity event) {
 		super.onEvent(event);
-		if(event.getKey().toString().equals("abc")){
+		if(event.getKey().toString().equals(Constants.KeyBus.PRODUCT)){
 			mProduct = (Product) event.getValue();
 	}
 	}

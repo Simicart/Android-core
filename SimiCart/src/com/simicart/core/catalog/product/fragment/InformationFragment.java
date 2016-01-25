@@ -65,7 +65,7 @@ public class InformationFragment extends SimiFragment {
 //		Toast.makeText(getActivity(), "xxx", Toast.LENGTH_SHORT).show();
 		if (null != mProduct) {
 			BusEntity<Product> busEntity = new BusEntity<>();
-			busEntity.setKey("abc");
+			busEntity.setKey(Constants.KeyBus.PRODUCT);
 			busEntity.setValue(mProduct);
 			Log.d("quang123", busEntity.toString());
 			EventBus.getDefault().postSticky(busEntity);

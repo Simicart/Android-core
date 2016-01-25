@@ -347,10 +347,8 @@ public class Constants {
 	public static String DEEP_LINK = "connector/catalog/deep_link";
 	
 	public final static class KeyBus {
-		
-		public static final String LIST_ATTRIBUTES = "list_attributes";
+		public static final String PRODUCT= "product";
 	}
-	
 	public final static class KeyData {
 		
 		public static final String ID = "id";
@@ -431,4 +429,5 @@ public class Constants {
 		
 		
 	}
+	
 }
