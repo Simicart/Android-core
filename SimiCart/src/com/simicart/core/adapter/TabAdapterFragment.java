@@ -58,7 +58,7 @@ public class TabAdapterFragment extends FragmentStatePagerAdapter {
 	private void addFragment() {
 		BasicInforFragment fragment_basic = BasicInforFragment.newInstance(mProduct);
 //		fragment_basic.setProduct(mProduct);
-
+		
 		mListFragment.add(fragment_basic);
 
 		if (Utils.validateString(mProduct.getDecripition())) {
@@ -69,11 +69,6 @@ public class TabAdapterFragment extends FragmentStatePagerAdapter {
 		}
 
 		if (!mProduct.getAttributes().isEmpty()) {
-//			Log.d("quang123", "123 :"+mProduct.getAttributes().get(0).toString());
-//			BusEntity<ArrayList<Attributes>> busEntity = new BusEntity<>();
-//			busEntity.setKey(Constants.KeyBus.LIST_ATTRIBUTES);
-//			busEntity.setValue(mProduct.getAttributes());
-//			EventBus.getDefault().post(busEntity);
 			
 			TechSpecsFragment fragment_tech = TechSpecsFragment.newInstance(mProduct.getAttributes());
 //			fragment_tech.setAttributes(mProduct.getAttributes());
@@ -83,9 +78,6 @@ public class TabAdapterFragment extends FragmentStatePagerAdapter {
 		if (mProduct.getRate() > 0 && mProduct.getReviewNumber() > 0) {
 			CustomerReviewFragment fragment_review = CustomerReviewFragment
 					.newInstance(mProduct.getId(), mProduct, mProduct.getStar());
-//			fragment_review.setProductID(mProduct.getId());
-//			fragment_review.setRatingStar(mProduct.getStar());
-//			fragment_review.setProduct(mProduct);
 			mListFragment.add(fragment_review);
 		}
 

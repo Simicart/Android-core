@@ -172,19 +172,41 @@ public class SimiFragment extends Fragment {
 
 		return object;
 	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		EventBus.getDefault().registerSticky(SimiFragment.this);
+	}
+	@Override
+	public void onDestroy() {
+		EventBus.getDefault().unregister(SimiFragment.this);
+		super.onDestroy();
+		
+	}
+	@Override
+	public void onStart() {
+		super.onStart();
+//		EventBus.getDefault().register(this);
+	}
+	@Override
+	public void onStop() {
+//		EventBus.getDefault().unregister(this);
+		super.onStop();
+	}
+	@Override
+	public void onResume() {
+//		EventBus.getDefault().register(this);
+		super.onResume();
+		
+	}
+	@Override
+	public void onPause() {
+//		EventBus.getDefault().unregister(this);
+		super.onPause();
+	}
 	public void onEvent(BusEntity event){
 		 /* Do something */
 		}
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		EventBus.getDefault().register(this);
-	}
-	@Override
-	public void onDestroy() {
-		EventBus.getDefault().unregister(this);
-		super.onDestroy();
-		
-	}
 }

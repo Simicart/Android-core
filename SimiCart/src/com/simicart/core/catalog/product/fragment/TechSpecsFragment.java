@@ -49,7 +49,6 @@ public class TechSpecsFragment extends SimiFragment {
 		if(getArguments() != null){
 		mAttributes = (ArrayList<Attributes>) getArguments().getSerializable(Constants.KeyData.LIST_ATTRIBUTES);
 		}
-		Log.d("quang123","mAttributes : "+mAttributes.get(0).toString());
 		
 		LinearLayout ll_techSpecs = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));

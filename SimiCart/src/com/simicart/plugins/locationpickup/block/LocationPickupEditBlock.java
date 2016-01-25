@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.common.Utils;
@@ -64,7 +66,12 @@ public class LocationPickupEditBlock extends AddressBookDetailBlock {
 	public void setGgmap(GoogleMap ggmap) {
 		this.ggmap = ggmap;
 	}
-
+	
+	private boolean checkLocationPermission() {
+        String permission = "android.permission.ACCESS_FINE_LOCATION";
+        int res = mContext.checkCallingOrSelfPermission(permission);
+        return (res == PackageManager.PERMISSION_GRANTED);
+}
 	@Override
 	public void initView() {
 		super.initView();
@@ -142,23 +149,28 @@ public class LocationPickupEditBlock extends AddressBookDetailBlock {
 
 			@Override
 			public void onClick(View v) {
-				if (getLocation(mContext) != null) {
-					ggmap.clear();
-					start = new LatLng(getLocation(mContext).getLatitude(),
-							getLocation(mContext).getLongitude());
-					lat = getLocation(mContext).getLatitude() + "";
-					lng = getLocation(mContext).getLongitude() + "";
-					ggmap.addMarker(new MarkerOptions().position(start).icon(
-							BitmapDescriptorFactory.fromResource(Rconfig
-									.getInstance().getIdDraw("maker_my"))));
-					triggerLocation(getLocation(mContext).getLatitude(),
-							getLocation(mContext).getLongitude());
-				}
-				CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(
-						start.latitude, start.longitude));
-				CameraUpdate zoom = CameraUpdateFactory.zoomTo(17);
-				ggmap.moveCamera(center);
-				ggmap.animateCamera(zoom);
+				 if (checkLocationPermission()) {
+					 if (getLocation(mContext) != null) {
+							ggmap.clear();
+							start = new LatLng(getLocation(mContext).getLatitude(),
+									getLocation(mContext).getLongitude());
+							lat = getLocation(mContext).getLatitude() + "";
+							lng = getLocation(mContext).getLongitude() + "";
+							ggmap.addMarker(new MarkerOptions().position(start).icon(
+									BitmapDescriptorFactory.fromResource(Rconfig
+											.getInstance().getIdDraw("maker_my"))));
+							triggerLocation(getLocation(mContext).getLatitude(),
+									getLocation(mContext).getLongitude());
+						}
+						CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(
+								start.latitude, start.longitude));
+						CameraUpdate zoom = CameraUpdateFactory.zoomTo(17);
+						ggmap.moveCamera(center);
+						ggmap.animateCamera(zoom);
+                    }else{
+                        SimiManager.getIntance().showToast(
+                                            "Please enable permission location.");
+                    }
 			}
 		});
 	}

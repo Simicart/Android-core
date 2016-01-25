@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.collection.SimiCollection;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.price.ProductPriceViewDetail;
 import com.simicart.core.config.Config;
@@ -28,10 +30,10 @@ public class BasicInforFragment extends SimiFragment {
 	public static BasicInforFragment newInstance(Product product) {
 		BasicInforFragment fragment = new BasicInforFragment();
 		
-		Bundle args = new Bundle();
-//	    setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, args);
-		args.putSerializable(Constants.KeyData.PRODUCT, product);
-	    fragment.setArguments(args);
+//		Bundle args = new Bundle();
+////	    setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, args);
+//		args.putSerializable(Constants.KeyData.PRODUCT, product);
+//	    fragment.setArguments(args);
 		return fragment;
 	}
 //
@@ -49,10 +51,10 @@ public class BasicInforFragment extends SimiFragment {
 		rootView = inflater.inflate(
 				Rconfig.getInstance().layout(
 						"core_information_basic_inf_layout"), container, false);
-		if(getArguments() != null){
-		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
-		Log.d("quangdd","mProduct"+mProduct.toString());
-		}
+//		if(getArguments() != null){
+//		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
+//		Log.d("quangdd","mProduct"+mProduct.toString());
+//		}
 		
 		TextView tv_Name = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_Name"));
@@ -106,5 +108,12 @@ public class BasicInforFragment extends SimiFragment {
 		rootView.setBackgroundColor(Config.getInstance().getApp_backrground());
 
 		return rootView;
+	}
+	@Override
+	public void onEvent(BusEntity event) {
+		super.onEvent(event);
+		if(event.getKey().toString().equals("abc")){
+			mProduct = (Product) event.getValue();
+	}
 	}
 }

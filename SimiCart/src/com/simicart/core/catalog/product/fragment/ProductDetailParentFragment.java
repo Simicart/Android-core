@@ -41,6 +41,16 @@ public class ProductDetailParentFragment extends SimiFragment {
 		fragment.setArguments(args);
 		return fragment;
 	}
+	
+	public ProductDetailParentFragment(String id, ArrayList<String> ids){
+		Bundle args = new Bundle();
+		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, args);
+		setData(Constants.KeyData.LIST_ID, ids, Constants.KeyData.TYPE_LIST_STRING, args);
+		setArguments(args);
+	}
+	public ProductDetailParentFragment (){
+		
+	}
 
 	// public void setProductID(String id) {
 	// mID = id;

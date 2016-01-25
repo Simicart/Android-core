@@ -4,12 +4,15 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.simicart.core.adapter.TabAdapterFragment;
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.block.ProductMorePluginBlock;
 import com.simicart.core.catalog.product.controller.ProductMorePluginController;
 import com.simicart.core.catalog.product.entity.Product;
@@ -17,6 +20,8 @@ import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.PagerSlidingTabStrip;
+
+import de.greenrobot.event.EventBus;
 
 public class InformationFragment extends SimiFragment {
 
@@ -57,7 +62,13 @@ public class InformationFragment extends SimiFragment {
 		if(getArguments() != null){
 		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
 		}
+//		Toast.makeText(getActivity(), "xxx", Toast.LENGTH_SHORT).show();
 		if (null != mProduct) {
+			BusEntity<Product> busEntity = new BusEntity<>();
+			busEntity.setKey("abc");
+			busEntity.setValue(mProduct);
+			Log.d("quang123", busEntity.toString());
+			EventBus.getDefault().postSticky(busEntity);
 			initView();
 			// RelativeLayout ll_plugin = (RelativeLayout) mRootView
 			// .findViewById(Rconfig.getInstance().id("more_plugins"));
@@ -96,5 +107,15 @@ public class InformationFragment extends SimiFragment {
 		title_tab.setIndicatorHeight(5);
 		title_tab.setAllCaps(false);
 		title_tab.setViewPager(mPager);
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+//		EventBus.getDefault().register(this);
+	}
+	@Override
+	public void onPause() {
+		super.onPause();
+//		EventBus.getDefault().unregister(this);
 	}
 }

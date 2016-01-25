@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.product.fragment.ProductDetailParentFragment;
 
@@ -31,6 +32,7 @@ public class ProductListListenerController {
 				String id = mProductList.get(position).getData("product_id");
 				if (id != null) {
 					ProductDetailParentFragment fragment = ProductDetailParentFragment.newInstance(id,listID);
+//					ProductDetailParentFragment fragment = new ProductDetailParentFragment(id, listID);
 					SimiManager.getIntance().addFragment(fragment);
 					SimiManager.getIntance().hideKeyboard();
 				}

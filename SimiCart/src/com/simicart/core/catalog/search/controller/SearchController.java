@@ -92,9 +92,9 @@ public class SearchController extends SimiController implements
 		} else {
 			limit = 8;
 		}
-		if (mModel == null) {
+//		if (mModel == null) {
 			mModel = new ModelSearchBase();
-		}
+//		}
 		String param_url = getValueListParam(ConstantsSearch.PARAM_URL);
 		if (param_url != null && !param_url.equals("")) {
 			((ModelSearchBase) mModel).setUrlSearch(param_url);
