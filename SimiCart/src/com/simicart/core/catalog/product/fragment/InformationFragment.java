@@ -35,18 +35,10 @@ public class InformationFragment extends SimiFragment {
 		super.onCreate(savedInstanceState);
 	}
 
-	public static InformationFragment newInstance(Product product) {
+	public static InformationFragment newInstance() {
 		InformationFragment fragment = new InformationFragment();
-		Bundle bundle= new Bundle();
-//		  setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, bundle);
-		bundle.putSerializable(Constants.KeyData.PRODUCT, product);
-		    fragment.setArguments(bundle);
 		return fragment;
 	}
-
-//	public void setProduct(Product product) {
-//		mProduct = product;
-//	}
 
 	public Product getProduct() {
 		return mProduct;
@@ -59,16 +51,8 @@ public class InformationFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_information_layout"),
 				container, false);
 		Context context = getActivity();
-		if(getArguments() != null){
-		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
-		}
-//		Toast.makeText(getActivity(), "xxx", Toast.LENGTH_SHORT).show();
 		if (null != mProduct) {
-			BusEntity<Product> busEntity = new BusEntity<>();
-			busEntity.setKey(Constants.KeyBus.PRODUCT);
-			busEntity.setValue(mProduct);
-			Log.d("quang123", busEntity.toString());
-			EventBus.getDefault().postSticky(busEntity);
+			
 			initView();
 			// RelativeLayout ll_plugin = (RelativeLayout) mRootView
 			// .findViewById(Rconfig.getInstance().id("more_plugins"));
@@ -108,14 +92,12 @@ public class InformationFragment extends SimiFragment {
 		title_tab.setAllCaps(false);
 		title_tab.setViewPager(mPager);
 	}
+	
 	@Override
-	public void onResume() {
-		super.onResume();
-//		EventBus.getDefault().register(this);
-	}
-	@Override
-	public void onPause() {
-		super.onPause();
-//		EventBus.getDefault().unregister(this);
+	public void onEvent(BusEntity event) {
+		super.onEvent(event);
+		if(event.getKey().toString().equals(Constants.KeyBus.PRODUCT)){
+			mProduct = (Product) event.getValue();
+		}
 	}
 }

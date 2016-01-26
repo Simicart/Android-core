@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.product.delegate.ProductDelegate;
 import com.simicart.core.catalog.product.delegate.ProductDetailAdapterDelegate;
@@ -24,7 +25,10 @@ import com.simicart.core.catalog.product.fragment.InformationFragment;
 import com.simicart.core.catalog.product.model.ProductModel;
 import com.simicart.core.common.options.ProductOptionParentView;
 import com.simicart.core.common.price.ProductPriceViewV03;
+import com.simicart.core.config.Constants;
 import com.simicart.core.style.VerticalViewPager2;
+
+import de.greenrobot.event.EventBus;
 
 @SuppressLint("DefaultLocale")
 public class ProductDetailParentController extends ProductController implements Serializable{
@@ -172,8 +176,6 @@ public class ProductDetailParentController extends ProductController implements 
 			if (null == options) {
 				if(mProduct.getOptions() !=  null){
 				options = mProduct.getOptions();
-				Log.d("===quang", ""+options.size());
-				
 				
 				for (CacheOption option : options) {
 					if (option.isRequired() && !option.isCompleteRequired()) {
@@ -193,7 +195,12 @@ public class ProductDetailParentController extends ProductController implements 
 	}
 
 	protected void onShowDetail() {
-		InformationFragment fragment = InformationFragment.newInstance(getProductFromCollection());
+		BusEntity<Product> busEntity = new BusEntity<>();
+		busEntity.setKey(Constants.KeyBus.PRODUCT);
+		busEntity.setValue(getProductFromCollection());
+		Log.d("quang123", busEntity.toString());
+		EventBus.getDefault().postSticky(busEntity);
+		InformationFragment fragment = InformationFragment.newInstance();
 //		fragment.setProduct(getProductFromCollection());
 		SimiManager.getIntance().addPopupFragment(fragment);
 	}
@@ -263,6 +270,7 @@ public class ProductDetailParentController extends ProductController implements 
 		if (null != entity && entity.size() > 0) {
 			product = (Product) entity.get(0);
 		}
+		
 		return product;
 	}
 
