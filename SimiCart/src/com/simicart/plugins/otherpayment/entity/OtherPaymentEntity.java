@@ -1,14 +1,8 @@
 package com.simicart.plugins.otherpayment.entity;
 
-import java.io.Serializable;
-
 import com.simicart.core.base.model.entity.SimiEntity;
 
-public class OtherPaymentEntity extends SimiEntity implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class OtherPaymentEntity extends SimiEntity {
 	protected String mPaymentMethod;
 	protected String mUrlRedirect;
 	protected String mUrlSuccess;
@@ -165,5 +159,4 @@ public class OtherPaymentEntity extends SimiEntity implements Serializable{
 	public void setCheckUrl(String mCheckUrl) {
 		this.mCheckUrl = mCheckUrl;
 	}
-
 }

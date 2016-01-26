@@ -58,6 +58,7 @@ public class FilterFragment extends SimiFragment {
 //		mFilterEntity = filterEntity;
 //	}
 	public void setDelegate(FilterRequestDelegate delegate) {
+		if(delegate != null)
 		mDelegate = delegate;
 	}
 

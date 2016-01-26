@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.block.RelatedProductBlock;
 import com.simicart.core.catalog.product.controller.RelatedProductController;
+import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
@@ -17,20 +19,11 @@ public class RelatedProductFragment extends SimiFragment {
 	protected RelatedProductBlock mBlock;
 	protected RelatedProductController mController;
 
-	public static RelatedProductFragment newInstance(String id) {
+	public static RelatedProductFragment newInstance() {
 		
 		RelatedProductFragment fragment = new RelatedProductFragment();
-		Bundle bundle = new Bundle();
-		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
-		fragment.setArguments(bundle);
-
 		return fragment;
 	}
-
-	//
-	// public void setID(String mID) {
-	// this.mID = mID;
-	// }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,9 +33,6 @@ public class RelatedProductFragment extends SimiFragment {
 						"core_information_related_product_layout"), container,
 				false);
 		Context context = getActivity();
-		if(getArguments() != null){
-		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
-		}
 		
 		mBlock = new RelatedProductBlock(view, context);
 		mBlock.initView();
@@ -57,5 +47,14 @@ public class RelatedProductFragment extends SimiFragment {
 			mController.onResume();
 		}
 		return view;
+	}
+	
+	@Override
+	public void onEvent(BusEntity event) {
+		super.onEvent(event);
+		if(event.getKey().toString().equals(Constants.KeyBus.PRODUCT)){
+			Product product = (Product) event.getValue();
+			mID = product.getId();
+		}
 	}
 }

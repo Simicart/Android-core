@@ -27,7 +27,7 @@ import com.simicart.core.event.block.EventBlock;
 public class BasicInforFragment extends SimiFragment {
 	protected Product mProduct;
 
-	public static BasicInforFragment newInstance(Product product) {
+	public static BasicInforFragment newInstance() {
 		BasicInforFragment fragment = new BasicInforFragment();
 		
 //		Bundle args = new Bundle();

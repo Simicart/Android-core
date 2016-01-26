@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.gms.internal.ar;
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.block.CustomerReviewBlock;
 import com.simicart.core.catalog.product.controller.CustomerReviewController;
 import com.simicart.core.catalog.product.entity.Product;
@@ -26,15 +28,9 @@ public class CustomerReviewFragment extends SimiFragment {
 	protected CustomerReviewController mController = null;
 	protected Product mProduct;
 
-	public static CustomerReviewFragment newInstance(String id, Product mProduct, ArrayList<Integer> stars) {
+	public static CustomerReviewFragment newInstance() {
 		CustomerReviewFragment fragment = new CustomerReviewFragment();
 		
-		Bundle args = new Bundle();
-		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, args);
-//		setData(Constants.KeyData.PRODUCT, mProduct, Constants.KeyData.TYPE_MODEL, args);
-		args.putSerializable(Constants.KeyData.PRODUCT, mProduct);
-		setData(Constants.KeyData.LIST_RATING_STAR, stars, Constants.KeyData.TYPE_LIST_INT, args);
-	    fragment.setArguments(args);
 		return fragment;
 	}
 
@@ -58,13 +54,6 @@ public class CustomerReviewFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_information_customer_review_layout"),
 				container, false);
 		Context context = getActivity();
-		
-		//data
-		if(getArguments() != null){
-		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
-		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
-		mRatingStar = (ArrayList<Integer>) getData(Constants.KeyData.LIST_RATING_STAR, Constants.KeyData.TYPE_LIST_INT, getArguments());
-		}
 		
 		mBlock = new CustomerReviewBlock(view, context);
 		mBlock.setProduct(mProduct);
@@ -96,4 +85,15 @@ public class CustomerReviewFragment extends SimiFragment {
 
 	}
 
+	@Override
+	public void onEvent(BusEntity event) {
+		super.onEvent(event);
+		if(event.getKey().equals(Constants.KeyBus.PRODUCT)){
+			
+			mProduct = (Product) event.getValue();
+			mID = mProduct.getId();
+			mRatingStar = mProduct.getStar();
+		}
+	}
+	
 }

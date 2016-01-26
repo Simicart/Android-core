@@ -15,7 +15,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.entity.Attributes;
+import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
@@ -25,13 +27,13 @@ public class TechSpecsFragment extends SimiFragment {
 
 	protected ArrayList<Attributes> mAttributes;
 
-	public static TechSpecsFragment newInstance(ArrayList<Attributes> attributes) {
+	public static TechSpecsFragment newInstance() {
 		TechSpecsFragment fragment = new TechSpecsFragment();
 		
-		Bundle args = new Bundle();
-//		setData(Constants.KeyData.LIST_ATTRIBUTES, attributes, Constants.KeyData.TYPE_LIST_MODEL, args);
-		args.putSerializable(Constants.KeyData.LIST_ATTRIBUTES, attributes);
-	    fragment.setArguments(args);
+//		Bundle args = new Bundle();
+////		setData(Constants.KeyData.LIST_ATTRIBUTES, attributes, Constants.KeyData.TYPE_LIST_MODEL, args);
+//		args.putSerializable(Constants.KeyData.LIST_ATTRIBUTES, attributes);
+//	    fragment.setArguments(args);
 		return fragment;
 	}
 
@@ -46,9 +48,9 @@ public class TechSpecsFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-		if(getArguments() != null){
-		mAttributes = (ArrayList<Attributes>) getArguments().getSerializable(Constants.KeyData.LIST_ATTRIBUTES);
-		}
+//		if(getArguments() != null){
+//		mAttributes = (ArrayList<Attributes>) getArguments().getSerializable(Constants.KeyData.LIST_ATTRIBUTES);
+//		}
 		
 		LinearLayout ll_techSpecs = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
@@ -85,12 +87,13 @@ public class TechSpecsFragment extends SimiFragment {
 
 		return rootView;
 	}
-//	@Override
-//	public void onEvent(BusEntity event) {
-//		super.onEvent(event);
-//		if(event.getKey() == Constants.KeyBus.LIST_ATTRIBUTES){
-//			mAttributes = (ArrayList<Attributes>) event.getValue();
-//			Log.d("quang123", ""+mAttributes.get(0).toString());
-//		}
-//	}
+	
+	@Override
+	public void onEvent(BusEntity event) {
+		super.onEvent(event);
+		if(event.getKey() == Constants.KeyBus.PRODUCT){
+			Product product = (Product) event.getValue();
+			mAttributes = product.getAttributes();
+		}
+	}
 }

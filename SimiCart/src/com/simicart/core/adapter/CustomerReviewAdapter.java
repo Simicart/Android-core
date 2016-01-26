@@ -14,10 +14,14 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.entity.CustomerReview;
 import com.simicart.core.catalog.product.fragment.CustomerReviewMoreFragment;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
+
+import de.greenrobot.event.EventBus;
 
 public class CustomerReviewAdapter extends ArrayAdapter<CustomerReview> {
 
@@ -50,10 +54,6 @@ public class CustomerReviewAdapter extends ArrayAdapter<CustomerReview> {
 		final CustomerReview customerReview = getmCustomerReview()
 				.get(position);
 
-		
-		
-		
-		
 		RatingBar ratingBar = (RatingBar) convertView.findViewById(Rconfig
 				.getInstance().id("rtb_review"));
 		ratingBar.setRating(Float.parseFloat(customerReview.getRate()));

@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.model.entity.BusEntity;
+import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
@@ -20,16 +22,8 @@ public class DescriptionFragment extends SimiFragment {
 
 	protected String mDescription;
 
-//	public void setDescription(String description) {
-//		mDescription = description;
-//	}
-
-	public static DescriptionFragment newInstance(String description) {
+	public static DescriptionFragment newInstance() {
 		DescriptionFragment fragment = new DescriptionFragment();
-		
-		Bundle args = new Bundle();
-	    setData(Constants.KeyData.DESCRIPTION, description, Constants.KeyData.TYPE_STRING, args);
-	    fragment.setArguments(args);
 
 		return fragment;
 	}
@@ -41,11 +35,6 @@ public class DescriptionFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-		if(getArguments() != null){
-		mDescription = (String) getData(Constants.KeyData.DESCRIPTION, Constants.KeyData.TYPE_STRING, getArguments());
-		}
-		Log.d("quangdd","mDescription"+mDescription);
-		
 		LinearLayout l_scrollView = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 
@@ -78,5 +67,14 @@ public class DescriptionFragment extends SimiFragment {
 
 		l_scrollView.addView(webView);
 		return rootView;
+	}
+	
+	@Override
+	public void onEvent(BusEntity event) {
+		super.onEvent(event);
+		if(event.getKey().toString().equals(Constants.KeyBus.PRODUCT)){
+		Product product = (Product) event.getValue();
+		mDescription = product.getDecripition();
+		}
 	}
 }
