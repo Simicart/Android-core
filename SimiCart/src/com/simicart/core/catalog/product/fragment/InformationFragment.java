@@ -35,8 +35,10 @@ public class InformationFragment extends SimiFragment {
 		super.onCreate(savedInstanceState);
 	}
 
-	public static InformationFragment newInstance() {
+	public static InformationFragment newInstance(Product product) {
 		InformationFragment fragment = new InformationFragment();
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(Constants.KeyData.PRODUCT, product);
 		return fragment;
 	}
 
@@ -51,8 +53,16 @@ public class InformationFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_information_layout"),
 				container, false);
 		Context context = getActivity();
+		
+		if(getArguments() != null){
+			mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
+		}
 		if (null != mProduct) {
-			
+			BusEntity<Product> busEntity = new BusEntity<>();
+			busEntity.setKey(Constants.KeyBus.PRODUCT);
+			busEntity.setValue(mProduct);
+			Log.d("quang123", busEntity.toString());
+			EventBus.getDefault().postSticky(busEntity);
 			initView();
 			// RelativeLayout ll_plugin = (RelativeLayout) mRootView
 			// .findViewById(Rconfig.getInstance().id("more_plugins"));

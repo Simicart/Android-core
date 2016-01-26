@@ -195,12 +195,8 @@ public class ProductDetailParentController extends ProductController implements 
 	}
 
 	protected void onShowDetail() {
-		BusEntity<Product> busEntity = new BusEntity<>();
-		busEntity.setKey(Constants.KeyBus.PRODUCT);
-		busEntity.setValue(getProductFromCollection());
-		Log.d("quang123", busEntity.toString());
-		EventBus.getDefault().postSticky(busEntity);
-		InformationFragment fragment = InformationFragment.newInstance();
+		
+		InformationFragment fragment = InformationFragment.newInstance(getProductFromCollection());
 //		fragment.setProduct(getProductFromCollection());
 		SimiManager.getIntance().addPopupFragment(fragment);
 	}
