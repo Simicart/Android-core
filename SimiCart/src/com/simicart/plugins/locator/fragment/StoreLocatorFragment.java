@@ -128,9 +128,6 @@ public class StoreLocatorFragment extends SimiFragment {
 
 	}
 
-	public StoreLocatorFragment() {
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		mActivity = getActivity();
@@ -212,13 +209,11 @@ public class StoreLocatorFragment extends SimiFragment {
 
 			@Override
 			public void onClick(View v) {
-				SearchStore fragment = new SearchStore();
+				
 				if (search_object == null) {
 					search_object = new SearchObject();
-					fragment.setSearch_object(search_object);
-				} else {
-					fragment.setSearch_object(search_object);
 				}
+				SearchStoreFragment fragment = SearchStoreFragment.newInstance(search_object);
 				SimiManager.getIntance().addPopupFragment(fragment);
 			}
 		});
@@ -230,9 +225,9 @@ public class StoreLocatorFragment extends SimiFragment {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				selectedListItem = position;
-				StoreDetail storeDetail = StoreDetail
+				StoreDetailFragment storeDetailFragment = StoreDetailFragment
 						.newInstance(list_store_object.get(position));
-				SimiManager.getIntance().addFragmentSub(storeDetail);
+				SimiManager.getIntance().addFragmentSub(storeDetailFragment);
 				adapter.notifyDataSetChanged();
 			}
 
@@ -315,13 +310,11 @@ public class StoreLocatorFragment extends SimiFragment {
 
 							@Override
 							public void onClick(View v) {
-								SearchStore fragment = new SearchStore();
+								
 								if (search_object == null) {
 									search_object = new SearchObject();
-									fragment.setSearch_object(search_object);
-								} else {
-									fragment.setSearch_object(search_object);
 								}
+								SearchStoreFragment fragment =  SearchStoreFragment.newInstance(search_object);
 								SimiManager.getIntance().addPopupFragment(
 										fragment);
 							}
@@ -335,11 +328,11 @@ public class StoreLocatorFragment extends SimiFragment {
 											AdapterView<?> parent, View view,
 											int position, long id) {
 										selectedListItem = position;
-										StoreDetail storeDetail = StoreDetail
+										StoreDetailFragment storeDetailFragment = StoreDetailFragment
 												.newInstance(list_store_object
 														.get(position));
 										SimiManager.getIntance()
-												.addFragmentSub(storeDetail);
+												.addFragmentSub(storeDetailFragment);
 										adapter.notifyDataSetChanged();
 									}
 
@@ -467,7 +460,7 @@ public class StoreLocatorFragment extends SimiFragment {
 															5) == MathForDummies.round(
 															maker.getPosition().longitude,
 															5)) {
-												StoreDetail detail = StoreDetail
+												StoreDetailFragment detail = StoreDetailFragment
 														.newInstance(mStore_maker
 																.get(i));
 												SimiManager.getIntance()

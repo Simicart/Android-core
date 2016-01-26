@@ -2,16 +2,6 @@ package com.simicart.plugins.braintree;
 
 import org.json.JSONException;
 
-import com.braintreepayments.api.dropin.BraintreePaymentActivity;
-import com.braintreepayments.api.dropin.Customization;
-import com.paypal.android.sdk.payments.PayPalConfiguration;
-import com.simicart.MainActivity;
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.delegate.ModelDelegate;
-import com.simicart.core.base.delegate.SimiDelegate;
-import com.simicart.core.config.Config;
-import com.simicart.plugins.braintree.model.BrainTreeModel;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,6 +12,15 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.braintreepayments.api.dropin.BraintreePaymentActivity;
+import com.braintreepayments.api.dropin.Customization;
+import com.simicart.MainActivity;
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.delegate.ModelDelegate;
+import com.simicart.core.base.delegate.SimiDelegate;
+import com.simicart.core.config.Config;
+import com.simicart.plugins.braintree.model.BrainTreeModel;
 
 public class BrainTreeSimicart extends Activity {
 	

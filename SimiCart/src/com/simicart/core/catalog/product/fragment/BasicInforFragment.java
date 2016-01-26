@@ -2,7 +2,6 @@ package com.simicart.core.catalog.product.fragment;
 
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.collection.SimiCollection;

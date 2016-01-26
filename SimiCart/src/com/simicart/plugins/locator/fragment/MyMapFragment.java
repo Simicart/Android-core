@@ -189,7 +189,7 @@ public class MyMapFragment extends SimiFragment {
 									.parseDouble(store_maker.get(i)
 											.getLongtitude()), 5) == MathForDummies
 									.round(maker.getPosition().longitude, 5)) {
-						StoreDetail detail = StoreDetail
+						StoreDetailFragment detail = StoreDetailFragment
 								.newInstance(store_maker.get(i));
 						SimiManager.getIntance().addFragmentSub(detail);
 						break;
