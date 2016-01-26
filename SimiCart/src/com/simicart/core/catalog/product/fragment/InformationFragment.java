@@ -103,11 +103,4 @@ public class InformationFragment extends SimiFragment {
 		title_tab.setViewPager(mPager);
 	}
 	
-	@Override
-	public void onEvent(BusEntity event) {
-		super.onEvent(event);
-		if(event.getKey().toString().equals(Constants.KeyBus.PRODUCT)){
-			mProduct = (Product) event.getValue();
-		}
-	}
 }
