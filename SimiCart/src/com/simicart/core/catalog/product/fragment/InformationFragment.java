@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.simicart.core.adapter.TabAdapterFragment;
 import com.simicart.core.base.fragment.SimiFragment;
@@ -39,6 +38,7 @@ public class InformationFragment extends SimiFragment {
 		InformationFragment fragment = new InformationFragment();
 		Bundle bundle = new Bundle();
 		bundle.putSerializable(Constants.KeyData.PRODUCT, product);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
