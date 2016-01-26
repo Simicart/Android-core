@@ -5,6 +5,7 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +18,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
+import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 
@@ -27,6 +30,7 @@ public class CommentFragment extends DialogFragment {
 	private String urlProduct = "";
 	private Button btn_login_otheraccount;
 	private boolean checkLogin;
+	private ProgressBar progressBar;
 
 	// public static final String APP_ID = "724662554276476";
 	String APP_ID = "";
@@ -59,13 +63,19 @@ public class CommentFragment extends DialogFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		APP_ID = getActivity().getResources().getString(Rconfig.getInstance().string("facebook_app_id"));
-		
-		View rootView = inflater.inflate(Rconfig.getInstance().layout("plugin_fbconnect_layout_comment"), null);
-		
-//		View rootView = inflater.inflate(
-//				Rconfig.layout("plugin_fbconnect_layout_comment"), container, false);
-		webview = (WebView) rootView.findViewById(Rconfig.getInstance().id("webview_frag"));
+		APP_ID = getActivity().getResources().getString(
+				Rconfig.getInstance().string("facebook_app_id"));
+		View rootView = inflater
+				.inflate(
+						Rconfig.getInstance().layout(
+								"plugin_fbconnect_layout_comment"), null);
+
+		// View rootView = inflater.inflate(
+		// Rconfig.layout("plugin_fbconnect_layout_comment"), container, false);
+		progressBar = (ProgressBar) rootView.findViewById(Rconfig.getInstance()
+				.id("loading_screen"));
+		webview = (WebView) rootView.findViewById(Rconfig.getInstance().id(
+				"webview_frag"));
 		webview.getSettings().setJavaScriptEnabled(true);
 		html = getHTMLDetail(urlProduct, APP_ID);
 		webview.loadDataWithBaseURL("http://developers.facebook.com", html,
@@ -73,8 +83,8 @@ public class CommentFragment extends DialogFragment {
 		webview.setWebViewClient(new WebViewClientActivity());
 		// ImageView btn_close = (ImageView) rootView
 		// .findViewById(R.id.img_frag_comment);
-		ImageView btn_close = (ImageView) rootView.findViewById(Rconfig.getInstance()
-				.id("img_frag_comment"));
+		ImageView btn_close = (ImageView) rootView.findViewById(Rconfig
+				.getInstance().id("img_frag_comment"));
 		btn_close.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -82,9 +92,10 @@ public class CommentFragment extends DialogFragment {
 				dismiss();
 			}
 		});
-		btn_login_otheraccount = (Button) rootView.findViewById(Rconfig.getInstance()
-				.id("btn_comment_otheraccount"));
-		btn_login_otheraccount.setText(Config.getInstance().getText("Comment with another account"));
+		btn_login_otheraccount = (Button) rootView.findViewById(Rconfig
+				.getInstance().id("btn_comment_otheraccount"));
+		btn_login_otheraccount.setText(Config.getInstance().getText(
+				"Comment with another account"));
 		checkLogin = checkLoginWebviewAndroid();
 		if (checkLogin == true) {
 			btn_login_otheraccount.setVisibility(View.VISIBLE);
@@ -139,40 +150,48 @@ public class CommentFragment extends DialogFragment {
 
 	@Override
 	public void onCancel(DialogInterface dialog) {
-		// TODO Auto-generated method stub
 		super.onCancel(dialog);
 	}
+
+	boolean loadingFinished = true;
+	boolean redirect = false;
 
 	public class WebViewClientActivity extends WebViewClient {
 		@Override
 		public void onPageStarted(WebView view, String url, Bitmap favicon) {
-			System.out.println("onPageStarted: " + url);
-
+			Log.e("onPageStarted:", url);
+			loadingFinished = false;
+			progressBar.setVisibility(View.VISIBLE);
 		}
 
 		@Override
 		public boolean shouldOverrideUrlLoading(WebView view, String url) {
+			if (!loadingFinished) {
+				redirect = true;
+			}
+			loadingFinished = false;
 			view.loadUrl(url);
-			if (url.length() > 48) {
-				String xxx = url.substring(0, 48);
-				if (xxx.equals("https://m.facebook.com/plugins/login_success.php")) {
-					webview.loadDataWithBaseURL(
-							"http://developers.facebook.com", html,
-							"text/html", null, null);
-					btn_login_otheraccount.setVisibility(View.VISIBLE);
-				}
+			if (url.contains("close_popup.php")) {
+				webview.loadDataWithBaseURL(
+						"http://developers.facebook.com?"
+								+ "reload=https://www.facebook.com/plugins/comments.php?api_key=1721779108048112&channel_url=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D42%23cb%3Df18b53000c%26domain%3Ddevelopers.facebook.com%26origin%3Dhttp%253A%252F%252Fdevelopers.facebook.com%252Ff301c888ec%26relation%3Dparent.parent&colorscheme=light&href=http%3A%2F%2Fwww.rxclubhouse.com%2Findex.php%2Foptimum-nutrition-micronized-creatine-powder.html&locale=en_GB&mobile=true&numposts=1&order_by=reverse_time&sdk=joey&skin=light&version=v2.0&ret=optin&hash=AQCoVWl2H72Y6J-P#_=_",
+						html, "text/html", null, null);
+				btn_login_otheraccount.setVisibility(View.VISIBLE);
 			}
 			return true;
 		}
 
 		@Override
 		public void onPageFinished(WebView webView, String url) {
-			System.out.println("onPageFinished: " + url);
-			if (url.contentEquals("https://m.facebook.com/plugins/login_success.php")) {
-				System.out.println("You should comeback to box");
+			Log.e("onPageFinisheds:", url);
+			if (!redirect) {
+				loadingFinished = true;
 			}
-			// webView.loadUrl(html);
-
+			if (loadingFinished && !redirect) {
+				progressBar.setVisibility(View.GONE);
+			} else {
+				redirect = false;
+			}
 		}
 
 	}

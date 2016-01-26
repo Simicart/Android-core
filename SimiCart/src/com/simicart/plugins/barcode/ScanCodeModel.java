@@ -1,9 +1,11 @@
 package com.simicart.plugins.barcode;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.simicart.core.base.model.SimiModel;
+import com.simicart.core.config.Constants;
 
 public class ScanCodeModel extends SimiModel {
 
@@ -16,9 +18,10 @@ public class ScanCodeModel extends SimiModel {
 	@Override
 	protected void paserData() {
 		try {
-			JSONObject jsonData = mJSON.getJSONObject("data");
-			if (jsonData.has("product_id")) {
-				mProductID = jsonData.getString("product_id");
+			JSONArray jsonData = this.mJSON.getJSONArray(Constants.DATA);
+			JSONObject jsonObject = jsonData.getJSONObject(0);
+			if (jsonObject.has("product_id")) {
+				mProductID = jsonObject.getString("product_id");
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

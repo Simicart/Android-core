@@ -53,7 +53,7 @@ public class FacebookLikesButton {
 				HttpGet getRequest = new HttpGet(
 						"http://graph.facebook.com/fql?q="
 								+ URLEncoder.encode(
-										"SELECT total_count FROM link_stat WHERE url='"
+										"SELECT like_count FROM link_stat WHERE url='"
 												+ uri[0] + "'", "UTF-8"));
 				response = httpclient.execute(getRequest);
 				StatusLine statusLine = response.getStatusLine();
@@ -63,7 +63,7 @@ public class FacebookLikesButton {
 					out.close();
 					JSONObject result = new JSONObject(out.toString());
 					JSONArray data = result.getJSONArray("data");
-					shares = ((JSONObject) data.get(0)).getLong("total_count");
+					shares = ((JSONObject) data.get(0)).getLong("like_count");
 				} else {
 					// Closes the connection.
 					response.getEntity().getContent().close();
