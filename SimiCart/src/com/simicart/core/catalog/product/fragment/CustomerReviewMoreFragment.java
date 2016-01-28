@@ -18,15 +18,10 @@ import com.simicart.core.config.Rconfig;
 public class CustomerReviewMoreFragment extends SimiFragment {
 	protected CustomerReview mCustomerReview;
 
-//	public void setCustomerReview(CustomerReview mCustomerReview) {
-//		this.mCustomerReview = mCustomerReview;
-//	}
-
 	public static CustomerReviewMoreFragment newInstance(CustomerReview mCustomerReview) {
 		CustomerReviewMoreFragment fragment = new CustomerReviewMoreFragment();
 		
 		Bundle args = new Bundle();
-//	    setData(Constants.KeyData.CUSTOMER_REVIEW, mCustomerReview, Constants.KeyData.TYPE_MODEL, args);
 		args.putSerializable(Constants.KeyData.CUSTOMER_REVIEW, mCustomerReview);
 	    fragment.setArguments(args);
 

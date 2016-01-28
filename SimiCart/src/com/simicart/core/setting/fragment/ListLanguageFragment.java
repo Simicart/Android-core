@@ -26,10 +26,6 @@ public class ListLanguageFragment extends SimiFragment {
 		return current_item;
 	}
 
-//	public void setCurrent_item(String current_item) {
-//		this.current_item = current_item;
-//	}
-
 	public static ListLanguageFragment newInstance(String currentItem) {
 		ListLanguageFragment fragment = new ListLanguageFragment();
 		Bundle bundle= new Bundle();

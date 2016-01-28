@@ -42,14 +42,6 @@ public class ThankyouFragment extends SimiFragment implements OnKeyListener{
 	
 	private String invoice_number = "";
 
-//	public void setJsonObject(JSONObject jsonObject) {
-//		this.jsonObject = jsonObject;
-//	}
-//
-//	public void setMessage(String message) {
-//		this.message = message;
-//	}
-
 	public static ThankyouFragment newInstance(String message, JSONObject jsonObject) {
 		ThankyouFragment fragment = new ThankyouFragment();
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);

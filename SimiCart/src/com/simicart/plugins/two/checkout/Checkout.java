@@ -45,14 +45,14 @@ public class Checkout {
 
 	public void pay(PaymentMethod method) {
 		if (method.getData("is_sandbox").equals("1")) {
-			FragmentWeb fragment = FragmentWeb.newInstance(SANBOX_URL, method.getData("url_action"), method.getData("url_back"), data, invoice_number);
+			WebFragment fragment = WebFragment.newInstance(SANBOX_URL, method.getData("url_action"), method.getData("url_back"), data, invoice_number);
 //			fragment.setUrlAction(method.getData("url_action"));
 //			fragment.setUrlBack(method.getData("url_back"));
 //			fragment.setData(data);
 //			fragment.setInvoiceNumber(this.invoice_number);
 			SimiManager.getIntance().addFragment(fragment);
 		} else {
-			FragmentWeb fragment = FragmentWeb.newInstance(LIVE_URL, method.getData("url_action"), method.getData("url_back"), data, invoice_number);
+			WebFragment fragment = WebFragment.newInstance(LIVE_URL, method.getData("url_action"), method.getData("url_back"), data, invoice_number);
 //			fragment.setUrlAction(method.getData("url_action"));
 //			// this.parseData();
 //			fragment.setUrlBack(method.getData("url_back"));

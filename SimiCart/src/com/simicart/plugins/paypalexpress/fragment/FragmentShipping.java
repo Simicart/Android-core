@@ -26,6 +26,7 @@ import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.adapter.ShippingMethodAdapter;
 import com.simicart.core.checkout.entity.ShippingMethod;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.paypalexpress.model.RequestPlaceOrderModel;
 
@@ -39,9 +40,16 @@ public class FragmentShipping extends SimiFragment {
 	View mImageView;
 	String code = "";
 
-	public void setShippingMethodList(ArrayList<ShippingMethod> shippingMethods) {
-		this.shippingList = shippingMethods;
-		this.fshipping = this;
+//	public void setShippingMethodList(ArrayList<ShippingMethod> shippingMethods) {
+//		this.shippingList = shippingMethods;
+//		this.fshipping = this;
+//	}
+	public static FragmentShipping newInstance (ArrayList<ShippingMethod> shippingMethods){
+		FragmentShipping fragment = new FragmentShipping();
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(Constants.KeyData.LIST_SHIPPINGMETHOD, shippingMethods);
+		fragment.setArguments(bundle);
+		return fragment;
 	}
 
 	@Override
@@ -57,6 +65,10 @@ public class FragmentShipping extends SimiFragment {
 		label.setText(Config.getInstance().getText(
 				"Select a shipping method to complete an order"));
 
+		if(getArguments() != null){
+			shippingList = (ArrayList<ShippingMethod>) getArguments().getSerializable(Constants.KeyData.LIST_SHIPPINGMETHOD);
+		}
+		
 		if (shippingList.isEmpty()) {
 			label.setText("");
 		}

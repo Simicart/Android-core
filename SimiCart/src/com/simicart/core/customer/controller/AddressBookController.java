@@ -95,12 +95,9 @@ public class AddressBookController extends SimiController {
 
 		MyAddress addressbook = new MyAddress();
 		addressbook.setJSONObject(entity.getJSONObject());
-		Log.e("AddressBookController : ",
-				"Address ID : " + addressbook.getAddressId());
-		Log.d("==quang", "addressbook : "+addressbook.getCompany());
+//		Log.d("==quang", "addressbook : "+addressbook.getCompany());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
 				.newInstance(addressbook);
-//		fragment.setAddressbook(addressbook);
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
 		} else {

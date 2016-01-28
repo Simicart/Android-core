@@ -62,11 +62,6 @@ public class AddressBookCheckoutController extends AddressBookController {
 			public boolean onTouch(View v, MotionEvent event) {
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance(NewAddressBookFragment.NEW_ADDRESS_CHECKOUT, addressFor, mBillingAddress, mShippingAddress);
-//				fragment.setAfterControler(NewAddressBookFragment.NEW_ADDRESS_CHECKOUT);
-//				fragment.setAddressFor(addressFor);
-//				fragment.setBillingAddress(mBillingAddress);
-//				fragment.setShippingAddress(mShippingAddress);
-				// fragment.setAfterControler(mAfterController);
 				SimiManager.getIntance().replacePopupFragment(fragment);
 				return false;
 			}
@@ -139,22 +134,6 @@ public class AddressBookCheckoutController extends AddressBookController {
 				break;
 			}
 			ReviewOrderFragment fragment = ReviewOrderFragment.newInstance(0, shippingAdd, billingAdd);
-//			switch (addressFor) {
-//			case AddressBookCheckoutFragment.ALL_ADDRESS:
-//				fragment.setBilingAddress(address);
-//				fragment.setShippingAddress(address);
-//				break;
-//			case AddressBookCheckoutFragment.BILLING_ADDRESS:
-//				fragment.setBilingAddress(address);
-//				fragment.setShippingAddress(mShippingAddress);
-//				break;
-//			case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
-//				fragment.setBilingAddress(mBillingAddress);
-//				fragment.setShippingAddress(address);
-//				break;
-//			default:
-//				break;
-//			}
 
 			SimiManager.getIntance().removeDialog();
 			SimiManager.getIntance().replaceFragment(fragment);

@@ -32,18 +32,6 @@ public class CustomerReviewFragment extends SimiFragment {
 		return fragment;
 	}
 
-//	public void setRatingStar(ArrayList<Integer> stars) {
-//		mRatingStar = stars;
-//	}
-//
-//	public void setProductID(String id) {
-//		mID = id;
-//	}
-//	
-//	public void setProduct(Product mProduct) {
-//		this.mProduct = mProduct;
-//	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

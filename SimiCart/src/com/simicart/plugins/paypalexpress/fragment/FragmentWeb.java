@@ -33,6 +33,7 @@ public class FragmentWeb extends SimiFragment {
 	public String review_address = "1";
 	protected boolean check = true;
 	SimiDelegate mDelegate;
+	
 	public static FragmentWeb newInstance(String url, String address) {
 		FragmentWeb fragmetWeb = new FragmentWeb();
 		Bundle bundle= new Bundle();
@@ -44,6 +45,7 @@ public class FragmentWeb extends SimiFragment {
 
 //	public void setUrl(String url) {
 //		this.Url = url + "#m";
+	
 //	}
 //
 //	public void setReviewAddress(String check) {
@@ -105,8 +107,7 @@ public class FragmentWeb extends SimiFragment {
 											.getShippingAddress();
 									MyAddress billingAddress = mModel
 											.getBillingAddress();
-									FragmentAddress fragment = new FragmentAddress(
-											shippingAddress, billingAddress);
+									FragmentAddress fragment = FragmentAddress.newInstance(shippingAddress, billingAddress);
 									SimiManager.getIntance().addPopupFragment(
 											fragment);
 								} else {
@@ -124,7 +125,7 @@ public class FragmentWeb extends SimiFragment {
 									boolean isSuccess) {
 								mDelegate.dismissDialogLoading();
 								if (isSuccess) {
-									FragmentShipping fShipping = new FragmentShipping();
+//									FragmentShipping fShipping = new FragmentShipping();
 									ArrayList<SimiEntity> entity = mModel
 											.getCollection().getCollection();
 									ArrayList<ShippingMethod> shippingMethods = new ArrayList<ShippingMethod>();
@@ -132,8 +133,9 @@ public class FragmentWeb extends SimiFragment {
 										ShippingMethod shippingMethod = (ShippingMethod) simiEntity;
 										shippingMethods.add(shippingMethod);
 									}
-									fShipping
-											.setShippingMethodList(shippingMethods);
+									FragmentShipping fShipping =  FragmentShipping.newInstance(shippingMethods);
+//									fShipping
+//											.setShippingMethodList(shippingMethods);
 									SimiManager.getIntance().addPopupFragment(
 											fShipping);
 								} else {

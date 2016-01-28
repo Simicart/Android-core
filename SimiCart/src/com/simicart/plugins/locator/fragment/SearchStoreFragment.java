@@ -154,6 +154,7 @@ public class SearchStoreFragment extends SimiFragment {
 			searchLoad.data3 = getObjectTag(String.valueOf(page * 10));
 			searchLoad.execute();
 		} else if (list_tag != null) {
+			if(progcessBar != null)
 			progcessBar.setVisibility(View.GONE);
 			initData(list_tag, list_country, list_confix);
 		}
@@ -387,6 +388,7 @@ public class SearchStoreFragment extends SimiFragment {
 
 		@Override
 		protected void onPostExecute(JSONObject result) {
+			if(progcessBar != null)
 			progcessBar.setVisibility(View.GONE);
 			initData(list_tag, list_country, list_confix);
 			super.onPostExecute(result);

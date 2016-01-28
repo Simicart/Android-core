@@ -57,10 +57,6 @@ public class ProductDetailChildFragment extends SimiFragment {
 		mParentController = controller;
 	}
 
-//	public void setProductID(String id) {
-//		mID = id;
-//	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

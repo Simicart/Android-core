@@ -39,10 +39,6 @@ public class ProductDetailImageFragment extends SimiFragment {
 			return fragment;
 	}
 
-//	public ProductDetailImageFragment(String url) {
-//		mURL = url;			
-//	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -42,7 +42,7 @@ import com.simicart.core.material.LayoutRipple;
 import com.simicart.core.slidemenu.entity.ItemNavigation;
 import com.simicart.core.slidemenu.entity.ItemNavigation.TypeItem;
 import com.simicart.plugins.rewardpoint.controller.RewardPointSeerbarController;
-import com.simicart.plugins.rewardpoint.fragment.FragmentRewardPoint;
+import com.simicart.plugins.rewardpoint.fragment.RewardPointFragment;
 import com.simicart.plugins.rewardpoint.utils.Constant;
 
 public class RewardPointView {
@@ -113,7 +113,7 @@ public class RewardPointView {
 			mItemNavigation.setIcon(iconContactUs);
 			mItems.add(mItemNavigation);
 
-			FragmentRewardPoint rewardPointFragment = new FragmentRewardPoint();
+			RewardPointFragment rewardPointFragment = new RewardPointFragment();
 			slideMenuData.getPluginFragment().put(
 					Constant.REWARDPOINT_MENU_ITEM,
 					rewardPointFragment.getClass().getName());
@@ -273,7 +273,7 @@ public class RewardPointView {
 	// public RewardPointView(String method) {
 	// if (method.equals("clickitem_reward_slidemenu")) {
 	// if (Constants.itemName.contains(Constant.REWARDPOINT_MENU_ITEM)) {
-	// FragmentRewardPoint rewardPoint = new FragmentRewardPoint();
+	// RewardPointFragment rewardPoint = new RewardPointFragment();
 	// if (DataLocal.isTablet) {
 	// SimiManager.getIntance().addPopupFragment(rewardPoint);
 	// } else {
@@ -683,7 +683,7 @@ public class RewardPointView {
 
 			@Override
 			public void onClick(View v) {
-				FragmentRewardPoint fragmentRe = new FragmentRewardPoint();
+				RewardPointFragment fragmentRe = new RewardPointFragment();
 				SimiManager.getIntance().replacePopupFragment(fragmentRe);
 			}
 		});

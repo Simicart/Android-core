@@ -109,9 +109,6 @@ public class StoreLocatorFragment extends SimiFragment {
 	private SearchObject search_object;
 	private boolean check_trigger;
 
-//	public void setSearch_object(SearchObject search_object) {
-//		this.search_object = search_object;
-//	}
 
 	// end haita
 	public static StoreLocatorFragment newInstansce(String country, String city,

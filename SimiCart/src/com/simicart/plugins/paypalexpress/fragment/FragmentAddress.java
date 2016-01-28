@@ -36,12 +36,17 @@ public class FragmentAddress extends SimiFragment {
 
 	MyAddress shippingAddress = new MyAddress();
 	MyAddress billingAddress = new MyAddress();
+	public static int SHIPPING = 1;
+	public static int BILLING = 2;
 
-	public FragmentAddress(MyAddress shippingAddress, MyAddress billingAddress) {
-		this.shippingAddress = shippingAddress;
-		this.billingAddress = billingAddress;
+	public static FragmentAddress newInstance (MyAddress shippingAddress, MyAddress billingAddress){
+		FragmentAddress fragment = new FragmentAddress();
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
+		bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
+		fragment.setArguments(bundle);
+		return fragment;
 	}
-
 	@Override
 	public View onCreateView(final LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +68,13 @@ public class FragmentAddress extends SimiFragment {
 
 		bt_updateAddress = (Button) rootView.findViewById(Rconfig.getInstance()
 				.id("bt_update"));
+		
+		//setdata
+		if(getArguments() != null){
+			shippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
+			billingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
+		}
+		
 		bt_updateAddress.setTextColor(Color.WHITE);
 		bt_updateAddress.setText(Config.getInstance()
 				.getText("Confirm Address"));
@@ -176,7 +188,7 @@ public class FragmentAddress extends SimiFragment {
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
-					FragmentShipping fShipping = new FragmentShipping();
+//					FragmentShipping fShipping = new FragmentShipping();
 					ArrayList<SimiEntity> entity = mModel.getCollection()
 							.getCollection();
 					ArrayList<ShippingMethod> shippingMethods = new ArrayList<ShippingMethod>();
@@ -184,7 +196,8 @@ public class FragmentAddress extends SimiFragment {
 						ShippingMethod shippingMethod = (ShippingMethod) simiEntity;
 						shippingMethods.add(shippingMethod);
 					}
-					fShipping.setShippingMethodList(shippingMethods);
+					FragmentShipping fShipping =  FragmentShipping.newInstance(shippingMethods);
+//					fShipping.setShippingMethodList(shippingMethods);
 					SimiManager.getIntance().addPopupFragment(fShipping);
 				} else {
 					SimiManager.getIntance().showToast(message);
@@ -231,11 +244,12 @@ public class FragmentAddress extends SimiFragment {
 					break;
 				}
 				case MotionEvent.ACTION_UP: {
-					FragmentEditAddressExpress fragmentEditAddressExpress = new FragmentEditAddressExpress();
-					fragmentEditAddressExpress
-							.setShippingAddressbook(shippingAddress);
-					fragmentEditAddressExpress
-							.setAddressbookTemp(billingAddress);
+//					FragmentEditAddressExpress fragmentEditAddressExpress = new FragmentEditAddressExpress();
+//					fragmentEditAddressExpress
+//							.setShippingAddressbook(shippingAddress);
+//					fragmentEditAddressExpress
+//							.setAddressbookTemp(billingAddress);
+					FragmentEditAddressExpress fragmentEditAddressExpress =  FragmentEditAddressExpress.newInstance(billingAddress, shippingAddress, SHIPPING);
 					SimiManager.getIntance().addPopupFragment(
 							fragmentEditAddressExpress);
 				}
@@ -267,11 +281,12 @@ public class FragmentAddress extends SimiFragment {
 					break;
 				}
 				case MotionEvent.ACTION_UP: {
-					FragmentEditAddressExpress fragmentEditAddressExpress = new FragmentEditAddressExpress();
-					fragmentEditAddressExpress
-							.setBillingAddressbook(billingAddress);
-					fragmentEditAddressExpress
-							.setAddressbookTemp(shippingAddress);
+//					FragmentEditAddressExpress fragmentEditAddressExpress = new FragmentEditAddressExpress();
+//					fragmentEditAddressExpress
+//							.setBillingAddressbook(billingAddress);
+//					fragmentEditAddressExpress
+//							.setAddressbookTemp(shippingAddress);
+					FragmentEditAddressExpress fragmentEditAddressExpress =  FragmentEditAddressExpress.newInstance(shippingAddress, billingAddress, BILLING);
 					SimiManager.getIntance().addPopupFragment(
 							fragmentEditAddressExpress);
 				}

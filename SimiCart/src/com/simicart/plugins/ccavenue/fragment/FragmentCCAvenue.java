@@ -47,17 +47,9 @@ public class FragmentCCAvenue extends SimiFragment {
 		return invoice_number;
 	}
 
-//	public void setUrl(String url) {
-//		this.Url = url;
-//	}
-
 	public String getInvoice_number() {
 		return invoice_number;
 	}
-
-//	public void setInvoice_number(String invoice_number) {
-//		this.invoice_number = invoice_number;
-//	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

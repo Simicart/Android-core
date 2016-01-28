@@ -50,30 +50,6 @@ public class SortFragment extends SimiFragment {
 		return fragment;
 	}
 	
-//	public void setUrl_search(String url_search) {
-//		this.url_search = url_search;
-//	}
-//	public void setKey(String key) {
-//		this.KEY = key;
-//	}
-//
-//
-//	public void setSort_tag(String sort_tag) {
-//		this.sort_tag = sort_tag;
-//	}
-//
-//	public void setJSONFilter(JSONObject json) {
-//		jsonFilter = json;
-//	}
-//
-//	public void setQuery(String mQuery) {
-//		this.mQuery = mQuery;
-//	}
-
-//	public void setSortType(String sortType) {
-//		this.mSortType = sortType;
-//	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

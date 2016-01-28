@@ -24,14 +24,6 @@ public class WebviewFragment extends SimiFragment {
 
 	public String url;
 
-	public WebviewFragment() {
-		
-	}
-
-//	public void setUrl(String url) {
-//		this.Url = url;
-//	}
-
 	@Override
 	public View onCreateView(final LayoutInflater inflater,
 			ViewGroup container, Bundle savedInstanceState) {

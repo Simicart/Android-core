@@ -38,7 +38,11 @@ public class ProductOrderAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return mListCart.size();
+		if(mListCart != null){
+			int size = mListCart.size();
+		return size;
+	}
+		return 0;
 	}
 
 	@Override
@@ -64,9 +68,9 @@ public class ProductOrderAdapter extends BaseAdapter {
 							"core_listitem_product_orderhis"), null);
 		}
 		convertView.setBackgroundColor(Config.getInstance().getApp_backrground());
-
+		if(mListCart != null){
 		Cart cart = mListCart.get(position);
-
+		
 		TextView name = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("name_product"));
 		name.setTextColor(Config.getInstance().getContent_color());
@@ -98,7 +102,7 @@ public class ProductOrderAdapter extends BaseAdapter {
 				.getInstance().id("image_product"));
 		String img = cart.getProduct_image();
 		DrawableManager.fetchDrawableOnThread(img, image);
-
+		}
 		return convertView;
 	}
 

@@ -52,14 +52,6 @@ public class ProductDetailParentFragment extends SimiFragment {
 		
 	}
 
-	// public void setProductID(String id) {
-	// mID = id;
-	// }
-	//
-	// public void setListIDProduct(ArrayList<String> ids) {
-	// mListID = ids;
-	// }
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

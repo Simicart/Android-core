@@ -174,11 +174,7 @@
                 android:id="@+id/bt_register"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_button"
-                android:layout_gravity="left|center_vertical"
-                android:paddingLeft="@dimen/size_5"
-                android:paddingRight="@dimen/size_3"
                 android:text="" />
-
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/size_40" />

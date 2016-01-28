@@ -26,6 +26,7 @@ public class NewAddressBookFragment extends SimiFragment {
 	public static final int NEW_ADDRESS_CHECKOUT = 3;
 
 	public static NewAddressBookFragment newInstance(int afterControl, int addressFor, MyAddress billingAddress, MyAddress shippingAddress) {
+//		Log.d("quangdd", "afterControl : "+afterControl+"  addressFor :"+addressFor);
 		NewAddressBookFragment fragment = new NewAddressBookFragment();
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.AFTER_CONTROL, afterControl, Constants.KeyData.TYPE_INT, bundle);
@@ -78,7 +79,6 @@ public class NewAddressBookFragment extends SimiFragment {
 		}
 		
 		mBlock = new NewAddressBookBlock(view, context);
-		Log.e("new Address Book Fragment ", afterControl+"xxx");
 		mBlock.setAfterController(afterControl);
 		mBlock.initView();
 		if (null == mController) {

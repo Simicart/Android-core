@@ -226,35 +226,36 @@ public class SignInController extends SimiController {
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
+				
+				SimiManager.getIntance().getRequestQueue().clearCacheL1();
+				showToastSignIn();
+				DataLocal.isNewSignIn = true;
+				DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
+
+				String name = ((SignInModel) mModel).getName();
+				String cartQty = ((SignInModel) mModel).getCartQty();
+				if (null != name) {
+					DataLocal.saveData(name, email, password);
+					DataLocal.saveEmailPassRemember(email, password);
+				}
+				DataLocal.saveSignInState(true);
+				showToastSignIn();
+				if (null != cartQty && !cartQty.equals("0")) {
+					SimiManager.getIntance().onUpdateCartQty(cartQty);
+				}
+				if (!isCheckout && DataLocal.isTablet) {
+					SimiManager.getIntance().clearAllChidFragment();
+					SimiManager.getIntance().removeDialog();
+				} else {
+					SimiManager.getIntance().backPreviousFragment();
+				}
+				// update wishlist_items_qty
+				EventController event = new EventController();
+				event.dispatchEvent(
+						"com.simicart.core.customer.controller.SignInController",
+						mModel.getJSON().toString());
 				if (isSuccess) {
-					SimiManager.getIntance().getRequestQueue().clearCacheL1();
-					showToastSignIn();
-					DataLocal.isNewSignIn = true;
-					DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
-
-					String name = ((SignInModel) mModel).getName();
-					String cartQty = ((SignInModel) mModel).getCartQty();
-					if (null != name) {
-						DataLocal.saveData(name, email, password);
-						DataLocal.saveEmailPassRemember(email, password);
-					}
-					DataLocal.saveSignInState(true);
-					showToastSignIn();
-					if (null != cartQty && !cartQty.equals("0")) {
-						SimiManager.getIntance().onUpdateCartQty(cartQty);
-					}
-					if (!isCheckout && DataLocal.isTablet) {
-						SimiManager.getIntance().clearAllChidFragment();
-						SimiManager.getIntance().removeDialog();
-					} else {
-						SimiManager.getIntance().backPreviousFragment();
-					}
-					// update wishlist_items_qty
-					EventController event = new EventController();
-					event.dispatchEvent(
-							"com.simicart.core.customer.controller.SignInController",
-							mModel.getJSON().toString());
-
+					
 					if (isCheckout) {
 
 						mModel = new CartModel();
@@ -316,7 +317,9 @@ public class SignInController extends SimiController {
 						fragment = cache.getFragment();
 
 						SimiManager.getIntance().replaceFragment(fragment);
+					
 					}
+					
 				}
 			}
 		};

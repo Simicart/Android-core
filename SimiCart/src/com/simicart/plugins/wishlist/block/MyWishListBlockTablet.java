@@ -38,7 +38,6 @@ public class MyWishListBlockTablet extends SimiBlock implements
 	protected String mCurrentID = "";
 	AdapterMyWishListTab mAdapter;
 	GridView gv_mywishlist;
-	protected ProductWishListFragment mProductWLFragment;
 	protected ColorButton bt_addAllCart;
 
 	public void setShareListener(OnTouchListener touchListener) {

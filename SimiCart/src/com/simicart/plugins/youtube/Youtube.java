@@ -43,8 +43,8 @@ public class Youtube {
 				}
 			} catch (JSONException e) {
 			}
-			YoutubeFragment fragment = YoutubeFragment.newInstanse();
-			fragment.setYoutube(mYoutube);
+			YoutubeFragment fragment = YoutubeFragment.newInstanse(mYoutube);
+//			fragment.setYoutube(mYoutube);
 			mCacheBlock.getListFragment().add(fragment);
 			mCacheBlock.getListName().add("Video");
 		}

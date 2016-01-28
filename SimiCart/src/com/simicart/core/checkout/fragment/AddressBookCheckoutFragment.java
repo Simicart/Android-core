@@ -25,9 +25,7 @@ public class AddressBookCheckoutFragment extends AddressBookFragment {
 		Bundle bundle= new Bundle();
 		setData(Constants.KeyData.AFTER_CONTROL, afterControl, Constants.KeyData.TYPE_INT, bundle);
 		setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
-//		setData(Constants.KeyData.BILLING_ADDRESS, billingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
 		bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
-//		setData(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress, Constants.KeyData.TYPE_LIST_STRING, bundle);
 		bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
 		fragment.setArguments(bundle);
 		return fragment;
@@ -47,22 +45,6 @@ public class AddressBookCheckoutFragment extends AddressBookFragment {
 	protected MyAddress mBillingAddress;
 	protected MyAddress mShippingAddress;
 	
-//	public void setAfterController(int afterController) {
-//		mAfterController = afterController;
-//	}
-//
-//	public void setAddressFor(int addressFor) {
-//		this.addressFor = addressFor;
-//	}
-//
-//	public void setBillingAddress(MyAddress mBillingAddress) {
-//		this.mBillingAddress = mBillingAddress;
-//	}
-//
-//	public void setShippingAddress(MyAddress mShippingAddress) {
-//		this.mShippingAddress = mShippingAddress;
-//	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

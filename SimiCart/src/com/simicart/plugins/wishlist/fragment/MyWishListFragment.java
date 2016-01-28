@@ -15,6 +15,11 @@ public class MyWishListFragment extends SimiFragment {
 	protected MyWistListBlock mBlock;
 	protected MyWishListController mController;
 
+	public static MyWishListFragment newInstance (){
+		MyWishListFragment fragment = new MyWishListFragment();
+		return fragment;
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

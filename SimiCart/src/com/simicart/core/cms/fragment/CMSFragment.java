@@ -20,10 +20,6 @@ public class CMSFragment extends SimiFragment {
 
 	protected String mContent;
 
-//	public void setContent(String content) {
-//		mContent = content;
-//	}
-
 	public static CMSFragment newInstance(String content) {
 		CMSFragment fragment = new CMSFragment();
 		Bundle bundle= new Bundle();

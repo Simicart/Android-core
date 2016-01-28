@@ -10,7 +10,7 @@ import com.simicart.MainActivity;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.entity.PaymentMethod;
 import com.simicart.core.event.checkout.CheckoutData;
-import com.simicart.plugins.checkout.com.view.FragmentCheckoutCom;
+import com.simicart.plugins.checkout.com.view.CheckoutComFragment;
 
 public class CheckoutCom {
 
@@ -42,12 +42,8 @@ public class CheckoutCom {
 	}
 
 	private void onCheckOut(PaymentMethod paymentMethod) {
-		FragmentCheckoutCom fragment = FragmentCheckoutCom.newInstance(LIVE_URL, paymentMethod.getData("url_action"), 
+		CheckoutComFragment fragment = CheckoutComFragment.newInstance(LIVE_URL, paymentMethod.getData("url_action"), 
 				paymentMethod.getData("url_back"), data, invoice_number);
-//		fragment.setUrl_action(paymentMethod.getData("url_action"));
-//		fragment.setUrl_back(paymentMethod.getData("url_back"));
-//		fragment.setData(data);
-//		fragment.setInvoice_number(this.invoice_number);
 		SimiManager.getIntance().addFragment(fragment);
 	}
 }

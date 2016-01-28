@@ -18,10 +18,11 @@ import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.rewardpoint.model.ModelRewardSetting;
 
-public class FragmentRewardSetting extends SimiFragment {
+public class RewardSettingFragment extends SimiFragment {
 
 	private boolean is_notification;
 	private boolean expire_notification;
@@ -38,22 +39,15 @@ public class FragmentRewardSetting extends SimiFragment {
 	private TextView txt_pointtransaction;
 	private TextView txt_notification;
 
-	public FragmentRewardSetting() {
+	public static RewardSettingFragment newInstance (int isNotification, int expireNotification){
+		
+		RewardSettingFragment fragment = new RewardSettingFragment();
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.IS_NOTIFICATION, isNotification, Constants.KeyData.TYPE_INT, bundle);
+		setData(Constants.KeyData.EXPIRE_NOTIFICATION, expireNotification, Constants.KeyData.TYPE_INT, bundle);
+		fragment.setArguments(bundle);
+		return fragment;
 	}
-
-	public FragmentRewardSetting(int isnotification, int expire_notification) {
-		if(isnotification == 1){
-			this.is_notification = true;
-		}else{
-			this.is_notification = false;
-		}
-		if(expire_notification == 1){
-			this.expire_notification = true;
-		}else{
-			this.expire_notification = false;
-		}
-	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -68,6 +62,23 @@ public class FragmentRewardSetting extends SimiFragment {
 				.getInstance().id("switch_pointtransaction"));
 		btn_save = (Button) view.findViewById(Rconfig.getInstance().id(
 				"btn_save"));
+		
+//		getdata
+		if(getArguments() != null){
+		int isNotification = (int) getData(Constants.KeyData.IS_NOTIFICATION, Constants.KeyData.TYPE_INT, getArguments());
+		int expireNotification = (int) getData(Constants.KeyData.EXPIRE_NOTIFICATION, Constants.KeyData.TYPE_INT, getArguments());
+		if(isNotification == 1){
+		this.is_notification = true;
+	}else{
+		this.is_notification = false;
+	}
+	if(expireNotification == 1){
+		this.expire_notification = true;
+	}else{
+		this.expire_notification = false;
+	}
+		}
+		
 		switch_point_update.setChecked(is_notification);
 		switch_point_transaction.setChecked(expire_notification);
 		
@@ -143,7 +154,7 @@ public class FragmentRewardSetting extends SimiFragment {
 				public void callBack(String message, boolean isSuccess) {
 					pd_loading.dismiss();
 					if (isSuccess) {
-						FragmentRewardPoint rewardPoint = new FragmentRewardPoint();
+						RewardPointFragment rewardPoint = new RewardPointFragment();
 						SimiManager.getIntance().replacePopupFragment(rewardPoint);
 					}
 				}

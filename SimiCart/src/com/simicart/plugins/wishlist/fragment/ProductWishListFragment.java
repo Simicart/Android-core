@@ -29,9 +29,9 @@ public class ProductWishListFragment extends SimiFragment {
 		mDelegate = delegate;
 	}
 
-	public void setProductId(String id) {
-		mID = id;
-	}
+//	public void setProductId(String id) {
+//		mID = id;
+//	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
