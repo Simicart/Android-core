@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.AddressBookDetailBlock;
 import com.simicart.core.customer.entity.MyAddress;
@@ -15,24 +16,34 @@ import com.simicart.plugins.paypalexpress.controller.EditAddressExpresscontrolle
 
 public class FragmentEditAddressExpress extends AddressBookDetailFragment {
 
-	public static int SHIPPING = 1;
-	public static int BILLING = 2;
+	
 	int addressType;
 	MyAddress addressbookTemp;
 	EditAddressExpresscontroller mController;
-
-	public void setBillingAddressbook(MyAddress addressbook) {
-		this.addressbook = addressbook;
-		this.addressType = BILLING;
-	}
-
-	public void setAddressbookTemp(MyAddress addressbookTemp) {
-		this.addressbookTemp = addressbookTemp;
-	}
-
-	public void setShippingAddressbook(MyAddress addressbook) {
-		this.addressbook = addressbook;
-		this.addressType = SHIPPING;
+	public static int SHIPPING = 1;
+	public static int BILLING = 2;
+//	public void setBillingAddressbook(MyAddress addressbook) {
+//		this.addressbook = addressbook;
+//		this.addressType = BILLING;
+//	}
+//
+//	public void setAddressbookTemp(MyAddress addressbookTemp) {
+//		this.addressbookTemp = addressbookTemp;
+//	}
+//
+//	public void setShippingAddressbook(MyAddress addressbook) {
+//		this.addressbook = addressbook;
+//		this.addressType = SHIPPING;
+//	}
+	
+	public static FragmentEditAddressExpress newInstance (MyAddress addressbookTemp ,MyAddress shiping_billing, int type){
+		FragmentEditAddressExpress fragment = new FragmentEditAddressExpress();
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbookTemp);
+		bundle.putSerializable(Constants.KeyData.ADDRESS_FOR, shiping_billing);
+		setData(Constants.KeyData.TYPE, type, Constants.KeyData.TYPE_INT, bundle);
+		fragment.setArguments(bundle);
+		return fragment;
 	}
 
 	@Override
@@ -43,6 +54,12 @@ public class FragmentEditAddressExpress extends AddressBookDetailFragment {
 				container, false);
 		Context context = getActivity();
 
+		//getdata
+		if(getArguments() != null){
+			addressbookTemp = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
+			addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.ADDRESS_FOR);
+			addressType = (int) getData(Constants.KeyData.TYPE, Constants.KeyData.TYPE_INT, getArguments());
+		}
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
 		Log.e("FragmentEditAddressExpress : ",

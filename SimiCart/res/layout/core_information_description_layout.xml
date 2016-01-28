@@ -4,12 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/l_scrollView"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp" >
+        android:orientation="vertical" >
     </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp" >
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

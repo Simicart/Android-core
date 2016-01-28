@@ -140,10 +140,6 @@ public class PhoneSlideMenuController {
 				ArrayList<String> listID = new ArrayList<String>();
 				listID.add(DataLocal.deepLinkItemID);
 				fragment = ProductDetailParentFragment.newInstance(DataLocal.deepLinkItemID, listID);
-//				((ProductDetailParentFragment) fragment)
-//						.setProductID(DataLocal.deepLinkItemID);
-//				((ProductDetailParentFragment) fragment)
-//						.setListIDProduct(listID);
 				SimiManager.getIntance().replaceFragment(fragment);
 			} else if (DataLocal.deepLinkItemType == 2) {
 				Log.e("Open deep link", "2");
@@ -161,14 +157,6 @@ public class PhoneSlideMenuController {
 					}
 				} else {
 					fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, DataLocal.deepLinkItemID, null, null, null, null, null, null);
-//					((ListProductFragment) fragment)
-//							.setCategoryId(DataLocal.deepLinkItemID);
-//					((ListProductFragment) fragment)
-//							.setUrlSearch(ConstantsSearch.url_category);
-//					if (DataLocal.isTablet) {
-//						((ListProductFragment) fragment)
-//								.setTag_search(TagSearch.TAG_GRIDVIEW);
-//					}
 					SimiManager.getIntance().replaceFragment(fragment);
 				}
 			}

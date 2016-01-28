@@ -31,7 +31,7 @@ import com.simicart.core.customer.fragment.SignInFragment;
 import com.simicart.plugins.rewardpoint.entity.ItemPointData;
 import com.simicart.plugins.rewardpoint.model.ModelRewardPoint;
 
-public class FragmentRewardPoint extends SimiFragment {
+public class RewardPointFragment extends SimiFragment {
 
 	private ModelRewardPoint mModel;
 	private Context mContext;
@@ -84,7 +84,7 @@ public class FragmentRewardPoint extends SimiFragment {
 
 	protected ProgressDialog pd_loading;
 
-	public FragmentRewardPoint() {
+	public RewardPointFragment() {
 		mContext = SimiManager.getIntance().getCurrentContext();
 	}
 
@@ -367,7 +367,7 @@ public class FragmentRewardPoint extends SimiFragment {
 				case MotionEvent.ACTION_UP:
 					rlt_layout_history.setBackgroundColor(Color
 							.parseColor("#FFFFFF"));
-					FragmentRewardHistory rewardHistory = new FragmentRewardHistory();
+					RewardHistoryFragment rewardHistory = new RewardHistoryFragment();
 					SimiManager.getIntance()
 							.replacePopupFragment(rewardHistory);
 					break;
@@ -391,10 +391,11 @@ public class FragmentRewardPoint extends SimiFragment {
 				case MotionEvent.ACTION_UP:
 					rlt_layout_setting.setBackgroundColor(Color
 							.parseColor("#FFFFFF"));
-					FragmentRewardSetting rewardSetting = new FragmentRewardSetting(
-							is_notification, expire_notification);
-					SimiManager.getIntance()
-							.replacePopupFragment(rewardSetting);
+//					RewardSettingFragment rewardSetting = new RewardSettingFragment(
+//							is_notification, expire_notification);
+					
+					RewardSettingFragment fragment = RewardSettingFragment.newInstance(is_notification, expire_notification);
+					SimiManager.getIntance().replacePopupFragment(fragment);
 					break;
 				case MotionEvent.ACTION_CANCEL:
 					rlt_layout_setting.setBackgroundColor(Color
@@ -416,10 +417,11 @@ public class FragmentRewardPoint extends SimiFragment {
 				case MotionEvent.ACTION_UP:
 					rlt_layout_card.setBackgroundColor(Color
 							.parseColor("#FFFFFF"));
-					FragmentRewardCard rewardCard = new FragmentRewardCard(
-							passBookLogo, loyalty_redeem, passbook_text,
-							background_passbook, passbook_foreground,
-							passbook_barcode);
+//					RewardCardFragment rewardCard = new RewardCardFragment(
+//							passBookLogo, loyalty_redeem, passbook_text,
+//							background_passbook, passbook_foreground,
+//							passbook_barcode);
+					RewardCardFragment rewardCard = RewardCardFragment.newInstance(passBookLogo, loyalty_redeem, passbook_text, background_passbook, passbook_foreground, passbook_barcode);
 					SimiManager.getIntance().replacePopupFragment(rewardCard);
 					break;
 				case MotionEvent.ACTION_CANCEL:

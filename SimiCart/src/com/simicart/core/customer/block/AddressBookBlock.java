@@ -14,6 +14,7 @@ import com.simicart.core.customer.entity.MyAddress;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView.OnItemClickListener;
@@ -97,6 +98,7 @@ public class AddressBookBlock extends SimiBlock {
 				MyAddress addr = (MyAddress) simiEntity;
 				address.add(addr);
 			}
+			Log.d("quangdd", ""+address.get(0).getName());
 			if (address.size() > 0) {
 				if (null == mAdapter) {
 					mAdapter = new AddressBookAdapter(mContext, address);

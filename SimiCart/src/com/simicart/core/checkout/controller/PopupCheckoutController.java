@@ -118,10 +118,8 @@ public class PopupCheckoutController extends SimiController {
 				}
 				case MotionEvent.ACTION_UP: {
 					mBlockDelegate.dismissPopupCheckout();
-					Log.e("New Customer", "cccccccccc"+NewAddressBookFragment.NEW_CUSTOMER);
 					NewAddressBookFragment fragment = NewAddressBookFragment
 							.newInstance(1, 0, null, null);
-//					fragment.setAfterControler(NewAddressBookFragment.NEW_CUSTOMER);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {

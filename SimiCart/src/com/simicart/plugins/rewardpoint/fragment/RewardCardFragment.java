@@ -35,10 +35,11 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.rewardpoint.utils.Constant;
 
-public class FragmentRewardCard extends SimiFragment {
+public class RewardCardFragment extends SimiFragment {
 
 	private String passBookLogo = "";
 	private String loyalty_redeem = "";
@@ -60,17 +61,32 @@ public class FragmentRewardCard extends SimiFragment {
 
 	private LinearLayout layout_passbook;
 
-	public FragmentRewardCard(String passBookLogo, String loyalty_redeem,
-			String nameapp, String background, String passbook_foreground,
-			String passbook_barcode) {
-		this.passBookLogo = passBookLogo;
-		this.loyalty_redeem = loyalty_redeem;
-		this.passbook_text = nameapp;
-		this.background_passbook = background;
-		this.passbook_foreground = passbook_foreground.trim();
-		this.passbook_barcode = passbook_barcode.trim();
-	}
+//	public RewardCardFragment(String passBookLogo, String loyalty_redeem,
+//			String nameapp, String background, String passbook_foreground,
+//			String passbook_barcode) {
+//		this.passBookLogo = passBookLogo;
+//		this.loyalty_redeem = loyalty_redeem;
+//		this.passbook_text = nameapp;
+//		this.background_passbook = background;
+//		this.passbook_foreground = passbook_foreground.trim();
+//		this.passbook_barcode = passbook_barcode.trim();
+//	}
 
+	public static RewardCardFragment newInstance (String logo, String loyaltyRedeem,
+			String text, String background, String foreground,
+			String barcode){
+		RewardCardFragment fragment = new RewardCardFragment();
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.PASSBOOK_LOGO, logo, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.LOYALTY_REDEEM, loyaltyRedeem, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.PASSBOOK_TEXT, text, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.PASSBOOK_BACKGROUND, background, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.PASSBOOK_FOREGROUND, foreground, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.PASSBOOK_BARCODE, barcode, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
+		return fragment;
+		
+	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -84,6 +100,17 @@ public class FragmentRewardCard extends SimiFragment {
 						.layout("plugins_rewardpoint_cardfragment"), container,
 				false);
 		mContext = getActivity();
+		
+//		getdata
+		if(getArguments() != null){
+			passBookLogo = (String) getData(Constants.KeyData.PASSBOOK_LOGO, Constants.KeyData.TYPE_STRING, getArguments());
+			loyalty_redeem = (String) getData(Constants.KeyData.LOYALTY_REDEEM, Constants.KeyData.TYPE_STRING, getArguments());
+			passbook_text = (String) getData(Constants.KeyData.PASSBOOK_TEXT, Constants.KeyData.TYPE_STRING, getArguments());
+			background_passbook = (String) getData(Constants.KeyData.PASSBOOK_BACKGROUND, Constants.KeyData.TYPE_STRING, getArguments());
+			passbook_foreground = (String) getData(Constants.KeyData.PASSBOOK_FOREGROUND, Constants.KeyData.TYPE_STRING, getArguments());
+			passbook_barcode = (String) getData(Constants.KeyData.PASSBOOK_BARCODE, Constants.KeyData.TYPE_STRING, getArguments());
+		}
+		
 		img_logo = (ImageView) view.findViewById(Rconfig.getInstance().id(
 				"img_logo_passbook"));
 		img_barcode = (ImageView) view.findViewById(Rconfig.getInstance().id(

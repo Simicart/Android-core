@@ -27,10 +27,6 @@ public class ListCurrencyFragment extends SimiFragment {
 		return current_item;
 	}
 
-//	public void setCurrent_item(String current_item) {
-//		this.current_item = current_item;
-//	}
-
 	public static ListCurrencyFragment newInstance(String currentItem) {
 		ListCurrencyFragment fragment = new ListCurrencyFragment();
 		Bundle bundle= new Bundle();

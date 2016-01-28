@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.youtube.adapter.YoutubeAdapter;
 import com.simicart.plugins.youtube.entity.YoutubeEnity;
@@ -18,13 +19,12 @@ public class YoutubeFragment extends SimiFragment {
 	protected ListView mListView;
 	protected YoutubeAdapter mAdapter;
 
-	public static YoutubeFragment newInstanse() {
+	public static YoutubeFragment newInstanse(ArrayList<YoutubeEnity> mYoutube) {
 		YoutubeFragment fragment = new YoutubeFragment();
+		Bundle bundle = new Bundle();
+		bundle.putSerializable(Constants.KeyData.LIST_YOUTUBE, mYoutube);
+		fragment.setArguments(bundle);
 		return fragment;
-	}
-
-	public void setYoutube(ArrayList<YoutubeEnity> mYoutube) {
-		this.mYoutube = mYoutube;
 	}
 
 	@Override
@@ -36,6 +36,11 @@ public class YoutubeFragment extends SimiFragment {
 								"plugins_youtube_fragment_layout"), null);
 		mListView = (ListView) rootView.findViewById(Rconfig.getInstance().id(
 				"youtube_list"));
+		
+		if(getArguments() != null){
+			mYoutube = (ArrayList<YoutubeEnity>) getArguments().getSerializable(Constants.KeyData.LIST_YOUTUBE);
+		}
+		
 		if (mYoutube.size() > 0) {
 			mAdapter = new YoutubeAdapter(getActivity(), mYoutube);
 			mListView.setAdapter(mAdapter);

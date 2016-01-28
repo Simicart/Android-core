@@ -30,16 +30,8 @@ public class TechSpecsFragment extends SimiFragment {
 	public static TechSpecsFragment newInstance() {
 		TechSpecsFragment fragment = new TechSpecsFragment();
 		
-//		Bundle args = new Bundle();
-////		setData(Constants.KeyData.LIST_ATTRIBUTES, attributes, Constants.KeyData.TYPE_LIST_MODEL, args);
-//		args.putSerializable(Constants.KeyData.LIST_ATTRIBUTES, attributes);
-//	    fragment.setArguments(args);
 		return fragment;
 	}
-
-//	public void setAttributes(ArrayList<Attributes> attributes) {
-//		mAttributes = attributes;
-//	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,9 +40,6 @@ public class TechSpecsFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-//		if(getArguments() != null){
-//		mAttributes = (ArrayList<Attributes>) getArguments().getSerializable(Constants.KeyData.LIST_ATTRIBUTES);
-//		}
 		
 		LinearLayout ll_techSpecs = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));

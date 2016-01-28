@@ -12,9 +12,6 @@ import android.widget.ImageView;
 
 import com.simicart.core.checkout.entity.PaymentMethod;
 import com.simicart.core.config.Rconfig;
-import com.simicart.core.customer.fragment.AddressBookDetailFragment;
-import com.simicart.core.setting.fragment.SettingAppFragment;
-import com.simicart.plugins.locator.fragment.StoreLocatorFragment;
 
 public class CreditCardAdapter extends AbstractWheelTextAdapter {
 	// Countries names

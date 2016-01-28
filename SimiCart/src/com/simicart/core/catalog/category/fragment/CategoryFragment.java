@@ -35,9 +35,6 @@ public class CategoryFragment extends SimiFragment {
 		return fragment;
 	}
 
-	public CategoryFragment() {
-	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

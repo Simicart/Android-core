@@ -449,7 +449,9 @@ public class Constants {
 		public static final String LIST_FILTER_STATE = "list_filter_state";
 		public static final String LIST_FILTER_ENTITY  = "list_filter_entity";
 		public static final String LIST_ATTRIBUTES = "list_attributes";
+		public static final String LIST_SHIPPINGMETHOD = "list_shippingmethod";
 		public static final String LIST_COUNTRY = "list_country";
+		public static final String LIST_YOUTUBE = "list_youtube";
 		public static final String CUSTOMER_REVIEW = "Customer_review";
 		public static final String CHECK_METHOD = "check_method";
 		public static final String CONTENT = "content";
@@ -482,13 +484,18 @@ public class Constants {
 		public static final String CITY = "city";
 		public static final String STATE = "state";
 		public static final String ZIPCODE = "zipcode";
-		public static final String  PASSBOOK_FOREGROUND= "passbook_foreground";
-		public static final String  PASSBOOK_BARCODE= "passbook_barcode";
 		public static final String  BACKGROUND= "background";
 		public static final String  NAMEAPP= "nameapp";
-		public static final String  LOYALTY_REDEEM= "loyalty_redeem";
 		public static final String  PASSBOOKLOGO= "passBookLogo";
 		public static final String I_CLOSESLIDEMENUDELEGATE = "CloseSlideMenuDelegate";
+		public static final String PASSBOOK_LOGO="passbook_logo";
+		public static final String LOYALTY_REDEEM="loyalty_redeem";
+		public static final String PASSBOOK_TEXT="passbook_text";
+		public static final String PASSBOOK_BACKGROUND="passbook_background";
+		public static final String PASSBOOK_FOREGROUND="passbook_foreground";
+		public static final String PASSBOOK_BARCODE="passbook_barcode";
+		public static final String EXPIRE_NOTIFICATION="expire_notification";
+		public static final String IS_NOTIFICATION="is_notification";
 		
 		public static final String TYPE_STRING ="type_string";
 		public static final String TYPE_INT = "type_int";

@@ -78,7 +78,7 @@ public class WishList {
 			if (DataLocal.isTablet) {
 				fragment = MyWishListFragmentTablet.newInstance();
 			} else {
-				fragment = new MyWishListFragment();
+				fragment =  MyWishListFragment.newInstance();
 			}
 			mSlideMenuData.getPluginFragment().put(mItemNavigation.getName(),
 					fragment.getClass().getName());
@@ -243,7 +243,7 @@ public class WishList {
 					if (DataLocal.isTablet) {
 						fragment = MyWishListFragmentTablet.newInstance();
 					} else {
-						fragment = new MyWishListFragment();
+						fragment = MyWishListFragment.newInstance();
 					}
 					SimiManager.getIntance().replaceFragment(fragment);
 				} else {

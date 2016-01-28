@@ -68,16 +68,16 @@ public class ButtonRectangle extends Button {
 		} else {
 			value = attrs.getAttributeValue(ANDROIDXML, "paddingLeft");
 			paddingLeft = (value == null) ? paddingLeft : (int) Float
-					.parseFloat(value.replace("dip", ""));
+					.parseFloat(value.replace("dp", ""));
 			value = attrs.getAttributeValue(ANDROIDXML, "paddingTop");
 			paddingTop = (value == null) ? paddingTop : (int) Float
-					.parseFloat(value.replace("dip", ""));
+					.parseFloat(value.replace("dp", ""));
 			value = attrs.getAttributeValue(ANDROIDXML, "paddingRight");
 			paddingRight = (value == null) ? paddingRight : (int) Float
-					.parseFloat(value.replace("dip", ""));
+					.parseFloat(value.replace("dp", ""));
 			value = attrs.getAttributeValue(ANDROIDXML, "paddingBottom");
 			paddingBottom = (value == null) ? paddingBottom : (int) Float
-					.parseFloat(value.replace("dip", ""));
+					.parseFloat(value.replace("dp", ""));
 		}
 
 		// Set text button

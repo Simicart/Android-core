@@ -4,12 +4,10 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.internal.ar;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.block.CustomerReviewBlock;
@@ -33,18 +31,6 @@ public class CustomerReviewFragment extends SimiFragment {
 		
 		return fragment;
 	}
-
-//	public void setRatingStar(ArrayList<Integer> stars) {
-//		mRatingStar = stars;
-//	}
-//
-//	public void setProductID(String id) {
-//		mID = id;
-//	}
-//	
-//	public void setProduct(Product mProduct) {
-//		this.mProduct = mProduct;
-//	}
 
 	@SuppressWarnings("unchecked")
 	@Override

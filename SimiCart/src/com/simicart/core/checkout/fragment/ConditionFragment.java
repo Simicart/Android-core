@@ -19,10 +19,6 @@ import com.simicart.core.config.Rconfig;
 public class ConditionFragment extends SimiFragment {
 	protected String mContent;
 
-//	public void setContent(String content) {
-//		mContent = content;
-//	}
-
 	public static ConditionFragment newInstance(String content) {
 		ConditionFragment fragment = new ConditionFragment();
 		Bundle bundle= new Bundle();

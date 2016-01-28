@@ -35,13 +35,11 @@ public class EditAddressExpresscontroller extends AddressBookDetailController {
 				MyAddress addressBookDetail = mDelegate.getAddressBookDetail();
 				if (isCompleteRequired(addressBookDetail)) {
 					if (addressType == FragmentEditAddressExpress.BILLING) {
-						FragmentAddress fragmentAddress = new FragmentAddress(
-								addressbookTemp, addressBookDetail);
+						FragmentAddress fragmentAddress = FragmentAddress.newInstance(addressbookTemp, addressBookDetail);
 						SimiManager.getIntance().replaceFragment(
 								fragmentAddress);
 					} else {
-						FragmentAddress fragmentAddress = new FragmentAddress(
-								addressBookDetail, addressbookTemp);
+						FragmentAddress fragmentAddress = FragmentAddress.newInstance(addressBookDetail, addressbookTemp);
 						SimiManager.getIntance().replaceFragment(
 								fragmentAddress);
 					}

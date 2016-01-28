@@ -37,11 +37,6 @@ public class OptionFragment extends SimiFragment {
 		mRootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_option_detail_layout"),
 				container, false);
-		// final Context context = getActivity();
-
-		// frameLayout = (FrameLayout) mRootView.findViewById(Rconfig
-		// .getInstance().id("container_fragment"));
-		// frameLayout.addView(this.view);
 		RelativeLayout relativeLayout = (RelativeLayout) mRootView
 				.findViewById(Rconfig.getInstance().id("rlt_core_option"));
 		relativeLayout.setOnClickListener(new OnClickListener() {
@@ -79,14 +74,6 @@ public class OptionFragment extends SimiFragment {
 			}
 		});
 
-		// tv_done.setOnClickListener(new OnClickListener() {
-		//
-		// @Override
-		// public void onClick(View v) {
-		// SimiManager.getIntance().backPreviousFragment();
-		//
-		// }
-		// });
 		tv_done.setOnClickListener(listener);
 
 		return mRootView;

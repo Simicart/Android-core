@@ -32,21 +32,9 @@ public class CountryFragment extends SimiFragment {
 		return fragment;
 	}
 
-//	public void setFragmentType(boolean value) {
-//		isCheckout = value;
-//	}
-//
-//	public void setList_country(ArrayList<String> list_country) {
-//		this.mListCountry = list_country;
-//	}
-
 	public void setChooseDelegate(ChooseCountryDelegate chooseDelegate) {
 		this.chooseDelegate = chooseDelegate;
 	}
-
-//	public void setType(int type) {
-//		this.type = type;
-//	}
 
 	@SuppressWarnings("unchecked")
 	@Override

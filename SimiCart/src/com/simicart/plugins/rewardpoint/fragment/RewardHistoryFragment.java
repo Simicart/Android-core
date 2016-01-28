@@ -23,7 +23,7 @@ import com.simicart.plugins.rewardpoint.adapter.AdapterListviewHistory;
 import com.simicart.plugins.rewardpoint.entity.ItemHistory;
 import com.simicart.plugins.rewardpoint.model.ModelRewardHistory;
 
-public class FragmentRewardHistory extends SimiFragment {
+public class RewardHistoryFragment extends SimiFragment {
 
 	private ModelRewardHistory mModel;
 	private JSONObject jsonObject = new JSONObject();
@@ -35,10 +35,6 @@ public class FragmentRewardHistory extends SimiFragment {
 	protected ProgressDialog pd_loading;
 	private View view;
 	
-
-	public FragmentRewardHistory() {
-	}
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

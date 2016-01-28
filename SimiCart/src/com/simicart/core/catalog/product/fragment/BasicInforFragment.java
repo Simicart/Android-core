@@ -2,7 +2,6 @@ package com.simicart.core.catalog.product.fragment;
 
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -30,16 +28,8 @@ public class BasicInforFragment extends SimiFragment {
 	public static BasicInforFragment newInstance() {
 		BasicInforFragment fragment = new BasicInforFragment();
 		
-//		Bundle args = new Bundle();
-////	    setData(Constants.KeyData.PRODUCT, product, Constants.KeyData.TYPE_MODEL, args);
-//		args.putSerializable(Constants.KeyData.PRODUCT, product);
-//	    fragment.setArguments(args);
 		return fragment;
 	}
-//
-//	public void setProduct(Product product) {
-//		mProduct = product;
-//	}
 
 	public Product getProduct() {
 		return mProduct;
@@ -51,10 +41,6 @@ public class BasicInforFragment extends SimiFragment {
 		rootView = inflater.inflate(
 				Rconfig.getInstance().layout(
 						"core_information_basic_inf_layout"), container, false);
-//		if(getArguments() != null){
-//		mProduct = (Product) getArguments().getSerializable(Constants.KeyData.PRODUCT);
-//		Log.d("quangdd","mProduct"+mProduct.toString());
-//		}
 		
 		TextView tv_Name = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_Name"));

@@ -4,19 +4,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical" >
+<!--     <LinearLayout -->
+<!--         android:id="@+id/progressBar" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="match_parent" -->
+<!--         android:gravity="center" -->
+<!--         android:orientation="vertical" > -->
 
-        <ProgressBar
-            android:id="@+id/progressBar1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/progressbar_indeterminate" />
-    </LinearLayout>
+<!--         <ProgressBar -->
+<!--             android:id="@+id/progressBar1" -->
+<!--             android:layout_width="wrap_content" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:indeterminateDrawable="@drawable/progressbar_indeterminate" /> -->
+<!--     </LinearLayout> -->
 
     <ScrollView
         android:id="@+id/scrollView1"

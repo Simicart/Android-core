@@ -41,7 +41,7 @@ import com.simicart.core.event.activity.EventActivity;
 import com.simicart.core.event.base.UtilsEvent;
 import com.simicart.core.event.block.EventBlock;
 import com.simicart.core.event.controller.EventController;
-import com.simicart.core.menutop.fragment.FragmentMenuTop;
+import com.simicart.core.menutop.fragment.MenuTopFragment;
 import com.simicart.core.notification.NotificationActivity;
 import com.simicart.core.notification.common.CommonUtilities;
 import com.simicart.core.notification.controller.NotificationController;
@@ -122,7 +122,7 @@ public class MainActivity extends FragmentActivity {
 		recieveNotification();
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		FragmentMenuTop fragment = FragmentMenuTop
+		MenuTopFragment fragment = MenuTopFragment
 				.newInstance(mNavigationDrawerFragment);
 		ft.replace(Rconfig.getInstance().id("menu_top"), fragment);
 		ft.commit();

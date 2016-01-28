@@ -20,14 +20,6 @@ public class OrderHistoryDetailFragment extends SimiFragment {
 	protected OrderHistoryDetailBlock mBlock;
 	protected OrderHistoryDetailController mController;
 
-	// public void setID(String id) {
-	// mID = id;
-	// }
-
-	// public static OrderHistoryDetailFragment newInstance() {
-	// OrderHistoryDetailFragment fragment = new OrderHistoryDetailFragment();
-	// return fragment;
-	// }
 	public static OrderHistoryDetailFragment newInstance(int targer, String id) {
 		OrderHistoryDetailFragment fragment = new OrderHistoryDetailFragment();
 		if (targer != 0) {

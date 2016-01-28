@@ -116,9 +116,14 @@
         android:id="@+id/rel_other_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:paddingLeft="5dp"
         android:paddingRight="3dp"
          >
+=======
+        android:paddingLeft="@dimen/size_5"
+        android:paddingRight="@dimen/size_3" >
+>>>>>>> origin/quang
 
         <com.simicart.core.material.ButtonRectangle
             android:id="@+id/bt_signIn"

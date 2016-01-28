@@ -32,10 +32,6 @@ public class ShippingMethodFragment extends SimiFragment {
 		mSeletecdDelegate = delegate;
 	}
 
-	public void setListShipping(ArrayList<ShippingMethod> shippingMethods) {
-		mListShipping = shippingMethods;
-	}
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

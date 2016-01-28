@@ -20,10 +20,6 @@ public class AddressBookDetailFragment extends SimiFragment {
 	protected AddressBookDetailBlock mBlock;
 	protected AddressBookDetailController mController;
 
-//	public void setAddressbook(MyAddress addressbook) {
-//		this.addressbook = addressbook;
-//	}
-	
 	public MyAddress getAddressbook() {
 		return addressbook;
 	}
@@ -31,7 +27,6 @@ public class AddressBookDetailFragment extends SimiFragment {
 	public static AddressBookDetailFragment newInstance(MyAddress addressbook) {
 		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
 		Bundle bundle= new Bundle();
-//		setData(Constants.KeyData.BOOK_ADDRESS, addressbook, Constants.KeyData.TYPE_MODEL, bundle);
 		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
 		fragment.setArguments(bundle);
 		return fragment;

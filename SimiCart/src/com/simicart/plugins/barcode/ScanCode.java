@@ -11,10 +11,8 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 
 import com.simicart.MainActivity;
-import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.model.SimiModel;
 import com.simicart.core.catalog.product.fragment.ProductDetailParentFragment;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;

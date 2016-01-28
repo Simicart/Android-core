@@ -33,30 +33,12 @@ public class FilterFragment extends SimiFragment {
 		 Bundle bundle = new Bundle();
 		 setData(Constants.KeyData.TAG, tag, Constants.KeyData.TYPE_STRING, bundle);
 		 setData(Constants.KeyData.NAME, name, Constants.KeyData.TYPE_STRING, bundle);
-//		 setData(Constants.KeyData.LIST_FILTER_STATE, states, Constants.KeyData.TYPE_LIST_MODEL, bundle);
 		 bundle.putSerializable(Constants.KeyData.LIST_FILTER_STATE, states);
-//		 setData(Constants.KeyData.LIST_FILTER_ENTITY, filterEntity, Constants.KeyData.TYPE_LIST_MODEL, bundle);
 		 bundle.putSerializable(Constants.KeyData.LIST_FILTER_ENTITY, filterEntity);
 		    fragment.setArguments(bundle);
 		return fragment;
 	}
 
-//	public void setTag_search(String tag_search) {
-//		this.tag_search = tag_search;
-//	}
-//
-//	public void setCatName(String catName) {
-//		this.catName = catName;
-//	}
-//
-//	public void setState(ArrayList<FilterState> states) {
-//		mStates = states;
-//	}
-//
-//
-//	public void setFilterEntity(ArrayList<FilterEntity> filterEntity) {
-//		mFilterEntity = filterEntity;
-//	}
 	public void setDelegate(FilterRequestDelegate delegate) {
 		if(delegate != null)
 		mDelegate = delegate;

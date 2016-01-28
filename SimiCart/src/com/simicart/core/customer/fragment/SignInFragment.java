@@ -41,19 +41,6 @@ public class SignInFragment extends SimiFragment {
 		return fragment;
 	}
 
-	//
-//	public void setCheckout(boolean isCheckout) {
-//		this.isCheckout = isCheckout;
-//	}
-//
-//	public void setEmail(String mEmail) {
-//		this.mEmail = mEmail;
-//	}
-//
-//	public void setPassword(String mPassword) {
-//		this.mPassword = mPassword;
-//	}
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,13 +49,15 @@ public class SignInFragment extends SimiFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(
-				Rconfig.getInstance().layout("core_sign_in_layout"), container,
-				false);
+		View view = null;
 		if (DataLocal.isLanguageRTL) {
 			view = inflater.inflate(
 					Rconfig.getInstance().layout("rtl_core_sign_in_layout"),
 					container, false);
+		}else {
+			view = inflater.inflate(
+					Rconfig.getInstance().layout("core_sign_in_layout"), container,
+					false);
 		}
 		Context context = getActivity();
 		

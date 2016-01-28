@@ -21,14 +21,8 @@ public class PhoneSlideMenuFragment extends SimiFragment {
 	protected PhoneSlideMenuBlock mBlock;
 	protected CloseSlideMenuDelegate mCloseDelegate;
 
-//	public void setCloseDelegate(CloseSlideMenuDelegate delegate) {
-//		mCloseDelegate = delegate;
-//	}
 	public static PhoneSlideMenuFragment newInstance (CloseSlideMenuDelegate closeDelegate){
 		PhoneSlideMenuFragment fragment = new PhoneSlideMenuFragment();
-//		Bundle bundle = new Bundle();
-//		bundle.putSerializable(Constants.KeyData.I_CLOSESLIDEMENUDELEGATE, closeDelegate);
-//		fragment.setArguments(bundle);
 		fragment.mCloseDelegate = closeDelegate;
 		return fragment;
 	}
@@ -41,7 +35,6 @@ public class PhoneSlideMenuFragment extends SimiFragment {
 		view.setBackgroundColor(Config.getInstance().getMenu_background());
 		Context context = getActivity();
 		
-//		mCloseDelegate = (CloseSlideMenuDelegate) getArguments().getSerializable(Constants.KeyData.I_CLOSESLIDEMENUDELEGATE);
 		mBlock = new PhoneSlideMenuBlock(view, context);
 		mBlock.initView();
 		mController = new PhoneSlideMenuController(mBlock, context);
