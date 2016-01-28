@@ -191,18 +191,18 @@ public class CartListAdapter extends BaseAdapter {
 				// if (option.getOption_price().equals("0")
 				// || option.getOption_price().equals("")
 				// || option.getOption_price() == null) {
-				if (i > 1) {
-					if (i == 2) {
-						html += "........";
-					}
-				} else {
+//				if (i > 1) {
+//					if (i == 3) {
+//						html += "........";
+//					}
+//				} else {
 					html += "<b>";
 					html += option.getOption_title();
 					html += "</b>";
 					html += "<br/>";
 					html += option.getOption_value();
 					html += "<br/>";
-				}
+//				}
 				// } else {
 				// String option_price = option.getOption_price();
 				// if (i > 1) {

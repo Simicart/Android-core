@@ -97,8 +97,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginBottom="@dimen/size_10"
-                    android:layout_marginTop="@dimen/size_10"
+                    android:layout_marginBottom="-10dp"
+                    android:layout_marginTop="-10dp"
                     android:layout_toLeftOf="@+id/rlt_im_extend"
                     android:layout_toRightOf="@+id/tv_gender"
                     android:background="@null" />
@@ -139,7 +139,7 @@
                 <EditText
                     android:id="@+id/et_current_pass"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_5"
+                    android:layout_height="@dimen/size_25"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/im_show_current_pass"
                     android:background="#00000000"
@@ -166,7 +166,7 @@
                 <EditText
                     android:id="@+id/et_new_pass"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_5"
+                    android:layout_height="@dimen/size_25"
                     android:layout_toLeftOf="@+id/im_show_new_pass"
                     android:background="#00000000"
                     android:ems="20"
@@ -192,7 +192,7 @@
                 <EditText
                     android:id="@+id/et_confirm_pass"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_5"
+                    android:layout_height="@dimen/size_25"
                     android:layout_toLeftOf="@+id/im_show_confirm_pass"
                     android:background="#00000000"
                     android:ems="20"

@@ -72,7 +72,6 @@ public class CartListenerController implements CartAdapterDelegate {
 				if (DataLocal.isSignInComplete()) {
 					AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
 							.newInstance(0, AddressBookCheckoutFragment.ALL_ADDRESS, null, null);
-//					fragment.setAddressFor(AddressBookCheckoutFragment.ALL_ADDRESS);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {

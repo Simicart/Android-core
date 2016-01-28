@@ -108,6 +108,7 @@ public class AddressBookController extends SimiController {
 	@Override
 	public void onResume() {
 		if(ConfigCheckout.getInstance().getStatusAddressBook() == true){
+			if(mModel != null)
 			mDelegate.updateView(mModel.getCollection());
 		}else{
 			mDelegate.updateView(ConfigCheckout.getInstance().getCollectionAddressBook());

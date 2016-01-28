@@ -387,22 +387,6 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 								}
 								ReviewOrderFragment fragment = ReviewOrderFragment
 										.newInstance(0, shippingAdd, billingAdd);
-//								switch (addressFor) {
-//								case AddressBookCheckoutFragment.ALL_ADDRESS:
-//									billingAdd = newAddress;
-//									shippingAdd  = newAddress;
-//									break;
-//								case AddressBookCheckoutFragment.BILLING_ADDRESS:
-//									billingAdd = newAddress;
-//									shippingAdd = mShippingAddress;
-//									break;
-//								case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
-//									billingAdd = mBillingAddress;
-//									shippingAdd = newAddress;
-//									break;
-//								default:
-//									break;
-//								}
 								SimiManager.getIntance().replacePopupFragment(
 										fragment);
 							} else {
@@ -410,8 +394,6 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 								shippingAdd = newAddress;
 								ReviewOrderFragment fragment = ReviewOrderFragment
 										.newInstance(0 , shippingAdd, billingAdd);
-//								fragment.setBilingAddress(newAddress);
-//								fragment.setShippingAddress(newAddress);
 								SimiManager.getIntance().replacePopupFragment(
 										fragment);
 							}
@@ -564,8 +546,6 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 			ArrayList<String> list_country) {
 		CountryFragment fragment = CountryFragment.newInstance(type, list_country);
 		fragment.setChooseDelegate(this);
-//		fragment.setList_country(list_country);
-//		fragment.setType(type);
 		SimiManager.getIntance().replacePopupFragment(fragment);
 	}
 
