@@ -69,7 +69,9 @@ public final class SendButton extends ShareButtonBase {
     protected FacebookDialogBase<ShareContent, Sharer.Result> getDialog() {
         final MessageDialog dialog;
         if (SendButton.this.getFragment() != null) {
-            dialog = new MessageDialog(SendButton.this.getFragment() , getRequestCode());
+            dialog = new MessageDialog(SendButton.this.getFragment(), getRequestCode());
+        } else if (SendButton.this.getNativeFragment() != null) {
+            dialog = new MessageDialog(SendButton.this.getNativeFragment(), getRequestCode());
         } else {
             dialog = new MessageDialog(getActivity(), getRequestCode());
         }

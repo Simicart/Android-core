@@ -25,8 +25,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -38,6 +38,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.internal.CallbackManagerImpl;
+import com.facebook.internal.FragmentWrapper;
 import com.facebook.internal.Validate;
 import com.facebook.appevents.AppEventsConstants;
 
@@ -103,7 +104,29 @@ public class LoginManager {
      * @param fragment The fragment which is starting the login process.
      * @param response The response that has the error.
      */
-    public void resolveError(final Fragment fragment, final GraphResponse response) {
+    public void resolveError(Fragment fragment, final GraphResponse response) {
+        this.resolveError(new FragmentWrapper(fragment), response);
+    }
+
+    /**
+     * Starts the login process to resolve the error defined in the response. The registered login
+     * callbacks will be called on completion.
+     *
+     * @param fragment The android.app.Fragment which is starting the login process.
+     * @param response The response that has the error.
+     */
+    public void resolveError(final android.app.Fragment fragment, final GraphResponse response) {
+        this.resolveError(new FragmentWrapper(fragment), response);
+    }
+
+    /**
+     * Starts the login process to resolve the error defined in the response. The registered login
+     * callbacks will be called on completion.
+     *
+     * @param fragment The fragment which is starting the login process.
+     * @param response The response that has the error.
+     */
+    private void resolveError(final FragmentWrapper fragment, final GraphResponse response) {
         startLogin(
                 new FragmentStartActivityDelegate(fragment),
                 createLoginRequestFromResponse(response)
@@ -241,10 +264,34 @@ public class LoginManager {
 
     /**
      * Logs the user in with the requested read permissions.
+     * @param fragment    The android.support.v4.app.Fragment which is starting the login process.
+     * @param permissions The requested permissions.
+     */
+    public void logInWithReadPermissions(
+            Fragment fragment,
+            Collection<String> permissions) {
+        logInWithReadPermissions(new FragmentWrapper(fragment), permissions);
+    }
+
+    /**
+     * Logs the user in with the requested read permissions.
+     * @param fragment    The android.app.Fragment which is starting the login process.
+     * @param permissions The requested permissions.
+     */
+    public void logInWithReadPermissions(
+            android.app.Fragment fragment,
+            Collection<String> permissions) {
+        logInWithReadPermissions(new FragmentWrapper(fragment), permissions);
+    }
+
+    /**
+     * Logs the user in with the requested read permissions.
      * @param fragment    The fragment which is starting the login process.
      * @param permissions The requested permissions.
      */
-    public void logInWithReadPermissions(Fragment fragment, Collection<String> permissions) {
+    private void logInWithReadPermissions(
+            FragmentWrapper fragment,
+            Collection<String> permissions) {
         validateReadPermissions(permissions);
 
         LoginClient.Request loginRequest = createLoginRequest(permissions);
@@ -265,10 +312,34 @@ public class LoginManager {
 
     /**
      * Logs the user in with the requested publish permissions.
+     * @param fragment    The android.support.v4.app.Fragment which is starting the login process.
+     * @param permissions The requested permissions.
+     */
+    public void logInWithPublishPermissions(
+            Fragment fragment,
+            Collection<String> permissions) {
+        logInWithPublishPermissions(new FragmentWrapper(fragment), permissions);
+    }
+
+    /**
+     * Logs the user in with the requested publish permissions.
+     * @param fragment    The android.app.Fragment which is starting the login process.
+     * @param permissions The requested permissions.
+     */
+    public void logInWithPublishPermissions(
+            android.app.Fragment fragment,
+            Collection<String> permissions) {
+        logInWithPublishPermissions(new FragmentWrapper(fragment), permissions);
+    }
+
+    /**
+     * Logs the user in with the requested publish permissions.
      * @param fragment    The fragment which is starting the login process.
      * @param permissions The requested permissions.
      */
-    public void logInWithPublishPermissions(Fragment fragment, Collection<String> permissions) {
+    private void logInWithPublishPermissions(
+            FragmentWrapper fragment,
+            Collection<String> permissions) {
         validatePublishPermissions(permissions);
 
         LoginClient.Request loginRequest = createLoginRequest(permissions);
@@ -532,9 +603,9 @@ public class LoginManager {
     }
 
     private static class FragmentStartActivityDelegate implements StartActivityDelegate {
-        private final Fragment fragment;
+        private final FragmentWrapper fragment;
 
-        FragmentStartActivityDelegate(final Fragment fragment) {
+        FragmentStartActivityDelegate(final FragmentWrapper fragment) {
             Validate.notNull(fragment, "fragment");
             this.fragment = fragment;
         }

@@ -62,8 +62,10 @@ public class DialogPresenter {
         appCall.setPending();
     }
 
-    public static void present(AppCall appCall, Fragment fragment) {
-        fragment.startActivityForResult(appCall.getRequestIntent(), appCall.getRequestCode());
+    public static void present(AppCall appCall, FragmentWrapper fragmentWrapper) {
+        fragmentWrapper.startActivityForResult(
+                appCall.getRequestIntent(),
+                appCall.getRequestCode());
 
         appCall.setPending();
     }

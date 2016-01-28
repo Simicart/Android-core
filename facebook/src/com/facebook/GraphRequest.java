@@ -604,6 +604,12 @@ public class GraphRequest {
         Bundle parameters = new Bundle();
 
         if (accessToken == null) {
+            if (attributionIdentifiers == null) {
+                throw new FacebookException(
+                        "There is no access token and attribution identifiers could not be " +
+                                "retrieved");
+            }
+
             // Only use the attributionID if we don't have an access token.  If we do, then the user
             // token will be used to identify the user, and is more reliable than the attributionID.
             String udid = attributionIdentifiers.getAttributionId() != null
@@ -617,7 +623,7 @@ public class GraphRequest {
         // Server will choose to not provide the App User ID in the event that event usage has been
         // limited for this user for this app.
         if (FacebookSdk.getLimitEventAndDataUsage(context)
-                || attributionIdentifiers.isTrackingLimited()) {
+                || (attributionIdentifiers != null && attributionIdentifiers.isTrackingLimited())) {
             parameters.putString("limit_event_usage", "1");
         }
 
@@ -1055,14 +1061,14 @@ public class GraphRequest {
             throw new FacebookException("could not construct URL for request", e);
         }
 
-        HttpURLConnection connection;
+        HttpURLConnection connection = null;
         try {
             connection = createConnection(url);
 
             serializeToUrlConnection(requests, connection);
-        } catch (IOException e) {
-            throw new FacebookException("could not construct request body", e);
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
+            Utility.disconnectQuietly(connection);
+
             throw new FacebookException("could not construct request body", e);
         }
 
@@ -1144,18 +1150,23 @@ public class GraphRequest {
 
         HttpURLConnection connection = null;
         try {
-            connection = toHttpConnection(requests);
-        } catch (Exception ex) {
-            List<GraphResponse> responses = GraphResponse.constructErrorResponses(
-                    requests.getRequests(),
-                    null,
-                    new FacebookException(ex));
-            runCallbacks(requests, responses);
-            return responses;
-        }
+            try {
+                connection = toHttpConnection(requests);
+            } catch (Exception ex) {
+                List<GraphResponse> responses = GraphResponse.constructErrorResponses(
+                        requests.getRequests(),
+                        null,
+                        new FacebookException(ex));
+                runCallbacks(requests, responses);
+                return responses;
+            }
 
-        List<GraphResponse> responses = executeConnectionAndWait(connection, requests);
-        return responses;
+            List<GraphResponse> responses = executeConnectionAndWait(connection, requests);
+
+            return responses;
+        } finally {
+            Utility.disconnectQuietly(connection);
+        }
     }
 
     /**
@@ -1308,7 +1319,7 @@ public class GraphRequest {
      * @param callbackHandler a Handler that will be used to post calls to the callback for each
      *                        request; if null, a Handler will be instantiated on the calling
      *                        thread
-     * @param connection      the HttpURLConnection that the requests were serialized into
+     * @param connection the HttpURLConnection that the requests were serialized into
      * @param requests        the requests represented by the HttpURLConnection
      * @return a RequestAsyncTask that is executing the request
      */
@@ -1422,6 +1433,7 @@ public class GraphRequest {
         }
         this.parameters.putString(SDK_PARAM, SDK_ANDROID);
         this.parameters.putString(FORMAT_PARAM, FORMAT_JSON);
+        this.parameters.putString("locale", Locale.getDefault().toString());
 
         if (FacebookSdk.isLoggingBehaviorEnabled(LoggingBehavior.GRAPH_API_DEBUG_INFO)) {
             this.parameters.putString(DEBUG_PARAM, DEBUG_SEVERITY_INFO);

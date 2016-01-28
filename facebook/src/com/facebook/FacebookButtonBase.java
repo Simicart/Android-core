@@ -20,6 +20,7 @@
 
 package com.facebook;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -29,6 +30,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -39,6 +41,7 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.R;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.internal.FragmentWrapper;
 
 /**
  * A base class for a facebook button.
@@ -51,7 +54,7 @@ public abstract class FacebookButtonBase extends Button {
     private boolean overrideCompoundPadding;
     private int overrideCompoundPaddingLeft;
     private int overrideCompoundPaddingRight;
-    private Fragment parentFragment;
+    private FragmentWrapper parentFragment;
 
     protected FacebookButtonBase(
             final Context context,
@@ -66,6 +69,8 @@ public abstract class FacebookButtonBase extends Button {
         configureButton(context, attrs, defStyleAttr, defStyleRes);
         this.analyticsButtonCreatedEventName = analyticsButtonCreatedEventName;
         this.analyticsButtonTappedEventName = analyticsButtonTappedEventName;
+        setClickable(true);
+        setFocusable(true);
     }
 
     protected abstract int getDefaultRequestCode();
@@ -76,18 +81,38 @@ public abstract class FacebookButtonBase extends Button {
      * {@link Fragment#onActivityResult(int, int, android.content.Intent) onActivityResult}
      * call rather than the Activity.
      *
-     * @param fragment the fragment that contains this control
+     * @param fragment the android.support.v4.app.Fragment that contains this control
      */
     public void setFragment(final Fragment fragment) {
-        parentFragment = fragment;
+        parentFragment = new FragmentWrapper(fragment);
+    }
+
+    /**
+     * Sets the fragment that contains this control. This allows the button to be embedded inside a
+     * Fragment, and will allow the fragment to receive the
+     * {@link Fragment#onActivityResult(int, int, android.content.Intent) onActivityResult}
+     * call rather than the Activity.
+     *
+     * @param fragment the android.app.Fragment that contains this control
+     */
+    public void setFragment(final android.app.Fragment fragment) {
+        parentFragment = new FragmentWrapper(fragment);
     }
 
     /**
      * Gets the fragment that contains this control.
-     * @return The fragment that contains this control.
+     * @return The android.support.v4.app.Fragment that contains this control.
      */
     public Fragment getFragment() {
-        return parentFragment;
+        return (parentFragment != null) ? parentFragment.getSupportFragment() : null;
+    }
+
+    /**
+     * Gets the fragment that contains this control.
+     * @return The android.app.Fragment that contains this control.
+     */
+    public android.app.Fragment getNativeFragment() {
+        return (parentFragment != null) ? parentFragment.getNativeFragment() : null;
     }
 
     @Override
@@ -234,13 +259,15 @@ public abstract class FacebookButtonBase extends Button {
                 }
             } else {
                 // fallback, if no background specified, fill with Facebook blue
-                setBackgroundColor(a.getColor(0, R.color.com_facebook_blue));
+//                setBackgroundColor(ContextCompat.getColor(context, R.color.com_facebook_blue));
+                setBackgroundColor(R.color.com_facebook_blue);
             }
         } finally {
             a.recycle();
         }
     }
 
+    @SuppressLint("ResourceType")
     private void parseCompoundDrawableAttributes(
             final Context context,
             final AttributeSet attrs,
@@ -312,7 +339,7 @@ public abstract class FacebookButtonBase extends Button {
                 defStyleAttr,
                 defStyleRes);
         try {
-            setTextColor(colorAttrs.getColor(0, Color.WHITE));
+            setTextColor(colorAttrs.getColorStateList(0));
         } finally {
             colorAttrs.recycle();
         }

@@ -206,6 +206,12 @@ public class LoginButton extends FacebookButtonBase {
                 AnalyticsEvents.EVENT_LOGIN_BUTTON_DID_TAP);
     }
 
+    public void setLoginText(String loginText) {
+		this.loginText = loginText;
+	}
+    public void setLogoutText(String logoutText) {
+		this.logoutText = logoutText;
+	}
     /**
      * Create the LoginButton by inflating from XML and applying a style.
      *
@@ -538,14 +544,6 @@ public class LoginButton extends FacebookButtonBase {
     void setProperties(LoginButtonProperties properties) {
         this.properties = properties;
     }
-    
-    public void setLoginText(String loginText) {
-		this.loginText = loginText;
-	}
-    
-    public void setLogoutText(String logoutText) {
-		this.logoutText = logoutText;
-	}
 
     @Override
     protected void configureButton(
@@ -731,6 +729,10 @@ public class LoginButton extends FacebookButtonBase {
                         loginManager.logInWithPublishPermissions(
                                 LoginButton.this.getFragment(),
                                 properties.permissions);
+                    } else if (LoginButton.this.getNativeFragment() != null) {
+                        loginManager.logInWithPublishPermissions(
+                                LoginButton.this.getNativeFragment(),
+                                properties.permissions);
                     } else {
                         loginManager.logInWithPublishPermissions(
                                 LoginButton.this.getActivity(),
@@ -740,6 +742,10 @@ public class LoginButton extends FacebookButtonBase {
                     if (LoginButton.this.getFragment() != null) {
                         loginManager.logInWithReadPermissions(
                                 LoginButton.this.getFragment(),
+                                properties.permissions);
+                    } else if (LoginButton.this.getNativeFragment() != null) {
+                        loginManager.logInWithReadPermissions(
+                                LoginButton.this.getNativeFragment(),
                                 properties.permissions);
                     } else {
                         loginManager.logInWithReadPermissions(
