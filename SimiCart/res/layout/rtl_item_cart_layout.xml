@@ -6,8 +6,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_10"
-        android:paddingBottom="@dimen/size_15" >
+        android:layout_marginTop="10dp"
+        android:paddingBottom="15dp" >
 
         <RelativeLayout
             android:id="@+id/item_cart_ll_image"
@@ -25,11 +25,11 @@
                 android:visibility="gone" />
 
             <RelativeLayout
-                android:layout_width="@dimen/size_100"
-                android:layout_height="@dimen/size_100"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/size_10"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/core_home_border_relative" >
 
                 <ImageView
@@ -48,7 +48,7 @@
                         android:id="@+id/ll_stock"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_70"
+                        android:layout_marginTop="70dp"
                         android:orientation="vertical" >
 
                         <TextView
@@ -57,7 +57,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
                             android:textColor="#ffffff"
-                            android:textSize="@dimen/text_12" />
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
@@ -67,9 +67,9 @@
             android:id="@+id/rl_item_cart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/size_5"
+            android:layout_marginLeft="5dp"
             android:layout_toLeftOf="@+id/item_cart_ll_image"
-            android:paddingBottom="@dimen/size_25" >
+            android:paddingBottom="25dp" >
 
             <LinearLayout
                 android:id="@+id/ll_item_cart"
@@ -77,22 +77,22 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/rl_item_cart_del"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/size_5"
-                android:paddingRight="@dimen/size_5" >
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" >
 
                 <TextView
                     android:id="@+id/item_cart_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
-                    android:textSize="@dimen/text_16" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/item_cart_option"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right|center_vertical"
-                    android:textSize="@dimen/text_13"
+                    android:textSize="13sp"
                     android:textStyle="italic" />
 
                 <TextView
@@ -101,23 +101,23 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical|right"
                     android:textColor="#7B7C77"
-                    android:textSize="@dimen/text_14" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_item_cart_del"
-                android:layout_width="@dimen/size_15"
-                android:layout_height="@dimen/size_15"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginLeft="@dimen/size_10"
-                android:layout_marginRight="@dimen/size_10"
-                android:layout_marginTop="@dimen/size_5" >
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp" >
 
                 <ImageView
                     android:id="@+id/item_cart_del"
-                    android:layout_width="@dimen/size_15"
-                    android:layout_height="@dimen/size_15"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@drawable/ic_delete" />
             </RelativeLayout>
         </RelativeLayout>
@@ -125,12 +125,12 @@
         <RelativeLayout
             android:id="@+id/rl_quantity"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_25"
+            android:layout_height="25dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/size_35"
+            android:layout_marginLeft="35dp"
             android:layout_toLeftOf="@+id/item_cart_ll_image"
             android:gravity="right"
-            android:paddingRight="@dimen/size_5" >
+            android:paddingRight="5dp" >
 
             <TextView
                 android:id="@+id/tv_quantity"
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:textSize="@dimen/text_13" />
+                android:textSize="13sp" />
 
             <RelativeLayout
                 android:id="@+id/rl_item_cart_quantity"
@@ -148,14 +148,14 @@
 
                 <TextView
                     android:id="@+id/item_cart_qty"
-                    android:layout_width="@dimen/size_45"
+                    android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:gravity="center" />
 
                 <ImageView
                     android:id="@+id/im_quatity"
-                    android:layout_width="@dimen/size_45"
-                    android:layout_height="@dimen/size_5"
+                    android:layout_width="45dp"
+                    android:layout_height="5dp"
                     android:layout_below="@+id/item_cart_qty"
                     android:background="@drawable/ic_background_quantity" />
             </RelativeLayout>
@@ -165,7 +165,7 @@
     <View
         android:id="@+id/line_cart_bottom"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
+        android:layout_height="1dp"
         android:layout_alignParentBottom="true"
         android:background="#E8E8E8" />
 

@@ -19,24 +19,24 @@
                 android:id="@+id/lable_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/size_10"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:paddingBottom="@dimen/size_10"
-                android:paddingTop="@dimen/size_10"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
                 android:text="Please confirm your addresses"
-                android:textSize="@dimen/text_20"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/billing_chooseAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_10"
+                android:layout_marginTop="10dp"
                 android:background="#CACACA"
                 android:gravity="center_horizontal"
-                android:padding="@dimen/size_10"
+                android:padding="10dp"
                 android:text="Billing Address"
-                android:textSize="@dimen/text_15"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -45,55 +45,55 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/line_border_white"
                 android:orientation="vertical"
-                android:padding="@dimen/size_10" >
+                android:padding="10dp" >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/size_20"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/billing_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/billing_street"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/billing_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/billing_country"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/billing_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/billing_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/billing_image_expand"
-                    android:layout_width="@dimen/size_30"
-                    android:layout_height="@dimen/size_30"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_action_expand" />
@@ -105,9 +105,9 @@
                 android:layout_height="wrap_content"
                 android:background="#CACACA"
                 android:gravity="center_horizontal"
-                android:padding="@dimen/size_10"
+                android:padding="10dp"
                 android:text="Shipping Address"
-                android:textSize="@dimen/text_15"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -116,55 +116,55 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/line_border_white"
                 android:orientation="vertical"
-                android:padding="@dimen/size_10" >
+                android:padding="10dp" >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/size_20"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/shipping_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/shipping_street"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/shipping_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/shipping_country"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/shipping_phone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/shipping_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_15" />
+                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/shipping_image_expand"
-                    android:layout_width="@dimen/size_30"
-                    android:layout_height="@dimen/size_30"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_action_expand" />
@@ -174,7 +174,7 @@
                 android:id="@+id/bt_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size_20"
+                android:layout_margin="20dp"
                 android:text="Update Address" />
         </LinearLayout>
     </ScrollView>

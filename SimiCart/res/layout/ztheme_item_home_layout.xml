@@ -6,8 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_230"
-        android:layout_marginBottom="@dimen/size_5" >
+        android:layout_height="230dp"
+        android:layout_marginBottom="5dp" >
 
         <ImageView
             android:id="@+id/img_default"
@@ -29,11 +29,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginLeft="20dp"
             android:background="#FFFFFF"
-            android:paddingLeft="@dimen/size_5"
-            android:paddingRight="@dimen/size_5"
-            android:textSize="@dimen/text_12" />
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:textSize="12sp" />
     </RelativeLayout>
 
 </LinearLayout>

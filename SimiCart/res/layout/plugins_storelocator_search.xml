@@ -37,7 +37,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_20" >
+                    android:layout_marginTop="20dp" >
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -49,10 +49,10 @@
                             android:id="@+id/txt_Search_by_Area"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/size_15"
+                            android:layout_marginLeft="15dp"
                             android:text="Search by Area"
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/size_16"
+                            android:textSize="16dp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -71,8 +71,8 @@
 
                             <ImageView
                                 android:id="@+id/imageView1"
-                                android:layout_width="@dimen/size_25"
-                                android:layout_height="@dimen/size_25"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
                                 android:src="@drawable/plugins_locator_clear_all" />
                         </LinearLayout>
 
@@ -89,7 +89,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Clear all"
                                 android:textColor="@android:color/holo_orange_dark"
-                                android:textSize="@dimen/size_14" />
+                                android:textSize="14dp" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -97,9 +97,9 @@
                 <LinearLayout
                     android:id="@+id/one"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_35"
-                    android:layout_marginTop="@dimen/size_20"
-                    android:paddingRight="@dimen/size_20" >
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingRight="20dp" >
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -112,11 +112,11 @@
                             android:id="@+id/txt_country"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/size_15"
+                            android:layout_marginLeft="15dp"
                             android:gravity="center|left"
                             android:text="Country:"
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/size_14" />
+                            android:textSize="14dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -140,7 +140,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center"
                                 android:textColor="@android:color/black"
-                                android:textSize="@dimen/size_14" />
+                                android:textSize="14dp" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -152,8 +152,8 @@
 
                             <ImageView
                                 android:id="@+id/imageView2"
-                                android:layout_width="@dimen/size_10"
-                                android:layout_height="@dimen/size_10"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
                                 android:src="@drawable/plugins_locator_spin" />
                         </LinearLayout>
                     </LinearLayout>
@@ -162,9 +162,9 @@
                 <LinearLayout
                     android:id="@+id/two"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_35"
-                    android:layout_marginTop="@dimen/size_20"
-                    android:paddingRight="@dimen/size_20" >
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingRight="20dp" >
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -177,11 +177,11 @@
                             android:id="@+id/txt_city"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/size_15"
+                            android:layout_marginLeft="15dp"
                             android:gravity="center|left"
                             android:text="City:"
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/size_14" />
+                            android:textSize="14dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -206,9 +206,9 @@
                 <LinearLayout
                     android:id="@+id/three"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_35"
-                    android:layout_marginTop="@dimen/size_20"
-                    android:paddingRight="@dimen/size_20" >
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingRight="20dp" >
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -221,11 +221,11 @@
                             android:id="@+id/txt_state"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/size_15"
+                            android:layout_marginLeft="15dp"
                             android:gravity="center|left"
                             android:text="State:"
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/size_14" />
+                            android:textSize="14dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -250,9 +250,9 @@
                 <LinearLayout
                     android:id="@+id/for_"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_35"
-                    android:layout_marginTop="@dimen/size_20"
-                    android:paddingRight="@dimen/size_20" >
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingRight="20dp" >
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -265,11 +265,11 @@
                             android:id="@+id/txt_code"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/size_15"
+                            android:layout_marginLeft="15dp"
                             android:gravity="center|left"
                             android:text="Zip Code:"
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/size_14" />
+                            android:textSize="14dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -293,9 +293,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_35"
-                    android:layout_marginTop="@dimen/size_20"
-                    android:paddingRight="@dimen/size_20" >
+                    android:layout_height="35dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingRight="20dp" >
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -320,7 +320,7 @@
                             android:gravity="center"
                             android:text="Search"
                             android:textColor="@android:color/white"
-                            android:textSize="@dimen/size_14"
+                            android:textSize="14dp"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
@@ -329,17 +329,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_15"
+                android:layout_marginTop="15dp"
                 android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/txt_Search_by_Task"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/size_15"
+                    android:layout_marginLeft="15dp"
                     android:text="Search by Task"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/size_16"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -347,7 +347,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="@dimen/size_20" >
+                android:padding="20dp" >
 
                 <GridView
                     android:id="@+id/list_store_tag"

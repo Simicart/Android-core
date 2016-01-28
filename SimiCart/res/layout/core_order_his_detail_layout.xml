@@ -17,7 +17,7 @@
             <View
                 android:id="@+id/view_top"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_30"
+                android:layout_height="30dp"
                 android:background="#EBEBEB" />
 
             <com.simicart.core.material.ButtonRectangle
@@ -30,7 +30,7 @@
             <View
                 android:id="@+id/view_order_date"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_30"
+                android:layout_height="30dp"
                 android:background="#EBEBEB" />
 
             <TableLayout
@@ -38,18 +38,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/core_line_border"
-                android:paddingLeft="@dimen/size_10"
-                android:paddingRight="@dimen/size_10" >
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" >
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_5"
+                    android:paddingTop="5dp"
                     android:weightSum="5" >
 
                     <TextView
                         android:id="@+id/lb_date"
-                        android:layout_width="@dimen/size_0"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="Order Date"
@@ -57,7 +57,7 @@
 
                     <TextView
                         android:id="@+id/tv_date"
-                        android:layout_width="@dimen/size_0"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
                         android:text="PENDING" />
@@ -66,12 +66,12 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_5"
+                    android:paddingTop="5dp"
                     android:weightSum="5" >
 
                     <TextView
                         android:id="@+id/lb_orderT"
-                        android:layout_width="@dimen/size_0"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="Order #"
@@ -79,7 +79,7 @@
 
                     <TextView
                         android:id="@+id/tv_orderT"
-                        android:layout_width="@dimen/size_0"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3" />
                 </TableRow>
@@ -87,13 +87,13 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/size_5"
-                    android:paddingTop="@dimen/size_5"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
                     android:weightSum="5" >
 
                     <TextView
                         android:id="@+id/lb_total"
-                        android:layout_width="@dimen/size_0"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:text="Order Total"
@@ -101,7 +101,7 @@
 
                     <TextView
                         android:id="@+id/tv_total"
-                        android:layout_width="@dimen/size_0"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3" />
                 </TableRow>
@@ -112,10 +112,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#EBEBEB"
-                android:paddingBottom="@dimen/size_5"
-                android:paddingLeft="@dimen/size_20"
-                android:paddingRight="@dimen/size_20"
-                android:paddingTop="@dimen/size_20"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="20dp"
                 android:text="SHIP TO"
                 android:textColor="#ACACAC" />
 
@@ -125,52 +125,52 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/core_line_border"
                 android:orientation="vertical"
-                android:padding="@dimen/size_10" >
+                android:padding="10dp" >
 
                 <TextView
                     android:id="@+id/st_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/st_street"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/st_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/st_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/st_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/st_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bottom_line_border"
-                    android:paddingBottom="@dimen/size_5"
-                    android:textSize="@dimen/text_15" />
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/st_shipingmethod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_5"
-                    android:textSize="@dimen/text_15" />
+                    android:paddingTop="5dp"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <TextView
@@ -178,10 +178,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#EBEBEB"
-                android:paddingBottom="@dimen/size_5"
-                android:paddingLeft="@dimen/size_20"
-                android:paddingRight="@dimen/size_20"
-                android:paddingTop="@dimen/size_20"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="20dp"
                 android:text="ITEMS"
                 android:textColor="#ACACAC" />
 
@@ -198,10 +198,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#EBEBEB"
-                android:paddingBottom="@dimen/size_5"
-                android:paddingLeft="@dimen/size_20"
-                android:paddingRight="@dimen/size_20"
-                android:paddingTop="@dimen/size_20"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="20dp"
                 android:textColor="#ACACAC" />
 
             <LinearLayout
@@ -217,10 +217,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#EBEBEB"
-                android:paddingBottom="@dimen/size_5"
-                android:paddingLeft="@dimen/size_20"
-                android:paddingRight="@dimen/size_20"
-                android:paddingTop="@dimen/size_20"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="20dp"
                 android:text="PAYMENT"
                 android:textColor="#ACACAC" />
 
@@ -229,67 +229,67 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/core_line_border"
                 android:orientation="vertical"
-                android:padding="@dimen/size_10" >
+                android:padding="10dp" >
 
                 <TextView
                     android:id="@+id/p_paymentmethod"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bottom_line_border"
-                    android:paddingBottom="@dimen/size_5"
-                    android:textSize="@dimen/text_15" />
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/p_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_5"
-                    android:textSize="@dimen/text_15" />
+                    android:paddingTop="5dp"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/p_street"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/p_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/p_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/p_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/p_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bottom_line_border"
-                    android:paddingBottom="@dimen/size_5"
-                    android:textSize="@dimen/text_15" />
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/p_couponCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_5"
-                    android:textSize="@dimen/text_15" />
+                    android:paddingTop="5dp"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <View
                 android:id="@+id/view_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_30"
+                android:layout_height="30dp"
                 android:background="#EBEBEB" />
         </LinearLayout>
     </ScrollView>

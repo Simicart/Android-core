@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.product.delegate.ProductDelegate;
 import com.simicart.core.catalog.product.delegate.ProductDetailAdapterDelegate;
@@ -25,10 +24,7 @@ import com.simicart.core.catalog.product.fragment.InformationFragment;
 import com.simicart.core.catalog.product.model.ProductModel;
 import com.simicart.core.common.options.ProductOptionParentView;
 import com.simicart.core.common.price.ProductPriceViewV03;
-import com.simicart.core.config.Constants;
 import com.simicart.core.style.VerticalViewPager2;
-
-import de.greenrobot.event.EventBus;
 
 @SuppressLint("DefaultLocale")
 public class ProductDetailParentController extends ProductController implements Serializable{

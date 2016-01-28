@@ -8,16 +8,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bottom_line_border"
-        android:paddingBottom="@dimen/size_10"
-        android:paddingTop="@dimen/size_10" >
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
 
         <ImageView
             android:id="@+id/img_icon_option"
-            android:layout_width="@dimen/size_18"
-            android:layout_height="@dimen/size_18"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/size_10" />
+            android:layout_marginRight="10dp" />
 
         <TextView
             android:id="@+id/tv_price"
@@ -27,7 +27,7 @@
             android:layout_toLeftOf="@+id/img_icon_option"
             android:ellipsize="end"
             android:lines="1"
-            android:paddingRight="@dimen/size_10" />
+            android:paddingRight="10dp" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -36,7 +36,7 @@
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_price"
             android:gravity="center_vertical"
-            android:paddingLeft="@dimen/size_10" />
+            android:paddingLeft="10dp" />
     </RelativeLayout>
 
 </LinearLayout>

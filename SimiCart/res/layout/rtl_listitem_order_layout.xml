@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/size_10" >
+    android:paddingLeft="10dp"
+    android:paddingRight="0dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/size_30"
+        android:layout_marginRight="30dp"
         android:orientation="vertical" >
 
         <TableLayout
@@ -17,7 +18,7 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_5"
+                android:paddingTop="5dp"
                 android:weightSum="5" >
 
                 <TextView
@@ -40,7 +41,7 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_5"
+                android:paddingTop="5dp"
                 android:weightSum="5" >
 
                 <TextView
@@ -62,7 +63,7 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_5"
+                android:paddingTop="5dp"
                 android:weightSum="5" >
 
                 <TextView
@@ -84,7 +85,7 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_5"
+                android:paddingTop="5dp"
                 android:weightSum="5" >
 
                 <TextView
@@ -106,8 +107,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/size_10"
-                android:paddingTop="@dimen/size_5" >
+                android:paddingLeft="10dp"
+                android:paddingRight="0dp"
+                android:paddingTop="5dp" >
 
                 <TextView
                     android:id="@+id/item1"
@@ -135,8 +137,8 @@
 
     <ImageView
         android:id="@+id/im_extend"
-        android:layout_width="@dimen/size_30"
-        android:layout_height="@dimen/size_30"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:src="@drawable/ic_action_expand" />

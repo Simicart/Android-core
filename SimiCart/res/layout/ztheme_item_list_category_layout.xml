@@ -10,14 +10,14 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:gravity="center_vertical"
-        android:paddingTop="@dimen/size_5" />
+        android:paddingTop="5dp" />
 
     <TextView
         android:id="@+id/tv_catename"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:padding="@dimen/size_13"
+        android:padding="13dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
