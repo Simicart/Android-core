@@ -154,12 +154,15 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 	}
 
 	protected void showSearchScreen(String query) {
-		ListProductFragment fragment = ListProductFragment.newInstance(ConstantsSearch.url_query, null, null, null, null, query, null, null);
-//		fragment.setQuerySearch(query);
-//		fragment.setUrlSearch(ConstantsSearch.url_query);
-		fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
+		ListProductFragment fragment = ListProductFragment.newInstance(
+				ConstantsSearch.url_query, null, TagSearch.TAG_GRIDVIEW, null,
+				null, query, null, null);
+		// fragment.setQuerySearch(query);
+		// fragment.setUrlSearch(ConstantsSearch.url_query);
+		// fragment.setTag_search(TagSearch.TAG_GRIDVIEW);
 		SimiManager.getIntance().replaceFragment(fragment);
 	}
+
 	private void initButtonMenu() {
 		imv_menu = (ImageView) mView.findViewById(Rconfig.getInstance().id(
 				"img_menu"));

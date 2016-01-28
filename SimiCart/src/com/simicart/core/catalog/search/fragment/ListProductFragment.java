@@ -61,9 +61,9 @@ public class ListProductFragment extends SimiFragment {
 				bundle);
 		setData(Constants.KeyData.SORT_ID, sortId,
 				Constants.KeyData.TYPE_STRING, bundle);
-		if(jsonFilter != null){
-		setData(Constants.KeyData.JSON_FILTER, jsonFilter.toString(),
-				Constants.KeyData.TYPE_JSONOBJECT, bundle);
+		if (jsonFilter != null) {
+			setData(Constants.KeyData.JSON_FILTER, jsonFilter.toString(),
+					Constants.KeyData.TYPE_JSONOBJECT, bundle);
 		}
 		fragment.setArguments(bundle);
 		return fragment;
@@ -72,7 +72,7 @@ public class ListProductFragment extends SimiFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	} 
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,34 +83,36 @@ public class ListProductFragment extends SimiFragment {
 		Context context = getActivity();
 
 		// data
-		if(getArguments() != null){
-		mSortID = (String) getData(Constants.KeyData.SORT_ID,
-				Constants.KeyData.TYPE_STRING, getArguments());
-		mCatName = (String) getData(Constants.KeyData.NAME,
-				Constants.KeyData.TYPE_STRING, getArguments());
-		mCatID = (String) getData(Constants.KeyData.ID,
-				Constants.KeyData.TYPE_STRING, getArguments());
-		String json = (String) getData(Constants.KeyData.JSON_FILTER,
-				Constants.KeyData.TYPE_JSONOBJECT, getArguments());
-		try {
-			jsonFilter = new JSONObject(json);
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		mQuery = (String) getData(Constants.KeyData.QUERY,
-				Constants.KeyData.TYPE_STRING, getArguments());
-		url_search = (String) getData(Constants.KeyData.URL,
-				Constants.KeyData.TYPE_STRING, getArguments());
-		mKey = (String) getData(Constants.KeyData.KEY,
-				Constants.KeyData.TYPE_STRING, getArguments());
-		tag_search = (String) getData(Constants.KeyData.TAG,
-				Constants.KeyData.TYPE_STRING, getArguments());
+		if (getArguments() != null) {
+			mSortID = (String) getData(Constants.KeyData.SORT_ID,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			mCatName = (String) getData(Constants.KeyData.NAME,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			mCatID = (String) getData(Constants.KeyData.ID,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			String json = (String) getData(Constants.KeyData.JSON_FILTER,
+					Constants.KeyData.TYPE_JSONOBJECT, getArguments());
+			try {
+				jsonFilter = new JSONObject(json);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			mQuery = (String) getData(Constants.KeyData.QUERY,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			url_search = (String) getData(Constants.KeyData.URL,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			mKey = (String) getData(Constants.KeyData.KEY,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			tag_search = (String) getData(Constants.KeyData.TAG,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			setTag_search(tag_search);
 		}
 
-		Log.d("quangdd1", "=murl_search :" + url_search +"=mSortID :" + mSortID + "=mCatName :" + mCatName + "=mCatID :"
-				+ mCatID + "=mQuery :" + mQuery + "=mKey :" + mKey
-				+ "=tag_search :" + tag_search);
+		Log.d("quangdd1", "=murl_search :" + url_search + "=mSortID :"
+				+ mSortID + "=mCatName :" + mCatName + "=mCatID :" + mCatID
+				+ "=mQuery :" + mQuery + "=mKey :" + mKey + "=tag_search :"
+				+ tag_search);
 		setListParam(ConstantsSearch.PARAM_CATEGORY_ID, mCatID);
 		setListParam(ConstantsSearch.PARAM_CATEGORY_NAME, mCatName);
 		setListParam(ConstantsSearch.PARAM_URL, url_search);
@@ -189,7 +191,7 @@ public class ListProductFragment extends SimiFragment {
 			mSearchController.setDelegate(mSearchBlock);
 			filterEvent = new FilterEvent(mSearchController);
 			mSearchBlock.setmQuery(mQuery);
-			if(!DataLocal.isTablet){
+			if (!DataLocal.isTablet) {
 				mSearchBlock.getEdittextSearch().setText("");
 			}
 			mSearchBlock.setFilterEvent(filterEvent);
@@ -215,61 +217,4 @@ public class ListProductFragment extends SimiFragment {
 	public void setListParam(String key, String value) {
 		list_param.put(key, value);
 	}
-	// public void setmSortID(String mSortID) {
-	// this.mSortID = mSortID;
-	// }
-	//
-	// public void setCatName(String mCatName) {
-	// this.mCatName = mCatName;
-	// }
-	//
-	// public void setJsonFilter(JSONObject jsonFilter) {
-	// this.jsonFilter = jsonFilter;
-	// }
-	//
-	// public void setmCatID(String mCatID) {
-	// this.mCatID = mCatID;
-	// }
-	//
-	// public void setQuery(String mQuery) {
-	// this.mQuery = mQuery;
-	// }
-	//
-
-	//
-	// public void setCategoryId(String categoryId) {
-	// setmCatID(categoryId);
-	// setListParam(ConstantsSearch.PARAM_CATEGORY_ID, categoryId);
-	// }
-	//
-	// public void setCategoryName(String categoryName) {
-	// setCatName(categoryName);
-	// setListParam(ConstantsSearch.PARAM_CATEGORY_NAME, categoryName);
-	// }
-	//
-	// public void setUrlSearch(String url) {
-	// setListParam(ConstantsSearch.PARAM_URL, url);
-	// }
-	//
-	// public void setQuerySearch(String query) {
-	// setQuery(query);
-	// setListParam(ConstantsSearch.PARAM_QUERY, query);
-	// }
-	//
-	// public void setKey(String key) {
-	// setListParam(ConstantsSearch.PARAM_KEY, key);
-	// }
-	//
-	// public void setOffset(String offset) {
-	// setListParam(ConstantsSearch.PARAM_OFFSET, offset);
-	// }
-	//
-	// public void setLimit(String limit) {
-	// setListParam(ConstantsSearch.PARAM_LIMIT, limit);
-	// }
-	//
-	// public void setSortOption(String sortOption) {
-	// setmSortID(sortOption);
-	// setListParam(ConstantsSearch.PARAM_SORT_OPTION, sortOption);
-	// }
 }

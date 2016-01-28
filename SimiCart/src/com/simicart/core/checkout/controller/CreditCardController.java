@@ -11,6 +11,7 @@ import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.delegate.CreditCardDelegate;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.DataLocal;
 
 public class CreditCardController extends SimiController {
 
@@ -37,7 +38,11 @@ public class CreditCardController extends SimiController {
 				}
 				case MotionEvent.ACTION_UP: {
 					mDelegate.onCLickSave();
-					SimiManager.getIntance().backPreviousFragment();
+					if (DataLocal.isTablet) {
+						SimiManager.getIntance().removeDialog();
+					} else {
+						SimiManager.getIntance().backPreviousFragment();
+					}
 				}
 
 				case MotionEvent.ACTION_CANCEL: {
