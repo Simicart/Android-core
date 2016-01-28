@@ -30,6 +30,7 @@ import com.facebook.internal.FacebookDialogBase;
 import com.facebook.internal.AppCall;
 import com.facebook.internal.CallbackManagerImpl;
 import com.facebook.internal.DialogPresenter;
+import com.facebook.internal.FragmentWrapper;
 import com.facebook.share.internal.GameRequestValidation;
 import com.facebook.share.internal.ResultProcessor;
 import com.facebook.share.internal.ShareConstants;
@@ -112,11 +113,32 @@ public class GameRequestDialog
      * Shows a {@link GameRequestDialog} to send a request, using
      * the passed in activity. No callback will be invoked.
      *
-     * @param fragment Fragment hosting the dialog.
+     * @param fragment android.support.v4.app.Fragment hosting the dialog.
      * @param gameRequestContent Content of the request.
      */
-    public static void show(final Fragment fragment, final GameRequestContent gameRequestContent) {
-        new GameRequestDialog(fragment).show(gameRequestContent);
+    public static void show(
+            final Fragment fragment,
+            final GameRequestContent gameRequestContent) {
+        show(new FragmentWrapper(fragment), gameRequestContent);
+    }
+
+    /**
+     * Shows a {@link GameRequestDialog} to send a request, using
+     * the passed in activity. No callback will be invoked.
+     *
+     * @param fragment android.app.Fragment hosting the dialog.
+     * @param gameRequestContent Content of the request.
+     */
+    public static void show(
+            final android.app.Fragment fragment,
+            final GameRequestContent gameRequestContent) {
+        show(new FragmentWrapper(fragment), gameRequestContent);
+    }
+
+    private static void show(
+            final FragmentWrapper fragmentWrapper,
+            final GameRequestContent gameRequestContent) {
+        new GameRequestDialog(fragmentWrapper).show(gameRequestContent);
     }
 
     /**
@@ -129,10 +151,22 @@ public class GameRequestDialog
 
     /**
      * Constructs a new RequestDialog.
-     * @param fragment Fragment hosting the dialog.
+     * @param fragment android.support.v4.app.Fragment hosting the dialog.
      */
     public GameRequestDialog(Fragment fragment) {
-        super(fragment, DEFAULT_REQUEST_CODE);
+        this(new FragmentWrapper(fragment));
+    }
+
+    /**
+     * Constructs a new RequestDialog.
+     * @param fragment android.app.Fragment hosting the dialog.
+     */
+    public GameRequestDialog(android.app.Fragment fragment) {
+        this(new FragmentWrapper(fragment));
+    }
+
+    private GameRequestDialog(FragmentWrapper fragmentWrapper) {
+        super(fragmentWrapper, DEFAULT_REQUEST_CODE);
     }
 
     @Override

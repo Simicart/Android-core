@@ -124,8 +124,7 @@ class WebViewLoginMethodHandler extends LoginMethodHandler {
                 parameters)
                 .setE2E(e2e)
                 .setIsRerequest(request.isRerequest())
-                .setOnCompleteListener(listener)
-                .setTheme(FacebookSdk.getWebDialogTheme());
+                .setOnCompleteListener(listener);
         loginDialog = builder.build();
 
         FacebookDialogFragment dialogFragment = new FacebookDialogFragment();

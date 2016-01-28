@@ -70,7 +70,9 @@ public final class ShareButton extends ShareButtonBase {
     protected FacebookDialogBase<ShareContent, Sharer.Result> getDialog() {
         final ShareDialog dialog;
         if (ShareButton.this.getFragment() != null) {
-            dialog = new ShareDialog(ShareButton.this.getFragment() , getRequestCode());
+            dialog = new ShareDialog(ShareButton.this.getFragment(), getRequestCode());
+        } else if (ShareButton.this.getNativeFragment() != null) {
+            dialog = new ShareDialog(ShareButton.this.getNativeFragment(), getRequestCode());
         } else {
             dialog = new ShareDialog(getActivity(), getRequestCode());
         }

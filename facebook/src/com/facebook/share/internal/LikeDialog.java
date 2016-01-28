@@ -33,6 +33,7 @@ import com.facebook.internal.AppCall;
 import com.facebook.internal.CallbackManagerImpl;
 import com.facebook.internal.DialogFeature;
 import com.facebook.internal.DialogPresenter;
+import com.facebook.internal.FragmentWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +87,15 @@ public class LikeDialog extends FacebookDialogBase<LikeContent, LikeDialog.Resul
     }
 
     public LikeDialog(Fragment fragment) {
-        super(fragment, DEFAULT_REQUEST_CODE);
+        this(new FragmentWrapper(fragment));
+    }
+
+    public LikeDialog(android.app.Fragment fragment) {
+        this(new FragmentWrapper(fragment));
+    }
+
+    public LikeDialog(FragmentWrapper fragmentWrapper) {
+        super(fragmentWrapper, DEFAULT_REQUEST_CODE);
     }
 
     @Override

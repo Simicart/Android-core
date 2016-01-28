@@ -33,6 +33,7 @@ import com.facebook.internal.CallbackManagerImpl;
 import com.facebook.internal.DialogFeature;
 import com.facebook.internal.DialogPresenter;
 import com.facebook.internal.FacebookDialogBase;
+import com.facebook.internal.FragmentWrapper;
 import com.facebook.share.internal.ShareFeedContent;
 import com.facebook.share.Sharer;
 import com.facebook.share.internal.LegacyNativeDialogParameters;
@@ -104,13 +105,32 @@ public final class ShareDialog
      * Helper to show the provided {@link com.facebook.share.model.ShareContent} using the provided
      * Fragment. No callback will be invoked.
      *
-     * @param fragment Fragment to use to share the provided content
+     * @param fragment android.support.v4.app.Fragment to use to share the provided content
      * @param shareContent Content to share
      */
     public static void show(
             final Fragment fragment,
             final ShareContent shareContent) {
-        new ShareDialog(fragment).show(shareContent);
+        show(new FragmentWrapper(fragment), shareContent);
+    }
+
+    /**
+     * Helper to show the provided {@link com.facebook.share.model.ShareContent} using the provided
+     * Fragment. No callback will be invoked.
+     *
+     * @param fragment android.app.Fragment to use to share the provided content
+     * @param shareContent Content to share
+     */
+    public static void show(
+            final android.app.Fragment fragment,
+            final ShareContent shareContent) {
+        show(new FragmentWrapper(fragment), shareContent);
+    }
+
+    private static void show(
+            final FragmentWrapper fragmentWrapper,
+            final ShareContent shareContent) {
+        new ShareDialog(fragmentWrapper).show(shareContent);
     }
 
     /**
@@ -153,10 +173,23 @@ public final class ShareDialog
 
     /**
      * Constructs a new ShareDialog.
-     * @param fragment Fragment to use to share the provided content.
+     * @param fragment android.support.v4.app.Fragment to use to share the provided content.
      */
     public ShareDialog(Fragment fragment) {
-        super(fragment, DEFAULT_REQUEST_CODE);
+        this(new FragmentWrapper(fragment));
+
+    }
+
+    /**
+     * Constructs a new ShareDialog.
+     * @param fragment android.app.Fragment to use to share the provided content.
+     */
+    public ShareDialog(android.app.Fragment fragment) {
+        this(new FragmentWrapper(fragment));
+    }
+
+    private ShareDialog(FragmentWrapper fragmentWrapper) {
+        super(fragmentWrapper, DEFAULT_REQUEST_CODE);
 
         ShareInternalUtility.registerStaticShareCallback(DEFAULT_REQUEST_CODE);
     }
@@ -170,7 +203,16 @@ public final class ShareDialog
 
     // for ShareDialog use only
     ShareDialog(Fragment fragment, int requestCode) {
-        super(fragment, requestCode);
+        this(new FragmentWrapper(fragment), requestCode);
+
+    }
+
+    ShareDialog(android.app.Fragment fragment, int requestCode) {
+        this(new FragmentWrapper(fragment), requestCode);
+    }
+
+    private ShareDialog(FragmentWrapper fragmentWrapper, int requestCode) {
+        super(fragmentWrapper, requestCode);
 
         ShareInternalUtility.registerStaticShareCallback(requestCode);
     }
