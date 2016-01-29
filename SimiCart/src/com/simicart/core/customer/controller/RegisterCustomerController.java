@@ -195,5 +195,6 @@ public class RegisterCustomerController extends SimiController {
 		DataLocal.saveEmailPassRemember(email, pass);
 		SimiManager.getIntance().backPreviousFragment();
 		SimiManager.getIntance().replacePopupFragment(fragment);
+		//fadf
 	}
 }
