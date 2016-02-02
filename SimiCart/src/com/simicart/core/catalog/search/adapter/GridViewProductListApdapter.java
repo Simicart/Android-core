@@ -222,7 +222,7 @@ public class GridViewProductListApdapter extends BaseAdapter {
 		String name = product.getName();
 		if (null != name) {
 			name.trim();
-			holder.tv_name.setText(name.toUpperCase());
+			holder.tv_name.setText(name);
 		} else {
 			holder.tv_name.setText("SimiCart");
 		}

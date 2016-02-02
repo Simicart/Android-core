@@ -84,6 +84,7 @@ public class ProductDetailParentFragment extends SimiFragment {
 			mController.setDelegate(mBlock);
 			mController.setProductDelegate(mBlock);
 			mController.setProductId(mID);
+			mController.setAdapterDelegate(mBlock);
 			mController.onStart();
 		} else {
 			mController.setDelegate(mBlock);

@@ -266,8 +266,16 @@ public class RewardPointFragment extends SimiFragment {
 							.getSpending_policy());
 					txt_spendpoint.setText(itempointData.getSpending_label());
 				}
-				txt_changemoney.setText(itempointData.getSpending_point()
-						+ " = " + itempointData.getSpending_discount());
+				if (Utils
+						.validateString("" + itempointData.getSpending_point())
+						&& Utils.validateString(""
+								+ itempointData.getSpending_discount())) {
+					txt_changemoney.setVisibility(View.VISIBLE);
+					txt_changemoney.setText(itempointData.getSpending_point()
+							+ " = " + itempointData.getSpending_discount());
+				} else {
+					txt_changemoney.setVisibility(View.GONE);
+				}
 
 				// set content to view
 				txt_number_point.setText(itempointData.getLoyalty_point() + "");
@@ -328,8 +336,10 @@ public class RewardPointFragment extends SimiFragment {
 					layout_policy.setVisibility(View.GONE);
 					layout_policy_content.setVisibility(View.GONE);
 				}
-				if (itempointData.getLoyalty_point() > spending_mint - 1) {
+				if (itempointData.getLoyalty_point() > spending_mint - 1
+						|| (itempointData.getLoyalty_point() == 0)) {
 					layout_point.setVisibility(View.GONE);
+					txt_number_redeem.setVisibility(View.GONE);
 				} else {
 					layout_point.setVisibility(View.VISIBLE);
 					progress_point.setMax(spending_mint);
@@ -391,10 +401,12 @@ public class RewardPointFragment extends SimiFragment {
 				case MotionEvent.ACTION_UP:
 					rlt_layout_setting.setBackgroundColor(Color
 							.parseColor("#FFFFFF"));
-//					RewardSettingFragment rewardSetting = new RewardSettingFragment(
-//							is_notification, expire_notification);
-					
-					RewardSettingFragment fragment = RewardSettingFragment.newInstance(is_notification, expire_notification);
+					// RewardSettingFragment rewardSetting = new
+					// RewardSettingFragment(
+					// is_notification, expire_notification);
+
+					RewardSettingFragment fragment = RewardSettingFragment
+							.newInstance(is_notification, expire_notification);
 					SimiManager.getIntance().replacePopupFragment(fragment);
 					break;
 				case MotionEvent.ACTION_CANCEL:
@@ -417,11 +429,14 @@ public class RewardPointFragment extends SimiFragment {
 				case MotionEvent.ACTION_UP:
 					rlt_layout_card.setBackgroundColor(Color
 							.parseColor("#FFFFFF"));
-//					RewardCardFragment rewardCard = new RewardCardFragment(
-//							passBookLogo, loyalty_redeem, passbook_text,
-//							background_passbook, passbook_foreground,
-//							passbook_barcode);
-					RewardCardFragment rewardCard = RewardCardFragment.newInstance(passBookLogo, loyalty_redeem, passbook_text, background_passbook, passbook_foreground, passbook_barcode);
+					// RewardCardFragment rewardCard = new RewardCardFragment(
+					// passBookLogo, loyalty_redeem, passbook_text,
+					// background_passbook, passbook_foreground,
+					// passbook_barcode);
+					RewardCardFragment rewardCard = RewardCardFragment
+							.newInstance(passBookLogo, loyalty_redeem,
+									passbook_text, background_passbook,
+									passbook_foreground, passbook_barcode);
 					SimiManager.getIntance().replacePopupFragment(rewardCard);
 					break;
 				case MotionEvent.ACTION_CANCEL:

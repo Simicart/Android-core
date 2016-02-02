@@ -21,5 +21,6 @@ public interface ProductDelegate extends SimiDelegate {
 	public void updateViewPager(VerticalViewPager2 viewpager);
 
 	public LinearLayout getLayoutMore();
-
+	
+	public void startAnimation(String url);
 }

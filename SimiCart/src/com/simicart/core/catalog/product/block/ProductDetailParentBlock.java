@@ -13,6 +13,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -24,9 +27,11 @@ import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.product.delegate.ProductDelegate;
+import com.simicart.core.catalog.product.delegate.ProductDetailAdapterDelegate;
 import com.simicart.core.catalog.product.entity.CacheOption;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.product.fragment.OptionFragment;
+import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
@@ -37,7 +42,7 @@ import com.simicart.core.style.CirclePageIndicator;
 import com.simicart.core.style.VerticalViewPager2;
 
 public class ProductDetailParentBlock extends SimiBlock implements
-		ProductDelegate {
+		ProductDelegate, ProductDetailAdapterDelegate {
 	// protected LinearLayout ll_top;
 	protected RelativeLayout rlt_top;
 	protected LinearLayout ll_bottom;
@@ -49,6 +54,8 @@ public class ProductDetailParentBlock extends SimiBlock implements
 	protected Product mProduct;
 	protected CirclePageIndicator mIndicator;
 	protected OnClickListener onDoneOption;
+	protected ImageView img_animation;
+	protected AnimationSet animation;
 
 	public ProductDetailParentBlock(View view, Context context) {
 		super(view, context);
@@ -137,6 +144,26 @@ public class ProductDetailParentBlock extends SimiBlock implements
 			mIndicator.setScaleY(1.5f);
 		}
 		mIndicator.setOrientation(LinearLayout.VERTICAL);
+		setAnimation();
+		img_animation = (ImageView) mView.findViewById(Rconfig.getInstance()
+				.id("img_animation"));
+		img_animation.setVisibility(View.INVISIBLE);
+	}
+
+	public void setAnimation() {
+
+		animation = new AnimationSet(false);
+		final Animation rotate = AnimationUtils.loadAnimation(mContext,
+				com.magestore.simicart.R.anim.add_to_cart_rotate);
+		animation.addAnimation(rotate);
+		animation.addAnimation(AnimationUtils.loadAnimation(mContext,
+				com.magestore.simicart.R.anim.add_to_cart_zoom));
+		if (DataLocal.isTablet) {
+
+			animation.setDuration(800);
+		} else {
+			animation.setDuration(600);
+		}
 	}
 
 	@Override
@@ -323,4 +350,26 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		return ll_more;
 	}
 
+	@Override
+	public String getCurrentID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public int getCurrenPosition() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+
+	@Override
+	public void startAnimation(String urlImage) {
+		if (null != img_animation) {
+			img_animation.setVisibility(View.VISIBLE);
+			DrawableManager.fetchDrawableOnThreadForZTheme(urlImage,
+					img_animation);
+			img_animation.startAnimation(animation);
+			img_animation.setVisibility(View.GONE);
+		}
+	}
 }

@@ -541,8 +541,15 @@ public class Config {
 			} else {
 				return mCurrencySymbol + price;
 			}
-		}
-		return price + " " + mCurrencySymbol;
+		}else{
+            if ((null == mCurrencySymbol) || (mCurrencySymbol.equals("null"))
+                    && null != mCurrencyCode && !mCurrencyCode.equals("null")) {
+            return price+ " "+ mCurrencyCode ;
+    } else {
+            return price+ " "+ mCurrencySymbol ;
+    }
+}
+//		return price + " " + mCurrencySymbol;
 	}
 
 	public String getPrice(String price, String symbol) {
@@ -559,8 +566,15 @@ public class Config {
 			} else {
 				return symbol + price;
 			}
-		}
-		return price + " " + symbol;
+		}else{
+            if ((null == mCurrencySymbol) || (mCurrencySymbol.equals("null"))
+                    && null != mCurrencyCode && !mCurrencyCode.equals("null")) {
+            return price+ " "+ mCurrencyCode ;
+    } else {
+            return price+ " "+ mCurrencySymbol ;
+    }
+}
+//		return price + " " + symbol;
 	}
 
 	public String getCountryName() {

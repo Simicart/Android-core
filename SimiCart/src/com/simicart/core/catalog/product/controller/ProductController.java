@@ -28,6 +28,7 @@ import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.product.entity.ProductOption;
 import com.simicart.core.catalog.product.model.AddToCartModel;
 import com.simicart.core.catalog.product.model.ProductModel;
+import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.common.options.ProductOptionParentView;
 import com.simicart.core.common.options.base.CacheOptionView;
 import com.simicart.core.common.options.delegate.OptionProductDelegate;
@@ -118,7 +119,7 @@ public class ProductController extends SimiController implements
 					break;
 				}
 				case MotionEvent.ACTION_UP: {
-					addtoCart();
+					addtoCart("");
 				}
 				case MotionEvent.ACTION_CANCEL: {
 
@@ -256,13 +257,15 @@ public class ProductController extends SimiController implements
 		}
 	}
 
-	protected void addtoCart() {
+	protected void addtoCart(String url) {
 		if (!checkSelectedAllOption()) {
 			SimiManager.getIntance().showToast(
 					Config.getInstance().getText("Please select all options"));
 			return;
 		}
 		onShowOptionView();
+		if(url != null)
+		mDelegate.startAnimation(url);
 		ArrayList<CacheOption> options = getCacheOptions();
 		mDelegate.showDialogLoading();
 		final AddToCartModel model = new AddToCartModel();
@@ -273,9 +276,11 @@ public class ProductController extends SimiController implements
 				mDelegate.dismissDialogLoading();
 				if (isSuccess) {
 					int mQty = getCartQtyFromJsonobject(model.getDataJSON());
+//					ConfigCheckout.getInstance().setmQty(String.valueOf(mQty));
 					SimiManager.getIntance().onUpdateCartQty(mQty + "");
 					SimiManager.getIntance().showToast(
 							Config.getInstance().getText("Added to Cart"));
+//					ConfigCheckout.getInstance().setCheckStatusCart(true);
 				} else {
 					// SimiManager.getIntance().showNotify(message);
 					// SimiManager.getIntance().showToast(message);

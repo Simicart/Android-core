@@ -267,7 +267,7 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 				if ((keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_SEARCH)
 						&& (event.getAction() == KeyEvent.ACTION_DOWN)) {
 					showSearchScreen(edit_search.getText().toString(),
-							tag_search);
+							tag_search, 1);
 					Utils.hideKeyboard(v);
 					return true;
 				}
@@ -362,10 +362,15 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 		SimiManager.getIntance().hideKeyboard();
 	}
 
-	public void showSearchScreen(String key, String tag) {
+	public void showSearchScreen(String key, String tag, int type) {
 		if (key != null && !key.equals("")) {
 			hidePopupListView();
-			ListProductFragment fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS,cate_id, tag, key, null, null, null, null );
+			ListProductFragment fragment = null;
+			if(type == 0){
+				fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS, "", tag, null, null, key, null, null );
+			}else{
+				fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS,cate_id, tag, null, null, key, null, null );
+			}
 //			fragment.setQuerySearch(key);
 //			fragment.setTag_search(tag);
 //			fragment.setCategoryId(cate_id);
@@ -812,14 +817,11 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			long id) {
 		ItemListPopup item = (ItemListPopup) parent.getItemAtPosition(position);
 		if (item.getName().equals(ALL_PRODUCT)) {
-			showSearchScreen(edit_search.getText().toString(), tag_search);
+			showSearchScreen(edit_search.getText().toString(), tag_search, 0);
 		} else {
 			ListProductFragment searchFragment = ListProductFragment
 					.newInstance(ConstantsSearch.url_query, cate_id, null, null, null,edit_search.getText().toString(), null, null );
-//			searchFragment.setUrlSearch(ConstantsSearch.url_query);
-//			searchFragment.setCategoryId(cate_id);
-//			searchFragment.setQuerySearch(edit_search.getText().toString());
-			SimiManager.getIntance().replaceFragment(searchFragment);
+			SimiManager.getIntance().addFragment(searchFragment);
 		}
 		hidePopupListView();
 		SimiManager.getIntance().hideKeyboard();

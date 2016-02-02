@@ -160,7 +160,8 @@ public class ProductDetailParentController extends ProductController implements 
 		SimiManager.getIntance().hideKeyboard();
 		mProduct.setAddedPriceDependent(false);
 		if (null != mProduct && mProduct.getStock()) {
-			addtoCart();
+			String url = mProduct.getImages()[0];	
+			addtoCart(url);
 		}
 	}
 

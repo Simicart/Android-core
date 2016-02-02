@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -192,7 +193,7 @@ public class CartListAdapter extends BaseAdapter {
 				// || option.getOption_price().equals("")
 				// || option.getOption_price() == null) {
 //				if (i > 1) {
-//					if (i == 3) {
+//					if (i == 2) {
 //						html += "........";
 //					}
 //				} else {
@@ -202,6 +203,7 @@ public class CartListAdapter extends BaseAdapter {
 					html += "<br/>";
 					html += option.getOption_value();
 					html += "<br/>";
+//					Log.d("dq1", "==title=="+option.getOption_title()+"==value=="+option.getOption_value());
 //				}
 				// } else {
 				// String option_price = option.getOption_price();
@@ -220,7 +222,9 @@ public class CartListAdapter extends BaseAdapter {
 				// }
 			}
 			html += "</dl>";
+			
 			tv_options.setText(Html.fromHtml(html));
+//			Log.d("dq1", Html.fromHtml(html).toString());
 		} else {
 			tv_options.setText("");
 			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(

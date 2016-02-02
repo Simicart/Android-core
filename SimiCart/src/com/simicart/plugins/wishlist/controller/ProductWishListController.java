@@ -54,7 +54,7 @@ public class ProductWishListController extends ProductController {
 					break;
 				}
 				case MotionEvent.ACTION_UP: {
-					addtoCart();
+					addtoCart("");
 				}
 				case MotionEvent.ACTION_CANCEL: {
 

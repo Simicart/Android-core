@@ -285,4 +285,10 @@ public class ProductWishlistBlock extends SimiBlock implements ProductDelegate {
 		return null;
 	}
 
+	@Override
+	public void startAnimation(String url) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

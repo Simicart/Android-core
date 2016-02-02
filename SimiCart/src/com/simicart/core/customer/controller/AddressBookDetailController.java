@@ -36,6 +36,8 @@ public class AddressBookDetailController extends SimiController implements
 	protected OnClickListener mChooseStates;
 	protected String mCountry;
 	protected ArrayList<String> list_country_adapter;
+	protected String mCurrentCountry = "";	
+	protected String mCurrentState = "";
 
 	public OnClickListener getClickSave() {
 		return mClickSave;
@@ -52,6 +54,31 @@ public class AddressBookDetailController extends SimiController implements
 	public OnClickListener getChooseStates() {
 		return mChooseStates;
 	}
+	protected CountryAllowed getCurrentCountry(String name) {
+		if (null != name && null != country)
+			for (CountryAllowed ele : country) {
+				if (ele.getCountry_name().equals(name)) {
+					return ele;
+				}
+			}
+
+		return null;
+	}
+
+	protected StateOfCountry getCurrentState(String name, CountryAllowed country) {
+		if (null != name && null != country) {
+			ArrayList<StateOfCountry> states = country.getStateList();
+			if (null != states && states.size() > 0) {
+				for (StateOfCountry state : states) {
+					if (state.getState_name().equals(name)) {
+						return state;
+					}
+				}
+			}
+		}
+
+		return null;
+	}
 
 	@Override
 	public void onStart() {
@@ -62,9 +89,32 @@ public class AddressBookDetailController extends SimiController implements
 			@Override
 			public void onClick(View v) {
 				Utils.hideKeyboard(v);
-				MyAddress addressBookDetail = mDelegate.getAddressBookDetail();
-				if (isCompleteRequired(addressBookDetail)) {
-					OnRequestChangeAddress(addressBookDetail);
+				MyAddress address = mDelegate.getAddressBookDetail();
+				String state = address.getStateName();
+				if (null != state) {
+					mCurrentState = state;
+				}
+				String country = address.getCountryName();
+				if (null != country) {
+					mCurrentCountry = country;
+				}
+				CountryAllowed countryAllow = getCurrentCountry(mCurrentCountry);
+				if (null != countryAllow) {
+					address.setCountryName(mCurrentCountry);
+					address.setCountryCode(countryAllow.getCountry_code());
+					if (!mCurrentState.equals("")) {
+						StateOfCountry stateOfCountry = getCurrentState(
+								mCurrentState, countryAllow);
+						if (null != stateOfCountry) {
+							address.setStateName(mCurrentState);
+							address.setStateCode(stateOfCountry.getState_code());
+							address.setStateId(stateOfCountry.getState_id());
+						}
+
+					}
+				}
+				if (isCompleteRequired(address)) {
+					OnRequestChangeAddress(address);
 				} else {
 					SimiManager.getIntance().showNotify(null,
 							"Please select all (*) fields", "OK");

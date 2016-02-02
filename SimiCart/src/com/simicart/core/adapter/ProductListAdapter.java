@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,14 +35,15 @@ public class ProductListAdapter extends BaseAdapter {
 	public String PRODUCT_PRICE_TYPE_2 = "bundle";
 	public String PRODUCT_PRICE_TYPE_3 = "grouped";
 	public String PRODUCT_PRICE_TYPE_4 = "configurable";
+
 	public ProductListAdapter(Context context, ArrayList<Product> ProductList) {
 		mContext = context;
 		mProducts = ProductList;
 	}
 
-//	public ArrayList<Product> getProductList() {
-//		return mProducts;
-//	}
+	// public ArrayList<Product> getProductList() {
+	// return mProducts;
+	// }
 
 	public void setProductList(ArrayList<Product> products) {
 		mProducts = products;
@@ -51,7 +53,7 @@ public class ProductListAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		Product product = (Product) getItem(position);
-		
+
 		ViewHolder holder;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(mContext)
@@ -76,18 +78,18 @@ public class ProductListAdapter extends BaseAdapter {
 			icon.setColorFilter(Config.getInstance().getContent_color(),
 					PorterDuff.Mode.SRC_ATOP);
 			ic_expand.setImageDrawable(icon);
-			
-			holder.tv_regular_price = (TextView) convertView.findViewById(Rconfig
-					.getInstance().id("tv_regular"));
-			holder.tv_special_price = (TextView) convertView.findViewById(Rconfig
-					.getInstance().id("tv_special"));
-			holder.tv_minimal_price = (TextView) convertView.findViewById(Rconfig
-					.getInstance().id("tv_minimal"));
+
+			holder.tv_regular_price = (TextView) convertView
+					.findViewById(Rconfig.getInstance().id("tv_regular"));
+			holder.tv_special_price = (TextView) convertView
+					.findViewById(Rconfig.getInstance().id("tv_special"));
+			holder.tv_minimal_price = (TextView) convertView
+					.findViewById(Rconfig.getInstance().id("tv_minimal"));
 			holder.txt_outstock = (TextView) convertView.findViewById(Rconfig
 					.getInstance().id("txt_out_stock"));
 			holder.txt_outstock.setTextColor(Config.getInstance()
 					.getOut_stock_text());
-			
+
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -95,6 +97,11 @@ public class ProductListAdapter extends BaseAdapter {
 		if (DataLocal.isLanguageRTL) {
 			holder.txtName.setGravity(Gravity.RIGHT);
 		}
+
+		holder.tv_special_price.setVisibility(View.VISIBLE);
+		holder.tv_minimal_price.setVisibility(View.VISIBLE);
+		holder.tv_regular_price.setPaintFlags(holder.tv_regular_price.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+		holder.tv_regular_price.setVisibility(View.VISIBLE);
 		
 		if (product != null) {
 			mTypeProduct = product.getType();
@@ -102,7 +109,7 @@ public class ProductListAdapter extends BaseAdapter {
 		if (null != mTypeProduct) {
 			mTypeProduct = mTypeProduct.toLowerCase();
 		}
-	
+
 		if (mTypeProduct == null) {
 			mTypeProduct = "simple";
 		}
@@ -110,39 +117,40 @@ public class ProductListAdapter extends BaseAdapter {
 				|| mTypeProduct.equals("downloadable")
 				|| mTypeProduct.equals(PRODUCT_PRICE_TYPE_1)) {
 			mTypeProduct = PRODUCT_PRICE_TYPE_1;
-			 getViewPriceType1(holder, product);
+			getViewPriceType1(holder, product);
 		} else if (mTypeProduct.equals("bundle")
 				|| mTypeProduct.equals(PRODUCT_PRICE_TYPE_2)) {
 			mTypeProduct = PRODUCT_PRICE_TYPE_2;
-			 getViewPriceType2(holder, product);
-			 
+			getViewPriceType2(holder, product);
+
 		} else if (mTypeProduct.equals("grouped")
 				|| mTypeProduct.equals(PRODUCT_PRICE_TYPE_3)) {
 			mTypeProduct = PRODUCT_PRICE_TYPE_3;
-			 getViewPriceType3(holder, product);
+			getViewPriceType3(holder, product);
 		} else if (mTypeProduct.equals("configurable")
 				|| mTypeProduct.equals(PRODUCT_PRICE_TYPE_4)) {
 			mTypeProduct = PRODUCT_PRICE_TYPE_4;
-			 getViewPriceType1(holder, product);
+			getViewPriceType1(holder, product);
 		}
 
 		holder.txtName.setText(product.getName());
 
-		if (holder.imageView != null && product.getImage() != null) {
+		if (product.getImage() != null) {
 			DrawableManager.fetchDrawableOnThread(product.getImage(),
 					holder.imageView);
 		}
+		Log.d("quang111", ""+product.getImage().toString());
 		if (product.getStock() == true) {
 			holder.layoutStock.setVisibility(View.GONE);
 		} else {
 			holder.layoutStock.setVisibility(View.VISIBLE);
-			holder.txt_outstock.setText(Config.getInstance().getText("Out Stock"));
+			holder.txt_outstock.setText(Config.getInstance().getText(
+					"Out Stock"));
 		}
-
 
 		RelativeLayout rl_product_list = (RelativeLayout) convertView
 				.findViewById(Rconfig.getInstance().id("rel_product_list"));
-
+		rl_product_list.removeAllViews();
 		EventBlock eventBlock = new EventBlock();
 		eventBlock.dispatchEvent("com.simicart.image.product.list",
 				rl_product_list, product);
@@ -163,17 +171,17 @@ public class ProductListAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		int size = 0;
-		if(mProducts != null){
+		if (mProducts != null) {
 			size = mProducts.size();
 		}
 		return size;
-		
+
 	}
 
 	@Override
 	public Object getItem(int position) {
 		Product product = new Product();
-		if(mProducts != null){
+		if (mProducts != null) {
 			product = mProducts.get(position);
 		}
 		return product;
@@ -183,7 +191,7 @@ public class ProductListAdapter extends BaseAdapter {
 	public long getItemId(int position) {
 		return 0;
 	}
-	
+
 	public void getViewPriceType1(ViewHolder holder, Product mProduct) {
 		String regular_price = "";
 		String special_price = "";
@@ -226,8 +234,8 @@ public class ProductListAdapter extends BaseAdapter {
 		}
 
 		if (Utils.validateString(special_price)) {
-			holder.tv_regular_price.setPaintFlags(holder.tv_regular_price.getPaintFlags()
-					| Paint.STRIKE_THRU_TEXT_FLAG);
+			holder.tv_regular_price.setPaintFlags(holder.tv_regular_price
+					.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 			holder.tv_special_price.setText(Html.fromHtml(special_price));
 		} else {
 			holder.tv_special_price.setVisibility(View.GONE);
@@ -240,7 +248,9 @@ public class ProductListAdapter extends BaseAdapter {
 
 	public void getViewPriceType2(ViewHolder holder, Product mProduct) {
 		PriceV2 priceV2 = mProduct.getPriceV2();
-
+		holder.tv_special_price.setVisibility(View.VISIBLE);
+		holder.tv_minimal_price.setVisibility(View.VISIBLE);
+		holder.tv_regular_price.setVisibility(View.VISIBLE);
 		String minimal_label = priceV2.getMinimalPriceLabel();
 		if (Utils.validateString(minimal_label)) {
 			// JSON of product has 'minimal_price_label' tag
@@ -273,10 +283,11 @@ public class ProductListAdapter extends BaseAdapter {
 						incl_tax_to, to_text)));
 			} else {
 				if (excl_tax_from > -1) {
-					holder.tv_regular_price.setText(Html.fromHtml(getHtmlForPrice(
-							excl_tax_from, from_text)));
-					holder.tv_minimal_price.setText(Html.fromHtml(getHtmlForPrice(
-							excl_tax_to, to_text)));
+					holder.tv_regular_price
+							.setText(Html.fromHtml(getHtmlForPrice(
+									excl_tax_from, from_text)));
+					holder.tv_minimal_price.setText(Html
+							.fromHtml(getHtmlForPrice(excl_tax_to, to_text)));
 				}
 			}
 		}
@@ -285,20 +296,19 @@ public class ProductListAdapter extends BaseAdapter {
 	public void getViewPriceType3(ViewHolder holder, Product mProduct) {
 		holder.tv_special_price.setVisibility(View.GONE);
 		holder.tv_minimal_price.setVisibility(View.GONE);
-
 		PriceV2 priceV2 = mProduct.getPriceV2();
-		if(priceV2 != null){
-		float incl_tax_minimal = priceV2.getInclTaxMinimal();
-		float minimal_price = priceV2.getMinimalPrice();
-		String minimal_price_label = priceV2.getMinimalPriceLabel();
-		
-		if (incl_tax_minimal > -1) {
-			holder.tv_regular_price.setText(Html.fromHtml(getHtmlForPrice(
-					incl_tax_minimal, minimal_price_label)));
-		} else {
-			holder.tv_regular_price.setText(Html.fromHtml(getHtmlForPrice(
-					minimal_price, minimal_price_label)));
-		}
+		if (priceV2 != null) {
+			float incl_tax_minimal = priceV2.getInclTaxMinimal();
+			float minimal_price = priceV2.getMinimalPrice();
+			String minimal_price_label = priceV2.getMinimalPriceLabel();
+
+			if (incl_tax_minimal > -1) {
+				holder.tv_regular_price.setText(Html.fromHtml(getHtmlForPrice(
+						incl_tax_minimal, minimal_price_label)));
+			} else {
+				holder.tv_regular_price.setText(Html.fromHtml(getHtmlForPrice(
+						minimal_price, minimal_price_label)));
+			}
 		}
 	}
 
@@ -308,8 +318,9 @@ public class ProductListAdapter extends BaseAdapter {
 	}
 
 	protected String getHtmlForPrice(float price, String label) {
-		return "<font color='" + Config.getInstance().getPrice_color() + "'>" + label
-				+ ": </font><font color='" + Config.getInstance().getPrice_color() + "'>"
+		return "<font color='" + Config.getInstance().getPrice_color() + "'>"
+				+ label + ": </font><font color='"
+				+ Config.getInstance().getPrice_color() + "'>"
 				+ Config.getInstance().getPrice("" + price) + "</font>";
 	}
 
