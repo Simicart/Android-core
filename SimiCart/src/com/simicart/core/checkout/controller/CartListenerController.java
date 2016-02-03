@@ -65,8 +65,8 @@ public class CartListenerController implements CartAdapterDelegate {
 		if (!mMessage.contains("NOT CHECKOUT")) {
 			if (mWebviewUrl != null && !mWebviewUrl.equals("")) {
 				CheckoutWebviewFragment fragment = CheckoutWebviewFragment
-						.newInstanse();
-				fragment.setUrl(mWebviewUrl);
+						.newInstanse(mWebviewUrl);
+//				fragment.setUrl(mWebviewUrl);
 				SimiManager.getIntance().replaceFragment(fragment);
 			} else {
 				if (DataLocal.isSignInComplete()) {

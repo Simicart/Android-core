@@ -37,7 +37,7 @@ import com.simicart.core.config.Rconfig;
 import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.checkout.CheckoutData;
 import com.simicart.core.style.ColorButton;
-import com.simicart.plugins.paypalexpress.fragment.FragmentWeb;
+import com.simicart.plugins.paypalexpress.fragment.WebFragment;
 import com.simicart.plugins.paypalexpress.model.RequestStartModel;
 
 public class Express {
@@ -297,7 +297,7 @@ public class Express {
 					pd_loading.dismiss();
 				}
 				if (isSuccess) {
-					FragmentWeb fragment = FragmentWeb.newInstance(
+					WebFragment fragment = WebFragment.newInstance(
 							mModel.getUrl(), mModel.getReview_address());
 					SimiManager.getIntance().addPopupFragment(fragment);
 					Log.e("AAAAAAAAAAAA",

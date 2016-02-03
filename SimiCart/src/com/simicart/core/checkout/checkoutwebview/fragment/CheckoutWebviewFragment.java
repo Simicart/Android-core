@@ -13,20 +13,25 @@ import android.widget.RelativeLayout;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 
 public class CheckoutWebviewFragment extends SimiFragment {
 	protected String Url = "";
 
-	public static CheckoutWebviewFragment newInstanse() {
+	public static CheckoutWebviewFragment newInstanse(String url) {
 		CheckoutWebviewFragment fragment = new CheckoutWebviewFragment();
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING,
+				bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
-	public void setUrl(String url) {
-		this.Url = url;
-	}
+	// public void setUrl(String url) {
+	// this.Url = url;
+	// }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,7 +47,10 @@ public class CheckoutWebviewFragment extends SimiFragment {
 				RelativeLayout.LayoutParams.MATCH_PARENT,
 				RelativeLayout.LayoutParams.MATCH_PARENT);
 		lp.addRule(RelativeLayout.CENTER_IN_PARENT);
-
+		if (getArguments() != null) {
+			Url = (String) getData(Constants.KeyData.URL,
+					Constants.KeyData.TYPE_STRING, getArguments());
+		}
 		mImageView.setLayoutParams(lp);
 		// add loading View
 		webview.addView(mImageView);

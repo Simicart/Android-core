@@ -91,7 +91,7 @@ public class CoreResponse {
 	public String getMessage() {
 		if (mMessage == null) {
 			mMessage = Config.getInstance().getText(
-					"Some errors occured. Please try again later");
+					"Some errors occurred. Please try again later");
 		}
 		return mMessage;
 	}

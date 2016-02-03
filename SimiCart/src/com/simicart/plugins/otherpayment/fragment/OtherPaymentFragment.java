@@ -22,6 +22,7 @@ import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.otherpayment.entity.OtherPaymentEntity;
 import com.simicart.plugins.otherpayment.model.CancelOrderModel;
@@ -31,21 +32,29 @@ public class OtherPaymentFragment extends SimiFragment {
 	protected String mInvoiceNumber;
 	protected String mUrlAction = "";
 
-	public void setInvoiceNumber(String mInvoiceNumber) {
-		this.mInvoiceNumber = mInvoiceNumber;
-	}
+//	public void setInvoiceNumber(String mInvoiceNumber) {
+//		this.mInvoiceNumber = mInvoiceNumber;
+//	}
+//
+//	
+//	public void setUrlAction(String mUrlAction) {
+//		this.mUrlAction = mUrlAction;
+//	}
+//
+//	public void setPayment(OtherPaymentEntity mPayment) {
+//		this.mPayment = mPayment;
+//	}
 
-	public void setUrlAction(String mUrlAction) {
-		this.mUrlAction = mUrlAction;
-	}
+    public static OtherPaymentFragment newInstance(String urlAction, String invoiceNumber, OtherPaymentEntity payment) {
+    
+        OtherPaymentFragment fragment = new OtherPaymentFragment();
+        Bundle bundle= new Bundle();
+        setData(Constants.KeyData.URL_ACTION, urlAction, Constants.KeyData.TYPE_STRING, bundle);
+        setData(Constants.KeyData.INVOICE_NUMBER, invoiceNumber, Constants.KeyData.TYPE_STRING, bundle);
+        bundle.putSerializable(Constants.KeyData.OTHERPAYMENTENTITY, payment);
+        fragment.setArguments(bundle);
+        return fragment;
 
-	public void setPayment(OtherPaymentEntity mPayment) {
-		this.mPayment = mPayment;
-	}
-
-	public static OtherPaymentFragment newInstance() {
-		OtherPaymentFragment fragment = new OtherPaymentFragment();
-		return fragment;
 	}
 
 	@Override
@@ -54,6 +63,14 @@ public class OtherPaymentFragment extends SimiFragment {
 		View rootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_webview_layout"), container,
 				false);
+		
+        //getdata
+        if(getArguments() != null){
+        mUrlAction = (String) getData(Constants.KeyData.URL_ACTION, Constants.KeyData.TYPE_STRING, getArguments());
+        mInvoiceNumber = (String) getData(Constants.KeyData.INVOICE_NUMBER, Constants.KeyData.TYPE_STRING, getArguments()); 
+        mPayment = (OtherPaymentEntity) getArguments().getSerializable(Constants.KeyData.OTHERPAYMENTENTITY);
+        }
+
 		final WebView webview = (WebView) rootView.findViewById(Rconfig
 				.getInstance().id("webview_Ad"));
 		final View mImageView = inflater.inflate(

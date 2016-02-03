@@ -84,10 +84,6 @@ public class RewardPointFragment extends SimiFragment {
 
 	protected ProgressDialog pd_loading;
 
-	public RewardPointFragment() {
-		mContext = SimiManager.getIntance().getCurrentContext();
-	}
-
 	protected String mID;
 
 	@Override
@@ -483,9 +479,9 @@ public class RewardPointFragment extends SimiFragment {
 
 	}
 
-	public void setProductId(String id) {
-		this.mID = id;
-	}
+//	public void setProductId(String id) {
+//		this.mID = id;
+//	}
 
 	public String getProductId() {
 		return mID;

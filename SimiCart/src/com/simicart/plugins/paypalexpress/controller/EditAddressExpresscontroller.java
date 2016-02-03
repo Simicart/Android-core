@@ -7,8 +7,8 @@ import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.Utils;
 import com.simicart.core.customer.controller.AddressBookDetailController;
 import com.simicart.core.customer.entity.MyAddress;
-import com.simicart.plugins.paypalexpress.fragment.FragmentAddress;
-import com.simicart.plugins.paypalexpress.fragment.FragmentEditAddressExpress;
+import com.simicart.plugins.paypalexpress.fragment.AddressFragment;
+import com.simicart.plugins.paypalexpress.fragment.EditAddressExpressFragment;
 
 public class EditAddressExpresscontroller extends AddressBookDetailController {
 
@@ -34,14 +34,14 @@ public class EditAddressExpresscontroller extends AddressBookDetailController {
 				Utils.hideKeyboard(v);
 				MyAddress addressBookDetail = mDelegate.getAddressBookDetail();
 				if (isCompleteRequired(addressBookDetail)) {
-					if (addressType == FragmentEditAddressExpress.BILLING) {
-						FragmentAddress fragmentAddress = FragmentAddress.newInstance(addressbookTemp, addressBookDetail);
+					if (addressType == EditAddressExpressFragment.BILLING) {
+						AddressFragment addressFragment = AddressFragment.newInstance(addressbookTemp, addressBookDetail);
 						SimiManager.getIntance().replaceFragment(
-								fragmentAddress);
+								addressFragment);
 					} else {
-						FragmentAddress fragmentAddress = FragmentAddress.newInstance(addressBookDetail, addressbookTemp);
+						AddressFragment addressFragment = AddressFragment.newInstance(addressBookDetail, addressbookTemp);
 						SimiManager.getIntance().replaceFragment(
-								fragmentAddress);
+								addressFragment);
 					}
 				} else {
 					SimiManager.getIntance().showNotify(null,

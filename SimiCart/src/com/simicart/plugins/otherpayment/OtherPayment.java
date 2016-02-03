@@ -70,24 +70,26 @@ public class OtherPayment {
 										.getInstance().getListPayment().get(i)
 										.getMessageFail());
 							} else {
-								OtherPaymentFragment fragment = OtherPaymentFragment
-										.newInstance();
-								fragment.setPayment(OtherPaymentConfig
-										.getInstance().getListPayment().get(i));
-								fragment.setInvoiceNumber(checkoutData
-										.getInvoice_number());
-								fragment.setUrlAction(url);
+                                OtherPaymentFragment fragment = OtherPaymentFragment
+                                        .newInstance(url, checkoutData.getInvoice_number(), OtherPaymentConfig.getInstance().getListPayment().get(i));
+
+//								fragment.setPayment(OtherPaymentConfig
+//										.getInstance().getListPayment().get(i));
+//								fragment.setInvoiceNumber(checkoutData
+//										.getInvoice_number());
+//								fragment.setUrlAction(url);
 								SimiManager.getIntance().replaceFragment(
 										fragment);
 							}
 						} else {
-							OtherPaymentFragment fragment = OtherPaymentFragment
-									.newInstance();
-							fragment.setPayment(OtherPaymentConfig
-									.getInstance().getListPayment().get(i));
-							fragment.setInvoiceNumber(checkoutData
-									.getInvoice_number());
-							fragment.setUrlAction(url);
+                            OtherPaymentFragment fragment = OtherPaymentFragment
+                                    .newInstance(url, checkoutData.getInvoice_number(), OtherPaymentConfig.getInstance().getListPayment().get(i));
+
+//							fragment.setPayment(OtherPaymentConfig
+//									.getInstance().getListPayment().get(i));
+//							fragment.setInvoiceNumber(checkoutData
+//									.getInvoice_number());
+//							fragment.setUrlAction(url);
 							SimiManager.getIntance().replaceFragment(fragment);
 						}
 					} else {

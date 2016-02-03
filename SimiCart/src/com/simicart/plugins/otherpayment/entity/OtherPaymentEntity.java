@@ -1,8 +1,14 @@
 package com.simicart.plugins.otherpayment.entity;
 
+import java.io.Serializable;
+
 import com.simicart.core.base.model.entity.SimiEntity;
 
-public class OtherPaymentEntity extends SimiEntity {
+public class OtherPaymentEntity extends SimiEntity implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String mPaymentMethod;
 	protected String mUrlRedirect;
 	protected String mUrlSuccess;

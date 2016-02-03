@@ -12,7 +12,7 @@ import com.nineoldandroids.view.ViewHelper;
 import com.simicart.core.banner.entity.BannerEntity;
 import com.simicart.core.config.Rconfig;
 import com.simicart.theme.matrixtheme.home.common.Common;
-import com.simicart.theme.matrixtheme.home.common.FragmentPagerBanner;
+import com.simicart.theme.matrixtheme.home.common.PagerBannerFragment;
 import com.simicart.theme.matrixtheme.home.common.MyLinearLayout;
 
 public class Theme1PagerAdapter extends FragmentPagerAdapter implements
@@ -68,18 +68,18 @@ public class Theme1PagerAdapter extends FragmentPagerAdapter implements
 
 		}
 		int realPosition = (position % mBanners.size());
-		FragmentPagerBanner curFragment = FragmentPagerBanner.newInstance(position, scale, IsBlured, mBanners.get(realPosition));
+		PagerBannerFragment curFragment = PagerBannerFragment.newInstance(position, scale, IsBlured, mBanners.get(realPosition));
 
 		
-//		((FragmentPagerBanner) curFragment).setBannerEntity(mBanners
+//		((PagerBannerFragment) curFragment).setBannerEntity(mBanners
 //				.get(realPosition));
 		// String url = mBanners.get(realPosition).getImage();
 		// if (url != null) {
-		// ((FragmentPagerBanner) curFragment).setUrlImage(url);
+		// ((PagerBannerFragment) curFragment).setUrlImage(url);
 		// }
 		// String urlAd = mBanners.get(realPosition).getUrl();
 		// if (null != urlAd) {
-		// ((FragmentPagerBanner) curFragment).setUrlAd(urlAd);
+		// ((PagerBannerFragment) curFragment).setUrlAd(urlAd);
 		// }
 		return curFragment;
 	}
