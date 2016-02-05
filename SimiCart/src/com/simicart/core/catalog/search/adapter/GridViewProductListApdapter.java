@@ -150,8 +150,8 @@ public class GridViewProductListApdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.tv_name = (TextView) convertView.findViewById(Rconfig
 					.getInstance().id("tv_name"));
-			holder.tv_name.setTextColor(Config.getInstance()
-					.getContent_color());
+			holder.tv_name
+					.setTextColor(Config.getInstance().getContent_color());
 			holder.ll_price = (LinearLayout) convertView.findViewById(Rconfig
 					.getInstance().id("ll_price"));
 			holder.img_avartar = (ImageView) convertView.findViewById(Rconfig
@@ -212,7 +212,7 @@ public class GridViewProductListApdapter extends BaseAdapter {
 
 		ProductPriceViewProductGridV03 price_view = new ProductPriceViewProductGridV03(
 				product);
-		price_view.setShowOnePrice(true);
+		price_view.setShowOnePrice(false);
 		View view = price_view.getViewPrice();
 		if (null != view && null != holder.ll_price) {
 			holder.ll_price.removeAllViewsInLayout();
@@ -236,7 +236,7 @@ public class GridViewProductListApdapter extends BaseAdapter {
 				.findViewById(Rconfig.getInstance().id("rel_product_list"));
 
 		EventBlock eventBlock = new EventBlock();
-		if(numColum == 4) {
+		if (numColum == 4) {
 			eventBlock.dispatchEvent("com.simicart.image.product.grid4col",
 					rl_product_list, mListProduct.get(pos));
 		} else {
