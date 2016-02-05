@@ -34,11 +34,6 @@ public class ModelSearchBase extends SimiModel {
 
 	public void setUrlSearch(String url) {
 		url_action = url;
+//		this.enableCache = false;
 	}
-
-	@Override
-	protected void setEnableCache() {
-		this.enableCache = true;
-	}
-
 }

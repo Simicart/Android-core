@@ -203,7 +203,7 @@ public class ListProductFragment extends SimiFragment {
 		if (DataLocal.isTablet) {
 			this.tag_search = TagSearch.TAG_GRIDVIEW;
 		} else {
-			if (Config.getInstance().getDefaultList().equals("1")) {
+			if (Config.getInstance().getDefaultList() != null && Config.getInstance().getDefaultList().equals("1")) {
 				// neu gia tri 1: Gridview
 				this.tag_search = TagSearch.TAG_GRIDVIEW;
 			} else {

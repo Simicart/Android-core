@@ -36,7 +36,7 @@ public class SimiModel{
 	protected boolean isDebug = false;
 	protected SimiRequest mRequest;
 	protected Priority mCurrentPriority = Priority.NORMAL;
-	protected boolean enableCache = true;
+	protected boolean enableCache = false;
 
 	public void setPriority(Priority priority) {
 		mCurrentPriority = priority;
