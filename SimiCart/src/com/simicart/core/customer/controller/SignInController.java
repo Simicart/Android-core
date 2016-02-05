@@ -226,8 +226,9 @@ public class SignInController extends SimiController {
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
-				
 				SimiManager.getIntance().getRequestQueue().clearCacheL1();
+				
+				if (isSuccess) {
 				showToastSignIn();
 				DataLocal.isNewSignIn = true;
 				DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
@@ -254,7 +255,7 @@ public class SignInController extends SimiController {
 				event.dispatchEvent(
 						"com.simicart.core.customer.controller.SignInController",
 						mModel.getJSON().toString());
-				if (isSuccess) {
+//				if (isSuccess) {
 					
 					if (isCheckout) {
 

@@ -18,6 +18,8 @@ public class Cart extends SimiEntity {
 	protected float mProductPrice = -1;
 	protected ArrayList<Option> mOptions;
 	protected String mProductStock;
+	protected int min_qty_allow = 1;
+	protected int max_qty_allow = 999;
 
 	public String getStock() {
 		if (null == mProductStock) {
@@ -145,5 +147,20 @@ public class Cart extends SimiEntity {
 	public void setProduct_image(String product_image) {
 		this.mProductImage = product_image;
 	}
+	public int getMinQtyAllow() {
+		  String s_min = getData("min_qty_allow");
+		  if (null != s_min) {
+		   min_qty_allow = Integer.parseInt(s_min);
+		  }
+		  return min_qty_allow;
+		 }
+
+		 public int getMaxQtyAllow() {
+		  String s_max = getData("max_qty_allow");
+		  if (null != s_max) {
+		   max_qty_allow = Integer.parseInt(s_max);
+		  }
+		  return max_qty_allow;
+		 }
 
 }

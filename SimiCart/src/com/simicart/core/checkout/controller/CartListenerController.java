@@ -233,7 +233,7 @@ public class CartListenerController implements CartAdapterDelegate {
 		mBlockDelegate = delegate;
 	}
 
-	private void showDialogNumberPicker(final int position, final int qty) {
+	private void showDialogNumberPicker(final int position, final int qty, int min, int max) {
 		final Dialog dialoglayout = new Dialog(MainActivity.context);
 		dialoglayout.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialoglayout.setContentView(Rconfig.getInstance().layout(
@@ -252,8 +252,15 @@ public class CartListenerController implements CartAdapterDelegate {
 
 		final WheelView wheel = (WheelView) dialoglayout.findViewById(Rconfig
 				.getInstance().id("select_quantity"));
+		
+		if(!Utils.validateString(""+min)){
+			min = 1;
+		}
+		if(!Utils.validateString(""+max)){
+			max = 1;
+		}
 		final NumericWheelAdapter minAdapter = new NumericWheelAdapter(
-				MainActivity.context, 1, 999);
+				MainActivity.context, min, max);
 		wheel.setViewAdapter(minAdapter);
 		if (qty > 0) {
 			wheel.setCurrentItem((qty - 1));
@@ -291,12 +298,12 @@ public class CartListenerController implements CartAdapterDelegate {
 	}
 
 	@Override
-	public OnClickListener getClickQtyItem(final int position, final int qty) {
+	public OnClickListener getClickQtyItem(final int position, final int qty, final int min, final int max) {
 		OnClickListener onclick = new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				showDialogNumberPicker(position, qty);
+				showDialogNumberPicker(position, qty, min, max);
 			}
 		};
 		return onclick;

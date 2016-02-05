@@ -23,9 +23,11 @@ public class Config {
 
 	// private String mBaseUrl = "https://www.papagayoweb.com";
 	// private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
+	 private String mBaseUrl = "https://www.grocerymantra.com";
+	 private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
                                                                                                                                                
-	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
-	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+//	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
+//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 
 	// private String mBaseUrl =
 	// "http://demo.magestore.com/simicart/simipos4/index.php";
