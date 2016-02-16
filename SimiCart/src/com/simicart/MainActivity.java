@@ -52,7 +52,7 @@ import com.simicart.core.slidemenu.fragment.SlideMenuFragment;
 
 @SuppressLint("DefaultLocale")
 public class MainActivity extends FragmentActivity {
-//adfsflkjsdf
+	// adfsflkjsdf
 	public final static int PAUSE = 2;
 	public final static int RESUME = 1;
 	public final static int START = 3;
@@ -72,13 +72,12 @@ public class MainActivity extends FragmentActivity {
 	private int requestCode;
 	private int resultCode;
 	private Intent data;
-	private int mCounter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// report bug
-//		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		SimiManager.getIntance().setCurrentActivity(this);
 		SimiManager.getIntance().setCurrentContext(getApplicationContext());
 		getActionBar().hide();
@@ -126,7 +125,7 @@ public class MainActivity extends FragmentActivity {
 				.newInstance(mNavigationDrawerFragment);
 		ft.replace(Rconfig.getInstance().id("menu_top"), fragment);
 		ft.commit();
-//		ViewServer.get(this).addWindow(this);
+		// ViewServer.get(this).addWindow(this);
 	}
 
 	private void autoSignin() {
@@ -180,7 +179,7 @@ public class MainActivity extends FragmentActivity {
 		} catch (ShortcutBadgeException e) {
 		}
 		super.onResume();
-//		ViewServer.get(this).setFocusedWindow(this);
+		// ViewServer.get(this).setFocusedWindow(this);
 	}
 
 	@Override
@@ -404,7 +403,7 @@ public class MainActivity extends FragmentActivity {
 		Runtime.getRuntime().freeMemory();
 
 		super.onDestroy();
-//		ViewServer.get(this).removeWindow(this);
+		// ViewServer.get(this).removeWindow(this);
 	}
 
 	public int getRequestCode() {
