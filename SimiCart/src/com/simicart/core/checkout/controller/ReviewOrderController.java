@@ -355,7 +355,7 @@ public class ReviewOrderController extends SimiController implements
 							}
 							// SimiManager.getIntance().showToast(message);
 						}
-						SimiManager.getIntance().backToHomeFragment();
+//						SimiManager.getIntance().backToHomeFragment();
 						break;
 					case 2:
 						// event call paypal server.
