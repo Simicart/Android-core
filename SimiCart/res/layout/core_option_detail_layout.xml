@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:paddingBottom="100dp"
     android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:paddingTop="100dp" >
+    android:paddingRight="10dp">
 
     <RelativeLayout
          android:id="@+id/rlt_core_option"
@@ -60,7 +59,7 @@
 
             <ScrollView
                 android:id="@+id/scl_body"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rlt_header"
                 android:scrollbars="none" >
