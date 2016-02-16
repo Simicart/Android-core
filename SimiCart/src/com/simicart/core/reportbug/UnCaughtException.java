@@ -18,6 +18,7 @@ import android.os.Looper;
 import android.os.StatFs;
 import android.util.Log;
 
+import com.simicart.core.config.DataLocal;
 import com.simicart.core.splashscreen.SplashActivity;
 
 public class UnCaughtException implements UncaughtExceptionHandler {
@@ -99,7 +100,16 @@ public class UnCaughtException implements UncaughtExceptionHandler {
 			Log.e(UnCaughtException.class.getName(),
 					"Error while sendErrorMail" + report);
 			// check resume
-			// restartApp();
+			int count = DataLocal.getRestartCount();
+			if (count < 3) {
+				count++;
+				DataLocal.saveRestartCount(count);
+				restartApp();
+			} else {
+				DataLocal.saveRestartCount(0);
+				// android.os.Process.killProcess(android.os.Process.myPid());
+				// ((Activity) context).finish();
+			}
 			sendErrorMail(report);
 		} catch (Throwable ignore) {
 			Log.e(UnCaughtException.class.getName(),

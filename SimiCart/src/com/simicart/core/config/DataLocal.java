@@ -23,6 +23,7 @@ public class DataLocal {
 	public static boolean isCloud = false;
 	public static boolean enNotification = true;
 	public static final String NAME_REFERENCE = "simicart";
+	private static String RESTART_COUNT = "RestartCount";
 	private static String CATEGORY_ID = "CategoryKey";
 	private static String CATEGORY_NAME = "CategoryNameKey";
 	private static String EMAIL_KEY = "EmailKey";
@@ -235,6 +236,7 @@ public class DataLocal {
 		String password = mSharedPre.getString(PASS_WORK_REMEMBER, null);
 		return password;
 	}
+
 	public static void saveEmailCreditCart(String email) {
 		SharedPreferences.Editor editor = mSharedPre.edit();
 		editor.putString(EMAIL_CARD_CREDIT_CARD, email);
@@ -296,5 +298,19 @@ public class DataLocal {
 	// editor.commit();
 	// listCarts.clear();
 	// }
+
+	public static int getRestartCount() {
+		int count = 0;
+		if (mSharedPre != null) {
+			count = mSharedPre.getInt(RESTART_COUNT, 0);
+		}
+		return count;
+	}
+
+	public static void saveRestartCount(int count) {
+		SharedPreferences.Editor editor = mSharedPre.edit();
+		editor.putInt(RESTART_COUNT, count);
+		editor.commit();
+	}
 
 }
