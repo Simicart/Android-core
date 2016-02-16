@@ -126,7 +126,7 @@ public class MainActivity extends FragmentActivity {
 				.newInstance(mNavigationDrawerFragment);
 		ft.replace(Rconfig.getInstance().id("menu_top"), fragment);
 		ft.commit();
-		ViewServer.get(this).addWindow(this);
+//		ViewServer.get(this).addWindow(this);
 	}
 
 	private void autoSignin() {
@@ -180,7 +180,7 @@ public class MainActivity extends FragmentActivity {
 		} catch (ShortcutBadgeException e) {
 		}
 		super.onResume();
-		ViewServer.get(this).setFocusedWindow(this);
+//		ViewServer.get(this).setFocusedWindow(this);
 	}
 
 	@Override
@@ -404,7 +404,7 @@ public class MainActivity extends FragmentActivity {
 		Runtime.getRuntime().freeMemory();
 
 		super.onDestroy();
-		ViewServer.get(this).removeWindow(this);
+//		ViewServer.get(this).removeWindow(this);
 	}
 
 	public int getRequestCode() {
