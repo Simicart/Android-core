@@ -31,8 +31,8 @@ import android.view.Display;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+//import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+//import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.simicart.MainActivity;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
@@ -409,33 +409,33 @@ public class DrawableManager {
 		getBitmap(handler, urlString);
 	}
 
-	public static class GLideTransform extends BitmapTransformation {
-		public GLideTransform(Context context) {
-			super(context);
-		}
-
-		@Override
-		public String getId() {
-			// TODO Auto-generated method stub
-			return "detail";
-		}
-
-		@Override
-		protected Bitmap transform(BitmapPool arg0, Bitmap bitmap, int arg2,
-				int arg3) {
-			Display display = SimiManager.getIntance().getCurrentActivity()
-					.getWindowManager().getDefaultDisplay();
-			Point size = new Point();
-			display.getSize(size);
-			final int w = (size.x * 4) / 5;
-			final int h = (size.y * 4) / 5;
-
-			Log.e("DrawableManager ", "transform " + w + h);
-
-			return Utils.scaleToFill(bitmap, w, h);
-		}
-
-	}
+	// public static class GLideTransform extends BitmapTransformation {
+	// public GLideTransform(Context context) {
+	// super(context);
+	// }
+	//
+	// @Override
+	// public String getId() {
+	// // TODO Auto-generated method stub
+	// return "detail";
+	// }
+	//
+	// @Override
+	// protected Bitmap transform(BitmapPool arg0, Bitmap bitmap, int arg2,
+	// int arg3) {
+	// Display display = SimiManager.getIntance().getCurrentActivity()
+	// .getWindowManager().getDefaultDisplay();
+	// Point size = new Point();
+	// display.getSize(size);
+	// final int w = (size.x * 4) / 5;
+	// final int h = (size.y * 4) / 5;
+	//
+	// Log.e("DrawableManager ", "transform " + w + h);
+	//
+	// return Utils.scaleToFill(bitmap, w, h);
+	// }
+	//
+	// }
 
 	@SuppressWarnings("deprecation")
 	public static void fetchDrawableOnThread(final String urlString,
