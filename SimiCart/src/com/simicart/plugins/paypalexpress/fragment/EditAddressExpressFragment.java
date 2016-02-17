@@ -62,6 +62,7 @@ public class EditAddressExpressFragment extends AddressBookDetailFragment {
 		}
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
+		Log.d("quang12", "==addressbook==EditAddressExpressFragment=="+addressbook.toString());
 		Log.e("EditAddressExpressFragment : ",
 				"ID + " + addressbook.getAddressId());
 		// Log.e("EditAddressExpressFragment : ", "JSON "

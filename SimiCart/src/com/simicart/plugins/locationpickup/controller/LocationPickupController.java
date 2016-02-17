@@ -6,7 +6,6 @@ import org.apache.http.NameValuePair;
 
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.checkout.fragment.AddressBookCheckoutFragment;
 import com.simicart.core.checkout.fragment.ReviewOrderFragment;
 import com.simicart.core.config.Constants;
 import com.simicart.core.customer.controller.NewAddressBookController;
@@ -17,6 +16,11 @@ import com.simicart.core.customer.fragment.AddressBookFragment;
 import com.simicart.core.customer.model.NewAddressBookModel;
 
 public class LocationPickupController extends NewAddressBookController{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void OnRequestChangeAddress(MyAddress address) {
 		mDelegate.showLoading();

@@ -1,5 +1,7 @@
 package com.simicart.core.customer.controller;
 
+import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -8,6 +10,8 @@ import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.delegate.SimiDelegate;
@@ -88,15 +92,18 @@ public class AddressBookController extends SimiController {
 	protected void addNewAddress() {
 
 	}
-
+	
 	protected void selectItem(int position) {
 		SimiEntity entity = mModel.getCollection().getCollection()
 				.get(position);
-
-		MyAddress addressbook = new MyAddress();
-		addressbook.setJSONObject(entity.getJSONObject());
-//		Log.d("==quang", "addressbook : "+addressbook.getCompany());
+		Gson gson = new GsonBuilder().create();
+		JSONObject jsonObject = entity.getJSONObject();
+		MyAddress addressbook = gson.fromJson(jsonObject.toString(), MyAddress.class);
+//		MyAddress addressbook = new MyAddress();
+//		addressbook.setJSONObject(entity.getJSONObject());
 		Log.d("quang12", "==selectItem==addressbook=="+addressbook.toString());
+//		Log.d("quang12", "==selectItem==addressbook=="+addressbook.getStreet());
+		Log.d("quang12", "==selectItem==getJSONObject=="+entity.getJSONObject().toString());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
 				.newInstance(addressbook);
 		if (DataLocal.isTablet) {

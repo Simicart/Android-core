@@ -37,6 +37,10 @@ import com.simicart.core.customer.model.NewAddressBookModel;
 public class NewAddressBookController extends SimiController implements
 		ChooseCountryDelegate {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static int TYPE_SELECT_STATE = 0;
 	public static int TYPE_SELECT_COUNTRY = 1;
 
@@ -91,6 +95,7 @@ public class NewAddressBookController extends SimiController implements
 	}
 
 	public void setDelegate(NewAddressBookDelegate mDelegate) {
+		if(mDelegate != null)
 		this.mDelegate = mDelegate;
 	}
 

@@ -16,286 +16,292 @@ public class MyAddress extends SimiEntity implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String mAddressID = "-1";
-	private String mStateID;
-	private String mPrefix;
-	private String mName;
-	private String mSuffix;
-	private String mStreet;
-	private String mCity;
-	private String mStateName;
-	private String mStateCode;
-	private String mZipCode;
-	private String mCountryName;
-	private String mCountryCode;
-	private String mTaxVat;
-	private String mGender;
-	private String mDay;
-	private String mMonth;
-	private String mYear;
-	private String mPhone;
-	private String mEmail;
-	private String mFax;
-	private String mCompany;
+	private String address_id = "-1";
+	private String state_id;
+	private String prefix;
+	private String name;
+	private String suffix;
+	private String street;
+	private String city;
+	private String state_name;
+	private String state_code;
+	private String zip;
+	private String country_name;
+	private String country_code;
+	private String taxvat;
+	private String gender;
+	private String day;
+	private String month;
+	private String year;
+	private String phone;
+	private String email;
+	private String fax;
+	private String company;
 	private String mTaxVatCheckout;
+	
+	public MyAddress() {
+		// TODO Auto-generated constructor stub
+	}
+	
+
 
 	public String getFax() {
-		if (null == mFax) {
-			mFax = getData(Constants.FAX);
+		if (null == fax) {
+			fax = getData(Constants.FAX);
 		}
-		return mFax;
+		return fax;
 	}
 
 	public void setFax(String fax) {
-		this.mFax = fax;
+		this.fax = fax;
 	}
 
 	public String getCompany() {
-		if (null == mCompany) {
-			mCompany = getData(Constants.COMPANY);
+		if (null == company) {
+			company = getData(Constants.COMPANY);
 		}
-		if (null != mCompany && mCompany.equals("null")) {
-			mCompany = "";
+		if (null != company && company.equals("null")) {
+			company = "";
 		}
-		return mCompany;
+		return company;
 	}
 
 	public void setCompany(String company) {
-		this.mCompany = company;
+		this.company = company;
 	}
 
 	public String getAddressId() {
-		if (!Utils.validateString(mAddressID) || mAddressID.equals("-1")) {
-			mAddressID = getData(Constants.ADDRESS_ID);
+		if (!Utils.validateString(address_id) || address_id.equals("-1")) {
+			address_id = getData(Constants.ADDRESS_ID);
 		}
-		if (!Utils.validateString(mAddressID)) {
-			mAddressID = "0";
+		if (!Utils.validateString(address_id)) {
+			address_id = "0";
 		}
 
-		return mAddressID;
+		return address_id;
 	}
 
 	public void setAddressId(String addressId) {
-		this.mAddressID = addressId;
+		this.address_id = addressId;
 	}
 
 	public String getStateId() {
-		if (null == mStateID) {
-			mStateID = getData(Constants.STATE_ID);
+		if (null == state_id) {
+			state_id = getData(Constants.STATE_ID);
 		}
-		return mStateID;
+		return state_id;
 	}
 
 	public void setStateId(String stateId) {
-		this.mStateID = stateId;
+		this.state_id = stateId;
 	}
 
 	public String getName() {
-		if (null == mName) {
-			mName = getData(Constants.NAME);
+		if (null == name) {
+			name = getData(Constants.NAME);
 		}
-		return mName;
+		return name;
 	}
 
 	public void setName(String name) {
-		this.mName = name;
+		this.name = name;
 	}
 
 	public String getStreet() {
-		if (null == mStreet) {
-			mStreet = getData(Constants.STREET);
+		if (null == street) {
+			street = getData(Constants.STREET);
 		}
 
-		if (null != mStreet && mStreet.equals("null")) {
-			mStreet = "";
+		if (null != street && street.equals("null")) {
+			street = "";
 		}
-		return mStreet;
+		return street;
 	}
 
 	public void setStreet(String street) {
-		this.mStreet = street;
+		this.street = street;
 	}
 
 	public String getCity() {
-		if (null == mCity) {
-			mCity = getData(Constants.CITY);
+		if (null == city) {
+			city = getData(Constants.CITY);
 		}
-		if (null != mCity && mCity.equals("null")) {
-			mCity = "";
+		if (null != city && city.equals("null")) {
+			city = "";
 		}
-		return mCity;
+		return city;
 	}
 
 	public void setCity(String city) {
-		this.mCity = city;
+		this.city = city;
 	}
 
 	public String getStateName() {
-		if (null == mStateName) {
-			mStateName = getData(Constants.STATE_NAME);
+		if (null == state_name) {
+			state_name = getData(Constants.STATE_NAME);
 		}
-		if (null != mStateName && mStateName.equals("null")) {
-			mStateName = "";
+		if (null != state_name && state_name.equals("null")) {
+			state_name = "";
 		}
-		return mStateName;
+		return state_name;
 	}
 
 	public void setStateName(String stateName) {
-		this.mStateName = stateName;
+		this.state_name = stateName;
 	}
 
 	public String getStateCode() {
-		if (null == mStateCode) {
-			mStateCode = getData(Constants.STATE_CODE);
+		if (null == state_code) {
+			state_code = getData(Constants.STATE_CODE);
 		}
 
-		return mStateCode;
+		return state_code;
 	}
 
 	public void setStateCode(String stateCode) {
-		this.mStateCode = stateCode;
+		this.state_code = stateCode;
 	}
 
 	public String getZipCode() {
 
-		if (null == mZipCode) {
-			mZipCode = getData(Constants.ZIP);
+		if (null == zip) {
+			zip = getData(Constants.ZIP);
 		}
-		if (null != mZipCode && mZipCode.equals("null")) {
-			mZipCode = "";
+		if (null != zip && zip.equals("null")) {
+			zip = "";
 		}
-		return mZipCode;
+		return zip;
 	}
 
 	public void setZipCode(String zipCode) {
-		this.mZipCode = zipCode;
+		this.zip = zipCode;
 	}
 
 	public String getCountryName() {
-		if (null == mCountryName) {
-			mCountryName = getData(Constants.COUNTRY_NAME);
+		if (null == country_name) {
+			country_name = getData(Constants.COUNTRY_NAME);
 		}
-		if (null != mCountryName && mCountryName.equals("null")) {
-			mCountryName = "";
+		if (null != country_name && country_name.equals("null")) {
+			country_name = "";
 		}
-		return mCountryName;
+		return country_name;
 	}
 
 	public void setCountryName(String countryName) {
-		this.mCountryName = countryName;
+		this.country_name = countryName;
 	}
 
 	public String getCountryCode() {
-		if (null == mCountryCode) {
-			mCountryCode = getData(Constants.COUNTRY_CODE);
+		if (null == country_code) {
+			country_code = getData(Constants.COUNTRY_CODE);
 		}
-		return mCountryCode;
+		return country_code;
 	}
 
 	public void setCountryCode(String countryCode) {
-		this.mCountryCode = countryCode;
+		this.country_code = countryCode;
 	}
 
 	public String getPhone() {
-		if (null == mPhone) {
-			mPhone = getData(Constants.PHONE);
+		if (null == phone) {
+			phone = getData(Constants.PHONE);
 		}
-		if (null != mPhone && mPhone.equals("null")) {
-			mPhone = "";
+		if (null != phone && phone.equals("null")) {
+			phone = "";
 		}
-		return mPhone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		this.mPhone = phone;
+		this.phone = phone;
 	}
 
 	public String getEmail() {
-		if (null == mEmail) {
-			mEmail = getData(Constants.EMAIL);
+		if (null == email) {
+			email = getData(Constants.EMAIL);
 		}
-		return mEmail;
+		return email;
 	}
 
 	public void setEmail(String email) {
-		this.mEmail = email;
+		this.email = email;
 	}
 
 	public String getPrefix() {
-		if (null == mPrefix) {
-			mPrefix = getData(Constants.PREFIX);
+		if (null == prefix) {
+			prefix = getData(Constants.PREFIX);
 		}
-		return mPrefix;
+		return prefix;
 	}
 
 	public void setPrefix(String prefix) {
-		this.mPrefix = prefix;
+		this.prefix = prefix;
 	}
 
 	public String getSuffix() {
-		if (null == mSuffix) {
-			mSuffix = getData(Constants.SUFFIX);
+		if (null == suffix) {
+			suffix = getData(Constants.SUFFIX);
 		}
-		return mSuffix;
+		return suffix;
 	}
 
 	public void setSuffix(String suffix) {
-		this.mSuffix = suffix;
+		this.suffix = suffix;
 	}
 
 	public String getTaxvat() {
-		if (null == mTaxVat) {
-			mTaxVat = getData(Constants.TAXVAT);
+		if (null == taxvat) {
+			taxvat = getData(Constants.TAXVAT);
 		}
-		return mTaxVat;
+		return taxvat;
 	}
 
 	public void setTaxvat(String taxvat) {
-		this.mTaxVat = taxvat;
+		this.taxvat = taxvat;
 	}
 
 	public String getGender() {
-		if (null == mGender) {
-			mGender = getData(Constants.GENDER);
+		if (null == gender) {
+			gender = getData(Constants.GENDER);
 		}
-		return mGender;
+		return gender;
 	}
 
 	public void setGender(String gender) {
-		this.mGender = gender;
+		this.gender = gender;
 	}
 
 	public String getDay() {
-		if (null == mDay) {
-			mDay = getData(Constants.DAY);
+		if (null == day) {
+			day = getData(Constants.DAY);
 		}
-		return mDay;
+		return day;
 	}
 
 	public void setDay(String day) {
-		this.mDay = day;
+		this.day = day;
 	}
 
 	public String getMonth() {
-		if (null == mMonth) {
-			mMonth = getData(Constants.MONTH);
+		if (null == month) {
+			month = getData(Constants.MONTH);
 		}
-		return mMonth;
+		return month;
 	}
 
 	public void setMonth(String month) {
-		this.mMonth = month;
+		this.month = month;
 	}
 
 	public String getYear() {
-		if (null == mYear) {
-			mYear = getData(Constants.YEAR);
+		if (null == year) {
+			year = getData(Constants.YEAR);
 		}
-		return mYear;
+		return year;
 	}
 
 	public void setYear(String year) {
-		this.mYear = year;
+		this.year = year;
 	}
 
 	public void setTaxvatCheckout(String tax) {
@@ -433,16 +439,16 @@ public class MyAddress extends SimiEntity implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MyAddress [mAddressID=" + mAddressID + ", mStateID=" + mStateID
-				+ ", mPrefix=" + mPrefix + ", mName=" + mName + ", mSuffix="
-				+ mSuffix + ", mStreet=" + mStreet + ", mCity=" + mCity
-				+ ", mStateName=" + mStateName + ", mStateCode=" + mStateCode
-				+ ", mZipCode=" + mZipCode + ", mCountryName=" + mCountryName
-				+ ", mCountryCode=" + mCountryCode + ", mTaxVat=" + mTaxVat
-				+ ", mGender=" + mGender + ", mDay=" + mDay + ", mMonth="
-				+ mMonth + ", mYear=" + mYear + ", mPhone=" + mPhone
-				+ ", mEmail=" + mEmail + ", mFax=" + mFax + ", mCompany="
-				+ mCompany + ", mTaxVatCheckout=" + mTaxVatCheckout + "]";
+		return "MyAddress [address_id=" + address_id + ", state_id=" + state_id
+				+ ", prefix=" + prefix + ", mName=" + name + ", suffix="
+				+ suffix + ", street=" + street + ", city=" + city
+				+ ", state_name=" + state_name + ", state_code=" + state_code
+				+ ", zip=" + zip + ", country_name=" + country_name
+				+ ", country_code=" + country_code + ", taxvat=" + taxvat
+				+ ", gender=" + gender + ", day=" + day + ", month="
+				+ month + ", year=" + year + ", phone=" + phone
+				+ ", email=" + email + ", fax=" + fax + ", company="
+				+ company + ", mTaxVatCheckout=" + mTaxVatCheckout + "]";
 	}
 
 

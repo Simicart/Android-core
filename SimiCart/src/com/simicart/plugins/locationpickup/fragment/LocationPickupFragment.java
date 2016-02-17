@@ -113,19 +113,25 @@ public class LocationPickupFragment extends NewAddressBookFragment {
 
 	@Override
 	public void onResume() {
+		if(map != null){
 		map.onResume();
+		}
 		super.onResume();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+		if(map != null){
 		map.onDestroy();
+		}
 	}
 
 	@Override
 	public void onLowMemory() {
 		super.onLowMemory();
+		if(map != null){
 		map.onLowMemory();
+		}
 	}
 }

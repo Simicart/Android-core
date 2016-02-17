@@ -149,6 +149,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		createTaxVatCheckOut();
 		createButtonSave();
 		changeColor();
+		Log.d("quang12", "==addressbook==block=="+mAddressBookDetail.toString());
 	}
 
 	private void changeColor() {

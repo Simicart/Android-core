@@ -19,7 +19,7 @@ public class LocationPickup {
 		if (method.equals("addCreateView")) {
 			int afterControl = ((NewAddressBookFragment) caheFragment
 					.getFragment()).getAfterControl();
-			Log.d("quangdd", "==afterControl==" +afterControl);
+			Log.d("quang12", "==afterControl==" +afterControl);
 			fragment = LocationPickupFragment.newInstance();
 			
 //			((LocationPickupFragment) fragment).setAfterControler(afterControl);

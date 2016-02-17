@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 
 		mBlock = new LocationPickupEditBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
+		Log.d("quang12", "==addressbook==LocationPickupEditBlock=="+addressbook.toString());
 		mBlock.setGgmap(ggmap);
 		mBlock.initView();
 
@@ -98,19 +100,25 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 
 	@Override
 	public void onResume() {
+		if(map != null){
 		map.onResume();
+		}
 		super.onResume();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
+		if(map != null){
 		map.onDestroy();
+		}
 	}
 
 	@Override
 	public void onLowMemory() {
 		super.onLowMemory();
+		if(map != null){
 		map.onLowMemory();
+		}
 	}
 }

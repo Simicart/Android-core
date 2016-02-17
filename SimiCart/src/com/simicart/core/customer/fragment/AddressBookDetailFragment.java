@@ -19,7 +19,7 @@ public class AddressBookDetailFragment extends SimiFragment {
 	protected MyAddress addressbook;
 	protected AddressBookDetailBlock mBlock;
 	protected AddressBookDetailController mController;
-
+	View view;
 	public MyAddress getAddressbook() {
 		return addressbook;
 	}
@@ -29,14 +29,13 @@ public class AddressBookDetailFragment extends SimiFragment {
 		Bundle bundle= new Bundle();
 		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
 		fragment.setArguments(bundle);
-		Log.d("quang12", "==addressbook=="+addressbook.toString());
 		return fragment;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(
+		 view = inflater.inflate(
 				Rconfig.getInstance().layout("core_new_address_layout"),
 				container, false);
 		if (DataLocal.isLanguageRTL) {
@@ -46,15 +45,20 @@ public class AddressBookDetailFragment extends SimiFragment {
 									"rtl_core_new_address_layout"), container,
 							false);
 		}
+		
+		return view;
+	}
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 		Context context = getActivity();
 		if(getArguments() != null){
 		addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
 		}
-		
+		Log.d("quang12", "==addressbook==getArguments=="+addressbook.toString());
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
 		mBlock.initView();
-
 		if (null == mController) {
 			mController = new AddressBookDetailController();
 			mController.setDelegate(mBlock);
@@ -63,10 +67,8 @@ public class AddressBookDetailFragment extends SimiFragment {
 			mController.setDelegate(mBlock);
 			mController.onResume();
 		}
-
 		mBlock.setSaveClicker(mController.getClickSave());
 		mBlock.setChooseCountry(mController.getChooseCountry());
 		mBlock.setChooseStates(mController.getChooseStates());
-		return view;
 	}
 }
