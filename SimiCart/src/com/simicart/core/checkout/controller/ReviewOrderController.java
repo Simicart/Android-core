@@ -138,7 +138,7 @@ public class ReviewOrderController extends SimiController implements
 		});
 
 		String password = DataLocal.getPassword();
-		if (mAfterControll == NewAddressBookFragment.NEW_CUSTOMER) {
+		if (mAfterControll == Constants.NEW_CUSTOMER) {
 			mModel.addParam(Constants.CUSTOMER_PASSWORD, password);
 			mModel.addParam(Constants.CONFIRM_PASSWORD, password);
 		} else {
@@ -193,7 +193,7 @@ public class ReviewOrderController extends SimiController implements
 			@Override
 			public void onClick(View v) {
 				AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-						.newInstance(mAfterControll, AddressBookCheckoutFragment.SHIPPING_ADDRESS, mBillingAddress, mShippingAddress);
+						.newInstance(mAfterControll, Constants.KeyAddress.SHIPPING_ADDRESS, mBillingAddress, mShippingAddress);
 //				fragment.setAddressFor(AddressBookCheckoutFragment.SHIPPING_ADDRESS);
 //				fragment.setBillingAddress(mBillingAddress);
 //				fragment.setShippingAddress(mShippingAddress);
@@ -212,7 +212,7 @@ public class ReviewOrderController extends SimiController implements
 				Log.e("ReviewOrderController onChooseBillingAddress : ",
 						"DataLocal size : " + DataLocal.listCarts.size());
 				AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-						.newInstance(mAfterControll, AddressBookCheckoutFragment.BILLING_ADDRESS, mBillingAddress, mShippingAddress);
+						.newInstance(mAfterControll, Constants.KeyAddress.BILLING_ADDRESS, mBillingAddress, mShippingAddress);
 //				fragment.setAddressFor(AddressBookCheckoutFragment.BILLING_ADDRESS);
 //				fragment.setBillingAddress(mBillingAddress);
 //				fragment.setShippingAddress(mShippingAddress);
@@ -325,7 +325,7 @@ public class ReviewOrderController extends SimiController implements
 					PaymentMethod.getInstance().setPlacecc_id("");
 					ConfigCheckout.checkPaymentMethod = false;
 
-					if (mAfterControll != NewAddressBookFragment.NEW_AS_GUEST) {
+					if (mAfterControll != Constants.NEW_AS_GUEST) {
 						String email = DataLocal.getEmail();
 						String password = DataLocal.getPassword();
 						DataLocal.saveEmailPassRemember(email, password);

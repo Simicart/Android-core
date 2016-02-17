@@ -96,6 +96,7 @@ public class AddressBookController extends SimiController {
 		MyAddress addressbook = new MyAddress();
 		addressbook.setJSONObject(entity.getJSONObject());
 //		Log.d("==quang", "addressbook : "+addressbook.getCompany());
+		Log.d("quang12", "==selectItem==addressbook=="+addressbook.toString());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
 				.newInstance(addressbook);
 		if (DataLocal.isTablet) {

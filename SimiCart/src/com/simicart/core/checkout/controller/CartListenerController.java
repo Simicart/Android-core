@@ -36,6 +36,7 @@ import com.simicart.core.checkout.fragment.AddressBookCheckoutFragment;
 import com.simicart.core.checkout.model.EditCartItemModel;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 
@@ -71,7 +72,7 @@ public class CartListenerController implements CartAdapterDelegate {
 			} else {
 				if (DataLocal.isSignInComplete()) {
 					AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-							.newInstance(0, AddressBookCheckoutFragment.ALL_ADDRESS, null, null);
+							.newInstance(0, Constants.KeyAddress.ALL_ADDRESS, null, null);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {

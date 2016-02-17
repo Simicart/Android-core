@@ -14,11 +14,14 @@ import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.fragment.AddressBookFragment;
 
 public class AddressBookCheckoutFragment extends AddressBookFragment {
-	public final static int ALL_ADDRESS = 0;
-	public final static int BILLING_ADDRESS = 1;
-	public final static int SHIPPING_ADDRESS = 2;
+	
 	protected int mAfterController;
+	protected AddressBookBlock mBlock;
+	protected AddressBookCheckoutController mController;
 
+	protected int addressFor = Constants.KeyAddress.ALL_ADDRESS;
+	protected MyAddress mBillingAddress;
+	protected MyAddress mShippingAddress;
 
 	public static AddressBookCheckoutFragment newInstance(int afterControl, int addressFor, MyAddress billingAddress, MyAddress shippingAddress) {
 		AddressBookCheckoutFragment fragment = new AddressBookCheckoutFragment();
@@ -36,15 +39,6 @@ public class AddressBookCheckoutFragment extends AddressBookFragment {
 		return fragment;
 	}
 
-
-	
-	protected AddressBookBlock mBlock;
-	protected AddressBookCheckoutController mController;
-
-	protected int addressFor = ALL_ADDRESS;
-	protected MyAddress mBillingAddress;
-	protected MyAddress mShippingAddress;
-	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

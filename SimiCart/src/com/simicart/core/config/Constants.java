@@ -330,7 +330,20 @@ public class Constants {
 	public static String ORDER_GIFT_CODE = "order_gift_code";
 
 	public static final String INVOICE_NUMBER = "invoice_number";
-
+	
+	// click add new address from my account
+		public static final int NEW_ADDRESS = 0;
+		// click as new customer
+		public static final int NEW_CUSTOMER = 1;
+		// click check out as guest
+		public static final int NEW_AS_GUEST = 2;
+		// click new address from check out
+		public static final int NEW_ADDRESS_CHECKOUT = 3;
+		public final static class KeyAddress {
+		public final static int ALL_ADDRESS = 0;
+		public final static int BILLING_ADDRESS = 1;
+		public final static int SHIPPING_ADDRESS = 2;
+		}
 	// truong
 	public static final int RESULT_BARCODE = 1111;
 	public static final int TARGET_PRODUCTDETAIL = 1234;

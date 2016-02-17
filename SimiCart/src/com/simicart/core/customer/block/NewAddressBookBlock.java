@@ -265,12 +265,12 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createEmail(int control) {
-		if (control != NewAddressBookFragment.NEW_ADDRESS
-				&& control != NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
+		if (control != Constants.NEW_ADDRESS
+				&& control != Constants.NEW_ADDRESS_CHECKOUT) {
 			String email = DataLocal.getEmail();
 			if (null != email && !email.equals("")) {
 				edt_email.setText(email);
-				if (mAfterController != NewAddressBookFragment.NEW_CUSTOMER) {
+				if (mAfterController != Constants.NEW_CUSTOMER) {
 					edt_email.setKeyListener(null);
 				}
 			} else {
@@ -278,7 +278,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 						+ " (*)");
 			}
 		} else {
-			if (control == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT
+			if (control == Constants.NEW_ADDRESS_CHECKOUT
 					&& !DataLocal.isSignInComplete()) {
 				edt_email.setHint(Config.getInstance().getText("Email")
 						+ " (*)");
@@ -477,7 +477,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createPassAndPassConfirm(int control) {
-		if (control == NewAddressBookFragment.NEW_CUSTOMER) {
+		if (control == Constants.NEW_CUSTOMER) {
 			edt_pass.setHint(Config.getInstance().getText("Password") + " (*)");
 			edt_confirmPass.setHint(Config.getInstance().getText(
 					"Confirm Password")

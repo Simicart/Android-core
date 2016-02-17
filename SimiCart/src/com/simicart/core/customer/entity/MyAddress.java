@@ -431,5 +431,19 @@ public class MyAddress extends SimiEntity implements Serializable{
 		return params;
 	}
 
+	@Override
+	public String toString() {
+		return "MyAddress [mAddressID=" + mAddressID + ", mStateID=" + mStateID
+				+ ", mPrefix=" + mPrefix + ", mName=" + mName + ", mSuffix="
+				+ mSuffix + ", mStreet=" + mStreet + ", mCity=" + mCity
+				+ ", mStateName=" + mStateName + ", mStateCode=" + mStateCode
+				+ ", mZipCode=" + mZipCode + ", mCountryName=" + mCountryName
+				+ ", mCountryCode=" + mCountryCode + ", mTaxVat=" + mTaxVat
+				+ ", mGender=" + mGender + ", mDay=" + mDay + ", mMonth="
+				+ mMonth + ", mYear=" + mYear + ", mPhone=" + mPhone
+				+ ", mEmail=" + mEmail + ", mFax=" + mFax + ", mCompany="
+				+ mCompany + ", mTaxVatCheckout=" + mTaxVatCheckout + "]";
+	}
+
 
 }

@@ -19,6 +19,7 @@ import com.simicart.core.checkout.fragment.AddressBookCheckoutFragment;
 import com.simicart.core.checkout.fragment.ReviewOrderFragment;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.delegate.ChooseCountryDelegate;
 import com.simicart.core.customer.delegate.NewAddressBookDelegate;
@@ -29,7 +30,6 @@ import com.simicart.core.customer.entity.ProfileEntity;
 import com.simicart.core.customer.entity.StateOfCountry;
 import com.simicart.core.customer.fragment.AddressBookFragment;
 import com.simicart.core.customer.fragment.CountryFragment;
-import com.simicart.core.customer.fragment.NewAddressBookFragment;
 import com.simicart.core.customer.model.GetCountryModel;
 import com.simicart.core.customer.model.NewAddressBookModel;
 
@@ -139,14 +139,14 @@ public class NewAddressBookController extends SimiController implements
 				if (isCompleteRequired(address)) {
 					if (android.util.Patterns.EMAIL_ADDRESS.matcher(
 							address.getEmail()).matches()) {
-						if (mAfterController == NewAddressBookFragment.NEW_AS_GUEST
-								|| mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
+						if (mAfterController == Constants.NEW_AS_GUEST
+								|| mAfterController == Constants.NEW_ADDRESS_CHECKOUT) {
 							shippingAdd = address;
 							billingAdd = address;
 							afterControll = mAfterController;
 							SimiManager.getIntance().replacePopupFragment(
 									ReviewOrderFragment.newInstance(afterControll, shippingAdd, billingAdd));
-						} else if (mAfterController == NewAddressBookFragment.NEW_CUSTOMER) {
+						} else if (mAfterController == Constants.NEW_CUSTOMER) {
 							ProfileEntity profile = mDelegate
 									.getProfileEntity();
 							if (null != profile) {
@@ -160,10 +160,10 @@ public class NewAddressBookController extends SimiController implements
 								shippingAdd = address;
 								afterControll = mAfterController;
 
-								if (addressFor == AddressBookCheckoutFragment.BILLING_ADDRESS) {
+								if (addressFor == Constants.KeyAddress.BILLING_ADDRESS) {
 									billingAdd = address;
 									shippingAdd = mShippingAddress;
-								} else if (addressFor == AddressBookCheckoutFragment.SHIPPING_ADDRESS) {
+								} else if (addressFor == Constants.KeyAddress.SHIPPING_ADDRESS) {
 									shippingAdd = address;
 									billingAdd = mBillingAddress;
 								} else {
@@ -340,7 +340,7 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 				mDelegate.dismissLoading();
 				if (isSuccess) {
 
-					if (mAfterController == NewAddressBookFragment.NEW_ADDRESS) {
+					if (mAfterController == Constants.NEW_ADDRESS) {
 						AddressBookFragment fragment = AddressBookFragment
 								.newInstance();
 						SimiManager.getIntance().replacePopupFragment(fragment);
@@ -368,17 +368,17 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 						if (null != newAddress) {
 							
 							MyAddress shippingAdd = null, billingAdd = null;
-							if (mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
+							if (mAfterController == Constants.NEW_ADDRESS_CHECKOUT) {
 								switch (addressFor) {
-								case AddressBookCheckoutFragment.ALL_ADDRESS:
+								case Constants.KeyAddress.ALL_ADDRESS:
 									billingAdd = newAddress;
 									shippingAdd = newAddress;
 									break;
-								case AddressBookCheckoutFragment.BILLING_ADDRESS:
+								case Constants.KeyAddress.BILLING_ADDRESS:
 									billingAdd = newAddress;
 									shippingAdd = mShippingAddress;
 									break;
-								case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
+								case Constants.KeyAddress.SHIPPING_ADDRESS:
 									billingAdd = mBillingAddress;
 									shippingAdd = newAddress;
 									break;
@@ -481,8 +481,8 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 				return false;
 			}
 
-			if (mAfterController == NewAddressBookFragment.NEW_CUSTOMER
-					|| mAfterController == NewAddressBookFragment.NEW_AS_GUEST) {
+			if (mAfterController == Constants.NEW_CUSTOMER
+					|| mAfterController == Constants.NEW_AS_GUEST) {
 				if (_configCustomer.getTaxvat().toLowerCase().equals("req")
 						&& (add_address.getTaxvat() == null || add_address
 								.getTaxvat().equals(""))) {

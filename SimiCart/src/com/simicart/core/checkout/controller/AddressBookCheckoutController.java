@@ -10,8 +10,8 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.checkout.fragment.AddressBookCheckoutFragment;
 import com.simicart.core.checkout.fragment.ReviewOrderFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.controller.AddressBookController;
 import com.simicart.core.customer.entity.MyAddress;
@@ -60,8 +60,9 @@ public class AddressBookCheckoutController extends AddressBookController {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
+				Log.d("quang123", "==chechout==afterControl==" +3);
 				NewAddressBookFragment fragment = NewAddressBookFragment
-						.newInstance(NewAddressBookFragment.NEW_ADDRESS_CHECKOUT, addressFor, mBillingAddress, mShippingAddress);
+						.newInstance(Constants.NEW_ADDRESS_CHECKOUT, addressFor, mBillingAddress, mShippingAddress);
 				SimiManager.getIntance().replacePopupFragment(fragment);
 				return false;
 			}
@@ -118,15 +119,15 @@ public class AddressBookCheckoutController extends AddressBookController {
 			}
 			MyAddress shippingAdd = null, billingAdd = null;
 			switch (addressFor) {
-			case AddressBookCheckoutFragment.ALL_ADDRESS:
+			case Constants.KeyAddress.ALL_ADDRESS:
 				billingAdd = address;
 				shippingAdd= address;
 				break;
-			case AddressBookCheckoutFragment.BILLING_ADDRESS:
+			case Constants.KeyAddress.BILLING_ADDRESS:
 				billingAdd = address;
 				shippingAdd = mShippingAddress;
 				break;
-			case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
+			case Constants.KeyAddress.SHIPPING_ADDRESS:
 				billingAdd = mBillingAddress;
 				shippingAdd = address;
 				break;

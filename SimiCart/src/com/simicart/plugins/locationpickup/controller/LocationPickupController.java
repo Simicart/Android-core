@@ -8,12 +8,12 @@ import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.fragment.AddressBookCheckoutFragment;
 import com.simicart.core.checkout.fragment.ReviewOrderFragment;
+import com.simicart.core.config.Constants;
 import com.simicart.core.customer.controller.NewAddressBookController;
 import com.simicart.core.customer.entity.CountryAllowed;
 import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.entity.StateOfCountry;
 import com.simicart.core.customer.fragment.AddressBookFragment;
-import com.simicart.core.customer.fragment.NewAddressBookFragment;
 import com.simicart.core.customer.model.NewAddressBookModel;
 
 public class LocationPickupController extends NewAddressBookController{
@@ -28,7 +28,7 @@ public class LocationPickupController extends NewAddressBookController{
 				mDelegate.dismissLoading();
 				if (isSuccess) {
 
-					if (mAfterController == NewAddressBookFragment.NEW_ADDRESS) {
+					if (mAfterController == Constants.NEW_ADDRESS) {
 						AddressBookFragment fragment = AddressBookFragment
 								.newInstance();
 						SimiManager.getIntance().replacePopupFragment(fragment);
@@ -55,17 +55,17 @@ public class LocationPickupController extends NewAddressBookController{
 
 						if (null != newAddress) {
 							MyAddress shippingAdd = null, billingAdd = null;
-							if (mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
+							if (mAfterController == Constants.NEW_ADDRESS_CHECKOUT) {
 								switch (addressFor) {
-								case AddressBookCheckoutFragment.ALL_ADDRESS:
+								case Constants.KeyAddress.ALL_ADDRESS:
 									billingAdd = newAddress;
 									shippingAdd = newAddress;
 									break;
-								case AddressBookCheckoutFragment.BILLING_ADDRESS:
+								case Constants.KeyAddress.BILLING_ADDRESS:
 									billingAdd =newAddress;
 									shippingAdd = mShippingAddress;
 									break;
-								case AddressBookCheckoutFragment.SHIPPING_ADDRESS:
+								case Constants.KeyAddress.SHIPPING_ADDRESS:
 									billingAdd =mBillingAddress;
 									shippingAdd = newAddress;
 									break;

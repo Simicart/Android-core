@@ -10,6 +10,7 @@ import android.view.View.OnTouchListener;
 import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.delegate.CartDelegate;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.fragment.NewAddressBookFragment;
 import com.simicart.core.customer.fragment.SignInFragment;
@@ -119,7 +120,7 @@ public class PopupCheckoutController extends SimiController {
 				case MotionEvent.ACTION_UP: {
 					mBlockDelegate.dismissPopupCheckout();
 					NewAddressBookFragment fragment = NewAddressBookFragment
-							.newInstance(1, 0, null, null);
+							.newInstance(Constants.NEW_CUSTOMER, 0, null, null);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
@@ -149,9 +150,9 @@ public class PopupCheckoutController extends SimiController {
 				}
 				case MotionEvent.ACTION_UP: {
 					mBlockDelegate.dismissPopupCheckout();
-					Log.e("As guuest Customer", "dddddd"+NewAddressBookFragment.NEW_AS_GUEST);
+					Log.d("quang123", "==guest==afterControl==" +2);
 					NewAddressBookFragment fragment = NewAddressBookFragment
-							.newInstance(NewAddressBookFragment.NEW_AS_GUEST, 0, null, null);
+							.newInstance(Constants.NEW_AS_GUEST, 0, null, null);
 //					fragment.setAfterControler(NewAddressBookFragment.NEW_AS_GUEST);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);

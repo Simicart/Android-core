@@ -29,6 +29,7 @@ public class AddressBookDetailFragment extends SimiFragment {
 		Bundle bundle= new Bundle();
 		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
 		fragment.setArguments(bundle);
+		Log.d("quang12", "==addressbook=="+addressbook.toString());
 		return fragment;
 	}
 

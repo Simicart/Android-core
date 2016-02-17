@@ -16,14 +16,14 @@ import com.simicart.core.customer.controller.NewAddressBookController;
 import com.simicart.core.customer.entity.MyAddress;
 
 public class NewAddressBookFragment extends SimiFragment {
-	// click add new address from my account
-	public static final int NEW_ADDRESS = 0;
-	// click as new customer
-	public static final int NEW_CUSTOMER = 1;
-	// click check out as guest
-	public static final int NEW_AS_GUEST = 2;
-	// click new address from check out
-	public static final int NEW_ADDRESS_CHECKOUT = 3;
+	
+	protected NewAddressBookBlock mBlock;
+	protected NewAddressBookController mController;
+	protected int addressFor = -1;
+
+	public int afterControl;// = NEW_ADDRESS;
+	protected MyAddress mBillingAddress;
+	protected MyAddress mShippingAddress;
 
 	public static NewAddressBookFragment newInstance(int afterControl, int addressFor, MyAddress billingAddress, MyAddress shippingAddress) {
 		NewAddressBookFragment fragment = new NewAddressBookFragment();
@@ -33,6 +33,7 @@ public class NewAddressBookFragment extends SimiFragment {
 		bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
 		bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
 		fragment.setArguments(bundle);
+		Log.d("quang123", "NewAddressBookFragment==afterControl==" +afterControl);
 		return fragment;
 	}
 	
@@ -41,14 +42,6 @@ public class NewAddressBookFragment extends SimiFragment {
 		
 		return fragment;
 	}
-	
-	protected NewAddressBookBlock mBlock;
-	protected NewAddressBookController mController;
-	protected int addressFor = -1;
-
-	public int afterControl;// = NEW_ADDRESS;
-	protected MyAddress mBillingAddress;
-	protected MyAddress mShippingAddress;
 	
 	public int getAfterControl() {
 		return afterControl;
@@ -76,6 +69,7 @@ public class NewAddressBookFragment extends SimiFragment {
 		mBillingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
 		mShippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
 		}
+		Log.d("quang123", "NewAddressBookFragment==getdata==afterControl==" +afterControl);
 		
 		mBlock = new NewAddressBookBlock(view, context);
 		mBlock.setAfterController(afterControl);
