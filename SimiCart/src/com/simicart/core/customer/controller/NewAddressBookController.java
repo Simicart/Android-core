@@ -15,7 +15,6 @@ import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.checkout.controller.ConfigCheckout;
-import com.simicart.core.checkout.fragment.AddressBookCheckoutFragment;
 import com.simicart.core.checkout.fragment.ReviewOrderFragment;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;

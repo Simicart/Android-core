@@ -25,17 +25,17 @@ public class NewAddressBookFragment extends SimiFragment {
 	protected MyAddress mBillingAddress;
 	protected MyAddress mShippingAddress;
 
-	public static NewAddressBookFragment newInstance(int afterControl, int addressFor, MyAddress billingAddress, MyAddress shippingAddress) {
-		NewAddressBookFragment fragment = new NewAddressBookFragment();
-		Bundle bundle= new Bundle();
-		setData(Constants.KeyData.AFTER_CONTROL, afterControl, Constants.KeyData.TYPE_INT, bundle);
-		setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
-		bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
-		bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
-		fragment.setArguments(bundle);
-		Log.d("quang123", "NewAddressBookFragment=newInstance=afterControl==" +afterControl);
-		return fragment;
-	}
+//	public static NewAddressBookFragment newInstance(int afterControl, int addressFor, MyAddress billingAddress, MyAddress shippingAddress) {
+//		NewAddressBookFragment fragment = new NewAddressBookFragment();
+//		Bundle bundle= new Bundle();
+//		setData(Constants.KeyData.AFTER_CONTROL, afterControl, Constants.KeyData.TYPE_INT, bundle);
+//		setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
+//		bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
+//		bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
+//		fragment.setArguments(bundle);
+//		Log.d("quang123", "NewAddressBookFragment=newInstance");
+//		return fragment;
+//	}
 	
 	public static NewAddressBookFragment newInstance() {
 		NewAddressBookFragment fragment = new NewAddressBookFragment();

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.fragment.AddressBookDetailFragment;
 import com.simicart.plugins.locationpickup.block.LocationPickupEditBlock;
 import com.simicart.plugins.locationpickup.controller.LocationPickupEditController;
@@ -24,6 +27,7 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 	protected ScrollView scroll;
 	protected LocationPickupEditBlock mBlock;
 	protected LocationPickupEditController mController;
+	protected MyAddress addressbook;
 
 	public static LocationPickupEditFragment newInstance() {
 		LocationPickupEditFragment fragment = new LocationPickupEditFragment();
@@ -45,6 +49,10 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 				Rconfig.getInstance().layout("plugins_locationpickup_layout"),
 				container, false);
 		Context context = getActivity();
+		if(getArguments() != null){
+			addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
+			}
+		Log.d("quangdd", "==LocationPickupEditFragment==" +addressbook.toString());
 		scroll = (ScrollView) view.findViewById(Rconfig.getInstance().id(
 				"scrollView"));
 		map = (MapView) view.findViewById(Rconfig.getInstance().id("map"));
@@ -62,8 +70,7 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 		}
 		
 		mBlock = new LocationPickupEditBlock(view, context);
-//		mBlock.setAddressBookDetail(getAddressbook());
-//		Log.d("quang1", "==addressbook==LocationPickupEditBlock=="+addressbook.toString());
+		mBlock.setAddressBookDetail(addressbook);
 		mBlock.setGgmap(ggmap);
 		mBlock.initView();
 
@@ -101,25 +108,19 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 
 	@Override
 	public void onResume() {
-		if(map != null){
 		map.onResume();
-		}
 		super.onResume();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		if(map != null){
 		map.onDestroy();
-		}
 	}
 
 	@Override
 	public void onLowMemory() {
 		super.onLowMemory();
-		if(map != null){
 		map.onLowMemory();
-		}
 	}
 }

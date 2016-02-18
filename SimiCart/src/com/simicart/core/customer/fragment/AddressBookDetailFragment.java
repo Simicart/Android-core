@@ -23,24 +23,28 @@ public class AddressBookDetailFragment extends SimiFragment {
 	protected MyAddress addressbook;
 	protected AddressBookDetailBlock mBlock;
 	protected AddressBookDetailController mController;
-	View view;
+//	View view;
 	public MyAddress getAddressbook() {
 		return addressbook;
 	}
 
-	public static AddressBookDetailFragment newInstance(MyAddress addressbook) {
-		Log.d("quang12", "==addressbook==newInstance=="+addressbook.toString());
-		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
-		Bundle bundle= new Bundle();
-		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
-		fragment.setArguments(bundle);
-		return fragment;
-	}
+//	public static AddressBookDetailFragment newInstance(MyAddress addressbook) {
+//		Log.d("quang12", "==addressbook==newInstance=="+addressbook.toString());
+//		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
+//		Bundle bundle= new Bundle();
+//		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
+//		fragment.setArguments(bundle);
+//		return fragment;
+//	}
+	public static AddressBookDetailFragment newInstance() {
+	AddressBookDetailFragment fragment = new AddressBookDetailFragment();
+	return fragment;
+}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		 view = inflater.inflate(
+		View view = inflater.inflate(
 				Rconfig.getInstance().layout("core_new_address_layout"),
 				container, false);
 		if (DataLocal.isLanguageRTL) {
@@ -50,12 +54,6 @@ public class AddressBookDetailFragment extends SimiFragment {
 									"rtl_core_new_address_layout"), container,
 							false);
 		}
-		
-		return view;
-	}
-	@Override
-	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
 		Context context = getActivity();
 		if(getArguments() != null){
 		addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
@@ -79,6 +77,13 @@ public class AddressBookDetailFragment extends SimiFragment {
 		mBlock.setSaveClicker(mController.getClickSave());
 		mBlock.setChooseCountry(mController.getChooseCountry());
 		mBlock.setChooseStates(mController.getChooseStates());
+		
+		return view;
+	}
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		
 	}
 	
 }

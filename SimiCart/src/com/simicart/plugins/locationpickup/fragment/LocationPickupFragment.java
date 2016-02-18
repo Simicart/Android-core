@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.fragment.NewAddressBookFragment;
 import com.simicart.plugins.locationpickup.block.LocationPickupBlock;
 import com.simicart.plugins.locationpickup.controller.LocationPickupController;
@@ -25,6 +28,11 @@ public class LocationPickupFragment extends NewAddressBookFragment {
 	protected ScrollView scroll;
 	protected LocationPickupBlock mBlock;
 	protected LocationPickupController mController;
+	protected int addressFor = -1;
+
+	public int afterControl;// = NEW_ADDRESS;
+	protected MyAddress mBillingAddress;
+	protected MyAddress mShippingAddress;
 
 	public static LocationPickupFragment newInstance() {
 		LocationPickupFragment fragment = new LocationPickupFragment();
@@ -47,6 +55,14 @@ public class LocationPickupFragment extends NewAddressBookFragment {
 				Rconfig.getInstance().layout("plugins_locationpickup_layout"),
 				container, false);
 		Context context = getActivity();
+		//getdata
+				if(getArguments() != null){
+				afterControl = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
+				addressFor = (int) getData(Constants.KeyData.ADDRESS_FOR, Constants.KeyData.TYPE_INT, getArguments());
+				mBillingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
+				mShippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
+				}
+		Log.d("quang123", "==LocationPickupFragment==" +afterControl);
 		SimiManager.getIntance().getChilFragmentManager();
 		scroll = (ScrollView) view.findViewById(Rconfig.getInstance().id(
 				"scrollView"));
@@ -113,25 +129,19 @@ public class LocationPickupFragment extends NewAddressBookFragment {
 
 	@Override
 	public void onResume() {
-		if(map != null){
 		map.onResume();
-		}
 		super.onResume();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		if(map != null){
 		map.onDestroy();
-		}
 	}
 
 	@Override
 	public void onLowMemory() {
 		super.onLowMemory();
-		if(map != null){
 		map.onLowMemory();
-		}
 	}
 }

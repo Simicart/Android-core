@@ -22,7 +22,6 @@ public class SimiBlock implements SimiDelegate {
 
 	public SimiBlock(View view, Context context) {
 		mView = view;
-
 		mView.setBackgroundColor(Config.getInstance().getApp_backrground());
 
 		mContext = context;

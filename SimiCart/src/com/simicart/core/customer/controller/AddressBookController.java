@@ -3,6 +3,7 @@ package com.simicart.core.customer.controller;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.simicart.core.base.delegate.SimiDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.checkout.controller.ConfigCheckout;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.fragment.AddressBookDetailFragment;
@@ -30,6 +32,7 @@ public class AddressBookController extends SimiController {
 	protected SimiDelegate mDelegate;
 	protected OnTouchListener mListener;
 	protected OnItemClickListener mClicker;
+	public static Bundle bundleAddress;
 
 	public OnTouchListener getListener() {
 		return mListener;
@@ -105,7 +108,10 @@ public class AddressBookController extends SimiController {
 //		Log.d("quang12", "==selectItem==addressbook=="+addressbook.getStreet());
 		Log.d("quang12", "==selectItem==getJSONObject=="+jsonObject.toString());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
-				.newInstance(addressbook);
+				.newInstance();
+		bundleAddress= new Bundle();
+		bundleAddress.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
+		fragment.setArguments(bundleAddress);
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
 		} else {
