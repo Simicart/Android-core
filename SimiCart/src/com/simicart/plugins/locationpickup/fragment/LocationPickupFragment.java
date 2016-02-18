@@ -65,7 +65,7 @@ public class LocationPickupFragment extends NewAddressBookFragment {
 		}
 
 		mBlock = new LocationPickupBlock(view, context);
-		mBlock.setAfterController(afterControl);
+//		mBlock.setAfterController(afterControl);
 		mBlock.setGgmap(ggmap);
 		mBlock.initView();
 

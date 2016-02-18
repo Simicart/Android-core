@@ -61,7 +61,6 @@ public class InformationFragment extends SimiFragment {
 			BusEntity<Product> busEntity = new BusEntity<>();
 			busEntity.setKey(Constants.KeyBus.PRODUCT);
 			busEntity.setValue(mProduct);
-			Log.d("quang123", busEntity.toString());
 			EventBus.getDefault().postSticky(busEntity);
 			initView();
 			// RelativeLayout ll_plugin = (RelativeLayout) mRootView

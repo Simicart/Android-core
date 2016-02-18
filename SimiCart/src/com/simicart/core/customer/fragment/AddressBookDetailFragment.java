@@ -3,17 +3,21 @@ package com.simicart.core.customer.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.block.AddressBookDetailBlock;
 import com.simicart.core.customer.controller.AddressBookDetailController;
 import com.simicart.core.customer.entity.MyAddress;
+
+import de.greenrobot.event.EventBus;
 
 public class AddressBookDetailFragment extends SimiFragment {
 	protected MyAddress addressbook;
@@ -25,6 +29,7 @@ public class AddressBookDetailFragment extends SimiFragment {
 	}
 
 	public static AddressBookDetailFragment newInstance(MyAddress addressbook) {
+		Log.d("quang12", "==addressbook==newInstance=="+addressbook.toString());
 		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
 		Bundle bundle= new Bundle();
 		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
@@ -55,7 +60,11 @@ public class AddressBookDetailFragment extends SimiFragment {
 		if(getArguments() != null){
 		addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
 		}
-//		Log.d("quang12", "==addressbook==getArguments=="+addressbook.toString());
+		BusEntity<MyAddress> busEntity = new BusEntity<>();
+		busEntity.setKey(Constants.KeyBus.BOOK_ADDRESS);
+		busEntity.setValue(addressbook);
+		EventBus.getDefault().postSticky(busEntity);
+		Log.d("quang12", "==addressbook==getArguments=="+addressbook.toString());
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
 		mBlock.initView();
@@ -71,4 +80,5 @@ public class AddressBookDetailFragment extends SimiFragment {
 		mBlock.setChooseCountry(mController.getChooseCountry());
 		mBlock.setChooseStates(mController.getChooseStates());
 	}
+	
 }

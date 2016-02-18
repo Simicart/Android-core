@@ -100,10 +100,10 @@ public class AddressBookController extends SimiController {
 		JSONObject jsonObject = entity.getJSONObject();
 		MyAddress addressbook = gson.fromJson(jsonObject.toString(), MyAddress.class);
 //		MyAddress addressbook = new MyAddress();
-//		addressbook.setJSONObject(entity.getJSONObject());
-//		Log.d("quang12", "==selectItem==addressbook=="+addressbook.toString());
+		addressbook.setJSONObject(jsonObject);
+		Log.d("quang12", "==selectItem==addressbook=="+addressbook.toString());
 //		Log.d("quang12", "==selectItem==addressbook=="+addressbook.getStreet());
-//		Log.d("quang12", "==selectItem==getJSONObject=="+entity.getJSONObject().toString());
+		Log.d("quang12", "==selectItem==getJSONObject=="+jsonObject.toString());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
 				.newInstance(addressbook);
 		if (DataLocal.isTablet) {

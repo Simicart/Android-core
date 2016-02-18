@@ -147,6 +147,7 @@ public class Constants {
 	public static String PHONE = "phone";
 	public static String EMAIL = "email";
 	public static String FAX = "fax";
+	public static String LATLNG = "latlng";
 	public static String COMPANY = "company";
 	public static String ADDRESS = "address";
 	public static String ADDRESS_ID = "address_id";

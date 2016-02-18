@@ -121,6 +121,7 @@ public class PopupCheckoutController extends SimiController {
 					mBlockDelegate.dismissPopupCheckout();
 					NewAddressBookFragment fragment = NewAddressBookFragment
 							.newInstance(Constants.NEW_CUSTOMER, 0, null, null);
+					Log.d("quang123", "=ACTION_UP=afterControl==" +1);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {

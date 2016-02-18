@@ -19,9 +19,9 @@ public class LocationPickup {
 		SimiFragment fragment;
 		Log.d("quang1", "==LocationPickup==");
 		if (method.equals("addCreateView")) {
-			int afterControl = ((NewAddressBookFragment) caheFragment
+			int afterControl = ((NewAddressBookFragment) mCacheFragment
 					.getFragment()).getAfterControl();
-			Log.d("quang1", "==afterControl==" +afterControl);
+//			Log.d("quang1", "==afterControl==");
 			fragment = LocationPickupFragment.newInstance();
 			
 //			((LocationPickupFragment) fragment).setAfterControler(afterControl);
@@ -30,14 +30,19 @@ public class LocationPickup {
 			this.mCacheFragment.setFragment(fragment);
 		}
 		if (method.equals("addEditView")) {
-			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
-					.getFragment()).getAddressbook();
-			Log.d("quang1", "==LocationPickup==addressbook=="+myaddress.toString());
+			Log.d("quang1", "==LocationPickup==addressbook==1");
+//			MyAddress myaddress = ((AddressBookDetailFragment) mCacheFragment
+//					.getFragment()).getAddressbook();
+//			if(myaddress != null){
+//			Log.d("quang1", "==LocationPickup==addressbook==2"+myaddress.getAddressId());
+//			}
 			fragment = LocationPickupEditFragment.newInstance();
 //			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
 //					.getFragment()).getAddressbook();
 //			((LocationPickupEditFragment) fragment).setAddressbook(myaddress);
+			Log.d("quang1", "==LocationPickup==addressbook==3");
 			this.mCacheFragment.setFragment(fragment);
+			Log.d("quang1", "==LocationPickup==addressbook==4");
 		}
 	}
 }

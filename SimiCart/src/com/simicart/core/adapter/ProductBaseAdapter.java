@@ -66,6 +66,8 @@ public class ProductBaseAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 		Product product = getItem(position);
+		Log.e("ProductBaseAdapter ", position + " get Price Home"
+				+ product.getJSONObject().toString());
 		if (convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(
@@ -78,34 +80,6 @@ public class ProductBaseAdapter extends BaseAdapter {
 					.getInstance().id("layout_price"));
 			holder.img_avartar = (ImageView) convertView.findViewById(Rconfig
 					.getInstance().id("product_list_image"));
-
-			if (product.getPriceV2() != null) {
-				ProductPriceViewProductGridV03 viewPrice = new ProductPriceViewProductGridV03(
-						product);
-				viewPrice.setShowOnePrice(true);
-				View view = viewPrice.getViewPrice();
-				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-				if (null != view) {
-					holder.ll_price.removeAllViewsInLayout();
-					holder.ll_price.addView(view, params);
-				}
-			} else {
-				Log.e("ProductBaseAdapter ", " get Price Home");
-				ProductPriceView viewPrice = new ProductPriceView(product);
-				View view = viewPrice.getViewPriceHome();
-				if (null != view) {
-					LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-							LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-					if (DataLocal.isLanguageRTL) {
-						holder.ll_price.setGravity(Gravity.RIGHT);
-					} else {
-						holder.ll_price.setGravity(Gravity.LEFT);
-					}
-					holder.ll_price.removeAllViewsInLayout();
-					holder.ll_price.addView(view, params);
-				}
-			}
 
 			convertView.setTag(holder);
 		} else {
@@ -142,6 +116,34 @@ public class ProductBaseAdapter extends BaseAdapter {
 			if (urlImage != null) {
 				DrawableManager.fetchDrawableOnThread(urlImage,
 						holder.img_avartar);
+			}
+		}
+
+		if (product.getPriceV2() != null) {
+			ProductPriceViewProductGridV03 viewPrice = new ProductPriceViewProductGridV03(
+					product);
+			viewPrice.setShowOnePrice(true);
+			View view = viewPrice.getViewPrice();
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+			if (null != view) {
+				holder.ll_price.removeAllViewsInLayout();
+				holder.ll_price.addView(view, params);
+			}
+		} else {
+			Log.e("ProductBaseAdapter ", " get Price Home");
+			ProductPriceView viewPrice = new ProductPriceView(product);
+			View view = viewPrice.getViewPriceHome();
+			if (null != view) {
+				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+						LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+				if (DataLocal.isLanguageRTL) {
+					holder.ll_price.setGravity(Gravity.RIGHT);
+				} else {
+					holder.ll_price.setGravity(Gravity.LEFT);
+				}
+				holder.ll_price.removeAllViewsInLayout();
+				holder.ll_price.addView(view, params);
 			}
 		}
 

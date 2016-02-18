@@ -43,7 +43,7 @@ import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.entity.StateOfCountry;
 
 public class LocationPickupEditBlock extends AddressBookDetailBlock {
-	protected LatLng start = new LatLng(42.568822, -76.009406);
+	protected LatLng start = new LatLng(42.568822,-76.009406);
 	protected ImageView bt_detect;
 	protected static Location mLocation;
 	protected String lat = "";
@@ -97,13 +97,8 @@ public class LocationPickupEditBlock extends AddressBookDetailBlock {
 		});
 
 		String latlng = "";
-		if (mAddressBookDetail.getJSONObject().has("latlng")) {
-			try {
-				latlng = mAddressBookDetail.getJSONObject().getString("latlng");
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		if (mAddressBookDetail != null) {
+				latlng = mAddressBookDetail.getLatlng();
 		}
 		if (!latlng.equals("") && !latlng.equals("null") && latlng != null) {
 			ggmap.clear();

@@ -33,7 +33,7 @@ public class NewAddressBookFragment extends SimiFragment {
 		bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, billingAddress);
 		bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, shippingAddress);
 		fragment.setArguments(bundle);
-		Log.d("quang123", "NewAddressBookFragment==afterControl==" +afterControl);
+		Log.d("quang123", "NewAddressBookFragment=newInstance=afterControl==" +afterControl);
 		return fragment;
 	}
 	
@@ -61,7 +61,7 @@ public class NewAddressBookFragment extends SimiFragment {
 							false);
 		}
 		Context context = getActivity();
-		
+		Log.d("quang123", "NewAddressBookFragment==getArguments==afterControl==");
 		//getdata
 		if(getArguments() != null){
 		afterControl = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
@@ -69,7 +69,7 @@ public class NewAddressBookFragment extends SimiFragment {
 		mBillingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
 		mShippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
 		}
-		Log.d("quang123", "NewAddressBookFragment==getdata==afterControl==" +afterControl);
+		Log.d("quang123", "NewAddressBookFragment==getArguments==afterControl==" +afterControl);
 		
 		mBlock = new NewAddressBookBlock(view, context);
 		mBlock.setAfterController(afterControl);

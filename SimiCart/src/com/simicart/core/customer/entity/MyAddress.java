@@ -38,12 +38,22 @@ public class MyAddress extends SimiEntity implements Serializable{
 	private String fax;
 	private String company;
 	private String mTaxVatCheckout;
+	private String latlng;
 	
 	public MyAddress() {
 		// TODO Auto-generated constructor stub
 	}
-	
 
+	public String getLatlng() {
+		if (null == latlng) {
+			latlng = getData(Constants.LATLNG);
+		}
+		return latlng;
+	}
+
+	public void setLatlng(String latlng) {
+		this.latlng = latlng;
+	}
 
 	public String getFax() {
 		if (null == fax) {
@@ -448,7 +458,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 				+ ", gender=" + gender + ", day=" + day + ", month="
 				+ month + ", year=" + year + ", phone=" + phone
 				+ ", email=" + email + ", fax=" + fax + ", company="
-				+ company + ", mTaxVatCheckout=" + mTaxVatCheckout + "]";
+				+ company + ", mTaxVatCheckout=" + mTaxVatCheckout+" latlng=" + latlng + "]";
 	}
 
 

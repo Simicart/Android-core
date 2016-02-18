@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +34,8 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		MapsInitializer.initialize(getActivity());
+//		LocationPickupBlock.setLattitude("");
+//		LocationPickupBlock.setLongtitude("");
 	}
 
 	@Override
@@ -59,10 +60,10 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 							"First, You must update Google Maps."));
 			return rootView;
 		}
-
+		
 		mBlock = new LocationPickupEditBlock(view, context);
-		mBlock.setAddressBookDetail(addressbook);
-		Log.d("quang12", "==addressbook==LocationPickupEditBlock=="+addressbook.toString());
+//		mBlock.setAddressBookDetail(getAddressbook());
+//		Log.d("quang1", "==addressbook==LocationPickupEditBlock=="+addressbook.toString());
 		mBlock.setGgmap(ggmap);
 		mBlock.initView();
 
