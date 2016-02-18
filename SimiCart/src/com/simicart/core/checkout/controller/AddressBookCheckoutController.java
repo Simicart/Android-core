@@ -60,7 +60,6 @@ public class AddressBookCheckoutController extends AddressBookController {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				Log.d("quang123", "==chechout==afterControl==" +3);
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance(Constants.NEW_ADDRESS_CHECKOUT, addressFor, mBillingAddress, mShippingAddress);
 				SimiManager.getIntance().replacePopupFragment(fragment);

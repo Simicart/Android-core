@@ -2,7 +2,7 @@ package com.simicart.core.customer.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,13 +49,13 @@ public class AddressBookDetailFragment extends SimiFragment {
 		return view;
 	}
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		Context context = getActivity();
 		if(getArguments() != null){
 		addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
 		}
-		Log.d("quang12", "==addressbook==getArguments=="+addressbook.toString());
+//		Log.d("quang12", "==addressbook==getArguments=="+addressbook.toString());
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
 		mBlock.initView();

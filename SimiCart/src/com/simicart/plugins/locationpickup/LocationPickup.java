@@ -11,15 +11,17 @@ import com.simicart.plugins.locationpickup.fragment.LocationPickupEditFragment;
 import com.simicart.plugins.locationpickup.fragment.LocationPickupFragment;
 
 public class LocationPickup {
+	
 	protected CacheFragment mCacheFragment;
 
 	public LocationPickup(String method, CacheFragment caheFragment) {
 		this.mCacheFragment = caheFragment;
 		SimiFragment fragment;
+		Log.d("quang1", "==LocationPickup==");
 		if (method.equals("addCreateView")) {
 			int afterControl = ((NewAddressBookFragment) caheFragment
 					.getFragment()).getAfterControl();
-			Log.d("quang12", "==afterControl==" +afterControl);
+			Log.d("quang1", "==afterControl==" +afterControl);
 			fragment = LocationPickupFragment.newInstance();
 			
 //			((LocationPickupFragment) fragment).setAfterControler(afterControl);
@@ -30,7 +32,7 @@ public class LocationPickup {
 		if (method.equals("addEditView")) {
 			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
 					.getFragment()).getAddressbook();
-			Log.d("quang12", "==LocationPickup==addressbook=="+myaddress.toString());
+			Log.d("quang1", "==LocationPickup==addressbook=="+myaddress.toString());
 			fragment = LocationPickupEditFragment.newInstance();
 //			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
 //					.getFragment()).getAddressbook();

@@ -28,7 +28,6 @@ import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.product.entity.ProductOption;
 import com.simicart.core.catalog.product.model.AddToCartModel;
 import com.simicart.core.catalog.product.model.ProductModel;
-import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.common.options.ProductOptionParentView;
 import com.simicart.core.common.options.base.CacheOptionView;
 import com.simicart.core.common.options.delegate.OptionProductDelegate;

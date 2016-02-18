@@ -150,7 +150,6 @@ public class PopupCheckoutController extends SimiController {
 				}
 				case MotionEvent.ACTION_UP: {
 					mBlockDelegate.dismissPopupCheckout();
-					Log.d("quang123", "==guest==afterControl==" +2);
 					NewAddressBookFragment fragment = NewAddressBookFragment
 							.newInstance(Constants.NEW_AS_GUEST, 0, null, null);
 //					fragment.setAfterControler(NewAddressBookFragment.NEW_AS_GUEST);

@@ -7,10 +7,9 @@
     <ProgressBar
         android:id="@+id/loading_screen"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:indeterminateDrawable="@drawable/progressbar_indeterminate"
-        />
+        android:indeterminateDrawable="@drawable/progressbar_indeterminate" />
 
 </RelativeLayout>
