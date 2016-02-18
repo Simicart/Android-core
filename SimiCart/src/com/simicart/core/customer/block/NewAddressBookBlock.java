@@ -2,21 +2,6 @@ package com.simicart.core.customer.block;
 
 import java.util.Calendar;
 
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.common.Utils;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
-import com.simicart.core.config.DataLocal;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.customer.adapter.GenderAdapter;
-import com.simicart.core.customer.delegate.ChooseCountryDelegate;
-import com.simicart.core.customer.delegate.NewAddressBookDelegate;
-import com.simicart.core.customer.entity.MyAddress;
-import com.simicart.core.customer.entity.ProfileEntity;
-import com.simicart.core.customer.fragment.NewAddressBookFragment;
-import com.simicart.core.material.ButtonRectangle;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -32,6 +17,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.common.Utils;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
+import com.simicart.core.config.DataLocal;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.customer.adapter.GenderAdapter;
+import com.simicart.core.customer.delegate.ChooseCountryDelegate;
+import com.simicart.core.customer.delegate.NewAddressBookDelegate;
+import com.simicart.core.customer.entity.ConfigCustomerAddress;
+import com.simicart.core.customer.entity.MyAddress;
+import com.simicart.core.customer.entity.ProfileEntity;
+import com.simicart.core.material.ButtonRectangle;
 
 @SuppressLint("DefaultLocale")
 public class NewAddressBookBlock extends SimiBlock implements
@@ -67,6 +67,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 	ChooseCountryDelegate mController;
 	private ImageView img_state;
 	private ImageView img_country;
+	protected ConfigCustomerAddress mAddress;
 
 	public void setAfterController(int afterController) {
 		mAfterController = afterController;
@@ -74,6 +75,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 
 	public NewAddressBookBlock(View view, Context context) {
 		super(view, context);
+		mAddress = DataLocal.ConfigCustomerAddress;
 	}
 
 	public void setSaveAddress(OnClickListener click) {
@@ -224,44 +226,58 @@ public class NewAddressBookBlock extends SimiBlock implements
 
 	protected void createPrefix(int control) {
 		edt_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
-		String check = DataLocal.ConfigCustomerAddress.getPrefix()
+		if(mAddress != null){
+		String check = mAddress.getPrefix()
 				.toLowerCase();
 		setPropertyHidden(edt_prefix, check, "Prefix");
 	}
+	}
 
 	protected void createFullname() {
-		String check = DataLocal.ConfigCustomerAddress.getName();
+		if(mAddress != null){
+		String check = mAddress.getName();
 		setPropertyHidden(edt_fullname, check, "Full Name");
+	}
 	}
 
 	protected void createSuffix(int control) {
 		edt_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
-		String check = DataLocal.ConfigCustomerAddress.getSuffix()
+		if(mAddress != null){
+		String check = mAddress.getSuffix()
 				.toLowerCase();
 		setPropertyHidden(edt_suffix, check, "Suffix");
 	}
+	}
 
 	protected void createStreet() {
-		String check = DataLocal.ConfigCustomerAddress.getStreet()
+		if(mAddress != null){
+		String check = mAddress.getStreet()
 				.toLowerCase();
 		setPropertyHidden(edt_street, check, "Street");
 	}
+	}
 
 	protected void createCity() {
-		String check = DataLocal.ConfigCustomerAddress.getCity().toLowerCase();
+		if(mAddress != null){
+		String check = mAddress.getCity().toLowerCase();
 		setPropertyHidden(edt_city, check, "City");
+	}
 	}
 
 	protected void createZipCode() {
-		String check = DataLocal.ConfigCustomerAddress.getZipcode()
+		if(mAddress != null){
+		String check = mAddress.getZipcode()
 				.toLowerCase();
 		setPropertyHidden(edt_zipcode, check, "Post/Zip Code");
 	}
+	}
 
 	protected void createPhone() {
-		String check = DataLocal.ConfigCustomerAddress.getTelephone()
+		if(mAddress != null){
+		String check = mAddress.getTelephone()
 				.toLowerCase();
 		setPropertyHidden(edt_phone, check, "Phone");
+	}
 	}
 
 	protected void createEmail(int control) {
@@ -299,8 +315,8 @@ public class NewAddressBookBlock extends SimiBlock implements
 		final int cDay = cDate.get(Calendar.DAY_OF_MONTH);
 		final int cMonth = cDate.get(Calendar.MONTH);
 		final int cYear = cDate.get(Calendar.YEAR);
-
-		String check = DataLocal.ConfigCustomerAddress.getDob().toLowerCase();
+		if(mAddress != null){
+		String check = mAddress.getDob().toLowerCase();
 
 		switch (check) {
 		case "":
@@ -317,6 +333,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 		default:
 			break;
 		}
+		}
 
 		final OnDateSetListener onDateSet = new DatePickerDialog.OnDateSetListener() {
 			@Override
@@ -328,7 +345,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 				String selectedDate = new StringBuilder().append(sDay)
 						.append("/").append(sMonth).append("/").append(sYear)
 						.append(" ").toString();
-				String check = DataLocal.ConfigCustomerAddress.getDob()
+				String check = mAddress.getDob()
 						.toLowerCase();
 
 				switch (check) {
@@ -365,19 +382,24 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createTaxVat() {
-		String check = DataLocal.ConfigCustomerAddress.getTaxvat()
+		if(mAddress != null){
+		String check = mAddress.getTaxvat()
 				.toLowerCase().trim();
 		setPropertyHidden(edt_taxvat, check, "Tax/VAT number");
 	}
+	}
 
 	protected void createCompany() {
-		String check = DataLocal.ConfigCustomerAddress.getCompany()
+		if(mAddress != null){
+		String check = mAddress.getCompany()
 				.toLowerCase();
 		setPropertyHidden(edt_company, check, "Company");
 	}
+	}
 
 	protected void createCountry(int control) {
-		String check = DataLocal.ConfigCustomerAddress.getCountry()
+		if(mAddress != null){
+		String check = mAddress.getCountry()
 				.toLowerCase();
 		switch (check) {
 		case "":
@@ -390,10 +412,12 @@ public class NewAddressBookBlock extends SimiBlock implements
 		default:
 			break;
 		}
+		}
 	}
 
 	protected void createState(int control) {
-		String check = DataLocal.ConfigCustomerAddress.getState().toLowerCase();
+		if(mAddress != null){
+		String check = mAddress.getState().toLowerCase();
 		switch (check) {
 		case "":
 			rl_state.setVisibility(View.GONE);
@@ -407,6 +431,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 			break;
 		default:
 			break;
+		}
 		}
 	}
 
@@ -430,7 +455,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 		tv_gender.setVisibility(View.VISIBLE);
 		GenderAdapter adapter = new GenderAdapter(mContext);
 		sp_gender.setAdapter(adapter);
-		String check = DataLocal.ConfigCustomerAddress.getGender()
+		String check = mAddress.getGender()
 				.toLowerCase();
 		switch (check) {
 		case "":
@@ -452,7 +477,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 					int position, long id) {
 				String gender = "";
 				if (position != 0) {
-					gender = DataLocal.ConfigCustomerAddress.getGenderConfigs()
+					gender = mAddress.getGenderConfigs()
 							.get(position - 1).getLabel();
 				}
 				mGender = gender;
@@ -466,14 +491,18 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createFax(int control) {
-		String check = DataLocal.ConfigCustomerAddress.getFax().toLowerCase();
+		if(mAddress != null){
+		String check = mAddress.getFax().toLowerCase();
 		setPropertyHidden(edt_fax, check, "Fax");
+	}
 	}
 
 	protected void createVatCheckOut() {
-		String check = DataLocal.ConfigCustomerAddress.getVat_id()
+		if(mAddress != null){
+		String check = mAddress.getVat_id()
 				.toLowerCase();
 		setPropertyHidden(edt_tax_checkout, check, "VAT number");
+	}
 	}
 
 	protected void createPassAndPassConfirm(int control) {

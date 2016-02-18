@@ -184,6 +184,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_prefix.setText(prefix);
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getPrefix()) {
 		case "":
 			et_prefix.setVisibility(View.GONE);
@@ -197,7 +198,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		default:
 			break;
 		}
-
+		}
 	}
 
 	private void createFullname() {
@@ -221,6 +222,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_suffix.setText(suffix);
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getSuffix()) {
 		case "":
 			et_suffix.setVisibility(View.GONE);
@@ -234,6 +236,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		default:
 			break;
 		}
+		}
 	}
 
 	private void createStreet() {
@@ -244,6 +247,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_street.setText(street);
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getStreet()) {
 		case "":
 			et_street.setVisibility(View.GONE);
@@ -257,6 +261,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		default:
 			break;
 		}
+		}
 	}
 
 	private void createCity() {
@@ -268,6 +273,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_city.setText(city);
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getCity()) {
 		case "":
 			et_city.setVisibility(View.GONE);
@@ -280,6 +286,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			break;
 		default:
 			break;
+		}
 		}
 	}
 
@@ -295,6 +302,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_zipcode.setText(zipcode);
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getZipcode()) {
 		case "":
 			et_zipcode.setVisibility(View.GONE);
@@ -309,6 +317,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		default:
 			break;
 		}
+		}
 	}
 
 	private void createPhone() {
@@ -319,6 +328,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_phone.setText(mAddressBookDetail.getPhone());
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getTelephone()) {
 		case "":
 			et_phone.setVisibility(View.GONE);
@@ -331,6 +341,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			break;
 		default:
 			break;
+		}
 		}
 	}
 
@@ -358,6 +369,8 @@ public class AddressBookDetailBlock extends SimiBlock implements
 					&& !company.equals("null")) {
 				et_company.setText(company);
 			}
+			if(mAddress != null){
+			if(mAddress != null){
 			String check = mAddress.getCompany().toLowerCase();
 			switch (check) {
 			case "":
@@ -373,6 +386,8 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			default:
 				break;
 			}
+			}
+			}
 		}
 	}
 
@@ -384,6 +399,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				tv_country.setText(countryname);
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getCountry()) {
 		case "":
 			rl_country.setVisibility(View.GONE);
@@ -394,6 +410,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			break;
 		default:
 			break;
+		}
 		}
 	}
 
@@ -425,6 +442,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				tv_state.setText(mAddressBookDetail.getStateName());
 			}
 		}
+		if(mAddress != null){
 		switch (mAddress.getState()) {
 		case "":
 			rl_state.setVisibility(View.GONE);
@@ -438,6 +456,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			break;
 		default:
 			break;
+		}
 		}
 
 	}
@@ -462,6 +481,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_fax.setText(fax);
 			}
 		}
+		if(mAddress != null){
 		String check = mAddress.getFax().toLowerCase();
 		switch (check) {
 		case "":
@@ -475,6 +495,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			break;
 		default:
 			break;
+		}
 		}
 	}
 
@@ -523,7 +544,8 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_tax_checkout.setText(vatNumber);
 			}
 		}
-		String check = DataLocal.ConfigCustomerAddress.getVat_id()
+		if(mAddress != null){
+		String check = mAddress.getVat_id()
 				.toLowerCase();
 		switch (check) {
 		case "":
@@ -538,6 +560,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 			break;
 		default:
 			break;
+		}
 		}
 
 	}
