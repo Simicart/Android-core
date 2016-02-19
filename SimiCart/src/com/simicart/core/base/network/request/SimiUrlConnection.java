@@ -53,9 +53,9 @@ public class SimiUrlConnection {
 	public HttpResponse makeUrlConnection(SimiRequest request) {
 
 		String url_extended = request.getUrl();
-		if (url_extended.equals(Constants.SIGN_IN)) {
-			request.onStopRequestQueue();
-		}
+		// if (url_extended.equals(Constants.SIGN_IN)) {
+		// request.onStopRequestQueue();
+		// }
 
 		String url = Config.getInstance().getBaseUrl() + url_extended;
 		Log.e("SimiUrlStack  ", "URL " + url);
@@ -147,18 +147,18 @@ public class SimiUrlConnection {
 						response.addHeader(h);
 					}
 				}
-				if (url_extended.equals(Constants.SIGN_IN)) {
-					request.onStartRequestQueue();
-				}
+				// if (url_extended.equals(Constants.SIGN_IN)) {
+				// request.onStartRequestQueue();
+				// }
 				return response;
 			}
 
 		} catch (IOException e) {
 			Log.e("SimiUrlStack ", "IOException " + e.getMessage());
 		}
-		if (url_extended.equals(Constants.SIGN_IN)) {
-			request.onStartRequestQueue();
-		}
+		// if (url_extended.equals(Constants.SIGN_IN)) {
+		// request.onStartRequestQueue();
+		// }
 		request.cancel(true);
 		return null;
 	}

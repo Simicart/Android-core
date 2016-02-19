@@ -56,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
+                android:focusableInTouchMode="false"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/background_profile_edditext"
                 android:ems="20"

@@ -93,6 +93,7 @@ public class SignInFragment extends SimiFragment {
 		mBlock.setEmailWatcher(mController.getEmailWatcher());
 		mBlock.setPasswordWatcher(mController.getPassWatcher());
 		mBlock.setOnCheckBox(mController.getOnCheckBox());
+		mBlock.setVisibleSignIn(mController.isVisibleSignIn());
 		return view;
 	}
 

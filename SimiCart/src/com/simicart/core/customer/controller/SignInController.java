@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -51,8 +52,9 @@ public class SignInController extends SimiController {
 	private TextWatcher mPassWatcher;
 	private TextWatcher mEmailWatcher;
 	protected OnCheckedChangeListener mOnCheckBox;
+	
 
-	protected boolean isCheckout = false;// sign in into checkout
+	protected boolean isCheckout = false, isVisibleSignIn = false;// sign in into checkout
 
 	public boolean getIsCheckout() {
 		return isCheckout;
@@ -226,9 +228,14 @@ public class SignInController extends SimiController {
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
-				SimiManager.getIntance().getRequestQueue().clearCacheL1();
 				
+				SimiManager.getIntance().getRequestQueue().clearCacheL1();
+				Log.d("quangduy", "callBack");
+				mDelegate.getViewFull().setVisibility(View.GONE);
 				if (isSuccess) {
+					Log.d("quangduy", "success");
+//					isVisibleSignIn = true;
+					mDelegate.getViewFull().setVisibility(View.VISIBLE);
 				showToastSignIn();
 				DataLocal.isNewSignIn = true;
 				DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
@@ -305,10 +312,11 @@ public class SignInController extends SimiController {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 
 					} else {
+						Log.d("quangduy", "HomeFragment");
 						SimiFragment fragment = null;
 						fragment = HomeFragment.newInstance();
 
-						// event for wish list
+//						 event for wish list
 						CacheFragment cache = new CacheFragment();
 						cache.setFragment(fragment);
 						EventFragment eventFragment = new EventFragment();
@@ -406,4 +414,9 @@ public class SignInController extends SimiController {
 	public OnCheckedChangeListener getOnCheckBox() {
 		return mOnCheckBox;
 	}
+
+	public boolean isVisibleSignIn() {
+		return isVisibleSignIn;
+	}
+	
 }

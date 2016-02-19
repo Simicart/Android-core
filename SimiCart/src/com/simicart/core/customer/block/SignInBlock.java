@@ -39,6 +39,7 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 
 	private ImageView img_email;
 	private ImageView img_password;
+	private View vSignInVisible;
 
 	public SignInBlock(View view, Context context) {
 		super(view, context);
@@ -75,6 +76,11 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 
 	@Override
 	public void initView() {
+		
+		vSignInVisible = (View) mView.findViewById(Rconfig
+				.getInstance().id("vSignInVisible"));
+		
+		
 		ll_signInLayout = (LinearLayout) mView.findViewById(Rconfig
 				.getInstance().id("coreSignInLayout"));
 
@@ -95,6 +101,7 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 		btn_SignIn.setBackgroundColor(Config.getInstance()
 				.getButton_background());
 		btn_SignIn.setTextSize(Constants.SIZE_TEXT_BUTTON);
+		vSignInVisible.setVisibility(View.GONE);
 		// GradientDrawable gdDefault = new GradientDrawable();
 		// gdDefault.setColor(Color.GRAY);
 		// gdDefault.setCornerRadius(3);
@@ -153,6 +160,13 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 				PorterDuff.Mode.SRC_ATOP);
 		imageView.setImageDrawable(icon);
 	}
+	public void setVisibleSignIn (boolean visible){
+		if(visible ==false){
+			vSignInVisible.setVisibility(View.GONE);
+		}else {
+			vSignInVisible.setVisibility(View.VISIBLE);
+		}
+	}
 
 	@Override
 	public String getEmail() {
@@ -180,5 +194,10 @@ public class SignInBlock extends SimiBlock implements SignInDelegate {
 	@Override
 	public ButtonRectangle getSignIn() {
 		return btn_SignIn;
+	}
+
+	@Override
+	public View getViewFull() {
+		return vSignInVisible;
 	}
 }
