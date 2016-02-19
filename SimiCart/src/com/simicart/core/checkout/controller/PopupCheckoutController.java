@@ -16,7 +16,6 @@ import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.fragment.NewAddressBookFragment;
 import com.simicart.core.customer.fragment.SignInFragment;
-import com.simicart.plugins.locationpickup.fragment.LocationPickupFragment;
 
 @SuppressLint("ClickableViewAccessibility")
 public class PopupCheckoutController extends SimiController {
