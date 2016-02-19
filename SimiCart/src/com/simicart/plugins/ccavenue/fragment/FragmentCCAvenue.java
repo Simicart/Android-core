@@ -44,7 +44,7 @@ public class FragmentCCAvenue extends SimiFragment {
 	}
 
 	public String getUrl() {
-		return invoice_number;
+		return url;
 	}
 
 	public String getInvoice_number() {
@@ -82,7 +82,7 @@ public class FragmentCCAvenue extends SimiFragment {
 				WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 		webview.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
 
-		String url_site = invoice_number;
+		String url_site = url;
 		webview.loadUrl(url_site);
 
 		webview.setWebViewClient(new WebViewClient() {
