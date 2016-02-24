@@ -148,6 +148,7 @@ public class NewAddressBookController extends SimiController implements
 							shippingAdd = address;
 							billingAdd = address;
 							afterControll = mAfterController;
+							Log.d("duyquang", "==1==NEW_AS_GUEST");
 							SimiManager.getIntance().replacePopupFragment(
 									ReviewOrderFragment.newInstance(afterControll, shippingAdd, billingAdd));
 						} else if (mAfterController == Constants.NEW_CUSTOMER) {
@@ -174,6 +175,7 @@ public class NewAddressBookController extends SimiController implements
 									billingAdd = address;
 									shippingAdd = address;
 								}
+								Log.d("duyquang", "==1==NEW_CUSTOMER");
 								SimiManager.getIntance().removeDialog();
 								SimiManager.getIntance().replaceFragment(
 										ReviewOrderFragment.newInstance(afterControll, shippingAdd, billingAdd));
@@ -343,13 +345,14 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
-
+					Log.d("duyquang", "==1==");
 					if (mAfterController == Constants.NEW_ADDRESS) {
+						Log.d("duyquang", "==2==");
 						AddressBookFragment fragment = AddressBookFragment
 								.newInstance();
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
-
+						Log.d("duyquang", "==3==");
 						MyAddress newAddress = (MyAddress) mModel
 								.getCollection().getCollection().get(0);
 
