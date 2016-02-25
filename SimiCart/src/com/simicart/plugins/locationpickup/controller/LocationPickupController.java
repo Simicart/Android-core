@@ -82,7 +82,7 @@ public class LocationPickupController extends NewAddressBookController{
 								}
 								Log.d("duyquang", "==3==");
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance(0, shippingAdd, billingAdd);
+										.newInstance(mAfterController, shippingAdd, billingAdd);
 //								switch (addressFor) {
 //								case AddressBookCheckoutFragment.ALL_ADDRESS:
 //									fragment.setBilingAddress(newAddress);
@@ -106,7 +106,7 @@ public class LocationPickupController extends NewAddressBookController{
 								shippingAdd = newAddress;
 								Log.d("duyquang", "==4==");
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance(0, shippingAdd, billingAdd);
+										.newInstance(-1, shippingAdd, billingAdd);
 //								fragment.setBilingAddress(newAddress);
 //								fragment.setShippingAddress(newAddress);
 								SimiManager.getIntance().replacePopupFragment(

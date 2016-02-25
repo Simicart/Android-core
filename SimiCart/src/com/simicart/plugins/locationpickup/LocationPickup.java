@@ -23,8 +23,10 @@ public class LocationPickup {
 			fragment = LocationPickupFragment.newInstance();
 			if(Constants.getBundle ==1){
 				fragment.setArguments(AddressBookCheckoutController.bundle);
-			}else {
+			}else if(Constants.getBundle ==2){
 				fragment.setArguments(PopupCheckoutController.bundle);
+			}else {
+				fragment.setArguments(AddressBookController.bundleAfter);
 			}
 			
 //			((LocationPickupFragment) fragment).setAfterControler(afterControl);
@@ -34,11 +36,6 @@ public class LocationPickup {
 		}
 		if (method.equals("addEditView")) {
 			fragment = LocationPickupEditFragment.newInstance();
-			if(Constants.getBundle ==1){
-				fragment.setArguments(AddressBookCheckoutController.bundle);
-			}else {
-				fragment.setArguments(PopupCheckoutController.bundle);
-			}
 			fragment.setArguments(AddressBookController.bundleAddress);
 //			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
 //					.getFragment()).getAddressbook();

@@ -33,7 +33,7 @@ public class AddressBookController extends SimiController {
 	protected SimiDelegate mDelegate;
 	protected OnTouchListener mListener;
 	protected OnItemClickListener mClicker;
-	public static Bundle bundleAddress;
+	public static Bundle bundleAddress, bundleAfter;
 
 	public OnTouchListener getListener() {
 		return mListener;
@@ -71,8 +71,9 @@ public class AddressBookController extends SimiController {
 			public boolean onTouch(View v, MotionEvent event) {
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance();
-				bundleAddress= new Bundle();
-				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_ADDRESS, Constants.KeyData.TYPE_INT, bundleAddress);
+				Constants.getBundle = 3;
+				bundleAfter = new Bundle();
+				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_ADDRESS, Constants.KeyData.TYPE_INT, bundleAfter);
 //				SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
 //				bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
 //				bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, mShippingAddress);
@@ -106,10 +107,10 @@ public class AddressBookController extends SimiController {
 	protected void selectItem(int position) {
 		SimiEntity entity = mModel.getCollection().getCollection()
 				.get(position);
-		Gson gson = new GsonBuilder().create();
+//		Gson gson = new GsonBuilder().create();
 		JSONObject jsonObject = entity.getJSONObject();
-		MyAddress addressbook = gson.fromJson(jsonObject.toString(), MyAddress.class);
-//		MyAddress addressbook = new MyAddress();
+//		MyAddress addressbook = gson.fromJson(jsonObject.toString(), MyAddress.class);
+		MyAddress addressbook = new MyAddress();
 		addressbook.setJSONObject(jsonObject);
 		Log.d("quang12", "==selectItem==addressbook=="+addressbook.toString());
 //		Log.d("quang12", "==selectItem==addressbook=="+addressbook.getStreet());

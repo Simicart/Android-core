@@ -23,6 +23,7 @@ import com.simicart.plugins.locationpickup.block.LocationPickupBlock;
 import com.simicart.plugins.locationpickup.controller.LocationPickupController;
 
 public class LocationPickupFragment extends NewAddressBookFragment {
+	
 	protected GoogleMap ggmap;
 	protected MapView map;
 	protected ScrollView scroll;

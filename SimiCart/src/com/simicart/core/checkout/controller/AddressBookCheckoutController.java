@@ -72,7 +72,11 @@ public class AddressBookCheckoutController extends AddressBookController {
 				bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
 				bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, mShippingAddress);
 				fragment.setArguments(bundle);
-				SimiManager.getIntance().replacePopupFragment(fragment);
+				if (DataLocal.isTablet) {
+					SimiManager.getIntance().replacePopupFragment(fragment);
+				} else {
+					SimiManager.getIntance().replaceFragment(fragment);
+				}
 				return false;
 			}
 		};
@@ -143,10 +147,15 @@ public class AddressBookCheckoutController extends AddressBookController {
 			default:
 				break;
 			}
+			Log.d("quang123", "=AddressBookCheckoutController==selectItem");
 			ReviewOrderFragment fragment = ReviewOrderFragment.newInstance(0, shippingAdd, billingAdd);
 
 			SimiManager.getIntance().removeDialog();
-			SimiManager.getIntance().replaceFragment(fragment);
+			if (DataLocal.isTablet) {
+				SimiManager.getIntance().replacePopupFragment(fragment);
+			} else {
+				SimiManager.getIntance().replaceFragment(fragment);
+			}
 		} catch (Exception e) {
 			Log.e("Error SelectItem AddressBookCheckoutController",
 					e.getMessage());

@@ -2,6 +2,7 @@ package com.simicart.core.checkout.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +74,7 @@ public class ReviewOrderFragment extends SimiFragment {
 		mShippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
 		mBillingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
 		}
-		
+		Log.d("duyquang", "==ReviewOrderFragment3=="+mAfterControll+mShippingAddress.toString());
 		mBlock = new ReviewOrderBlock(view, context);
 		mBlock.initView();
 		

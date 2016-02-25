@@ -92,6 +92,7 @@ public class ReviewOrderController extends SimiController implements
 	}
 
 	public void setDelegate(ReviewOrderDelegate delegate) {
+		if(delegate != null)
 		this.mDelegate = delegate;
 	}
 
