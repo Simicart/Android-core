@@ -61,7 +61,6 @@ public class NewAddressBookFragment extends SimiFragment {
 							false);
 		}
 		Context context = getActivity();
-		Log.d("quang123", "NewAddressBookFragment==getArguments==afterControl==");
 		//getdata
 		if(getArguments() != null){
 		afterControl = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());

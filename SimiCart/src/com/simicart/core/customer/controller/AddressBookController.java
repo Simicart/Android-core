@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.delegate.SimiDelegate;
+import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.checkout.controller.ConfigCheckout;
@@ -70,6 +71,12 @@ public class AddressBookController extends SimiController {
 			public boolean onTouch(View v, MotionEvent event) {
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance();
+				bundleAddress= new Bundle();
+				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_ADDRESS, Constants.KeyData.TYPE_INT, bundleAddress);
+//				SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
+//				bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
+//				bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, mShippingAddress);
+				Log.d("quang123", "==mListener==");
 				if (DataLocal.isTablet) {
 					SimiManager.getIntance().replacePopupFragment(fragment);
 				} else {

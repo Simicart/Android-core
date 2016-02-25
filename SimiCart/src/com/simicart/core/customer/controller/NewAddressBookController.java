@@ -143,8 +143,7 @@ public class NewAddressBookController extends SimiController implements
 				if (isCompleteRequired(address)) {
 					if (android.util.Patterns.EMAIL_ADDRESS.matcher(
 							address.getEmail()).matches()) {
-						if (mAfterController == Constants.NEW_AS_GUEST
-								|| mAfterController == Constants.NEW_ADDRESS_CHECKOUT) {
+						if (mAfterController == Constants.NEW_AS_GUEST) {
 							shippingAdd = address;
 							billingAdd = address;
 							afterControll = mAfterController;
