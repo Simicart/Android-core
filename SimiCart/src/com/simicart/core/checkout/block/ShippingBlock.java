@@ -345,6 +345,7 @@ public class ShippingBlock extends SimiBlock implements ShippingDelegate {
 	}
 
 	public void setDelegate(ReviewOrderDelegate mDelegate) {
+		if(mDelegate != null)
 		this.mDelegate = mDelegate;
 	}
 

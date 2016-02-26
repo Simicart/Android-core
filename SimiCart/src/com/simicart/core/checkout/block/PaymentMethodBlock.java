@@ -476,6 +476,7 @@ public class PaymentMethodBlock extends SimiBlock implements
 		}
 	}
 	public void setDelegate(ReviewOrderDelegate mDelegate) {
+		if(mDelegate != null)
 		this.mDelegate = mDelegate;
 	}
 

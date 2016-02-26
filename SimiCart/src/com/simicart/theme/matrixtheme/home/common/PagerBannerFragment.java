@@ -89,11 +89,6 @@ public static PagerBannerFragment newInstance(int postion, float scale, boolean 
 
 		ImageView imageview = (ImageView) rootView.findViewById(Rconfig
 				.getInstance().id("banner"));
-		if (bannerEntity.getImage() != null) {
-			DrawableManager.fetchDrawableOnThread(bannerEntity.getImage(),
-					imageview);
-
-		}
 		
 		//getdata
 		if(getArguments() != null){
@@ -102,7 +97,11 @@ public static PagerBannerFragment newInstance(int postion, float scale, boolean 
 		isBlured = (boolean) getData(Constants.KeyData.CHECK_BLURED, Constants.KeyData.TYPE_BOOLEAN, getArguments());
 		bannerEntity = (BannerEntity) getArguments().getSerializable(Constants.KeyData.BANNERENTITY);
 		}
-		
+		if (bannerEntity.getImage() != null) {
+			DrawableManager.fetchDrawableOnThread(bannerEntity.getImage(),
+					imageview);
+
+		}
 		imageview.setOnClickListener(new OnClickListener() {
 
 			@Override

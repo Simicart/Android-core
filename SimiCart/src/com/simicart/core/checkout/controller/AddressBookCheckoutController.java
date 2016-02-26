@@ -27,6 +27,7 @@ public class AddressBookCheckoutController extends AddressBookController {
 	protected MyAddress mBillingAddress;
 	protected MyAddress mShippingAddress;
 	protected int mAfterController;
+	public static Bundle bundle;
 
 	public void setAddressFor(int addressFor) {
 		this.addressFor = addressFor;
@@ -64,13 +65,18 @@ public class AddressBookCheckoutController extends AddressBookController {
 			public boolean onTouch(View v, MotionEvent event) {
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance();
-				Bundle bundle= new Bundle();
+				Constants.getBundle = 1;
+				bundle= new Bundle();
 				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_ADDRESS_CHECKOUT, Constants.KeyData.TYPE_INT, bundle);
 				SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
 				bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
 				bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, mShippingAddress);
 				fragment.setArguments(bundle);
-				SimiManager.getIntance().replacePopupFragment(fragment);
+				if (DataLocal.isTablet) {
+					SimiManager.getIntance().replacePopupFragment(fragment);
+				} else {
+					SimiManager.getIntance().replaceFragment(fragment);
+				}
 				return false;
 			}
 		};
@@ -141,10 +147,15 @@ public class AddressBookCheckoutController extends AddressBookController {
 			default:
 				break;
 			}
+			Log.d("quang123", "=AddressBookCheckoutController==selectItem");
 			ReviewOrderFragment fragment = ReviewOrderFragment.newInstance(0, shippingAdd, billingAdd);
 
 			SimiManager.getIntance().removeDialog();
-			SimiManager.getIntance().replaceFragment(fragment);
+			if (DataLocal.isTablet) {
+				SimiManager.getIntance().replacePopupFragment(fragment);
+			} else {
+				SimiManager.getIntance().replaceFragment(fragment);
+			}
 		} catch (Exception e) {
 			Log.e("Error SelectItem AddressBookCheckoutController",
 					e.getMessage());

@@ -1,7 +1,9 @@
 package com.simicart.plugins.locationpickup;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.checkout.controller.AddressBookCheckoutController;
 import com.simicart.core.checkout.controller.PopupCheckoutController;
+import com.simicart.core.config.Constants;
 import com.simicart.core.customer.controller.AddressBookController;
 import com.simicart.core.customer.fragment.NewAddressBookFragment;
 import com.simicart.core.event.fragment.CacheFragment;
@@ -19,7 +21,14 @@ public class LocationPickup {
 //			int afterControl = ((NewAddressBookFragment) mCacheFragment
 //					.getFragment()).getAfterControl();
 			fragment = LocationPickupFragment.newInstance();
-			fragment.setArguments(PopupCheckoutController.bundle);
+			if(Constants.getBundle ==1){
+				fragment.setArguments(AddressBookCheckoutController.bundle);
+			}else if(Constants.getBundle ==2){
+				fragment.setArguments(PopupCheckoutController.bundle);
+			}else {
+				fragment.setArguments(AddressBookController.bundleAfter);
+			}
+			
 //			((LocationPickupFragment) fragment).setAfterControler(afterControl);
 //			fragment = new TestFragment();
 

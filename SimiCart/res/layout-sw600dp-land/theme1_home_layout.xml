@@ -59,25 +59,25 @@
 
                     <RelativeLayout
                         android:id="@+id/rlt_category1"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginRight="3dp"
                         android:layout_weight="2"
                         android:background="@drawable/theme1_background_cat" >
 
                         <ViewFlipper
                             android:id="@+id/vfp_category1"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="@dimen/height_category_theme1" />
 
                         <Button
                             android:id="@+id/bt_category1"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@null" />
 
                         <RelativeLayout
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_centerVertical="true"
                             android:background="#88ffffff"
@@ -113,26 +113,26 @@
 
                     <RelativeLayout
                         android:id="@+id/rlt_category2"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="3dp"
                         android:layout_weight="1"
                         android:background="@drawable/theme1_background_cat" >
 
                         <ViewFlipper
                             android:id="@+id/vfp_category2"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="@dimen/height_category_theme1" />
 
                         <Button
                             android:id="@+id/bt_category2"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@null" />
 
                         <RelativeLayout
                             android:id="@+id/ll_category2"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_centerVertical="true"
                             android:background="#88ffffff"
@@ -178,25 +178,25 @@
 
                     <RelativeLayout
                         android:id="@+id/rlt_category3"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginRight="3dp"
                         android:layout_weight="1"
                         android:background="@drawable/theme1_background_cat" >
 
                         <ViewFlipper
                             android:id="@+id/vfp_category3"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="@dimen/height_category_theme1" />
 
                         <Button
                             android:id="@+id/bt_category3"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@null" />
 
                         <RelativeLayout
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_centerVertical="true"
                             android:background="#88ffffff"
@@ -231,25 +231,25 @@
 
                     <RelativeLayout
                         android:id="@+id/rlt_view_all_category"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="3dp"
                         android:layout_weight="2" >
 
                         <ViewFlipper
                             android:id="@+id/vfp_allcategory"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="@dimen/height_category_theme1" />
 
                         <Button
                             android:id="@+id/bt_all_category"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@drawable/theme1_backgroudn_viewallcategory" />
 
                         <RelativeLayout
                             android:id="@+id/ll_view_all_category"
-                            android:layout_width="fill_parent"
+                            android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:layout_centerVertical="true"
                             android:background="@android:color/transparent"

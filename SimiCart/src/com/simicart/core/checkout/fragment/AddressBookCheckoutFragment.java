@@ -2,6 +2,7 @@ package com.simicart.core.checkout.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,7 @@ public class AddressBookCheckoutFragment extends AddressBookFragment {
 			mBillingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
 			mShippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
 		}
-				
+				Log.d("quang123", "==AddressBookCheckoutFragment==");
 		mBlock = new AddressBookBlock(view, context);
 		mBlock.setIsCheckout(true);
 		mBlock.initView();

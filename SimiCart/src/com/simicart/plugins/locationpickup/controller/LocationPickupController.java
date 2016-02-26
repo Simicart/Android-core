@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 
+import android.util.Log;
+
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.fragment.ReviewOrderFragment;
@@ -30,14 +32,16 @@ public class LocationPickupController extends NewAddressBookController{
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
+				
 				if (isSuccess) {
-
+					Log.d("duyquang", "==1==");
 					if (mAfterController == Constants.NEW_ADDRESS) {
+						Log.d("duyquang", "==2==");
 						AddressBookFragment fragment = AddressBookFragment
 								.newInstance();
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
-
+						Log.d("duyquang", "==22==");
 						MyAddress newAddress = (MyAddress) mModel
 								.getCollection().getCollection().get(0);
 
@@ -76,8 +80,9 @@ public class LocationPickupController extends NewAddressBookController{
 								default:
 									break;
 								}
+								Log.d("duyquang", "==3==");
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance(0, shippingAdd, billingAdd);
+										.newInstance(mAfterController, shippingAdd, billingAdd);
 //								switch (addressFor) {
 //								case AddressBookCheckoutFragment.ALL_ADDRESS:
 //									fragment.setBilingAddress(newAddress);
@@ -99,8 +104,9 @@ public class LocationPickupController extends NewAddressBookController{
 							} else {
 								billingAdd = newAddress;
 								shippingAdd = newAddress;
+								Log.d("duyquang", "==4==");
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance(0, shippingAdd, billingAdd);
+										.newInstance(-1, shippingAdd, billingAdd);
 //								fragment.setBilingAddress(newAddress);
 //								fragment.setShippingAddress(newAddress);
 								SimiManager.getIntance().replacePopupFragment(
