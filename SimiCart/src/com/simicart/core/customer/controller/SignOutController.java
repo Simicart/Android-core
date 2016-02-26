@@ -63,6 +63,8 @@ public class SignOutController extends SimiController {
 					PaymentMethod.getInstance().setPlace_cc_number("");
 					PaymentMethod.getInstance().setPlacecc_id("");
 					ConfigCheckout.checkPaymentMethod = false;
+					ConfigCheckout.getInstance().setAddressBookFirstRequest(
+							true);
 
 					HomeFragment fragment = HomeFragment.newInstance();
 					SimiManager.getIntance().replaceFragment(fragment);
