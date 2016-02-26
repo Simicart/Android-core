@@ -67,6 +67,7 @@ public class CartListenerController implements CartAdapterDelegate {
 				CheckoutWebviewFragment fragment = CheckoutWebviewFragment
 						.newInstanse();
 				fragment.setUrl(mWebviewUrl);
+				fragment.setIsCheckout(true);
 				SimiManager.getIntance().replaceFragment(fragment);
 			} else {
 				if (DataLocal.isSignInComplete()) {
