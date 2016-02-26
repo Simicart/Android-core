@@ -66,13 +66,13 @@ public class CartListenerController implements CartAdapterDelegate {
 		if (!mMessage.contains("NOT CHECKOUT")) {
 			if (mWebviewUrl != null && !mWebviewUrl.equals("")) {
 				CheckoutWebviewFragment fragment = CheckoutWebviewFragment
-						.newInstanse(mWebviewUrl);
-//				fragment.setUrl(mWebviewUrl);
+						.newInstanse(mWebviewUrl, true);
 				SimiManager.getIntance().replaceFragment(fragment);
 			} else {
 				if (DataLocal.isSignInComplete()) {
 					AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-							.newInstance(0, Constants.KeyAddress.ALL_ADDRESS, null, null);
+							.newInstance(0, Constants.KeyAddress.ALL_ADDRESS,
+									null, null);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
@@ -93,9 +93,9 @@ public class CartListenerController implements CartAdapterDelegate {
 			String id = cart.getProduct_id();
 			if (Utils.validateString(id)) {
 				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance(id,listID);
-//				fragment.setProductID(id);
-//				fragment.setListIDProduct(listID);
+						.newInstance(id, listID);
+				// fragment.setProductID(id);
+				// fragment.setListIDProduct(listID);
 				SimiManager.getIntance().replaceFragment(fragment);
 				SimiManager.getIntance().removeDialog();
 			}
@@ -234,7 +234,8 @@ public class CartListenerController implements CartAdapterDelegate {
 		mBlockDelegate = delegate;
 	}
 
-	private void showDialogNumberPicker(final int position, final int qty, int min, int max) {
+	private void showDialogNumberPicker(final int position, final int qty,
+			int min, int max) {
 		final Dialog dialoglayout = new Dialog(MainActivity.context);
 		dialoglayout.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialoglayout.setContentView(Rconfig.getInstance().layout(
@@ -253,11 +254,11 @@ public class CartListenerController implements CartAdapterDelegate {
 
 		final WheelView wheel = (WheelView) dialoglayout.findViewById(Rconfig
 				.getInstance().id("select_quantity"));
-		
-		if(!Utils.validateString(""+min)){
+
+		if (!Utils.validateString("" + min)) {
 			min = 1;
 		}
-		if(!Utils.validateString(""+max)){
+		if (!Utils.validateString("" + max)) {
 			max = 1;
 		}
 		final NumericWheelAdapter minAdapter = new NumericWheelAdapter(
@@ -299,7 +300,8 @@ public class CartListenerController implements CartAdapterDelegate {
 	}
 
 	@Override
-	public OnClickListener getClickQtyItem(final int position, final int qty, final int min, final int max) {
+	public OnClickListener getClickQtyItem(final int position, final int qty,
+			final int min, final int max) {
 		OnClickListener onclick = new OnClickListener() {
 
 			@Override

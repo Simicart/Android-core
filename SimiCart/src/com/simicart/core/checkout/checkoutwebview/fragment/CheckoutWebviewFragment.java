@@ -2,7 +2,6 @@ package com.simicart.core.checkout.checkoutwebview.fragment;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,19 +18,19 @@ import com.simicart.core.config.Rconfig;
 
 public class CheckoutWebviewFragment extends SimiFragment {
 	protected String Url = "";
+	private boolean isCheckout = false;
 
-	public static CheckoutWebviewFragment newInstanse(String url) {
+	public static CheckoutWebviewFragment newInstanse(String url,
+			boolean isCheckout) {
 		CheckoutWebviewFragment fragment = new CheckoutWebviewFragment();
 		Bundle bundle = new Bundle();
 		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING,
 				bundle);
+		setData(Constants.KeyData.CHECK_BOO, isCheckout,
+				Constants.KeyData.TYPE_BOOLEAN, bundle);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
-
-	// public void setUrl(String url) {
-	// this.Url = url;
-	// }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,6 +97,15 @@ public class CheckoutWebviewFragment extends SimiFragment {
 		});
 
 		return rootView;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		if (isCheckout == false) {
+			SimiManager.getIntance().backToHomeFragment();
+		}
+		isCheckout = false;
 	}
 
 	@Override
