@@ -19,11 +19,16 @@ import com.simicart.core.config.Rconfig;
 public class CheckoutWebviewFragment extends SimiFragment {
 	protected String Url = "";
 
+	private boolean isCheckout = false;
+
 	public static CheckoutWebviewFragment newInstanse() {
 		CheckoutWebviewFragment fragment = new CheckoutWebviewFragment();
 		return fragment;
 	}
 
+	public void setIsCheckout(boolean input) {
+		this.isCheckout = input;
+	}
 	public void setUrl(String url) {
 		this.Url = url;
 	}
@@ -92,6 +97,14 @@ public class CheckoutWebviewFragment extends SimiFragment {
 		return rootView;
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		if(isCheckout == false){
+			SimiManager.getIntance().backToHomeFragment();
+		}
+		isCheckout = false;
+	}
 	@Override
 	public void onDestroyView() {
 		// TODO Auto-generated method stub
