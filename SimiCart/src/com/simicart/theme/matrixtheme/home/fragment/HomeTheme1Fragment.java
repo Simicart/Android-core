@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.simicart.core.banner.block.BannerBlock;
 import com.simicart.core.banner.controller.BannerController;
@@ -34,6 +35,8 @@ public class HomeTheme1Fragment extends SimiFragment {
 	protected SpotProductHomeTheme1Block mSpotProductHomeTheme1Block;
 	protected SearchHomeBlock mSearchHomeBlock;
 
+	protected View rootView;
+
 	public static HomeTheme1Fragment newInstance() {
 		HomeTheme1Fragment fragment = new HomeTheme1Fragment();
 		return fragment;
@@ -46,10 +49,10 @@ public class HomeTheme1Fragment extends SimiFragment {
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-
-	Bundle savedInstanceState) {
-		View rootView = inflater.inflate(
-				Rconfig.getInstance().layout("theme1_home_layout"), null);
+			Bundle savedInstanceState) {
+		rootView = inflater.inflate(
+				Rconfig.getInstance().layout("theme1_home_layout"), container,
+				false);
 
 		Context context = getActivity();
 
@@ -75,10 +78,11 @@ public class HomeTheme1Fragment extends SimiFragment {
 			mSearchHomeBlock.setTag(TagSearch.TAG_LISTVIEW);
 			mSearchHomeBlock.initView();
 
-			// initial banner
-			View bannerView = rootView.findViewById(Rconfig.getInstance().id(
-					"core_home_banner_relatvie"));
-			mBannerBlock = new BannerBlock(bannerView, context);
+			// init banner
+			RelativeLayout rlt_banner = (RelativeLayout) rootView
+					.findViewById(Rconfig.getInstance().id(
+							"core_home_banner_relatvie"));
+			mBannerBlock = new BannerBlock(rlt_banner, context);
 			mBannerBlock.initView();
 			if (null == mBannerController) {
 				mBannerController = new BannerController(mBannerBlock);

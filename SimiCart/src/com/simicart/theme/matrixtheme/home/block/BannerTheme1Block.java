@@ -6,7 +6,6 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -55,10 +54,7 @@ public class BannerTheme1Block extends SimiBlock implements BannerDelegate {
 		String message = mContext.getString(Rconfig.getInstance().string(
 				"values"));
 
-		Log.e("BannerTheme1Block ", "MESSAGE " + message);
 		int height = getResolutionScreen();
-
-		Log.e("BannerTheme1Block ", "HEIGHT " + height);
 
 		if (message.equals("sw800dp")) {
 			margin = -1200;
@@ -73,8 +69,6 @@ public class BannerTheme1Block extends SimiBlock implements BannerDelegate {
 		if (height < 700) {
 			margin = -700;
 		}
-
-		Log.e("BannerTheme1Block ", "MARGIN " + margin);
 
 		vp_bannerTop.setPageMargin(margin);
 	}

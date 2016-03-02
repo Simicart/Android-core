@@ -12,26 +12,28 @@ import android.graphics.Color;
 @SuppressLint("DefaultLocale")
 public class Config {
 	private String mThemeColor = "#3498DB";
-//	  private String mBaseUrl = "https://anggrek-liar.com/";
-//	  private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
+	// private String mBaseUrl = "https://anggrek-liar.com/";
+	// private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
 
-//	  private String mBaseUrl = "http://www.kiranaondoor.com/index.php";
-//	 private String mSecretKey = "075116eb405249fd026299a5c06d4bee";
+	// private String mBaseUrl = "http://www.kiranaondoor.com/index.php";
+	// private String mSecretKey = "075116eb405249fd026299a5c06d4bee";
 
 	// private String mBaseUrl = "https://www.toysrus.co.za/";
 	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
 
-	// private String mBaseUrl = "https://www.papagayoweb.com";
-	// private String mSecretKey = "1850f0c68b7088841fa146376bb975ff";
-//	 private String mBaseUrl = "https://www.grocerymantra.com";
-//	 private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
-                                                                                                                                               
-//	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
-//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+	// private String mBaseUrl =
+	// "http://spgtest.justfortinypeople.net/index.php/";
+	// private String mSecretKey = "a5ea93ab74b0efd233e97f65f0132084";
 
-	private String mBaseUrl = "http://dailybazzar.org/beta/";
-	private String mSecretKey = "7754a44e420984538a30bd328859d823";
-	
+	// private String mBaseUrl = "https://www.grocerymantra.com";
+	// private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
+
+	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
+	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+
+	// private String mBaseUrl = "http://dailybazzar.org/beta/";
+	// private String mSecretKey = "7754a44e420984538a30bd328859d823";
+
 	// private String mBaseUrl =
 	// "http://demo.magestore.com/simicart/simipos4/index.php";
 	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
@@ -546,15 +548,15 @@ public class Config {
 			} else {
 				return mCurrencySymbol + price;
 			}
-		}else{
-            if ((null == mCurrencySymbol) || (mCurrencySymbol.equals("null"))
-                    && null != mCurrencyCode && !mCurrencyCode.equals("null")) {
-            return price+ " "+ mCurrencyCode ;
-    } else {
-            return price+ " "+ mCurrencySymbol ;
-    }
-}
-//		return price + " " + mCurrencySymbol;
+		} else {
+			if ((null == mCurrencySymbol) || (mCurrencySymbol.equals("null"))
+					&& null != mCurrencyCode && !mCurrencyCode.equals("null")) {
+				return price + " " + mCurrencyCode;
+			} else {
+				return price + " " + mCurrencySymbol;
+			}
+		}
+		// return price + " " + mCurrencySymbol;
 	}
 
 	public String getPrice(String price, String symbol) {
@@ -571,15 +573,15 @@ public class Config {
 			} else {
 				return symbol + price;
 			}
-		}else{
-            if ((null == mCurrencySymbol) || (mCurrencySymbol.equals("null"))
-                    && null != mCurrencyCode && !mCurrencyCode.equals("null")) {
-            return price+ " "+ mCurrencyCode ;
-    } else {
-            return price+ " "+ mCurrencySymbol ;
-    }
-}
-//		return price + " " + symbol;
+		} else {
+			if ((null == mCurrencySymbol) || (mCurrencySymbol.equals("null"))
+					&& null != mCurrencyCode && !mCurrencyCode.equals("null")) {
+				return price + " " + mCurrencyCode;
+			} else {
+				return price + " " + mCurrencySymbol;
+			}
+		}
+		// return price + " " + symbol;
 	}
 
 	public String getCountryName() {

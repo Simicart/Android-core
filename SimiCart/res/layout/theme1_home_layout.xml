@@ -38,8 +38,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="3dp"
-                        android:layout_marginTop="1dp"
-                        android:background="@drawable/theme1_background_cat" />
+                        android:layout_marginTop="1dp" />
                 </RelativeLayout>
 
                 <LinearLayout

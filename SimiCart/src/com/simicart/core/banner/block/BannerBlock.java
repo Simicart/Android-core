@@ -26,7 +26,6 @@ import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.category.fragment.CategoryFragment;
 import com.simicart.core.catalog.product.fragment.ProductDetailParentFragment;
-import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.catalog.search.fragment.ListProductFragment;
 import com.simicart.core.catalog.search.model.ConstantsSearch;
 import com.simicart.core.config.Constants;
@@ -79,7 +78,6 @@ public class BannerBlock extends SimiBlock implements BannerDelegate {
 	@Override
 	public void drawView(SimiCollection collection) {
 		ArrayList<SimiEntity> listBanner = collection.getCollection();
-		System.out.println(listBanner);
 		if (listBanner == null || listBanner.size() == 0) {
 			showBannersFake();
 		} else {
@@ -155,8 +153,11 @@ public class BannerBlock extends SimiBlock implements BannerDelegate {
 				.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
 		mSliderLayout.setIndicatorVisibility(IndicatorVisibility.Invisible);
 		mSliderLayout.setCustomAnimation(new DescriptionAnimation());
+		// mSliderLayout.set
+		mSliderLayout.setDuration(3000);
 		if (listBanner.size() < 2) {
 			// disable scroll, tranfer
+			mSliderLayout.setDuration(0);
 			mSliderLayout.stopAutoCycle();
 			mSliderLayout.setPagerTransformer(false, new BaseTransformer() {
 				@Override
@@ -164,8 +165,6 @@ public class BannerBlock extends SimiBlock implements BannerDelegate {
 				}
 			});
 		}
-		// mSliderLayout.set
-		mSliderLayout.setDuration(3000);
 
 	}
 
@@ -182,9 +181,10 @@ public class BannerBlock extends SimiBlock implements BannerDelegate {
 						&& !banner_ad.getProductId().equals("")
 						&& !banner_ad.getProductId().toLowerCase()
 								.equals("null")) {
-					fragment = ProductDetailParentFragment.newInstance(banner_ad.getProductId(),null);
-//					((ProductDetailParentFragment) fragment)
-//							.setProductID(banner_ad.getProductId());
+					fragment = ProductDetailParentFragment.newInstance(
+							banner_ad.getProductId(), null);
+					// ((ProductDetailParentFragment) fragment)
+					// .setProductID(banner_ad.getProductId());
 					SimiManager.getIntance().addFragment(fragment);
 				}
 			} else if (banner_ad.getType().equals(TYPE_CATEGORY)) {
@@ -199,25 +199,30 @@ public class BannerBlock extends SimiBlock implements BannerDelegate {
 						if (banner_ad.getHasChild().equals("1")) {
 							if (DataLocal.isTablet) {
 								fragment = CategoryFragment.newInstance(
-										banner_ad.getCategoryId(),banner_ad.getCategoryName());
+										banner_ad.getCategoryId(),
+										banner_ad.getCategoryName());
 								CateSlideMenuFragment.getIntance()
 										.replaceFragmentCategoryMenu(fragment);
 								CateSlideMenuFragment.getIntance().openMenu();
 							} else {
 								fragment = CategoryFragment.newInstance(
-										banner_ad.getCategoryId(),banner_ad.getCategoryName());
+										banner_ad.getCategoryId(),
+										banner_ad.getCategoryName());
 								SimiManager.getIntance().addFragment(fragment);
 							}
 						} else {
-							fragment = ListProductFragment.newInstance(ConstantsSearch.url_category,banner_ad.getCategoryId(),null,null,null,null,null,null);
-//							((ListProductFragment) fragment)
-//									.setCategoryId(banner_ad.getCategoryId());
-//							((ListProductFragment) fragment)
-//									.setUrlSearch(ConstantsSearch.url_category);
-//							if (DataLocal.isTablet) {
-//								((ListProductFragment) fragment)
-//										.setTag_search(TagSearch.TAG_GRIDVIEW);
-//							}
+							fragment = ListProductFragment.newInstance(
+									ConstantsSearch.url_category,
+									banner_ad.getCategoryId(), null, null,
+									null, null, null, null);
+							// ((ListProductFragment) fragment)
+							// .setCategoryId(banner_ad.getCategoryId());
+							// ((ListProductFragment) fragment)
+							// .setUrlSearch(ConstantsSearch.url_category);
+							// if (DataLocal.isTablet) {
+							// ((ListProductFragment) fragment)
+							// .setTag_search(TagSearch.TAG_GRIDVIEW);
+							// }
 							SimiManager.getIntance().addFragment(fragment);
 						}
 					}

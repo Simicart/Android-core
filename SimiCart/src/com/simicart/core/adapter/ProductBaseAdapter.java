@@ -66,8 +66,6 @@ public class ProductBaseAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
 		Product product = getItem(position);
-		Log.e("ProductBaseAdapter ", position + " get Price Home"
-				+ product.getJSONObject().toString());
 		if (convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(
