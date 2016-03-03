@@ -73,12 +73,11 @@ public class SearchHomeBlock extends SimiBlock {
 
 		et_search = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_search"));
-		et_search.setHint(Config.getInstance().getText("Search product"));
+		et_search.setHint(Config.getInstance().getText("Search"));
 		if (!mCatName.equals("")
 				&& !mCatName.equals(Config.getInstance()
 						.getText("all products"))) {
-			et_search.setHint(Config.getInstance().getText("Searching for")
-					+ "" + mCatName);
+			et_search.setHint("" + mCatName);
 			et_search.setTypeface(null, Typeface.BOLD);
 		}
 		if (!mQuery.equals("")) {
@@ -126,10 +125,12 @@ public class SearchHomeBlock extends SimiBlock {
 
 	public void showSearchScreen(String key, String tag) {
 		if (key != null && !key.equals("")) {
-			ListProductFragment fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS, null, tag, null, null,key, null, null );
-//			fragment.setQuerySearch(key);
-//			fragment.setTag_search(tag);
-//			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
+			ListProductFragment fragment = ListProductFragment.newInstance(
+					Constants.SEARCH_PRODUCTS, null, tag, null, null, key,
+					null, null);
+			// fragment.setQuerySearch(key);
+			// fragment.setTag_search(tag);
+			// fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}

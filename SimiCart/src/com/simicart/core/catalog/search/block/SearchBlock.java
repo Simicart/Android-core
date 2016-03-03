@@ -245,7 +245,7 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			// edit_search.setTypeface(null, Typeface.BOLD);
 		}
 		if (mQuery != null && !mQuery.equals("")) {
-			edit_search.setHint(mQuery);
+			edit_search.setText(mQuery);
 		}
 		edit_search.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 		edit_search.setTextColor(Config.getInstance().getSearch_text_color());
@@ -366,15 +366,19 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 		if (key != null && !key.equals("")) {
 			hidePopupListView();
 			ListProductFragment fragment = null;
-			if(type == 0){
-				fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS, "", tag, null, null, key, null, null );
-			}else{
-				fragment = ListProductFragment.newInstance(Constants.SEARCH_PRODUCTS,cate_id, tag, null, null, key, null, null );
+			if (type == 0) {
+				fragment = ListProductFragment.newInstance(
+						Constants.SEARCH_PRODUCTS, "", tag, null, null, key,
+						null, null);
+			} else {
+				fragment = ListProductFragment.newInstance(
+						Constants.SEARCH_PRODUCTS, cate_id, tag, null, null,
+						key, null, null);
 			}
-//			fragment.setQuerySearch(key);
-//			fragment.setTag_search(tag);
-//			fragment.setCategoryId(cate_id);
-//			fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
+			// fragment.setQuerySearch(key);
+			// fragment.setTag_search(tag);
+			// fragment.setCategoryId(cate_id);
+			// fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}
@@ -820,7 +824,9 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			showSearchScreen(edit_search.getText().toString(), tag_search, 0);
 		} else {
 			ListProductFragment searchFragment = ListProductFragment
-					.newInstance(ConstantsSearch.url_query, cate_id, null, null, null,edit_search.getText().toString(), null, null );
+					.newInstance(ConstantsSearch.url_query, cate_id, null,
+							null, null, edit_search.getText().toString(), null,
+							null);
 			SimiManager.getIntance().addFragment(searchFragment);
 		}
 		hidePopupListView();
