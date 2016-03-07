@@ -8,13 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
 
 import com.simicart.core.catalog.category.entity.Category;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.style.imagesimicart.SimiImageView;
 import com.simicart.theme.ztheme.home.entity.CategoryZTheme;
 import com.simicart.theme.ztheme.home.entity.SpotProductZTheme;
 
@@ -31,21 +32,22 @@ public class HomeZThemeAdapterTablet extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
-		if (convertView == null) {
-			LayoutInflater inflater = (LayoutInflater) mContext
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(
-					Rconfig.getInstance().getId("ztheme_item_home_layout",
-							"layout"), null);
-			holder = new ViewHolder();
-			holder.im_cate = (ImageView) convertView.findViewById(Rconfig
-					.getInstance().getId("img_category", "id"));
-			holder.tv_title = (TextView) convertView.findViewById(Rconfig
-					.getInstance().id("tv_title"));
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
+		// if (convertView == null) {
+		LayoutInflater inflater = (LayoutInflater) mContext
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		convertView = inflater.inflate(
+				Rconfig.getInstance()
+						.getId("ztheme_item_home_layout", "layout"), null);
+		holder = new ViewHolder();
+		holder.im_cate = (SimiImageView) convertView.findViewById(Rconfig
+				.getInstance().getId("img_category", "id"));
+		holder.im_cate.setScaleType(ScaleType.FIT_XY);
+		holder.tv_title = (TextView) convertView.findViewById(Rconfig
+				.getInstance().id("tv_title"));
+		convertView.setTag(holder);
+		// } else {
+		// holder = (ViewHolder) convertView.getTag();
+		// }
 
 		CategoryZTheme category = mCategories.get(position);
 		String id_category = category.getCategoryId();
@@ -82,7 +84,7 @@ public class HomeZThemeAdapterTablet extends BaseAdapter {
 	}
 
 	static class ViewHolder {
-		ImageView im_cate;
+		SimiImageView im_cate;
 		TextView tv_title;
 	}
 

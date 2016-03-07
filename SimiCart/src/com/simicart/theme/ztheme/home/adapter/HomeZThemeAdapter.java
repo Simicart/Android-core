@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ImageView.ScaleType;
 
 import com.simicart.core.catalog.category.entity.Category;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.style.imagesimicart.SimiImageView;
 import com.simicart.theme.ztheme.home.entity.CategoryZTheme;
 import com.simicart.theme.ztheme.home.entity.SpotProductZTheme;
 
@@ -76,8 +77,9 @@ public class HomeZThemeAdapter extends BaseExpandableListAdapter {
 		rootView = inflater.inflate(
 				Rconfig.getInstance()
 						.getId("ztheme_item_home_layout", "layout"), null);
-		holder.img_category = (ImageView) rootView.findViewById(Rconfig
+		holder.img_category = (SimiImageView) rootView.findViewById(Rconfig
 				.getInstance().getId("img_category", "id"));
+		holder.img_category.setScaleType(ScaleType.FIT_XY);
 		holder.tv_catename = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_title"));
 		rootView.setTag(holder);
@@ -137,7 +139,7 @@ public class HomeZThemeAdapter extends BaseExpandableListAdapter {
 
 	static class ViewHolder {
 		TextView tv_catename;
-		ImageView img_category;
+		SimiImageView img_category;
 	}
 
 	@Override

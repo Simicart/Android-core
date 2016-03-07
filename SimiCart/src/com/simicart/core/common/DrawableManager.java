@@ -31,12 +31,13 @@ import android.view.Display;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-//import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-//import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.simicart.MainActivity;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.style.imagesimicart.SimiImageView;
+//import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+//import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 public class DrawableManager {
 
@@ -541,6 +542,55 @@ public class DrawableManager {
 			return null;
 		}
 
+	}
+
+	public static void fetchDrawableOnThread(final String urlImage,
+			final SimiImageView simiImageView) {
+		init();
+
+		Bitmap cache_bitMap = getBitmapFromMemCache(urlImage);
+
+		if (null != cache_bitMap) {
+			simiImageView.setImageBitmap(cache_bitMap);
+			return;
+		}
+
+		else {
+			cache_bitMap = getBitmapFromDiskCache(urlImage);
+			if (null != cache_bitMap) {
+				simiImageView.setImageBitmap(cache_bitMap);
+
+				String key_md5 = Utils.md5(urlImage);
+
+				if (null != mMemoryCache) {
+					if (getBitmapFromMemCache(key_md5) == null) {
+						mMemoryCache.put(key_md5, cache_bitMap);
+					}
+				}
+				return;
+			}
+		}
+
+		final Handler handler = new Handler() {
+			@Override
+			public void handleMessage(Message message) {
+				Bitmap bitmap = (Bitmap) message.obj;
+				if (bitmap != null) {
+					simiImageView.setImageBitmap(bitmap);
+					addBitmapToMemoryCache(urlImage, bitmap);
+				} else {
+					Resources resources = SimiManager.getIntance()
+							.getCurrentContext().getResources();
+					bitmap = BitmapFactory.decodeResource(resources, Rconfig
+							.getInstance().drawable("default_icon"));
+					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
+					simiImageView.setImageBitmap(bitmap);
+					bitmap = null;
+				}
+			}
+		};
+
+		getBitmap(handler, urlImage);
 	}
 
 }

@@ -28,15 +28,15 @@ public class Config {
 	// private String mBaseUrl = "https://www.grocerymantra.com";
 	// private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
 
-	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
-	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+	// private String mBaseUrl =
+	// "http://dev-vn.magestore.com/simicart/1800/index.php/";
+	// private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 
 	// private String mBaseUrl = "http://dailybazzar.org/beta/";
 	// private String mSecretKey = "7754a44e420984538a30bd328859d823";
 
-	// private String mBaseUrl =
-	// "http://demo.magestore.com/simicart/simipos4/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	private String mBaseUrl = "http://demo.magestore.com/simicart/simipos4/index.php";
+	private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// private String key_color = "#607D8B";
 	// private String button_background = "#0277BD";
