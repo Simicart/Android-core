@@ -43,7 +43,6 @@ public class HomeFragment extends SimiFragment {
 
 	protected ProductListBlock mProductListBlock;
 	protected ProductListController mProductListController;
-//	protected static boolean isCheckSuccess = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
