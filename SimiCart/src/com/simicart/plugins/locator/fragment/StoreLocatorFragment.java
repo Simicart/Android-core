@@ -1,24 +1,11 @@
 package com.simicart.plugins.locator.fragment;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.HttpConnectionParams;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
 
@@ -71,9 +58,9 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.network.request.CoreAPIService;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.locator.DataLocator;
@@ -123,24 +110,20 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 	private SearchObject search_object;
 	private boolean check_trigger;
 
-	public void setSearch_object(SearchObject search_object) {
-		this.search_object = search_object;
-	}
 
 	// end haita
-	public static StoreLocatorFragment newInstans(String country, String city,
-			String state, String zipcode, String tag) {
+	public static StoreLocatorFragment newInstansce(String country, String city,
+			String state, String zipcode, String tag, SearchObject search_object) {
 		StoreLocatorFragment fragment = new StoreLocatorFragment();
-		fragment.country = country;
-		fragment.city = city;
-		fragment.state = state;
-		fragment.zipcode = zipcode;
-		fragment.tag = tag;
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.COUNTRY, country, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.CITY, city, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.STATE, state, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.ZIPCODE, zipcode, Constants.KeyData.TYPE_STRING, bundle);
+		setData(Constants.KeyData.TAG, tag, Constants.KeyData.TYPE_STRING, bundle);
+		bundle.putSerializable(Constants.KeyData.SEARCH_OBJECT, search_object);
 		return fragment;
 
-	}
-
-	public StoreLocatorFragment() {
 	}
 
 	@Override
@@ -164,6 +147,16 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 		}
 		// end request
 
+		//getdata
+		if(getArguments() != null){
+		country = (String) getData(Constants.KeyData.COUNTRY, Constants.KeyData.TYPE_STRING, getArguments());
+		city = (String) getData(Constants.KeyData.CITY, Constants.KeyData.TYPE_STRING, getArguments());
+		state = (String) getData(Constants.KeyData.STATE, Constants.KeyData.TYPE_STRING, getArguments());
+		zipcode = (String) getData(Constants.KeyData.ZIPCODE, Constants.KeyData.TYPE_STRING, getArguments());
+		tag = (String) getData(Constants.KeyData.TAG, Constants.KeyData.TYPE_STRING, getArguments());
+		search_object = (SearchObject) getArguments().getSerializable(Constants.KeyData.SEARCH_OBJECT);
+		}
+		
 		SimiManager.getIntance().setChildFragment(getChildFragmentManager());
 		if (DataLocal.isTablet) {
 			view = inflater.inflate(
@@ -214,13 +207,11 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 
 			@Override
 			public void onClick(View v) {
-				SearchStore fragment = new SearchStore();
+				
 				if (search_object == null) {
 					search_object = new SearchObject();
-					fragment.setSearch_object(search_object);
-				} else {
-					fragment.setSearch_object(search_object);
 				}
+				SearchStoreFragment fragment = SearchStoreFragment.newInstance(search_object);
 				SimiManager.getIntance().addPopupFragment(fragment);
 			}
 		});
@@ -232,9 +223,9 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				selectedListItem = position;
-				StoreDetail storeDetail = StoreDetail
+				StoreDetailFragment storeDetailFragment = StoreDetailFragment
 						.newInstance(list_store_object.get(position));
-				SimiManager.getIntance().addFragmentSub(storeDetail);
+				SimiManager.getIntance().addFragmentSub(storeDetailFragment);
 				adapter.notifyDataSetChanged();
 			}
 
@@ -317,13 +308,11 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 
 							@Override
 							public void onClick(View v) {
-								SearchStore fragment = new SearchStore();
+								
 								if (search_object == null) {
 									search_object = new SearchObject();
-									fragment.setSearch_object(search_object);
-								} else {
-									fragment.setSearch_object(search_object);
 								}
+								SearchStoreFragment fragment =  SearchStoreFragment.newInstance(search_object);
 								SimiManager.getIntance().addPopupFragment(
 										fragment);
 							}
@@ -337,11 +326,11 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 											AdapterView<?> parent, View view,
 											int position, long id) {
 										selectedListItem = position;
-										StoreDetail storeDetail = StoreDetail
+										StoreDetailFragment storeDetailFragment = StoreDetailFragment
 												.newInstance(list_store_object
 														.get(position));
 										SimiManager.getIntance()
-												.addFragmentSub(storeDetail);
+												.addFragmentSub(storeDetailFragment);
 										adapter.notifyDataSetChanged();
 									}
 
@@ -426,7 +415,7 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 															.getLongitude()));
 
 									map.moveCamera(center);
-									zoom = CameraUpdateFactory.zoomTo(6);
+									zoom = CameraUpdateFactory.zoomTo(10);
 
 								}
 								map.animateCamera(zoom);
@@ -470,7 +459,7 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 															5) == MathForDummies.round(
 															maker.getPosition().longitude,
 															5)) {
-												StoreDetail detail = StoreDetail
+												StoreDetailFragment detail = StoreDetailFragment
 														.newInstance(mStore_maker
 																.get(i));
 												SimiManager.getIntance()
@@ -613,6 +602,106 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 		}
 		// end haita
 	}
+	
+	private void getAllPointFromStoreMarker(List<StoreObject> mStore_maker) {
+		// Location location_center = new Loca
+		double longtitude = 0;
+		double latitude = 0;
+		if (mStore_maker.size() > 0) {
+			for (int i = 0; i < mStore_maker.size(); i++) {
+				StoreObject object = mStore_maker.get(i);
+				longtitude += Double.parseDouble(mStore_maker.get(i)
+						.getLongtitude());
+				latitude += Double.parseDouble(mStore_maker.get(i)
+						.getLatitude());
+			}
+			longtitude = longtitude / mStore_maker.size();
+			latitude = latitude / mStore_maker.size();
+			currrentLocation.setLongitude(longtitude);
+			currrentLocation.setLatitude(latitude);
+		}else{
+			currrentLocation.setLongitude(getLocation().getLongitude());
+			currrentLocation.setLatitude(getLocation().getLatitude());
+		}
+	}
+
+	LocationManager locationManager;
+	boolean isGPSEnabled = false;
+	boolean isNetworkEnabled = false;
+	boolean canGetLocation = false;
+	Location location; // location
+    double latitude; // latitude
+    double longitude; // longitude
+
+ // The minimum distance to change Updates in meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; // 10 meters
+
+    // The minimum time between updates in milliseconds
+    private static final long MIN_TIME_BW_UPDATES = 1; // 1 minute
+	public Location getLocation() {
+		try {
+			locationManager = (LocationManager) getActivity().getSystemService(
+					Context.LOCATION_SERVICE);
+
+			// getting GPS status
+			isGPSEnabled = locationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+			Log.v("isGPSEnabled", "=" + isGPSEnabled);
+
+			// getting network status
+			isNetworkEnabled = locationManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+			Log.v("isNetworkEnabled", "=" + isNetworkEnabled);
+
+			if (isGPSEnabled == false && isNetworkEnabled == false) {
+				// no network provider is enabled
+			} else {
+				this.canGetLocation = true;
+				if (isNetworkEnabled) {
+					location = null;
+					locationManager.requestLocationUpdates(
+							LocationManager.NETWORK_PROVIDER,
+							MIN_TIME_BW_UPDATES,
+							MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+					Log.d("Network", "Network");
+					if (locationManager != null) {
+						location = locationManager
+								.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+						if (location != null) {
+							latitude = location.getLatitude();
+							longitude = location.getLongitude();
+						}
+					}
+				}
+				// if GPS Enabled get lat/long using GPS Services
+				if (isGPSEnabled) {
+					location = null;
+					if (location == null) {
+						locationManager.requestLocationUpdates(
+								LocationManager.GPS_PROVIDER,
+								MIN_TIME_BW_UPDATES,
+								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+						Log.d("GPS Enabled", "GPS Enabled");
+						if (locationManager != null) {
+							location = locationManager
+									.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+							if (location != null) {
+								latitude = location.getLatitude();
+								longitude = location.getLongitude();
+							}
+						}
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return location;
+	}
 
 	public void triggerLocation(final Context context) {
 
@@ -744,108 +833,6 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 
 	}
 
-	private void getAllPointFromStoreMarker(List<StoreObject> mStore_maker) {
-		// Location location_center = new Loca
-		double longtitude = 0;
-		double latitude = 0;
-		if (mStore_maker.size() > 0) {
-			for (int i = 0; i < mStore_maker.size(); i++) {
-				StoreObject object = mStore_maker.get(i);
-				longtitude += Double.parseDouble(mStore_maker.get(i)
-						.getLongtitude());
-				latitude += Double.parseDouble(mStore_maker.get(i)
-						.getLatitude());
-			}
-			longtitude = longtitude / mStore_maker.size();
-			latitude = latitude / mStore_maker.size();
-			currrentLocation.setLongitude(longtitude);
-			currrentLocation.setLatitude(latitude);
-		}else{
-			currrentLocation.setLongitude(getLocation().getLongitude());
-			currrentLocation.setLatitude(getLocation().getLatitude());
-		}
-	}
-
-	LocationManager locationManager;
-	boolean isGPSEnabled = false;
-	boolean isNetworkEnabled = false;
-	boolean canGetLocation = false;
-	Location location; // location
-    double latitude; // latitude
-    double longitude; // longitude
-
- // The minimum distance to change Updates in meters
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; // 10 meters
-
-    // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1; // 1 minute
-	public Location getLocation() {
-		try {
-			locationManager = (LocationManager) getActivity().getSystemService(
-					Context.LOCATION_SERVICE);
-
-			// getting GPS status
-			isGPSEnabled = locationManager
-					.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
-			Log.v("isGPSEnabled", "=" + isGPSEnabled);
-
-			// getting network status
-			isNetworkEnabled = locationManager
-					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
-			Log.v("isNetworkEnabled", "=" + isNetworkEnabled);
-
-			if (isGPSEnabled == false && isNetworkEnabled == false) {
-				// no network provider is enabled
-			} else {
-				this.canGetLocation = true;
-				if (isNetworkEnabled) {
-					location = null;
-					locationManager.requestLocationUpdates(
-							LocationManager.NETWORK_PROVIDER,
-							MIN_TIME_BW_UPDATES,
-							MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-					Log.d("Network", "Network");
-					if (locationManager != null) {
-						location = locationManager
-								.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-						if (location != null) {
-							latitude = location.getLatitude();
-							longitude = location.getLongitude();
-						}
-					}
-				}
-				// if GPS Enabled get lat/long using GPS Services
-				if (isGPSEnabled) {
-					location = null;
-					if (location == null) {
-						locationManager.requestLocationUpdates(
-								LocationManager.GPS_PROVIDER,
-								MIN_TIME_BW_UPDATES,
-								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-						Log.d("GPS Enabled", "GPS Enabled");
-						if (locationManager != null) {
-							location = locationManager
-									.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-							if (location != null) {
-								latitude = location.getLatitude();
-								longitude = location.getLongitude();
-							}
-						}
-					}
-				}
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return location;
-	}
-
-	
-
 	private void addMaker() {
 		// if (currrentLocation != null) {
 		// map.addMarker(new MarkerOptions().position(start).icon(
@@ -864,21 +851,22 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 	}
 
 	private void initData(List<StoreObject> list) {
-		if (list != null && list.size() > 0) {
-			list_store_object = list;
-
-			for (int i = 0; i < list.size(); i++) {
-				mStore_maker.add(list.get(i));
-			}
-			if (list_store_object.size() >= 10) {
-				list_store.addFooterView(footerLayout);
-			}
-			LinearLayout foot = (LinearLayout) footerLayout
-					.findViewById(Rconfig.getInstance().id("ll_coreLoading"));
-			adapter = new ListAdapter(SimiManager.getIntance()
-					.getCurrentContext(), list_store_object, foot);
-			list_store.setAdapter(adapter);
+		if(list != null){
+		list_store_object = list;
+	
+		for (int i = 0; i < list.size(); i++) {
+			mStore_maker.add(list.get(i));
 		}
+		if (list_store_object.size() >= 10) {
+			list_store.addFooterView(footerLayout);
+		}
+		LinearLayout foot = (LinearLayout) footerLayout.findViewById(Rconfig
+				.getInstance().id("ll_coreLoading"));
+		adapter = new ListAdapter(SimiManager.getIntance().getCurrentContext(),
+				list_store_object, foot);
+		}
+		list_store.setAdapter(adapter);
+		
 	}
 
 	private void initDataNew(List<StoreObject> list) {
@@ -1179,61 +1167,61 @@ public class StoreLocatorFragment extends SimiFragment implements LocationListen
 
 	public static JSONObject getJon(JSONObject data, String url) {
 		JSONObject mJSONRet = null;
-		InputStream is = null;
-		String json = "";
-		HttpResponse httpResponse;
-		String message = "Some errors occurred. Please try again later";
-		try {
-			HttpPost httpPost = new HttpPost(url);
-			httpPost.setHeader("Token", Config.getInstance().getSecretKey());
-			List<NameValuePair> nameValuePairs = getPostData(data.toString());
-			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
-			Log.e("Param", nameValuePairs.toString());
-			HttpConnectionParams.setConnectionTimeout(CoreAPIService
-					.getNewHttpClient().getParams(), 6000);
-			HttpConnectionParams.setSoTimeout(CoreAPIService.getNewHttpClient()
-					.getParams(), 60000);
-			CoreAPIService.getNewHttpClient().getParams()
-					.setParameter(ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
-			httpResponse = CoreAPIService.getNewHttpClient().execute(httpPost);
-			StatusLine statusLine = httpResponse.getStatusLine();
-			int statusCode = statusLine.getStatusCode();
-			HttpEntity httpEntity;
-			if (statusCode < 400) {
-				httpEntity = httpResponse.getEntity();
-				is = httpEntity.getContent();
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(is, "UTF_8"), 8192);
-
-				StringBuilder sb = new StringBuilder();
-				String line = null;
-				while ((line = reader.readLine()) != null) {
-					sb.append(line + "\n");
-				}
-				is.close();
-				json = sb.toString();
-				Log.e("SB String", sb.toString());
-				mJSONRet = new JSONObject(json);
-				return mJSONRet;
-			} else {
-				if (statusCode == 500) {
-					message = "Internal Server Error";
-				} else if (statusCode == 503) {
-					message = "Service Unavailable";
-				} else {
-					message = "Some errors occurred. Please try again later";
-				}
-				httpResponse.getEntity().getContent().close();
-				throw new IOException(statusLine.getReasonPhrase());
-			}
-
-		} catch (ConnectTimeoutException e) {
-			message = "The request timed out";
-		} catch (IOException e) {
-			message = e.getMessage();
-		} catch (JSONException e) {
-			message = "A connection failure occurred";
-		}
+//		InputStream is = null;
+//		String json = "";
+//		HttpResponse httpResponse;
+//		String message = "Some errors occurred. Please try again later";
+//		try {
+//			HttpPost httpPost = new HttpPost(url);
+//			httpPost.setHeader("Token", Config.getInstance().getSecretKey());
+//			List<NameValuePair> nameValuePairs = getPostData(data.toString());
+//			httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
+//			Log.e("Param", nameValuePairs.toString());
+//			HttpConnectionParams.setConnectionTimeout(
+//					CoreAPIService.getNewHttpClient().getParams(), 6000);
+//			HttpConnectionParams.setSoTimeout(
+//					CoreAPIService.getNewHttpClient().getParams(), 60000);
+//			CoreAPIService.getNewHttpClient().getParams().setParameter(
+//					ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
+//			httpResponse = CoreAPIService.getNewHttpClient().execute(httpPost);
+//			StatusLine statusLine = httpResponse.getStatusLine();
+//			int statusCode = statusLine.getStatusCode();
+//			HttpEntity httpEntity;
+//			if (statusCode < 400) {
+//				httpEntity = httpResponse.getEntity();
+//				is = httpEntity.getContent();
+//				BufferedReader reader = new BufferedReader(
+//						new InputStreamReader(is, "UTF_8"), 8192);
+//
+//				StringBuilder sb = new StringBuilder();
+//				String line = null;
+//				while ((line = reader.readLine()) != null) {
+//					sb.append(line + "\n");
+//				}
+//				is.close();
+//				json = sb.toString();
+//				Log.e("SB String", sb.toString());
+//				mJSONRet = new JSONObject(json);
+//				return mJSONRet;
+//			} else {
+//				if (statusCode == 500) {
+//					message = "Internal Server Error";
+//				} else if (statusCode == 503) {
+//					message = "Service Unavailable";
+//				} else {
+//					message = "Some errors occurred. Please try again later";
+//				}
+//				httpResponse.getEntity().getContent().close();
+//				throw new IOException(statusLine.getReasonPhrase());
+//			}
+//
+//		} catch (ConnectTimeoutException e) {
+//			message = "The request timed out";
+//		} catch (IOException e) {
+//			message = e.getMessage();
+//		} catch (JSONException e) {
+//			message = "A connection failure occurred";
+//		}
 		return mJSONRet;
 	}
 
