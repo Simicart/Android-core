@@ -83,11 +83,19 @@ public class CreditCardAdapter extends AbstractWheelTextAdapter {
 
 	@Override
 	public int getItemsCount() {
-		return cards.length;
+		if (cards == null || cards.length == 0) {
+			return 0;
+		} else {
+			return cards.length;
+		}
 	}
 
 	@Override
 	public CharSequence getItemText(int index) {
-		return cards[index];
+		if (cards == null || cards.length == 0) {
+			return "Credit card";
+		} else {
+			return cards[index];
+		}
 	}
 }

@@ -11,7 +11,7 @@ import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Constants;
 
-public class MyAddress extends SimiEntity implements Serializable{
+public class MyAddress extends SimiEntity implements Serializable {
 	/**
 	 * 
 	 */
@@ -39,7 +39,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 	private String company;
 	private String mTaxVatCheckout;
 	private String latlng;
-	
+
 	public MyAddress() {
 		// TODO Auto-generated constructor stub
 	}
@@ -59,6 +59,9 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == fax) {
 			fax = getData(Constants.FAX);
 		}
+		if (checkAddressNA(fax)) {
+			fax = "";
+		}
 		return fax;
 	}
 
@@ -70,7 +73,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == company) {
 			company = getData(Constants.COMPANY);
 		}
-		if (null != company && company.equals("null")) {
+		if (checkAddressNA(company)) {
 			company = "";
 		}
 		return company;
@@ -110,6 +113,9 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == name) {
 			name = getData(Constants.NAME);
 		}
+		if (checkAddressNA(name)) {
+			name = "";
+		}
 		return name;
 	}
 
@@ -122,7 +128,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 			street = getData(Constants.STREET);
 		}
 
-		if (null != street && street.equals("null")) {
+		if (checkAddressNA(street)) {
 			street = "";
 		}
 		return street;
@@ -136,7 +142,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == city) {
 			city = getData(Constants.CITY);
 		}
-		if (null != city && city.equals("null")) {
+		if (checkAddressNA(city)) {
 			city = "";
 		}
 		return city;
@@ -150,7 +156,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == state_name) {
 			state_name = getData(Constants.STATE_NAME);
 		}
-		if (null != state_name && state_name.equals("null")) {
+		if (checkAddressNA(state_name)) {
 			state_name = "";
 		}
 		return state_name;
@@ -177,7 +183,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == zip) {
 			zip = getData(Constants.ZIP);
 		}
-		if (null != zip && zip.equals("null")) {
+		if (checkAddressNA(zip)) {
 			zip = "";
 		}
 		return zip;
@@ -191,7 +197,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == country_name) {
 			country_name = getData(Constants.COUNTRY_NAME);
 		}
-		if (null != country_name && country_name.equals("null")) {
+		if (checkAddressNA(country_name)) {
 			country_name = "";
 		}
 		return country_name;
@@ -216,7 +222,7 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == phone) {
 			phone = getData(Constants.PHONE);
 		}
-		if (null != phone && phone.equals("null")) {
+		if (checkAddressNA(phone)) {
 			phone = "";
 		}
 		return phone;
@@ -241,6 +247,9 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == prefix) {
 			prefix = getData(Constants.PREFIX);
 		}
+		if (checkAddressNA(prefix)) {
+			prefix = "";
+		}
 		return prefix;
 	}
 
@@ -252,6 +261,9 @@ public class MyAddress extends SimiEntity implements Serializable{
 		if (null == suffix) {
 			suffix = getData(Constants.SUFFIX);
 		}
+		if (checkAddressNA(suffix)) {
+			suffix = "";
+		}
 		return suffix;
 	}
 
@@ -262,6 +274,9 @@ public class MyAddress extends SimiEntity implements Serializable{
 	public String getTaxvat() {
 		if (null == taxvat) {
 			taxvat = getData(Constants.TAXVAT);
+		}
+		if (checkAddressNA(taxvat)) {
+			taxvat = "";
 		}
 		return taxvat;
 	}
@@ -321,6 +336,9 @@ public class MyAddress extends SimiEntity implements Serializable{
 	public String getTaxvatCheckout() {
 		if (null == mTaxVatCheckout) {
 			mTaxVatCheckout = getData(Constants.TAXVAT_CHECKOUT);
+		}
+		if (checkAddressNA(mTaxVatCheckout)) {
+			mTaxVatCheckout = "";
 		}
 		return this.mTaxVatCheckout;
 	}
@@ -455,11 +473,18 @@ public class MyAddress extends SimiEntity implements Serializable{
 				+ ", state_name=" + state_name + ", state_code=" + state_code
 				+ ", zip=" + zip + ", country_name=" + country_name
 				+ ", country_code=" + country_code + ", taxvat=" + taxvat
-				+ ", gender=" + gender + ", day=" + day + ", month="
-				+ month + ", year=" + year + ", phone=" + phone
-				+ ", email=" + email + ", fax=" + fax + ", company="
-				+ company + ", mTaxVatCheckout=" + mTaxVatCheckout+" latlng=" + latlng + "]";
+				+ ", gender=" + gender + ", day=" + day + ", month=" + month
+				+ ", year=" + year + ", phone=" + phone + ", email=" + email
+				+ ", fax=" + fax + ", company=" + company
+				+ ", mTaxVatCheckout=" + mTaxVatCheckout + " latlng=" + latlng
+				+ "]";
 	}
 
-
+	private boolean checkAddressNA(String text) {
+		if (text == null || text.equals("null") || text.equals("N/A")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

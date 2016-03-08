@@ -25,8 +25,8 @@ public class Config {
 	// "http://spgtest.justfortinypeople.net/index.php/";
 	// private String mSecretKey = "a5ea93ab74b0efd233e97f65f0132084";
 
-	private String mBaseUrl = "https://www.grocerymantra.com";
-	private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
+	// private String mBaseUrl = "https://www.grocerymantra.com";
+	// private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
 
 	// private String mBaseUrl =
 	// "http://dev-vn.magestore.com/simicart/1800/index.php/";
@@ -35,9 +35,8 @@ public class Config {
 	// private String mBaseUrl = "https://www.shophappiness.com/";
 	// private String mSecretKey = "78ce312471a936a806abca43b92a7056";
 
-	// private String mBaseUrl =
-	// "http://demo.magestore.com/simicart/simipos4/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	private String mBaseUrl = "http://demo.magestore.com/simicart/simipos4/index.php";
+	private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// private String key_color = "#607D8B";
 	// private String button_background = "#0277BD";
