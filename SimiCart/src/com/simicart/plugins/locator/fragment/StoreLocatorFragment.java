@@ -22,6 +22,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -72,7 +73,7 @@ import com.simicart.plugins.locator.StoreParser;
 import com.simicart.plugins.locator.entity.SearchObject;
 import com.simicart.plugins.locator.entity.StoreObject;
 
-public class StoreLocatorFragment extends SimiFragment {
+public class StoreLocatorFragment extends SimiFragment implements LocationListener {
 	LinearLayout parentContainer;
 	LinearLayout parent, processBar;
 	ProgressBar progressBar;
@@ -398,6 +399,7 @@ public class StoreLocatorFragment extends SimiFragment {
 								map.setMyLocationEnabled(true);
 
 								addMaker();
+								getAllPointFromStoreMarker(mStore_maker);
 								CameraUpdate zoom = CameraUpdateFactory
 										.zoomTo(2);
 								if (currrentLocation != null) {
@@ -599,6 +601,106 @@ public class StoreLocatorFragment extends SimiFragment {
 			this.initData(this.list_store_object);
 		}
 		// end haita
+	}
+	
+	private void getAllPointFromStoreMarker(List<StoreObject> mStore_maker) {
+		// Location location_center = new Loca
+		double longtitude = 0;
+		double latitude = 0;
+		if (mStore_maker.size() > 0) {
+			for (int i = 0; i < mStore_maker.size(); i++) {
+				StoreObject object = mStore_maker.get(i);
+				longtitude += Double.parseDouble(mStore_maker.get(i)
+						.getLongtitude());
+				latitude += Double.parseDouble(mStore_maker.get(i)
+						.getLatitude());
+			}
+			longtitude = longtitude / mStore_maker.size();
+			latitude = latitude / mStore_maker.size();
+			currrentLocation.setLongitude(longtitude);
+			currrentLocation.setLatitude(latitude);
+		}else{
+			currrentLocation.setLongitude(getLocation().getLongitude());
+			currrentLocation.setLatitude(getLocation().getLatitude());
+		}
+	}
+
+	LocationManager locationManager;
+	boolean isGPSEnabled = false;
+	boolean isNetworkEnabled = false;
+	boolean canGetLocation = false;
+	Location location; // location
+    double latitude; // latitude
+    double longitude; // longitude
+
+ // The minimum distance to change Updates in meters
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 1; // 10 meters
+
+    // The minimum time between updates in milliseconds
+    private static final long MIN_TIME_BW_UPDATES = 1; // 1 minute
+	public Location getLocation() {
+		try {
+			locationManager = (LocationManager) getActivity().getSystemService(
+					Context.LOCATION_SERVICE);
+
+			// getting GPS status
+			isGPSEnabled = locationManager
+					.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+			Log.v("isGPSEnabled", "=" + isGPSEnabled);
+
+			// getting network status
+			isNetworkEnabled = locationManager
+					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+			Log.v("isNetworkEnabled", "=" + isNetworkEnabled);
+
+			if (isGPSEnabled == false && isNetworkEnabled == false) {
+				// no network provider is enabled
+			} else {
+				this.canGetLocation = true;
+				if (isNetworkEnabled) {
+					location = null;
+					locationManager.requestLocationUpdates(
+							LocationManager.NETWORK_PROVIDER,
+							MIN_TIME_BW_UPDATES,
+							MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+					Log.d("Network", "Network");
+					if (locationManager != null) {
+						location = locationManager
+								.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+						if (location != null) {
+							latitude = location.getLatitude();
+							longitude = location.getLongitude();
+						}
+					}
+				}
+				// if GPS Enabled get lat/long using GPS Services
+				if (isGPSEnabled) {
+					location = null;
+					if (location == null) {
+						locationManager.requestLocationUpdates(
+								LocationManager.GPS_PROVIDER,
+								MIN_TIME_BW_UPDATES,
+								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+						Log.d("GPS Enabled", "GPS Enabled");
+						if (locationManager != null) {
+							location = locationManager
+									.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+							if (location != null) {
+								latitude = location.getLatitude();
+								longitude = location.getLongitude();
+							}
+						}
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return location;
 	}
 
 	public void triggerLocation(final Context context) {
@@ -1192,5 +1294,29 @@ public class StoreLocatorFragment extends SimiFragment {
 				}, 2000);
 			}
 		}
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
 	}
 }
