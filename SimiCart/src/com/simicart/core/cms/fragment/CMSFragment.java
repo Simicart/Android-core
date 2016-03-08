@@ -39,24 +39,17 @@ public class CMSFragment extends SimiFragment {
 		if(getArguments() != null){
 		mContent = (String) getData(Constants.KeyData.CONTENT, Constants.KeyData.TYPE_STRING, getArguments());
 		}
-		
-		LinearLayout l_scrollView = (LinearLayout) rootView
-				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 
-		WebView webView = new WebView(getActivity());
+		WebView webView = (WebView) rootView.findViewById(Rconfig.getInstance().id("webview"));
 		webView.setBackgroundColor(Config.getInstance().getApp_backrground());
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-				RelativeLayout.LayoutParams.MATCH_PARENT,
-				RelativeLayout.LayoutParams.MATCH_PARENT);
-		lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-		webView.setLayoutParams(lp);
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 		webView.getSettings().setLoadWithOverviewMode(true);
 		webView.getSettings().setUseWideViewPort(true);
-		webView.getSettings().setBuiltInZoomControls(true);
+		webView.getSettings().setBuiltInZoomControls(false);
 		webView.getSettings().setDisplayZoomControls(false);
 		webView.getSettings().setLoadsImagesAutomatically(true);
+		webView.getSettings().setSupportZoom(false);
 		webView.setVerticalScrollBarEnabled(false);
 		webView.setHorizontalScrollBarEnabled(false);
 		webView.loadDataWithBaseURL(
@@ -66,7 +59,6 @@ public class CMSFragment extends SimiFragment {
 						+ mContent
 						+ "</p>"
 						+ "</body></html>"), "text/html", "charset=UTF-8", null);
-		l_scrollView.addView(webView);
 		return rootView;
 	}
 
