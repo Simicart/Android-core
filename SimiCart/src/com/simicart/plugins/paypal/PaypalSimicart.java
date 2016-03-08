@@ -71,6 +71,10 @@ public class PaypalSimicart extends Activity {
 			invoice_number = extras.getString("EXTRA_INVOICE_NUMBER");
 		}
 
+		// PayPalConfiguration config = new PayPalConfiguration()
+		// .environment(CONFIG_ENVIRONMENT).clientId(CONFIG_CLIENT_ID)
+		// .acceptCreditCards(false);
+
 		PayPalConfiguration config = new PayPalConfiguration().environment(
 				CONFIG_ENVIRONMENT).clientId(CONFIG_CLIENT_ID);
 

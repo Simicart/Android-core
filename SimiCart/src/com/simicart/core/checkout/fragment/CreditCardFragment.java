@@ -20,12 +20,14 @@ public class CreditCardFragment extends SimiFragment {
 	protected PaymentMethod mPaymentMethod;
 	protected boolean isCheckedMethod;
 
-	public static CreditCardFragment newInstance(boolean isCheckedMethod,PaymentMethod paymentMethod) {
+	public static CreditCardFragment newInstance(boolean isCheckedMethod,
+			PaymentMethod paymentMethod) {
 		CreditCardFragment fragment = new CreditCardFragment();
-			Bundle bundle= new Bundle();
-			setData(Constants.KeyData.CHECK_METHOD, isCheckedMethod, Constants.KeyData.TYPE_BOOLEAN, bundle);
-			bundle.putSerializable(Constants.KeyData.PAYMENT_METHOD, paymentMethod);
-		    fragment.setArguments(bundle);
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.CHECK_METHOD, isCheckedMethod,
+				Constants.KeyData.TYPE_BOOLEAN, bundle);
+		bundle.putSerializable(Constants.KeyData.PAYMENT_METHOD, paymentMethod);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -36,11 +38,13 @@ public class CreditCardFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_credit_card_layout"),
 				container, false);
 		Context context = getActivity();
-		if(getArguments() != null){
-		isCheckedMethod = (boolean) getData(Constants.KeyData.CHECK_METHOD, Constants.KeyData.TYPE_BOOLEAN, getArguments());
-		mPaymentMethod = (PaymentMethod) getArguments().getSerializable(Constants.KeyData.PAYMENT_METHOD);
+		if (getArguments() != null) {
+			isCheckedMethod = (boolean) getData(Constants.KeyData.CHECK_METHOD,
+					Constants.KeyData.TYPE_BOOLEAN, getArguments());
+			mPaymentMethod = (PaymentMethod) getArguments().getSerializable(
+					Constants.KeyData.PAYMENT_METHOD);
 		}
-		
+
 		mBlock = new CreditCardBlock(view, context);
 		mBlock.setPaymentMethod(mPaymentMethod);
 		mBlock.setCheckedMethod(isCheckedMethod);

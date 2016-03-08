@@ -50,7 +50,7 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 	protected int click_date = 0;
 	protected boolean scrolling = false;
 	protected String email;
-	
+
 	public CreditCardBlock(View view, Context context) {
 		super(view, context);
 	}
@@ -124,17 +124,18 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 
 		setPickerDate();
 		// get cc da luu
-				email = DataLocal.getEmailCreditCart();
-				if (isSavedCC(mPaymentMethod.getPayment_method())) {
-					CreditcardEntity creditcardEntity = DataLocal
-							.getHashMapCreditCart().get(DataLocal.getEmailCreditCart())
-							.get(mPaymentMethod.getPayment_method());
-					et_type.setText(creditcardEntity.getPaymentType());
-					et_card_number.setText(creditcardEntity.getPaymentNumber());
-					et_expired.setText(creditcardEntity.getPaymentMonth() + "/"
-							+ creditcardEntity.getPaymentYear());
-					et_cvv.setText(creditcardEntity.getPaymentCvv());
-				}
+		email = DataLocal.getEmailCreditCart();
+		if (isSavedCC(mPaymentMethod.getPayment_method())) {
+			CreditcardEntity creditcardEntity = DataLocal
+					.getHashMapCreditCart().get(DataLocal.getEmailCreditCart())
+					.get(mPaymentMethod.getPayment_method());
+			et_type.setText(creditcardEntity.getPaymentType());
+			setCcType(creditcardEntity.getPaymentType());
+			et_card_number.setText(creditcardEntity.getPaymentNumber());
+			et_expired.setText(creditcardEntity.getPaymentMonth() + "/"
+					+ creditcardEntity.getPaymentYear());
+			et_cvv.setText(creditcardEntity.getPaymentCvv());
+		}
 	}
 
 	public void setClickCardType() {
@@ -280,6 +281,30 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 			}
 		}
 	}
+
+	private void setCcType(String paymentType) {
+		JSONArray cc_types = null;
+		try {
+			cc_types = new JSONArray(mPaymentMethod.getData("cc_types"));
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		if (cc_types != null) {
+			try {
+				for (int i = 0; i < cc_types.length(); i++) {
+					String cc_name = cc_types.getJSONObject(i).getString(
+							"cc_name");
+					if (cc_name.equals(paymentType)) {
+						PaymentMethod.getInstance().setPlace_cc_type(
+								cc_types.getJSONObject(i).getString("cc_code"));
+					}
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	private boolean isSavedCC(String paymentMethodCode) {
 		HashMap<String, HashMap<String, CreditcardEntity>> hashMap = DataLocal
 				.getHashMapCreditCart();
@@ -299,7 +324,6 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 			}
 		}
 	}
-
 
 	@Override
 	public void onCLickSave() {
@@ -327,10 +351,11 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 					creditCard);
 			hashMap.put(email, creditCardHashMap);
 			// luu code cua payment xac dinh payment nay duoc click
-			PaymentMethod.getInstance().setmCheckPaymentMethod(mPaymentMethod.getPayment_method());
+			PaymentMethod.getInstance().setmCheckPaymentMethod(
+					mPaymentMethod.getPayment_method());
 			DataLocal.saveHashMapCreditCart(hashMap);
 		}
-		
+
 		PaymentMethod.getInstance().setPlace_cc_exp_month(split[0]);
 		PaymentMethod.getInstance().setPlace_cc_exp_year(split[1]);
 		Log.e("CreditCartBlock onClickSave : ", "NUMBER : " + number);

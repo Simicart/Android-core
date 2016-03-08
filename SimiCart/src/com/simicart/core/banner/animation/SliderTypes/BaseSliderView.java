@@ -204,8 +204,6 @@ public abstract class BaseSliderView {
 
 		mLoadListener.onStart(me);
 
-		DrawableManager.fetchDrawableOnThread(mUrl, targetImageView);
-
 		switch (mScaleType) {
 		case Fit:
 			targetImageView
@@ -225,15 +223,15 @@ public abstract class BaseSliderView {
 
 		// Picasso p = Picasso.with(mContext);
 		// RequestCreator rq = null;
-		// if (mUrl != null) {
-		// rq = p.load(mUrl);
-		// } else if (mFile != null) { 
-		// rq = p.load(mFile);
-		// } else if (mRes != 0) {
-		// rq = p.load(mRes);
-		// } else {
-		// return;
-		// }
+		if (mUrl != null) {
+			DrawableManager.fetchDrawableOnThread(mUrl, targetImageView);
+		} else if (mFile != null) {
+			// rq = p.load(mFile);
+		} else if (mRes != 0) {
+			targetImageView.setImageResource(mRes);
+		} else {
+			return;
+		}
 
 		// if (rq == null) {
 		// return;

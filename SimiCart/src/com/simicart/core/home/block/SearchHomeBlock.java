@@ -13,6 +13,7 @@ import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
@@ -128,9 +129,6 @@ public class SearchHomeBlock extends SimiBlock {
 			ListProductFragment fragment = ListProductFragment.newInstance(
 					Constants.SEARCH_PRODUCTS, null, tag, null, null, key,
 					null, null);
-			// fragment.setQuerySearch(key);
-			// fragment.setTag_search(tag);
-			// fragment.setUrlSearch(Constants.SEARCH_PRODUCTS);
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}

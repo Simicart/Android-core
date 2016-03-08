@@ -3,7 +3,7 @@ package com.simicart.core.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.StringMatcher;
-import android.graphics.PorterDuff;
 public class IndexableListAdapter extends BaseAdapter implements SectionIndexer {
 
 	private String mSections = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";

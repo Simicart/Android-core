@@ -77,6 +77,9 @@ public class BannerBlock extends SimiBlock implements BannerDelegate {
 
 	@Override
 	public void drawView(SimiCollection collection) {
+		if (collection == null) {
+			collection = new SimiCollection();
+		}
 		ArrayList<SimiEntity> listBanner = collection.getCollection();
 		if (listBanner == null || listBanner.size() == 0) {
 			showBannersFake();

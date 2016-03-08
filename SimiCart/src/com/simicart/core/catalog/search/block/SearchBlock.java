@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
@@ -238,19 +237,17 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 
 		edit_search = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"edittext_search"));
-		edit_search.setHint(Config.getInstance().getText("Search product"));
-		edit_search.setHintTextColor(Color.parseColor("#32000000"));
+		edit_search.setHint(Config.getInstance().getText("Search"));
+		edit_search.setHintTextColor(Config.getInstance()
+				.getSearch_text_color());
 		if (!cate_name.equals("") && cate_name != null) {
 			edit_search.setHint(cate_name);
-			// edit_search.setTypeface(null, Typeface.BOLD);
-		}
-		if (mQuery != null && !mQuery.equals("")) {
-			edit_search.setText(mQuery);
 		}
 		edit_search.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 		edit_search.setTextColor(Config.getInstance().getSearch_text_color());
-		edit_search.setHintTextColor(Config.getInstance()
-				.getSearch_text_color());
+		if (mQuery != null && !mQuery.equals("")) {
+			edit_search.setText(mQuery);
+		}
 		edit_search.setOnFocusChangeListener(new OnFocusChangeListener() {
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
