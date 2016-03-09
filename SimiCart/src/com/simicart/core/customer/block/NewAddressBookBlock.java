@@ -226,58 +226,53 @@ public class NewAddressBookBlock extends SimiBlock implements
 
 	protected void createPrefix(int control) {
 		edt_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
-		if(mAddress != null){
-		String check = mAddress.getPrefix()
-				.toLowerCase();
-		setPropertyHidden(edt_prefix, check, "Prefix");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getPrefix().toLowerCase();
+			setPropertyHidden(edt_prefix, check, "Prefix");
+		}
 	}
 
 	protected void createFullname() {
-		if(mAddress != null){
-		String check = mAddress.getName();
-		setPropertyHidden(edt_fullname, check, "Full Name");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getName();
+			setPropertyHidden(edt_fullname, check, "Full Name");
+		}
 	}
 
 	protected void createSuffix(int control) {
 		edt_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
-		if(mAddress != null){
-		String check = mAddress.getSuffix()
-				.toLowerCase();
-		setPropertyHidden(edt_suffix, check, "Suffix");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getSuffix().toLowerCase();
+			setPropertyHidden(edt_suffix, check, "Suffix");
+		}
 	}
 
 	protected void createStreet() {
-		if(mAddress != null){
-		String check = mAddress.getStreet()
-				.toLowerCase();
-		setPropertyHidden(edt_street, check, "Street");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getStreet().toLowerCase();
+			setPropertyHidden(edt_street, check, "Street");
+		}
 	}
 
 	protected void createCity() {
-		if(mAddress != null){
-		String check = mAddress.getCity().toLowerCase();
-		setPropertyHidden(edt_city, check, "City");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getCity().toLowerCase();
+			setPropertyHidden(edt_city, check, "City");
+		}
 	}
 
 	protected void createZipCode() {
-		if(mAddress != null){
-		String check = mAddress.getZipcode()
-				.toLowerCase();
-		setPropertyHidden(edt_zipcode, check, "Post/Zip Code");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getZipcode().toLowerCase();
+			setPropertyHidden(edt_zipcode, check, "Post/Zip Code");
+		}
 	}
 
 	protected void createPhone() {
-		if(mAddress != null){
-		String check = mAddress.getTelephone()
-				.toLowerCase();
-		setPropertyHidden(edt_phone, check, "Phone");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getTelephone().toLowerCase();
+			setPropertyHidden(edt_phone, check, "Phone");
+		}
 	}
 
 	protected void createEmail(int control) {
@@ -286,7 +281,8 @@ public class NewAddressBookBlock extends SimiBlock implements
 			String email = DataLocal.getEmail();
 			if (null != email && !email.equals("")) {
 				edt_email.setText(email);
-				if (mAfterController != Constants.NEW_CUSTOMER) {
+				if (mAfterController != Constants.NEW_CUSTOMER
+						&& mAfterController != Constants.NEW_AS_GUEST) {
 					edt_email.setKeyListener(null);
 				}
 			} else {
@@ -315,24 +311,26 @@ public class NewAddressBookBlock extends SimiBlock implements
 		final int cDay = cDate.get(Calendar.DAY_OF_MONTH);
 		final int cMonth = cDate.get(Calendar.MONTH);
 		final int cYear = cDate.get(Calendar.YEAR);
-		if(mAddress != null){
-		String check = mAddress.getDob().toLowerCase();
+		if (mAddress != null) {
+			String check = mAddress.getDob().toLowerCase();
 
-		switch (check) {
-		case "":
-			tv_date_birth.setVisibility(View.GONE);
-			return;
-		case "req":
-			tv_date_birth.setHint(Config.getInstance().getText("Date of Birth")
-					+ " (*):");
-			break;
-		case "opt":
-			tv_date_birth.setHint(Config.getInstance().getText("Date of Birth")
-					+ ":");
-			break;
-		default:
-			break;
-		}
+			switch (check) {
+			case "":
+				tv_date_birth.setVisibility(View.GONE);
+				return;
+			case "req":
+				tv_date_birth.setHint(Config.getInstance().getText(
+						"Date of Birth")
+						+ " (*):");
+				break;
+			case "opt":
+				tv_date_birth.setHint(Config.getInstance().getText(
+						"Date of Birth")
+						+ ":");
+				break;
+			default:
+				break;
+			}
 		}
 
 		final OnDateSetListener onDateSet = new DatePickerDialog.OnDateSetListener() {
@@ -345,20 +343,21 @@ public class NewAddressBookBlock extends SimiBlock implements
 				String selectedDate = new StringBuilder().append(sDay)
 						.append("/").append(sMonth).append("/").append(sYear)
 						.append(" ").toString();
-				String check = mAddress.getDob()
-						.toLowerCase();
+				String check = mAddress.getDob().toLowerCase();
 
 				switch (check) {
 				case "":
 					tv_date_birth.setVisibility(View.GONE);
 					break;
 				case "req":
-					tv_date_birth.setText(Config.getInstance().getText("Date of Birth")
+					tv_date_birth.setText(Config.getInstance().getText(
+							"Date of Birth")
 							+ " (*): " + selectedDate);
 					mSelectedDate = selectedDate;
 					break;
 				case "opt":
-					tv_date_birth.setText(Config.getInstance().getText("Date of Birth")
+					tv_date_birth.setText(Config.getInstance().getText(
+							"Date of Birth")
 							+ ": " + selectedDate);
 					mSelectedDate = selectedDate;
 					break;
@@ -382,56 +381,54 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createTaxVat() {
-		if(mAddress != null){
-		String check = mAddress.getTaxvat()
-				.toLowerCase().trim();
-		setPropertyHidden(edt_taxvat, check, "Tax/VAT number");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getTaxvat().toLowerCase().trim();
+			setPropertyHidden(edt_taxvat, check, "Tax/VAT number");
+		}
 	}
 
 	protected void createCompany() {
-		if(mAddress != null){
-		String check = mAddress.getCompany()
-				.toLowerCase();
-		setPropertyHidden(edt_company, check, "Company");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getCompany().toLowerCase();
+			setPropertyHidden(edt_company, check, "Company");
+		}
 	}
 
 	protected void createCountry(int control) {
-		if(mAddress != null){
-		String check = mAddress.getCountry()
-				.toLowerCase();
-		switch (check) {
-		case "":
-			rl_country.setVisibility(View.GONE);
-			break;
-		case "req":
-			break;
-		case "opt":
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			String check = mAddress.getCountry().toLowerCase();
+			switch (check) {
+			case "":
+				rl_country.setVisibility(View.GONE);
+				break;
+			case "req":
+				break;
+			case "opt":
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
 	protected void createState(int control) {
-		if(mAddress != null){
-		String check = mAddress.getState().toLowerCase();
-		switch (check) {
-		case "":
-			rl_state.setVisibility(View.GONE);
-			edt_state.setVisibility(View.GONE);
-			break;
-		case "req":
-			edt_state.setHint(Config.getInstance().getText("State") + "(*)");
-			break;
-		case "opt":
-			edt_state.setHint(Config.getInstance().getText("State"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			String check = mAddress.getState().toLowerCase();
+			switch (check) {
+			case "":
+				rl_state.setVisibility(View.GONE);
+				edt_state.setVisibility(View.GONE);
+				break;
+			case "req":
+				edt_state
+						.setHint(Config.getInstance().getText("State") + "(*)");
+				break;
+			case "opt":
+				edt_state.setHint(Config.getInstance().getText("State"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -455,8 +452,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 		tv_gender.setVisibility(View.VISIBLE);
 		GenderAdapter adapter = new GenderAdapter(mContext);
 		sp_gender.setAdapter(adapter);
-		String check = mAddress.getGender()
-				.toLowerCase();
+		String check = mAddress.getGender().toLowerCase();
 		switch (check) {
 		case "":
 			rl_gender.setVisibility(View.GONE);
@@ -477,8 +473,8 @@ public class NewAddressBookBlock extends SimiBlock implements
 					int position, long id) {
 				String gender = "";
 				if (position != 0) {
-					gender = mAddress.getGenderConfigs()
-							.get(position - 1).getLabel();
+					gender = mAddress.getGenderConfigs().get(position - 1)
+							.getLabel();
 				}
 				mGender = gender;
 			}
@@ -491,18 +487,17 @@ public class NewAddressBookBlock extends SimiBlock implements
 	}
 
 	protected void createFax(int control) {
-		if(mAddress != null){
-		String check = mAddress.getFax().toLowerCase();
-		setPropertyHidden(edt_fax, check, "Fax");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getFax().toLowerCase();
+			setPropertyHidden(edt_fax, check, "Fax");
+		}
 	}
 
 	protected void createVatCheckOut() {
-		if(mAddress != null){
-		String check = mAddress.getVat_id()
-				.toLowerCase();
-		setPropertyHidden(edt_tax_checkout, check, "VAT number");
-	}
+		if (mAddress != null) {
+			String check = mAddress.getVat_id().toLowerCase();
+			setPropertyHidden(edt_tax_checkout, check, "VAT number");
+		}
 	}
 
 	protected void createPassAndPassConfirm(int control) {
@@ -646,7 +641,9 @@ public class NewAddressBookBlock extends SimiBlock implements
 		if (null != password) {
 			if (password.length() < 6) {
 				SimiManager.getIntance().showNotify(
-						Config.getInstance().getText("Please enter 6 or more characters") + ".");
+						Config.getInstance().getText(
+								"Please enter 6 or more characters")
+								+ ".");
 				return null;
 			}
 			profile.setCurrentPass(password);
@@ -672,7 +669,8 @@ public class NewAddressBookBlock extends SimiBlock implements
 		if (!password.equals(confirmpassword)) {
 			SimiManager.getIntance().showNotify(
 					null,
-					Config.getInstance().getText("Password and Confirm password don't match" + "."),
+					Config.getInstance().getText(
+							"Password and Confirm password don't match" + "."),
 					Config.getInstance().getText("OK"));
 			return null;
 
