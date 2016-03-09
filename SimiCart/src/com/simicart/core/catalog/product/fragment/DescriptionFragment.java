@@ -34,15 +34,9 @@ public class DescriptionFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-		LinearLayout l_scrollView = (LinearLayout) rootView
-				.findViewById(Rconfig.getInstance().id("l_scrollView"));
+		
 
-		WebView webView = new WebView(getActivity());
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-				RelativeLayout.LayoutParams.MATCH_PARENT,
-				RelativeLayout.LayoutParams.MATCH_PARENT);
-		lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-		webView.setLayoutParams(lp);
+		WebView webView = (WebView) rootView.findViewById(Rconfig.getInstance().id("webview"));
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 		webView.getSettings().setLoadWithOverviewMode(true);
@@ -63,8 +57,6 @@ public class DescriptionFragment extends SimiFragment {
 			webView.loadDataWithBaseURL(null, mDescription, "text/html",
 					"charset=UTF-8", null);
 		}
-
-		l_scrollView.addView(webView);
 		return rootView;
 	}
 	
