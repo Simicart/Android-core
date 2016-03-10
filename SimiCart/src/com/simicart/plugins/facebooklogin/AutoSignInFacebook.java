@@ -1,5 +1,7 @@
 package com.simicart.plugins.facebooklogin;
 
+import java.security.MessageDigest;
+
 import android.util.Log;
 
 import com.simicart.core.base.delegate.ModelDelegate;
@@ -10,10 +12,22 @@ import com.simicart.core.config.DataLocal;
 public class AutoSignInFacebook {
 
 	public AutoSignInFacebook(String method, String type) {
-		Log.e("AutoSignIn111", "22222222222");
 		if (type.equals("facebook") && method.equals("autoSignIn")) {
 			autoSignIn();
-			Log.e("AutoSignIn111", "3333333333333");
+		}
+	}
+
+	private String generatePass(String email) {
+		try {
+			String mes = "simicart" + email;
+			byte[] bytesOfMessage = mes.getBytes("UTF-8");
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] thedigest = md.digest(bytesOfMessage);
+			String pass = thedigest.toString();
+			return pass;
+		} catch (Exception e) {
+			Log.e("Facebook Login", "Can't generate password");
+			return "";
 		}
 	}
 
@@ -31,7 +45,7 @@ public class AutoSignInFacebook {
 					String name = model.getName();
 					String cartQty = model.getCartQty();
 					if (null != name) {
-						DataLocal.saveData(name, email, "");
+						DataLocal.saveData(name, email, generatePass(email));
 					}
 					if (null != cartQty) {
 						SimiManager.getIntance().onUpdateCartQty(cartQty);

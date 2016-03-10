@@ -1,5 +1,6 @@
 package com.simicart.plugins.facebooklogin;
 
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,7 +29,6 @@ import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.SimiModel;
 import com.simicart.core.base.model.entity.SimiEntity;
-import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.checkout.entity.Cart;
 import com.simicart.core.checkout.fragment.AddressBookCheckoutFragment;
 import com.simicart.core.checkout.model.CartModel;
@@ -91,6 +91,20 @@ public class FacebookLogin {
 					mSignInFragment.getResultCode(), mSignInFragment.getData());
 		}
 
+	}
+
+	private String generatePass(String email) {
+		try {
+			String mes = "simicart" + email;
+			byte[] bytesOfMessage = mes.getBytes("UTF-8");
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] thedigest = md.digest(bytesOfMessage);
+			String pass = thedigest.toString();
+			return pass;
+		} catch (Exception e) {
+			Log.e("Facebook Login", "Can't generate password");
+			return "";
+		}
 	}
 
 	public void addButtonFaceBookLogin() {
@@ -187,14 +201,13 @@ public class FacebookLogin {
 
 	}
 
-	private void requestFaceBookSignIn(String email, String name,
+	private void requestFaceBookSignIn(final String email, final String name,
 			final boolean checkOut) {
 
 		final SignInDelegate mDelegate = mSignInFragment.getController()
 				.getDelegate();
 
 		mDelegate.showLoading();
-		DataLocal.saveData(name, email, "");
 
 		mModel = new FacebookModel();
 		ModelDelegate delegate = new ModelDelegate() {
@@ -204,6 +217,7 @@ public class FacebookLogin {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
 					DataLocal.saveTypeSignIn("facebook");
+					DataLocal.saveData(name, email, generatePass(email));
 					DataLocal.saveSignInState(true);
 
 					String cartQty = ((FacebookModel) mModel).getCartQty();
