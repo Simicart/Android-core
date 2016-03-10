@@ -641,8 +641,12 @@ public class StoreLocatorFragment extends SimiFragment implements
 			currrentLocation.setLongitude(longtitude);
 			currrentLocation.setLatitude(latitude);
 		} else {
-			currrentLocation.setLongitude(getLocation().getLongitude());
-			currrentLocation.setLatitude(getLocation().getLatitude());
+			GPSTracker gpsTracker = new GPSTracker(getActivity());
+			Location location = gpsTracker.getLocation();
+			if (location != null) {
+				currrentLocation.setLongitude(location.getLongitude());
+				currrentLocation.setLatitude(location.getLatitude());
+			}
 		}
 	}
 
@@ -660,70 +664,70 @@ public class StoreLocatorFragment extends SimiFragment implements
 	// The minimum time between updates in milliseconds
 	private static final long MIN_TIME_BW_UPDATES = 1; // 1 minute
 
-	public Location getLocation() {
-		try {
-			locationManager = (LocationManager) getActivity().getSystemService(
-					Context.LOCATION_SERVICE);
-
-			// getting GPS status
-			isGPSEnabled = locationManager
-					.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
-			Log.v("isGPSEnabled", "=" + isGPSEnabled);
-
-			// getting network status
-			isNetworkEnabled = locationManager
-					.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-
-			Log.v("isNetworkEnabled", "=" + isNetworkEnabled);
-
-			if (isGPSEnabled == false && isNetworkEnabled == false) {
-				// no network provider is enabled
-			} else {
-				this.canGetLocation = true;
-				if (isNetworkEnabled) {
-					location = null;
-					locationManager.requestLocationUpdates(
-							LocationManager.NETWORK_PROVIDER,
-							MIN_TIME_BW_UPDATES,
-							MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-					Log.d("Network", "Network");
-					if (locationManager != null) {
-						location = locationManager
-								.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-						if (location != null) {
-							latitude = location.getLatitude();
-							longitude = location.getLongitude();
-						}
-					}
-				}
-				// if GPS Enabled get lat/long using GPS Services
-				if (isGPSEnabled) {
-					location = null;
-					if (location == null) {
-						locationManager.requestLocationUpdates(
-								LocationManager.GPS_PROVIDER,
-								MIN_TIME_BW_UPDATES,
-								MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-						Log.d("GPS Enabled", "GPS Enabled");
-						if (locationManager != null) {
-							location = locationManager
-									.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-							if (location != null) {
-								latitude = location.getLatitude();
-								longitude = location.getLongitude();
-							}
-						}
-					}
-				}
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return location;
-	}
+	// public Location getLocation() {
+	// try {
+	// locationManager = (LocationManager) getActivity().getSystemService(
+	// Context.LOCATION_SERVICE);
+	//
+	// // getting GPS status
+	// isGPSEnabled = locationManager
+	// .isProviderEnabled(LocationManager.GPS_PROVIDER);
+	//
+	// Log.v("isGPSEnabled", "=" + isGPSEnabled);
+	//
+	// // getting network status
+	// isNetworkEnabled = locationManager
+	// .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+	//
+	// Log.v("isNetworkEnabled", "=" + isNetworkEnabled);
+	//
+	// if (isGPSEnabled == false && isNetworkEnabled == false) {
+	// // no network provider is enabled
+	// } else {
+	// this.canGetLocation = true;
+	// if (isNetworkEnabled) {
+	// location = null;
+	// locationManager.requestLocationUpdates(
+	// LocationManager.NETWORK_PROVIDER,
+	// MIN_TIME_BW_UPDATES,
+	// MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+	// Log.d("Network", "Network");
+	// if (locationManager != null) {
+	// location = locationManager
+	// .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+	// if (location != null) {
+	// latitude = location.getLatitude();
+	// longitude = location.getLongitude();
+	// }
+	// }
+	// }
+	// // if GPS Enabled get lat/long using GPS Services
+	// if (isGPSEnabled) {
+	// location = null;
+	// if (location == null) {
+	// locationManager.requestLocationUpdates(
+	// LocationManager.GPS_PROVIDER,
+	// MIN_TIME_BW_UPDATES,
+	// MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+	// Log.d("GPS Enabled", "GPS Enabled");
+	// if (locationManager != null) {
+	// location = locationManager
+	// .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+	// if (location != null) {
+	// latitude = location.getLatitude();
+	// longitude = location.getLongitude();
+	// }
+	// }
+	// }
+	// }
+	// }
+	//
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	//
+	// return location;
+	// }
 
 	private boolean checkLocationPermission() {
 		String permission = Manifest.permission.ACCESS_FINE_LOCATION;
