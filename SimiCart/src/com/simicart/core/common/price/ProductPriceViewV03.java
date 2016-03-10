@@ -233,7 +233,7 @@ public class ProductPriceViewV03 extends ProductPriceView {
 					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 			LinearLayout.LayoutParams params_1 = new LinearLayout.LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-			params_1.setMargins(0, 0, 5, 0);
+			params.setMargins(0, 0, 5, 0);
 
 			String content1 = content.substring(0, position - 1);
 			String content2 = content.substring(position, content.length());
@@ -252,8 +252,8 @@ public class ProductPriceViewV03 extends ProductPriceView {
 			tv_price2.setText(Html.fromHtml(content2));
 			tv_price1.setText(Html.fromHtml(content1));
 
-			ll_price.addView(tv_price1, params_1);
 			ll_price.addView(tv_price2, params);
+			ll_price.addView(tv_price1, params_1);
 
 			return ll_price;
 

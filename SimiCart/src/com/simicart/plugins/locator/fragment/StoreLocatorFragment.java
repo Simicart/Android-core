@@ -23,10 +23,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -45,7 +42,6 @@ import android.widget.TabHost.TabContentFactory;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.devsmart.android.LocationService;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -625,7 +621,9 @@ public class StoreLocatorFragment extends SimiFragment implements
 	}
 
 	private void getAllPointFromStoreMarker(List<StoreObject> mStore_maker) {
-		// Location location_center = new Loca
+		if (currrentLocation == null) {
+			currrentLocation = new Location("");
+		}
 		double longtitude = 0;
 		double latitude = 0;
 		if (mStore_maker.size() > 0) {
