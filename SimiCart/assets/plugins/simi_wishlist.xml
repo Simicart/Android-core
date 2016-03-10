@@ -1,13 +1,20 @@
 <events>
      <event>
-        <name>com.simicart.add.navigation.account</name>	    
+        <name>com.simicart.add.navigation.account.wishlist</name>	    
 	    <package>com.simicart.plugins.wishlist</package>
 	    <class>WishList</class>
 	    <method>addItem</method>	
 	    <sku>simi_developer</sku>    
-    </event>     
+    </event>
     <event>
-        <name>com.simicart.remove.navigation.myaccount.wishlist</name>	    
+            <name>com.simicart.core.customer.block.MyAccountBlock</name>     
+     	    <package>com.simicart.plugins.wishlist</package>
+     	    <class>WishList</class>
+     	    <method>additem_wishlist</method> 
+     	    <sku>simi_developer</sku> 
+    </event> 
+    <event>
+        <name>com.simicart.remove.navigation.myaccount</name>	    
 	    <package>com.simicart.plugins.wishlist</package>
 	    <class>WishList</class>
 	    <method>removeItem</method>	

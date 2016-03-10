@@ -129,6 +129,11 @@
         android:layout_height="wrap_content"
         android:paddingRight="3dp" />
 
+     <RelativeLayout
+        android:id="@+id/rel_wishlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="3dp" />
     <com.simicart.core.material.LayoutRipple
         android:id="@+id/rl_logout"
         android:layout_width="match_parent"

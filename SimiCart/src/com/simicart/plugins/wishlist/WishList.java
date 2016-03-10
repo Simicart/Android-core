@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.product.block.ProductMorePluginBlock;
@@ -33,9 +34,11 @@ import com.simicart.core.customer.fragment.SignInFragment;
 import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.fragment.CacheFragment;
 import com.simicart.core.event.slidemenu.SlideMenuData;
+import com.simicart.core.material.LayoutRipple;
 import com.simicart.core.slidemenu.entity.ItemNavigation;
 import com.simicart.core.style.material.floatingactionbutton.FloatingActionButton;
 import com.simicart.core.style.material.floatingactionbutton.FloatingActionsMenu;
+import com.simicart.plugins.rewardpoint.fragment.RewardPointFragment;
 import com.simicart.plugins.wishlist.block.MyWistListBlock;
 import com.simicart.plugins.wishlist.block.ProductWishlistBlock;
 import com.simicart.plugins.wishlist.common.WishListConstants;
@@ -122,8 +125,13 @@ public class WishList {
 		}
 	}
 
+	private View mView;
 	public WishList(String method, CacheBlock cache) {
 		switch (method) {
+		case "additem_wishlist":
+			mView = cache.getView();
+			addWishList();
+			break;
 		case "addButtonWishList":
 			// add button wish list for product detail screen
 			getDataAddButtonWishList(cache);
@@ -168,6 +176,44 @@ public class WishList {
 			}
 
 		}
+	}
+	
+	protected void addWishList() {
+		RelativeLayout rel_RewardPoint = (RelativeLayout) mView
+				.findViewById(Rconfig.getInstance().id("rel_wishlist"));
+		View v = MainActivity.instance.getLayoutInflater().inflate(
+				Rconfig.getInstance().layout("plugins_rewardpoint_in_profile"),
+				null);
+		rel_RewardPoint.addView(v);
+		final LayoutRipple rl_rewardPoint = (LayoutRipple) v
+				.findViewById(Rconfig.getInstance().id("rl_rewardPoint"));
+		TextView lb_reward_point = (TextView) rl_rewardPoint
+				.findViewById(Rconfig.getInstance().id("lb_reward_point"));
+		if (DataLocal.isLanguageRTL) {
+			lb_reward_point.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+		}
+		ImageView im_reward_point = (ImageView) rl_rewardPoint
+				.findViewById(Rconfig.getInstance().id("im_reward_point"));
+		Drawable icon = SimiManager.getIntance().getCurrentContext().getResources().getDrawable(
+				Rconfig.getInstance().drawable("plugins_wishlist_iconadd2"));
+//		icon.setColorFilter(Config.getInstance().getContent_color(),
+//				PorterDuff.Mode.SRC_ATOP);
+		im_reward_point.setImageDrawable(icon);
+		lb_reward_point.setText(Config.getInstance().getText(MY_WISHLIST));
+		lb_reward_point.setTextColor(Config.getInstance().getContent_color());
+		rl_rewardPoint.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				SimiFragment fragment = null;
+				if (DataLocal.isTablet) {
+					fragment = MyWishListFragmentTablet.newInstance();
+				} else {
+					fragment =  MyWishListFragment.newInstance();
+				}
+				SimiManager.getIntance().replacePopupFragment(fragment);
+			}
+		});
 	}
 
 	private void getDataAddButtonWishList(CacheBlock cache) {
