@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.simicart.core.catalog.category.entity.Category;
+import com.simicart.core.config.Config;
 import com.simicart.theme.ztheme.home.common.ConstantsZTheme;
 
 public class CategoryZTheme extends Category {
@@ -18,7 +19,7 @@ public class CategoryZTheme extends Category {
 	int type = -1;
 	protected String mTitle;
 	ArrayList<CategoryZTheme> mCategories = new ArrayList<>();
-	Category category = new Category();
+	// Category category = new Category();
 
 	SpotProductZTheme spotProductZTheme;
 
@@ -28,6 +29,17 @@ public class CategoryZTheme extends Category {
 				JSONArray array = getJSONObject().getJSONArray(
 						ConstantsZTheme.CHILD_CAT);
 				if (null != array && array.length() > 0) {
+					if (Config.getInstance().isShow_link_all_product()) {
+						CategoryZTheme categoryZTheme = new CategoryZTheme();
+						categoryZTheme.setType(TYPE_CAT);
+						categoryZTheme.setTitle(Config.getInstance().getText(
+								"All Products"));
+						categoryZTheme.setCategoryId("-1");
+						categoryZTheme.setCategoryName(Config.getInstance()
+								.getText("All Products"));
+						categoryZTheme.setChild(false);
+						mCategories.add(categoryZTheme);
+					}
 					for (int i = 0; i < array.length(); i++) {
 						JSONObject object = array.getJSONObject(i);
 						CategoryZTheme category = new CategoryZTheme();

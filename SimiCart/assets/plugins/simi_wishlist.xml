@@ -7,7 +7,7 @@
 	    <sku>simi_developer</sku>    
     </event>     
     <event>
-        <name>com.simicart.remove.navigation.myaccount</name>	    
+        <name>com.simicart.remove.navigation.myaccount.wishlist</name>	    
 	    <package>com.simicart.plugins.wishlist</package>
 	    <class>WishList</class>
 	    <method>removeItem</method>	

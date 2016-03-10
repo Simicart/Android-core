@@ -7,7 +7,7 @@
 	    <sku>simi_developer</sku>    
     </event> 
     <event>
-        <name>com.simicart.add.navigation.account</name>	    
+        <name>com.simicart.add.navigation.account.loyalty</name>	    
 	    <package>com.simicart.plugins.rewardpoint</package>
 	    <class>RewardPointView</class>
 	    <method>additem_reward_slidemenu</method>	
@@ -26,6 +26,13 @@
     	<class>RewardPointView</class>
 	    <method>updateItemReward</method>	
 	    <sku>simi_developer</sku>
+    </event>
+    <event>
+        <name>com.simicart.core.customer.block.MyAccountBlock</name>            
+        <package>com.simicart.plugins.rewardpoint</package>
+        <class>RewardPointPlugin</class>
+        <method>additem_reward_point</method>        
+        <sku>simi_developer</sku> 
     </event>
     <event>
         <name>com.simicart.leftmenu.slidemenucontroller.onnavigate.clickitem</name>	    
@@ -63,18 +70,11 @@
 	    <sku>simi_developer</sku>     
     </event>
     <event>
-        <name>com.simicart.core.common.price.TotalPriceView</name>	    
-	    <package>com.simicart.plugins.rewardpoint</package>
-	    <class>RewardPointView</class>
-	    <method>addDiscount</method>	
-	    <sku>simi_developer</sku>     
-    </event>
-    <event>
-        <name>com.simicart.core.customer.block.MyAccountBlock</name>	    
-	    <package>com.simicart.plugins.rewardpoint</package>
-	    <class>RewardPointView</class>
-	    <method>additem_reward_point</method>	
-	    <sku>simi_developer</sku> 
+        <name>com.simicart.core.customer.block.MyAccountBlock</name>            
+        <package>com.simicart.plugins.rewardpoint</package>
+        <class>RewardPointView</class>
+        <method>additem_reward_point</method>        
+        <sku>simi_developer</sku> 
     </event>
 </events>
   

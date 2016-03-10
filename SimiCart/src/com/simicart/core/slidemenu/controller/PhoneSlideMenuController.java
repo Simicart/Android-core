@@ -74,8 +74,8 @@ public class PhoneSlideMenuController {
 	}
 
 	public void closeSlideMenuTablet() {
-		if(mCloseDelegate != null)
-		mCloseDelegate.closeSlideMenu();
+		if (mCloseDelegate != null)
+			mCloseDelegate.closeSlideMenu();
 	}
 
 	public PhoneSlideMenuController(SlideMenuDelegate delegate, Context context) {
@@ -139,24 +139,30 @@ public class PhoneSlideMenuController {
 				Log.e("Open deep link", "1");
 				ArrayList<String> listID = new ArrayList<String>();
 				listID.add(DataLocal.deepLinkItemID);
-				fragment = ProductDetailParentFragment.newInstance(DataLocal.deepLinkItemID, listID);
+				fragment = ProductDetailParentFragment.newInstance(
+						DataLocal.deepLinkItemID, listID);
 				SimiManager.getIntance().replaceFragment(fragment);
 			} else if (DataLocal.deepLinkItemType == 2) {
 				Log.e("Open deep link", "2");
 				if (DataLocal.deepLinkItemHasChild.equals("1")) {
 					if (DataLocal.isTablet) {
 						fragment = CategoryFragment.newInstance(
-								DataLocal.deepLinkItemID, DataLocal.deepLinkItemName);
+								DataLocal.deepLinkItemID,
+								DataLocal.deepLinkItemName);
 						CateSlideMenuFragment.getIntance()
 								.replaceFragmentCategoryMenu(fragment);
 						CateSlideMenuFragment.getIntance().openMenu();
 					} else {
 						fragment = CategoryFragment.newInstance(
-								DataLocal.deepLinkItemID, DataLocal.deepLinkItemName);
+								DataLocal.deepLinkItemID,
+								DataLocal.deepLinkItemName);
 						SimiManager.getIntance().replaceFragment(fragment);
 					}
 				} else {
-					fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, DataLocal.deepLinkItemID, null, null, null, null, null, null);
+					fragment = ListProductFragment.newInstance(
+							ConstantsSearch.url_category,
+							DataLocal.deepLinkItemID, null, null, null, null,
+							null, null);
 					SimiManager.getIntance().replaceFragment(fragment);
 				}
 			}
@@ -217,6 +223,16 @@ public class PhoneSlideMenuController {
 			slideMenuData.setPluginFragment(mPluginFragment);
 			EventSlideMenu eventSlideMenu = new EventSlideMenu();
 			eventSlideMenu.dispatchEvent("com.simicart.add.navigation.account",
+					slideMenuData);
+
+			eventSlideMenu.dispatchEvent(
+					"com.simicart.add.navigation.account.downloadable",
+					slideMenuData);
+			eventSlideMenu.dispatchEvent(
+					"com.simicart.add.navigation.account.loyalty",
+					slideMenuData);
+			eventSlideMenu.dispatchEvent(
+					"com.simicart.add.navigation.account.wishlist",
 					slideMenuData);
 
 			int index_category = checkElement(CATEGORY);
@@ -297,6 +313,13 @@ public class PhoneSlideMenuController {
 		slideMenuData.setPluginFragment(mPluginFragment);
 		EventSlideMenu eventSlideMenu = new EventSlideMenu();
 		eventSlideMenu.dispatchEvent("com.simicart.add.navigation.more",
+				slideMenuData);
+
+		eventSlideMenu.dispatchEvent("com.simicart.add.navigation.more.qrbarcode",
+				slideMenuData);
+		eventSlideMenu.dispatchEvent("com.simicart.add.navigation.more.locator",
+				slideMenuData);
+		eventSlideMenu.dispatchEvent("com.simicart.add.navigation.more.contactus",
 				slideMenuData);
 
 		// CMS
@@ -431,7 +454,7 @@ public class PhoneSlideMenuController {
 			if (name.equals(cms.getTitle())) {
 				String content = cms.getContent();
 				fragment = CMSFragment.newInstance(content);
-//				((CMSFragment) fragment).setContent(content);
+				// ((CMSFragment) fragment).setContent(content);
 			}
 		}
 		// initial CMSFragment by using content field.

@@ -1,7 +1,7 @@
    <events>
     
     <event>
-        <name>com.simicart.add.navigation.more</name>	    
+        <name>com.simicart.add.navigation.more.qrbarcode</name>	    
 	    <package>com.simicart.plugins.barcode</package>
 	    <class>ScanCode</class>
 	    <method>addbarcodetoleftmenu</method>	

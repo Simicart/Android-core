@@ -1,6 +1,6 @@
 <events>
    <event>
-        <name>com.simicart.add.navigation.more</name>	    
+        <name>com.simicart.add.navigation.more.locator</name>	    
 	    <package>com.simicart.plugins.locator</package>
 	    <class>StoreLocator</class>
 	    <method>addItem</method>	

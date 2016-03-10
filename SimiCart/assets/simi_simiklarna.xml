@@ -1,9 +1,0 @@
-<events>    
-    <event>
-        <name>com.simicart.before.placeorder</name>        	     
-	    <package>com.simicart.plugins.klarna</package>
-	    <class>Klarna</class>
-	    <method>onKlarna</method>
-	    <sku>simi_developer</sku>	    	    
-    </event>                                     
-</events>

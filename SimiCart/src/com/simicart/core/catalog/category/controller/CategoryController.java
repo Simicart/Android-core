@@ -35,7 +35,6 @@ public class CategoryController extends SimiController {
 			}
 
 		};
-
 	}
 
 	private void requestListCategories() {

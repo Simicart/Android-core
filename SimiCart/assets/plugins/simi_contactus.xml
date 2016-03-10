@@ -1,6 +1,6 @@
 <events>
     <event>
-        <name>com.simicart.add.navigation.more</name>	    
+        <name>com.simicart.add.navigation.more.contactus</name>	    
 	    <package>com.simicart.plugins.instantcontact</package>
 	    <class>ContactUs</class>
 	    <method>addItem</method>	

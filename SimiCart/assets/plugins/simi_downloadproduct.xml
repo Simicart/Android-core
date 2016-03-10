@@ -1,6 +1,6 @@
 <events>
      <event>
-        <name>com.simicart.add.navigation.account</name>	    
+        <name>com.simicart.add.navigation.account.downloadable</name>	    
 	    <package>com.simicart.plugins.download</package>
 	    <class>DownloadProduct</class>
 	    <method>addItem</method>	
