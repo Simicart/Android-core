@@ -492,7 +492,8 @@ public class SearchController extends SimiController implements
 	}
 
 	private void selectemItemList(int position) {
-		if (position >= 0) {
+		Log.e("abc", "++" + position);
+		if (position >= 1) {
 			ArrayList<Product> listProduct = mDelegate.getListProduct();
 			String productId = listProduct.get(position - 1).getData(
 					"product_id");
