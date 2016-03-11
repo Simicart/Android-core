@@ -1,6 +1,8 @@
 package com.simicart.plugins.facebooklogin;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -93,16 +95,20 @@ public class FacebookLogin {
 
 	}
 
-	private String generatePass(String email) {
+	public static String getMD5(String input) {
 		try {
-			String mes = "simicart" + email;
-			byte[] bytesOfMessage = mes.getBytes("UTF-8");
 			MessageDigest md = MessageDigest.getInstance("MD5");
-			byte[] thedigest = md.digest(bytesOfMessage);
-			String pass = thedigest.toString();
-			return pass;
-		} catch (Exception e) {
-			Log.e("Facebook Login", "Can't generate password");
+			byte[] messageDigest = md.digest(input.getBytes());
+			BigInteger number = new BigInteger(1, messageDigest);
+			String hashtext = number.toString(16);
+			// Now we need to zero pad it if you actually want the full 32
+			// chars.
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+			return hashtext;
+		} catch (NoSuchAlgorithmException e) {
+			// throw new RuntimeException(e);
 			return "";
 		}
 	}
@@ -217,7 +223,7 @@ public class FacebookLogin {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
 					DataLocal.saveTypeSignIn("facebook");
-					DataLocal.saveData(name, email, generatePass(email));
+					DataLocal.saveData(name, email, getMD5(email));
 					DataLocal.saveSignInState(true);
 
 					String cartQty = ((FacebookModel) mModel).getCartQty();
