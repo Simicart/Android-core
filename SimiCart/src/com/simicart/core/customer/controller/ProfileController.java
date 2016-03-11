@@ -236,6 +236,7 @@ public class ProfileController extends SimiController {
 					SimiManager.getIntance().onUpdateItemSignIn();
 					SimiManager.getIntance().showNotify("SUCCESS", message,
 							"OK");
+					SimiManager.getIntance().backToHomeFragment();
 				} 
 //					else {
 //					SimiManager.getIntance().showNotify("FAIL", message, "OK");
