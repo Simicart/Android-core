@@ -209,6 +209,9 @@ public class ListProductFragment extends SimiFragment {
 				this.tag_search = TagSearch.TAG_GRIDVIEW;
 			} else {
 				this.tag_search = TagSearch.TAG_LISTVIEW;
+				if(tag_search.equals(TagSearch.TAG_GRIDVIEW)){
+					this.tag_search = tag_search;
+				}
 			}
 			// this.tag_search = tag_search;
 		}
