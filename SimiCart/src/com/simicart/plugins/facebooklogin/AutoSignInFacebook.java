@@ -16,7 +16,8 @@ public class AutoSignInFacebook {
 		}
 	}
 
-	public static String getMD5(String input) {
+	public static String getMD5(String email) {
+		String input = "simicart" + email;
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			byte[] messageDigest = md.digest(input.getBytes());
