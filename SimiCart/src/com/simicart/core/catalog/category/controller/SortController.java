@@ -70,6 +70,7 @@ public class SortController extends SimiController {
 //				fragment.setKey(key);
 //				fragment.setmSortID(mListSort.get(position).getId() +"");
 //				fragment.setSortOption("" + mListSort.get(position).getId());
+				fragment.setTag_search(tag_sort);
 				SimiManager.getIntance().replaceFragment(fragment);
 				mDelegate.setSort_option(mListSort.get(position).getTitle());
 				if (DataLocal.isTablet) {

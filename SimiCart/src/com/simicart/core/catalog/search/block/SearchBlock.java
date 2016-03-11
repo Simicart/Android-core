@@ -822,7 +822,7 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 		} else {
 			ListProductFragment searchFragment = ListProductFragment
 					.newInstance(ConstantsSearch.url_query, cate_id, null,
-							null, null, edit_search.getText().toString(), null,
+							null, cate_name, edit_search.getText().toString(), null,
 							null);
 			SimiManager.getIntance().addFragment(searchFragment);
 		}
