@@ -168,6 +168,7 @@ public class CartListenerController implements CartAdapterDelegate {
 	}
 
 	protected void editItemCart(final int position, String qty) {
+		try {
 		Cart cart = mCarts.get(position);
 		String cartID = cart.getId();
 
@@ -184,6 +185,8 @@ public class CartListenerController implements CartAdapterDelegate {
 			JSONArray arrParams = new JSONArray();
 			arrParams.put(jsonParam);
 			editItem(arrParams);
+		}
+		} catch (Exception e) {
 		}
 	}
 
