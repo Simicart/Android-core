@@ -12,10 +12,14 @@ import java.net.HttpCookie;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -33,7 +37,6 @@ import android.util.Log;
 
 import com.simicart.core.base.network.request.SimiRequest.Method;
 import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 
 public class SimiUrlConnection {
@@ -64,7 +67,28 @@ public class SimiUrlConnection {
 		HttpURLConnection urlConnection = null;
 		try {
 			URL url_connection = new URL(url);
-			urlConnection = (HttpURLConnection) url_connection.openConnection();
+			if (url.contains("https")) {
+				// HttpsURLConnection httpsUrlConnection = (HttpsURLConnection)
+				// urlConnection;
+				// SSLSocketFactory sslSocketFactory =
+				// createTrustAllSslSocketFactory();
+				urlConnection = (HttpsURLConnection) url_connection
+						.openConnection();
+				try {
+					((HttpsURLConnection) urlConnection)
+							.setSSLSocketFactory(new TLSSocketFactory());
+				} catch (KeyManagementException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				urlConnection = (HttpURLConnection) url_connection
+						.openConnection();
+			}
+
 			urlConnection.setDoInput(true);
 			urlConnection.setDoOutput(true);
 			urlConnection.setRequestProperty("Token", Config.getInstance()

@@ -54,14 +54,12 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 
 	private ButtonRectangle bt_placenow;
 	private ListView lv_products;
-	private RelativeLayout rl_billingAddress;
-	private RelativeLayout rl_shippingAddress;
+	// private RelativeLayout rl_billingAddress;
+	// private RelativeLayout rl_shippingAddress;
 	private ImageView img_editBilling;
 	private ImageView img_editShipping;
 	private EditText edt_couponCode;
 	public boolean accept = false;
-	// private int mIDIconNormal;
-	// private int mIDIconChecked;
 
 	private CustomScrollView scrollView;
 
@@ -137,8 +135,8 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 				.getSection_text_color());
 		tv_billing_address.setBackgroundColor(Color.parseColor(Config
 				.getInstance().getSection_color()));
-		rl_billingAddress = (RelativeLayout) mView.findViewById(Rconfig
-				.getInstance().id("billing_address"));
+		// rl_billingAddress = (RelativeLayout) mView.findViewById(Rconfig
+		// .getInstance().id("billing_address"));
 		Drawable ic_edit = mContext.getResources().getDrawable(
 				Rconfig.getInstance().drawable("core_icon_edit"));
 		ic_edit.setColorFilter(Config.getInstance().getContent_color(),
@@ -156,8 +154,8 @@ public class ReviewOrderBlock extends SimiBlock implements ReviewOrderDelegate {
 				.getSection_text_color());
 		tv_shipping_address.setBackgroundColor(Color.parseColor(Config
 				.getInstance().getSection_color()));
-		rl_shippingAddress = (RelativeLayout) mView.findViewById(Rconfig
-				.getInstance().id("shipping_address"));
+		// rl_shippingAddress = (RelativeLayout) mView.findViewById(Rconfig
+		// .getInstance().id("shipping_address"));
 		img_editShipping = (ImageView) mView.findViewById(Rconfig.getInstance()
 				.id("img_edit_s_address"));
 		img_editShipping.setImageDrawable(ic_edit);

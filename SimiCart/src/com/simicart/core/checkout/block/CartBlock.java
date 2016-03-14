@@ -159,7 +159,8 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 		((ViewGroup) mView).removeAllViewsInLayout();
 		TextView tv_notify = new TextView(mContext);
 		tv_notify.setTextColor(Config.getInstance().getContent_color());
-		tv_notify.setText(Config.getInstance().getText("Your shopping cart is empty"));
+		tv_notify.setText(Config.getInstance().getText(
+				"Your shopping cart is empty"));
 		tv_notify.setTypeface(null, Typeface.BOLD);
 		if (DataLocal.isTablet) {
 			tv_notify.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
@@ -175,12 +176,7 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 		((ViewGroup) mView).addView(tv_notify);
 	}
 
-	@Override
-	public void showPopupCheckout() {
-		createPopupMenu();
-		pp_checkout.show();
-	}
-
+	// Popup select option checkout when the customer haven't logged in
 	public void createPopupMenu() {
 		// if (DataLocal.isTablet) {
 		// SimiManager.getIntance().removeDialog();
@@ -201,13 +197,15 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 
 		tv_excustomer = (TextView) pp_checkout.findViewById(Rconfig
 				.getInstance().id("method_excustomer"));
-		tv_excustomer.setText(Config.getInstance().getText("Checkout as existing customer"));
+		tv_excustomer.setText(Config.getInstance().getText(
+				"Checkout as existing customer"));
 		tv_excustomer
 				.setOnTouchListener(mPCheckoutController.getOnExcustomer());
 
 		tv_newcustomer = (TextView) pp_checkout.findViewById(Rconfig
 				.getInstance().id("method_newcustomer"));
-		tv_newcustomer.setText(Config.getInstance().getText("Checkout as new customer"));
+		tv_newcustomer.setText(Config.getInstance().getText(
+				"Checkout as new customer"));
 		tv_newcustomer.setOnTouchListener(mPCheckoutController
 				.getOnNewcustomer());
 
@@ -219,6 +217,12 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 		} else {
 			tv_guest.setVisibility(View.GONE);
 		}
+	}
+
+	@Override
+	public void showPopupCheckout() {
+		createPopupMenu();
+		pp_checkout.show();
 	}
 
 	@Override

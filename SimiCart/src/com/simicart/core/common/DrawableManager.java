@@ -10,6 +10,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -33,6 +37,7 @@ import android.widget.TextView;
 
 import com.simicart.MainActivity;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.network.request.TLSSocketFactory;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.imagesimicart.SimiImageView;
@@ -507,8 +512,23 @@ public class DrawableManager {
 		try {
 			Bitmap bitMap = null;
 			URL url_con = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) url_con
-					.openConnection();
+			HttpURLConnection conn = null;
+			if (url.contains("https")) {
+				conn = (HttpsURLConnection) url_con.openConnection();
+				try {
+					((HttpsURLConnection) conn)
+							.setSSLSocketFactory(new TLSSocketFactory());
+				} catch (KeyManagementException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				conn = (HttpURLConnection) url_con.openConnection();
+			}
+
 			conn.setReadTimeout(10000 /* milliseconds */);
 			conn.setConnectTimeout(15000 /* milliseconds */);
 			conn.setRequestMethod("GET");

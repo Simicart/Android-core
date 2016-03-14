@@ -2,6 +2,16 @@ package com.simicart.core.customer.block;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
@@ -14,16 +24,6 @@ import com.simicart.core.customer.entity.CountryAllowed;
 import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.entity.StateOfCountry;
 import com.simicart.core.material.ButtonRectangle;
-
-import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class AddressBookDetailBlock extends SimiBlock implements
 		AddressBookDetailDelegate {
@@ -75,13 +75,6 @@ public class AddressBookDetailBlock extends SimiBlock implements
 
 	@Override
 	public void initView() {
-		// TextView tv_editAddress = (TextView) mView.findViewById(Rconfig
-		// .getInstance().id("lable_NewAddress"));
-		// tv_editAddress.setText(Config.getInstance().getText("Edit Address"));
-		// TextView tv_required = (TextView) mView.findViewById(Rconfig
-		// .getInstance().id("lable_required"));
-		// tv_required.setText("(*):" +
-		// Config.getInstance().getText("REQUIRED"));
 		et_prefix = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_prefix_show"));
 		et_fullname = (EditText) mView.findViewById(Rconfig.getInstance().id(
@@ -184,20 +177,21 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_prefix.setText(prefix);
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getPrefix()) {
-		case "":
-			et_prefix.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_prefix.setHint(Config.getInstance().getText("Prefix") + " (*)");
-			break;
-		case "opt":
-			et_prefix.setHint(Config.getInstance().getText("Prefix"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getPrefix()) {
+			case "":
+				et_prefix.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_prefix.setHint(Config.getInstance().getText("Prefix")
+						+ " (*)");
+				break;
+			case "opt":
+				et_prefix.setHint(Config.getInstance().getText("Prefix"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -222,20 +216,21 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_suffix.setText(suffix);
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getSuffix()) {
-		case "":
-			et_suffix.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_suffix.setHint(Config.getInstance().getText("Suffix") + " (*)");
-			break;
-		case "opt":
-			et_suffix.setHint(Config.getInstance().getText("Suffix"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getSuffix()) {
+			case "":
+				et_suffix.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_suffix.setHint(Config.getInstance().getText("Suffix")
+						+ " (*)");
+				break;
+			case "opt":
+				et_suffix.setHint(Config.getInstance().getText("Suffix"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -247,20 +242,21 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_street.setText(street);
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getStreet()) {
-		case "":
-			et_street.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_street.setHint(Config.getInstance().getText("Street") + " (*)");
-			break;
-		case "opt":
-			et_street.setHint(Config.getInstance().getText("Street"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getStreet()) {
+			case "":
+				et_street.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_street.setHint(Config.getInstance().getText("Street")
+						+ " (*)");
+				break;
+			case "opt":
+				et_street.setHint(Config.getInstance().getText("Street"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -273,20 +269,20 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_city.setText(city);
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getCity()) {
-		case "":
-			et_city.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_city.setHint(Config.getInstance().getText("Prefix") + " (*)");
-			break;
-		case "opt":
-			et_city.setHint(Config.getInstance().getText("Prefix"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getCity()) {
+			case "":
+				et_city.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_city.setHint(Config.getInstance().getText("Prefix") + " (*)");
+				break;
+			case "opt":
+				et_city.setHint(Config.getInstance().getText("Prefix"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -302,21 +298,22 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_zipcode.setText(zipcode);
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getZipcode()) {
-		case "":
-			et_zipcode.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_zipcode.setHint(Config.getInstance().getText("Post/Zip Code")
-					+ " (*)");
-			break;
-		case "opt":
-			et_zipcode.setHint(Config.getInstance().getText("Post/Zip Code"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getZipcode()) {
+			case "":
+				et_zipcode.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_zipcode.setHint(Config.getInstance()
+						.getText("Post/Zip Code") + " (*)");
+				break;
+			case "opt":
+				et_zipcode.setHint(Config.getInstance()
+						.getText("Post/Zip Code"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -328,20 +325,20 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_phone.setText(mAddressBookDetail.getPhone());
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getTelephone()) {
-		case "":
-			et_phone.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_phone.setHint(Config.getInstance().getText("Phone") + " (*)");
-			break;
-		case "opt":
-			et_phone.setHint(Config.getInstance().getText("Phone"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getTelephone()) {
+			case "":
+				et_phone.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_phone.setHint(Config.getInstance().getText("Phone") + " (*)");
+				break;
+			case "opt":
+				et_phone.setHint(Config.getInstance().getText("Phone"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -369,24 +366,26 @@ public class AddressBookDetailBlock extends SimiBlock implements
 					&& !company.equals("null")) {
 				et_company.setText(company);
 			}
-			if(mAddress != null){
-			if(mAddress != null){
-			String check = mAddress.getCompany().toLowerCase();
-			switch (check) {
-			case "":
-				et_company.setVisibility(View.GONE);
-				break;
-			case "req":
-				et_company.setHint(Config.getInstance().getText("Company")
-						+ " (*)");
-				break;
-			case "opt":
-				et_company.setHint(Config.getInstance().getText("Company"));
-				break;
-			default:
-				break;
-			}
-			}
+			if (mAddress != null) {
+				if (mAddress != null) {
+					String check = mAddress.getCompany().toLowerCase();
+					switch (check) {
+					case "":
+						et_company.setVisibility(View.GONE);
+						break;
+					case "req":
+						et_company.setHint(Config.getInstance().getText(
+								"Company")
+								+ " (*)");
+						break;
+					case "opt":
+						et_company.setHint(Config.getInstance().getText(
+								"Company"));
+						break;
+					default:
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -399,18 +398,18 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				tv_country.setText(countryname);
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getCountry()) {
-		case "":
-			rl_country.setVisibility(View.GONE);
-			break;
-		case "req":
-			break;
-		case "opt":
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getCountry()) {
+			case "":
+				rl_country.setVisibility(View.GONE);
+				break;
+			case "req":
+				break;
+			case "opt":
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -442,26 +441,25 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				tv_state.setText(mAddressBookDetail.getStateName());
 			}
 		}
-		if(mAddress != null){
-		switch (mAddress.getState()) {
-		case "":
-			rl_state.setVisibility(View.GONE);
-			et_state.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_state.setHint(Config.getInstance().getText("State") + "(*)");
-			break;
-		case "opt":
-			et_state.setHint(Config.getInstance().getText("State"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			switch (mAddress.getState()) {
+			case "":
+				rl_state.setVisibility(View.GONE);
+				et_state.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_state.setHint(Config.getInstance().getText("State") + "(*)");
+				break;
+			case "opt":
+				et_state.setHint(Config.getInstance().getText("State"));
+				break;
+			default:
+				break;
+			}
 		}
 
 	}
 
-	@SuppressWarnings("deprecation")
 	private void createButtonSave() {
 		bt_save.setTextColor(Color.WHITE);
 		bt_save.setText(Config.getInstance().getText("Save"));
@@ -481,21 +479,21 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_fax.setText(fax);
 			}
 		}
-		if(mAddress != null){
-		String check = mAddress.getFax().toLowerCase();
-		switch (check) {
-		case "":
-			et_fax.setVisibility(View.GONE);
-			break;
-		case "req":
-			et_fax.setHint(Config.getInstance().getText("Fax") + " (*)");
-			break;
-		case "opt":
-			et_fax.setHint(Config.getInstance().getText("Fax"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			String check = mAddress.getFax().toLowerCase();
+			switch (check) {
+			case "":
+				et_fax.setVisibility(View.GONE);
+				break;
+			case "req":
+				et_fax.setHint(Config.getInstance().getText("Fax") + " (*)");
+				break;
+			case "opt":
+				et_fax.setHint(Config.getInstance().getText("Fax"));
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -544,23 +542,24 @@ public class AddressBookDetailBlock extends SimiBlock implements
 				et_tax_checkout.setText(vatNumber);
 			}
 		}
-		if(mAddress != null){
-		String check = mAddress.getVat_id()
-				.toLowerCase();
-		switch (check) {
-		case "":
-			et_tax_checkout.setVisibility(View.GONE);
-			return;
-		case "req":
-			et_tax_checkout.setHint(Config.getInstance().getText("VAT number")
-					+ " (*)");
-			break;
-		case "opt":
-			et_tax_checkout.setHint(Config.getInstance().getText("VAT number"));
-			break;
-		default:
-			break;
-		}
+		if (mAddress != null) {
+			String check = mAddress.getVat_id().toLowerCase();
+			switch (check) {
+			case "":
+				et_tax_checkout.setVisibility(View.GONE);
+				return;
+			case "req":
+				et_tax_checkout.setHint(Config.getInstance().getText(
+						"VAT number")
+						+ " (*)");
+				break;
+			case "opt":
+				et_tax_checkout.setHint(Config.getInstance().getText(
+						"VAT number"));
+				break;
+			default:
+				break;
+			}
 		}
 
 	}
@@ -621,7 +620,7 @@ public class AddressBookDetailBlock extends SimiBlock implements
 		if (null != company) {
 			addressBookDetail.setCompany(company);
 		}
-		
+
 		if (mAddressBookDetail != null) {
 			String id = mAddressBookDetail.getAddressId();
 			if (null != id) {

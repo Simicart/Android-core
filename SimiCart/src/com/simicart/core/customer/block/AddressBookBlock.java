@@ -2,6 +2,17 @@ package com.simicart.core.customer.block;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
@@ -10,18 +21,6 @@ import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.adapter.AddressBookAdapter;
 import com.simicart.core.customer.entity.MyAddress;
-
-import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class AddressBookBlock extends SimiBlock {
 
@@ -51,18 +50,15 @@ public class AddressBookBlock extends SimiBlock {
 
 	@Override
 	public void initView() {
-		// title
-		TextView lable_address = (TextView) mView.findViewById(Rconfig
-				.getInstance().id("lable_address"));
-		// lable_address.setText(Html.fromHtml("<b>"
-		// + Config.getInstance().getText("Address Book") + "</b>"));
 		// Choose an address for editing
 		TextView tv_chooseAddress = (TextView) mView.findViewById(Rconfig
 				.getInstance().id("tv_chooseAddress"));
 		if (isCheckout) {
-			tv_chooseAddress.setText(Config.getInstance().getText("Or choose an address"));
+			tv_chooseAddress.setText(Config.getInstance().getText(
+					"Or choose an address"));
 		} else {
-			tv_chooseAddress.setText(Config.getInstance().getText("Or choose an address for editing"));
+			tv_chooseAddress.setText(Config.getInstance().getText(
+					"Or choose an address for editing"));
 		}
 		tv_addAddress = (TextView) mView.findViewById(Rconfig.getInstance().id(
 				"addAddress"));
@@ -70,19 +66,23 @@ public class AddressBookBlock extends SimiBlock {
 
 		lv_Address = (ListView) mView.findViewById(Rconfig.getInstance().id(
 				"lv_listAddress"));
-		rlt_layout_addadress = (RelativeLayout) mView.findViewById(Rconfig.getInstance().id(
-				"layout_addadress"));
-		img_address_left = (ImageView) mView.findViewById(Rconfig.getInstance().id(
-				"iv_add"));
-		img_address_right = (ImageView) mView.findViewById(Rconfig.getInstance().id(
-				"iv_extend"));
+		rlt_layout_addadress = (RelativeLayout) mView.findViewById(Rconfig
+				.getInstance().id("layout_addadress"));
+		img_address_left = (ImageView) mView.findViewById(Rconfig.getInstance()
+				.id("iv_add"));
+		img_address_right = (ImageView) mView.findViewById(Rconfig
+				.getInstance().id("iv_extend"));
 		Utils.changeColorImageview(mContext, img_address_left, "ic_action_add");
 		Utils.changeColorImageview(mContext, img_address_right, "ic_extend");
-		rlt_layout_addadress.setBackgroundColor(Config.getInstance().getButton_background());
-		tv_addAddress.setBackgroundColor(Config.getInstance().getButton_background());
+		rlt_layout_addadress.setBackgroundColor(Config.getInstance()
+				.getButton_background());
+		tv_addAddress.setBackgroundColor(Config.getInstance()
+				.getButton_background());
 		tv_addAddress.setTextColor(Config.getInstance().getButton_text_color());
-		tv_chooseAddress.setBackgroundColor(Color.parseColor(Config.getInstance().getSection_color()));
-		tv_chooseAddress.setTextColor(Config.getInstance().getSection_text_color());
+		tv_chooseAddress.setBackgroundColor(Color.parseColor(Config
+				.getInstance().getSection_color()));
+		tv_chooseAddress.setTextColor(Config.getInstance()
+				.getSection_text_color());
 		ColorDrawable sage = new ColorDrawable(Config.getInstance()
 				.getLine_color());
 		lv_Address.setDivider(sage);
@@ -98,7 +98,6 @@ public class AddressBookBlock extends SimiBlock {
 				MyAddress addr = (MyAddress) simiEntity;
 				address.add(addr);
 			}
-			Log.d("quangdd", ""+address.get(0).getName());
 			if (address.size() > 0) {
 				if (null == mAdapter) {
 					mAdapter = new AddressBookAdapter(mContext, address);
