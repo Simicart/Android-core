@@ -3,6 +3,9 @@ package com.simicart.core.checkout.block;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -208,7 +211,7 @@ public class PaymentMethodBlock extends SimiBlock implements
 
 				tvcontent_lp.setMargins(50, 0, 0, 0);
 				tv_content.setLayoutParams(tvcontent_lp);
-				listContent.add(tv_content);		
+				listContent.add(tv_content);
 				setContentPaymentMethod(paymentMethod.getPayment_method(),
 						tv_content);
 				img_edit.setOnClickListener(new OnClickListener() {
@@ -238,21 +241,25 @@ public class PaymentMethodBlock extends SimiBlock implements
 					tv_content.getId(), listContent, paymentMethod);
 		}
 	}
-	
+
 	private void setContentPaymentMethod(String paymentMethodCode,
 			TextView tv_content) {
 		String number = "";
-		if (isSavedCC(paymentMethodCode) && paymentMethodCode.equals(PaymentMethod.getInstance().getmCheckPaymentMethod())) {
-			// have been data and check co phai la payment clicked is display content 
+		if (isSavedCC(paymentMethodCode)
+				&& paymentMethodCode.equals(PaymentMethod.getInstance()
+						.getmCheckPaymentMethod())) {
+			// have been data and check co phai la payment clicked is display
+			// content
 			number = DataLocal.getHashMapCreditCart()
 					.get(DataLocal.getEmailCreditCart()).get(paymentMethodCode)
 					.getPaymentNumber();
 			checkAndSetText(number, tv_content);
 		} else {
-			// the first, the new sigin is not show content 
+			// the first, the new sigin is not show content
 			tv_content.setVisibility(RelativeLayout.GONE);
 		}
 	}
+
 	private boolean isSavedCC(String paymentMethodCode) {
 		HashMap<String, HashMap<String, CreditcardEntity>> hashMap = DataLocal
 				.getHashMapCreditCart();
@@ -272,21 +279,24 @@ public class PaymentMethodBlock extends SimiBlock implements
 			}
 		}
 	}
+
 	public void nextCreditCardFragment(PaymentMethod paymentMethod) {
 
-		CreditCardFragment fcreditCard = CreditCardFragment.newInstance(true,paymentMethod);
+		CreditCardFragment fcreditCard = CreditCardFragment.newInstance(true,
+				paymentMethod);
 
 		if (PaymentMethod.getInstance().getCurrentMethod().toLowerCase()
 				.equals(paymentMethod.getPayment_method().toLowerCase())) {
 
-//			fcreditCard.setIsCheckedMethod(true);
+			// fcreditCard.setIsCheckedMethod(true);
 		} else {
 			PaymentMethod.getInstance().setCurrentMethod(
 					paymentMethod.getPayment_method());
 		}
-//		fcreditCard.setPaymentMethod(paymentMethod);
+		// fcreditCard.setPaymentMethod(paymentMethod);
 		SimiManager.getIntance().replacePopupFragment(fcreditCard);
 	}
+
 	private void checkAndSetText(String number, TextView tv_content) {
 		// set number for content of creditCard
 		if (null != number && number.length() > 4) {
@@ -296,6 +306,7 @@ public class PaymentMethodBlock extends SimiBlock implements
 			tv_content.setText(number + "");
 		}
 	}
+
 	public void onTouchPayment(final RelativeLayout rl_value,
 			final int id_chectbox, final ArrayList<ImageView> lisCheckBoxs,
 			final int id_content, final ArrayList<TextView> listContents,
@@ -306,21 +317,21 @@ public class PaymentMethodBlock extends SimiBlock implements
 			@Override
 			public void onClick(View v) {
 				setCheckBox(mContext, paymentMethod, lisCheckBoxs, id_chectbox);
-//				for (ImageView checkBox : lisCheckBoxs) {
-//					if (checkBox.getId() == id_chectbox) {
-//						Drawable icon_checked = mContext.getResources()
-//								.getDrawable(mIDIconChecked);
-//						icon_checked.setColorFilter(Config.getInstance()
-//								.getColorMain(), PorterDuff.Mode.SRC_ATOP);
-//						checkBox.setImageDrawable(icon_checked);
-//					} else {
-//						Drawable icon_nomal = mContext.getResources()
-//								.getDrawable(mIDIconNormal);
-//						icon_nomal.setColorFilter(Config.getInstance()
-//								.getColorMain(), PorterDuff.Mode.SRC_ATOP);
-//						checkBox.setImageDrawable(icon_nomal);
-//					}
-//				}
+				// for (ImageView checkBox : lisCheckBoxs) {
+				// if (checkBox.getId() == id_chectbox) {
+				// Drawable icon_checked = mContext.getResources()
+				// .getDrawable(mIDIconChecked);
+				// icon_checked.setColorFilter(Config.getInstance()
+				// .getColorMain(), PorterDuff.Mode.SRC_ATOP);
+				// checkBox.setImageDrawable(icon_checked);
+				// } else {
+				// Drawable icon_nomal = mContext.getResources()
+				// .getDrawable(mIDIconNormal);
+				// icon_nomal.setColorFilter(Config.getInstance()
+				// .getColorMain(), PorterDuff.Mode.SRC_ATOP);
+				// checkBox.setImageDrawable(icon_nomal);
+				// }
+				// }
 
 				reviewOrder.setInitViewPayment(paymentMethod.getTitle());
 
@@ -331,9 +342,10 @@ public class PaymentMethodBlock extends SimiBlock implements
 				for (TextView content : listContents) {
 					if (content.getId() == id_content) {
 						content.setVisibility(View.VISIBLE);
-						PaymentMethod.getInstance().setmCheckPaymentMethod(paymentMethod.getPayment_method());
-						setContentPaymentMethod(paymentMethod.getPayment_method(),
-								content);
+						PaymentMethod.getInstance().setmCheckPaymentMethod(
+								paymentMethod.getPayment_method());
+						setContentPaymentMethod(
+								paymentMethod.getPayment_method(), content);
 					} else {
 						content.setVisibility(View.GONE);
 					}
@@ -349,7 +361,7 @@ public class PaymentMethodBlock extends SimiBlock implements
 						&& paymentMethod.getData(Constants.CONTENT) == null) {
 
 				} else if (show_type == 1) {
-					
+
 					boolean checkMethod = false;
 					if (PaymentMethod
 							.getInstance()
@@ -368,21 +380,19 @@ public class PaymentMethodBlock extends SimiBlock implements
 								fcreditCard);
 					}
 
-					
-					
-//					if (PaymentMethod
-//							.getInstance()
-//							.getCurrentMethod()
-//							.toLowerCase()
-//							.equals(paymentMethod.getPayment_method()
-//									.toLowerCase())) {
-//
-//						fcreditCard.setIsCheckedMethod(true);
-//					} else {
-//						PaymentMethod.getInstance().setCurrentMethod(
-//								paymentMethod.getPayment_method());
-//					}
-//					fcreditCard.setPaymentMethod(paymentMethod);
+					// if (PaymentMethod
+					// .getInstance()
+					// .getCurrentMethod()
+					// .toLowerCase()
+					// .equals(paymentMethod.getPayment_method()
+					// .toLowerCase())) {
+					//
+					// fcreditCard.setIsCheckedMethod(true);
+					// } else {
+					// PaymentMethod.getInstance().setCurrentMethod(
+					// paymentMethod.getPayment_method());
+					// }
+					// fcreditCard.setPaymentMethod(paymentMethod);
 
 				}
 				ConfigCheckout.checkPaymentMethod = true;
@@ -398,15 +408,50 @@ public class PaymentMethodBlock extends SimiBlock implements
 			}
 		});
 	}
-	
+
 	private void checkClickPaymentMethod(PaymentMethod paymentMethod) {
 		if (isSavedCC(paymentMethod.getPayment_method())) {
-			// if have payment method name in datalocal is close payment
+			CreditcardEntity creditcardEntity = DataLocal
+					.getHashMapCreditCart().get(DataLocal.getEmailCreditCart())
+					.get(paymentMethod.getPayment_method());
+
+			setCcType(creditcardEntity.getPaymentType(), paymentMethod);
+			PaymentMethod.getInstance().setPlace_cc_exp_month(
+					creditcardEntity.getPaymentMonth());
+			PaymentMethod.getInstance().setPlace_cc_exp_year(
+					creditcardEntity.getPaymentYear());
+			PaymentMethod.getInstance().setPlace_cc_number(
+					creditcardEntity.getPaymentNumber());
+			PaymentMethod.getInstance().setPlacecc_id(
+					creditcardEntity.getPaymentCvv());
+
 			Utils.expand(ll_shipping);
 			scrollView.scrollTo(0, 500);
 		} else {
-			// if haven't payment method name is next CreditCardFragment 
 			nextCreditCardFragment(paymentMethod);
+		}
+	}
+
+	private void setCcType(String paymentType, PaymentMethod paymentMethod) {
+		JSONArray cc_types = null;
+		try {
+			cc_types = new JSONArray(paymentMethod.getData("cc_types"));
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		if (cc_types != null) {
+			try {
+				for (int i = 0; i < cc_types.length(); i++) {
+					String cc_name = cc_types.getJSONObject(i).getString(
+							"cc_name");
+					if (cc_name.equals(paymentType)) {
+						PaymentMethod.getInstance().setPlace_cc_type(
+								cc_types.getJSONObject(i).getString("cc_code"));
+					}
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -454,6 +499,7 @@ public class PaymentMethodBlock extends SimiBlock implements
 		}
 		return false;
 	}
+
 	public void setCheckBox(Context mContext, PaymentMethod paymentMethod,
 			ArrayList<ImageView> lisCheckBoxs, int id_chectbox) {
 
@@ -475,9 +521,10 @@ public class PaymentMethodBlock extends SimiBlock implements
 			}
 		}
 	}
+
 	public void setDelegate(ReviewOrderDelegate mDelegate) {
-		if(mDelegate != null)
-		this.mDelegate = mDelegate;
+		if (mDelegate != null)
+			this.mDelegate = mDelegate;
 	}
 
 	@Override
