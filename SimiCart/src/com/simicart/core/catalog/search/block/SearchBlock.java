@@ -237,16 +237,16 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 
 		edit_search = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"edittext_search"));
-		edit_search.setHint(Config.getInstance().getText("Search"));
 		edit_search.setHintTextColor(Config.getInstance()
 				.getSearch_text_color());
-		if (!cate_name.equals("") && cate_name != null) {
-			edit_search.setHint(cate_name);
-		}
 		edit_search.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 		edit_search.setTextColor(Config.getInstance().getSearch_text_color());
 		if (mQuery != null && !mQuery.equals("")) {
 			edit_search.setText(mQuery);
+		}else if (!cate_name.equals("") && cate_name != null) {
+			edit_search.setHint(cate_name);
+		}else {
+			edit_search.setHint("Search");
 		}
 		edit_search.setOnFocusChangeListener(new OnFocusChangeListener() {
 			@Override
