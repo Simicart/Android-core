@@ -96,7 +96,6 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 	private RelativeLayout rlt_layout;
 	private RelativeLayout relativeLayoutSearch;
 	
-	private String urlSearch ;
 
 	private boolean check_filter;
 	private boolean is_loadmore = false;
@@ -109,10 +108,6 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 	private PopupWindow popUp;
 	private String ALL_PRODUCT = "All Product";
 	private int totalResult = 0;
-	
-	public void setUrlSearch(String urlSearch) {
-		this.urlSearch = urlSearch;
-	}
 
 	public void setTag_search(String tag_search) {
 		this.tag_search = tag_search;
@@ -336,7 +331,6 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			cacheBlock.setView(mView);
 			SimiEntity entity = new SimiEntity();
 			JSONObject object = new JSONObject();
-			object.put("urlSearch", urlSearch);
 			object.put("cateId", cate_id);
 			object.put("cateName", cate_name);
 			object.put("tagSearch", tag_search);
@@ -842,7 +836,7 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			showSearchScreen(edit_search.getText().toString(), tag_search, 0);
 		} else {
 			ListProductFragment searchFragment = ListProductFragment
-					.newInstance(ConstantsSearch.url_category, cate_id, null,
+					.newInstance(Constants.SEARCH_PRODUCTS, cate_id, null,
 							null, null, edit_search.getText().toString(), null,
 							null);
 			SimiManager.getIntance().addFragment(searchFragment);

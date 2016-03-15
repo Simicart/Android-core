@@ -40,8 +40,7 @@ public class SearchVoice {
 	private final String SEARCH_CATE_NAME = "cateName";
 	private final String SEARCH_TAG = "tagSearch";
 
-	private String url = null, cateId = null, cateName = null,
-			tagSearch = null;
+	private String cateId = null, cateName = null, tagSearch = null;
 
 	public SearchVoice(String method, CacheBlock cacheBlock) {
 		mRootView = cacheBlock.getView();
@@ -78,16 +77,15 @@ public class SearchVoice {
 
 	private void handleSearchVoice(JSONObject object) {
 		@SuppressWarnings("unused")
-		String textSearch = null, tagSearch = null, categoryName = null, categoryId = null, url = null;
+		String textSearch = null, tagSearch = null, categoryName = null, categoryId = null;
 		try {
-			url = InstanceVoice.SEARCH_URL;
 			categoryId = InstanceVoice.SEARCH_CATE_ID;
 			tagSearch = InstanceVoice.SEARCH_TAG;
 			categoryName = InstanceVoice.SEARCH_CATE_NAME;
 			if (object.has(SEARCH_TEXT_RESULT)) {
 				textSearch = object.getString(SEARCH_TEXT_RESULT);
 			}
-			searchProduct(url, categoryId, tagSearch, categoryName, textSearch);
+			searchProduct(categoryId, tagSearch, categoryName, textSearch);
 		} catch (Exception e) {
 		}
 	}
@@ -100,9 +98,10 @@ public class SearchVoice {
 		rlt_layout.setVisibility(View.GONE);
 
 		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+				LinearLayout.LayoutParams.WRAP_CONTENT,
+				LinearLayout.LayoutParams.MATCH_PARENT);
 		layoutParams.gravity = Gravity.RIGHT;
-		LinearLayout layout  = new LinearLayout(SimiManager.getIntance()
+		LinearLayout layout = new LinearLayout(SimiManager.getIntance()
 				.getCurrentContext());
 		layout.setLayoutParams(layoutParams);
 		layoutSearch.addView(layout);
@@ -121,7 +120,7 @@ public class SearchVoice {
 
 			@Override
 			public void onClick(View v) {
-				updateData(Constants.SEARCH_PRODUCTS, null, null, null);
+				updateData(null, null, null);
 				promptSpeechInput();
 			}
 		});
@@ -135,9 +134,10 @@ public class SearchVoice {
 				.findViewById(Rconfig.getInstance().id("rlt_layout"));
 		rlt_layout.setVisibility(View.GONE);
 		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+				LinearLayout.LayoutParams.WRAP_CONTENT,
+				LinearLayout.LayoutParams.MATCH_PARENT);
 		layoutParams.gravity = Gravity.RIGHT;
-		LinearLayout layout  = new LinearLayout(SimiManager.getIntance()
+		LinearLayout layout = new LinearLayout(SimiManager.getIntance()
 				.getCurrentContext());
 		layout.setLayoutParams(layoutParams);
 		layoutSearch.addView(layout);
@@ -154,9 +154,6 @@ public class SearchVoice {
 
 		try {
 			if (object != null) {
-				if (object.has(SEARCH_URL)) {
-					url = object.getString(SEARCH_URL);
-				}
 				if (object.has(SEARCH_CATE_ID)) {
 					cateId = object.getString(SEARCH_CATE_ID);
 				}
@@ -169,11 +166,11 @@ public class SearchVoice {
 			}
 		} catch (Exception e) {
 		}
-		imageView.setOnClickListener(new OnClickListener() {
+		layout.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				updateData(url, cateId, cateName, tagSearch);
+				updateData(cateId, cateName, tagSearch);
 				promptSpeechInput();
 			}
 		});
@@ -216,24 +213,20 @@ public class SearchVoice {
 		return false;
 	}
 
-	private void updateData(String url, String cateId, String cateName,
-			String tagsearch) {
-		InstanceVoice.SEARCH_URL = url;
+	private void updateData(String cateId, String cateName, String tagsearch) {
 		InstanceVoice.SEARCH_CATE_ID = cateId;
 		InstanceVoice.SEARCH_CATE_NAME = cateName;
 		InstanceVoice.SEARCH_TAG = tagsearch;
 	}
 
-	private void searchProduct(String url, String cateID, String tagSearch,
+	private void searchProduct(String cateID, String tagSearch,
 			String cateName, String query) {
-		if (url == null) {
-			url = Constants.SEARCH_PRODUCTS;
-		}
 		if (tagSearch == null) {
 			tagSearch = TagSearch.TAG_LISTVIEW;
 		}
-		ListProductFragment fragment = ListProductFragment.newInstance(url,
-				cateID, tagSearch, null, cateName, query, null, null);
+		ListProductFragment fragment = ListProductFragment.newInstance(
+				Constants.SEARCH_PRODUCTS, cateID, tagSearch, null, cateName,
+				query, null, null);
 		SimiManager.getIntance().addFragment(fragment);
 	}
 

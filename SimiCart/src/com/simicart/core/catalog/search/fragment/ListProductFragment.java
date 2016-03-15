@@ -139,7 +139,6 @@ public class ListProductFragment extends SimiFragment {
 		mSearchBlock.setmQuery(mQuery);
 		mSearchBlock.setCateName(mCatName);
 		mSearchBlock.setCate_id(mCatID);
-		mSearchBlock.setUrlSearch(url_search);
 		mSearchBlock.initView();
 		if (mSearchController == null) {
 			mSearchController = new SearchController(mCatName, mCatID);
