@@ -1,13 +1,18 @@
 package com.simicart.core.home.block;
 
+import org.json.JSONObject;
+
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
+import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.catalog.search.fragment.ListProductFragment;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.event.block.CacheBlock;
+import com.simicart.core.event.block.EventBlock;
 
 import android.content.Context;
 import android.graphics.PorterDuff;
@@ -55,6 +60,7 @@ public class SearchHomeBlock extends SimiBlock {
 
 	@Override
 	public void initView() {
+		super.initView();
 		LinearLayout ll_search = (LinearLayout) mView.findViewById(Rconfig
 				.getInstance().id("ll_search"));
 		ll_search.setBackgroundColor(Config.getInstance()
@@ -121,7 +127,15 @@ public class SearchHomeBlock extends SimiBlock {
 				imm.showSoftInput(et_search, InputMethodManager.SHOW_IMPLICIT);
 			}
 		});
-		super.initView();
+		
+		//event for search voice home page
+		try {
+			EventBlock block = new EventBlock();
+			CacheBlock  cacheBlock = new CacheBlock();
+			cacheBlock.setView(mView);
+			block.dispatchEvent("com.simicart.core.home.block.SearchHomeBlock", cacheBlock);
+		} catch (Exception e) {
+		}
 	}
 
 	public void showSearchScreen(String key, String tag) {
@@ -132,11 +146,7 @@ public class SearchHomeBlock extends SimiBlock {
 			SimiManager.getIntance().addFragment(fragment);
 		}
 	}
-
-	@Override
-	public void drawView(SimiCollection collection) {
-	}
-
+	
 	public void setQuery(String mQuery) {
 		this.mQuery = mQuery;
 	}

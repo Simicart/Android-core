@@ -297,7 +297,7 @@ public class SearchController extends SimiController implements
 					Log.e("Count :", count + "");
 					if (scrollState == SCROLL_STATE_IDLE) {
 						if ((view.getLastVisiblePosition() >= count - threshold)
-								&& Integer.parseInt(resultNumber) >= count) {
+								&& Integer.parseInt(resultNumber) > count) {
 							Log.e("ResultNumber :", resultNumber);
 							Log.e("IsOnscroll:", isOnscroll + "");
 							if (isOnscroll) {

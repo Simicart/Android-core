@@ -92,6 +92,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:padding="5dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_search" />
 
                 <EditText
@@ -106,6 +107,12 @@
                     android:paddingRight="10dp"
                     android:singleLine="true"
                     android:textColor="#FFFFFF" />
+              <!--   <RelativeLayout
+                    android:id="@+id/rlt_searchvoice"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:visibility="gone"
+                    /> -->
             </LinearLayout>
         </RelativeLayout>
     </FrameLayout>

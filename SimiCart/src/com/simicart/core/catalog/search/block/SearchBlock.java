@@ -65,6 +65,8 @@ import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.event.block.CacheBlock;
+import com.simicart.core.event.block.EventBlock;
 
 public class SearchBlock extends SimiBlock implements SearchDelegate,
 		OnItemClickListener {
@@ -93,6 +95,8 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 
 	private RelativeLayout rlt_layout;
 	private RelativeLayout relativeLayoutSearch;
+	
+	private String urlSearch ;
 
 	private boolean check_filter;
 	private boolean is_loadmore = false;
@@ -105,6 +109,10 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 	private PopupWindow popUp;
 	private String ALL_PRODUCT = "All Product";
 	private int totalResult = 0;
+	
+	public void setUrlSearch(String urlSearch) {
+		this.urlSearch = urlSearch;
+	}
 
 	public void setTag_search(String tag_search) {
 		this.tag_search = tag_search;
@@ -320,6 +328,23 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			}
 		});
 
+		
+		//event for searchVoice
+		try {
+			EventBlock block = new EventBlock();
+			CacheBlock  cacheBlock = new CacheBlock();
+			cacheBlock.setView(mView);
+			SimiEntity entity = new SimiEntity();
+			JSONObject object = new JSONObject();
+			object.put("urlSearch", urlSearch);
+			object.put("cateId", cate_id);
+			object.put("cateName", cate_name);
+			object.put("tagSearch", tag_search);
+			entity.setJSONObject(object);
+			cacheBlock.setSimiEntity(entity);
+			block.dispatchEvent("com.simicart.core.home.block.SearchHomeBlock", cacheBlock);
+		} catch (Exception e) {
+		}
 	}
 
 	private PopupWindow popupWindowsort() {
@@ -821,8 +846,8 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 			showSearchScreen(edit_search.getText().toString(), tag_search, 0);
 		} else {
 			ListProductFragment searchFragment = ListProductFragment
-					.newInstance(ConstantsSearch.url_query, cate_id, null,
-							null, cate_name, edit_search.getText().toString(), null,
+					.newInstance(ConstantsSearch.url_category, cate_id, null,
+							null, null, edit_search.getText().toString(), null,
 							null);
 			SimiManager.getIntance().addFragment(searchFragment);
 		}

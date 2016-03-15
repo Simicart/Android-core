@@ -1,7 +1,10 @@
 package com.simicart;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,6 +18,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
@@ -28,6 +32,7 @@ import com.google.analytics.tracking.android.Fields;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.magestore.simicart.R;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.common.FontsOverride;
 import com.simicart.core.common.Utils;
@@ -39,6 +44,7 @@ import com.simicart.core.customer.controller.AutoSignInController;
 import com.simicart.core.event.activity.CacheActivity;
 import com.simicart.core.event.activity.EventActivity;
 import com.simicart.core.event.base.UtilsEvent;
+import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.block.EventBlock;
 import com.simicart.core.event.controller.EventController;
 import com.simicart.core.menutop.fragment.MenuTopFragment;
@@ -436,6 +442,28 @@ public class MainActivity extends FragmentActivity {
 		if (requestCode == Constants.RESULT_BARCODE) {
 			block = new EventBlock();
 			block.dispatchEvent("com.simicart.leftmenu.mainactivity.onactivityresult.resultbarcode");
+		}
+		if (requestCode == 100) {
+			if (resultCode == RESULT_OK && data != null) {
+				ArrayList<String> result = data
+						.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+				String text = result.get(0);
+				if (Utils.validateString(text)) {
+					try {
+						SimiEntity entity = new SimiEntity();
+						JSONObject object = new JSONObject();
+						object.put("textvoice", text);
+						entity.setJSONObject(object);
+						CacheBlock cacheBlock = new CacheBlock();
+						cacheBlock.setSimiEntity(entity);
+						block.dispatchEvent(
+								"com.simicart.mainactivity.onactivityresult",
+								cacheBlock);
+					} catch (Exception e) {
+					}
+				}
+			}
+
 		}
 	}
 

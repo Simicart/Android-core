@@ -148,9 +148,6 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		img_animation = (ImageView) mView.findViewById(Rconfig.getInstance()
 				.id("img_animation"));
 		img_animation.setVisibility(View.INVISIBLE);
-		tv_name_product.setVisibility(View.VISIBLE);
-		rlt_top.setVisibility(View.VISIBLE);
-		ll_bottom.setVisibility(View.VISIBLE);
 	}
 
 	public void setAnimation() {

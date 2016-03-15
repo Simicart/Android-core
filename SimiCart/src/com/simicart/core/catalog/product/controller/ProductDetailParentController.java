@@ -127,7 +127,6 @@ public class ProductDetailParentController extends ProductController implements 
 
 			@Override
 			public void onClick(View v) {
-				SimiManager.getIntance().hideKeyboard();
 				SimiManager.getIntance().getManager().popBackStack();
 				if (checkOptionDerect == false) {
 					onAddToCart();

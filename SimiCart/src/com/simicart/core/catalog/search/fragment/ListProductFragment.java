@@ -139,6 +139,7 @@ public class ListProductFragment extends SimiFragment {
 		mSearchBlock.setmQuery(mQuery);
 		mSearchBlock.setCateName(mCatName);
 		mSearchBlock.setCate_id(mCatID);
+		mSearchBlock.setUrlSearch(url_search);
 		mSearchBlock.initView();
 		if (mSearchController == null) {
 			mSearchController = new SearchController(mCatName, mCatID);
@@ -209,9 +210,6 @@ public class ListProductFragment extends SimiFragment {
 				this.tag_search = TagSearch.TAG_GRIDVIEW;
 			} else {
 				this.tag_search = TagSearch.TAG_LISTVIEW;
-				if(tag_search.equals(TagSearch.TAG_GRIDVIEW)){
-					this.tag_search = tag_search;
-				}
 			}
 			// this.tag_search = tag_search;
 		}
