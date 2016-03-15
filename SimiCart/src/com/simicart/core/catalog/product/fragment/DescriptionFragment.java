@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.entity.BusEntity;
 import com.simicart.core.catalog.product.entity.Product;
+import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
@@ -34,9 +35,10 @@ public class DescriptionFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-		
 
-		WebView webView = (WebView) rootView.findViewById(Rconfig.getInstance().id("webview"));
+		WebView webView = (WebView) rootView.findViewById(Rconfig.getInstance()
+				.id("webview"));
+		webView.setBackgroundColor(Config.getInstance().getApp_backrground());
 		webView.getSettings().setJavaScriptEnabled(true);
 		webView.getSettings().setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 		webView.getSettings().setLoadWithOverviewMode(true);
@@ -59,13 +61,13 @@ public class DescriptionFragment extends SimiFragment {
 		}
 		return rootView;
 	}
-	
+
 	@Override
 	public void onEvent(BusEntity event) {
 		super.onEvent(event);
-		if(event.getKey().toString().equals(Constants.KeyBus.PRODUCT)){
-		Product product = (Product) event.getValue();
-		mDescription = product.getDecripition();
+		if (event.getKey().toString().equals(Constants.KeyBus.PRODUCT)) {
+			Product product = (Product) event.getValue();
+			mDescription = product.getDecripition();
 		}
 	}
 }
