@@ -62,9 +62,9 @@ public class SplashController {
 						.size();
 				if (count_data_home <= 0) {
 					String id = DataLocal.getCurrencyID();
-					if (id != null && !id.equals("")) {						
+					if (id != null && !id.equals("")) {
 						saveCurrency(id);
-					} else {						
+					} else {
 						getCMSPage();
 						getPlugin();
 						// getStore();
@@ -85,7 +85,7 @@ public class SplashController {
 		if (Utils.validateString(store_id) && store_id != null
 				&& !store_id.equals("")) {
 			homM.addParam("store_id", store_id);
-		}		
+		}
 		homM.request();
 	}
 
@@ -141,6 +141,7 @@ public class SplashController {
 				if (flagHome) {
 					Log.e("SplashController",
 							"call MainActicity from GetPlugin");
+					callEvent();
 					mDelegate.creatMain();
 				} else {
 					flagHome = true;
@@ -187,12 +188,6 @@ public class SplashController {
 							.get(0);
 					try {
 						parseJSONStoreView(entity);
-						CacheBlock cacheBlock = new CacheBlock();
-						EventBlock eventBlock = new EventBlock();
-						eventBlock
-								.dispatchEvent(
-										"com.simicart.splashscreen.controller.SplashController",
-										cacheBlock);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -200,6 +195,7 @@ public class SplashController {
 					if (flagHome) {
 						Log.e("SplashController",
 								"call MainActicity from GetPlugin");
+						callEvent();
 						mDelegate.creatMain();
 					} else {
 						flagHome = true;
@@ -215,6 +211,14 @@ public class SplashController {
 		}
 		model.request();
 
+	}
+
+	private void callEvent() {
+		CacheBlock cacheBlock = new CacheBlock();
+		EventBlock eventBlock = new EventBlock();
+		eventBlock.dispatchEvent(
+				"com.simicart.splashscreen.controller.SplashController",
+				cacheBlock);
 	}
 
 	private void parseJSONStoreView(SimiEntity entity) throws JSONException {

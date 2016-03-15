@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebSettings;
+import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebSettings.TextSize;
 import android.webkit.WebView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.simicart.core.base.fragment.SimiFragment;
+import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.Rconfig;
 
@@ -21,8 +20,9 @@ public class ConditionFragment extends SimiFragment {
 
 	public static ConditionFragment newInstance(String content) {
 		ConditionFragment fragment = new ConditionFragment();
-		Bundle bundle= new Bundle();
-		setData(Constants.KeyData.CONTENT, content, Constants.KeyData.TYPE_STRING, bundle);
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.CONTENT, content,
+				Constants.KeyData.TYPE_STRING, bundle);
 		fragment.setArguments(bundle);
 		return fragment;
 	}
@@ -36,21 +36,16 @@ public class ConditionFragment extends SimiFragment {
 				Rconfig.getInstance().layout(
 						"core_information_description_layout"), container,
 				false);
-		if(getArguments() != null){
-		mContent = (String) getData(Constants.KeyData.CONTENT, Constants.KeyData.TYPE_STRING, getArguments());
+		if (getArguments() != null) {
+			mContent = (String) getData(Constants.KeyData.CONTENT,
+					Constants.KeyData.TYPE_STRING, getArguments());
 		}
-		
-		LinearLayout l_scrollView = (LinearLayout) rootView
-				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 
-		WebView webView = new WebView(getActivity());
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-				RelativeLayout.LayoutParams.MATCH_PARENT,
-				RelativeLayout.LayoutParams.MATCH_PARENT);
-		lp.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-		webView.setLayoutParams(lp);
+		WebView webView = (WebView) rootView.findViewById(Rconfig.getInstance()
+				.id("webview"));
+
 		WebSettings setting = webView.getSettings();
-
+		webView.setBackgroundColor(Config.getInstance().getApp_backrground());
 		setting.setJavaScriptEnabled(true);
 		setting.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 		setting.setLoadWithOverviewMode(true);
@@ -62,8 +57,7 @@ public class ConditionFragment extends SimiFragment {
 		webView.setHorizontalScrollBarEnabled(false);
 
 		webView.loadDataWithBaseURL(null, mContent, "text/html", "UTF-8", null);
-		// webView.loadData(mContent, "text/html", "UTF-8");
-		l_scrollView.addView(webView);
+
 		return rootView;
 	}
 }

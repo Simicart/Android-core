@@ -92,8 +92,8 @@ public class ReviewOrderController extends SimiController implements
 	}
 
 	public void setDelegate(ReviewOrderDelegate delegate) {
-		if(delegate != null)
-		this.mDelegate = delegate;
+		if (delegate != null)
+			this.mDelegate = delegate;
 	}
 
 	public void setBillingAddress(MyAddress address) {
@@ -194,11 +194,9 @@ public class ReviewOrderController extends SimiController implements
 			@Override
 			public void onClick(View v) {
 				AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-						.newInstance(mAfterControll, Constants.KeyAddress.SHIPPING_ADDRESS, mBillingAddress, mShippingAddress);
-//				fragment.setAddressFor(AddressBookCheckoutFragment.SHIPPING_ADDRESS);
-//				fragment.setBillingAddress(mBillingAddress);
-//				fragment.setShippingAddress(mShippingAddress);
-//				fragment.setAfterController(mAfterControll);
+						.newInstance(mAfterControll,
+								Constants.KeyAddress.SHIPPING_ADDRESS,
+								mBillingAddress, mShippingAddress);
 				SimiManager.getIntance().replacePopupFragment(fragment);
 			}
 		};
@@ -213,11 +211,9 @@ public class ReviewOrderController extends SimiController implements
 				Log.e("ReviewOrderController onChooseBillingAddress : ",
 						"DataLocal size : " + DataLocal.listCarts.size());
 				AddressBookCheckoutFragment fragment = AddressBookCheckoutFragment
-						.newInstance(mAfterControll, Constants.KeyAddress.BILLING_ADDRESS, mBillingAddress, mShippingAddress);
-//				fragment.setAddressFor(AddressBookCheckoutFragment.BILLING_ADDRESS);
-//				fragment.setBillingAddress(mBillingAddress);
-//				fragment.setShippingAddress(mShippingAddress);
-//				fragment.setAfterController(mAfterControll);
+						.newInstance(mAfterControll,
+								Constants.KeyAddress.BILLING_ADDRESS,
+								mBillingAddress, mShippingAddress);
 				SimiManager.getIntance().replacePopupFragment(fragment);
 			}
 		};
@@ -333,8 +329,9 @@ public class ReviewOrderController extends SimiController implements
 						DataLocal.saveSignInState(true);
 						SimiManager.getIntance().onUpdateItemSignIn();
 					}
-//					ThankyouFragment fragment = ThankyouFragment.newInstance();
-					String mMessage ="";
+					// ThankyouFragment fragment =
+					// ThankyouFragment.newInstance();
+					String mMessage = "";
 					JSONObject jsonObject;
 					SimiManager.getIntance().onUpdateCartQty(null);
 					int showtype = paymentmethod.getShow_type();
@@ -345,18 +342,19 @@ public class ReviewOrderController extends SimiController implements
 									.getNotificationEntity());
 						} else {
 							mMessage = message;
-							jsonObject = mModel.getCollection()
-									.getJSON();
+							jsonObject = mModel.getCollection().getJSON();
 							if (DataLocal.isTablet) {
 								SimiManager.getIntance().replacePopupFragment(
-										ThankyouFragment.newInstance(mMessage, jsonObject));
+										ThankyouFragment.newInstance(mMessage,
+												jsonObject));
 							} else {
 								SimiManager.getIntance().replaceFragment(
-										ThankyouFragment.newInstance(mMessage, jsonObject));
+										ThankyouFragment.newInstance(mMessage,
+												jsonObject));
 							}
 							// SimiManager.getIntance().showToast(message);
 						}
-//						SimiManager.getIntance().backToHomeFragment();
+						// SimiManager.getIntance().backToHomeFragment();
 						break;
 					case 2:
 						// event call paypal server.
@@ -395,14 +393,15 @@ public class ReviewOrderController extends SimiController implements
 						} else {
 							// SimiManager.getIntance().showToast(message);
 							mMessage = message;
-							jsonObject = mModel.getCollection()
-									.getJSON();
+							jsonObject = mModel.getCollection().getJSON();
 							if (DataLocal.isTablet) {
 								SimiManager.getIntance().replacePopupFragment(
-										ThankyouFragment.newInstance(mMessage, jsonObject));
+										ThankyouFragment.newInstance(mMessage,
+												jsonObject));
 							} else {
 								SimiManager.getIntance().replaceFragment(
-										ThankyouFragment.newInstance(mMessage, jsonObject));
+										ThankyouFragment.newInstance(mMessage,
+												jsonObject));
 							}
 						}
 						break;
