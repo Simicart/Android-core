@@ -65,6 +65,6 @@ public interface SearchDelegate extends SimiDelegate {
 	public void setCheckFilter(boolean filter);
 	public void setArrID(ArrayList<String> ids);
 	public void setIsLoadMore(boolean loadmore);
-	public EditText getEdittextSearch();
+//	public EditText getEdittextSearch();
 	public int getTotalResult();
 }

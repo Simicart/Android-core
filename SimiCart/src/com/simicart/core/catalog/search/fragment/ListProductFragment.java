@@ -193,7 +193,7 @@ public class ListProductFragment extends SimiFragment {
 			filterEvent = new FilterEvent(mSearchController);
 			mSearchBlock.setmQuery(mQuery);
 			if (!DataLocal.isTablet) {
-				mSearchBlock.getEdittextSearch().setText("");
+//				mSearchBlock.getEdittextSearch().setText("");
 			}
 			mSearchBlock.setFilterEvent(filterEvent);
 			mSearchController.onResume();
