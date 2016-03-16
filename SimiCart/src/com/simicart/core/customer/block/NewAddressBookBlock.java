@@ -279,7 +279,8 @@ public class NewAddressBookBlock extends SimiBlock implements
 		if (control != Constants.NEW_ADDRESS
 				&& control != Constants.NEW_ADDRESS_CHECKOUT) {
 			String email = DataLocal.getEmail();
-			if (null != email && !email.equals("")) {
+			if (null != email && !email.equals("")
+					&& DataLocal.isSignInComplete()) {
 				edt_email.setText(email);
 				if (mAfterController != Constants.NEW_CUSTOMER
 						&& mAfterController != Constants.NEW_AS_GUEST) {
