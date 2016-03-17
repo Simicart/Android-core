@@ -35,11 +35,12 @@ public class Config {
 	// private String mBaseUrl = "https://go360store.com/";
 	// private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
 
-	// private String mBaseUrl = "https://valmart.in/Magento/index.php/";
-	// private String mSecretKey = "a77cf82f96e874c853733a704a346dbb";
+	private String mBaseUrl = "http://opentestdrive.com/qc/milletstore_v1/";
+	private String mSecretKey = "b3f8350dd2e9735075a0705682204bb7";
 
-	private String mBaseUrl = "http://demo.magestore.com/simicart/simipos3/index.php";
-	private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	// private String mBaseUrl =
+	// "http://demo.magestore.com/simicart/simipos3/index.php";
+	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// private String key_color = "#607D8B";
 	// private String button_background = "#0277BD";

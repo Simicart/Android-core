@@ -2,7 +2,6 @@ package com.simicart.core.splashscreen.model;
 
 import java.io.Serializable;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
