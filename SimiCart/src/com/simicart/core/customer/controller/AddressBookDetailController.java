@@ -13,7 +13,9 @@ import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
+import com.simicart.core.checkout.fragment.ReviewOrderFragment;
 import com.simicart.core.common.Utils;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.delegate.AddressBookDetailDelegate;
 import com.simicart.core.customer.delegate.ChooseCountryDelegate;
@@ -36,8 +38,12 @@ public class AddressBookDetailController extends SimiController implements
 	protected OnClickListener mChooseStates;
 	protected String mCountry;
 	protected ArrayList<String> list_country_adapter;
-	protected String mCurrentCountry = "";	
+	protected String mCurrentCountry = "";
 	protected String mCurrentState = "";
+
+	protected int editAddressFor = Constants.KeyAddress.ALL_ADDRESS;
+	protected MyAddress mBillingAddress;
+	protected MyAddress mShippingAddress;
 
 	public OnClickListener getClickSave() {
 		return mClickSave;
@@ -54,6 +60,7 @@ public class AddressBookDetailController extends SimiController implements
 	public OnClickListener getChooseStates() {
 		return mChooseStates;
 	}
+
 	protected CountryAllowed getCurrentCountry(String name) {
 		if (null != name && null != country)
 			for (CountryAllowed ele : country) {
@@ -114,7 +121,17 @@ public class AddressBookDetailController extends SimiController implements
 					}
 				}
 				if (isCompleteRequired(address)) {
-					OnRequestChangeAddress(address);
+					switch (editAddressFor) {
+					case Constants.KeyAddress.BILLING_ADDRESS:
+						onEditBillingAddress(address);
+						break;
+					case Constants.KeyAddress.SHIPPING_ADDRESS:
+						onEditShippingAddress(address);
+						break;
+					default:
+						OnRequestChangeAddress(address);
+						break;
+					}
 				} else {
 					SimiManager.getIntance().showNotify(null,
 							"Please select all (*) fields", "OK");
@@ -141,6 +158,28 @@ public class AddressBookDetailController extends SimiController implements
 								country));
 			}
 		};
+	}
+
+	protected void onEditShippingAddress(MyAddress address) {
+		mShippingAddress = address;
+		if (mBillingAddress == null) {
+			mBillingAddress = address;
+		}
+		SimiManager.getIntance().replaceFragment(
+				ReviewOrderFragment.newInstance(editAddressFor,
+						mShippingAddress, mBillingAddress));
+
+	}
+
+	protected void onEditBillingAddress(MyAddress address) {
+		mBillingAddress = address;
+		if (mShippingAddress == null) {
+			mShippingAddress = address;
+		}
+		SimiManager.getIntance().replaceFragment(
+				ReviewOrderFragment.newInstance(editAddressFor,
+						mShippingAddress, mBillingAddress));
+
 	}
 
 	@Override
@@ -192,8 +231,6 @@ public class AddressBookDetailController extends SimiController implements
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
-					// SimiManager.getIntance().showNotify("SUCCESS", message,
-					// "OK");
 					AddressBookFragment fragment = AddressBookFragment
 							.newInstance();
 					SimiManager.getIntance().replacePopupFragment(fragment);
@@ -203,79 +240,6 @@ public class AddressBookDetailController extends SimiController implements
 				}
 			}
 		});
-		// String id = address.getAddressId();
-		// if (null != id) {
-		// Log.e("AddressBookDetailController ID", id);
-		// mModel.addParam("address_id", id);
-		// }
-		// String name = address.getName();
-		// if (null != name) {
-		// mModel.addParam("name", name);
-		// }
-		// String email = address.getEmail();
-		// if (null != email) {
-		// mModel.addParam("user_email", email);
-		// }
-		// String street = address.getStreet();
-		// if (null != street) {
-		// mModel.addParam("street", street);
-		// }
-		// String city = address.getCity();
-		// if (null != city) {
-		// mModel.addParam("city", city);
-		// }
-		// String prefix = address.getPrefix();
-		// if (null != prefix) {
-		// mModel.addParam("prefix", prefix);
-		// }
-		// String suffix = address.getSuffix();
-		// if (null != suffix) {
-		// mModel.addParam("suffix", suffix);
-		// }
-		// String taxvat = address.getTaxvat();
-		// if (null != taxvat) {
-		// mModel.addParam("taxvat", taxvat);
-		// }
-		// String phone = address.getPhone();
-		// if (null != phone) {
-		// mModel.addParam("phone", phone);
-		// }
-		// String fax = address.getFax();
-		// if (null != phone) {
-		// mModel.addParam("fax", fax);
-		// }
-		// String company = address.getCompany();
-		// if (null != company) {
-		// mModel.addParam("company", company);
-		// }
-		// String zipcode = address.getZipCode();
-		// if (null != zipcode) {
-		// mModel.addParam("zip", zipcode);
-		// }
-		// String statename = address.getStateName();
-		// if (null != statename && !statename.equals("null")
-		// && !statename.equals("")) {
-		// mModel.addParam("state_name", statename);
-		// String statecode = address.getStateCode();
-		// if (null != statecode) {
-		// mModel.addParam("state_code", statecode);
-		//
-		// }
-		// String stateid = address.getStateId();
-		// if (null != stateid) {
-		// mModel.addParam("state_id", stateid);
-		// }
-		// }
-		//
-		// String countryname = address.getCountryName();
-		// if (null != countryname && !countryname.equals("null")
-		// && !countryname.equals("")) {
-		// mModel.addParam("country_name", countryname);
-		// String countrycode = address.getCountryCode();
-		// if (null != countrycode) {
-		// mModel.addParam("country_code", countrycode);
-		// }
-		// }
 
 		List<NameValuePair> params = address.toParamsRequest();
 		for (NameValuePair nameValuePair : params) {
@@ -346,10 +310,9 @@ public class AddressBookDetailController extends SimiController implements
 
 	protected void changeFragmentCountry(int type,
 			ArrayList<String> list_country) {
-		CountryFragment fragment_country = CountryFragment.newInstance(type, list_country);
+		CountryFragment fragment_country = CountryFragment.newInstance(type,
+				list_country);
 		fragment_country.setChooseDelegate(this);
-//		fragment_country.setList_country(list_country);
-//		fragment_country.setType(type);
 		SimiManager.getIntance().replacePopupFragment(fragment_country);
 	}
 
@@ -365,6 +328,18 @@ public class AddressBookDetailController extends SimiController implements
 			}
 		}
 		return states;
+	}
+
+	public void setBillingAddress(MyAddress _BillingAddress) {
+		this.mBillingAddress = _BillingAddress;
+	}
+
+	public void setShippingAddress(MyAddress _ShippingAddress) {
+		this.mShippingAddress = _ShippingAddress;
+	}
+
+	public void setEditAddressFor(int _editAddressFor) {
+		this.editAddressFor = _editAddressFor;
 	}
 
 	@Override

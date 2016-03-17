@@ -44,6 +44,7 @@ import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.entity.MyAddress;
+import com.simicart.core.customer.fragment.AddressBookDetailFragment;
 import com.simicart.core.customer.fragment.NewAddressBookFragment;
 import com.simicart.core.event.checkout.CheckoutData;
 import com.simicart.core.event.checkout.EventCheckout;
@@ -202,26 +203,47 @@ public class ReviewOrderController extends SimiController implements
 									mBillingAddress, mShippingAddress);
 					SimiManager.getIntance().replacePopupFragment(fragment);
 				} else {
-					NewAddressBookFragment fragment = NewAddressBookFragment
+					AddressBookDetailFragment fragment = AddressBookDetailFragment
 							.newInstance();
-					Constants.getBundle = 1;
-					Bundle bundle = new Bundle();
-					SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
-							Constants.EDIT_ADDRESS, Constants.KeyData.TYPE_INT,
-							bundle);
-					SimiFragment.setData(Constants.KeyData.ADDRESS_FOR,
-							Constants.KeyAddress.SHIPPING_ADDRESS,
-							Constants.KeyData.TYPE_INT, bundle);
-					bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS,
-							mBillingAddress);
-					bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS,
+					Bundle bundleAddress = new Bundle();
+					bundleAddress.putSerializable(
+							Constants.KeyData.BOOK_ADDRESS, mShippingAddress);
+					bundleAddress.putInt(Constants.KeyData.ADDRESS_FOR,
+							Constants.KeyAddress.SHIPPING_ADDRESS);
+
+					bundleAddress.putSerializable(
+							Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
+					bundleAddress.putSerializable(
+							Constants.KeyData.SHIPPING_ADDRESS,
 							mShippingAddress);
-					fragment.setArguments(bundle);
+
+					fragment.setArguments(bundleAddress);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
 						SimiManager.getIntance().replaceFragment(fragment);
 					}
+
+					// NewAddressBookFragment fragment = NewAddressBookFragment
+					// .newInstance();
+					// Constants.getBundle = 1;
+					// Bundle bundle = new Bundle();
+					// SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
+					// Constants.EDIT_ADDRESS, Constants.KeyData.TYPE_INT,
+					// bundle);
+					// SimiFragment.setData(Constants.KeyData.ADDRESS_FOR,
+					// Constants.KeyAddress.SHIPPING_ADDRESS,
+					// Constants.KeyData.TYPE_INT, bundle);
+					// bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS,
+					// mBillingAddress);
+					// bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS,
+					// mShippingAddress);
+					// fragment.setArguments(bundle);
+					// if (DataLocal.isTablet) {
+					// SimiManager.getIntance().replacePopupFragment(fragment);
+					// } else {
+					// SimiManager.getIntance().replaceFragment(fragment);
+					// }
 				}
 			}
 		};
@@ -242,26 +264,47 @@ public class ReviewOrderController extends SimiController implements
 									mBillingAddress, mShippingAddress);
 					SimiManager.getIntance().replacePopupFragment(fragment);
 				} else {
-					NewAddressBookFragment fragment = NewAddressBookFragment
+					AddressBookDetailFragment fragment = AddressBookDetailFragment
 							.newInstance();
-					Constants.getBundle = 1;
-					Bundle bundle = new Bundle();
-					SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
-							Constants.EDIT_ADDRESS, Constants.KeyData.TYPE_INT,
-							bundle);
-					SimiFragment.setData(Constants.KeyData.ADDRESS_FOR,
-							Constants.KeyAddress.BILLING_ADDRESS,
-							Constants.KeyData.TYPE_INT, bundle);
-					bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS,
-							mBillingAddress);
-					bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS,
+					Bundle bundleAddress = new Bundle();
+					bundleAddress.putSerializable(
+							Constants.KeyData.BOOK_ADDRESS, mBillingAddress);
+					bundleAddress.putInt(Constants.KeyData.ADDRESS_FOR,
+							Constants.KeyAddress.BILLING_ADDRESS);
+
+					bundleAddress.putSerializable(
+							Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
+					bundleAddress.putSerializable(
+							Constants.KeyData.SHIPPING_ADDRESS,
 							mShippingAddress);
-					fragment.setArguments(bundle);
+
+					fragment.setArguments(bundleAddress);
 					if (DataLocal.isTablet) {
 						SimiManager.getIntance().replacePopupFragment(fragment);
 					} else {
 						SimiManager.getIntance().replaceFragment(fragment);
 					}
+
+					// NewAddressBookFragment fragment = NewAddressBookFragment
+					// .newInstance();
+					// Constants.getBundle = 1;
+					// Bundle bundle = new Bundle();
+					// SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
+					// Constants.EDIT_ADDRESS, Constants.KeyData.TYPE_INT,
+					// bundle);
+					// SimiFragment.setData(Constants.KeyData.ADDRESS_FOR,
+					// Constants.KeyAddress.BILLING_ADDRESS,
+					// Constants.KeyData.TYPE_INT, bundle);
+					// bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS,
+					// mBillingAddress);
+					// bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS,
+					// mShippingAddress);
+					// fragment.setArguments(bundle);
+					// if (DataLocal.isTablet) {
+					// SimiManager.getIntance().replacePopupFragment(fragment);
+					// } else {
+					// SimiManager.getIntance().replaceFragment(fragment);
+					// }
 				}
 			}
 		};

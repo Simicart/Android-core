@@ -28,8 +28,9 @@ public class Config {
 	// private String mBaseUrl = "https://www.grocerymantra.com";
 	// private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
 
-	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
-	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+	// private String mBaseUrl =
+	// "http://dev-vn.magestore.com/simicart/1800/index.php/";
+	// private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 
 	// private String mBaseUrl = "https://go360store.com/";
 	// private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
@@ -37,9 +38,8 @@ public class Config {
 	// private String mBaseUrl = "https://valmart.in/Magento/index.php/";
 	// private String mSecretKey = "a77cf82f96e874c853733a704a346dbb";
 
-	// private String mBaseUrl =
-	// "http://demo.magestore.com/simicart/simipos3/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	private String mBaseUrl = "http://demo.magestore.com/simicart/simipos3/index.php";
+	private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// private String key_color = "#607D8B";
 	// private String button_background = "#0277BD";

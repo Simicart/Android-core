@@ -73,10 +73,15 @@ public class AddressBookController extends SimiController {
 						.newInstance();
 				Constants.getBundle = 3;
 				bundleAfter = new Bundle();
-				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_ADDRESS, Constants.KeyData.TYPE_INT, bundleAfter);
-//				SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
-//				bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
-//				bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, mShippingAddress);
+				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
+						Constants.NEW_ADDRESS, Constants.KeyData.TYPE_INT,
+						bundleAfter);
+				// SimiFragment.setData(Constants.KeyData.ADDRESS_FOR,
+				// addressFor, Constants.KeyData.TYPE_INT, bundle);
+				// bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS,
+				// mBillingAddress);
+				// bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS,
+				// mShippingAddress);
 				Log.d("quang123", "==mListener==");
 				if (DataLocal.isTablet) {
 					SimiManager.getIntance().replacePopupFragment(fragment);
@@ -100,25 +105,19 @@ public class AddressBookController extends SimiController {
 
 	}
 
-	protected void addNewAddress() {
-
-	}
-	
 	protected void selectItem(int position) {
 		SimiEntity entity = mModel.getCollection().getCollection()
 				.get(position);
-//		Gson gson = new GsonBuilder().create();
 		JSONObject jsonObject = entity.getJSONObject();
-//		MyAddress addressbook = gson.fromJson(jsonObject.toString(), MyAddress.class);
 		MyAddress addressbook = new MyAddress();
 		addressbook.setJSONObject(jsonObject);
-		Log.d("quang12", "==selectItem==addressbook=="+addressbook.toString());
-//		Log.d("quang12", "==selectItem==addressbook=="+addressbook.getStreet());
-		Log.d("quang12", "==selectItem==getJSONObject=="+jsonObject.toString());
 		AddressBookDetailFragment fragment = AddressBookDetailFragment
 				.newInstance();
-		bundleAddress= new Bundle();
-		bundleAddress.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
+		bundleAddress = new Bundle();
+		bundleAddress.putSerializable(Constants.KeyData.BOOK_ADDRESS,
+				addressbook);
+		bundleAddress.putInt(Constants.KeyData.ADDRESS_FOR,
+				Constants.KeyAddress.ALL_ADDRESS);
 		fragment.setArguments(bundleAddress);
 		if (DataLocal.isTablet) {
 			SimiManager.getIntance().replacePopupFragment(fragment);
@@ -129,11 +128,12 @@ public class AddressBookController extends SimiController {
 
 	@Override
 	public void onResume() {
-		if(ConfigCheckout.getInstance().getStatusAddressBook() == true){
-			if(mModel != null)
-			mDelegate.updateView(mModel.getCollection());
-		}else{
-			mDelegate.updateView(ConfigCheckout.getInstance().getCollectionAddressBook());
+		if (ConfigCheckout.getInstance().getStatusAddressBook() == true) {
+			if (mModel != null)
+				mDelegate.updateView(mModel.getCollection());
+		} else {
+			mDelegate.updateView(ConfigCheckout.getInstance()
+					.getCollectionAddressBook());
 		}
 	}
 
