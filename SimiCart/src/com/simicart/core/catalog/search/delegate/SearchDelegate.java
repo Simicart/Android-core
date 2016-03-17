@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
-import com.simicart.core.adapter.ProductListAdapter;
 import com.simicart.core.base.delegate.SimiDelegate;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.search.adapter.GridViewProductListApdapter;
+import com.simicart.core.catalog.search.adapter.ProductListAdapter;
 
 public interface SearchDelegate extends SimiDelegate {
 

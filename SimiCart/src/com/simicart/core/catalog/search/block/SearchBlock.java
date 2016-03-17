@@ -45,7 +45,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.simicart.core.adapter.ProductListAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -55,6 +54,7 @@ import com.simicart.core.catalog.filter.common.FilterConstant;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.search.adapter.GridViewProductListApdapter;
 import com.simicart.core.catalog.search.adapter.ListPopupAdapter;
+import com.simicart.core.catalog.search.adapter.ProductListAdapter;
 import com.simicart.core.catalog.search.delegate.SearchDelegate;
 import com.simicart.core.catalog.search.entity.ItemListPopup;
 import com.simicart.core.catalog.search.entity.TagSearch;

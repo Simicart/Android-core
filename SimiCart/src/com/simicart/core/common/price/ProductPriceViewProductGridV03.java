@@ -199,8 +199,10 @@ public class ProductPriceViewProductGridV03 extends ProductPriceView {
 					.fromHtml(getHtmlForPrice(incl_tax_minimal)));
 
 		} else {
-			tv_regular_price.setText(Html
-					.fromHtml(getHtmlForPrice(mnimal_price)));
+			if (mnimal_price > -1) {
+				tv_regular_price.setText(Html
+						.fromHtml(getHtmlForPrice(mnimal_price)));
+			}
 		}
 
 		return viewPrice;
