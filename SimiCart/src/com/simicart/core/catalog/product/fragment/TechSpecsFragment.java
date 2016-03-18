@@ -29,7 +29,7 @@ public class TechSpecsFragment extends SimiFragment {
 
 	public static TechSpecsFragment newInstance() {
 		TechSpecsFragment fragment = new TechSpecsFragment();
-		
+
 		return fragment;
 	}
 
@@ -37,10 +37,10 @@ public class TechSpecsFragment extends SimiFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(
-				Rconfig.getInstance().layout(
-						"core_information_description_layout"), container,
+				Rconfig.getInstance()
+						.layout("core_information_techspec_layout"), container,
 				false);
-		
+
 		LinearLayout ll_techSpecs = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 
@@ -76,11 +76,11 @@ public class TechSpecsFragment extends SimiFragment {
 
 		return rootView;
 	}
-	
+
 	@Override
 	public void onEvent(BusEntity event) {
 		super.onEvent(event);
-		if(event.getKey() == Constants.KeyBus.PRODUCT){
+		if (event.getKey() == Constants.KeyBus.PRODUCT) {
 			Product product = (Product) event.getValue();
 			mAttributes = product.getAttributes();
 		}
