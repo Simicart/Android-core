@@ -35,10 +35,10 @@ public class TechSpecsFragment extends SimiFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(
-				Rconfig.getInstance().layout(
-						"core_information_description_layout"), container,
+				Rconfig.getInstance()
+						.layout("core_information_techspec_layout"), container,
 				false);
-		
+
 		LinearLayout ll_techSpecs = (LinearLayout) rootView
 				.findViewById(Rconfig.getInstance().id("l_scrollView"));
 
@@ -55,8 +55,9 @@ public class TechSpecsFragment extends SimiFragment {
 				tv_title.setLayoutParams(lp);
 				tv_title.setText(title);
 				tv_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-				tv_title.setTypeface(null, Typeface.BOLD);
+				tv_title.setTypeface(Typeface.DEFAULT_BOLD);
 				tv_title.setTextColor(Config.getInstance().getContent_color());
+				tv_title.setPadding(0, Utils.getValueDp(10), 0, 0);
 				ll_techSpecs.addView(tv_title);
 			}
 
@@ -74,11 +75,11 @@ public class TechSpecsFragment extends SimiFragment {
 
 		return rootView;
 	}
-	
+
 	@Override
 	public void onEvent(BusEntity event) {
 		super.onEvent(event);
-		if(event.getKey() == Constants.KeyBus.PRODUCT){
+		if (event.getKey() == Constants.KeyBus.PRODUCT) {
 			Product product = (Product) event.getValue();
 			mAttributes = product.getAttributes();
 		}

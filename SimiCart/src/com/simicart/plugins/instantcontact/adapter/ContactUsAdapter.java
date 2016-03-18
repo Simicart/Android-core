@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.instantcontact.entity.ContactUsEntity;
 
@@ -85,7 +86,7 @@ public class ContactUsAdapter extends BaseAdapter {
 			img_contactUs.setImageDrawable(ic_message);
 			img_contactUs.setBackgroundResource(contactUsEntity
 					.getImageContactUs());
-			tv_contactUs.setText(contactUsEntity.getNameContactUs());
+			tv_contactUs.setText(Config.getInstance().getText(contactUsEntity.getNameContactUs()));
 		} else {
 			img_contactUs.setVisibility(ImageView.GONE);
 			tv_contactUs.setVisibility(TextView.GONE);
@@ -102,7 +103,7 @@ public class ContactUsAdapter extends BaseAdapter {
 			img_contactUsList.setImageDrawable(ic_message);
 			img_contactUsList.setBackgroundResource(contactUsEntity
 					.getImageContactUs());
-			tv_contactUsList.setText(contactUsEntity.getNameContactUs());
+			tv_contactUsList.setText(Config.getInstance().getText(contactUsEntity.getNameContactUs()));
 		}
 		return convertView;
 	}

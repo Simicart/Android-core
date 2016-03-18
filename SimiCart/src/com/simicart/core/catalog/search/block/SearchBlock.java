@@ -45,7 +45,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.simicart.core.adapter.ProductListAdapter;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -55,6 +54,7 @@ import com.simicart.core.catalog.filter.common.FilterConstant;
 import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.search.adapter.GridViewProductListApdapter;
 import com.simicart.core.catalog.search.adapter.ListPopupAdapter;
+import com.simicart.core.catalog.search.adapter.ProductListAdapter;
 import com.simicart.core.catalog.search.delegate.SearchDelegate;
 import com.simicart.core.catalog.search.entity.ItemListPopup;
 import com.simicart.core.catalog.search.entity.TagSearch;
@@ -237,16 +237,16 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 
 		edit_search = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"edittext_search"));
-		edit_search.setHint(Config.getInstance().getText("Search"));
 		edit_search.setHintTextColor(Config.getInstance()
 				.getSearch_text_color());
-		if (!cate_name.equals("") && cate_name != null) {
-			edit_search.setHint(cate_name);
-		}
 		edit_search.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 		edit_search.setTextColor(Config.getInstance().getSearch_text_color());
 		if (mQuery != null && !mQuery.equals("")) {
 			edit_search.setText(mQuery);
+		}else if (!cate_name.equals("") && cate_name != null) {
+			edit_search.setHint(cate_name);
+		}else {
+			edit_search.setHint("Search");
 		}
 		edit_search.setOnFocusChangeListener(new OnFocusChangeListener() {
 			@Override

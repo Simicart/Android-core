@@ -12,7 +12,6 @@ import android.content.Context;
 import android.util.Log;
 
 import com.simicart.core.base.delegate.ModelDelegate;
-import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.cms.entity.Cms;
 import com.simicart.core.common.ReadXMLLanguage;
@@ -31,7 +30,6 @@ import com.simicart.core.splashscreen.delegate.SplashDelegate;
 import com.simicart.core.splashscreen.model.CMSPageModel;
 import com.simicart.core.splashscreen.model.PluginModel;
 import com.simicart.core.splashscreen.model.SaveCurrencyModel;
-import com.simicart.core.splashscreen.model.SplashModel;
 import com.simicart.core.splashscreen.model.StoreViewModel;
 import com.simicart.core.store.entity.Stores;
 
@@ -51,42 +49,15 @@ public class SplashController {
 
 		flagHome = false;
 
-		// Max add 1 request
-		final SplashModel homM = new SplashModel();
-		homM.setContext(mContext);
-		homM.setDelegate(new ModelDelegate() {
-
-			@Override
-			public void callBack(String message, boolean isSuccess) {
-				int count_data_home = homM.getCollection().getCollection()
-						.size();
-				if (count_data_home <= 0) {
-					String id = DataLocal.getCurrencyID();
-					if (id != null && !id.equals("")) {						
-						saveCurrency(id);
-					} else {						
-						getCMSPage();
-						getPlugin();
-						// getStore();
-						getStoreView();
-					}
-				} else {
-					SimiManager.getIntance().toV2MainActivity("1");
-				}
-			}
-		});
-
 		String id = DataLocal.getCurrencyID();
-		String store_id = DataLocal.getStoreID();
 		if (id != null && !id.equals("")) {
-			homM.addParam("currency", id);
+			saveCurrency(id);
+		} else {
+			getCMSPage();
+			getPlugin();
+			// getStore();
+			getStoreView();
 		}
-
-		if (Utils.validateString(store_id) && store_id != null
-				&& !store_id.equals("")) {
-			homM.addParam("store_id", store_id);
-		}		
-		homM.request();
 	}
 
 	private void saveCurrency(String id) {
@@ -99,7 +70,6 @@ public class SplashController {
 						+ message);
 				getCMSPage();
 				getPlugin();
-				// getStore();
 				getStoreView();
 			}
 		});
@@ -141,6 +111,7 @@ public class SplashController {
 				if (flagHome) {
 					Log.e("SplashController",
 							"call MainActicity from GetPlugin");
+					callEvent();
 					mDelegate.creatMain();
 				} else {
 					flagHome = true;
@@ -187,12 +158,6 @@ public class SplashController {
 							.get(0);
 					try {
 						parseJSONStoreView(entity);
-						CacheBlock cacheBlock = new CacheBlock();
-						EventBlock eventBlock = new EventBlock();
-						eventBlock
-								.dispatchEvent(
-										"com.simicart.splashscreen.controller.SplashController",
-										cacheBlock);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
@@ -200,6 +165,7 @@ public class SplashController {
 					if (flagHome) {
 						Log.e("SplashController",
 								"call MainActicity from GetPlugin");
+						callEvent();
 						mDelegate.creatMain();
 					} else {
 						flagHome = true;
@@ -215,6 +181,14 @@ public class SplashController {
 		}
 		model.request();
 
+	}
+
+	private void callEvent() {
+		CacheBlock cacheBlock = new CacheBlock();
+		EventBlock eventBlock = new EventBlock();
+		eventBlock.dispatchEvent(
+				"com.simicart.splashscreen.controller.SplashController",
+				cacheBlock);
 	}
 
 	private void parseJSONStoreView(SimiEntity entity) throws JSONException {

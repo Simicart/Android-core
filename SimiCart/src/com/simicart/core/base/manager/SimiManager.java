@@ -552,18 +552,4 @@ public class SimiManager {
 		toast.setGravity(Gravity.CENTER, 0, 0);
 		toast.show();
 	}
-
-	// Max add to open Main with only one request
-	public void toV2MainActivity(String check) {
-		Intent i = new Intent(mCurrentActivity, MainActivity.class);
-		Bundle extras = mCurrentActivity.getIntent().getExtras();
-		if (extras != null) {
-			i.putExtras(extras);
-		}
-
-		if (check != null)
-			i.putExtra("home_check", check);
-		mCurrentActivity.startActivity(i);
-		mCurrentActivity.finish();
-	}
 }

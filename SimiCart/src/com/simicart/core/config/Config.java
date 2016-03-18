@@ -44,6 +44,11 @@ public class Config {
 //	private String mSecretKey = "25dabf96d8ddcf1b0e0f0c832c2a9809";
 	// private String mBaseUrl = "http://www.numbersixlondon.com";
 	// private String mSecretKey = "31a20d589c881916d3c21f3576e0d0fe";
+	// private String mBaseUrl = "https://go360store.com/";
+	// private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
+
+//	private String mBaseUrl = "http://opentestdrive.com/qc/milletstore_v1/";
+//	private String mSecretKey = "b3f8350dd2e9735075a0705682204bb7";
 
 	 private String mBaseUrl =
 	 "http://demo.magestore.com/simicart/simipos3/index.php";

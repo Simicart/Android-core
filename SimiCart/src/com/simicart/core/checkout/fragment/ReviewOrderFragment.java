@@ -30,14 +30,18 @@ public class ReviewOrderFragment extends SimiFragment {
 	protected MyAddress mShippingAddress;
 	protected int mAfterControll;
 
-	public static ReviewOrderFragment newInstance(int afterControll, MyAddress shippingAdd, MyAddress billingAdd) {
+	public static ReviewOrderFragment newInstance(int afterControll,
+			MyAddress shippingAdd, MyAddress billingAdd) {
 		ReviewOrderFragment fragment = new ReviewOrderFragment();
 		fragment.setTargetFragment(fragment, ConfigCheckout.TARGET_REVIEWORDER);
-		Bundle bundle= new Bundle();
-		setData(Constants.KeyData.AFTER_CONTROL, afterControll, Constants.KeyData.TYPE_INT, bundle);
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.AFTER_CONTROL, afterControll,
+				Constants.KeyData.TYPE_INT, bundle);
 		bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, shippingAdd);
 		bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, billingAdd);
 		fragment.setArguments(bundle);
+		fragment.mBillingAddress = billingAdd;
+		fragment.mShippingAddress = shippingAdd;
 		return fragment;
 	}
 
@@ -61,29 +65,33 @@ public class ReviewOrderFragment extends SimiFragment {
 		View view = inflater.inflate(
 				Rconfig.getInstance().layout("core_review_order_layout"),
 				container, false);
-		if(DataLocal.isLanguageRTL){
+		if (DataLocal.isLanguageRTL) {
 			view = inflater.inflate(
 					Rconfig.getInstance().layout("rtl_review_order_layout"),
 					container, false);
 		}
 		Context context = getActivity();
-		
-		//getdata
-		if(getArguments() != null){
-		mAfterControll = (int) getData(Constants.KeyData.AFTER_CONTROL, Constants.KeyData.TYPE_INT, getArguments());
-		mShippingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.SHIPPING_ADDRESS);
-		mBillingAddress = (MyAddress) getArguments().getSerializable(Constants.KeyData.BILLING_ADDRESS);
+
+		// getdata
+		if (getArguments() != null) {
+			mAfterControll = (int) getData(Constants.KeyData.AFTER_CONTROL,
+					Constants.KeyData.TYPE_INT, getArguments());
+			mShippingAddress = (MyAddress) getArguments().getSerializable(
+					Constants.KeyData.SHIPPING_ADDRESS);
+			mBillingAddress = (MyAddress) getArguments().getSerializable(
+					Constants.KeyData.BILLING_ADDRESS);
 		}
-		Log.d("duyquang", "==ReviewOrderFragment3=="+mAfterControll+mShippingAddress.toString());
+		Log.e("duyquang", "==ReviewOrderFragment3==" + mAfterControll
+				+ mShippingAddress.toString());
 		mBlock = new ReviewOrderBlock(view, context);
 		mBlock.initView();
-		
+
 		LinearLayout list_shiping = (LinearLayout) view.findViewById(Rconfig
 				.getInstance().id("ll_shipping"));
 		mShippingBlock = new ShippingBlock(view, context);
 		mShippingBlock.initView();
 		mShippingBlock.setDelegate(mBlock);
-		
+
 		LinearLayout list_payment = (LinearLayout) view.findViewById(Rconfig
 				.getInstance().id("ll_payment"));
 		mPaymentMethodBlock = new PaymentMethodBlock(view, context);

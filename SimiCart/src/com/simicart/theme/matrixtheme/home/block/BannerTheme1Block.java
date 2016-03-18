@@ -67,7 +67,7 @@ public class BannerTheme1Block extends SimiBlock implements BannerDelegate {
 			}
 		}
 		if (height < 700) {
-			margin = -700;
+			margin = -550;
 		}
 
 		vp_bannerTop.setPageMargin(margin);

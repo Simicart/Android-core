@@ -94,8 +94,8 @@ public class NewAddressBookController extends SimiController implements
 	}
 
 	public void setDelegate(NewAddressBookDelegate mDelegate) {
-		if(mDelegate != null)
-		this.mDelegate = mDelegate;
+		if (mDelegate != null)
+			this.mDelegate = mDelegate;
 	}
 
 	@Override
@@ -143,44 +143,27 @@ public class NewAddressBookController extends SimiController implements
 				if (isCompleteRequired(address)) {
 					if (android.util.Patterns.EMAIL_ADDRESS.matcher(
 							address.getEmail()).matches()) {
-						if (mAfterController == Constants.NEW_AS_GUEST) {
+						SimiManager.getIntance().removeDialog();
+						switch (mAfterController) {
+						case Constants.NEW_AS_GUEST:
 							shippingAdd = address;
 							billingAdd = address;
 							afterControll = mAfterController;
 							Log.d("duyquang", "==1==NEW_AS_GUEST");
-							SimiManager.getIntance().replacePopupFragment(
-									ReviewOrderFragment.newInstance(afterControll, shippingAdd, billingAdd));
-						} else if (mAfterController == Constants.NEW_CUSTOMER) {
-							ProfileEntity profile = mDelegate
-									.getProfileEntity();
-							if (null != profile) {
-								String name = profile.getName();
-								String email = profile.getEmail();
-								String password = profile.getCurrentPass();
-								DataLocal.saveData(email, password);
-								DataLocal.saveData(name, email, password);
-								billingAdd = address;
-//								fragment.setAfterControll(mAfterController);
-								shippingAdd = address;
-								afterControll = mAfterController;
-
-								if (addressFor == Constants.KeyAddress.BILLING_ADDRESS) {
-									billingAdd = address;
-									shippingAdd = mShippingAddress;
-								} else if (addressFor == Constants.KeyAddress.SHIPPING_ADDRESS) {
-									shippingAdd = address;
-									billingAdd = mBillingAddress;
-								} else {
-									billingAdd = address;
-									shippingAdd = address;
-								}
-								Log.d("duyquang", "==1==NEW_CUSTOMER");
-								SimiManager.getIntance().removeDialog();
-								SimiManager.getIntance().replaceFragment(
-										ReviewOrderFragment.newInstance(afterControll, shippingAdd, billingAdd));
-							}
-						} else {
+							SimiManager.getIntance().replaceFragment(
+									ReviewOrderFragment.newInstance(
+											afterControll, shippingAdd,
+											billingAdd));
+							break;
+						case Constants.NEW_CUSTOMER:
+							onNewCustomer(address);
+							break;
+						case Constants.EDIT_ADDRESS:
+							onEditAddress(address);
+							break;
+						default:
 							OnRequestChangeAddress(address);
+							break;
 						}
 						ConfigCheckout.getInstance().setStatusAddressBook(true);
 					} else {
@@ -194,62 +177,6 @@ public class NewAddressBookController extends SimiController implements
 					SimiManager.getIntance().showNotify(null,
 							"Please select all (*) fields", "OK");
 				}
-				ReviewOrderFragment fragment = ReviewOrderFragment
-						.newInstance(afterControll, shippingAdd, billingAdd);
-//				Utils.hideKeyboard(arg0);
-//				if (isCompleteRequired(address)) {
-//					if (android.util.Patterns.EMAIL_ADDRESS.matcher(
-//							address.getEmail()).matches()) {
-//						if (mAfterController == NewAddressBookFragment.NEW_AS_GUEST
-//								|| mAfterController == NewAddressBookFragment.NEW_ADDRESS_CHECKOUT) {
-//							fragment.setBilingAddress(address);
-//							fragment.setShippingAddress(address);
-//							fragment.setAfterControll(mAfterController);
-//							SimiManager.getIntance().replacePopupFragment(
-//									fragment);
-//						} else if (mAfterController == NewAddressBookFragment.NEW_CUSTOMER) {
-//							ProfileEntity profile = mDelegate
-//									.getProfileEntity();
-//							if (null != profile) {
-//								String name = profile.getName();
-//								String email = profile.getEmail();
-//								String password = profile.getCurrentPass();
-//								DataLocal.saveData(email, password);
-//								DataLocal.saveData(name, email, password);
-//								fragment.setBilingAddress(address);
-////								fragment.setAfterControll(mAfterController);
-//								fragment.setShippingAddress(address);
-//								fragment.setAfterControll(mAfterController);
-//
-//								if (addressFor == AddressBookCheckoutFragment.BILLING_ADDRESS) {
-//									fragment.setBilingAddress(address);
-//									fragment.setShippingAddress(mShippingAddress);
-//								} else if (addressFor == AddressBookCheckoutFragment.SHIPPING_ADDRESS) {
-//									fragment.setShippingAddress(address);
-//									fragment.setBilingAddress(mBillingAddress);
-//								} else {
-//									fragment.setShippingAddress(address);
-//									fragment.setBilingAddress(address);
-//								}
-//								SimiManager.getIntance().removeDialog();
-//								SimiManager.getIntance().replaceFragment(
-//										fragment);
-//							}
-//						} else {
-//							OnRequestChangeAddress(address);
-//						}
-//						ConfigCheckout.getInstance().setStatusAddressBook(true);
-//					} else {
-//						SimiManager.getIntance().showNotify(
-//								null,
-//								Config.getInstance().getText(
-//										"Invalid email address"),
-//								Config.getInstance().getText("OK"));
-//					}
-//				} else {
-//					SimiManager.getIntance().showNotify(null,
-//							"Please select all (*) fields", "OK");
-//				}
 			}
 		};
 
@@ -275,8 +202,57 @@ public class NewAddressBookController extends SimiController implements
 				}
 			}
 		};
-Log.e("New Address Book Controller", mAfterController+"bbbb");
+		Log.e("New Address Book Controller", mAfterController + "bbbb");
 		mDelegate.createView(mAfterController);
+	}
+
+	private void onEditAddress(MyAddress address) {
+		MyAddress shippingAdd = null, billingAdd = null;
+		billingAdd = address;
+		shippingAdd = address;
+
+		if (addressFor == Constants.KeyAddress.BILLING_ADDRESS) {
+			billingAdd = address;
+			shippingAdd = mShippingAddress;
+		} else if (addressFor == Constants.KeyAddress.SHIPPING_ADDRESS) {
+			shippingAdd = address;
+			billingAdd = mBillingAddress;
+		} else {
+			billingAdd = address;
+			shippingAdd = address;
+		}
+		SimiManager.getIntance().replaceFragment(
+				ReviewOrderFragment.newInstance(mAfterController, shippingAdd,
+						billingAdd));
+	}
+
+	private void onNewCustomer(MyAddress address) {
+		MyAddress shippingAdd = null, billingAdd = null;
+		ProfileEntity profile = mDelegate.getProfileEntity();
+		if (null != profile) {
+			String name = profile.getName();
+			String email = profile.getEmail();
+			String password = profile.getCurrentPass();
+			DataLocal.saveData(email, password);
+			DataLocal.saveData(name, email, password);
+			billingAdd = address;
+			// fragment.setAfterControll(mAfterController);
+			shippingAdd = address;
+
+			if (addressFor == Constants.KeyAddress.BILLING_ADDRESS) {
+				billingAdd = address;
+				shippingAdd = mShippingAddress;
+			} else if (addressFor == Constants.KeyAddress.SHIPPING_ADDRESS) {
+				shippingAdd = address;
+				billingAdd = mBillingAddress;
+			} else {
+				billingAdd = address;
+				shippingAdd = address;
+			}
+			SimiManager.getIntance().replaceFragment(
+					ReviewOrderFragment.newInstance(mAfterController,
+							shippingAdd, billingAdd));
+		}
 	}
 
 	@Override
@@ -372,7 +348,7 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 						}
 
 						if (null != newAddress) {
-							
+
 							MyAddress shippingAdd = null, billingAdd = null;
 							if (mAfterController == Constants.NEW_ADDRESS_CHECKOUT) {
 								switch (addressFor) {
@@ -393,15 +369,17 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 								}
 								Log.d("duyquang", "=4=");
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance(mAfterController, shippingAdd, billingAdd);
-								SimiManager.getIntance().replacePopupFragment(
+										.newInstance(mAfterController,
+												shippingAdd, billingAdd);
+								SimiManager.getIntance().replaceFragment(
 										fragment);
 							} else {
 								billingAdd = newAddress;
 								shippingAdd = newAddress;
 								ReviewOrderFragment fragment = ReviewOrderFragment
-										.newInstance(-1 , shippingAdd, billingAdd);
-								SimiManager.getIntance().replacePopupFragment(
+										.newInstance(-1, shippingAdd,
+												billingAdd);
+								SimiManager.getIntance().replaceFragment(
 										fragment);
 							}
 						}
@@ -551,7 +529,8 @@ Log.e("New Address Book Controller", mAfterController+"bbbb");
 
 	protected void changeFragmentCountry(int type,
 			ArrayList<String> list_country) {
-		CountryFragment fragment = CountryFragment.newInstance(type, list_country);
+		CountryFragment fragment = CountryFragment.newInstance(type,
+				list_country);
 		fragment.setChooseDelegate(this);
 		SimiManager.getIntance().replacePopupFragment(fragment);
 	}

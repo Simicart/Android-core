@@ -23,23 +23,20 @@ public class AddressBookDetailFragment extends SimiFragment {
 	protected MyAddress addressbook;
 	protected AddressBookDetailBlock mBlock;
 	protected AddressBookDetailController mController;
-//	View view;
+
+	protected int editAddressFor = Constants.KeyAddress.ALL_ADDRESS;
+	protected MyAddress mBillingAddress;
+	protected MyAddress mShippingAddress;
+
+	// View view;
 	public MyAddress getAddressbook() {
 		return addressbook;
 	}
 
-//	public static AddressBookDetailFragment newInstance(MyAddress addressbook) {
-//		Log.d("quang12", "==addressbook==newInstance=="+addressbook.toString());
-//		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
-//		Bundle bundle= new Bundle();
-//		bundle.putSerializable(Constants.KeyData.BOOK_ADDRESS, addressbook);
-//		fragment.setArguments(bundle);
-//		return fragment;
-//	}
 	public static AddressBookDetailFragment newInstance() {
-	AddressBookDetailFragment fragment = new AddressBookDetailFragment();
-	return fragment;
-}
+		AddressBookDetailFragment fragment = new AddressBookDetailFragment();
+		return fragment;
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,35 +52,52 @@ public class AddressBookDetailFragment extends SimiFragment {
 							false);
 		}
 		Context context = getActivity();
-		if(getArguments() != null){
-		addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
+		if (getArguments() != null) {
+			addressbook = (MyAddress) getArguments().getSerializable(
+					Constants.KeyData.BOOK_ADDRESS);
+			editAddressFor = getArguments().getInt(
+					Constants.KeyData.ADDRESS_FOR);
+			if (editAddressFor != Constants.KeyAddress.ALL_ADDRESS) {
+				mShippingAddress = (MyAddress) getArguments().getSerializable(
+						Constants.KeyData.SHIPPING_ADDRESS);
+				mBillingAddress = (MyAddress) getArguments().getSerializable(
+						Constants.KeyData.BILLING_ADDRESS);
+			}
 		}
 		BusEntity<MyAddress> busEntity = new BusEntity<>();
 		busEntity.setKey(Constants.KeyBus.BOOK_ADDRESS);
 		busEntity.setValue(addressbook);
 		EventBus.getDefault().postSticky(busEntity);
-		Log.d("quang12", "==addressbook==getArguments=="+addressbook.toString());
+		Log.d("quang12",
+				"==addressbook==getArguments==" + addressbook.toString());
 		mBlock = new AddressBookDetailBlock(view, context);
 		mBlock.setAddressBookDetail(addressbook);
 		mBlock.initView();
 		if (null == mController) {
 			mController = new AddressBookDetailController();
 			mController.setDelegate(mBlock);
+			mController.setBillingAddress(mBillingAddress);
+			mController.setShippingAddress(mShippingAddress);
+			mController.setEditAddressFor(editAddressFor);
 			mController.onStart();
 		} else {
 			mController.setDelegate(mBlock);
+			mController.setBillingAddress(mBillingAddress);
+			mController.setShippingAddress(mShippingAddress);
+			mController.setEditAddressFor(editAddressFor);
 			mController.onResume();
 		}
 		mBlock.setSaveClicker(mController.getClickSave());
 		mBlock.setChooseCountry(mController.getChooseCountry());
 		mBlock.setChooseStates(mController.getChooseStates());
-		
+
 		return view;
 	}
+
 	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
+
 	}
-	
+
 }
