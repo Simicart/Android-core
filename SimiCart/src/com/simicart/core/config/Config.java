@@ -32,15 +32,22 @@ public class Config {
 	// "http://dev-vn.magestore.com/simicart/1800/index.php/";
 	// private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 
-	private String mBaseUrl = "https://go360store.com/index.php";
-	private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
+//	private String mBaseUrl = "https://go360store.com/index.php";
+//	private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
 
+//	private String mBaseUrl = "https://www.highstreettv.com/";
+//	private String mSecretKey = "5a4c0e94a019396ebd15eb307df71e18";
+	
+//	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
+//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+//	private String mBaseUrl = "http://www.caswellplating.com/";
+//	private String mSecretKey = "25dabf96d8ddcf1b0e0f0c832c2a9809";
 	// private String mBaseUrl = "http://www.numbersixlondon.com";
 	// private String mSecretKey = "31a20d589c881916d3c21f3576e0d0fe";
 
-	// private String mBaseUrl =
-	// "http://demo.magestore.com/simicart/simipos3/index.php";
-	// private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	 private String mBaseUrl =
+	 "http://demo.magestore.com/simicart/simipos3/index.php";
+	 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
 	// private String key_color = "#607D8B";
 	// private String button_background = "#0277BD";
