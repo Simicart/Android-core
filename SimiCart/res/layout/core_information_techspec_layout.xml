@@ -7,7 +7,8 @@
         android:id="@+id/l_scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="10dp" >
     </LinearLayout>
 
 </ScrollView>

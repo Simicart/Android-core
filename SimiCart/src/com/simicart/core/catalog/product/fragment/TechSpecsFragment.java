@@ -57,8 +57,9 @@ public class TechSpecsFragment extends SimiFragment {
 				tv_title.setLayoutParams(lp);
 				tv_title.setText(title);
 				tv_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-				tv_title.setTypeface(null, Typeface.BOLD);
+				tv_title.setTypeface(Typeface.DEFAULT_BOLD);
 				tv_title.setTextColor(Config.getInstance().getContent_color());
+				tv_title.setPadding(0, Utils.getValueDp(10), 0, 0);
 				ll_techSpecs.addView(tv_title);
 			}
 

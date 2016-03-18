@@ -55,7 +55,6 @@ public class DescriptionFragment extends SimiFragment {
 					"charset=UTF-8", null);
 		} else {
 			webView.getSettings().setTextZoom(300);
-			// webView.loadData(mDescription, "text/html", "UTF-8");
 			webView.loadDataWithBaseURL(null, mDescription, "text/html",
 					"charset=UTF-8", null);
 		}
