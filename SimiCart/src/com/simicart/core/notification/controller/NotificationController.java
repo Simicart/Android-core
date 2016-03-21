@@ -82,7 +82,7 @@ public class NotificationController {
 		// send deviceid to server
 		if (regId.equals("")) {
 			// Automatically registers application on startup.
-			GCMRegistrar.register(mContext, Config.getInstance().getSenderId());
+			GCMRegistrar.register(mContext,s_latitude,s_longitude, Config.getInstance().getSenderId());
 			Log.e(getClass().getName(),
 					"Automatically registers application on startup.");
 		} else {

@@ -176,7 +176,7 @@ public abstract class GCMBaseIntentService extends IntentService {
 	 * @param registrationId
 	 *            the registration id returned by the GCM service.
 	 */
-	protected abstract void onRegistered(Context context, String registrationId);
+	protected abstract void onRegistered(Context context,String latitude,String longtitude, String registrationId);
 
 	/**
 	 * Called after a device has been unregistered.
@@ -188,9 +188,17 @@ public abstract class GCMBaseIntentService extends IntentService {
 	 */
 	protected abstract void onUnregistered(Context context,
 			String registrationId);
+	private String longtitude;
+	private String latitude;
 
 	@Override
 	public final void onHandleIntent(Intent intent) {
+		if(intent.hasExtra("")) {
+			latitude = intent.getStringExtra(GCMConstants.EXTRA_LATITUDE);
+		}
+		if(intent.hasExtra("")) {
+			longtitude = intent.getStringExtra(GCMConstants.EXTRA_LONGTITUDE);
+		}
 		try {
 			Context context = getApplicationContext();
 			String action = intent.getAction();
@@ -239,7 +247,7 @@ public abstract class GCMBaseIntentService extends IntentService {
 					GCMRegistrar.internalUnregister(context);
 				} else {
 					String[] senderIds = getSenderIds(context);
-					GCMRegistrar.internalRegister(context, senderIds);
+					GCMRegistrar.internalRegister(context,latitude,longtitude, senderIds);
 				}
 			}
 		} finally {
@@ -290,6 +298,12 @@ public abstract class GCMBaseIntentService extends IntentService {
 		String registrationId = intent
 				.getStringExtra(GCMConstants.EXTRA_REGISTRATION_ID);
 		String error = intent.getStringExtra(GCMConstants.EXTRA_ERROR);
+		if(intent.hasExtra("")) {
+			latitude = intent.getStringExtra(GCMConstants.EXTRA_LATITUDE);
+		}
+		if(intent.hasExtra("")) {
+			longtitude = intent.getStringExtra(GCMConstants.EXTRA_LONGTITUDE);
+		}
 		String unregistered = intent
 				.getStringExtra(GCMConstants.EXTRA_UNREGISTERED);
 		Log.d(TAG, "handleRegistration: registrationId = " + registrationId
@@ -299,7 +313,7 @@ public abstract class GCMBaseIntentService extends IntentService {
 		if (registrationId != null) {
 			GCMRegistrar.resetBackoff(context);
 			GCMRegistrar.setRegistrationId(context, registrationId);
-			onRegistered(context, registrationId);
+			onRegistered(context,latitude,longtitude, registrationId);
 			return;
 		}
 

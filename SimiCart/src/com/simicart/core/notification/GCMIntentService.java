@@ -56,13 +56,22 @@ public class GCMIntentService extends GCMBaseIntentService {
 		super(Config.getInstance().getSenderId());
 	}
 
+	
 	@Override
-	protected void onRegistered(Context context, String registrationId) {
-		Log.e(TAG, "Device registered: regId = " + registrationId);
+	protected void onRegistered(Context context, String latitude,
+			String longtitude, String registrationId) {
+		// TODO Auto-generated method stub
 		CommonUtilities.displayMessage(context,
 				"From GCM: device successfully registered!");
-		ServerUtilities.register(context, registrationId);
+		ServerUtilities.register(context,latitude,longtitude, registrationId);
 	}
+//	@Override
+//	protected void onRegistered(Context context, String registrationId) {
+//		Log.e(TAG, "Device registered: regId = " + registrationId);
+//		CommonUtilities.displayMessage(context,
+//				"From GCM: device successfully registered!");
+//		ServerUtilities.register(context, registrationId);
+//	}
 
 	@Override
 	protected void onUnregistered(Context context, String registrationId) {
@@ -274,4 +283,6 @@ public class GCMIntentService extends GCMBaseIntentService {
 		} catch (ShortcutBadgeException e) {
 		}
 	}
+
+	
 }

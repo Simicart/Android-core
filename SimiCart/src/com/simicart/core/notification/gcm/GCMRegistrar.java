@@ -213,12 +213,14 @@ public final class GCMRegistrar {
 	 * @throws IllegalStateException
 	 *             if device does not have all GCM dependencies installed.
 	 */
-	public static void register(Context context, String... senderIds) {
+	public static void register(Context context, String latitude,
+			String longtitude, String... senderIds) {
 		GCMRegistrar.resetBackoff(context);
-		internalRegister(context, senderIds);
+		internalRegister(context, latitude, longtitude, senderIds);
 	}
 
-	static void internalRegister(Context context, String... senderIds) {
+	static void internalRegister(Context context, String latitude,
+			String longtitude, String... senderIds) {
 		String flatSenderIds = getFlatSenderIds(senderIds);
 		Log.v(TAG, "Registering app " + context.getPackageName()
 				+ " of senders " + flatSenderIds);
@@ -227,6 +229,8 @@ public final class GCMRegistrar {
 		intent.putExtra(GCMConstants.EXTRA_APPLICATION_PENDING_INTENT,
 				PendingIntent.getBroadcast(context, 0, new Intent(), 0));
 		intent.putExtra(GCMConstants.EXTRA_SENDER, flatSenderIds);
+		intent.putExtra(GCMConstants.EXTRA_LATITUDE, latitude);
+		intent.putExtra(GCMConstants.EXTRA_LONGTITUDE, longtitude);
 		context.startService(intent);
 	}
 
@@ -369,7 +373,7 @@ public final class GCMRegistrar {
 	 * @param regId
 	 *            registration id
 	 */
-	static String setRegistrationId(Context context, String regId) {
+	public static String setRegistrationId(Context context, String regId) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		String oldRegistrationId = prefs.getString(PROPERTY_REG_ID, "");
 		int appVersion = getAppVersion(context);
