@@ -369,7 +369,7 @@ public final class GCMRegistrar {
 	 * @param regId
 	 *            registration id
 	 */
-	static String setRegistrationId(Context context, String regId) {
+	public static String setRegistrationId(Context context, String regId) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		String oldRegistrationId = prefs.getString(PROPERTY_REG_ID, "");
 		int appVersion = getAppVersion(context);
