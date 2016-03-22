@@ -1,15 +1,15 @@
 package com.simicart.core.event.base;
 
-import java.io.InputStream;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
+import android.content.Context;
+import android.content.res.AssetManager;
 
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import android.content.Context;
-import android.content.res.AssetManager;
+import java.io.InputStream;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 public class ReadXML {
 
@@ -36,6 +36,7 @@ public class ReadXML {
 		}
 		return null;
 	}
+
 
 	public void getItemMaster(String filename) {
 		SAXParserFactory spf = SAXParserFactory.newInstance();

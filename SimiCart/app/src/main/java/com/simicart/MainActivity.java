@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.analytics.HitBuilders;
 import com.magestore.simicart.R;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.checkout.controller.ConfigCheckout;
@@ -46,6 +47,7 @@ import com.simicart.core.shortcutbadger.ShortcutBadger;
 import com.simicart.core.slidemenu.fragment.SlideMenuFragment;
 
 import java.util.List;
+import java.util.Map;
 
 @SuppressLint("DefaultLocale")
 public class MainActivity extends FragmentActivity {
@@ -340,54 +342,55 @@ public class MainActivity extends FragmentActivity {
         Uri uri = intent.getData();
 
         // Send a screenview using any available campaign or referrer data.
-//		MapBuilder.createAppView().setAll(getReferrerMapFromUri(uri));
+        new HitBuilders.ScreenViewBuilder().setAll(getReferrerMapFromUri(uri));
     }
 
     // This examples assumes the use of Google Analytics campaign
     // "utm" parameters, like "utm_source"
     private static final String CAMPAIGN_SOURCE_PARAM = "utm_source";
 
-	/*
+    /*
      * Given a URI, returns a map of campaign data that can be sent with any GA
-	 * hit.
-	 * 
-	 * @param uri A hierarchical URI that may or may not have campaign data
-	 * stored in query parameters.
-	 * 
-	 * @return A map that may contain campaign or referrer that may be sent with
-	 * any Google Analytics hit.
-	 */
-//	Map<String, String> getReferrerMapFromUri(Uri uri) {
-//
-//		MapBuilder paramMap = new MapBuilder();
-//
-//		// If no URI, return an empty Map.
-//		if (uri == null) {
-//			return paramMap.build();
-//		}
-//
-//		// Source is the only required campaign field. No need to continue if
-//		// not
-//		// present.
-//		if (uri.getQueryParameter(CAMPAIGN_SOURCE_PARAM) != null) {
-//
-//			// MapBuilder.setCampaignParamsFromUrl parses Google Analytics
-//			// campaign
-//			// ("UTM") parameters from a string URL into a Map that can be set
-//			// on
-//			// the Tracker.
-//			paramMap.setCampaignParamsFromUrl(uri.toString());
-//
-//			// If no source parameter, set authority to source and medium to
-//			// "referral".
-//		} else if (uri.getAuthority() != null) {
-//
-//			paramMap.set(Fields.CAMPAIGN_MEDIUM, "referral");
-//			paramMap.set(Fields.CAMPAIGN_SOURCE, uri.getAuthority());
-//		}
-//
-//		return paramMap.build();
-//	}
+     * hit.
+     *
+     * @param uri A hierarchical URI that may or may not have campaign data
+     * stored in query parameters.
+     *
+     * @return A map that may contain campaign or referrer that may be sent with
+     * any Google Analytics hit.
+     */
+    Map<String, String> getReferrerMapFromUri(Uri uri) {
+
+        HitBuilders.ScreenViewBuilder paramMap = new
+
+                HitBuilders.ScreenViewBuilder();
+
+        // If no URI, return an empty Map.
+        if (uri == null) {
+            return paramMap.build();
+        }
+
+        // Source is the only required campaign field. No need to continue if
+        // not
+        // present.
+        if (uri.getQueryParameter(CAMPAIGN_SOURCE_PARAM) != null) {
+
+            // MapBuilder.setCampaignParamsFromUrl parses Google Analytics
+            // campaign
+            // ("UTM") parameters from a string URL into a Map that can be set
+            // on
+            // the Tracker.
+            paramMap.setCampaignParamsFromUrl(uri.toString());
+
+            // If no source parameter, set authority to source and medium to
+            // "referral".
+        } else if (uri.getAuthority() != null) {
+            paramMap.set("utm_medium", "referral");
+            paramMap.set("utm_source", uri.getAuthority());
+        }
+
+        return paramMap.build();
+    }
 
     @Override
     protected void onDestroy() {
