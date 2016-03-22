@@ -3,22 +3,8 @@ package com.simicart.core.checkout.block;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import kankan.wheel.widget.OnWheelChangedListener;
-import kankan.wheel.widget.OnWheelScrollListener;
-import kankan.wheel.widget.WheelView;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.checkout.adapter.CreditCardAdapter;
@@ -30,6 +16,20 @@ import com.simicart.core.checkout.entity.PaymentMethod;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import kankan.wheel.widget.OnWheelChangedListener;
+import kankan.wheel.widget.OnWheelScrollListener;
+import kankan.wheel.widget.WheelView;
 
 public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 
@@ -109,9 +109,9 @@ public class CreditCardBlock extends SimiBlock implements CreditCardDelegate {
 		bt_save = (Button) mView.findViewById(Rconfig.getInstance().id(
 				"card_save"));
 		bt_save.setText(Config.getInstance().getText("Save"));
-		bt_save.setTextColor(Config.getInstance().getButton_text_color());
+		bt_save.setTextColor(Color.WHITE);
 		GradientDrawable gdDefault = new GradientDrawable();
-		gdDefault.setColor(Config.getInstance().getButton_background());
+		gdDefault.setColor(Config.getInstance().getColorMain());
 		gdDefault.setCornerRadius(15);
 		bt_save.setBackgroundDrawable(gdDefault);
 
