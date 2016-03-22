@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#CACACA"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/rlt_right_menutop"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/img_menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@null"
+            android:padding="5dp"
+            android:src="@drawable/ic_menu" />
+
+        <RelativeLayout
+            android:id="@+id/layout_cart"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" >
+
+                <Button
+                    android:id="@+id/btn_cartnavigation"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/ic_cart"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_horizontal"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="2dp" />
+
+                <TextView
+                    android:id="@+id/cart_qty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignRight="@+id/btn_cartnavigation"
+                    android:background="@drawable/cicle_background"
+                    android:gravity="center"
+                    android:paddingLeft="3dip"
+                    android:paddingRight="3dip"
+                    android:textColor="#FFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/layout_cart"
+            android:layout_toRightOf="@+id/img_menu"
+            android:contentDescription="@null"
+            android:src="@drawable/default_logo" />
+
+    </RelativeLayout>
+
+</LinearLayout>

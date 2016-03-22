@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    //compile 'com.braintreepayments.api:braintree:2.+'
+    //compile 'com.braintreepayments.api:drop-in:2.+'
+    compile 'com.google.android.gms:play-services-wallet:8.3.0'
+    compile 'com.braintreepayments:card-form:2.1.0'
+    compile 'com.android.support:support-annotations:23.0.1'
+    compile files('libs/OneTouchCoreAndroid-2.4.1.jar')
+    //compile 'com.paypal.sdk:paypal-android-sdk:2.12.4'
+}

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@drawable/core_grid_background_dialog"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:text="SORT"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#CACACA" />
+        <!-- popularity -->
+
+        <RelativeLayout
+            android:id="@+id/rlt_popularity"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp" >
+
+            <TextView
+                android:id="@+id/tv_popularity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="4dp"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/img_popularity"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="22dp"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/core_grid_image_checked"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#CACACA" />
+        <!-- brand a to z -->
+
+        <RelativeLayout
+            android:id="@+id/rlt_brand_az"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp" >
+
+            <TextView
+                android:id="@+id/tv_brand_a_to_z"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="4dp"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/img_brand_az"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="22dp"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/core_grid_image_checked"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#CACACA" />
+        <!-- brand z to a -->
+
+        <RelativeLayout
+            android:id="@+id/rlt_brand_za"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp" >
+
+            <TextView
+                android:id="@+id/tv_brand_z_to_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="4dp"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/img_brand_za"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="22dp"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/core_grid_image_checked"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#CACACA" />
+        <!-- name a to z -->
+
+        <RelativeLayout
+            android:id="@+id/rlt_name_az"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp" >
+
+            <TextView
+                android:id="@+id/tv_name_a_to_z"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="4dp"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/img_name_az"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="22dp"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/core_grid_image_checked"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#CACACA" />
+        <!-- name z to a -->
+
+        <RelativeLayout
+            android:id="@+id/rlt_name_za"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp" >
+
+            <TextView
+                android:id="@+id/tv_name_z_to_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="4dp"
+                android:gravity="center" />
+
+            <ImageView
+                android:id="@+id/img_name_za"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="22dp"
+                android:background="@null"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/core_grid_image_checked"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#CACACA" />
+        <!-- hot new -->
+
+    </LinearLayout>
+
+</LinearLayout>

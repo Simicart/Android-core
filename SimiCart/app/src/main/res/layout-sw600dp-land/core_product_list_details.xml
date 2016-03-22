@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/product_list_details"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="3dp" >
+
+    <RelativeLayout
+        android:id="@+id/rel_product_list_spot"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" 
+        android:background="@drawable/core_home_border_relative">
+
+        <ImageView
+            android:id="@+id/product_list_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@null"
+            android:padding="5dp"
+            android:src="@drawable/default_logo" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rel_product_list_content"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/product_list_name"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="left"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/layout_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_list_name"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/rl_mywishlist_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_line_border"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:id="@+id/tv_qtyItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:textColor="#979797"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_share_wishlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="2dp"
+            android:actionProviderClass="android.widget.ShareActionProvider"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/im_shareall"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/wishlist_share_icon" />
+
+            <TextView
+                android:id="@+id/tv_shareall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share WishList"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lv_mywistlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/fcart_rl" />
+    </LinearLayout>
+
+    <!-- <com.simicart.helper.CustomScrollView -->
+    <!-- android:id="@+id/wishlist_scroll" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:fillViewport="true" > -->
+
+
+    <!-- <com.simicart.helper.NoScrollListView -->
+    <!-- android:id="@+id/lv_mywistlist" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="match_parent" -->
+    <!-- android:layout_below="@+id/fcart_rl" > -->
+    <!-- </com.simicart.helper.NoScrollListView> -->
+    <!-- </com.simicart.helper.CustomScrollView> -->
+
+</LinearLayout>

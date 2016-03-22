@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.simicart.core.material.LayoutRipple
+        android:id="@+id/rl_rewardPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/im_reward_point"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_acc_address" />
+
+        <TextView
+            android:id="@+id/lb_reward_point"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="40dp"
+            android:layout_toRightOf="@+id/im_reward_point"
+            android:gravity="center_vertical"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/im_extend_reward_point"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_extend" />
+    </com.simicart.core.material.LayoutRipple>
+
+    <View
+        android:id="@+id/v_plugin_reward_point"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#E8E8E8" />
+
+</LinearLayout>

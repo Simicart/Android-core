@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="pagermargin">-700</string>
+    <string name="values">sw600dp</string>
+    <string name="test">We believe that the best way to improve your ability to speak in English is to have real conversations with native English speakers. You can learn all the grammar rules in the universe, you can memorize millions of words, but if you don’t practice speaking English with native speakers, you will not become fluent. \n We focus only on providing one service - spoken English practice to non- native English speakers who want to go from an elementary level to an advanced level. We do not offer language exchange programs. We don’t teach other languages. We are extremely focused - this makes us experts in our niche</string>
+    <string name="type_device">tablet</string>
+
+</resources> <!-- <string name="pagermargin">-1740</string> -->

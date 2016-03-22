@@ -1,0 +1,14 @@
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.magestore.simicart"
+    android:id="@+id/rlt_navigation"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:id="@+id/contain_cate_slidemenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </FrameLayout>
+
+</RelativeLayout>

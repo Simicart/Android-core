@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/core_cache_option_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!-- header cache option -->
+
+    <RelativeLayout
+        android:id="@+id/core_cache_option_layout_rlt_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/imv_arr"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_action_expand" />
+
+        <TextView
+            android:id="@+id/core_cache_option_layout_tv_required"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/imv_arr"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingRight="10dp" />
+
+        <TextView
+            android:id="@+id/core_cache_option_layout_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/core_cache_option_layout_tv_required"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp" />
+    </RelativeLayout>
+
+    <!-- body cache option -->
+
+    <LinearLayout
+        android:id="@+id/core_cache_option_layout_ll_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/core_cache_option_layout_rlt_header"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</RelativeLayout>

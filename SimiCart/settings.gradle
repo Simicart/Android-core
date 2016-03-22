@@ -1,0 +1,4 @@
+include ':app', ':', ':wheel', ':facebook', ':braintreelibrary'
+include ':facebookSDK'
+include ':library'
+include ':devsmartAndroid'

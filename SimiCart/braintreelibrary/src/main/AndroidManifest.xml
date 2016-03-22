@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.trueplus.simicart.braintreelibrary">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true"
+        tools:ignore="UnusedAttribute">
+
+        <activity android:name="com.trueplus.simicart.braintreelibrary.BraintreeBrowserSwitchActivity" />
+        <activity android:name="com.paypal.android.sdk.onetouch.core.PayPalOneTouchActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.braintreepayments.api.threedsecure.ThreeDSecureWebViewActivity" />
+
+        <activity android:name="com.trueplus.simicart.braintreelibrary.BraintreePaymentActivity" />
+
+    </application>
+
+</manifest>

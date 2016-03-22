@@ -1,0 +1,8 @@
+<resources>
+
+    <dimen name="height_home_ztheme_item">800dp</dimen>
+    <dimen name="height_banner_theme1">350dp</dimen>
+    <dimen name="height_category_theme1">200dp</dimen>
+    <dimen name="weight_category_theme1">500dp</dimen>
+
+</resources>

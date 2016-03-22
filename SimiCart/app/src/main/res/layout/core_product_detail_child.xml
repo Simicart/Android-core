@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.magestore.simicart"
+    android:id="@+id/rlt_parent_zthem_product_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.simicart.core.style.VerticalViewPager2
+        android:id="@+id/pager_child"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+    </com.simicart.core.style.VerticalViewPager2>
+
+</RelativeLayout>
