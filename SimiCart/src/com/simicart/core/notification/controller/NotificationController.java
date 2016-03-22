@@ -32,6 +32,7 @@ import com.simicart.core.notification.GCMIntentService;
 import com.simicart.core.notification.common.ServerUtilities;
 import com.simicart.core.notification.entity.NotificationEntity;
 import com.simicart.core.notification.fragment.WebviewFragment;
+import com.simicart.core.notification.gcm.GCMConstants;
 import com.simicart.core.notification.gcm.GCMRegistrar;
 import com.simicart.core.slidemenu.fragment.CateSlideMenuFragment;
 
@@ -62,6 +63,8 @@ public class NotificationController {
 			double longitude = gps.getLongitude();
 			s_latitude = Double.toString(latitude);
 			s_longitude = Double.toString(longitude);
+			GCMConstants.EXTRA_LATITUDE = s_latitude;
+			GCMConstants.EXTRA_LONGTITUDE = s_longitude;
 			Log.e(TAG, "Your Location is - \nLat: " + s_latitude + "\nLong: "
 					+ s_longitude);
 		} else {
@@ -183,12 +186,12 @@ public class NotificationController {
 
 		alertboxDowload.setContentView(view);
 		TextView tv = (TextView) alertboxDowload
-				.findViewById(android.R.id.title);
+                .findViewById(android.R.id.title);
 		tv.setMaxLines(2);
 		tv.setEllipsize(TruncateAt.END);
 		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 		alertboxDowload.setTitle(Config.getInstance().getText(
-				notificationData.getTitle()));
+                notificationData.getTitle()));
 		alertboxDowload.setCancelable(false);
 
 		TextView tv_close = (TextView) view.findViewById(Rconfig.getInstance()
@@ -252,10 +255,9 @@ public class NotificationController {
 					&& !notificationData.getProductID().equals("")
 					&& !notificationData.getProductID().toLowerCase()
 							.equals("null")) {
-				fragment = ProductDetailParentFragment.newInstance(
-						notificationData.getProductID(), null);
-				// ((ProductDetailParentFragment) fragment)
-				// .setProductID(notificationData.getProductID());
+				fragment = ProductDetailParentFragment.newInstance(notificationData.getProductID(),null);
+//				((ProductDetailParentFragment) fragment)
+//						.setProductID(notificationData.getProductID());
 			}
 		} else if (notificationData.getType().equals("2")) {
 			if (notificationData.getCategoryID() != null
@@ -264,30 +266,24 @@ public class NotificationController {
 				if (notificationData.getHasChild().equals("1")) {
 					if (DataLocal.isTablet) {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryID(),
-								notificationData.getCategoryName());
+								notificationData.getCategoryID(), notificationData.getCategoryName());
 						CateSlideMenuFragment.getIntance()
 								.replaceFragmentCategoryMenu(fragment);
 						CateSlideMenuFragment.getIntance().openMenu();
 						return;
 					} else {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryID(),
-								notificationData.getCategoryName());
+								notificationData.getCategoryID(), notificationData.getCategoryName());
 					}
 				} else {
-					fragment = ListProductFragment.newInstance(
-							ConstantsSearch.url_category,
-							notificationData.getCategoryID(), null, null,
-							notificationData.getCategoryName(), null, null,
-							null);
-					// ((ListProductFragment)
-					// fragment).setCategoryId(notificationData
-					// .getCategoryID());
-					// ((ListProductFragment) fragment)
-					// .setCategoryName(notificationData.getCategoryName());
-					// ((ListProductFragment) fragment)
-					// .setUrlSearch(ConstantsSearch.url_category);
+					fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, notificationData
+							.getCategoryID(), null, null, notificationData.getCategoryName(), null, null, null);
+//					((ListProductFragment) fragment).setCategoryId(notificationData
+//							.getCategoryID());
+//					((ListProductFragment) fragment)
+//							.setCategoryName(notificationData.getCategoryName());
+//					((ListProductFragment) fragment)
+//							.setUrlSearch(ConstantsSearch.url_category);
 				}
 			}
 		} else {

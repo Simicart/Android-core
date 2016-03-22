@@ -218,7 +218,7 @@ public final class GCMRegistrar {
 		internalRegister(context, senderIds);
 	}
 
-	static void internalRegister(Context context, String... senderIds) {
+	static void internalRegister(Context context,String... senderIds) {
 		String flatSenderIds = getFlatSenderIds(senderIds);
 		Log.v(TAG, "Registering app " + context.getPackageName()
 				+ " of senders " + flatSenderIds);
