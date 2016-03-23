@@ -45,7 +45,7 @@ dependencies {
     compile 'com.google.android.gms:play-services:8.3.0'
     compile project(':wheel')
     //build app over 65k methods
-//    compile 'com.android.support:multidex:1.0.1'
+        compile 'com.android.support:multidex:1.0.1'
     compile project(':facebook')
     compile project(':braintreelibrary')
     compile project(':devsmartAndroid')

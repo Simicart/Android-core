@@ -1,12 +1,5 @@
 package com.simicart.core.reportbug;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.lang.Thread.UncaughtExceptionHandler;
-import java.util.Date;
-
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -20,6 +13,13 @@ import android.util.Log;
 
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.splashscreen.SplashActivity;
+
+import java.io.File;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.Date;
 
 public class UnCaughtException implements UncaughtExceptionHandler {
 	private Context mContext;
@@ -147,7 +147,7 @@ public class UnCaughtException implements UncaughtExceptionHandler {
 								body.append(errorContent).append('\n')
 										.append('\n');
 
-								String title = "Log error (version 3.1)."
+								String title = "Log error (version 3.2)."
 										+ "\n";
 								String packageName = title
 										+ "PackageName: "

@@ -90,6 +90,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/default_icon"
@@ -131,12 +132,12 @@
             android:name="com.simicart.core.notification.NotificationActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog"></activity>
-        <!--<activity
+        <activity
             android:name="com.google.zxing.client.android.CaptureActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -147,7 +148,7 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>-->
+        </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:label="@string/app_name"
@@ -157,12 +158,12 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <!--<activity-->
-            <!--android:name="com.ipay.IpayAcitivity"-->
-            <!--android:configChanges="orientation|screenSize" />-->
-        <!--<activity-->
-            <!--android:name="com.ipay.IpayAcitivityR"-->
-            <!--android:configChanges="orientation|screenSize" />-->
+        <activity
+            android:name="com.ipay.IpayAcitivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name="com.ipay.IpayAcitivityR"
+            android:configChanges="orientation|screenSize" />
         <activity
             android:name="com.simicart.plugins.youtube.activity.YoutubePlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -196,17 +197,17 @@
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentConsentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity" />
 
-        <!-- <activity android:name="com.simicart.plugins.braintree.BrainTreeSimicart" />
-         <activity android:name="com.braintreepayments.api.dropin.BraintreePaymentActivity" />
-         &lt;!&ndash; Required to use PayPal &ndash;&gt;
-         <activity android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity" />
-         <activity android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity" />
-         <activity
-             android:name="com.paypal.android.sdk.payments.PayPalTouchActivity"
-             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.simicart.plugins.braintree.BrainTreeSimicart" />
+        <activity android:name="com.braintreepayments.api.dropin.BraintreePaymentActivity" />
+        <!-- Required to use PayPal -->
+        <activity android:name="com.paypal.android.sdk.payments.PayPalProfileSharingActivity" />
+        <activity android:name="com.paypal.android.sdk.payments.ProfileSharingConsentActivity" />
+        <activity
+            android:name="com.paypal.android.sdk.payments.PayPalTouchActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-         &lt;!&ndash; Required to use 3D Secure &ndash;&gt;
-         <activity android:name="com.braintreepayments.api.threedsecure.ThreeDSecureWebViewActivity" />-->
+        <!-- Required to use 3D Secure -->
+        <activity android:name="com.braintreepayments.api.threedsecure.ThreeDSecureWebViewActivity" />
 
         <receiver
             android:name="com.simicart.core.notification.GCMReceiver"
