@@ -29,7 +29,6 @@ import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.common.FontsOverride;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.customer.controller.AutoSignInController;
@@ -69,9 +68,6 @@ public class MainActivity extends FragmentActivity {
     public static int mBackEntryCountDetail = 0;
     public static boolean checkBackScan = false;
     public static MainActivity instance;
-    private int requestCode;
-    private int resultCode;
-    private Intent data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,14 +180,6 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // if (!mNavigationDrawerFragment.isDrawerOpen()) {
-        // getMenuInflater()
-        // .inflate(
-        // Rconfig.getInstance().getId("main_activity2",
-        // "menu"), menu);
-        // restoreActionBar();
-        // return true;
-        // // }
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -200,12 +188,7 @@ public class MainActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
-                // notification.openNotificastionSetting(this);
                 return true;
-            // case R.id.notification:
-            // notification.openNotificationSetting(this);
-            // return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -407,37 +390,27 @@ public class MainActivity extends FragmentActivity {
         // ViewServer.get(this).removeWindow(this);
     }
 
-    public int getRequestCode() {
-        return requestCode;
-    }
-
-    public int getResultCode() {
-        return resultCode;
-    }
-
-    public Intent getData() {
-        return data;
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        this.requestCode = requestCode;
-        this.resultCode = resultCode;
-        this.data = data;
+
         // event form signin
         EventController dispatch = new EventController();
         dispatch.dispatchEvent("com.simicart.MainActivity.onActivityResult",
                 this);
+
         EventBlock block = new EventBlock();
         if (requestCode == 64209) {
             block = new EventBlock();
             block.dispatchEvent("com.simicart.core.catalog.product.block.ProductBlock.resultfacebook.checkresultcode");
         }
-        if (requestCode == Constants.RESULT_BARCODE) {
-            block = new EventBlock();
-            block.dispatchEvent("com.simicart.leftmenu.mainactivity.onactivityresult.resultbarcode");
-        }
+
+        EventActivity eventActivity = new EventActivity();
+        CacheActivity cacheActivity = new CacheActivity();
+        cacheActivity.setData(data);
+        cacheActivity.setRequestCode(requestCode);
+        cacheActivity.setResultCode(resultCode);
+        eventActivity.dispatchEvent("com.simicart.leftmenu.mainactivity.onactivityresult.resultbarcode", cacheActivity);
     }
 
     public void nextActivity(View v) {

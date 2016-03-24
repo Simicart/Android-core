@@ -3,7 +3,7 @@
     <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/src/main/res/values/vpi__attrs.xml -->
     <eat-comment/>
     <attr format="boolean" name="centered"/>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -12,13 +12,13 @@
     <eat-comment/>
     <attr format="color" name="selectedColor"/>
     <attr format="dimension" name="strokeWidth"/>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <attr format="string" name="title"/>
     <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/src/main/res/values/vpi__attrs.xml -->
     <eat-comment/>
     <attr format="color" name="unselectedColor"/>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
     <bool name="abc_action_bar_embed_tabs_pre_jb">false</bool>
@@ -34,7 +34,7 @@
     <bool name="default_line_indicator_centered">true</bool>
     <bool name="default_title_indicator_selected_bold">true</bool>
     <bool name="default_underline_indicator_fades">true</bool>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
@@ -54,19 +54,6 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/SimiCart/facebookSDK/unspecified/res/values/values.xml -->
-    <eat-comment/>
-    <color name="com_facebook_blue">#3B5998</color>
-    <color name="com_facebook_likeboxcountview_border_color">#6a7180</color>
-    <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
-    <color name="com_facebook_likebutton_text_color">#FFFFFF</color>
-    <color name="com_facebook_likeview_text_color">#6a7180</color>
-    <color name="com_facebook_loginview_text_color">#FFFFFF</color>
-    <color name="com_facebook_picker_search_bar_background">#f5f5f7</color>
-    <color name="com_facebook_picker_search_bar_text">#bcbdc2</color>
-    <color name="com_facebook_usersettingsfragment_connected_shadow_color">#000000</color>
-    <color name="com_facebook_usersettingsfragment_connected_text_color">#FFFFFF</color>
-    <color name="com_facebook_usersettingsfragment_not_connected_text_color">#A6AED7</color>
     <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/src/main/res/values/vpi__defaults.xml -->
     <eat-comment/>
     <color name="default_circle_indicator_fill_color">#FFFFFFFF</color>
@@ -78,7 +65,7 @@
     <color name="default_title_indicator_selected_color">#FFFFFFFF</color>
     <color name="default_title_indicator_text_color">#BBFFFFFF</color>
     <color name="default_underline_indicator_selected_color">#FF33B5E5</color>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
@@ -162,13 +149,7 @@
     <declare-styleable name="ViewBackgroundHelper"><attr name="android:background"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewPagerIndicator"><attr format="reference" name="vpiCirclePageIndicatorStyle"/><attr format="reference" name="vpiIconPageIndicatorStyle"/><attr format="reference" name="vpiLinePageIndicatorStyle"/><attr format="reference" name="vpiTitlePageIndicatorStyle"/><attr format="reference" name="vpiTabPageIndicatorStyle"/><attr format="reference" name="vpiUnderlinePageIndicatorStyle"/></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <declare-styleable name="com_facebook_friend_picker_fragment"><attr format="boolean" name="multi_select"/></declare-styleable>
-    <declare-styleable name="com_facebook_like_view"><attr format="color" name="foreground_color"/><attr format="string" name="object_id"/><attr name="style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
-    <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="confirm_logout"/><attr format="boolean" name="fetch_user_info"/><attr format="string" name="login_text"/><attr format="string" name="logout_text"/></declare-styleable>
-    <declare-styleable name="com_facebook_picker_fragment"><attr format="boolean" name="show_pictures"/><attr format="string" name="extra_fields"/><attr format="boolean" name="show_title_bar"/><attr format="string" name="title_text"/><attr format="string" name="done_button_text"/><attr format="reference" name="title_bar_background"/><attr format="reference" name="done_button_background"/></declare-styleable>
-    <declare-styleable name="com_facebook_place_picker_fragment"><attr format="integer" name="radius_in_meters"/><attr format="integer" name="results_limit"/><attr format="string" name="search_text"/><attr format="boolean" name="show_search_box"/></declare-styleable>
-    <declare-styleable name="com_facebook_profile_picture_view"><attr name="preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="is_cropped"/></declare-styleable>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
@@ -230,36 +211,6 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/SimiCart/facebookSDK/unspecified/res/values/values.xml -->
-    <eat-comment/>
-    <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_caret_height">3dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_caret_width">6dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_text_padding">6dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_text_size">11.0sp</dimen>
-    <dimen name="com_facebook_likebutton_compound_drawable_padding">8dp</dimen>
-    <dimen name="com_facebook_likebutton_padding_bottom">0dp</dimen>
-    <dimen name="com_facebook_likebutton_padding_left">8dp</dimen>
-    <dimen name="com_facebook_likebutton_padding_right">8dp</dimen>
-    <dimen name="com_facebook_likebutton_padding_top">0dp</dimen>
-    <dimen name="com_facebook_likebutton_text_size">13.0sp</dimen>
-    <dimen name="com_facebook_likeview_edge_padding">2dp</dimen>
-    <dimen name="com_facebook_likeview_internal_padding">6dp</dimen>
-    <dimen name="com_facebook_likeview_text_size">11.0sp</dimen>
-    <dimen name="com_facebook_loginview_compound_drawable_padding">12dp</dimen>
-    <dimen name="com_facebook_loginview_padding_bottom">12dp</dimen>
-    <dimen name="com_facebook_loginview_padding_left">12dip</dimen>
-    <dimen name="com_facebook_loginview_padding_right">16dp</dimen>
-    <dimen name="com_facebook_loginview_padding_top">12dp</dimen>
-    <dimen name="com_facebook_loginview_text_size">16.0sp</dimen>
-    <dimen name="com_facebook_picker_place_image_size">64dp</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_large">180dp</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_normal">100dp</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_small">50dp</dimen>
-    <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
-    <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64dp</dimen>
-    <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64dp</dimen>
     <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/src/main/res/values/vpi__defaults.xml -->
     <eat-comment/>
     <dimen name="default_circle_indicator_radius">3dp</dimen>
@@ -275,7 +226,7 @@
     <dimen name="default_title_indicator_text_size">15dp</dimen>
     <dimen name="default_title_indicator_title_padding">5dp</dimen>
     <dimen name="default_title_indicator_top_padding">7dp</dimen>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -289,11 +240,6 @@
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/SimiCart/facebookSDK/unspecified/res/values/values.xml -->
-    <eat-comment/>
-    <drawable name="com_facebook_picker_default_separator_color">#33464c59</drawable>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
-    <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -315,7 +261,7 @@
     <integer name="default_title_indicator_line_position">0</integer>
     <integer name="default_underline_indicator_fade_delay">300</integer>
     <integer name="default_underline_indicator_fade_length">400</integer>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
@@ -335,38 +281,6 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/SimiCart/facebookSDK/unspecified/res/values/values.xml -->
-    <eat-comment/>
-    <string name="com_facebook_choose_friends">Choose Friends</string>
-    <string name="com_facebook_dialogloginactivity_ok_button">OK</string>
-    <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
-    <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
-    <string name="com_facebook_like_button_liked">Liked</string>
-    <string name="com_facebook_like_button_not_liked">Like</string>
-    <string name="com_facebook_loading">Loading...</string>
-    <string name="com_facebook_loginview_cancel_action">Cancel</string>
-    <string name="com_facebook_loginview_log_in_button">Log in with Facebook</string>
-    <string name="com_facebook_loginview_log_out_action">Log out</string>
-    <string name="com_facebook_loginview_log_out_button">Log out</string>
-    <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
-    <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
-    <string name="com_facebook_logo_content_description">Facebook Logo</string>
-    <string name="com_facebook_nearby">Nearby</string>
-    <string name="com_facebook_picker_done_button_text">Done</string>
-    <string name="com_facebook_placepicker_subtitle_catetory_only_format">%1$s</string>
-    <string name="com_facebook_placepicker_subtitle_format">%1$s • %2$,d were here</string>
-    <string name="com_facebook_placepicker_subtitle_were_here_only_format">%1$,d were here</string>
-    <string name="com_facebook_requesterror_password_changed">Your Facebook password has changed. Please log into this app again to reconnect your Facebook account.</string>
-    <string name="com_facebook_requesterror_permissions">This app doesn’t have permission to do this. To change permissions, try logging into the app again.</string>
-    <string name="com_facebook_requesterror_reconnect">Please log into this app again to reconnect your Facebook account.</string>
-    <string name="com_facebook_requesterror_relogin">Please log into this app again to reconnect your Facebook account.</string>
-    <string name="com_facebook_requesterror_web_login">Your Facebook account is locked. Please log into www.facebook.com to continue.</string>
-    <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
-    <string name="com_facebook_usersettingsfragment_log_in_button">Log in…</string>
-    <string name="com_facebook_usersettingsfragment_logged_in">Logged in</string>
-    <string name="com_facebook_usersettingsfragment_not_logged_in">Not logged in</string>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
-    <eat-comment/>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
@@ -1492,7 +1406,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/vpi__dark_theme</item>
     </style>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <style name="TextAppearance.Widget.AppCompat.ExpandedMenu.Item" parent="Base.TextAppearance.Widget.AppCompat.ExpandedMenu.Item">
     </style>
@@ -1528,7 +1442,7 @@
         <item name="vpiIconPageIndicatorStyle">@style/Widget.IconPageIndicator</item>
         <item name="vpiTabPageIndicatorStyle">@style/Widget.TabPageIndicator</item>
     </style>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
@@ -1539,7 +1453,7 @@
     <eat-comment/>
     <style name="Widget">
     </style>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/res/values/values.xml -->
+    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
@@ -1648,34 +1562,5 @@
         <item name="android:textAppearance">@style/TextAppearance.TabPageIndicator</item>
         <item name="android:textSize">12sp</item>
         <item name="android:maxLines">1</item>
-    </style>
-    <!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/build/intermediates/exploded-aar/SimiCart/facebookSDK/unspecified/res/values/values.xml -->
-    <eat-comment/>
-    <style name="com_facebook_loginview_default_style" parent="@android:style/Widget.Button">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@drawable/com_facebook_button_blue</item>
-        <item name="android:textColor">@color/com_facebook_loginview_text_color</item>
-        <item name="android:textSize">@dimen/com_facebook_loginview_text_size</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:paddingLeft">@dimen/com_facebook_loginview_padding_left</item>
-        <item name="android:gravity">center</item>
-    </style>
-    <style name="com_facebook_loginview_silver_style" parent="@android:style/Widget.Button">
-        <item name="android:width">205dp</item>
-        <item name="android:height">44dp</item>
-        <item name="android:background">@drawable/com_facebook_loginbutton_silver</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#4B5164</item>
-        <item name="android:gravity">center</item>
-    </style>
-    <style name="tooltip_bubble_text">
-	    <item name="android:textColor">@android:color/white</item>
-	    <item name="android:gravity">left</item>
-	    <item name="android:textSize">12sp</item>
-	    <item name="android:shadowDy">-1</item>
-	    <item name="android:shadowRadius">0.25</item>
-	    <item name="android:shadowColor">#40000000</item>
     </style>
 </resources>

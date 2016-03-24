@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/braintreelibrary/braintreelibrary.iml" filepath="$PROJECT_DIR$/braintreelibrary/braintreelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/devsmartAndroid/devsmartAndroid.iml" filepath="$PROJECT_DIR$/devsmartAndroid/devsmartAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/facebook/facebook.iml" filepath="$PROJECT_DIR$/facebook/facebook.iml" />
-      <module fileurl="file://$PROJECT_DIR$/facebookSDK/facebookSDK.iml" filepath="$PROJECT_DIR$/facebookSDK/facebookSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/wheel/wheel.iml" filepath="$PROJECT_DIR$/wheel/wheel.iml" />
     </modules>

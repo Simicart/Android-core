@@ -1,13 +1,13 @@
 package com.simicart.core.config;
 
-import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Map;
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 
 import com.simicart.core.common.Utils;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
+import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressLint("DefaultLocale")
 public class Config {
@@ -84,7 +84,7 @@ public class Config {
     private String menu_text_color = "#ECEFF1";
     private String menu_line_color = "#444444";
     private String menu_icon_color = "#ECEFF1";
-    private String app_backrground = "#FFFFFF";
+    private String app_background = "#FFFFFF";
     private String content_color = "#000000";
     private String line_color = "#CACACA";
     private String image_boder_color = "#d3d3d3";
@@ -125,7 +125,7 @@ public class Config {
 
     public int getButton_background() {
         if (Utils.validateString(button_background)) {
-            return Color.parseColor(button_background);
+            return Color.parseColor(app_background);
         } else {
             return Color.parseColor(key_color);
         }
@@ -176,11 +176,11 @@ public class Config {
     }
 
     public int getApp_backrground() {
-        return Color.parseColor(app_backrground);
+        return Color.parseColor(app_background);
     }
 
     public void setApp_backrground(String app_backrground) {
-        this.app_backrground = app_backrground;
+        this.app_background = app_backrground;
     }
 
     public int getContent_color() {
