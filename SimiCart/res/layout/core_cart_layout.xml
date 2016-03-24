@@ -4,17 +4,15 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF" >
 
-    <com.simicart.core.style.circlerefresh.CircleRefreshLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/refresh_layout"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/llCheckout"
-        app:AniBackColor="#ffffffff"
-        app:AniForeColor="#4C2F27"	
-        app:CircleSmaller="6" >
+        android:layout_below="@+id/layout_top" >
 
         <com.simicart.core.style.CustomScrollView
+            android:id="@+id/customscrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
@@ -55,7 +53,7 @@
                 </TableLayout>
             </RelativeLayout>
         </com.simicart.core.style.CustomScrollView>
-    </com.simicart.core.style.circlerefresh.CircleRefreshLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <LinearLayout
         android:id="@+id/llCheckout"

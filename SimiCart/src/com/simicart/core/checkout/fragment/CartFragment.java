@@ -54,7 +54,7 @@ public class CartFragment extends SimiFragment {
 			mController.setDelegate(mBlock);
 			mController.onResume();
 		}
-		mBlock.setOnRefreshListener(mController.getOnCircleReFreshListener());
+		mBlock.setOnRefreshListener(mController.getOnReFreshListener());
 		return view;
 	}
 

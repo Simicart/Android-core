@@ -28,5 +28,6 @@
     <dimen name="fab_labels_margin">8dp</dimen>
     <dimen name="height_button">55dp</dimen>
     <dimen name="height_button_tablet">60dp</dimen>
+    <dimen name="drawable_ring_size">4dip</dimen>
 
 </resources>

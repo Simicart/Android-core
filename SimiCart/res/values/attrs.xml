@@ -137,5 +137,4 @@
         <attr name="AniForeColor" format="color" />
         <attr name="CircleSmaller" format="integer" />
     </declare-styleable>
-
 </resources>

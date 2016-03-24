@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.simicart.core.adapter.CartListAdapter;
 import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.checkout.controller.CartListenerController;
@@ -18,14 +19,14 @@ import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.material.ButtonRectangle;
-import com.simicart.core.style.circlerefresh.CircleRefreshLayout;
-import com.simicart.core.style.circlerefresh.CircleRefreshLayout.OnCircleRefreshListener;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -57,7 +58,8 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 
 	protected static String message = "";
 
-	private CircleRefreshLayout refreshLayout;
+	
+	private SwipeRefreshLayout swipeView;
 
 	public CartBlock(View view, Context context) {
 		super(view, context);
@@ -97,20 +99,14 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 			Utils.changeColorLine(line_bottom);
 			Utils.changeColorLine(line_vertical);
 		}
-		refreshLayout = (CircleRefreshLayout) mView.findViewById(Rconfig
-				.getInstance().id("refresh_layout"));
-//		refreshLayout
-//				.setOnRefreshListener(new CircleRefreshLayout.OnCircleRefreshListener() {
-//					@Override
-//					public void refreshing() {
-//						
-//					}
-//
-//					@Override
-//					public void completeRefresh() {
-//						// do something when refresh complete
-//					}
-//				});
+		try {
+			swipeView = (SwipeRefreshLayout) mView.findViewById(Rconfig.getInstance().id("swipe_view"));
+			swipeView.setColorSchemeColors(Color.GRAY, Color.GREEN, Color.GRAY,
+					Color.GREEN);
+		} catch (Exception e) {
+			Log.e("Exception", e.getMessage());
+		}
+		
 	}
 
 	@Override
@@ -170,8 +166,8 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 		}
 	}
 
-	public void setOnRefreshListener(OnCircleRefreshListener listener) {
-		refreshLayout.setOnRefreshListener(listener);
+	public void setOnRefreshListener(OnRefreshListener listener) {
+		swipeView.setOnRefreshListener(listener);
 	}
 
 	public void setCheckoutClicker(OnClickListener clicker) {
@@ -269,9 +265,11 @@ public class CartBlock extends SimiBlock implements CartDelegate {
 		visiableView();
 	}
 
+
+
 	@Override
-	public CircleRefreshLayout getCircleRefreshLayout() {
-		return refreshLayout;
+	public void updateSwipeLayout(boolean input) {
+		swipeView.setRefreshing(input);
 	}
 
 }
