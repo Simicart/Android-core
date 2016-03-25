@@ -218,7 +218,7 @@ public final class GCMRegistrar {
 		internalRegister(context, senderIds);
 	}
 
-	static void internalRegister(Context context,String... senderIds) {
+	static void internalRegister(Context context, String... senderIds) {
 		String flatSenderIds = getFlatSenderIds(senderIds);
 		Log.v(TAG, "Registering app " + context.getPackageName()
 				+ " of senders " + flatSenderIds);
@@ -369,7 +369,7 @@ public final class GCMRegistrar {
 	 * @param regId
 	 *            registration id
 	 */
-	public static String setRegistrationId(Context context, String regId) {
+	static String setRegistrationId(Context context, String regId) {
 		final SharedPreferences prefs = getGCMPreferences(context);
 		String oldRegistrationId = prefs.getString(PROPERTY_REG_ID, "");
 		int appVersion = getAppVersion(context);

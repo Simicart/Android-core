@@ -57,11 +57,6 @@ public final class GCMConstants {
      * account (a Google email) that owns the application.
      */
     public static final String EXTRA_SENDER = "sender";
-    
-    
-    public static  String EXTRA_LONGTITUDE = "";
-//    
-    public static  String EXTRA_LATITUDE ="";
 
     /**
      * Extra used on {@link #INTENT_TO_GCM_REGISTRATION} to get the application

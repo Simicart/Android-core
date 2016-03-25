@@ -9,15 +9,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.simicart.core.base.delegate.ModelDelegate;
+import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.base.model.entity.SimiEntity;
+import com.simicart.core.base.networkcloud.request.error.SimiError;
 import com.simicart.core.cms.entity.Cms;
 import com.simicart.core.common.ReadXMLLanguage;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.customer.entity.ConfigCustomerAddress;
 import com.simicart.core.customer.entity.GenderConfig;
@@ -28,7 +29,9 @@ import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.block.EventBlock;
 import com.simicart.core.splashscreen.delegate.SplashDelegate;
 import com.simicart.core.splashscreen.model.CMSPageModel;
-import com.simicart.core.splashscreen.model.PluginModel;
+import com.simicart.core.splashscreen.model.ConfigModelCloud;
+import com.simicart.core.splashscreen.model.GetIDPluginsModel;
+import com.simicart.core.splashscreen.model.GetSKUPluginModel;
 import com.simicart.core.splashscreen.model.SaveCurrencyModel;
 import com.simicart.core.splashscreen.model.StoreViewModel;
 import com.simicart.core.store.entity.Stores;
@@ -38,6 +41,10 @@ public class SplashController {
 	protected SplashDelegate mDelegate;
 	protected Context mContext;
 	protected boolean flagHome = false;
+	protected boolean flagGetTheme = false;
+
+	private String MATRIX_THEME = "matrix";
+	private String ZARA_THEME = "zara";
 
 	public SplashController(SplashDelegate delegate, Context context) {
 		mDelegate = delegate;
@@ -47,17 +54,134 @@ public class SplashController {
 	public void create() {
 		initCommon();
 
+		getAppConfig();
+		getAvaiablePlugin();
+
 		flagHome = false;
+		flagGetTheme = false;
 
 		String id = DataLocal.getCurrencyID();
 		if (id != null && !id.equals("")) {
 			saveCurrency(id);
 		} else {
 			getCMSPage();
-			getPlugin();
-			// getStore();
 			getStoreView();
 		}
+	}
+
+	private void getAppConfig() {
+		final ConfigModelCloud appConfigModel = new ConfigModelCloud();
+		appConfigModel
+				.setDelegate(new com.simicart.core.base.networkcloud.delegate.ModelDelegate() {
+					@Override
+					public void onFail(SimiError error) {
+						if (error != null) {
+							SimiManager.getIntance().showNotify(null,
+									error.getMessage(), "Ok");
+						}
+					}
+
+					@Override
+					public void onSuccess(SimiCollection collection) {
+						if (collection != null) {
+							getTheme(appConfigModel.getLayout());
+						}
+					}
+				});
+
+		appConfigModel.request();
+	}
+
+	private void getTheme(String layout) {
+		if (!flagGetTheme) {
+			ReadXML readXml = new ReadXML(mContext);
+			readXml.read();
+			flagGetTheme = true;
+		}
+
+		if (layout.equals(MATRIX_THEME)) {
+			EventListener.setEvent("simi_themeone");
+		} else if (layout.equals(ZARA_THEME)) {
+			EventListener.setEvent("simi_ztheme");
+		}
+	}
+
+	private void getAvaiablePlugin() {
+		// http://dev-api.jajahub.com/rest/site-plugins
+		// lay ve danh sach id cua plugin enable
+		final GetIDPluginsModel idsModel = new GetIDPluginsModel();
+		idsModel.setDelegate(new com.simicart.core.base.networkcloud.delegate.ModelDelegate() {
+			@Override
+			public void onFail(SimiError error) {
+				if (flagHome) {
+					callEvent();
+					mDelegate.creatMain();
+				} else {
+					flagHome = true;
+				}
+			}
+
+			@Override
+			public void onSuccess(SimiCollection collection) {
+				String ids = idsModel.getIDs();
+				if (!flagGetTheme) {
+					ReadXML readXml = new ReadXML(mContext);
+					readXml.read();
+					flagGetTheme = true;
+				}
+				if (Utils.validateString(ids)) {
+					getSKUPlugin(ids);
+				} else {
+					if (flagHome) {
+						callEvent();
+						mDelegate.creatMain();
+					} else {
+						flagHome = true;
+					}
+				}
+			}
+		});
+
+		idsModel.addDataParameter("limit", "100");
+		idsModel.addDataParameter("offset", "0");
+		idsModel.request();
+
+	}
+
+	private void getSKUPlugin(String ids) {
+		// http://dev-api.jajahub.com/rest/public_plugins
+		// lay sku cua cac plugin enbale
+
+		final GetSKUPluginModel skuModel = new GetSKUPluginModel();
+		skuModel.setDelegate(new com.simicart.core.base.networkcloud.delegate.ModelDelegate() {
+			@Override
+			public void onFail(SimiError error) {
+
+			}
+
+			@Override
+			public void onSuccess(SimiCollection collection) {
+				ArrayList<String> mSKUs = skuModel.getListSKU();
+				if (mSKUs.size() > 0) {
+					for (String mSKU : mSKUs) {
+						EventListener.setEvent(mSKU);
+					}
+				}
+
+				if (flagHome) {
+					callEvent();
+					mDelegate.creatMain();
+				} else {
+					flagHome = true;
+				}
+			}
+		});
+
+		skuModel.addDataParameter("limit", "100");
+		skuModel.addDataParameter("offset", "0");
+		skuModel.addDataParameter("ids", ids);
+		skuModel.request();
+
 	}
 
 	private void saveCurrency(String id) {
@@ -66,10 +190,7 @@ public class SplashController {
 
 			@Override
 			public void callBack(String message, boolean isSuccess) {
-				Log.e("AAAAAAA SplashController", "callBack SAVE CURRENTCY"
-						+ message);
 				getCMSPage();
-				getPlugin();
 				getStoreView();
 			}
 		});
@@ -79,6 +200,14 @@ public class SplashController {
 		model.request();
 	}
 
+	private void callEvent() {
+		CacheBlock cacheBlock = new CacheBlock();
+		EventBlock eventBlock = new EventBlock();
+		eventBlock.dispatchEvent(
+				"com.simicart.splashscreen.controller.SplashController",
+				cacheBlock);
+	}
+
 	private void initCommon() {
 		DataLocal.init(mContext);
 		Config.getInstance().setBaseUrl();
@@ -86,39 +215,6 @@ public class SplashController {
 		UtilsEvent.itemsList.clear();
 		DataLocal.listCms.clear();
 		EventListener.setEvent("simi_developer");
-	}
-
-	private void getPlugin() {
-		ReadXML readXml = new ReadXML(mContext);
-		readXml.read();
-
-		final PluginModel model = new PluginModel();
-		// model.setDebugMode(true);
-		model.setDelegate(new ModelDelegate() {
-
-			@Override
-			public void callBack(String message, boolean isSuccess) {
-				if (isSuccess) {
-					ArrayList<SimiEntity> entity = model.getCollection()
-							.getCollection();
-					if (entity.size() > 0) {
-						for (SimiEntity simiEntity : entity) {
-							EventListener.setEvent(simiEntity
-									.getData(Constants.SKU));
-						}
-					}
-				}
-				if (flagHome) {
-					Log.e("SplashController",
-							"call MainActicity from GetPlugin");
-					callEvent();
-					mDelegate.creatMain();
-				} else {
-					flagHome = true;
-				}
-			}
-		});
-		model.request();
 	}
 
 	private void getCMSPage() {
@@ -147,7 +243,6 @@ public class SplashController {
 
 	public void getStoreView() {
 		final StoreViewModel model = new StoreViewModel();
-		// model.setDebugMode(true);
 		ModelDelegate delegate = new ModelDelegate() {
 
 			@Override
@@ -163,8 +258,6 @@ public class SplashController {
 					}
 					createLanguage();
 					if (flagHome) {
-						Log.e("SplashController",
-								"call MainActicity from GetPlugin");
 						callEvent();
 						mDelegate.creatMain();
 					} else {
@@ -181,14 +274,6 @@ public class SplashController {
 		}
 		model.request();
 
-	}
-
-	private void callEvent() {
-		CacheBlock cacheBlock = new CacheBlock();
-		EventBlock eventBlock = new EventBlock();
-		eventBlock.dispatchEvent(
-				"com.simicart.splashscreen.controller.SplashController",
-				cacheBlock);
 	}
 
 	private void parseJSONStoreView(SimiEntity entity) throws JSONException {
@@ -311,94 +396,6 @@ public class SplashController {
 		if (Config.getInstance().getUse_store().equals("1")) {
 			changeBaseUrl();
 		}
-
-		// longtb cloud 13-10-15
-		// theme configuration
-		if (entity.getJSONObject().has("theme_config")) {
-			// DataLocal.isCloud = true;
-			JSONObject js_theme_config = entity.getJSONObject().getJSONObject(
-					"theme_config");
-			parserThemeConfig(js_theme_config);
-		}
-	}
-
-	private void parserThemeConfig(JSONObject js_theme_config)
-			throws JSONException {
-		if (getDataColor(js_theme_config, "key_color"))
-			Config.getInstance().setKey_color(
-					js_theme_config.getString("key_color"));
-		if (getDataColor(js_theme_config, "top_menu_icon_color"))
-			Config.getInstance().setTop_menu_icon_color(
-					js_theme_config.getString("top_menu_icon_color"));
-		if (getDataColor(js_theme_config, "button_background"))
-			Config.getInstance().setButton_background(
-					js_theme_config.getString("button_background"));
-		if (getDataColor(js_theme_config, "button_text_color"))
-			Config.getInstance().setButton_text_color(
-					js_theme_config.getString("button_text_color"));
-		if (getDataColor(js_theme_config, "menu_background"))
-			Config.getInstance().setMenu_background(
-					js_theme_config.getString("menu_background"));
-		if (getDataColor(js_theme_config, "menu_text_color"))
-			Config.getInstance().setMenu_text_color(
-					js_theme_config.getString("menu_text_color"));
-		if (getDataColor(js_theme_config, "menu_line_color"))
-			Config.getInstance().setMenu_line_color(
-					js_theme_config.getString("menu_line_color"));
-		if (getDataColor(js_theme_config, "menu_icon_color"))
-			Config.getInstance().setMenu_icon_color(
-					js_theme_config.getString("menu_icon_color"));
-		if (getDataColor(js_theme_config, "app_background"))
-			Config.getInstance().setApp_backrground(
-					js_theme_config.getString("app_background"));
-		if (getDataColor(js_theme_config, "content_color"))
-			Config.getInstance().setContent_color(
-					js_theme_config.getString("content_color"));
-		if (getDataColor(js_theme_config, "line_color"))
-			Config.getInstance().setLine_color(
-					js_theme_config.getString("line_color"));
-		if (getDataColor(js_theme_config, "image_boder_color"))
-			Config.getInstance().setImage_boder_color(
-					js_theme_config.getString("image_boder_color"));
-		if (getDataColor(js_theme_config, "icon_color"))
-			Config.getInstance().setIcon_color(
-					js_theme_config.getString("icon_color"));
-		if (getDataColor(js_theme_config, "section_color"))
-			Config.getInstance().setSection_color(
-					js_theme_config.getString("section_color"));
-		if (getDataColor(js_theme_config, "price_color"))
-			Config.getInstance().setPrice_color(
-					js_theme_config.getString("price_color"));
-		if (getDataColor(js_theme_config, "special_price_color"))
-			Config.getInstance().setSpecial_price_color(
-					js_theme_config.getString("special_price_color"));
-		if (getDataColor(js_theme_config, "search_box_background"))
-			Config.getInstance().setSearch_box_background(
-					js_theme_config.getString("search_box_background"));
-		if (getDataColor(js_theme_config, "out_stock_background"))
-			Config.getInstance().setOut_stock_background(
-					js_theme_config.getString("out_stock_background"));
-		if (getDataColor(js_theme_config, "out_stock_text"))
-			Config.getInstance().setOut_stock_text(
-					js_theme_config.getString("out_stock_text"));
-		if (getDataColor(js_theme_config, "search_text_color"))
-			Config.getInstance().setSearch_text_color(
-					js_theme_config.getString("search_text_color"));
-		if (getDataColor(js_theme_config, "search_icon_color"))
-			Config.getInstance().setSearch_icon_color(
-					js_theme_config.getString("search_icon_color"));
-
-	}
-
-	private boolean getDataColor(JSONObject jsonObject, String key)
-			throws JSONException {
-		if (jsonObject.has(key)) {
-			String color = jsonObject.getString(key);
-			if (color != null && !color.equals("null") && !color.equals("")) {
-				return true;
-			}
-		}
-		return false;
 	}
 
 	private ArrayList<GenderConfig> getGenderConfigs(JSONArray jsonArray)

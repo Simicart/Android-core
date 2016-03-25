@@ -149,7 +149,6 @@ public class Express {
 	}
 
 	public void addButtonPayPalToCart() {
-		
 		int size1 = Utils.getValueDp(42);
 
 		ColorButton b_express = new ColorButton(context);
@@ -160,9 +159,9 @@ public class Express {
 		RelativeLayout.LayoutParams lp_express = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.MATCH_PARENT, size1);
 		lp_express.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-//		Button b_checkout = (Button) rootView.findViewById(Rconfig
-//				.getInstance().id("checkout"));
-//		lp_express.addRule(RelativeLayout.BELOW, b_checkout.getId());
+		Button b_checkout = (Button) rootView.findViewById(Rconfig
+				.getInstance().id("checkout"));
+		lp_express.addRule(RelativeLayout.BELOW, b_checkout.getId());
 		lp_express.setMargins(0, Utils.getValueDp(5), 0, 0);
 		b_express.setLayoutParams(lp_express);
 		b_express.setOnTouchListener(new OnTouchListener() {
@@ -192,7 +191,6 @@ public class Express {
 		});
 		RelativeLayout rl = (RelativeLayout) rootView.findViewById(Rconfig
 				.getInstance().id("fcart_rl_bottom"));
-		rl.removeAllViews();
 		rl.addView(b_express);
 	}
 

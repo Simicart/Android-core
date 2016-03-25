@@ -13,8 +13,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.simicart.core.base.delegate.ModelDelegate;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.common.Utils;
+import com.simicart.core.common.GPSTracker;
 import com.simicart.core.config.Config;
 import com.simicart.core.notification.gcm.GCMRegistrar;
 import com.simicart.core.notification.model.RegisterIDModel;
@@ -38,11 +37,10 @@ public final class ServerUtilities {
 			public void callBack(String message, boolean isSuccess) {
 				Log.e(getClass().getName(), "RegisterIDModel: " + message);
 				GCMRegistrar.setRegisteredOnServer(context, true);
-				GCMRegistrar.setRegistrationId(context, regId);
 			}
 		});
 		model.addParam("device_token", regId);
-		if(Utils.validateString(longitude) && Utils.validateString(latitude)) {
+		if (!longitude.equals("") && !latitude.equals("")) {
 			model.addParam("latitude", latitude);
 			model.addParam("longitude", longitude);
 		}
@@ -58,9 +56,7 @@ public final class ServerUtilities {
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				Log.e(getClass().getName(), "RegisterIDModel: " + message);
-				SimiManager.getIntance().showToast("Save register on server and device");
 				GCMRegistrar.setRegisteredOnServer(context, true);
-				GCMRegistrar.setRegistrationId(context, regId);
 			}
 		});
 		model.addParam("device_token", regId);
