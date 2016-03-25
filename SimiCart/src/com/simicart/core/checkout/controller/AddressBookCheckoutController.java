@@ -151,11 +151,7 @@ public class AddressBookCheckoutController extends AddressBookController {
 			ReviewOrderFragment fragment = ReviewOrderFragment.newInstance(0, shippingAdd, billingAdd);
 
 			SimiManager.getIntance().removeDialog();
-			if (DataLocal.isTablet) {
-				SimiManager.getIntance().replacePopupFragment(fragment);
-			} else {
 				SimiManager.getIntance().replaceFragment(fragment);
-			}
 		} catch (Exception e) {
 			Log.e("Error SelectItem AddressBookCheckoutController",
 					e.getMessage());
