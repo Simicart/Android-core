@@ -1,7 +1,5 @@
 package com.simicart.core.common.options;
 
-import java.util.ArrayList;
-
 import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -20,6 +18,8 @@ import com.simicart.core.common.options.multi.CacheOptionMultiView;
 import com.simicart.core.common.options.single.CacheOptionSignleView;
 import com.simicart.core.common.options.text.CacheOptionTextView;
 import com.simicart.core.common.options.time.CacheOptionTimeView;
+
+import java.util.ArrayList;
 
 @SuppressLint("DefaultLocale")
 public class ProductOptionParentView {

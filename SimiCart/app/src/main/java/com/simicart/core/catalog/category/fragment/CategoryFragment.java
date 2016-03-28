@@ -2,9 +2,7 @@ package com.simicart.core.catalog.category.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,7 +15,6 @@ import com.simicart.core.catalog.category.controller.CategoryDetailController;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
-import com.simicart.core.style.TouchImageViewTwo;
 
 public class CategoryFragment extends SimiFragment {
 

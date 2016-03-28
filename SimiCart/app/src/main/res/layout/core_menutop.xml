@@ -3,12 +3,12 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#CACACA"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:id="@+id/rlt_right_menutop"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/img_menu"
@@ -25,13 +25,14 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:gravity="center" >
+            android:gravity="center">
 
             <RelativeLayout
+                android:id="@+id/rlt_cart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true" >
+                android:layout_centerVertical="true">
 
                 <Button
                     android:id="@+id/btn_cartnavigation"
@@ -45,12 +46,21 @@
                     android:paddingLeft="0dp"
                     android:paddingRight="2dp" />
 
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignRight="@+id/rlt_cart"
+                android:layout_alignTop="@+id/rlt_cart"
+                android:paddingBottom="3dip">
+
                 <TextView
                     android:id="@+id/cart_qty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignRight="@+id/btn_cartnavigation"
                     android:background="@drawable/cicle_background"
                     android:gravity="center"
                     android:paddingLeft="3dip"
@@ -59,8 +69,11 @@
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:visibility="gone" />
+
             </RelativeLayout>
+
         </RelativeLayout>
+
 
         <ImageView
             android:id="@+id/img_logo"

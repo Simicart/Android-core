@@ -1,10 +1,5 @@
 package com.simicart.core.common.options.single;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-
 import android.graphics.Color;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +10,11 @@ import com.simicart.core.common.options.base.CacheOptionView;
 import com.simicart.core.common.options.delegate.CacheOptionSingleDelegate;
 import com.simicart.core.common.options.delegate.DependOptionDelegate;
 import com.simicart.core.config.Rconfig;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class CacheOptionSignleView extends CacheOptionView implements
 		DependOptionDelegate, CacheOptionSingleDelegate {

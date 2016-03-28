@@ -1,8 +1,5 @@
 package com.simicart.core.catalog.filter.block;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,7 +20,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.category.delegate.FilterRequestDelegate;
 import com.simicart.core.catalog.filter.common.FilterAdapter;
@@ -36,6 +32,9 @@ import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FilterBlock extends SimiBlock implements FilterDelegate {
 

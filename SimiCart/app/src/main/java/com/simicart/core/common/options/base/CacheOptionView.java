@@ -3,7 +3,6 @@ package com.simicart.core.common.options.base;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.provider.ContactsContract.Contacts.Data;
 import android.text.Html;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
