@@ -1,14 +1,15 @@
 package com.simicart.core.catalog.product.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.entity.BusEntity;
@@ -47,10 +48,12 @@ public class DescriptionFragment extends SimiFragment {
 		webView.getSettings().setLoadsImagesAutomatically(true);
 		webView.getSettings().setDefaultTextEncodingName("utf-8");
 		if (mDescription.contains("<div")) {
-			String text = "<html><body style=\"color:black;font-family:Helvetica;font-size:42px;font-weight: lighter;\"'background-color:transparent' >"
+			String text = "<html><body style=\"color:black;font-family:Helvetica;font-size:"
+					+ convertDpToPixel(12, getActivity())
+					+ "px;font-weight: lighter;\"'background-color:transparent' >"
 					+ "<p align=\"justify\" style=\"font-weight: normal\">"
 					+ mDescription + "</p>" + "</body></html>";
-			webView.getSettings().setTextZoom(400);
+			// webView.getSettings().setTextZoom(400);
 			webView.loadDataWithBaseURL(null, text, "text/html",
 					"charset=UTF-8", null);
 		} else {
@@ -59,6 +62,14 @@ public class DescriptionFragment extends SimiFragment {
 					"charset=UTF-8", null);
 		}
 		return rootView;
+	}
+
+	public static float convertDpToPixel(float dp, Context context) {
+		Resources resources = context.getResources();
+		DisplayMetrics metrics = resources.getDisplayMetrics();
+		float px = dp
+				* ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
+		return px;
 	}
 
 	@Override

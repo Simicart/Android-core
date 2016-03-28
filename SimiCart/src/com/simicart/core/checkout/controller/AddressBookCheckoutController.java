@@ -66,11 +66,16 @@ public class AddressBookCheckoutController extends AddressBookController {
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance();
 				Constants.getBundle = 1;
-				bundle= new Bundle();
-				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_ADDRESS_CHECKOUT, Constants.KeyData.TYPE_INT, bundle);
-				SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, addressFor, Constants.KeyData.TYPE_INT, bundle);
-				bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS, mBillingAddress);
-				bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS, mShippingAddress);
+				bundle = new Bundle();
+				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
+						Constants.NEW_ADDRESS_CHECKOUT,
+						Constants.KeyData.TYPE_INT, bundle);
+				SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, addressFor,
+						Constants.KeyData.TYPE_INT, bundle);
+				bundle.putSerializable(Constants.KeyData.BILLING_ADDRESS,
+						mBillingAddress);
+				bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS,
+						mShippingAddress);
 				fragment.setArguments(bundle);
 				if (DataLocal.isTablet) {
 					SimiManager.getIntance().replacePopupFragment(fragment);
@@ -134,7 +139,7 @@ public class AddressBookCheckoutController extends AddressBookController {
 			switch (addressFor) {
 			case Constants.KeyAddress.ALL_ADDRESS:
 				billingAdd = address;
-				shippingAdd= address;
+				shippingAdd = address;
 				break;
 			case Constants.KeyAddress.BILLING_ADDRESS:
 				billingAdd = address;
@@ -148,14 +153,11 @@ public class AddressBookCheckoutController extends AddressBookController {
 				break;
 			}
 			Log.d("quang123", "=AddressBookCheckoutController==selectItem");
-			ReviewOrderFragment fragment = ReviewOrderFragment.newInstance(0, shippingAdd, billingAdd);
+			ReviewOrderFragment fragment = ReviewOrderFragment.newInstance(0,
+					shippingAdd, billingAdd);
 
 			SimiManager.getIntance().removeDialog();
-			if (DataLocal.isTablet) {
-				SimiManager.getIntance().replacePopupFragment(fragment);
-			} else {
-				SimiManager.getIntance().replaceFragment(fragment);
-			}
+			SimiManager.getIntance().replaceFragment(fragment);
 		} catch (Exception e) {
 			Log.e("Error SelectItem AddressBookCheckoutController",
 					e.getMessage());

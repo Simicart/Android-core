@@ -3,12 +3,14 @@ package com.simicart.plugins.locator.entity;
 import java.io.Serializable;
 import java.util.List;
 
-public class StoreObject implements Serializable{
+import com.simicart.core.base.model.entity.SimiEntity;
+
+public class StoreObject extends SimiEntity implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String storeID;
+	private String storelocator_id;
 	private String name;
 	private String address;
 	private String city;
@@ -49,17 +51,36 @@ public class StoreObject implements Serializable{
 	private String zoom_level;
 	private String image_icon;
 	private String distance;
+	private String image;
 	// haita
 	private String country_name;
 	// end
 	private List<SpecialObject> list_special;
 	private List<SpecialObject> list_holiday;
 
-	public String getCountryName() {
-		return this.country_name;
+	
+	
+	public String getStorelocator_id() {
+		return storelocator_id;
 	}
 
-	public void setCountryName(String country_name) {
+	public void setStorelocator_id(String storelocator_id) {
+		this.storelocator_id = storelocator_id;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getCountry_name() {
+		return country_name;
+	}
+
+	public void setCountry_name(String country_name) {
 		this.country_name = country_name;
 	}
 
@@ -72,11 +93,11 @@ public class StoreObject implements Serializable{
 	}
 
 	public String getStoreID() {
-		return storeID;
+		return storelocator_id;
 	}
 
 	public void setStoreID(String storeID) {
-		this.storeID = storeID;
+		this.storelocator_id = storeID;
 	}
 
 	public String getName() {
