@@ -61,4 +61,22 @@
     <string name="minVersion">minVersion</string>
     <string name="isLaunchableActivity">isLaunchableActivity</string>
 
+    <string name="pre_chat_email_hint">Email address</string>
+    <string name="pre_chat_email_error_message">Email is required</string>
+    <string name="pre_chat_email_error_hint">Please enter an email address</string>
+    <string name="pre_chat_name_hint">Name</string>
+    <string name="pre_chat_name_error_message">Name is required</string>
+    <string name="pre_chat_name_error_hint">Please enter your name</string>
+    <string name="pre_chat_phone_hint">Phone number</string>
+    <string name="pre_chat_phone_error_message">Phone number is required</string>
+    <string name="pre_chat_phone_error_hint">Please enter your phone number</string>
+    <string name="pre_chat_departments_hint">Select a department</string>
+    <string name="pre_chat_departments_error_message">Department is required</string>
+    <string name="pre_chat_departments_error_hint">Please select a department</string>
+    <string name="pre_chat_message_hint">Message</string>
+    <string name="pre_chat_message_error_message">Message is required</string>
+    <string name="pre_chat_message_error_hint">Please enter a message</string>
+    <string name="pre_chat_menu_next_button">Next</string>
+    <string name="pre_chat_validation_error_message">Please correct above errors</string>
+    <string name="required_field_template">%1$s *</string>
 </resources>

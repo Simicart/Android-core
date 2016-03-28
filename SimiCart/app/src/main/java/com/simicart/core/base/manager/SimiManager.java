@@ -1,7 +1,5 @@
 package com.simicart.core.base.manager;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Service;
@@ -36,6 +34,8 @@ import com.simicart.core.menutop.controller.MenuTopController;
 import com.simicart.core.slidemenu.controller.PhoneSlideMenuController;
 import com.simicart.core.splashscreen.SplashActivity;
 import com.simicart.core.style.FragmentDialogHandle;
+
+import java.util.List;
 
 public class SimiManager {
 
@@ -552,4 +552,5 @@ public class SimiManager {
 		toast.setGravity(Gravity.CENTER, 0, 0);
 		toast.show();
 	}
+
 }

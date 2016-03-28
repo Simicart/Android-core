@@ -26,6 +26,8 @@ public class SignInFragment extends SimiFragment {
 	protected int resultCode;
 	protected Intent data;
 
+	protected boolean isLiveChat ;
+
 	public static SignInFragment newInstance(String email, String pass, boolean checkout) {
 		SignInFragment fragment = new SignInFragment();
 		Bundle bundle= new Bundle();
@@ -34,6 +36,10 @@ public class SignInFragment extends SimiFragment {
 		setData(Constants.KeyData.CHECK_BOO, checkout, Constants.KeyData.TYPE_BOOLEAN, bundle);
 		fragment.setArguments(bundle);
 		return fragment;
+	}
+
+	public void setLiveChat(boolean liveChat) {
+		this.isLiveChat = liveChat;
 	}
 	public static SignInFragment newInstance() {
 		SignInFragment fragment = new SignInFragment();

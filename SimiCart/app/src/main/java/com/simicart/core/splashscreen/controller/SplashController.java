@@ -216,6 +216,17 @@ public class SplashController {
 
 		Config.getInstance().setCurrency_symbol(
 				js_store_config.getString("currency_symbol"));
+		if(js_store_config.has("zopim_config")) {
+				JSONObject object = js_store_config.getJSONObject("zopim_config");
+				if(object != null) {
+					EventBlock block = new EventBlock();
+					CacheBlock cacheBlock = new CacheBlock();
+					SimiEntity simiEntity = new SimiEntity();
+					simiEntity.setJSONObject(object);
+					cacheBlock.setSimiEntity(simiEntity);
+					block.dispatchEvent("com.simicart.core.splashscreen.controller.parseJSONStoreView", cacheBlock);
+				}
+		}
 		if (js_store_config.has("use_store")) {
 			Config.getInstance().setUse_store(
 					js_store_config.getString("use_store"));

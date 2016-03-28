@@ -1,8 +1,5 @@
 package com.simicart.core.slidemenu.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -39,6 +36,9 @@ import com.simicart.core.slidemenu.delegate.SlideMenuDelegate;
 import com.simicart.core.slidemenu.entity.ItemNavigation;
 import com.simicart.core.slidemenu.entity.ItemNavigation.TypeItem;
 import com.simicart.core.slidemenu.fragment.CateSlideMenuFragment;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PhoneSlideMenuController {
 
@@ -234,6 +234,7 @@ public class PhoneSlideMenuController {
 			eventSlideMenu.dispatchEvent(
 					"com.simicart.add.navigation.account.wishlist",
 					slideMenuData);
+			eventSlideMenu.dispatchEvent("",slideMenuData);
 
 			int index_category = checkElement(CATEGORY);
 			if (DataLocal.isTablet) {
@@ -320,6 +321,8 @@ public class PhoneSlideMenuController {
 		eventSlideMenu.dispatchEvent("com.simicart.add.navigation.more.locator",
 				slideMenuData);
 		eventSlideMenu.dispatchEvent("com.simicart.add.navigation.more.contactus",
+				slideMenuData);
+		eventSlideMenu.dispatchEvent("com.simicart.add.navigation.more.zopimchat",
 				slideMenuData);
 
 		// CMS
@@ -420,7 +423,7 @@ public class PhoneSlideMenuController {
 		case "Order History":
 			fragment = OrderHistoryFragment.newInstance();
 			break;
-		case "Setting":
+			case "Setting":
 			fragment = SettingAppFragment.newInstance();
 			fragment.setShowPopup(true);
 			break;
@@ -430,6 +433,8 @@ public class PhoneSlideMenuController {
 
 		return fragment;
 	}
+
+
 
 	public SimiFragment navigatePlugin(ItemNavigation item) {
 		SimiFragment fragment = null;

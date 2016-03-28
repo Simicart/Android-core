@@ -52,6 +52,7 @@ public class SignInController extends SimiController {
 	private TextWatcher mPassWatcher;
 	private TextWatcher mEmailWatcher;
 	protected OnCheckedChangeListener mOnCheckBox;
+
 	
 
 	protected boolean isCheckout = false, isVisibleSignIn = false;// sign in into checkout

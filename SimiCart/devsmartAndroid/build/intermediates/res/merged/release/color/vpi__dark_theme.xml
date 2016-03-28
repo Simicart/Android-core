@@ -22,4 +22,4 @@
     <!--item android:state_activated="true" android:color="@color/vpi__bright_foreground_holo_dark"/-->
     <item android:color="@color/vpi__bright_foreground_holo_dark"/> <!-- not selected -->
 </selector>
-<!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/library/src/main/res/color/vpi__dark_theme.xml --><!-- From: file:/F:/AndroidStudio/ProjectAndroidStudio/SimiCart/devsmartAndroid/build/intermediates/exploded-aar/SimiCart/library/unspecified/res/color/vpi__dark_theme.xml -->
+<!-- From: file:/home/truongtechno/Android-core/SimiCart/library/src/main/res/color/vpi__dark_theme.xml --><!-- From: file:/home/truongtechno/Android-core/SimiCart/devsmartAndroid/build/intermediates/exploded-aar/SimiCart/library/unspecified/res/color/vpi__dark_theme.xml -->

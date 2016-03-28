@@ -74,7 +74,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         MultiDex.install(this);
         // report bug
-        Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
+//        Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
         SimiManager.getIntance().setCurrentActivity(this);
         SimiManager.getIntance().setCurrentContext(getApplicationContext());
         setContentView(R.layout.core_main_activity);
