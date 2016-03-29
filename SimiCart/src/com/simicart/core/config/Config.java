@@ -51,8 +51,8 @@ public class Config {
 //	private String mSecretKey = "b3f8350dd2e9735075a0705682204bb7";
 
 	 private String mBaseUrl =
-	 "http://demo.magestore.com/simicart/simipos3/index.php";
-	 private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
+	 "http://demo.oromoda.net";
+	 private String mSecretKey = "0e42332eaeb2c9571eb3041aed5d1790";
 
 	// private String key_color = "#607D8B";
 	// private String button_background = "#0277BD";
