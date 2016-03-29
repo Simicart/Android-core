@@ -82,7 +82,12 @@ public class AddressBookController extends SimiController {
 				// mBillingAddress);
 				// bundle.putSerializable(Constants.KeyData.SHIPPING_ADDRESS,
 				// mShippingAddress);
+				Log.d("quang123", "==mListener==");
+				if (DataLocal.isTablet) {
+					SimiManager.getIntance().replacePopupFragment(fragment);
+				} else {
 					SimiManager.getIntance().replaceFragment(fragment);
+				}
 				return false;
 			}
 		};
