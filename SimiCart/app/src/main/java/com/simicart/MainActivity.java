@@ -72,7 +72,6 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MultiDex.install(this);
         // report bug
         Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
         SimiManager.getIntance().setCurrentActivity(this);
@@ -122,6 +121,12 @@ public class MainActivity extends FragmentActivity {
         ft.replace(Rconfig.getInstance().id("menu_top"), fragment);
         ft.commit();
         // ViewServer.get(this).addWindow(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     private void autoSignin() {

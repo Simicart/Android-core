@@ -71,4 +71,11 @@ public class SearchObject implements Serializable{
 		this.zipcode = zipcode;
 	}
 
+	@Override
+	public String toString() {
+		return "SearchObject [city=" + city + ", state=" + state + ", zipcode="
+				+ zipcode + ", tag=" + tag + ", name_country=" + name_country
+				+ ", position_country=" + position_country + "]";
+	}
+
 }

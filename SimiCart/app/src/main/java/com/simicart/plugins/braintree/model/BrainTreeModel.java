@@ -1,10 +1,10 @@
 package com.simicart.plugins.braintree.model;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import com.simicart.core.base.model.SimiModel;
 import com.simicart.core.base.model.collection.SimiCollection;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class BrainTreeModel extends SimiModel {
 

@@ -32,7 +32,7 @@ public class StoreParser {
 						storeObject.setCity(object.getString("city"));
 						storeObject.setCountry(object.getString("country"));
 						// haita
-						storeObject.setCountryName(object
+						storeObject.setCountry_name(object
 								.getString("country_name"));
 						// end
 						storeObject.setStoreID(object

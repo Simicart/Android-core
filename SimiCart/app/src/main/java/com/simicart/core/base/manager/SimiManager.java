@@ -1,7 +1,5 @@
 package com.simicart.core.base.manager;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Service;
@@ -24,6 +22,7 @@ import android.widget.Toast;
 import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.network.request.SimiRequestQueue;
+import com.simicart.core.base.networkcloud.request.multi.SimiRequestQueueCloud;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
@@ -37,6 +36,8 @@ import com.simicart.core.slidemenu.controller.PhoneSlideMenuController;
 import com.simicart.core.splashscreen.SplashActivity;
 import com.simicart.core.style.FragmentDialogHandle;
 
+import java.util.List;
+
 public class SimiManager {
 
 	private Activity mCurrentActivity;
@@ -48,9 +49,14 @@ public class SimiManager {
 	private FragmentManager mChildFragmentManager;
 
 	protected SimiRequestQueue mRequestQueue;
+	protected SimiRequestQueueCloud mRequestQueueCloud;
 	protected Boolean isShowedNotify = false;
 	protected boolean isRefreshCart = true;
 	protected int mQtyCartPrevious;
+
+	public SimiRequestQueueCloud getRequestQueueCloud() {
+		return mRequestQueueCloud;
+	}
 
 	public SimiRequestQueue getRequestQueue() {
 		return mRequestQueue;
@@ -59,6 +65,8 @@ public class SimiManager {
 	private SimiManager() {
 		mRequestQueue = new SimiRequestQueue();
 		mRequestQueue.start();
+		mRequestQueueCloud = new SimiRequestQueueCloud();
+		mRequestQueueCloud.start();
 	}
 
 	public static SimiManager getIntance() {

@@ -1,14 +1,5 @@
 package com.simicart.plugins.locator.fragment;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONObject;
-import org.w3c.dom.Document;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -24,6 +15,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,7 +28,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TabHost;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TextView;
@@ -57,6 +48,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.DrawableManager;
@@ -74,12 +68,24 @@ import com.simicart.plugins.locator.ShowMapError;
 import com.simicart.plugins.locator.StoreParser;
 import com.simicart.plugins.locator.entity.SearchObject;
 import com.simicart.plugins.locator.entity.StoreObject;
+import com.simicart.plugins.locator.model.ModelLocator;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Document;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StoreLocatorFragment extends SimiFragment implements
 		LocationListener {
 	LinearLayout parentContainer;
 	LinearLayout parent, processBar;
-	ProgressBar progressBar;
+//	ProgressBar progressBar;
 	LatLng start;
 	LatLng end;
 	View view, store_list;
@@ -90,7 +96,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 	Bundle bundle;
 	ListView list_store;
 	ListAdapter adapter;
-	public static List<StoreObject> list_store_object;
+	public  List<StoreObject> list_store_object =new ArrayList<>();
 	List<StoreObject> mStore_maker;
 	public static Location currrentLocation = null;
 	private static boolean LOCATION_FIXED = false;
@@ -150,9 +156,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// hai ta request to server
-		if (this.check_request) {
-			triggerLocation(mActivity);
-		}
+		
 		// end request
 
 		// getdata
@@ -170,7 +174,6 @@ public class StoreLocatorFragment extends SimiFragment implements
 			search_object = (SearchObject) getArguments().getSerializable(
 					Constants.KeyData.SEARCH_OBJECT);
 		}
-
 		SimiManager.getIntance().setChildFragment(getChildFragmentManager());
 		if (DataLocal.isTablet) {
 			view = inflater.inflate(
@@ -180,10 +183,52 @@ public class StoreLocatorFragment extends SimiFragment implements
 		} else {
 			view = inflater.inflate(
 					Rconfig.getInstance().layout("plugins_storelocator"), null);
-			this.setViewMobile(view);
+			this.setViewMobile();
 		}
-
+		request();
+//		if (this.check_request) {
+//			triggerLocation(mActivity);
+//		}
+//		request();
+		
 		return view;
+	}
+	
+	private void request() {
+		final ModelLocator mModel = new ModelLocator();
+		ModelDelegate delegate = new ModelDelegate() {
+			
+			@Override
+			public void callBack(String message, boolean isSuccess) {
+				if(isSuccess) {
+					Log.d("duyquang", "123"+message);
+					try {
+					JSONObject object = mModel.getJSON();
+					JSONArray jsonArray = object.getJSONArray("data");
+					Gson gson = new GsonBuilder().create();
+					list_store_object.clear();
+					for (int i = 0; i < jsonArray.length(); i++) {
+						StoreObject storeObject = gson.fromJson(jsonArray.getJSONObject(i).toString(), StoreObject.class);
+						list_store_object.add(storeObject);
+						
+					}
+					
+					initData(list_store_object);
+					triggerLocation(mActivity);
+				
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				}else {new ShowMapError(mActivity).showDiagloError(Config
+						.getInstance().getText("Result"), Config.getInstance()
+						.getText("No store match with your searching"));
+				}
+			}
+		};
+		mModel.setDelegate(delegate);
+		mModel.addParam("limit", "10");
+		mModel.addParam("offset", "0");
+		mModel.request();
 	}
 
 	public void setViewTablet(View view) {
@@ -197,6 +242,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 
 		processBar = (LinearLayout) store_list.findViewById(Rconfig
 				.getInstance().getIdLayout("progressBar"));
+		processBar.setVisibility(View.GONE);
 		list_store = (ListView) store_list.findViewById(Rconfig.getInstance()
 				.getIdLayout("list_store"));
 		layout_search = (LinearLayout) store_list.findViewById(Rconfig
@@ -269,15 +315,15 @@ public class StoreLocatorFragment extends SimiFragment implements
 		});
 
 		// haita
-		if (!this.check_request) {
-			processBar.setVisibility(View.GONE);
-			this.initData(this.list_store_object);
-		}
+//		if (!this.check_request) {
+//			processBar.setVisibility(View.GONE);
+//			this.initData(this.list_store_object);
+//		}
 		// end haita
 
 	}
 
-	public void setViewMobile(View view) {
+	public void setViewMobile() {
 		tab = (TabHost) view.findViewById(android.R.id.tabhost);
 		tab.setup();
 		mStore_maker = new ArrayList<StoreObject>();
@@ -297,6 +343,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 						processBar = (LinearLayout) store_list
 								.findViewById(Rconfig.getInstance()
 										.getIdLayout("progressBar"));
+						processBar.setVisibility(View.GONE);
 						list_store = (ListView) store_list.findViewById(Rconfig
 								.getInstance().getIdLayout("list_store"));
 						layout_search = (LinearLayout) store_list
@@ -613,10 +660,10 @@ public class StoreLocatorFragment extends SimiFragment implements
 					}
 				}));
 		// haita
-		if (!this.check_request) {
-			processBar.setVisibility(View.GONE);
-			this.initData(this.list_store_object);
-		}
+//		if (!this.check_request) {
+//			processBar.setVisibility(View.GONE);
+//			this.initData(this.list_store_object);
+//		}
 		// end haita
 	}
 
@@ -751,41 +798,42 @@ public class StoreLocatorFragment extends SimiFragment implements
 		}
 
 		// Define a listener that responds to location updates
-		LocationListener locationListener = new LocationListener() {
-			public void onLocationChanged(Location location) {
-				// Called when a new location is found by the network location
-				// provider.
-				currrentLocation = location;
-				// Giang
-				// update distance when GPS off -> on
-				if (COUNT_LOCATION == 1 && list_store_object != null) {
-					for (int i = 0; i < list_store_object.size(); i++) {
-						StoreObject sObject = list_store_object.get(i);
-						String dis = distanceKM(currrentLocation.getLatitude(),
-								currrentLocation.getLongitude(),
-								Double.parseDouble(sObject.getLatitude()),
-								Double.parseDouble(sObject.getLongtitude()));
-						sObject.setDistance(dis);
+				LocationListener locationListener = new LocationListener() {
+					public void onLocationChanged(Location location) {
+						// Called when a new location is found by the network location
+						// provider.
+						currrentLocation = location;
+						// Giang
+						// update distance when GPS off -> on
+						if (COUNT_LOCATION == 1 && list_store_object != null) {
+							for (int i = 0; i < list_store_object.size(); i++) {
+								StoreObject sObject = list_store_object.get(i);
+								String dis = distanceKM(currrentLocation.getLatitude(),
+										currrentLocation.getLongitude(),
+										Double.parseDouble(sObject.getLatitude()),
+										Double.parseDouble(sObject.getLongtitude()));
+								Log.d("duyquang", ""+dis);
+								sObject.setDistance(dis);
+							}
+							adapter.notifyDataSetChanged();
+//							COUNT_LOCATION += 1;
+						}
+
+						if (!LOCATION_FIXED) {
+							LOCATION_FIXED = true;
+						}
 					}
-					adapter.notifyDataSetChanged();
-					COUNT_LOCATION += 1;
-				}
 
-				if (!LOCATION_FIXED) {
-					LOCATION_FIXED = true;
-				}
-			}
+					public void onStatusChanged(String provider, int status,
+							Bundle extras) {
+					}
 
-			public void onStatusChanged(String provider, int status,
-					Bundle extras) {
-			}
+					public void onProviderEnabled(String provider) {
+					}
 
-			public void onProviderEnabled(String provider) {
-			}
-
-			public void onProviderDisabled(String provider) {
-			}
-		};
+					public void onProviderDisabled(String provider) {
+					}
+				};
 		// Register the listener with the Location Manager to receive location
 		// updates
 		if (checkLocationPermission()) {
@@ -810,66 +858,67 @@ public class StoreLocatorFragment extends SimiFragment implements
 			}
 		}
 
-		TaskLoad taskLoad = new TaskLoad();
+//		TaskLoad taskLoad = new TaskLoad();
 
-		try {
-			taskLoad.data = putData(
-					String.valueOf(currrentLocation.getLatitude()),
-					String.valueOf(currrentLocation.getLongitude()),
-					String.valueOf(page * 10));
-		} catch (Exception e) {
-			taskLoad.data = putData(String.valueOf(0), String.valueOf(0),
-					String.valueOf(page * 10));
-		}
-
-		taskLoad.execute();
+//		try {
+//			taskLoad.data = putData(
+//					String.valueOf(currrentLocation.getLatitude()),
+//					String.valueOf(currrentLocation.getLongitude()),
+//					String.valueOf(page * 10));
+//		} catch (Exception e) {
+//			taskLoad.data = putData(String.valueOf(0), String.valueOf(0),
+//					String.valueOf(page * 10));
+//		}
+//
+//		taskLoad.execute();
+		
 	}
 
-	public class TaskLoad extends AsyncTask<Void, Void, JSONObject> {
-		JSONObject data;
-
-		@Override
-		protected JSONObject doInBackground(Void... params) {
-			return getJon(data, url_list_store);
-
-		}
-
-		@Override
-		protected void onPostExecute(JSONObject result) {
-			processBar.setVisibility(View.GONE);
-			// haita
-			check_request = false;
-
-			// end haita
-			// giang
-			StoreParser parser = new StoreParser();
-			if (parser.getResult(result) != null) {
-				if (parser.getResult(result).size() != 0) {
-					initData(parser.getResult(result));
-				}
-			} else {
-				new ShowMapError(mActivity).showDiagloError(Config
-						.getInstance().getText("Result"), Config.getInstance()
-						.getText("No store match with your searching"));
-			}// end Giang
-			try {
-				if (DataLocal.isTablet) {
-					view.findViewById(
-							Rconfig.getInstance()
-									.getIdLayout("progressBar_map"))
-							.setVisibility(View.GONE);
-					SimiFragment fragment = MyMapFragment
-							.newInstance(currrentLocation);
-					SimiManager.getIntance().addFragmentSub(fragment);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			super.onPostExecute(result);
-		}
-
-	}
+//	public class TaskLoad extends AsyncTask<Void, Void, JSONObject> {
+//		JSONObject data;
+//
+//		@Override
+//		protected JSONObject doInBackground(Void... params) {
+//			return getJon(data, url_list_store);
+//
+//		}
+//
+//		@Override
+//		protected void onPostExecute(JSONObject result) {
+//			processBar.setVisibility(View.GONE);
+//			// haita
+//			check_request = false;
+//
+//			// end haita
+//			// giang
+//			StoreParser parser = new StoreParser();
+//			if (parser.getResult(result) != null) {
+//				if (parser.getResult(result).size() != 0) {
+//					initData(parser.getResult(result));
+//				}
+//			} else {
+//				new ShowMapError(mActivity).showDiagloError(Config
+//						.getInstance().getText("Result"), Config.getInstance()
+//						.getText("No store match with your searching"));
+//			}// end Giang
+//			try {
+//				if (DataLocal.isTablet) {
+//					view.findViewById(
+//							Rconfig.getInstance()
+//									.getIdLayout("progressBar_map"))
+//							.setVisibility(View.GONE);
+//					SimiFragment fragment = MyMapFragment
+//							.newInstance(currrentLocation);
+//					SimiManager.getIntance().addFragmentSub(fragment);
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//
+//			super.onPostExecute(result);
+//		}
+//
+//	}
 
 	private void addMaker() {
 		// if (currrentLocation != null) {
@@ -890,18 +939,18 @@ public class StoreLocatorFragment extends SimiFragment implements
 
 	private void initData(List<StoreObject> list) {
 		if (list != null) {
-			list_store_object = list;
+//			list_store_object = list;
 
 			for (int i = 0; i < list.size(); i++) {
 				mStore_maker.add(list.get(i));
 			}
-			if (list_store_object.size() >= 10) {
+			if (list.size() >= 10) {
 				list_store.addFooterView(footerLayout);
 			}
 			LinearLayout foot = (LinearLayout) footerLayout
 					.findViewById(Rconfig.getInstance().id("ll_coreLoading"));
 			adapter = new ListAdapter(SimiManager.getIntance()
-					.getCurrentContext(), list_store_object, foot);
+					.getCurrentContext(), list, foot);
 		}
 		list_store.setAdapter(adapter);
 
@@ -984,15 +1033,18 @@ public class StoreLocatorFragment extends SimiFragment implements
 			// DecimalFormat decim = new DecimalFormat("#.##");
 			// String dist_travelled = decim.format(Double.parseDouble(object
 			// .getDistance()) / 1000);
+			
+			if(object.getDistance() != null){
 			txt_distan.setText(object.getDistance() + " "
 					+ Config.getInstance().getText("km"));
-			if (!object.getImage_icon().equals("")) {
+			}
+			if (object.getImage() != null && !object.getImage().equals("") && !object.getImage().equals("null")) {
 				DrawableManager.fetchDrawableDetailOnThread(
-						object.getImage_icon(), img);
+						object.getImage(), img);
 				// circle.setBackground(getResources().getDrawable(R.drawable.circle));
 				img_default.setVisibility(View.GONE);
 				img.setVisibility(View.VISIBLE);
-			} else if (object.getImage_icon().equals("")) {
+			} else{
 				img_default.setImageDrawable(getResources().getDrawable(
 						Rconfig.getInstance().getIdDraw(
 								"plugins_locator_ic_store_android")));
@@ -1000,7 +1052,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 				img.setVisibility(View.GONE);
 				// circle.setBackground(getResources().getDrawable(android.R.color.transparent));
 			}
-			if (!object.getPhone().equals("null")
+			if (object.getPhone() != null && !object.getPhone().equals("null")
 					&& !object.getPhone().equals("")) {
 				phone.setEnabled(true);
 				phone.setOnClickListener(new OnClickListener() {
@@ -1025,7 +1077,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 						"plugins_locator_phone_disable"));
 			}
 
-			if (!object.getEmail().equals("null")
+			if (object.getEmail() != null && !object.getEmail().equals("null")
 					&& !object.getEmail().equals("")) {
 				email.setEnabled(true);
 				email.setOnClickListener(new OnClickListener() {
@@ -1052,14 +1104,9 @@ public class StoreLocatorFragment extends SimiFragment implements
 				});
 				image_email.setImageResource(Rconfig.getInstance().getIdDraw(
 						"plugins_locator_mail"));
-			} else {
-				email.setEnabled(false);
-				image_email.setImageResource(Rconfig.getInstance().getIdDraw(
-						"plugins_locator_mail_disable"));
+			} 
 
-			}
-
-			if (!object.getLatitude().equals("null")
+			if (object.getLatitude() != null && !object.getLatitude().equals("null")
 					&& !object.getLatitude().equals("")
 					&& !object.getLongtitude().equals("null")
 					&& !object.getLongtitude().equals("")) {
@@ -1095,22 +1142,25 @@ public class StoreLocatorFragment extends SimiFragment implements
 					mfoot.setVisibility(View.VISIBLE);
 					pageIndex++;
 					if (NetworkConnection.haveInternet(context)) {
-						TaskNewLoad taskLoad = new TaskNewLoad();
-						if (currrentLocation == null) {
-
-							taskLoad.data = putData(String.valueOf(0),
-									String.valueOf(0),
-									String.valueOf(pageIndex * 10));
-						} else {
-							taskLoad.data = putData(
-									String.valueOf(currrentLocation
-											.getLatitude()),
-									String.valueOf(currrentLocation
-											.getLongitude()),
-									String.valueOf(pageIndex * 10));
-						}
-
-						taskLoad.execute();
+//						TaskNewLoad taskLoad = new TaskNewLoad();
+//						if (currrentLocation == null) {
+//
+//							taskLoad.data = putData(String.valueOf(0),
+//									String.valueOf(0),
+//									String.valueOf(pageIndex * 10));
+//						} else {
+//							taskLoad.data = putData(
+//									String.valueOf(currrentLocation
+//											.getLatitude()),
+//									String.valueOf(currrentLocation
+//											.getLongitude()),
+//									String.valueOf(pageIndex * 10));
+//						}
+//
+//						taskLoad.execute();
+						//request with model
+						request();
+						
 					} else {
 						Toast.makeText(context, "No NetWork Connection",
 								Toast.LENGTH_LONG).show();
@@ -1125,6 +1175,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 
 			return convertView;
 		}
+		
 	}
 
 	public String distanceKM(double lat1, double lon1, double lat2, double lon2) {
@@ -1145,22 +1196,22 @@ public class StoreLocatorFragment extends SimiFragment implements
 
 	}
 
-	public class TaskNewLoad extends AsyncTask<Void, Void, JSONObject> {
-		JSONObject data;
-
-		@Override
-		protected JSONObject doInBackground(Void... params) {
-			return getJon(data, url_list_store);
-
-		}
-
-		@Override
-		protected void onPostExecute(JSONObject result) {
-			StoreParser parser = new StoreParser();
-			initDataNew(parser.getResult(result));
-			super.onPostExecute(result);
-		}
-	}
+//	public class TaskNewLoad extends AsyncTask<Void, Void, JSONObject> {
+//		JSONObject data;
+//
+//		@Override
+//		protected JSONObject doInBackground(Void... params) {
+//			return getJon(data, url_list_store);
+//
+//		}
+//
+//		@Override
+//		protected void onPostExecute(JSONObject result) {
+//			StoreParser parser = new StoreParser();
+//			initDataNew(parser.getResult(result));
+//			super.onPostExecute(result);
+//		}
+//	}
 
 	public class TaskLoadMaker extends AsyncTask<Void, Void, JSONObject> {
 		JSONObject data;
@@ -1204,64 +1255,65 @@ public class StoreLocatorFragment extends SimiFragment implements
 	}
 
 	public static JSONObject getJon(JSONObject data, String url) {
-		JSONObject mJSONRet = null;
-		// InputStream is = null;
-		// String json = "";
-		// HttpResponse httpResponse;
-		// String message = "Some errors occurred. Please try again later";
-		// try {
-		// HttpPost httpPost = new HttpPost(url);
-		// httpPost.setHeader("Token", Config.getInstance().getSecretKey());
-		// List<NameValuePair> nameValuePairs = getPostData(data.toString());
-		// httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs,
-		// "UTF-8"));
-		// Log.e("Param", nameValuePairs.toString());
-		// HttpConnectionParams.setConnectionTimeout(
-		// CoreAPIService.getNewHttpClient().getParams(), 6000);
-		// HttpConnectionParams.setSoTimeout(
-		// CoreAPIService.getNewHttpClient().getParams(), 60000);
-		// CoreAPIService.getNewHttpClient().getParams().setParameter(
-		// ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
-		// httpResponse = CoreAPIService.getNewHttpClient().execute(httpPost);
-		// StatusLine statusLine = httpResponse.getStatusLine();
-		// int statusCode = statusLine.getStatusCode();
-		// HttpEntity httpEntity;
-		// if (statusCode < 400) {
-		// httpEntity = httpResponse.getEntity();
-		// is = httpEntity.getContent();
-		// BufferedReader reader = new BufferedReader(
-		// new InputStreamReader(is, "UTF_8"), 8192);
-		//
-		// StringBuilder sb = new StringBuilder();
-		// String line = null;
-		// while ((line = reader.readLine()) != null) {
-		// sb.append(line + "\n");
-		// }
-		// is.close();
-		// json = sb.toString();
-		// Log.e("SB String", sb.toString());
-		// mJSONRet = new JSONObject(json);
-		// return mJSONRet;
-		// } else {
-		// if (statusCode == 500) {
-		// message = "Internal Server Error";
-		// } else if (statusCode == 503) {
-		// message = "Service Unavailable";
-		// } else {
-		// message = "Some errors occurred. Please try again later";
-		// }
-		// httpResponse.getEntity().getContent().close();
-		// throw new IOException(statusLine.getReasonPhrase());
-		// }
-		//
-		// } catch (ConnectTimeoutException e) {
-		// message = "The request timed out";
-		// } catch (IOException e) {
-		// message = e.getMessage();
-		// } catch (JSONException e) {
-		// message = "A connection failure occurred";
-		// }
-		return mJSONRet;
+//		JSONObject mJSONRet = null;
+//		 InputStream is = null;
+//		 String json = "";
+//		 HttpResponse httpResponse;
+//		 String message = "Some errors occurred. Please try again later";
+//		 try {
+//		 HttpPost httpPost = new HttpPost(url);
+//		 httpPost.setHeader("Token", Config.getInstance().getSecretKey());
+//		 List<NameValuePair> nameValuePairs = getPostData(data.toString());
+//		 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs,
+//		 "UTF-8"));
+//		 Log.e("Param", nameValuePairs.toString());
+//		 HttpConnectionParams.setConnectionTimeout(
+//		 CoreAPIService.getNewHttpClient().getParams(), 6000);
+//		 HttpConnectionParams.setSoTimeout(
+//		 CoreAPIService.getNewHttpClient().getParams(), 60000);
+//		 CoreAPIService.getNewHttpClient().getParams().setParameter(
+//		 ClientPNames.ALLOW_CIRCULAR_REDIRECTS, true);
+//		 httpResponse = CoreAPIService.getNewHttpClient().execute(httpPost);
+//		 StatusLine statusLine = httpResponse.getStatusLine();
+//		 int statusCode = statusLine.getStatusCode();
+//		 HttpEntity httpEntity;
+//		 if (statusCode < 400) {
+//		 httpEntity = httpResponse.getEntity();
+//		 is = httpEntity.getContent();
+//		 BufferedReader reader = new BufferedReader(
+//		 new InputStreamReader(is, "UTF_8"), 8192);
+//		
+//		 StringBuilder sb = new StringBuilder();
+//		 String line = null;
+//		 while ((line = reader.readLine()) != null) {
+//		 sb.append(line + "\n");
+//		 }
+//		 is.close();
+//		 json = sb.toString();
+//		 Log.e("SB String", sb.toString());
+//		 mJSONRet = new JSONObject(json);
+//		 return mJSONRet;
+//		 } else {
+//		 if (statusCode == 500) {
+//		 message = "Internal Server Error";
+//		 } else if (statusCode == 503) {
+//		 message = "Service Unavailable";
+//		 } else {
+//		 message = "Some errors occurred. Please try again later";
+//		 }
+//		 httpResponse.getEntity().getContent().close();
+//		 throw new IOException(statusLine.getReasonPhrase());
+//		 }
+//		
+//		 } catch (ConnectTimeoutException e) {
+//		 message = "The request timed out";
+//		 } catch (IOException e) {
+//		 message = e.getMessage();
+//		 } catch (JSONException e) {
+//		 message = "A connection failure occurred";
+//		 }
+//		return mJSONRet;
+		return null;
 	}
 
 	public static List<NameValuePair> getPostData(String data) {
@@ -1318,21 +1370,23 @@ public class StoreLocatorFragment extends SimiFragment implements
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (check_trigger == false) {
-			if (list_store_object != null) {
-				list_store_object.clear();
-				if (adapter != null) {
-					adapter.notifyDataSetChanged();
-				}
-				Handler handler = new Handler();
-				handler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						triggerLocation(mActivity);
-					}
-				}, 2000);
-			}
-		}
+//		if (check_trigger == false) {
+//			if (list_store_object != null) {
+//				list_store_object.clear();
+//				if (adapter != null) {
+//					adapter.notifyDataSetChanged();
+//				}
+//				Handler handler = new Handler();
+//				handler.postDelayed(new Runnable() {
+//					@Override
+//					public void run() {
+//						triggerLocation(mActivity);
+//					}
+//				}, 2000);
+//			}
+//		}
+		request();
+		Log.d("quangdd", "onresume");
 	}
 
 	@Override
@@ -1358,4 +1412,5 @@ public class StoreLocatorFragment extends SimiFragment implements
 		// TODO Auto-generated method stub
 
 	}
+	
 }

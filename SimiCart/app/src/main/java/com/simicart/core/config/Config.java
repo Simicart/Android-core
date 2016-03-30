@@ -11,93 +11,62 @@ import java.util.Map;
 
 @SuppressLint("DefaultLocale")
 public class Config {
-    private String mThemeColor = "#3498DB";
-    // private String mBaseUrl = "https://anggrek-liar.com/";
-    // private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
+    private String mThemeColor = "#FFFFFF";
 
-    // private String mBaseUrl = "http://www.kiranaondoor.com/index.php";
-    // private String mSecretKey = "075116eb405249fd026299a5c06d4bee";
-
-    // private String mBaseUrl = "https://www.toysrus.co.za/";
-    // private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
+    private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
+    private String mSecretKey = "87e6384986a7d74528faa948b5eff116b37";
+    private String mBaseCloudUrl = "http://api.jajahub.com/rest/";
+    private String mSecretCloudKey = "9aa0e4b72526157d471401a1af6666df4c1e20e5";
 
     // private String mBaseUrl =
-    // "http://spgtest.justfortinypeople.net/index.php/";
-    // private String mSecretKey = "a5ea93ab74b0efd233e97f65f0132084";
+    // "http://demo.magestore.com/simicart/simipos4/index.php";
+    // private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
 
-    // private String mBaseUrl = "https://www.grocerymantra.com";
-    // private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
-
-//    private String mBaseUrl =
-//            "http://dev-vn.magestore.com/simicart/1800/index.php/";
-//    private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
-
-//	private String mBaseUrl = "https://go360store.com/index.php";
-//	private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
-
-//	private String mBaseUrl = "https://www.highstreettv.com/";
-//	private String mSecretKey = "5a4c0e94a019396ebd15eb307df71e18";
-
-//	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
-//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
-//	private String mBaseUrl = "http://www.caswellplating.com/";
-//	private String mSecretKey = "25dabf96d8ddcf1b0e0f0c832c2a9809";
-    // private String mBaseUrl = "http://www.numbersixlondon.com";
-    // private String mSecretKey = "31a20d589c881916d3c21f3576e0d0fe";
-    // private String mBaseUrl = "https://go360store.com/";
-    // private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
-
-//	private String mBaseUrl = "http://opentestdrive.com/qc/milletstore_v1/";
-//	private String mSecretKey = "b3f8350dd2e9735075a0705682204bb7";
-
-    private String mBaseUrl =
-            "http://demo.magestore.com/simicart/simipos3/index.php";
-    private String mSecretKey = "6a92cce13f2b63291293a2460216e7bb";
-
-    // private String key_color = "#607D8B";
-    // private String button_background = "#0277BD";
-    // private String button_text_color = "#ECEFF1";
-    // private String menu_background = "#546E7A";
-    // private String menu_text_color = "#ECEFF1";
-    // private String menu_line_color = "#ECEFF1";
-    // private String menu_icon_color = "#ECEFF1";
-    // private String app_backrground = "#37474F";
-    // private String content_color = "#ECEFF1";
-    // private String line_color = "#CFD8DC";
-    // private String image_boder_color = "#d3d3d3";
-    // private String icon_color = "#717171";
-    // private String section_color = "#607D8B";
-    // private String section_text_color = "#ECEFF1";
-    // private String price_color = "#BF360C";
-    // private String special_price_color = "#FF7043";
-    // private String search_box_background = "#E6c7c7c7";
-    // private String out_stock_background = "#FF9800";
-    // private String out_stock_text = "#FFFFFF";
-    // private String search_text_color = "#8b8b8b";
-    // private String search_icon_color = "#8b8b8b";
-
-    private String key_color = "#3498DB";
+    private String key_color = "#607D8B";
     private String top_menu_icon_color = "#FFFFFF";
-    private String button_background = "";
-    private String button_text_color = "#FFFFFF";
-    private String menu_background = "#F21b1b1b";
+    private String button_background = "#0277BD";
+    private String button_text_color = "#ECEFF1";
+    private String menu_background = "#546E7A";
     private String menu_text_color = "#ECEFF1";
-    private String menu_line_color = "#444444";
+    private String menu_line_color = "#ECEFF1";
     private String menu_icon_color = "#ECEFF1";
-    private String app_background = "#FFFFFF";
-    private String content_color = "#000000";
-    private String line_color = "#CACACA";
+    private String app_backrground = "#37474F";
+    private String content_color = "#ECEFF1";
+    private String line_color = "#CFD8DC";
     private String image_boder_color = "#d3d3d3";
-    private String icon_color = "#000000";
-    private String section_color = "#E0E0E0";
-    private String section_text_color = "#000000";
+    private String icon_color = "#717171";
+    private String section_color = "#607D8B";
+    private String section_text_color = "#ECEFF1";
     private String price_color = "#BF360C";
-    private String special_price_color = "#BF360C";
-    private String search_box_background = "#E6E0E0E0";
+    private String special_price_color = "#FF7043";
+    private String search_box_background = "#E6c7c7c7";
     private String out_stock_background = "#FF9800";
     private String out_stock_text = "#FFFFFF";
     private String search_text_color = "#8b8b8b";
     private String search_icon_color = "#8b8b8b";
+
+//    private String key_color = "#FFFFFF";
+//    private String top_menu_icon_color = "#FFFFFF";
+//    private String button_background = "#BF360C";
+//    private String button_text_color = "#FFFFFF";
+//    private String menu_background = "#F21b1b1b";
+//    private String menu_text_color = "#ECEFF1";
+//    private String menu_line_color = "#444444";
+//    private String menu_icon_color = "#ECEFF1";
+//    private String app_backrground = "#FFFFFF";
+//    private String content_color = "#000000";
+//    private String line_color = "#CACACA";
+//    private String image_boder_color = "#d3d3d3";
+//    private String icon_color = "#000000";
+//    private String section_color = "#E0E0E0";
+//    private String section_text_color = "#000000";
+//    private String price_color = "#BF360C";
+//    private String special_price_color = "#BF360C";
+//    private String search_box_background = "#E6E0E0E0";
+//    private String out_stock_background = "#FF9800";
+//    private String out_stock_text = "#FFFFFF";
+//    private String search_text_color = "#8b8b8b";
+//    private String search_icon_color = "#8b8b8b";
 
     public int getTop_menu_icon_color() {
         return Color.parseColor(top_menu_icon_color);
@@ -125,7 +94,7 @@ public class Config {
 
     public int getButton_background() {
         if (Utils.validateString(button_background)) {
-            return Color.parseColor(app_background);
+            return Color.parseColor(button_background);
         } else {
             return Color.parseColor(key_color);
         }
@@ -176,11 +145,11 @@ public class Config {
     }
 
     public int getApp_backrground() {
-        return Color.parseColor(app_background);
+        return Color.parseColor(app_backrground);
     }
 
     public void setApp_backrground(String app_backrground) {
-        this.app_background = app_backrground;
+        this.app_backrground = app_backrground;
     }
 
     public int getContent_color() {
@@ -390,6 +359,10 @@ public class Config {
         return mSecretKey;
     }
 
+    public String getSecretCloudKey() {
+        return mSecretCloudKey;
+    }
+
     public void setSecretKey(String secret_key) {
         mSecretKey = secret_key;
     }
@@ -477,10 +450,20 @@ public class Config {
         if (last != '/') {
             mBaseUrl += "/";
         }
+
+        int lenghtCloud = mBaseCloudUrl.length();
+        char lastCloud = mBaseCloudUrl.charAt(lenghtCloud - 1);
+        if (lastCloud != '/') {
+            mBaseCloudUrl += "/";
+        }
     }
 
     public String getBaseUrl() {
         return mBaseUrl;
+    }
+
+    public String getBaseCloudUrl() {
+        return mBaseCloudUrl;
     }
 
     public void setBase_url(String base_url) {
