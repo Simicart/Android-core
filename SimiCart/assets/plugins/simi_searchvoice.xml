@@ -15,4 +15,12 @@
 	    <sku>simi_developer</sku>    
     </event> 
     
+     <event>
+        <name>com.simicart.core.menutop.block.MenuTopBlock</name>	    
+	    <package>com.simicart.plugins.SearchVoice</package>
+	    <class>SearchVoice</class>
+	    <method>addiconsearchtablet</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    
 </events>
