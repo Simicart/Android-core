@@ -1,24 +1,9 @@
 package com.simicart.core.home.block;
 
-import org.json.JSONObject;
-
-import com.simicart.core.base.block.SimiBlock;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.model.collection.SimiCollection;
-import com.simicart.core.base.model.entity.SimiEntity;
-import com.simicart.core.catalog.search.fragment.ListProductFragment;
-import com.simicart.core.common.Utils;
-import com.simicart.core.config.Config;
-import com.simicart.core.config.Constants;
-import com.simicart.core.config.Rconfig;
-import com.simicart.core.event.block.CacheBlock;
-import com.simicart.core.event.block.EventBlock;
-
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
@@ -30,6 +15,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.simicart.core.base.block.SimiBlock;
+import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.collection.SimiCollection;
+import com.simicart.core.catalog.search.fragment.ListProductFragment;
+import com.simicart.core.common.Utils;
+import com.simicart.core.config.Config;
+import com.simicart.core.config.Constants;
+import com.simicart.core.config.Rconfig;
+import com.simicart.core.event.block.CacheBlock;
+import com.simicart.core.event.block.EventBlock;
 
 public class SearchHomeBlock extends SimiBlock {
 
@@ -128,15 +124,10 @@ public class SearchHomeBlock extends SimiBlock {
 			}
 		});
 		
-		//event for search voice home page
-		try {
-			EventBlock block = new EventBlock();
-			CacheBlock  cacheBlock = new CacheBlock();
-			cacheBlock.setView(mView);
-			block.dispatchEvent("com.simicart.core.home.block.SearchHomeBlock", cacheBlock);
-		} catch (Exception e) {
-		}
+		updateView(new SimiCollection());
+		
 	}
+	
 
 	public void showSearchScreen(String key, String tag) {
 		if (key != null && !key.equals("")) {
