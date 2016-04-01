@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.catalog.search.fragment.ListProductFragment;
 import com.simicart.core.catalog.search.model.ConstantsSearch;
@@ -57,6 +58,7 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 		if (DataLocal.isTablet) {
 			initSearch();
 		}
+		updateView(new SimiCollection());
 	}
 
 	private void initSearch() {
@@ -97,7 +99,6 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 				if (DataLocal.isTablet) {
 					ll_logo_land.setLayoutParams(param_logo);
 					ll_search_land.setLayoutParams(param_search);
-					ll_search_land.setPadding(0, 5, 0, 5);
 				}
 			}
 		});
@@ -126,7 +127,7 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 				if (DataLocal.isTablet) {
 					ll_logo_land.setLayoutParams(param_logo_cancel);
 					ll_search_land.setLayoutParams(param_search_cancel);
-					ll_search_land.setPadding(0, 5, 0, 5);
+//					ll_search_land.setPadding(0, 5, 0, 5);
 				}
 			}
 		});
@@ -220,6 +221,7 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 			}
 		}
 	}
+	
 
 	public void setOnTouchCart(OnTouchListener touchCart) {
 		mViewCart.setOnTouchListener(touchCart);
