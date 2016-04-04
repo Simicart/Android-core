@@ -122,6 +122,8 @@ public class SearchHomeBlock extends SimiBlock {
 			}
 		});
 		super.initView();
+
+		updateView(new SimiCollection());
 	}
 
 	public void showSearchScreen(String key, String tag) {

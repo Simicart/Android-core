@@ -182,29 +182,26 @@ public class StoreDetailFragment extends SimiFragment {
 								"plugins_locator_maker_default")) + "|"
 				+ storeObject.getLatitude() + "," + storeObject.getLongtitude()
 				+ "&zoom=100&size=1000x1000&sensor=false";
-		if (storeObject.getAddress().equals("")
+		if (storeObject.getAddress() == null || storeObject.getAddress().equals("")
 				|| storeObject.getAddress().equals("null")
-				|| storeObject.getAddress() == null) {
+				) {
 			locator.setVisibility(View.GONE);
 		}
-		if (storeObject.getEmail().equals("")
-				|| storeObject.getEmail().equals("null")
-				|| storeObject.getEmail() == null) {
+		if (storeObject.getEmail() == null || storeObject.getEmail().equals("")
+				|| storeObject.getEmail().equals("null")) {
 			email.setVisibility(View.GONE);
 		}
-		if (storeObject.getPhone().equals("")
+		if (storeObject.getPhone() == null || storeObject.getPhone().equals("")
 				|| storeObject.getPhone().equals("null")
-				|| storeObject.getPhone() == null) {
+				) {
 			phone.setVisibility(View.GONE);
 		}
-		if (storeObject.getDescription().equals("")
+		if (storeObject.getDescription() == null || storeObject.getDescription().equals("")
 				|| storeObject.getDescription().equals("null")
-				|| storeObject.getDescription() == null) {
+				) {
 			decrip.setVisibility(View.GONE);
 		}
-		if (storeObject.getLink().equals("")
-				|| storeObject.getLink().equals("null")
-				|| storeObject.getLink() == null) {
+		if (storeObject == null) {
 			home.setVisibility(View.GONE);
 		}
 		txt_name.setText(storeObject.getName());
@@ -566,5 +563,11 @@ public class StoreDetailFragment extends SimiFragment {
 			txt.setTextSize(15);
 			return convertView;
 		}
+	}
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		
 	}
 }

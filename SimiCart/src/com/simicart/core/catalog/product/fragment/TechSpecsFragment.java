@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +28,6 @@ public class TechSpecsFragment extends SimiFragment {
 
 	public static TechSpecsFragment newInstance() {
 		TechSpecsFragment fragment = new TechSpecsFragment();
-
 		return fragment;
 	}
 

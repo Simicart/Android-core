@@ -94,6 +94,7 @@ public class ProductListAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
+
 		if (DataLocal.isLanguageRTL) {
 			holder.txtName.setGravity(Gravity.RIGHT);
 		}
@@ -102,6 +103,10 @@ public class ProductListAdapter extends BaseAdapter {
 		holder.tv_regular_price.setPaintFlags(holder.tv_regular_price
 				.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
 		holder.tv_regular_price.setVisibility(View.VISIBLE);
+
+		holder.tv_special_price.setText("");
+		holder.tv_minimal_price.setText("");
+		holder.tv_regular_price.setText("");
 
 		if (product != null) {
 			mTypeProduct = product.getType();

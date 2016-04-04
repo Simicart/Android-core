@@ -32,6 +32,7 @@ import com.simicart.core.notification.GCMIntentService;
 import com.simicart.core.notification.common.ServerUtilities;
 import com.simicart.core.notification.entity.NotificationEntity;
 import com.simicart.core.notification.fragment.WebviewFragment;
+import com.simicart.core.notification.gcm.GCMConstants;
 import com.simicart.core.notification.gcm.GCMRegistrar;
 import com.simicart.core.slidemenu.fragment.CateSlideMenuFragment;
 
@@ -62,6 +63,8 @@ public class NotificationController {
 			double longitude = gps.getLongitude();
 			s_latitude = Double.toString(latitude);
 			s_longitude = Double.toString(longitude);
+			GCMConstants.EXTRA_LATITUDE = s_latitude;
+			GCMConstants.EXTRA_LONGTITUDE = s_longitude;
 			Log.e(TAG, "Your Location is - \nLat: " + s_latitude + "\nLong: "
 					+ s_longitude);
 		} else {

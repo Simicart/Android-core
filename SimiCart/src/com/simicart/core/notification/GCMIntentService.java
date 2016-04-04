@@ -39,6 +39,7 @@ import com.simicart.core.notification.common.CommonUtilities;
 import com.simicart.core.notification.common.ServerUtilities;
 import com.simicart.core.notification.entity.NotificationEntity;
 import com.simicart.core.notification.gcm.GCMBaseIntentService;
+import com.simicart.core.notification.gcm.GCMConstants;
 import com.simicart.core.notification.gcm.GCMRegistrar;
 import com.simicart.core.shortcutbadger.ShortcutBadgeException;
 import com.simicart.core.shortcutbadger.ShortcutBadger;
@@ -56,12 +57,13 @@ public class GCMIntentService extends GCMBaseIntentService {
 		super(Config.getInstance().getSenderId());
 	}
 
+	
 	@Override
 	protected void onRegistered(Context context, String registrationId) {
-		Log.e(TAG, "Device registered: regId = " + registrationId);
+		// TODO Auto-generated method stub
 		CommonUtilities.displayMessage(context,
 				"From GCM: device successfully registered!");
-		ServerUtilities.register(context, registrationId);
+		ServerUtilities.register(context,registrationId,GCMConstants.EXTRA_LATITUDE,GCMConstants.EXTRA_LATITUDE);
 	}
 
 	@Override
@@ -274,4 +276,6 @@ public class GCMIntentService extends GCMBaseIntentService {
 		} catch (ShortcutBadgeException e) {
 		}
 	}
+
+	
 }

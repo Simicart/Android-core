@@ -7,7 +7,7 @@
     <com.simicart.core.style.CustomScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/fcart_rl_bottom" >
+        android:layout_above="@+id/llCheckout" >
 
         <RelativeLayout
             android:id="@+id/fcart_rl"
@@ -47,12 +47,12 @@
         </RelativeLayout>
     </com.simicart.core.style.CustomScrollView>
 
-    <RelativeLayout
-        android:id="@+id/fcart_rl_bottom"
+    <LinearLayout
+        android:id="@+id/llCheckout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingLeft="2dp" >
+        android:orientation="vertical" >
 
         <com.simicart.core.material.ButtonRectangle
             android:id="@+id/checkout"
@@ -61,6 +61,15 @@
             android:text=""
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
-    </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fcart_rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" >
+        </RelativeLayout>
+    </LinearLayout>
 
 </RelativeLayout>
