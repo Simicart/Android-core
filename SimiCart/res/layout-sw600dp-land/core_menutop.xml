@@ -23,6 +23,7 @@
             android:src="@drawable/ic_menu" />
 
 		<LinearLayout
+		    android:id="@+id/layoutlogo"
 		   	android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_centerVertical="true"
@@ -65,10 +66,11 @@
 
             <ImageView
                 android:id="@+id/img_ic_search2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_centerVertical="true"
                 android:padding="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/icon_search_arrow" />
             

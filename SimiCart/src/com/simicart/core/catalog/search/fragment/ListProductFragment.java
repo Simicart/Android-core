@@ -24,7 +24,6 @@ import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
-import com.simicart.core.home.block.SearchHomeBlock;
 
 public class ListProductFragment extends SimiFragment {
 	protected View rootView;
@@ -32,7 +31,7 @@ public class ListProductFragment extends SimiFragment {
 	protected String tag_search = "";
 	protected String url_search;
 	protected String mKey;
-	protected SearchHomeBlock mSearchHomeBlock;
+	// protected SearchHomeBlock mSearchHomeBlock;
 	protected SearchBlock mSearchBlock;
 	protected SearchController mSearchController;
 	protected String mCatID = "-1";
@@ -145,9 +144,7 @@ public class ListProductFragment extends SimiFragment {
 			filterEvent = new FilterEvent(mSearchController);
 			mSearchBlock.setFilterEvent(filterEvent);
 			mSearchController.setTag_search(tag_search);
-			mSearchBlock.setmQuery(mQuery);
 			mSearchController.setQuery(mQuery);
-			mSearchBlock.setCateName(mCatName);
 			mSearchController.setmSortType(mSortID);
 			mSearchController.setDelegate(mSearchBlock);
 			mSearchController.setJsonFilter(jsonFilter);
@@ -192,7 +189,7 @@ public class ListProductFragment extends SimiFragment {
 			filterEvent = new FilterEvent(mSearchController);
 			mSearchBlock.setmQuery(mQuery);
 			if (!DataLocal.isTablet) {
-				//mSearchBlock.getEdittextSearch().setText("");
+				// mSearchBlock.getEdittextSearch().setText("");
 			}
 			mSearchBlock.setFilterEvent(filterEvent);
 			mSearchController.onResume();
@@ -209,7 +206,7 @@ public class ListProductFragment extends SimiFragment {
 				this.tag_search = TagSearch.TAG_GRIDVIEW;
 			} else {
 				this.tag_search = TagSearch.TAG_LISTVIEW;
-				if(tag_search.equals(TagSearch.TAG_GRIDVIEW)){
+				if (tag_search.equals(TagSearch.TAG_GRIDVIEW)) {
 					this.tag_search = tag_search;
 				}
 			}
