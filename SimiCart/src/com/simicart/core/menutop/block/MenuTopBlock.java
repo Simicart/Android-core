@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.collection.SimiCollection;
 import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.catalog.search.fragment.ListProductFragment;
 import com.simicart.core.catalog.search.model.ConstantsSearch;
@@ -57,6 +58,7 @@ public class MenuTopBlock extends SimiBlock implements MenuTopDelegate {
 		if (DataLocal.isTablet) {
 			initSearch();
 		}
+		updateView(new SimiCollection());
 	}
 
 	private void initSearch() {
