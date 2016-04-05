@@ -194,6 +194,7 @@ public class SplashController {
 	private void parseJSONStoreView(SimiEntity entity) throws JSONException {
 		JSONObject js_storeView = entity.getJSONObject();
 
+		System.out.println(js_storeView);
 		// hien thi list hoac grid product
 		String check = "0";
 		if (js_storeView.has("view_products_default")) {

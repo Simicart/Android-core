@@ -144,5 +144,6 @@
         <attr name="SliderStyle" format="reference"/>
         <attr name="PagerIndicatorStyle" format="reference"/>
     </declare-styleable>
-    
+
+
 </resources>

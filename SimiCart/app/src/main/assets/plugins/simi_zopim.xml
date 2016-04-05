@@ -1,0 +1,20 @@
+   <events>
+    
+    <event>
+        <name>com.simicart.add.navigation.more.zopimchat</name>
+	    <package>com.simicart.plugins.zopimchat</package>
+	    <class>SimiZopim</class>
+	    <method>addzopimtoslidemenu</method>
+	    <sku>simi_developer</sku>    
+    </event>
+
+       <event>
+           <name>com.simicart.leftmenu.slidemenucontroller.onnavigate.clickitem</name>
+           <package>com.simicart.plugins.zopimchat</package>
+           <class>SimiZopim</class>
+           <method>clickitemleftmenu</method>
+           <sku>simi_developer</sku>
+       </event>
+
+</events>
+  

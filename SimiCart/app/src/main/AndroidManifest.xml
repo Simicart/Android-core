@@ -180,7 +180,7 @@
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentConsentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity" />
         <activity
-            android:name="com.simicart.plugins.zopimchat.ChatActivity"
+            android:name="com.simicart.plugins.zopimchat.SimiChatActivity"
             android:theme="@style/MyMaterialTheme" />
 
         <!--<activity android:name="com.simicart.plugins.braintree.BrainTreeSimicart" />
