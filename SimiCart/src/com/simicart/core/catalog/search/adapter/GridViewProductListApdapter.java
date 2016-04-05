@@ -226,6 +226,8 @@ public class GridViewProductListApdapter extends BaseAdapter {
 		} else {
 			holder.tv_name.setText("SimiCart");
 		}
+		
+		holder.img_avartar.setImageResource(Rconfig.getInstance().drawable("default_logo"));
 
 		if (product.getImage() != null) {
 			DrawableManager.fetchDrawableOnThread(product.getImage(),
