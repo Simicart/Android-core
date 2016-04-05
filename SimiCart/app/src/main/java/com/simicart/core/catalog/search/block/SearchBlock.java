@@ -65,6 +65,8 @@ import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
+import com.simicart.core.event.block.CacheBlock;
+import com.simicart.core.event.block.EventBlock;
 
 public class SearchBlock extends SimiBlock implements SearchDelegate,
 		OnItemClickListener {
@@ -319,6 +321,22 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 				}
 			}
 		});
+		//event for searchVoice
+		try {
+			EventBlock block = new EventBlock();
+			CacheBlock cacheBlock = new CacheBlock();
+			cacheBlock.setView(mView);
+			SimiEntity entity = new SimiEntity();
+			JSONObject object = new JSONObject();
+			object.put("cateId", cate_id);
+			object.put("cateName", cate_name);
+			object.put("tagSearch", tag_search);
+			entity.setJSONObject(object);
+			cacheBlock.setSimiEntity(entity);
+			block.dispatchEvent("com.simicart.core.home.block.SearchHomeBlock", cacheBlock);
+		} catch (Exception e) {
+		}
+
 
 	}
 

@@ -121,7 +121,7 @@ public class SearchHomeBlock extends SimiBlock {
 				imm.showSoftInput(et_search, InputMethodManager.SHOW_IMPLICIT);
 			}
 		});
-		super.initView();
+		updateView(new SimiCollection());
 	}
 
 	public void showSearchScreen(String key, String tag) {
@@ -133,9 +133,6 @@ public class SearchHomeBlock extends SimiBlock {
 		}
 	}
 
-	@Override
-	public void drawView(SimiCollection collection) {
-	}
 
 	public void setQuery(String mQuery) {
 		this.mQuery = mQuery;

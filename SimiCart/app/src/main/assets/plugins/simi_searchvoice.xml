@@ -1,0 +1,26 @@
+<events>
+    <event>
+        <name>com.simicart.core.home.block.SearchHomeBlock</name>
+	    <package>com.simicart.plugins.searchvoice</package>
+	    <class>SearchVoice</class>
+	    <method>addIconSearchVoice</method>	
+	    <sku>simi_developer</sku>    
+    </event>  
+    
+    <event>
+        <name>com.simicart.mainactivity.onactivityresult</name>	    
+	    <package>com.simicart.plugins.searchvoice</package>
+	    <class>SearchVoice</class>
+	    <method>resultSearch</method>	
+	    <sku>simi_developer</sku>    
+    </event> 
+    
+     <event>
+        <name>com.simicart.core.menutop.block.MenuTopBlock</name>	    
+	    <package>com.simicart.plugins.searchvoice</package>
+	    <class>SearchVoice</class>
+	    <method>addiconsearchtablet</method>	
+	    <sku>simi_developer</sku>    
+    </event>
+    
+</events>

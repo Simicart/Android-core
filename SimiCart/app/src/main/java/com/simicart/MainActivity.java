@@ -12,6 +12,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.multidex.MultiDex;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -25,6 +26,7 @@ import android.view.View;
 import com.google.android.gms.analytics.HitBuilders;
 import com.magestore.simicart.R;
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.checkout.controller.ConfigCheckout;
 import com.simicart.core.common.FontsOverride;
 import com.simicart.core.common.Utils;
@@ -35,6 +37,7 @@ import com.simicart.core.customer.controller.AutoSignInController;
 import com.simicart.core.event.activity.CacheActivity;
 import com.simicart.core.event.activity.EventActivity;
 import com.simicart.core.event.base.UtilsEvent;
+import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.block.EventBlock;
 import com.simicart.core.event.controller.EventController;
 import com.simicart.core.menutop.fragment.MenuTopFragment;
@@ -46,6 +49,9 @@ import com.simicart.core.shortcutbadger.ShortcutBadgeException;
 import com.simicart.core.shortcutbadger.ShortcutBadger;
 import com.simicart.core.slidemenu.fragment.SlideMenuFragment;
 
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -405,6 +411,29 @@ public class MainActivity extends FragmentActivity {
             block.dispatchEvent("com.simicart.core.catalog.product.block.ProductBlock.resultfacebook.checkresultcode");
         }
 
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK && data != null) {
+                ArrayList<String> result = data
+                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                String text = result.get(0);
+                if (Utils.validateString(text)) {
+                    try {
+                        SimiEntity entity = new SimiEntity();
+                        JSONObject object = new JSONObject();
+                        object.put("textvoice", text);
+                        entity.setJSONObject(object);
+                        CacheBlock cacheBlock = new CacheBlock();
+                        cacheBlock.setSimiEntity(entity);
+                        block.dispatchEvent(
+                                "com.simicart.mainactivity.onactivityresult",
+                                cacheBlock);
+                    } catch (Exception e) {
+                    }
+                }
+            }
+
+
+        }
         EventActivity eventActivity = new EventActivity();
         CacheActivity cacheActivity = new CacheActivity();
         cacheActivity.setData(data);
