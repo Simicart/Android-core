@@ -265,7 +265,6 @@ public class SearchController extends SimiController implements
 						if (isOnscroll) {
 							mCurrentOffset += limit;
 							isOnscroll = false;
-							mDelegate.addFooterView();
 							mDelegate.setTagSearch(TagSearch.TAG_GRIDVIEW);
 							mDelegate.addFooterView();
 							mDelegate.setIsLoadMore(true);
@@ -304,7 +303,6 @@ public class SearchController extends SimiController implements
 						if (isOnscroll) {
 							mCurrentOffset += limit;
 							isOnscroll = false;
-							mDelegate.addFooterView();
 							mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
 							mDelegate.addFooterView();
 							mDelegate.setIsLoadMore(true);
