@@ -140,10 +140,13 @@ public class ProductListAdapter extends BaseAdapter {
 
 		holder.txtName.setText(product.getName());
 
+		holder.imageView.setImageResource(Rconfig.getInstance().drawable("default_logo"));
+		
 		if (holder.imageView != null && product.getImage() != null) {
 			DrawableManager.fetchDrawableOnThread(product.getImage(),
 					holder.imageView);
 		}
+		
 		if (product.getStock() == true) {
 			holder.layoutStock.setVisibility(View.GONE);
 		} else {
