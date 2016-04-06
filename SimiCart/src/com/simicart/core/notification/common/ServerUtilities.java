@@ -36,13 +36,15 @@ public final class ServerUtilities {
 
 			@Override
 			public void callBack(String message, boolean isSuccess) {
-				Log.e(getClass().getName(), "RegisterIDModel: " + message);
-				GCMRegistrar.setRegisteredOnServer(context, true);
-				GCMRegistrar.setRegistrationId(context, regId);
+				if (isSuccess) {
+					Log.e(getClass().getName(), "RegisterIDModel: " + message);
+					GCMRegistrar.setRegisteredOnServer(context, true);
+					GCMRegistrar.setRegistrationId(context, regId);
+				}
 			}
 		});
 		model.addParam("device_token", regId);
-		if(Utils.validateString(longitude) && Utils.validateString(latitude)) {
+		if (Utils.validateString(longitude) && Utils.validateString(latitude)) {
 			model.addParam("latitude", latitude);
 			model.addParam("longitude", longitude);
 		}
@@ -57,10 +59,13 @@ public final class ServerUtilities {
 
 			@Override
 			public void callBack(String message, boolean isSuccess) {
-				Log.e(getClass().getName(), "RegisterIDModel: " + message);
-				SimiManager.getIntance().showToast("Save register on server and device");
-				GCMRegistrar.setRegisteredOnServer(context, true);
-				GCMRegistrar.setRegistrationId(context, regId);
+				if (isSuccess) {
+					Log.e(getClass().getName(), "RegisterIDModel: " + message);
+					SimiManager.getIntance().showToast(
+							"Save register on server and device");
+					GCMRegistrar.setRegisteredOnServer(context, true);
+					GCMRegistrar.setRegistrationId(context, regId);
+				}
 			}
 		});
 		model.addParam("device_token", regId);
