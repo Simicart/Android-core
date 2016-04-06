@@ -4,7 +4,7 @@
 	    <package>com.simicart.theme.ztheme</package>
 	    <class>ZTheme</class>
 	    <method>changeHome</method>	
-	    <sku>simi_developer</sku>    
+	    <sku>simi_ztheme</sku>    
     </event>
 </events>
  

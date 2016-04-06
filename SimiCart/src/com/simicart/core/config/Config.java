@@ -13,10 +13,17 @@ import com.simicart.core.common.Utils;
 public class Config {
 	private String mThemeColor = "#FFFFFF";
 
+	// private String mBaseUrl =
+	// "http://dev-vn.magestore.com/simicart/1800/index.php/";
+	// private String mSecretKey = "87e6384986a7d74528faa948b5eff116b37";
+	// private String mBaseCloudUrl = "http://api.jajahub.com/rest/";
+	// private String mSecretCloudKey =
+	// "9aa0e4b72526157d471401a1af6666df4c1e20e5";
+
 	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
 	private String mSecretKey = "87e6384986a7d74528faa948b5eff116b37";
-	private String mBaseCloudUrl = "http://api.jajahub.com/rest/";
-	private String mSecretCloudKey = "9aa0e4b72526157d471401a1af6666df4c1e20e5";
+	private String mBaseCloudUrl = "http://dev-api.jajahub.com/rest/";
+	private String mSecretCloudKey = "e3a732afe714198ca3e53bfc7ed2f238d380a5de";
 
 	// private String mBaseUrl =
 	// "http://demo.magestore.com/simicart/simipos4/index.php";
@@ -450,10 +457,10 @@ public class Config {
 			mBaseUrl += "/";
 		}
 
-		int lenghtCloud = mBaseCloudUrl.length();
-		char lastCloud = mBaseCloudUrl.charAt(lenghtCloud - 1);
-		if (lastCloud != '/') {
-			mBaseCloudUrl += "/";
+		int last_index = mBaseCloudUrl.length() - 1;
+		char lastChar = mBaseCloudUrl.charAt(last_index);
+		if (lastChar == '/') {
+			mBaseCloudUrl = mBaseCloudUrl.substring(0, last_index);
 		}
 	}
 

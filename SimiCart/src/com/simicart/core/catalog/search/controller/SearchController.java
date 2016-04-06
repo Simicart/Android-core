@@ -152,7 +152,7 @@ public class SearchController extends SimiController implements
 					mDelegate.setQty(resultNumber);
 					mDelegate.updateView(mModel.getCollection());
 					isOnscroll = true;
-					Log.d("quangduy123", "request=="+message);
+					Log.d("quangduy123", "request==" + message);
 				}
 			}
 		});
@@ -258,14 +258,13 @@ public class SearchController extends SimiController implements
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				int threshold = 1;
 				int count = view.getCount();
-				
+
 				if (scrollState == SCROLL_STATE_IDLE) {
 					if ((view.getLastVisiblePosition() >= count - threshold)
 							&& Integer.parseInt(resultNumber) > count) {
 						if (isOnscroll) {
 							mCurrentOffset += limit;
 							isOnscroll = false;
-							mDelegate.addFooterView();
 							mDelegate.setTagSearch(TagSearch.TAG_GRIDVIEW);
 							mDelegate.addFooterView();
 							mDelegate.setIsLoadMore(true);
@@ -296,22 +295,21 @@ public class SearchController extends SimiController implements
 				int threshold = 1;
 				int count = view.getCount();
 				Log.e("Count :", count + "");
-//				if (scrollState == SCROLL_STATE_IDLE) {
-					if ((view.getLastVisiblePosition() >= count - threshold)
-							&& Integer.parseInt(resultNumber) > (count- threshold)) {
-						Log.e("ResultNumber :", resultNumber);
-						Log.e("IsOnscroll:", isOnscroll + "");
-						if (isOnscroll) {
-							mCurrentOffset += limit;
-							isOnscroll = false;
-							mDelegate.addFooterView();
-							mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
-							mDelegate.addFooterView();
-							mDelegate.setIsLoadMore(true);
-							Log.d("quangduy123", "isOnscroll=="+isOnscroll);
-							requestProduct();
-						}
-//					}
+				// if (scrollState == SCROLL_STATE_IDLE) {
+				if ((view.getLastVisiblePosition() >= count - threshold)
+						&& Integer.parseInt(resultNumber) > (count - threshold)) {
+					Log.e("ResultNumber :", resultNumber);
+					Log.e("IsOnscroll:", isOnscroll + "");
+					if (isOnscroll) {
+						mCurrentOffset += limit;
+						isOnscroll = false;
+						mDelegate.addFooterView();
+						mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
+						mDelegate.setIsLoadMore(true);
+						Log.d("quangduy123", "isOnscroll==" + isOnscroll);
+						requestProduct();
+					}
+					// }
 				}
 			}
 

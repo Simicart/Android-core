@@ -4,7 +4,7 @@
 	    <package>com.simicart.theme.matrixtheme</package>
 	    <class>MatrixTheme</class>
 	    <method>changeHome</method>	
-	    <sku>simi_developer</sku>    
+	    <sku>simi_themeone</sku>    
     </event>
 </events>
  
