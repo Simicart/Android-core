@@ -121,8 +121,9 @@ public class MainActivity extends FragmentActivity {
         ft.replace(Rconfig.getInstance().id("menu_top"), fragment);
         ft.commit();
         // ViewServer.get(this).addWindow(this);
-
     }
+
+
 
     private void autoSignin() {
         AutoSignInController controller = new AutoSignInController();
