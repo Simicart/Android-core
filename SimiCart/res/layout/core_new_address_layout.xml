@@ -188,13 +188,20 @@
                     android:background="@drawable/background_edittext"
                     android:paddingRight="5dp" >
 
+                    <ImageView
+                        android:id="@+id/ivCountryCode"
+                        android:layout_width="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_height="30dp"/>
+
                     <TextView
                         android:id="@+id/tv_country"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@+id/imv_extend_ct"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/ivCountryCode"
                         android:gravity="center_vertical"
                         android:textSize="16sp" />
 

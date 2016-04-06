@@ -77,7 +77,7 @@ public class NewAddressBookFragment extends SimiFragment {
 			mController = new NewAddressBookController();
 			mController.setDelegate(mBlock);
 			mController.setAfterController(afterControl);
-			mController.setAddressFor(this.addressFor);
+			mController.setAddressFor(addressFor);
 			mController.setBillingAddress(mBillingAddress);
 			mController.setShippingAddress(mShippingAddress);
 			mController.onStart();
@@ -88,6 +88,8 @@ public class NewAddressBookFragment extends SimiFragment {
 		mBlock.setControllerDelegate(mController);
 		mBlock.setSaveAddress(mController.getClickSave());
 		mBlock.setChooseCountry(mController.getChooseCountry());
+		mBlock.setCountryName(mController.getCountryName());
+		mBlock.setCountryCode(mController.getCountryCode());
 		mBlock.setChooseStates(mController.getChooseStates());
 		mBlock.setOnclickTextviewGender(mController.showGender());
 		mBlock.setOnclickImageGender(mController.showGender());

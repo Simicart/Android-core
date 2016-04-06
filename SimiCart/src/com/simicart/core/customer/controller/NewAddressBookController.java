@@ -20,6 +20,8 @@ import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
+import com.simicart.core.customer.CountryPicker.CountryPicker;
+import com.simicart.core.customer.CountryPicker.CountryPickerListener;
 import com.simicart.core.customer.delegate.ChooseCountryDelegate;
 import com.simicart.core.customer.delegate.NewAddressBookDelegate;
 import com.simicart.core.customer.entity.ConfigCustomerAddress;
@@ -53,6 +55,7 @@ public class NewAddressBookController extends SimiController implements
 	protected String mCurrentState = "";
 	protected MyAddress mBillingAddress;
 	protected MyAddress mShippingAddress;
+	protected String countryName, countryCode;
 
 	public void setBillingAddress(MyAddress mBillingAddress) {
 		this.mBillingAddress = mBillingAddress;
@@ -83,6 +86,14 @@ public class NewAddressBookController extends SimiController implements
 
 	public OnClickListener getChooseCountry() {
 		return mChooseCountry;
+	}
+
+	public String getCountryName() {
+		return countryName;
+	}
+
+	public String getCountryCode() {
+		return countryCode;
 	}
 
 	public OnClickListener getChooseStates() {
@@ -184,7 +195,18 @@ public class NewAddressBookController extends SimiController implements
 
 			@Override
 			public void onClick(View v) {
-				changeFragmentCountry(TYPE_SELECT_COUNTRY, mListCountry);
+//				changeFragmentCountry(TYPE_SELECT_COUNTRY, mListCountry);
+				CountryPicker picker = new CountryPicker();
+				picker.setListener(new CountryPickerListener() {
+
+					@Override
+					public void onSelectCountry(String name, String code) {
+						countryName = name;
+						countryCode = code;
+						SimiManager.getIntance().backPreviousFragment();
+					}
+				});
+				SimiManager.getIntance().replaceFragment(picker);
 			}
 		};
 

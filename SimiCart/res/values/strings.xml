@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="search">Search&#8230;</string>
     <string name="type_device">phone</string>
     <string name="app_name">SimiCart</string>
     <string name="title_section1">Home</string>

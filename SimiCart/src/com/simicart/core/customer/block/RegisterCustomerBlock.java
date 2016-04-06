@@ -59,6 +59,7 @@ public class RegisterCustomerBlock extends SimiBlock implements
 
 	public RegisterCustomerBlock(View view, Context context) {
 		super(view, context);
+		if(DataLocal.ConfigCustomerProfile != null)
 		mCustomer = DataLocal.ConfigCustomerProfile;
 	}
 

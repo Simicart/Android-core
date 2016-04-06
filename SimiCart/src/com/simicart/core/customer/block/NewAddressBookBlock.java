@@ -1,12 +1,15 @@
 package com.simicart.core.customer.block;
 
+import java.lang.reflect.Field;
 import java.util.Calendar;
+import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -18,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.magestore.simicart.R;
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.Utils;
@@ -67,6 +71,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 	ChooseCountryDelegate mController;
 	private ImageView img_state;
 	private ImageView img_country;
+	private ImageView ivCountryCode;
 	protected ConfigCustomerAddress mAddress;
 
 	public void setAfterController(int afterController) {
@@ -85,7 +90,20 @@ public class NewAddressBookBlock extends SimiBlock implements
 	public void setChooseCountry(OnClickListener click) {
 		tv_country.setOnClickListener(click);
 	}
-
+	public void setCountryName (String country){
+		if(country != null)
+		tv_country.setText(country);
+		Log.d("quangduy123", "country"+country);
+		
+	}
+	public void setCountryCode (String code){
+		if(code != null){
+		String drawableName = "flag_"
+				+ code.toLowerCase(Locale.ENGLISH);
+		ivCountryCode.setImageResource(getResId(drawableName));
+		Log.d("quangduy123", "drawableName"+drawableName);
+	}
+	}
 	public void setChooseStates(OnClickListener click) {
 		tv_state.setOnClickListener(click);
 	}
@@ -110,6 +128,8 @@ public class NewAddressBookBlock extends SimiBlock implements
 				"et_fullname"));
 		edt_suffix = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_suffix_show"));
+		ivCountryCode = (ImageView) mView.findViewById(Rconfig.getInstance().id(
+				"ivCountryCode"));
 		edt_street = (EditText) mView.findViewById(Rconfig.getInstance().id(
 				"et_street"));
 		edt_city = (EditText) mView.findViewById(Rconfig.getInstance().id(
@@ -717,5 +737,16 @@ public class NewAddressBookBlock extends SimiBlock implements
 	public Spinner getGender() {
 		return sp_gender;
 	}
+	private int getResId(String drawableName) {
 
+		try {
+			Class<com.magestore.simicart.R.drawable> res = R.drawable.class;
+			Field field = res.getField(drawableName);
+			int drawableId = field.getInt(null);
+			return drawableId;
+		} catch (Exception e) {
+			Log.e("COUNTRYPICKER", "Failure to get drawable id.", e);
+		}
+		return -1;
+	}
 }
