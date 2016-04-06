@@ -16,5 +16,13 @@
            <sku>simi_developer</sku>
        </event>
 
+       <event>
+           <name>com.simicart.core.splashscreen.controller.parseJSONStoreView</name>
+           <package>com.simicart.plugins.zopimchat</package>
+           <class>SimiZopim</class>
+           <method>configzopim</method>
+           <sku>simi_developer</sku>
+       </event>
+
 </events>
   

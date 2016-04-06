@@ -41,12 +41,9 @@ import com.simicart.core.menutop.fragment.MenuTopFragment;
 import com.simicart.core.notification.NotificationActivity;
 import com.simicart.core.notification.common.CommonUtilities;
 import com.simicart.core.notification.controller.NotificationController;
-import com.simicart.core.reportbug.UnCaughtException;
 import com.simicart.core.shortcutbadger.ShortcutBadgeException;
 import com.simicart.core.shortcutbadger.ShortcutBadger;
 import com.simicart.core.slidemenu.fragment.SlideMenuFragment;
-import com.simicart.plugins.zopimchat.ConstantZopim;
-import com.zopim.android.sdk.api.ZopimChat;
 
 import java.util.List;
 import java.util.Map;
@@ -75,7 +72,6 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MultiDex.install(this);
-        ZopimChat.init(ConstantZopim.ACCOUNT_KEY);
         // report bug
 //        Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
         SimiManager.getIntance().setCurrentActivity(this);
@@ -125,6 +121,7 @@ public class MainActivity extends FragmentActivity {
         ft.replace(Rconfig.getInstance().id("menu_top"), fragment);
         ft.commit();
         // ViewServer.get(this).addWindow(this);
+
     }
 
     private void autoSignin() {

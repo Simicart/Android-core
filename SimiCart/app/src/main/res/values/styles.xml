@@ -95,6 +95,7 @@
     <!--Customize where chat widget appears-->
     <style name="chat_widget" parent="_chat_widget">
         <item name="anchor">bottom_left</item>
+        <item name="android:textColor">@color/sample_red</item>
     </style>
     <style name="MyMaterialTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
