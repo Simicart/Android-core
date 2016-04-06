@@ -204,7 +204,6 @@
         <activity android:name="com.paypal.android.sdk.payments.PayPalFuturePaymentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentConsentActivity" />
         <activity android:name="com.paypal.android.sdk.payments.FuturePaymentInfoActivity" />
-        
         <activity android:name="com.simicart.plugins.braintree.BrainTreeSimicart" />
         <activity android:name="com.braintreepayments.api.dropin.BraintreePaymentActivity" />
         <!-- Required to use PayPal -->
@@ -235,7 +234,7 @@
           handle received messages.
 
           By default, it must be named .GCMIntentService, unless the   
-          application uses a custom BroadcastReceiver that redefines its name.
+          application uses a custom BroadcastReceiver that redefines its name.
         -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
@@ -248,6 +247,7 @@
             android:value="@string/facebook_app_id" />
 
         <service android:name="com.simicart.core.notification.GCMIntentService" />
+        <service android:name="com.simicart.core.notification.common.ServiceNotification" />
 
         <!-- Used for Google Play Store Campaign Measurement -->
         <receiver
