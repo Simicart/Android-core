@@ -203,6 +203,17 @@ public class NewAddressBookController extends SimiController implements
 					public void onSelectCountry(String name, String code) {
 						countryName = name;
 						countryCode = code;
+						
+						mCurrentCountry = name;
+						mDelegate.updateCountry(name);
+						ArrayList<String> states = getStateFromCountry(name,
+								mListCountryAllowed);
+						if (null != states && states.size() > 0) {
+							mCurrentState = states.get(0);
+						} else {
+							mCurrentState = "";
+						}
+						mDelegate.updateState(mCurrentState);
 						SimiManager.getIntance().backPreviousFragment();
 					}
 				});

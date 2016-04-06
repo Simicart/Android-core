@@ -100,6 +100,7 @@ public class NewAddressBookBlock extends SimiBlock implements
 		if(code != null){
 		String drawableName = "flag_"
 				+ code.toLowerCase(Locale.ENGLISH);
+		ivCountryCode.setVisibility(View.VISIBLE);
 		ivCountryCode.setImageResource(getResId(drawableName));
 		Log.d("quangduy123", "drawableName"+drawableName);
 	}
