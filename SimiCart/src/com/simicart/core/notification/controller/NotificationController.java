@@ -3,7 +3,6 @@ package com.simicart.core.notification.controller;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils.TruncateAt;
@@ -49,7 +48,7 @@ public class NotificationController {
 	String regId;
 	GoogleCloudMessaging gcm;
 
-	AsyncTask<Void, Void, Void> mRegisterTask;
+	// AsyncTask<Void, Void, Void> mRegisterTask;
 
 	public NotificationController(FragmentActivity activity) {
 		TAG = getClass().getName();
@@ -89,51 +88,9 @@ public class NotificationController {
 			Log.e(getClass().getName(),
 					"Automatically registers application on startup.");
 		} else {
-			// Device is already registered on GCM, check server.
-			// Log.e(getClass().getName(),
-			// "Device is already registered on GCM, check server.");
-			// if (GCMRegistrar.isRegisteredOnServer(mContext)) {
-			// // Skips registration.
-			// Log.e(getClass().getName(),
-			// "The device is registered On Server");
-			// } else {
-			Log.e(getClass().getName(), "Try to register again");
-			// Try to register again, but not in the UI thread.
-			// It's also necessary to cancel the thread onDestroy(),
-			// hence the use of AsyncTask instead of a raw thread.
-			mRegisterTask = new AsyncTask<Void, Void, Void>() {
-
-				@Override
-				protected Void doInBackground(Void... params) {
-
-					// At this point all attempts to register with the app
-					// server failed, so we need to unregister the device
-					// from GCM - the app will try to register again when
-					// it is restarted. Note that GCM will send an
-					// unregistered callback upon completion, but
-					// GCMIntentService.onUnregistered() will ignore it.
-					// GCMRegistrar.unregister(mContext);
-
-					// Log.e(getClass().getName(), "Try to register again");
-					// if (getRegistrationId(mContext).equals("")) {
-					// storeRegistrationId(mContext, regId);
-					// } else {
-					// regId = getRegistrationId(mContext);
-					// }
-					ServerUtilities.register(mContext, regId, s_latitude,
-							s_longitude);
-					return null;
-				}
-
-				@Override
-				protected void onPostExecute(Void result) {
-					mRegisterTask = null;
-				}
-
-			};
-			mRegisterTask.execute(null, null, null);
+			ServerUtilities.startRegisterService(mContext, regId, s_latitude,
+					s_longitude);
 		}
-		// }
 	}
 
 	private void checkNotNull(Object reference, String name) {
@@ -186,12 +143,12 @@ public class NotificationController {
 
 		alertboxDowload.setContentView(view);
 		TextView tv = (TextView) alertboxDowload
-                .findViewById(android.R.id.title);
+				.findViewById(android.R.id.title);
 		tv.setMaxLines(2);
 		tv.setEllipsize(TruncateAt.END);
 		tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 		alertboxDowload.setTitle(Config.getInstance().getText(
-                notificationData.getTitle()));
+				notificationData.getTitle()));
 		alertboxDowload.setCancelable(false);
 
 		TextView tv_close = (TextView) view.findViewById(Rconfig.getInstance()
@@ -255,9 +212,10 @@ public class NotificationController {
 					&& !notificationData.getProductID().equals("")
 					&& !notificationData.getProductID().toLowerCase()
 							.equals("null")) {
-				fragment = ProductDetailParentFragment.newInstance(notificationData.getProductID(),null);
-//				((ProductDetailParentFragment) fragment)
-//						.setProductID(notificationData.getProductID());
+				fragment = ProductDetailParentFragment.newInstance(
+						notificationData.getProductID(), null);
+				// ((ProductDetailParentFragment) fragment)
+				// .setProductID(notificationData.getProductID());
 			}
 		} else if (notificationData.getType().equals("2")) {
 			if (notificationData.getCategoryID() != null
@@ -266,24 +224,30 @@ public class NotificationController {
 				if (notificationData.getHasChild().equals("1")) {
 					if (DataLocal.isTablet) {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryID(), notificationData.getCategoryName());
+								notificationData.getCategoryID(),
+								notificationData.getCategoryName());
 						CateSlideMenuFragment.getIntance()
 								.replaceFragmentCategoryMenu(fragment);
 						CateSlideMenuFragment.getIntance().openMenu();
 						return;
 					} else {
 						fragment = CategoryFragment.newInstance(
-								notificationData.getCategoryID(), notificationData.getCategoryName());
+								notificationData.getCategoryID(),
+								notificationData.getCategoryName());
 					}
 				} else {
-					fragment = ListProductFragment.newInstance(ConstantsSearch.url_category, notificationData
-							.getCategoryID(), null, null, notificationData.getCategoryName(), null, null, null);
-//					((ListProductFragment) fragment).setCategoryId(notificationData
-//							.getCategoryID());
-//					((ListProductFragment) fragment)
-//							.setCategoryName(notificationData.getCategoryName());
-//					((ListProductFragment) fragment)
-//							.setUrlSearch(ConstantsSearch.url_category);
+					fragment = ListProductFragment.newInstance(
+							ConstantsSearch.url_category,
+							notificationData.getCategoryID(), null, null,
+							notificationData.getCategoryName(), null, null,
+							null);
+					// ((ListProductFragment)
+					// fragment).setCategoryId(notificationData
+					// .getCategoryID());
+					// ((ListProductFragment) fragment)
+					// .setCategoryName(notificationData.getCategoryName());
+					// ((ListProductFragment) fragment)
+					// .setUrlSearch(ConstantsSearch.url_category);
 				}
 			}
 		} else {
@@ -311,8 +275,6 @@ public class NotificationController {
 	}
 
 	public void destroy() {
-		if (mRegisterTask != null) {
-			mRegisterTask.cancel(true);
-		}
+		ServerUtilities.stopRegisterService();
 	}
 }
