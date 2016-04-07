@@ -28,6 +28,10 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 	protected LocationPickupEditBlock mBlock;
 	protected LocationPickupEditController mController;
 	protected MyAddress addressbook;
+	
+	protected int editAddressFor = Constants.KeyAddress.ALL_ADDRESS;
+	protected MyAddress mBillingAddress;
+	protected MyAddress mShippingAddress;
 
 	public static LocationPickupEditFragment newInstance() {
 		LocationPickupEditFragment fragment = new LocationPickupEditFragment();
