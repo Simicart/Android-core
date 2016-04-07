@@ -1,5 +1,7 @@
 package com.simicart.plugins.locationpickup;
 
+import android.util.Log;
+
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.checkout.controller.AddressBookCheckoutController;
 import com.simicart.core.checkout.controller.PopupCheckoutController;
@@ -31,15 +33,16 @@ public class LocationPickup {
 			
 //			((LocationPickupFragment) fragment).setAfterControler(afterControl);
 //			fragment = new TestFragment();
-
+//			Log.d("quangdd123", "NewAddressBookFragment==LocationPickupFragment");
 			this.mCacheFragment.setFragment(fragment);
 		}
-		if (method.equals("addEditView")) {
+		if (method.equals("AddressBookDetailFragment")) {
 			fragment = LocationPickupEditFragment.newInstance();
 			fragment.setArguments(AddressBookController.bundleAddress);
 //			MyAddress myaddress = ((AddressBookDetailFragment) caheFragment
 //					.getFragment()).getAddressbook();
 //			((LocationPickupEditFragment) fragment).setAddressbook(myaddress);
+//			Log.d("quangdd123", "AddressBookDetailFragment==LocationPickupEditFragment");
 			this.mCacheFragment.setFragment(fragment);
 		}
 	}

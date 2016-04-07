@@ -49,10 +49,23 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 				Rconfig.getInstance().layout("plugins_locationpickup_layout"),
 				container, false);
 		Context context = getActivity();
-		if(getArguments() != null){
-			addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
+		if (getArguments() != null) {
+			addressbook = (MyAddress) getArguments().getSerializable(
+					Constants.KeyData.BOOK_ADDRESS);
+			editAddressFor = getArguments().getInt(
+					Constants.KeyData.ADDRESS_FOR);
+			if (editAddressFor != Constants.KeyAddress.ALL_ADDRESS) {
+				mShippingAddress = (MyAddress) getArguments().getSerializable(
+						Constants.KeyData.SHIPPING_ADDRESS);
+				mBillingAddress = (MyAddress) getArguments().getSerializable(
+						Constants.KeyData.BILLING_ADDRESS);
 			}
-		Log.d("quangdd", "==LocationPickupEditFragment==" +addressbook.toString());
+		}
+		// if(getArguments() != null){
+		// addressbook = (MyAddress)
+		// getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
+		// }
+		// Log.d("quangdd", "==LocationPickupEditFragment==" +addressbook.toString());
 		scroll = (ScrollView) view.findViewById(Rconfig.getInstance().id(
 				"scrollView"));
 		map = (MapView) view.findViewById(Rconfig.getInstance().id("map"));
