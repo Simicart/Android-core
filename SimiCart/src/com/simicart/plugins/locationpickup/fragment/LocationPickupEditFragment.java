@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +27,10 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 	protected LocationPickupEditBlock mBlock;
 	protected LocationPickupEditController mController;
 	protected MyAddress addressbook;
+	
+	protected int editAddressFor = Constants.KeyAddress.ALL_ADDRESS;
+	protected MyAddress mBillingAddress;
+	protected MyAddress mShippingAddress;
 
 	public static LocationPickupEditFragment newInstance() {
 		LocationPickupEditFragment fragment = new LocationPickupEditFragment();
@@ -49,10 +52,23 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 				Rconfig.getInstance().layout("plugins_locationpickup_layout"),
 				container, false);
 		Context context = getActivity();
-		if(getArguments() != null){
-			addressbook = (MyAddress) getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
+		if (getArguments() != null) {
+			addressbook = (MyAddress) getArguments().getSerializable(
+					Constants.KeyData.BOOK_ADDRESS);
+			editAddressFor = getArguments().getInt(
+					Constants.KeyData.ADDRESS_FOR);
+			if (editAddressFor != Constants.KeyAddress.ALL_ADDRESS) {
+				mShippingAddress = (MyAddress) getArguments().getSerializable(
+						Constants.KeyData.SHIPPING_ADDRESS);
+				mBillingAddress = (MyAddress) getArguments().getSerializable(
+						Constants.KeyData.BILLING_ADDRESS);
 			}
-		Log.d("quangdd", "==LocationPickupEditFragment==" +addressbook.toString());
+		}
+		// if(getArguments() != null){
+		// addressbook = (MyAddress)
+		// getArguments().getSerializable(Constants.KeyData.BOOK_ADDRESS);
+		// }
+		// Log.d("quangdd", "==LocationPickupEditFragment==" +addressbook.toString());
 		scroll = (ScrollView) view.findViewById(Rconfig.getInstance().id(
 				"scrollView"));
 		map = (MapView) view.findViewById(Rconfig.getInstance().id("map"));
