@@ -24,7 +24,6 @@ import android.widget.Toast;
 import com.simicart.MainActivity;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.network.request.SimiRequestQueue;
-import com.simicart.core.base.networkcloud.request.multi.SimiRequestQueueCloud;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
@@ -49,14 +48,9 @@ public class SimiManager {
 	private FragmentManager mChildFragmentManager;
 
 	protected SimiRequestQueue mRequestQueue;
-	protected SimiRequestQueueCloud mRequestQueueCloud;
 	protected Boolean isShowedNotify = false;
 	protected boolean isRefreshCart = true;
 	protected int mQtyCartPrevious;
-
-	public SimiRequestQueueCloud getRequestQueueCloud() {
-		return mRequestQueueCloud;
-	}
 
 	public SimiRequestQueue getRequestQueue() {
 		return mRequestQueue;
@@ -65,8 +59,6 @@ public class SimiManager {
 	private SimiManager() {
 		mRequestQueue = new SimiRequestQueue();
 		mRequestQueue.start();
-		mRequestQueueCloud = new SimiRequestQueueCloud();
-		mRequestQueueCloud.start();
 	}
 
 	public static SimiManager getIntance() {
@@ -500,7 +492,7 @@ public class SimiManager {
 	public void showError(String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(mCurrentActivity);
 		builder.setTitle(Config.getInstance().getText("Warning..."));
-		builder.setMessage(message)
+		builder.setMessage(Config.getInstance().getText(message))
 				.setCancelable(true)
 				.setPositiveButton(Config.getInstance().getText("OK"),
 						new DialogInterface.OnClickListener() {
@@ -520,7 +512,7 @@ public class SimiManager {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						mCurrentActivity);
 				builder.setTitle(Config.getInstance().getText("Warning..."));
-				builder.setMessage(message)
+				builder.setMessage(Config.getInstance().getText(message))
 						.setCancelable(true)
 						.setPositiveButton(Config.getInstance().getText("OK"),
 								new DialogInterface.OnClickListener() {
