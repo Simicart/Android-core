@@ -115,6 +115,10 @@ public class SearchBlock extends SimiBlock implements SearchDelegate,
 	public void setType_search(String type_search) {
 		this.type_search = type_search;
 	}
+	public void setPosItemList (int position){
+		lv_products.setSelection(position);
+		grv_products.setSelection(position);
+	}
 
 	public void setCate_id(String cate_id) {
 		this.cate_id = cate_id;
