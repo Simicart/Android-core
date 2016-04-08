@@ -261,7 +261,6 @@ public class SearchController extends SimiController implements
 				int threshold = 1;
 				int count = view.getCount();
 				posItemList = view.getFirstVisiblePosition();
-				Constants.viewLastList = view.getLastVisiblePosition();
 				if (scrollState == SCROLL_STATE_IDLE) {
 					if ((view.getLastVisiblePosition() >= count - threshold)
 							&& Integer.parseInt(resultNumber) > count) {
@@ -298,7 +297,6 @@ public class SearchController extends SimiController implements
 				int threshold = 1;
 				int count = view.getCount();
 				posItemList = view.getFirstVisiblePosition();
-				Constants.viewLastList = view.getLastVisiblePosition();
 				Log.e("Count :", count + "");
 //				if (scrollState == SCROLL_STATE_IDLE) {
 					if ((view.getLastVisiblePosition() >= count - threshold)
