@@ -1,6 +1,7 @@
 package com.simicart.core.customer.controller;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -130,11 +131,12 @@ public class RegisterCustomerController extends SimiController {
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
-
+				Log.d("quangdd123", "message=="+message+"==isSuccess=="+isSuccess);
 				if (isSuccess) {
+					Log.d("quangdd123", "isSuccess=="+isSuccess);
 					mDelegate.updateView(mModel.getCollection());
 					SimiManager.getIntance().showNotify(
-							Config.getInstance().getText("SUCCESS"), message,
+							Config.getInstance().getText("SUCCESS"), Config.getInstance().getText(message),
 							Config.getInstance().getText("OK"));
 					replaceFragment();
 				}

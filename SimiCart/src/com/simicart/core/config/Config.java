@@ -38,8 +38,8 @@ public class Config {
 //	private String mBaseUrl = "https://www.highstreettv.com/";
 //	private String mSecretKey = "5a4c0e94a019396ebd15eb307df71e18";
 	
-//	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
-//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
+	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 //	private String mBaseUrl = "http://www.caswellplating.com/";
 //	private String mSecretKey = "25dabf96d8ddcf1b0e0f0c832c2a9809";
 	// private String mBaseUrl = "http://www.numbersixlondon.com";
@@ -47,8 +47,8 @@ public class Config {
 	// private String mBaseUrl = "https://go360store.com/";
 	// private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
 
-	private String mBaseUrl = "http://dev2.lockpicks.com/index.php/";
-	private String mSecretKey = "38510e976b23812611973bbae1283206";
+//	private String mBaseUrl = "http://www.kalkifashion.com/index.php";
+//	private String mSecretKey = "b60692583049b01d87d498530f9839e8";
 
 //	 private String mBaseUrl =
 //	 "http://shopingtimes.com/index.php/";

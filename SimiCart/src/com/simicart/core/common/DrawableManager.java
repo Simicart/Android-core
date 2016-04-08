@@ -10,17 +10,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
@@ -35,9 +30,13 @@ import android.view.Display;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.simicart.MainActivity;
 import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.base.network.request.TLSSocketFactory;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.imagesimicart.SimiImageView;
@@ -227,35 +226,46 @@ public class DrawableManager {
 
 		// Context context = imageView.getContext();
 		// Glide.with(context).load(urlString).into(imageView);
+		 Context context = imageView.getContext();
+//		 Glide.with(context).load(urlString).into(imageView);
+		 Glide.with(context).load(urlString).asBitmap().into(new SimpleTarget<Bitmap>(80,80) {
 
-		init();
-
-		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
-
-		if (null != cache_bitMap) {
-			imageView.setImageBitmap(cache_bitMap);
-			return;
-		}
-
-		final Handler handler = new Handler() {
-			@Override
-			public void handleMessage(Message message) {
-				Bitmap bitmap = (Bitmap) message.obj;
-				if (bitmap != null) {
-					imageView.setImageBitmap(bitmap);
-					addBitmapToMemoryCache(urlString, bitmap);
-				} else {
-					Resources resource = SimiManager.getIntance()
-							.getCurrentContext().getResources();
-					bitmap = BitmapFactory.decodeResource(resource, Rconfig
-							.getInstance().drawable("default_icon"));
-					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
-					imageView.setImageBitmap(bitmap);
-				}
-			}
-		};
-
-		getBitmap(handler, urlString);
+		     @Override
+		     public void onResourceReady(Bitmap resource,
+		       GlideAnimation<? super Bitmap> arg1) {
+		    	
+//		      Bitmap bMapRotate = Utils.scaleToFill(resource,w,h);
+		    	 imageView.setImageBitmap(resource);
+		     }
+		       });
+//		init();
+//
+//		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+//
+//		if (null != cache_bitMap) {
+//			imageView.setImageBitmap(cache_bitMap);
+//			return;
+//		}
+//
+//		final Handler handler = new Handler() {
+//			@Override
+//			public void handleMessage(Message message) {
+//				Bitmap bitmap = (Bitmap) message.obj;
+//				if (bitmap != null) {
+//					imageView.setImageBitmap(bitmap);
+//					addBitmapToMemoryCache(urlString, bitmap);
+//				} else {
+//					Resources resource = SimiManager.getIntance()
+//							.getCurrentContext().getResources();
+//					bitmap = BitmapFactory.decodeResource(resource, Rconfig
+//							.getInstance().drawable("default_icon"));
+//					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
+//					imageView.setImageBitmap(bitmap);
+//				}
+//			}
+//		};
+//
+//		getBitmap(handler, urlString);
 	}
 
 	public static void fetchDrawableIConOnThread(final String urlString,
@@ -303,28 +313,23 @@ public class DrawableManager {
 
 		getBitmap(handler, urlString);
 	}
-
-	public static void fetchDrawableOnThread(final String urlString,
-			final ImageView imageView) {
-
-		// Context context = imageView.getContext();
-		// Glide.with(context).load(urlString).into(imageView);
-
+	public static void fetchDrawableOnThread(final String urlImage,
+			final SimiImageView simiImageView) {
 		init();
 
-		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+		Bitmap cache_bitMap = getBitmapFromMemCache(urlImage);
 
 		if (null != cache_bitMap) {
-			imageView.setImageBitmap(cache_bitMap);
+			simiImageView.setImageBitmap(cache_bitMap);
 			return;
 		}
 
 		else {
-			cache_bitMap = getBitmapFromDiskCache(urlString);
+			cache_bitMap = getBitmapFromDiskCache(urlImage);
 			if (null != cache_bitMap) {
-				imageView.setImageBitmap(cache_bitMap);
+				simiImageView.setImageBitmap(cache_bitMap);
 
-				String key_md5 = Utils.md5(urlString);
+				String key_md5 = Utils.md5(urlImage);
 
 				if (null != mMemoryCache) {
 					if (getBitmapFromMemCache(key_md5) == null) {
@@ -333,115 +338,264 @@ public class DrawableManager {
 				}
 				return;
 			}
-		}
-
-		final Handler handler = new Handler() {
-			@Override
-			public void handleMessage(Message message) {
-				Bitmap bitmap = (Bitmap) message.obj;
-				if (bitmap != null) {
-					imageView.setImageBitmap(bitmap);
-					addBitmapToMemoryCache(urlString, bitmap);
-				} else {
-					Resources resources = SimiManager.getIntance()
-							.getCurrentContext().getResources();
-					bitmap = BitmapFactory.decodeResource(resources, Rconfig
-							.getInstance().drawable("default_icon"));
-					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
-					imageView.setImageBitmap(bitmap);
-					bitmap = null;
+			final Handler handler = new Handler() {
+				@Override
+				public void handleMessage(Message message) {
+					Bitmap bitmap = (Bitmap) message.obj;
+					if (bitmap != null) {
+						simiImageView.setImageBitmap(bitmap);
+						addBitmapToMemoryCache(urlImage, bitmap);
+					} else {
+						Resources resources = SimiManager.getIntance()
+								.getCurrentContext().getResources();
+						bitmap = BitmapFactory.decodeResource(resources, Rconfig
+								.getInstance().drawable("default_icon"));
+						bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
+						simiImageView.setImageBitmap(bitmap);
+						bitmap = null;
+					}
 				}
-			}
-		};
+			};
 
-		getBitmap(handler, urlString);
+			getBitmap(handler, urlImage);
+		}
+		}
+	public static void fetchDrawableOnThread(final String urlString,
+			final ImageView imageView) {
+
+		 Context context = imageView.getContext();
+//		 Glide.with(context).load(urlString).into(imageView);
+		 Glide.with(context).load(urlString).asBitmap().into(new SimpleTarget<Bitmap>(80,80) {
+
+		     @Override
+		     public void onResourceReady(Bitmap resource,
+		       GlideAnimation<? super Bitmap> arg1) {
+		    	
+//		      Bitmap bMapRotate = Utils.scaleToFill(resource,w,h);
+		    	 imageView.setImageBitmap(resource);
+		     }
+		       });
+//		init();
+//
+//		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+//
+//		if (null != cache_bitMap) {
+//			imageView.setImageBitmap(cache_bitMap);
+//			return;
+//		}
+//
+//		else {
+//			cache_bitMap = getBitmapFromDiskCache(urlString);
+//			if (null != cache_bitMap) {
+//				imageView.setImageBitmap(cache_bitMap);
+//
+//				String key_md5 = Utils.md5(urlString);
+//
+//				if (null != mMemoryCache) {
+//					if (getBitmapFromMemCache(key_md5) == null) {
+//						mMemoryCache.put(key_md5, cache_bitMap);
+//					}
+//				}
+//				return;
+//			}
+//		}
+//
+//		final Handler handler = new Handler() {
+//			@Override
+//			public void handleMessage(Message message) {
+//				Bitmap bitmap = (Bitmap) message.obj;
+//				if (bitmap != null) {
+//					imageView.setImageBitmap(bitmap);
+//					addBitmapToMemoryCache(urlString, bitmap);
+//				} else {
+//					Resources resources = SimiManager.getIntance()
+//							.getCurrentContext().getResources();
+//					bitmap = BitmapFactory.decodeResource(resources, Rconfig
+//							.getInstance().drawable("default_icon"));
+//					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
+//					imageView.setImageBitmap(bitmap);
+//					bitmap = null;
+//				}
+//			}
+//		};
+//
+//		getBitmap(handler, urlString);
 	}
 
 	public static void fetchDrawableOnThreadForZTheme(final String urlString,
 			final ImageView imageView) {
-		// Log.e("DrawableManager ","fetchDrawableOnThreadForZTheme(String, ImageView)");
-		// Context context = SimiManager.getIntance().getCurrentActivity();
-		// GLideTransform transform = new GLideTransform(context);
-		// Glide.with(context).load(urlString).transform(transform).into(imageView);
-
-		init();
-
-		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
-
+//
+//		init();
+//
+//		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+//
+//		Display display = SimiManager.getIntance().getCurrentActivity()
+//				.getWindowManager().getDefaultDisplay();
+//		Point size = new Point();
+//		display.getSize(size);
+//		final int w = (size.x * 4) / 5;
+//		final int h = (size.y * 4) / 5;
+//
+//		if (null != cache_bitMap) {
+//			Bitmap bMapRotate = Utils.scaleToFill(cache_bitMap, w, h);
+//			imageView.setImageBitmap(bMapRotate);
+//			cache_bitMap = null;
+//			bMapRotate = null;
+//			return;
+//		}
+//
+//		final Handler handler = new Handler() {
+//			@Override
+//			public void handleMessage(Message message) {
+//				Bitmap bitmap = (Bitmap) message.obj;
+//				if (bitmap != null) {
+//					try {
+//						Bitmap bMapRotate = Utils.scaleToFill(bitmap, w, h);
+//						imageView.setImageBitmap(bMapRotate);
+//						addBitmapToMemoryCache(urlString, bitmap);
+//						bitmap = null;
+//						bMapRotate = null;
+//					} catch (Exception e) {
+//
+//					}
+//				} else {
+//					Resources resources = SimiManager.getIntance()
+//							.getCurrentContext().getResources();
+//					bitmap = BitmapFactory.decodeResource(resources, Rconfig
+//							.getInstance().drawable("default_icon"));
+//					Matrix mat = new Matrix();
+//					mat.postRotate(-90);
+//					Bitmap bMapRotate = Bitmap.createBitmap(bitmap, 0, 0,
+//							bitmap.getWidth(), bitmap.getHeight(), mat, true);
+//					imageView.setImageBitmap(bMapRotate);
+//					bitmap = null;
+//				}
+//			}
+//		};
+//
+//		getBitmap(handler, urlString);
+		Context context = imageView.getContext();
 		Display display = SimiManager.getIntance().getCurrentActivity()
 				.getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
-		final int w = (size.x * 4) / 5;
-		final int h = (size.y * 4) / 5;
+		int w = (size.x * 4) / 5;
+		int h = (size.y * 4) / 5;
+		Glide.with(context).load(urlString).asBitmap().into(new SimpleTarget<Bitmap>(w,h) {
 
-		if (null != cache_bitMap) {
-			Bitmap bMapRotate = Utils.scaleToFill(cache_bitMap, w, h);
-			imageView.setImageBitmap(bMapRotate);
-			cache_bitMap = null;
-			bMapRotate = null;
-			return;
-		}
+		     @Override
+		     public void onResourceReady(Bitmap resource,
+		       GlideAnimation<? super Bitmap> arg1) {
+		    	
+//		      Bitmap bMapRotate = Utils.scaleToFill(resource,w,h);
+		    	 imageView.setImageBitmap(resource);
+		     }
+		       });
+	}
+	public static void fetchDrawableOnThreadForZTheme1(final String urlString,
+			final ImageView imageView) {
+//		 Log.e("DrawableManager ","fetchDrawableOnThreadForZTheme(String, ImageView)");
+//		 Context context = SimiManager.getIntance().getCurrentActivity();
+//		 GLideTransform transform = new GLideTransform(context);
+//		 Glide.with(context).load(urlString).transform(transform).into(imageView);
+		 
+//		 Context context = imageView.getContext();
+//		 Glide.with(context).load(urlString).into(imageView);
+		 Context context = imageView.getContext();
+			Display display = SimiManager.getIntance().getCurrentActivity()
+					.getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			int w = (size.x * 4) / 5;
+			int h = (size.y * 4) / 5;
+			Glide.with(context).load(urlString).asBitmap().into(new SimpleTarget<Bitmap>(w,h) {
 
-		final Handler handler = new Handler() {
-			@Override
-			public void handleMessage(Message message) {
-				Bitmap bitmap = (Bitmap) message.obj;
-				if (bitmap != null) {
-					try {
-						Bitmap bMapRotate = Utils.scaleToFill(bitmap, w, h);
-						imageView.setImageBitmap(bMapRotate);
-						addBitmapToMemoryCache(urlString, bitmap);
-						bitmap = null;
-						bMapRotate = null;
-					} catch (Exception e) {
-
-					}
-				} else {
-					Resources resources = SimiManager.getIntance()
-							.getCurrentContext().getResources();
-					bitmap = BitmapFactory.decodeResource(resources, Rconfig
-							.getInstance().drawable("default_icon"));
-					Matrix mat = new Matrix();
-					mat.postRotate(-90);
-					Bitmap bMapRotate = Bitmap.createBitmap(bitmap, 0, 0,
-							bitmap.getWidth(), bitmap.getHeight(), mat, true);
-					imageView.setImageBitmap(bMapRotate);
-					bitmap = null;
-				}
-			}
-		};
-
-		getBitmap(handler, urlString);
+			     @Override
+			     public void onResourceReady(Bitmap resource,
+			       GlideAnimation<? super Bitmap> arg1) {
+			    	
+//			      Bitmap bMapRotate = Utils.scaleToFill(resource,w,h);
+			    	 imageView.setImageBitmap(resource);
+			     }
+			       });
+//		init();
+//
+//		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+//
+//		Display display = SimiManager.getIntance().getCurrentActivity()
+//				.getWindowManager().getDefaultDisplay();
+//		Point size = new Point();
+//		display.getSize(size);
+//		final int w = (size.x * 4) / 5;
+//		final int h = (size.y * 4) / 5;
+//
+//		if (null != cache_bitMap) {
+//			Bitmap bMapRotate = Utils.scaleToFill(cache_bitMap, w, h);
+//			imageView.setImageBitmap(bMapRotate);
+//			cache_bitMap = null;
+//			bMapRotate = null;
+//			return;
+//		}
+//
+//		final Handler handler = new Handler() {
+//			@Override
+//			public void handleMessage(Message message) {
+//				Bitmap bitmap = (Bitmap) message.obj;
+//				if (bitmap != null) {
+//					try {
+//						Bitmap bMapRotate = Utils.scaleToFill(bitmap, w, h);
+//						imageView.setImageBitmap(bMapRotate);
+//						addBitmapToMemoryCache(urlString, bitmap);
+//						bitmap = null;
+//						bMapRotate = null;
+//					} catch (Exception e) {
+//
+//					}
+//				} else {
+//					Resources resources = SimiManager.getIntance()
+//							.getCurrentContext().getResources();
+//					bitmap = BitmapFactory.decodeResource(resources, Rconfig
+//							.getInstance().drawable("default_icon"));
+//					Matrix mat = new Matrix();
+//					mat.postRotate(-90);
+//					Bitmap bMapRotate = Bitmap.createBitmap(bitmap, 0, 0,
+//							bitmap.getWidth(), bitmap.getHeight(), mat, true);
+//					imageView.setImageBitmap(bMapRotate);
+//					bitmap = null;
+//				}
+//			}
+//		};
+//
+//		getBitmap(handler, urlString);
 	}
 
-	// public static class GLideTransform extends BitmapTransformation {
-	// public GLideTransform(Context context) {
-	// super(context);
-	// }
-	//
-	// @Override
-	// public String getId() {
-	// // TODO Auto-generated method stub
-	// return "detail";
-	// }
-	//
-	// @Override
-	// protected Bitmap transform(BitmapPool arg0, Bitmap bitmap, int arg2,
-	// int arg3) {
-	// Display display = SimiManager.getIntance().getCurrentActivity()
-	// .getWindowManager().getDefaultDisplay();
-	// Point size = new Point();
-	// display.getSize(size);
-	// final int w = (size.x * 4) / 5;
-	// final int h = (size.y * 4) / 5;
-	//
-	// Log.e("DrawableManager ", "transform " + w + h);
-	//
-	// return Utils.scaleToFill(bitmap, w, h);
-	// }
-	//
-	// }
+	 public static class GLideTransform extends BitmapTransformation {
+	 public GLideTransform(Context context) {
+	 super(context);
+	 }
+	
+	 @Override
+	 public String getId() {
+	 // TODO Auto-generated method stub
+	 return "detail";
+	 }
+	
+	 @Override
+	 protected Bitmap transform(BitmapPool arg0, Bitmap bitmap, int arg2,
+	 int arg3) {
+	 Display display = SimiManager.getIntance().getCurrentActivity()
+	 .getWindowManager().getDefaultDisplay();
+	 Point size = new Point();
+	 display.getSize(size);
+	 final int w = (size.x * 4) / 5;
+	 final int h = (size.y * 4) / 5;
+	
+	 Log.e("DrawableManager ", "transform " + w + h);
+	
+	 return Utils.scaleToFill(bitmap, w, h);
+	 }
+	
+	 }
 
 	@SuppressWarnings("deprecation")
 	public static void fetchDrawableOnThread(final String urlString,
@@ -493,6 +647,32 @@ public class DrawableManager {
 
 		getBitmap(handler, urlString);
 	}
+	public static void fetchItemDrawableOnThread1(final String urlString,
+			final ImageView imageView) {
+
+		 Context context = imageView.getContext();
+		 Glide.with(context).load(urlString).into(imageView);
+
+//		final Handler handler = new Handler() {
+//			@Override
+//			public void handleMessage(Message message) {
+//				Bitmap bitmap = (Bitmap) message.obj;
+//				Resources resource = SimiManager.getIntance()
+//						.getCurrentContext().getResources();
+//				if (bitmap != null) {
+//					Drawable drawable = new BitmapDrawable(resource, bitmap);
+//					imageView.setImageDrawable(drawable);
+//				} else {
+//					bitmap = BitmapFactory.decodeResource(resource, Rconfig
+//							.getInstance().drawable("default_icon"));
+//					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
+//					imageView.setImageBitmap(bitmap);
+//				}
+//			}
+//		};
+//
+//		getBitmap(handler, urlString);
+	}
 
 	public static void getBitmap(final Handler handler, final String urlString) {
 		Thread thread = new Thread() {
@@ -512,23 +692,8 @@ public class DrawableManager {
 		try {
 			Bitmap bitMap = null;
 			URL url_con = new URL(url);
-			HttpURLConnection conn = null;
-			if (url.contains("https")) {
-				conn = (HttpsURLConnection) url_con.openConnection();
-				try {
-					((HttpsURLConnection) conn)
-							.setSSLSocketFactory(new TLSSocketFactory());
-				} catch (KeyManagementException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (NoSuchAlgorithmException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				conn = (HttpURLConnection) url_con.openConnection();
-			}
-
+			HttpURLConnection conn = (HttpURLConnection) url_con
+					.openConnection();
 			conn.setReadTimeout(10000 /* milliseconds */);
 			conn.setConnectTimeout(15000 /* milliseconds */);
 			conn.setRequestMethod("GET");
@@ -562,55 +727,6 @@ public class DrawableManager {
 			return null;
 		}
 
-	}
-
-	public static void fetchDrawableOnThread(final String urlImage,
-			final SimiImageView simiImageView) {
-		init();
-
-		Bitmap cache_bitMap = getBitmapFromMemCache(urlImage);
-
-		if (null != cache_bitMap) {
-			simiImageView.setImageBitmap(cache_bitMap);
-			return;
-		}
-
-		else {
-			cache_bitMap = getBitmapFromDiskCache(urlImage);
-			if (null != cache_bitMap) {
-				simiImageView.setImageBitmap(cache_bitMap);
-
-				String key_md5 = Utils.md5(urlImage);
-
-				if (null != mMemoryCache) {
-					if (getBitmapFromMemCache(key_md5) == null) {
-						mMemoryCache.put(key_md5, cache_bitMap);
-					}
-				}
-				return;
-			}
-		}
-
-		final Handler handler = new Handler() {
-			@Override
-			public void handleMessage(Message message) {
-				Bitmap bitmap = (Bitmap) message.obj;
-				if (bitmap != null) {
-					simiImageView.setImageBitmap(bitmap);
-					addBitmapToMemoryCache(urlImage, bitmap);
-				} else {
-					Resources resources = SimiManager.getIntance()
-							.getCurrentContext().getResources();
-					bitmap = BitmapFactory.decodeResource(resources, Rconfig
-							.getInstance().drawable("default_icon"));
-					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
-					simiImageView.setImageBitmap(bitmap);
-					bitmap = null;
-				}
-			}
-		};
-
-		getBitmap(handler, urlImage);
 	}
 
 }
