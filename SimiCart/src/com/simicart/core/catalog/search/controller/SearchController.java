@@ -33,6 +33,7 @@ import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.catalog.search.model.ConstantsSearch;
 import com.simicart.core.catalog.search.model.ModelSearchBase;
 import com.simicart.core.common.Utils;
+import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 
@@ -67,6 +68,7 @@ public class SearchController extends SimiController implements
 	private static boolean checkZoom = false;
 	private int position = -1;
 	protected int firstPos = -1;
+	protected int posItemList;
 
 	public void setList_Param(Map<String, String> list_query) {
 		this.list_param = list_query;
@@ -152,7 +154,7 @@ public class SearchController extends SimiController implements
 					mDelegate.setQty(resultNumber);
 					mDelegate.updateView(mModel.getCollection());
 					isOnscroll = true;
-					Log.d("quangduy123", "request==" + message);
+					Log.d("quangduy123", "request=="+message);
 				}
 			}
 		});
@@ -258,7 +260,7 @@ public class SearchController extends SimiController implements
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				int threshold = 1;
 				int count = view.getCount();
-
+				posItemList = view.getFirstVisiblePosition();
 				if (scrollState == SCROLL_STATE_IDLE) {
 					if ((view.getLastVisiblePosition() >= count - threshold)
 							&& Integer.parseInt(resultNumber) > count) {
@@ -294,22 +296,23 @@ public class SearchController extends SimiController implements
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				int threshold = 1;
 				int count = view.getCount();
+				posItemList = view.getFirstVisiblePosition();
 				Log.e("Count :", count + "");
-				// if (scrollState == SCROLL_STATE_IDLE) {
-				if ((view.getLastVisiblePosition() >= count - threshold)
-						&& Integer.parseInt(resultNumber) > (count - threshold)) {
-					Log.e("ResultNumber :", resultNumber);
-					Log.e("IsOnscroll:", isOnscroll + "");
-					if (isOnscroll) {
-						mCurrentOffset += limit;
-						isOnscroll = false;
-						mDelegate.addFooterView();
-						mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
-						mDelegate.setIsLoadMore(true);
-						Log.d("quangduy123", "isOnscroll==" + isOnscroll);
-						requestProduct();
-					}
-					// }
+//				if (scrollState == SCROLL_STATE_IDLE) {
+					if ((view.getLastVisiblePosition() >= count - threshold)
+							&& Integer.parseInt(resultNumber) > (count- threshold)) {
+						Log.e("ResultNumber :", resultNumber);
+						Log.e("IsOnscroll:", isOnscroll + "");
+						if (isOnscroll) {
+							mCurrentOffset += limit;
+							isOnscroll = false;
+							mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
+							mDelegate.addFooterView();
+							mDelegate.setIsLoadMore(true);
+							Log.d("quangduy123", "isOnscroll=="+isOnscroll);
+							requestProduct();
+						}
+//					}
 				}
 			}
 
@@ -629,6 +632,7 @@ public class SearchController extends SimiController implements
 			}
 			mDelegate.setVisibilityMenuBotton(true);
 		}
+		
 	}
 
 	@Override
@@ -731,6 +735,10 @@ public class SearchController extends SimiController implements
 
 	public OnItemClickListener getmListviewClick() {
 		return mListviewClick;
+	}
+	
+	public int getPosItemList(){
+		return posItemList;
 	}
 
 	public OnScrollListener getmScrollGridviewListener() {

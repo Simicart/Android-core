@@ -177,6 +177,7 @@ public class ListProductFragment extends SimiFragment {
 				.getmOnTouchGridview());
 		mSearchBlock.setOnItemListviewClick(mSearchController
 				.getmListviewClick());
+		
 		// tablet
 		return rootView;
 	}
@@ -194,6 +195,7 @@ public class ListProductFragment extends SimiFragment {
 			mSearchBlock.setFilterEvent(filterEvent);
 			mSearchController.onResume();
 		}
+		mSearchBlock.setPosItemList(mSearchController.getPosItemList());
 	}
 
 	public void setTag_search(String tag_search) {
