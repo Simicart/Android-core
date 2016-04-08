@@ -492,7 +492,7 @@ public class SimiManager {
 	public void showError(String message) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(mCurrentActivity);
 		builder.setTitle(Config.getInstance().getText("Warning..."));
-		builder.setMessage(message)
+		builder.setMessage(Config.getInstance().getText(message))
 				.setCancelable(true)
 				.setPositiveButton(Config.getInstance().getText("OK"),
 						new DialogInterface.OnClickListener() {
@@ -512,7 +512,7 @@ public class SimiManager {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						mCurrentActivity);
 				builder.setTitle(Config.getInstance().getText("Warning..."));
-				builder.setMessage(message)
+				builder.setMessage(Config.getInstance().getText(message))
 						.setCancelable(true)
 						.setPositiveButton(Config.getInstance().getText("OK"),
 								new DialogInterface.OnClickListener() {
