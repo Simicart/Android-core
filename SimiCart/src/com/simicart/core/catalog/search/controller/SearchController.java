@@ -298,7 +298,7 @@ public class SearchController extends SimiController implements
 				int count = view.getCount();
 				posItemList = view.getFirstVisiblePosition();
 				Log.e("Count :", count + "");
-//				if (scrollState == SCROLL_STATE_IDLE) {
+				if (scrollState == SCROLL_STATE_IDLE) {
 					if ((view.getLastVisiblePosition() >= count - threshold)
 							&& Integer.parseInt(resultNumber) > (count- threshold)) {
 						Log.e("ResultNumber :", resultNumber);
@@ -312,7 +312,7 @@ public class SearchController extends SimiController implements
 							Log.d("quangduy123", "isOnscroll=="+isOnscroll);
 							requestProduct();
 						}
-//					}
+					}
 				}
 			}
 

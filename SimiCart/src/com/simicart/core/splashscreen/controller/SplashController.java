@@ -268,9 +268,17 @@ public class SplashController {
 				.getString("dob_show"));
 		configCustomerAddress.setGender(js_customer_address_config
 				.getString("gender_show"));
-		configCustomerAddress
-				.setGenderConfigs(getGenderConfigs(js_customer_address_config
-						.getJSONArray("gender_value")));
+		if (js_customer_address_config.has("gender_value")) {
+			if (Utils.validateString(js_customer_address_config
+					.getString("gender_value"))) {
+				JSONArray jsonArrayGender = js_customer_address_config
+						.getJSONArray("gender_value");
+				if (jsonArrayGender != null) {
+					configCustomerAddress
+							.setGenderConfigs(getGenderConfigs(jsonArrayGender));
+				}
+			}
+		}
 		if (js_customer_address_config.has("taxvat_show")) {
 			try {
 				String tav_show = js_customer_address_config
