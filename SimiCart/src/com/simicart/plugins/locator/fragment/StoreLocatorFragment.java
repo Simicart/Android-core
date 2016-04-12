@@ -1062,11 +1062,14 @@ public class StoreLocatorFragment extends SimiFragment implements
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						if (!object.getPhone().equals("null")
-								&& !object.getPhone().equals("")) {
-							String phone_number = "tel:" + object.getPhone();
-							Intent callIntent = new Intent(Intent.ACTION_CALL);
-							callIntent.setData(Uri.parse(phone_number));
-							startActivity(callIntent);
+								&& !object.getPhone().equals("") && object.getPhone() != null) {
+							try {
+								Intent intent = new Intent(Intent.ACTION_DIAL, Uri
+										.parse("tel:" + object.getPhone()));
+								startActivity(intent);
+							} catch (Exception e) {
+
+							}
 						}
 					}
 				});
