@@ -3,10 +3,12 @@ package com.simicart.core.notification.common;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 
 import com.simicart.MainActivity;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.common.Utils;
+import com.simicart.core.config.Config;
 import com.simicart.core.notification.gcm.GCMRegistrar;
 import com.simicart.core.notification.model.RegisterIDModel;
 
@@ -39,6 +41,13 @@ public final class ServerUtilities {
 		if (Utils.validateString(longitude) && Utils.validateString(latitude)) {
 			model.addParam("latitude", latitude);
 			model.addParam("longitude", longitude);
+		}
+		if (Config.getInstance().getDemoEnable().equals("DEMO_ENABLE")
+				|| Config.getInstance().getDemoEnable().toUpperCase()
+						.equals("YES")) {
+			model.addParam("demo_mode", "1");
+		} else {
+			model.addParam("demo_mode", "0");
 		}
 		model.request();
 	}
