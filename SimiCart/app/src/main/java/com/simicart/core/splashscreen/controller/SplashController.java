@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
@@ -191,6 +192,7 @@ public class SplashController {
 				cacheBlock);
 	}
 
+	@SuppressLint("LongLogTag")
 	private void parseJSONStoreView(SimiEntity entity) throws JSONException {
 		JSONObject js_storeView = entity.getJSONObject();
 
@@ -220,6 +222,7 @@ public class SplashController {
 		if(js_store_config.has("zopim_config")) {
 				JSONObject object = js_store_config.getJSONObject("zopim_config");
 				if(object != null) {
+					Log.e("Object Zopim===========================>",object.toString());
 					EventBlock block = new EventBlock();
 					CacheBlock cacheBlock = new CacheBlock();
 					SimiEntity simiEntity = new SimiEntity();

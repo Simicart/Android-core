@@ -24,5 +24,13 @@
            <sku>simi_developer</sku>
        </event>
 
+       <event>
+           <name>com.simicart.core.menutop.block.MenuTopBlock</name>
+           <package>com.simicart.plugins.zopimchat</package>
+           <class>SimiZopim</class>
+           <method>addToMenuTop</method>
+           <sku>simi_developer</sku>
+       </event>
+
 </events>
   

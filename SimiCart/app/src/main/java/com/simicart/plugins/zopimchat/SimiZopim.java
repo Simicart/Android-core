@@ -7,10 +7,16 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.simicart.core.base.manager.SimiManager;
+import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
+import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.event.block.CacheBlock;
 import com.simicart.core.event.slidemenu.SlideMenuData;
@@ -62,6 +68,74 @@ public class SimiZopim {
     }
 
     public SimiZopim(String method, CacheBlock block) {
+        if (method.equals("addToMenuTop")) {
+            View rootView = block.getView();
+            if (DataLocal.isTablet) {
+                LinearLayout layoutSearch = (LinearLayout) rootView.findViewById(Rconfig.getInstance().id("layout_search"));
+
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                        60, LinearLayout.LayoutParams.MATCH_PARENT);
+                layoutParams.addRule(RelativeLayout.LEFT_OF,
+                        Rconfig.getInstance().id("layout_cart"));
+                RelativeLayout layout = new RelativeLayout(SimiManager.getIntance()
+                        .getCurrentContext());
+                layout.setPadding(0, 0, 0, 14);
+                layout.setLayoutParams(layoutParams);
+                layoutSearch.addView(layout);
+
+                ImageView imageView = new ImageView(SimiManager.getIntance()
+                        .getCurrentContext());
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                        Utils.getValueDp(25), Utils.getValueDp(25));
+                params.setMargins(0, 0, 5, 0);
+                params.addRule(RelativeLayout.CENTER_IN_PARENT);
+                imageView.setLayoutParams(params);
+                imageView.setImageResource(Rconfig.getInstance().drawable(
+                        "ic_livechat"));
+                imageView.setColorFilter(Color.parseColor("#ffffff"));
+                layout.addView(imageView);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(SimiManager.getIntance().getCurrentActivity(), SimiChatActivity.class);
+                        SimiManager.getIntance().getCurrentActivity().startActivity(intent);
+                    }
+                });
+
+            } else {
+                RelativeLayout rlt_menutop = (RelativeLayout) rootView.findViewById(Rconfig.getInstance().id("rlt_right_menutop"));
+                ImageView img_logo = (ImageView) rootView.findViewById(Rconfig.getInstance().id("img_logo"));
+                RelativeLayout rlt_cart = (RelativeLayout) rootView.findViewById(Rconfig.getInstance().id("layout_cart"));
+
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                        100, RelativeLayout.LayoutParams.MATCH_PARENT);
+                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                layoutParams.setMargins(0, 0, 120, 0);
+                RelativeLayout layout_zopim = new RelativeLayout(SimiManager.getIntance()
+                        .getCurrentContext());
+                layout_zopim.setLayoutParams(layoutParams);
+                rlt_menutop.addView(layout_zopim);
+
+                ImageView imageView = new ImageView(SimiManager.getIntance()
+                        .getCurrentContext());
+                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                        Utils.getValueDp(35), Utils.getValueDp(35));
+                params.setMargins(0, 0, 5, 0);
+                params.addRule(RelativeLayout.CENTER_IN_PARENT);
+                imageView.setLayoutParams(params);
+                imageView.setImageResource(Rconfig.getInstance().drawable(
+                        "ic_livechat"));
+                imageView.setColorFilter(Color.parseColor("#ffffff"));
+                layout_zopim.addView(imageView);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(SimiManager.getIntance().getCurrentActivity(), SimiChatActivity.class);
+                        SimiManager.getIntance().getCurrentActivity().startActivity(intent);
+                    }
+                });
+            }
+        }
         if (method.equals("configzopim")) {
             try {
                 JSONObject object = block.getSimiEntity().getJSONObject();

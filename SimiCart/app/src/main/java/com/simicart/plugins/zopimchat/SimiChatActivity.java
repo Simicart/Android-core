@@ -2,6 +2,7 @@ package com.simicart.plugins.zopimchat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.magestore.simicart.R;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.zopim.android.sdk.api.Chat;
@@ -26,14 +28,22 @@ import com.zopim.android.sdk.widget.ChatWidgetService;
 public class SimiChatActivity extends ActionBarActivity implements ChatListener {
 
 
+    PreChatForm.Field Name = PreChatForm.Field.REQUIRED_EDITABLE;
+    PreChatForm.Field REQUIRE_EDITABLE;
+    PreChatForm.Field OPTION_EDITABLE;
+    PreChatForm.Field NOT_REQUIRE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ZopimChat.init(ConstantZopim.ZOPIM_ACCOUNT_KEY);
         setContentView(Rconfig.getInstance().layout("plugin_chatactivity_layout"));
         Toolbar toolbar = (Toolbar) findViewById(Rconfig.getInstance().id("toolbar"));
-        toolbar.setBackgroundColor(Config.getInstance().getColorMain());
+        toolbar.setBackgroundColor(Color.parseColor("#E0218A"));
         setSupportActionBar(toolbar);
+        REQUIRE_EDITABLE = PreChatForm.Field.REQUIRED_EDITABLE;
+        OPTION_EDITABLE = PreChatForm.Field.OPTIONAL_EDITABLE;
+        NOT_REQUIRE = PreChatForm.Field.NOT_REQUIRED;
 
         if (savedInstanceState != null) {
             return;
@@ -78,83 +88,35 @@ public class SimiChatActivity extends ActionBarActivity implements ChatListener 
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(com.zopim.android.sdk.R.id.chat_fragment_container, fragment, ZopimChatFragment.class.getName());
         transaction.commit();
+
     }
+
 
     private PreChatForm getPrechatConfig(String name, String email, String phone) {
         PreChatForm preChatForm = null;
-        if (name.equals("0") && email.equals("0") && phone.equals("0")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.NOT_REQUIRED)
-                    .email(PreChatForm.Field.NOT_REQUIRED)
-                    .phoneNumber(PreChatForm.Field.NOT_REQUIRED)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("0") && email.equals("3") && phone.equals("4")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.NOT_REQUIRED)
-                    .email(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .phoneNumber(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("0") && email.equals("4") && phone.equals("3")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.NOT_REQUIRED)
-                    .email(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .phoneNumber(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("3") && email.equals("3") && phone.equals("3")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .email(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .phoneNumber(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("3") && email.equals("0") && phone.equals("4")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .email(PreChatForm.Field.NOT_REQUIRED)
-                    .phoneNumber(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("3") && email.equals("4") && phone.equals("0")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .email(PreChatForm.Field.REQUIRED)
-                    .phoneNumber(PreChatForm.Field.NOT_REQUIRED)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("4") && email.equals("4") && phone.equals("4")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .email(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .phoneNumber(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("4") && email.equals("0") && phone.equals("3")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .email(PreChatForm.Field.NOT_REQUIRED)
-                    .phoneNumber(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
-        if (name.equals("4") && email.equals("3") && phone.equals("0")) {
-            preChatForm = new PreChatForm.Builder()
-                    .name(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .email(PreChatForm.Field.OPTIONAL_EDITABLE)
-                    .phoneNumber(PreChatForm.Field.NOT_REQUIRED)
-                    .message(PreChatForm.Field.REQUIRED_EDITABLE)
-                    .build();
-        }
+        preChatForm = new PreChatForm.Builder()
+                .name(getFeild(name))
+                .email(getFeild(email))
+                .phoneNumber(getFeild(phone))
+                .message(PreChatForm.Field.REQUIRED_EDITABLE)
+                .build();
         return preChatForm;
+    }
+
+    private PreChatForm.Field getFeild(String input) {
+        PreChatForm.Field feild = null;
+        switch (input) {
+            case "0":
+                feild = NOT_REQUIRE;
+                break;
+            case "3":
+                feild = OPTION_EDITABLE;
+                break;
+            case "4":
+                feild = REQUIRE_EDITABLE;
+                break;
+        }
+        return feild;
     }
 
     private void resumeChat() {
