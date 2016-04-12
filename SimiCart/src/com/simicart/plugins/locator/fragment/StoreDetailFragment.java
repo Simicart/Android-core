@@ -57,7 +57,7 @@ public class StoreDetailFragment extends SimiFragment {
 
 	public static StoreDetailFragment newInstance(StoreObject storeObject) {
 		StoreDetailFragment detail = new StoreDetailFragment();
-		Bundle bundle= new Bundle();
+		Bundle bundle = new Bundle();
 		bundle.putSerializable(Constants.KeyData.STORE_OBJECT, storeObject);
 		detail.setArguments(bundle);
 		return detail;
@@ -147,12 +147,13 @@ public class StoreDetailFragment extends SimiFragment {
 				.getIdLayout("lb_thursday"));
 		lb_friday = (TextView) view.findViewById(Rconfig.getInstance()
 				.getIdLayout("lb_friday"));
-		
-		//getdata
-		if(getArguments() != null){
-		storeObject = (StoreObject) getArguments().getSerializable(Constants.KeyData.STORE_OBJECT);
+
+		// getdata
+		if (getArguments() != null) {
+			storeObject = (StoreObject) getArguments().getSerializable(
+					Constants.KeyData.STORE_OBJECT);
 		}
-		
+
 		lb_monday.setText(Config.getInstance().getText("Monday") + ":");
 		lb_saturday.setText(Config.getInstance().getText("Saturday") + ":");
 		lb_sunday.setText(Config.getInstance().getText("Sunday") + ":");
@@ -160,7 +161,7 @@ public class StoreDetailFragment extends SimiFragment {
 		lb_wednesday.setText(Config.getInstance().getText("Wednesday") + ":");
 		lb_thursday.setText(Config.getInstance().getText("Thursday") + ":");
 		lb_friday.setText(Config.getInstance().getText("Friday") + ":");
-		
+
 		initData();
 		control();
 		return view;
@@ -182,9 +183,9 @@ public class StoreDetailFragment extends SimiFragment {
 								"plugins_locator_maker_default")) + "|"
 				+ storeObject.getLatitude() + "," + storeObject.getLongtitude()
 				+ "&zoom=100&size=1000x1000&sensor=false";
-		if (storeObject.getAddress() == null || storeObject.getAddress().equals("")
-				|| storeObject.getAddress().equals("null")
-				) {
+		if (storeObject.getAddress() == null
+				|| storeObject.getAddress().equals("")
+				|| storeObject.getAddress().equals("null")) {
 			locator.setVisibility(View.GONE);
 		}
 		if (storeObject.getEmail() == null || storeObject.getEmail().equals("")
@@ -192,13 +193,12 @@ public class StoreDetailFragment extends SimiFragment {
 			email.setVisibility(View.GONE);
 		}
 		if (storeObject.getPhone() == null || storeObject.getPhone().equals("")
-				|| storeObject.getPhone().equals("null")
-				) {
+				|| storeObject.getPhone().equals("null")) {
 			phone.setVisibility(View.GONE);
 		}
-		if (storeObject.getDescription() == null || storeObject.getDescription().equals("")
-				|| storeObject.getDescription().equals("null")
-				) {
+		if (storeObject.getDescription() == null
+				|| storeObject.getDescription().equals("")
+				|| storeObject.getDescription().equals("null")) {
 			decrip.setVisibility(View.GONE);
 		}
 		if (storeObject == null) {
@@ -395,21 +395,24 @@ public class StoreDetailFragment extends SimiFragment {
 						Criteria criteria = new Criteria();
 						String provider = service.getBestProvider(criteria,
 								false);
-						Location location = service
-								.getLastKnownLocation(provider);
-						if (location == null) {
+						if (service != null && provider != null) {
+							Location location = service
+									.getLastKnownLocation(provider);
+							if (location == null) {
 
-							Toast.makeText(
-									getActivity(),
-									Config.getInstance().getText(
-											"Location not available"),
-									Toast.LENGTH_LONG).show();
+								Toast.makeText(
+										getActivity(),
+										Config.getInstance().getText(
+												"Location not available"),
+										Toast.LENGTH_LONG).show();
 
-							return true;
-						} else {
-							storeObject.setLatitude(location.getLatitude() + "");
-							storeObject.setLongtitude(location.getLongitude()
-									+ "");
+								return true;
+							} else {
+								storeObject.setLatitude(location.getLatitude()
+										+ "");
+								storeObject.setLongtitude(location
+										.getLongitude() + "");
+							}
 						}
 					} else {
 						LatLng myLocator = new LatLng(Double
@@ -439,10 +442,17 @@ public class StoreDetailFragment extends SimiFragment {
 
 			@Override
 			public void onClick(View v) {
-				String phone_number = "tel:" + storeObject.getPhone();
-				Intent callIntent = new Intent(Intent.ACTION_CALL);
-				callIntent.setData(Uri.parse(phone_number));
-				startActivity(callIntent);
+				try {
+					Intent intent = new Intent(Intent.ACTION_DIAL, Uri
+							.parse("tel:" + storeObject.getPhone()));
+					startActivity(intent);
+				} catch (Exception e) {
+
+				}
+				// String phone_number = "tel:" + storeObject.getPhone();
+				// Intent callIntent = new Intent(Intent.ACTION_CALL);
+				// callIntent.setData(Uri.parse(phone_number));
+				// startActivity(callIntent);
 			}
 		});
 		email.setOnClickListener(new OnClickListener() {
@@ -559,15 +569,17 @@ public class StoreDetailFragment extends SimiFragment {
 			SimpleDateFormat mFormat = new SimpleDateFormat("EEE MMM dd");
 			TextView txt = (TextView) convertView.findViewById(Rconfig
 					.getInstance().getIdLayout("txt_special"));
-			txt.setText(mFormat.format(cal.getTime()) + "  " + Config.getInstance().getText("Close"));
+			txt.setText(mFormat.format(cal.getTime()) + "  "
+					+ Config.getInstance().getText("Close"));
 			txt.setTextSize(15);
 			return convertView;
 		}
 	}
+
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		
+
 	}
 }
