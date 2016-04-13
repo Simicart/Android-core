@@ -106,7 +106,7 @@ public class MapViewFragment extends SimiFragment {
 						.getIdDraw("plugins_locator_maker_store"))));
 		CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(
 				start.latitude, start.longitude));
-		CameraUpdate zoom = CameraUpdateFactory.zoomTo(2);
+		CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
 		ggmap.moveCamera(center);
 		ggmap.animateCamera(zoom);
 		ggmap.setOnCameraChangeListener(new OnCameraChangeListener() {
