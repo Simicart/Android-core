@@ -20,6 +20,7 @@
             android:padding="5dp"
             android:src="@drawable/ic_menu" />
 
+
         <RelativeLayout
             android:id="@+id/layout_cart"
             android:layout_width="50dp"

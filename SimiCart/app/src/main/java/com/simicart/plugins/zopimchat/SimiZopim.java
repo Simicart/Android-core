@@ -71,36 +71,39 @@ public class SimiZopim {
         if (method.equals("addToMenuTop")) {
             View rootView = block.getView();
             if (DataLocal.isTablet) {
-                LinearLayout layoutSearch = (LinearLayout) rootView.findViewById(Rconfig.getInstance().id("layout_search"));
+                try {
+                    LinearLayout layoutSearch = (LinearLayout) rootView.findViewById(Rconfig.getInstance().id("layout_plugin"));
 
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                        60, LinearLayout.LayoutParams.MATCH_PARENT);
-                layoutParams.addRule(RelativeLayout.LEFT_OF,
-                        Rconfig.getInstance().id("layout_cart"));
-                RelativeLayout layout = new RelativeLayout(SimiManager.getIntance()
-                        .getCurrentContext());
-                layout.setPadding(0, 0, 0, 14);
-                layout.setLayoutParams(layoutParams);
-                layoutSearch.addView(layout);
+                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
+                            100, LinearLayout.LayoutParams.MATCH_PARENT);
+                    layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                    RelativeLayout layout = new RelativeLayout(SimiManager.getIntance()
+                            .getCurrentContext());
+                    layout.setPadding(0, 0, 0, 14);
+                    layout.setLayoutParams(layoutParams);
+                    layoutSearch.addView(layout);
 
-                ImageView imageView = new ImageView(SimiManager.getIntance()
-                        .getCurrentContext());
-                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                        Utils.getValueDp(25), Utils.getValueDp(25));
-                params.setMargins(0, 0, 5, 0);
-                params.addRule(RelativeLayout.CENTER_IN_PARENT);
-                imageView.setLayoutParams(params);
-                imageView.setImageResource(Rconfig.getInstance().drawable(
-                        "ic_livechat"));
-                imageView.setColorFilter(Color.parseColor("#ffffff"));
-                layout.addView(imageView);
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(SimiManager.getIntance().getCurrentActivity(), SimiChatActivity.class);
-                        SimiManager.getIntance().getCurrentActivity().startActivity(intent);
-                    }
-                });
+                    ImageView imageView = new ImageView(SimiManager.getIntance()
+                            .getCurrentContext());
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
+                            Utils.getValueDp(25), Utils.getValueDp(25));
+                    params.setMargins(0, 0, 5, 0);
+                    params.addRule(RelativeLayout.CENTER_IN_PARENT);
+                    imageView.setLayoutParams(params);
+                    imageView.setImageResource(Rconfig.getInstance().drawable(
+                            "ic_livechat"));
+                    imageView.setColorFilter(Color.parseColor("#ffffff"));
+                    layout.addView(imageView);
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(SimiManager.getIntance().getCurrentActivity(), SimiChatActivity.class);
+                            SimiManager.getIntance().getCurrentActivity().startActivity(intent);
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("Exception:", e.getMessage());
+                }
 
             } else {
                 RelativeLayout rlt_menutop = (RelativeLayout) rootView.findViewById(Rconfig.getInstance().id("rlt_right_menutop"));

@@ -21,6 +21,13 @@
             android:contentDescription="@null"
             android:padding="5dp"
             android:src="@drawable/ic_menu" />
+        <LinearLayout
+            android:id="@+id/layout_plugin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_toRightOf="@+id/img_menu"
+            />
 
 		<LinearLayout
             android:id="@+id/layout_search"
@@ -28,7 +35,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_centerVertical="true"
 		    android:layout_toLeftOf="@+id/layout_cart"
-		    android:layout_toRightOf="@+id/img_menu"
+		    android:layout_toRightOf="@+id/layout_plugin"
 		    android:orientation="horizontal"
 		    android:weightSum="1" >
 
