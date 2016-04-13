@@ -98,7 +98,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 	ListView list_store;
 	ListAdapter adapter;
 	public  List<StoreObject> list_store_object =new ArrayList<>();
-	List<StoreObject> mStore_maker;
+	List<StoreObject> mStore_maker = new ArrayList<>();
 	public static Location currrentLocation = null;
 	private static boolean LOCATION_FIXED = false;
 	private int page = 0;
@@ -213,7 +213,8 @@ public class StoreLocatorFragment extends SimiFragment implements
 						list_store_object.add(storeObject);
 						
 					}
-					
+					mStore_maker.clear();
+					mStore_maker.addAll(list_store_object);
 					initData(list_store_object);
 					triggerLocation(mActivity);
 				
@@ -233,8 +234,6 @@ public class StoreLocatorFragment extends SimiFragment implements
 	}
 
 	public void setViewTablet(View view) {
-
-		mStore_maker = new ArrayList<StoreObject>();
 
 		LayoutInflater inflater = (LayoutInflater) SimiManager.getIntance()
 				.getCurrentContext()
@@ -457,7 +456,6 @@ public class StoreLocatorFragment extends SimiFragment implements
 												.getIdLayout("map"));
 								mMapView.onCreate(bundle);
 								mMapView.onResume();
-
 								map = mMapView.getMap();
 								map.getUiSettings().setMyLocationButtonEnabled(
 										false);
@@ -466,7 +464,7 @@ public class StoreLocatorFragment extends SimiFragment implements
 								addMaker();
 								getAllPointFromStoreMarker(mStore_maker);
 								CameraUpdate zoom = CameraUpdateFactory
-										.zoomTo(2);
+										.zoomTo(5);
 								if (currrentLocation != null) {
 									start = new LatLng(currrentLocation
 											.getLatitude(), currrentLocation
@@ -480,7 +478,8 @@ public class StoreLocatorFragment extends SimiFragment implements
 															.getLongitude()));
 
 									map.moveCamera(center);
-									zoom = CameraUpdateFactory.zoomTo(10);
+									zoom = CameraUpdateFactory.zoomTo(5);
+									Log.d("quangdd123", "currrentLocation=="+currrentLocation.toString());
 
 								}
 								map.animateCamera(zoom);
