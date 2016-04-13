@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.magestore.simicart.R;
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.zopim.android.sdk.api.Chat;
@@ -41,7 +42,7 @@ public class SimiChatActivity extends ActionBarActivity implements ChatListener 
         Toolbar toolbar = (Toolbar) findViewById(Rconfig.getInstance().id("toolbar"));
         toolbar.setBackgroundColor(Color.parseColor("#E0218A"));
         setSupportActionBar(toolbar);
-        REQUIRE_EDITABLE = PreChatForm.Field.REQUIRED_EDITABLE;
+        REQUIRE_EDITABLE = PreChatForm. Field.REQUIRED_EDITABLE;
         OPTION_EDITABLE = PreChatForm.Field.OPTIONAL_EDITABLE;
         NOT_REQUIRE = PreChatForm.Field.NOT_REQUIRED;
 
@@ -141,11 +142,13 @@ public class SimiChatActivity extends ActionBarActivity implements ChatListener 
     @Override
     public void onChatInitialized() {
         Log.e("SimiChatActivity========================>", "OnchatInited");
+        SimiListenning simiListenning = new SimiListenning();
     }
 
     @SuppressLint("LongLogTag")
     @Override
     public void onChatEnded() {
         Log.e("SimiChatActivity========================>", "OnChatEnd");
+        onBackPressed();
     }
 }
