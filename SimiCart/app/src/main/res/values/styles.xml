@@ -61,6 +61,7 @@
         <item name="@android:windowExitAnimation">@anim/disappear</item>
     </style>
 
+
     <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
         <item name="android:typeface">monospace</item>
     </style>
@@ -93,14 +94,27 @@
     </style>
 
     <!--Customize where chat widget appears-->
-    <style name="chat_widget" parent="_chat_widget">
-        <item name="anchor">bottom_left</item>
-    </style>
+
+
     <style name="MyMaterialTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">true</item>
     </style>
 
+    <style name="chat_widget" parent="_chat_widget">
+        <item name="anchor">bottom_left</item>
+        <item name="android:background">@color/sample_red</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="chat_widget_background">
+
+    </style>
+
+    <style name="chat_widget_unread_notification">
+        // style this view
+    </style>
     <!--Customize chat colors-->
     <color name="chat_bubble_visitor">@color/sample_red</color>
 
