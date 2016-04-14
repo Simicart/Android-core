@@ -406,6 +406,7 @@ public class ReviewOrderController extends SimiController implements
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
+					SimiManager.getIntance().backToHomeFragment();
 					PaymentMethod.getInstance().setPlacePaymentMethod("");
 
 					PaymentMethod.getInstance().setPlacePaymentMethod("");
@@ -443,9 +444,7 @@ public class ReviewOrderController extends SimiController implements
 										ThankyouFragment.newInstance(mMessage,
 												jsonObject));
 							}
-							// SimiManager.getIntance().showToast(message);
 						}
-						// SimiManager.getIntance().backToHomeFragment();
 						break;
 					case 2:
 						// event call paypal server.
@@ -574,7 +573,6 @@ public class ReviewOrderController extends SimiController implements
 	}
 
 	private void recieveNotification(NotificationEntity notificationData) {
-		SimiManager.getIntance().backToHomeFragment();
 		Intent i = new Intent(MainActivity.context, NotificationActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		i.putExtra("NOTIFICATION_DATA", notificationData);
