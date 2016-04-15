@@ -10,9 +10,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
-import com.magestore.simicart.R;
-import com.simicart.core.base.manager.SimiManager;
-import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.zopim.android.sdk.api.Chat;
 import com.zopim.android.sdk.api.ZopimChat;
@@ -142,7 +139,6 @@ public class SimiChatActivity extends ActionBarActivity implements ChatListener 
     @Override
     public void onChatInitialized() {
         Log.e("SimiChatActivity========================>", "OnchatInited");
-        SimiListenning simiListenning = new SimiListenning();
     }
 
     @SuppressLint("LongLogTag")
