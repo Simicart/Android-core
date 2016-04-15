@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="pagermargin">-700</string>
-    <string name="values">sw600dp</string>
-    <string name="test">We believe that the best way to improve your ability to speak in English is to have real conversations with native English speakers. You can learn all the grammar rules in the universe, you can memorize millions of words, but if you don’t practice speaking English with native speakers, you will not become fluent. \n We focus only on providing one service - spoken English practice to non- native English speakers who want to go from an elementary level to an advanced level. We do not offer language exchange programs. We don’t teach other languages. We are extremely focused - this makes us experts in our niche</string>
-    <string name="type_device">tablet</string>
+    <string name="type_device">phone</string>
+    <string name="app_name">SimiCart</string>
+    <string name="title_section1">Home</string>
+    <string name="title_section2">Category</string>
+    <string name="title_section3">Account</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
 
-</resources> <!-- <string name="pagermargin">-1740</string> -->
+    <!-- long.detail -->
+    <string name="detail_price">Price :</string>
+    <string name="detail_instock">In Stock.</string>
+    <string name="detail_outstock">Out Stock.</string>
+    <!-- long.detail end -->
+
+
+    <!-- hai.ta home -->
+    <string name="ok_text">OK</string>
+    <string name="no_network_title">No network connection</string>
+    <string name="no_network_message">Please check your network connection</string>
+    <string name="connection_error_title">Connection Error</string>
+    <string name="connection_timeout">Connection timeout</string>
+    <string name="home_title_welcome">Wellcome</string>
+    <string name="home_title_sigin">Sign In</string>
+    <string name="home_title_banner"></string>
+    <string name="home_title_spotproduct">Spot Product</string>
+    <!-- hai.ta end home -->
+
+
+    <!-- category home 2 -->
+    <string name="category1"><B>CATEGORY1</B></string>
+    <string name="category2"><B>CATEGORY2</B></string>
+    <string name="category3"><B>CATEGORY3</B></string>
+    <string name="view_all_category"><B>VIEW All CATEGORY</B></string>
+    <string name="view_now">View now</string>
+    <string name="view_more">View more >></string>
+
+    <!-- product list -->
+    <string name="sort">Sort</string>
+    <string name="filter">Filter</string>
+    <string name="excl_tax">Excl Tax: </string>
+    <string name="incl_tax">Incl Tax: </string>
+    <string name="cancel">Cancel</string>
+    <string name="apply">Apply</string>
+    <string name="popularity">Popularity</string>
+    <string name="brand_a_to_z">Brand A to Z</string>
+    <string name="brand_z_to_a">Brand Z to A</string>
+    <string name="name_a_to_z">Name A to Z</string>
+    <string name="name_z_to_a">Name Z to A</string>
+    <string name="hot_new">Hot New</string>
+    <string name="title_activity_activity_test">ActivityTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="facebook_app_id">1721779108048112</string>
+
+    <!-- youtube -->
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="minVersion">minVersion</string>
+    <string name="isLaunchableActivity">isLaunchableActivity</string>
+
+    <string name="pre_chat_email_hint">Email address</string>
+    <string name="pre_chat_email_error_message">Email is required</string>
+    <string name="pre_chat_email_error_hint">Please enter an email address</string>
+    <string name="pre_chat_name_hint">Name</string>
+    <string name="pre_chat_name_error_message">Name is required</string>
+    <string name="pre_chat_name_error_hint">Please enter your name</string>
+    <string name="pre_chat_phone_hint">Phone number</string>
+    <string name="pre_chat_phone_error_message">Phone number is required</string>
+    <string name="pre_chat_phone_error_hint">Please enter your phone number</string>
+    <string name="pre_chat_departments_hint">Select a department</string>
+    <string name="pre_chat_departments_error_message">Department is required</string>
+    <string name="pre_chat_departments_error_hint">Please select a department</string>
+    <string name="pre_chat_message_hint">Message</string>
+    <string name="pre_chat_message_error_message">Message is required</string>
+    <string name="pre_chat_message_error_hint">Please enter a message</string>
+    <string name="pre_chat_menu_next_button">Next</string>
+    <string name="pre_chat_validation_error_message">Please correct above errors</string>
+    <string name="required_field_template">%1$s *</string>
+</resources>
