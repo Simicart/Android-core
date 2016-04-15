@@ -37,7 +37,7 @@ public class SimiChatActivity extends ActionBarActivity implements ChatListener 
         ZopimChat.init(ConstantZopim.ZOPIM_ACCOUNT_KEY);
         setContentView(Rconfig.getInstance().layout("plugin_chatactivity_layout"));
         Toolbar toolbar = (Toolbar) findViewById(Rconfig.getInstance().id("toolbar"));
-        toolbar.setBackgroundColor(Color.parseColor("#E0218A"));
+        toolbar.setBackgroundColor(Color.parseColor("#FF7E00"));
         setSupportActionBar(toolbar);
         REQUIRE_EDITABLE = PreChatForm. Field.REQUIRED_EDITABLE;
         OPTION_EDITABLE = PreChatForm.Field.OPTIONAL_EDITABLE;
