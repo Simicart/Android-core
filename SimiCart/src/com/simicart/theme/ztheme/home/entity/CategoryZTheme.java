@@ -34,7 +34,7 @@ public class CategoryZTheme extends Category {
 						categoryZTheme.setType(TYPE_CAT);
 						categoryZTheme.setTitle(Config.getInstance().getText(
 								"All Products"));
-						categoryZTheme.setCategoryId("-1");
+						categoryZTheme.setCategoryId(getCategoryId());
 						categoryZTheme.setCategoryName(Config.getInstance()
 								.getText("All Products"));
 						categoryZTheme.setChild(false);
