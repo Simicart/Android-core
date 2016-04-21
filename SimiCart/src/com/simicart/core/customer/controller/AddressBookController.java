@@ -31,7 +31,7 @@ public class AddressBookController extends SimiController {
 	protected SimiDelegate mDelegate;
 	protected OnTouchListener mListener;
 	protected OnItemClickListener mClicker;
-	public static Bundle bundleAddress, bundleAfter;
+	public Bundle bundleAddress, bundleAfter;
 
 	public OnTouchListener getListener() {
 		return mListener;
@@ -69,7 +69,6 @@ public class AddressBookController extends SimiController {
 			public boolean onTouch(View v, MotionEvent event) {
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance();
-				Constants.getBundle = 3;
 				bundleAfter = new Bundle();
 				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
 						Constants.NEW_ADDRESS, Constants.KeyData.TYPE_INT,

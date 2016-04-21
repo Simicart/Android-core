@@ -25,7 +25,7 @@ public class PopupCheckoutController extends SimiController {
 	protected OnTouchListener onExcustomer;
 	protected OnTouchListener onNewcustomer;
 	protected OnTouchListener onAsguest;
-	public static Bundle bundle;
+	public Bundle bundle;
 
 	public OnTouchListener getOnAsguest() {
 		return onAsguest;
@@ -124,7 +124,6 @@ public class PopupCheckoutController extends SimiController {
 					mBlockDelegate.dismissPopupCheckout();
 					NewAddressBookFragment fragment = NewAddressBookFragment
 							.newInstance();
-					Constants.getBundle = 2;
 					 bundle= new Bundle();
 					SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_CUSTOMER, Constants.KeyData.TYPE_INT, bundle);
 					SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, 0, Constants.KeyData.TYPE_INT, bundle);
@@ -163,7 +162,6 @@ public class PopupCheckoutController extends SimiController {
 					mBlockDelegate.dismissPopupCheckout();
 					NewAddressBookFragment fragment = NewAddressBookFragment
 							.newInstance();
-					Constants.getBundle = 2;
 					bundle= new Bundle();
 					SimiFragment.setData(Constants.KeyData.AFTER_CONTROL, Constants.NEW_AS_GUEST, Constants.KeyData.TYPE_INT, bundle);
 					SimiFragment.setData(Constants.KeyData.ADDRESS_FOR, 0, Constants.KeyData.TYPE_INT, bundle);

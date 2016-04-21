@@ -349,7 +349,6 @@ public class Constants {
 		public final static int SHIPPING_ADDRESS = 2;
 	}
 
-	public static int getBundle;
 	// truong
 	public static final int RESULT_BARCODE = 1111;
 	public static final int TARGET_PRODUCTDETAIL = 1234;
