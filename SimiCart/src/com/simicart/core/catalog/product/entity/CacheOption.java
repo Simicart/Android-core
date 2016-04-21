@@ -7,6 +7,8 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class CacheOption implements Serializable{
 	/**
 	 * 
@@ -245,7 +247,8 @@ public class CacheOption implements Serializable{
 		return this.options;
 	}
 
-	public JSONObject toParameter() throws JSONException {
+	public ArrayList<JSONObject> toParameter() throws JSONException {
+		ArrayList<JSONObject> listJson = new ArrayList<JSONObject>();
 		JSONObject json = null;
 		ArrayList<ProductOption> options = getAllOption();
 		if (null != options && options.size() > 0) {
@@ -276,9 +279,11 @@ public class CacheOption implements Serializable{
 					}
 
 					json.put("option_value", value);
+					listJson.add(json);
 				}
 
 				else if (option.isChecked() || getNumber() > 0) {
+					Log.e("CacheOption", "Option: " + option.getOptionId());
 					json = new JSONObject();
 					json.put("option_id", option.getOptionId());
 					json.put("option_type_id", option.getOptionTypeId());
@@ -294,10 +299,11 @@ public class CacheOption implements Serializable{
 						}
 						json.put("dependence_option_ids", depends);
 					}
+					listJson.add(json);
 				}
 			}
 		}
-		return json;
+		return listJson;
 	}
 
 }

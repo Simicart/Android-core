@@ -380,8 +380,12 @@ public class ProductController extends SimiController implements
 			ArrayList<CacheOption> options) throws JSONException {
 		JSONArray array = new JSONArray();
 		for (CacheOption cacheOption : options) {
-			if (cacheOption.toParameter() != null) {
-				array.put(cacheOption.toParameter());
+			ArrayList<JSONObject> listObject = cacheOption.toParameter();
+			if (listObject != null && listObject.size() > 0) {
+				for (int i = 0; i < listObject.size(); i++) {
+					JSONObject jsonObj = listObject.get(i);
+					array.put(jsonObj);
+				}
 			}
 		}
 		return array;
