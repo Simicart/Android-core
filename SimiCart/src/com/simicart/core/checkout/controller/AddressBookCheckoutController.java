@@ -27,7 +27,7 @@ public class AddressBookCheckoutController extends AddressBookController {
 	protected MyAddress mBillingAddress;
 	protected MyAddress mShippingAddress;
 	protected int mAfterController;
-	public static Bundle bundle;
+	public Bundle bundle;
 
 	public void setAddressFor(int addressFor) {
 		this.addressFor = addressFor;
@@ -65,7 +65,6 @@ public class AddressBookCheckoutController extends AddressBookController {
 			public boolean onTouch(View v, MotionEvent event) {
 				NewAddressBookFragment fragment = NewAddressBookFragment
 						.newInstance();
-				Constants.getBundle = 1;
 				bundle = new Bundle();
 				SimiFragment.setData(Constants.KeyData.AFTER_CONTROL,
 						Constants.NEW_ADDRESS_CHECKOUT,

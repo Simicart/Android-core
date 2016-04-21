@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -43,7 +41,7 @@ import com.simicart.core.customer.entity.MyAddress;
 import com.simicart.core.customer.entity.StateOfCountry;
 
 public class LocationPickupEditBlock extends AddressBookDetailBlock {
-	protected LatLng start = new LatLng(42.568822,-76.009406);
+	protected LatLng start = new LatLng(42.568822, -76.009406);
 	protected ImageView bt_detect;
 	protected static Location mLocation;
 	protected String lat = "";
@@ -66,12 +64,13 @@ public class LocationPickupEditBlock extends AddressBookDetailBlock {
 	public void setGgmap(GoogleMap ggmap) {
 		this.ggmap = ggmap;
 	}
-	
+
 	private boolean checkLocationPermission() {
-        String permission = "android.permission.ACCESS_FINE_LOCATION";
-        int res = mContext.checkCallingOrSelfPermission(permission);
-        return (res == PackageManager.PERMISSION_GRANTED);
-}
+		String permission = "android.permission.ACCESS_FINE_LOCATION";
+		int res = mContext.checkCallingOrSelfPermission(permission);
+		return (res == PackageManager.PERMISSION_GRANTED);
+	}
+
 	@Override
 	public void initView() {
 		super.initView();
@@ -98,9 +97,9 @@ public class LocationPickupEditBlock extends AddressBookDetailBlock {
 
 		String latlng = "";
 		if (mAddressBookDetail != null) {
-				latlng = mAddressBookDetail.getLatlng();
+			latlng = mAddressBookDetail.getLatlng();
 		}
-		if (!latlng.equals("") && !latlng.equals("null") && latlng != null) {
+		if (latlng != null && !latlng.equals("") && !latlng.equals("null")) {
 			ggmap.clear();
 			if (latlng.contains(",")) {
 				String[] s_latlng = latlng.split(",");
@@ -113,7 +112,6 @@ public class LocationPickupEditBlock extends AddressBookDetailBlock {
 					l_lat = Double.parseDouble(s_lat);
 					l_lng = Double.parseDouble(s_lng);
 				} catch (Exception e) {
-					// TODO: handle exception
 				}
 				start = new LatLng(l_lat, l_lng);
 				ggmap.addMarker(new MarkerOptions().position(start).icon(
@@ -144,28 +142,30 @@ public class LocationPickupEditBlock extends AddressBookDetailBlock {
 
 			@Override
 			public void onClick(View v) {
-				 if (checkLocationPermission()) {
-					 if (getLocation(mContext) != null) {
-							ggmap.clear();
-							start = new LatLng(getLocation(mContext).getLatitude(),
-									getLocation(mContext).getLongitude());
-							lat = getLocation(mContext).getLatitude() + "";
-							lng = getLocation(mContext).getLongitude() + "";
-							ggmap.addMarker(new MarkerOptions().position(start).icon(
-									BitmapDescriptorFactory.fromResource(Rconfig
-											.getInstance().getIdDraw("maker_my"))));
-							triggerLocation(getLocation(mContext).getLatitude(),
-									getLocation(mContext).getLongitude());
-						}
-						CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(
-								start.latitude, start.longitude));
-						CameraUpdate zoom = CameraUpdateFactory.zoomTo(17);
-						ggmap.moveCamera(center);
-						ggmap.animateCamera(zoom);
-                    }else{
-                        SimiManager.getIntance().showToast(
-                                            "Please enable permission location.");
-                    }
+				if (checkLocationPermission()) {
+					if (getLocation(mContext) != null) {
+						ggmap.clear();
+						start = new LatLng(getLocation(mContext).getLatitude(),
+								getLocation(mContext).getLongitude());
+						lat = getLocation(mContext).getLatitude() + "";
+						lng = getLocation(mContext).getLongitude() + "";
+						ggmap.addMarker(new MarkerOptions().position(start)
+								.icon(BitmapDescriptorFactory
+										.fromResource(Rconfig.getInstance()
+												.getIdDraw("maker_my"))));
+						triggerLocation(getLocation(mContext).getLatitude(),
+								getLocation(mContext).getLongitude());
+					}
+					CameraUpdate center = CameraUpdateFactory
+							.newLatLng(new LatLng(start.latitude,
+									start.longitude));
+					CameraUpdate zoom = CameraUpdateFactory.zoomTo(17);
+					ggmap.moveCamera(center);
+					ggmap.animateCamera(zoom);
+				} else {
+					SimiManager.getIntance().showToast(
+							"Please enable permission location.");
+				}
 			}
 		});
 	}
