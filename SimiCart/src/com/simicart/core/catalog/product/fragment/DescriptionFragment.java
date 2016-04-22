@@ -1,15 +1,22 @@
 package com.simicart.core.catalog.product.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.model.entity.BusEntity;
@@ -37,7 +44,7 @@ public class DescriptionFragment extends SimiFragment {
 						"core_information_description_layout"), container,
 				false);
 
-		WebView webView = (WebView) rootView.findViewById(Rconfig.getInstance()
+		final WebView webView = (WebView) rootView.findViewById(Rconfig.getInstance()
 				.id("webview"));
 		webView.setBackgroundColor(Config.getInstance().getApp_backrground());
 		webView.getSettings().setJavaScriptEnabled(true);
@@ -47,6 +54,50 @@ public class DescriptionFragment extends SimiFragment {
 		webView.getSettings().setDisplayZoomControls(true);
 		webView.getSettings().setLoadsImagesAutomatically(true);
 		webView.getSettings().setDefaultTextEncodingName("utf-8");
+		webView.setWebViewClient(new WebViewClient(){
+			
+			@Override
+			public void onReceivedSslError(final WebView view, final SslErrorHandler handler, SslError error) {
+			    Log.d("CHECK", "onReceivedSslError");
+			    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			    AlertDialog alertDialog = builder.create();
+			    String message = "Certificate error.";
+			    switch (error.getPrimaryError()) {
+			        case SslError.SSL_UNTRUSTED:
+			            message = "The certificate authority is not trusted.";
+			            break;
+			        case SslError.SSL_EXPIRED:
+			            message = "The certificate has expired.";
+			            break;
+			        case SslError.SSL_IDMISMATCH:
+			            message = "The certificate Hostname mismatch.";
+			            break;
+			        case SslError.SSL_NOTYETVALID:
+			            message = "The certificate is not yet valid.";
+			            break;
+			    }
+			    message += " Do you want to continue anyway?";
+			    alertDialog.setTitle("SSL Certificate Error");
+			    alertDialog.setMessage(message);
+			    alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new OnClickListener() {
+			        @Override
+			        public void onClick(DialogInterface dialog, int which) {
+			            Log.d("CHECK", "Button ok pressed");
+			            // Ignore SSL certificate errors
+			            handler.proceed();
+			        }
+			    });
+			    alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new OnClickListener() {
+			        @Override
+			        public void onClick(DialogInterface dialog, int which) {
+			            Log.d("CHECK", "Button cancel pressed");
+			            handler.cancel();
+			            webView.clearSslPreferences();
+			        }
+			    });
+			    alertDialog.show();
+			    }
+		});
 		if (mDescription.contains("<div")) {
 			String text = "<html><body style=\"color:black;font-family:Helvetica;font-size:"
 					+ convertDpToPixel(12, getActivity())
