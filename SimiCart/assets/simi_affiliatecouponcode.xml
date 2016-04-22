@@ -1,0 +1,8 @@
+<events>
+    <event>
+        <name>com.simicart.core.common.price.TotalPriceView.Affilliate</name>	    
+	    <package>com.simicart.plugins.affiliatecouponcode</package>
+	    <class>AffiliateCouponCode</class>
+	    <sku>simi_developer</sku>    
+    </event>
+</events>
