@@ -93,15 +93,9 @@ public class LocationPickupEditFragment extends AddressBookDetailFragment {
 		if (mController == null) {
 			mController = new LocationPickupEditController();
 			mController.setDelegate(mBlock);
-			mController.setBillingAddress(mBillingAddress);
-			mController.setShippingAddress(mShippingAddress);
-			mController.setEditAddressFor(editAddressFor);
 			mController.onStart();
 		} else {
 			mController.setDelegate(mBlock);
-			mController.setBillingAddress(mBillingAddress);
-			mController.setShippingAddress(mShippingAddress);
-			mController.setEditAddressFor(editAddressFor);
 			mController.onResume();
 		}
 
