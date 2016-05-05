@@ -32,11 +32,12 @@ public class ProductDetailImageFragment extends SimiFragment {
 	}
 
 	public static ProductDetailImageFragment newInstance(String url) {
-			ProductDetailImageFragment fragment = new ProductDetailImageFragment();
-			Bundle bundle = new Bundle();
-			setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING, bundle);
-			fragment.setArguments(bundle);
-			return fragment;
+		ProductDetailImageFragment fragment = new ProductDetailImageFragment();
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.URL, url, Constants.KeyData.TYPE_STRING,
+				bundle);
+		fragment.setArguments(bundle);
+		return fragment;
 	}
 
 	@Override
@@ -50,8 +51,9 @@ public class ProductDetailImageFragment extends SimiFragment {
 		View rootView = inflater.inflate(
 				Rconfig.getInstance().layout("core_product_detail_image"),
 				container, false);
-		if(getArguments() != null){
-		mURL = (String) getData(Constants.KeyData.URL, Constants.KeyData.TYPE_STRING, getArguments());
+		if (getArguments() != null) {
+			mURL = (String) getData(Constants.KeyData.URL,
+					Constants.KeyData.TYPE_STRING, getArguments());
 		}
 		try {
 
@@ -80,11 +82,12 @@ public class ProductDetailImageFragment extends SimiFragment {
 
 			if (null != mURL) {
 				Log.e("ProductDetailImageFragment - newInstance:", "drawImage");
-				DrawableManager.fetchDrawableOnThreadForZTheme(mURL, imv_image);
+				DrawableManager.fetchDrawableOnThread(mURL, imv_image);
 			}
 
 		} catch (Exception e) {
-//			Log.e("ProductDetailImageFragment - OncreateView:", e.getMessage());
+			// Log.e("ProductDetailImageFragment - OncreateView:",
+			// e.getMessage());
 		}
 		return rootView;
 	}

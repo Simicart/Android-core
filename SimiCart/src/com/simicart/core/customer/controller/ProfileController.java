@@ -310,23 +310,23 @@ public class ProfileController extends SimiController {
 		if (profile.getName().equals("") || profile.getEmail().equals("")) {
 			return true;
 		} else {
-			if (_configCustomer.getPrefix().toLowerCase().equals("req")
+			if (_configCustomer.getPrefix().equalsIgnoreCase("req")
 					&& profile.getPrefix().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getSuffix().toLowerCase().equals("req")
+			if (_configCustomer.getSuffix().equalsIgnoreCase("req")
 					&& profile.getSuffix().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getGender().toLowerCase().equals("req")
+			if (_configCustomer.getGender().equalsIgnoreCase("req")
 					&& profile.getGender().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getTaxvat().toLowerCase().equals("req")
+			if (_configCustomer.getTaxvat().equalsIgnoreCase("req")
 					&& profile.getTaxVat().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getDob().toLowerCase().equals("req")
+			if (_configCustomer.getDob().equalsIgnoreCase("req")
 					&& profile.getDay().equals("")) {
 				return false;
 			}

@@ -455,12 +455,12 @@ public class NewAddressBookController extends SimiController implements
 				|| email.equals("")) {
 			return false;
 		} else {
-			if (_configCustomer.getPrefix().toLowerCase().equals("req")
+			if (_configCustomer.getPrefix().equalsIgnoreCase("req")
 					&& (add_address.getPrefix() == null || add_address
 							.getPrefix().equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getSuffix().toLowerCase().equals("req")
+			if (_configCustomer.getSuffix().equalsIgnoreCase("req")
 					&& (add_address.getSuffix() == null || add_address
 							.getSuffix().equals(""))) {
 				return false;
@@ -468,19 +468,19 @@ public class NewAddressBookController extends SimiController implements
 
 			if (mAfterController == Constants.NEW_CUSTOMER
 					|| mAfterController == Constants.NEW_AS_GUEST) {
-				if (_configCustomer.getTaxvat().toLowerCase().equals("req")
+				if (_configCustomer.getTaxvat().equalsIgnoreCase("req")
 						&& (add_address.getTaxvat() == null || add_address
 								.getTaxvat().equals(""))) {
 					return false;
 				}
 
-				if (_configCustomer.getGender().toLowerCase().equals("req")
+				if (_configCustomer.getGender().equalsIgnoreCase("req")
 						&& (null == add_address.getGender() || add_address
 								.getGender().equals(""))) {
 					return false;
 				}
 
-				if (_configCustomer.getDob().toLowerCase().equals("req")
+				if (_configCustomer.getDob().equalsIgnoreCase("req")
 						&& (null == add_address.getDay() || add_address
 								.getDay().equals(""))) {
 					return false;
@@ -488,37 +488,37 @@ public class NewAddressBookController extends SimiController implements
 
 			}
 
-			if (_configCustomer.getStreet().toLowerCase().equals("req")
+			if (_configCustomer.getStreet().equalsIgnoreCase("req")
 					&& (add_address.getStreet() == null || add_address
 							.getStreet().equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getCity().toLowerCase().equals("req")
+			if (_configCustomer.getCity().equalsIgnoreCase("req")
 					&& (add_address.getCity() == null || add_address.getCity()
 							.equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getZipcode().toLowerCase().equals("req")
+			if (_configCustomer.getZipcode().equalsIgnoreCase("req")
 					&& (add_address.getZipCode() == null || add_address
 							.getZipCode().equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getTelephone().toLowerCase().equals("req")
+			if (_configCustomer.getTelephone().equalsIgnoreCase("req")
 					&& (add_address.getPhone() == null || add_address
 							.getPhone().equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getFax().toLowerCase().equals("req")
+			if (_configCustomer.getFax().equalsIgnoreCase("req")
 					&& (add_address.getFax() == null || add_address.getFax()
 							.equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getVat_id().toLowerCase().equals("req")
+			if (_configCustomer.getVat_id().equalsIgnoreCase("req")
 					&& (add_address.getTaxvatCheckout() == null || add_address
 							.getTaxvatCheckout().equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getCompany().toLowerCase().equals("req")
+			if (_configCustomer.getCompany().equalsIgnoreCase("req")
 					&& (add_address.getCompany() == null || add_address
 							.getCompany().equals(""))) {
 				return false;

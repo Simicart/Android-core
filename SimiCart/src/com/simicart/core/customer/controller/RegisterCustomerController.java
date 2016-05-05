@@ -90,23 +90,23 @@ public class RegisterCustomerController extends SimiController {
 		if (register.getName().equals("") || register.getEmail().equals("")) {
 			return false;
 		} else {
-			if (_configCustomer.getPrefix().toLowerCase().equals("req")
+			if (_configCustomer.getPrefix().equalsIgnoreCase("req")
 					&& register.getPrefix().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getSuffix().toLowerCase().equals("req")
+			if (_configCustomer.getSuffix().equalsIgnoreCase("req")
 					&& register.getSuffix().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getGender().toLowerCase().equals("req")
+			if (_configCustomer.getGender().equalsIgnoreCase("req")
 					&& register.getGender().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getTaxvat().toLowerCase().equals("req")
+			if (_configCustomer.getTaxvat().equalsIgnoreCase("req")
 					&& register.getTaxVat().equals("")) {
 				return false;
 			}
-			if (_configCustomer.getDob().toLowerCase().equals("req")
+			if (_configCustomer.getDob().equalsIgnoreCase("req")
 					&& register.getDay().equals("")) {
 				return false;
 			}
@@ -131,12 +131,14 @@ public class RegisterCustomerController extends SimiController {
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
-				Log.d("quangdd123", "message=="+message+"==isSuccess=="+isSuccess);
+				Log.d("quangdd123", "message==" + message + "==isSuccess=="
+						+ isSuccess);
 				if (isSuccess) {
-					Log.d("quangdd123", "isSuccess=="+isSuccess);
+					Log.d("quangdd123", "isSuccess==" + isSuccess);
 					mDelegate.updateView(mModel.getCollection());
 					SimiManager.getIntance().showNotify(
-							Config.getInstance().getText("SUCCESS"), Config.getInstance().getText(message),
+							Config.getInstance().getText("SUCCESS"),
+							Config.getInstance().getText(message),
 							Config.getInstance().getText("OK"));
 					replaceFragment();
 				}
@@ -188,15 +190,16 @@ public class RegisterCustomerController extends SimiController {
 		RegisterCustomer register = mDelegate.getRegisterCustomer();
 		String email = register.getEmail();
 		String pass = register.getPass();
-		SignInFragment fragment = SignInFragment.newInstance(email, pass, false);
-//		String email = register.getEmail();
-//		fragment.setEmail(email);
-//		String pass = register.getPass();
-//		fragment.setPassword(pass);
+		SignInFragment fragment = SignInFragment
+				.newInstance(email, pass, false);
+		// String email = register.getEmail();
+		// fragment.setEmail(email);
+		// String pass = register.getPass();
+		// fragment.setPassword(pass);
 		DataLocal.saveData(email, pass);
 		DataLocal.saveEmailPassRemember(email, pass);
 		SimiManager.getIntance().backPreviousFragment();
 		SimiManager.getIntance().replacePopupFragment(fragment);
-		//fadf
+		// fadf
 	}
 }

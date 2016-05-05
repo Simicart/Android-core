@@ -15,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -46,13 +47,21 @@ import com.simicart.core.style.imagesimicart.SimiImageView;
 
 public class DrawableManager {
 
-	protected static LruCache<String, Bitmap> mMemoryCache;
+	// protected static LruCache<String, Bitmap> mMemoryCache;
 	protected static DiskLruCache mDiskLruCache;
 	protected static Object mDiskCackeLock = new Object();
 	protected static boolean mDiskCacheStarting = true;
-	protected static int DISK_CACHE_SIZE = 1024 * 1024 * 100;
+	// protected static int DISK_CACHE_SIZE = 1024 * 1024 * 100;
 	protected static String DISK_CACHE_SUBDIR = "thumbnails";
 	protected static boolean isInitial = false;
+	protected static Bitmap cache_bitMap = null;
+
+	protected static int memClass = ((ActivityManager) SimiManager.getIntance()
+			.getCurrentActivity().getSystemService(Context.ACTIVITY_SERVICE))
+			.getMemoryClass();
+	protected static int DISK_CACHE_SIZE = 1024 * 1024 * memClass / 8;
+	protected static LruCache<String, Bitmap> mMemoryCache = new LruCache<String, Bitmap>(
+			DISK_CACHE_SIZE);
 
 	public static void init() {
 		if (!isInitial) {
@@ -312,20 +321,17 @@ public class DrawableManager {
 
 		init();
 
-		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+		cache_bitMap = getBitmapFromMemCache(urlString);
 
 		if (null != cache_bitMap) {
 			imageView.setImageBitmap(cache_bitMap);
 			return;
-		}
-
-		else {
+		} else {
 			cache_bitMap = getBitmapFromDiskCache(urlString);
 			if (null != cache_bitMap) {
 				imageView.setImageBitmap(cache_bitMap);
 
 				String key_md5 = Utils.md5(urlString);
-
 				if (null != mMemoryCache) {
 					if (getBitmapFromMemCache(key_md5) == null) {
 						mMemoryCache.put(key_md5, cache_bitMap);
@@ -355,32 +361,86 @@ public class DrawableManager {
 		};
 
 		getBitmap(handler, urlString);
+
+		if (cache_bitMap != null && !cache_bitMap.isRecycled()) {
+			cache_bitMap.recycle();
+			cache_bitMap = null;
+		}
 	}
 
 	public static void fetchDrawableOnThreadForZTheme(final String urlString,
 			final ImageView imageView) {
-		// Log.e("DrawableManager ","fetchDrawableOnThreadForZTheme(String, ImageView)");
-		// Context context = SimiManager.getIntance().getCurrentActivity();
-		// GLideTransform transform = new GLideTransform(context);
-		// Glide.with(context).load(urlString).transform(transform).into(imageView);
+
+		// init();
+		//
+		// Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+		//
+		// Display display = SimiManager.getIntance().getCurrentActivity()
+		// .getWindowManager().getDefaultDisplay();
+		// Point size = new Point();
+		// display.getSize(size);
+		// final int w = (size.x * 4) / 5;
+		// final int h = (size.y * 4) / 5;
+		//
+		// if (null != cache_bitMap) {
+		// Bitmap bMapRotate = Utils.scaleToFill(cache_bitMap, w, h);
+		// imageView.setImageBitmap(bMapRotate);
+		// cache_bitMap = null;
+		// bMapRotate = null;
+		// return;
+		// }
+		//
+		// final Handler handler = new Handler() {
+		// @Override
+		// public void handleMessage(Message message) {
+		// Bitmap bitmap = (Bitmap) message.obj;
+		// if (bitmap != null) {
+		// try {
+		// Bitmap bMapRotate = Utils.scaleToFill(bitmap, w, h);
+		// imageView.setImageBitmap(bMapRotate);
+		// addBitmapToMemoryCache(urlString, bitmap);
+		// bitmap = null;
+		// bMapRotate = null;
+		// } catch (Exception e) {
+		//
+		// }
+		// } else {
+		// Resources resources = SimiManager.getIntance()
+		// .getCurrentContext().getResources();
+		// bitmap = BitmapFactory.decodeResource(resources, Rconfig
+		// .getInstance().drawable("default_icon"));
+		// Matrix mat = new Matrix();
+		// mat.postRotate(-90);
+		// Bitmap bMapRotate = Bitmap.createBitmap(bitmap, 0, 0,
+		// bitmap.getWidth(), bitmap.getHeight(), mat, true);
+		// imageView.setImageBitmap(bMapRotate);
+		// bitmap = null;
+		// }
+		// }
+		// };
+		//
+		// getBitmap(handler, urlString);
 
 		init();
 
-		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
-
-		Display display = SimiManager.getIntance().getCurrentActivity()
-				.getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		final int w = (size.x * 4) / 5;
-		final int h = (size.y * 4) / 5;
+		cache_bitMap = getBitmapFromMemCache(urlString);
 
 		if (null != cache_bitMap) {
-			Bitmap bMapRotate = Utils.scaleToFill(cache_bitMap, w, h);
-			imageView.setImageBitmap(bMapRotate);
-			cache_bitMap = null;
-			bMapRotate = null;
+			imageView.setImageBitmap(cache_bitMap);
 			return;
+		} else {
+			cache_bitMap = getBitmapFromDiskCache(urlString);
+			if (null != cache_bitMap) {
+				imageView.setImageBitmap(cache_bitMap);
+
+				String key_md5 = Utils.md5(urlString);
+				if (null != mMemoryCache) {
+					if (getBitmapFromMemCache(key_md5) == null) {
+						mMemoryCache.put(key_md5, cache_bitMap);
+					}
+				}
+				return;
+			}
 		}
 
 		final Handler handler = new Handler() {
@@ -388,31 +448,26 @@ public class DrawableManager {
 			public void handleMessage(Message message) {
 				Bitmap bitmap = (Bitmap) message.obj;
 				if (bitmap != null) {
-					try {
-						Bitmap bMapRotate = Utils.scaleToFill(bitmap, w, h);
-						imageView.setImageBitmap(bMapRotate);
-						addBitmapToMemoryCache(urlString, bitmap);
-						bitmap = null;
-						bMapRotate = null;
-					} catch (Exception e) {
-
-					}
+					imageView.setImageBitmap(bitmap);
+					addBitmapToMemoryCache(urlString, bitmap);
 				} else {
 					Resources resources = SimiManager.getIntance()
 							.getCurrentContext().getResources();
 					bitmap = BitmapFactory.decodeResource(resources, Rconfig
 							.getInstance().drawable("default_icon"));
-					Matrix mat = new Matrix();
-					mat.postRotate(-90);
-					Bitmap bMapRotate = Bitmap.createBitmap(bitmap, 0, 0,
-							bitmap.getWidth(), bitmap.getHeight(), mat, true);
-					imageView.setImageBitmap(bMapRotate);
+					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
+					imageView.setImageBitmap(bitmap);
 					bitmap = null;
 				}
 			}
 		};
 
 		getBitmap(handler, urlString);
+
+		if (cache_bitMap != null && !cache_bitMap.isRecycled()) {
+			cache_bitMap.recycle();
+			cache_bitMap = null;
+		}
 	}
 
 	// public static class GLideTransform extends BitmapTransformation {
@@ -568,7 +623,7 @@ public class DrawableManager {
 			final SimiImageView simiImageView) {
 		init();
 
-		Bitmap cache_bitMap = getBitmapFromMemCache(urlImage);
+		cache_bitMap = getBitmapFromMemCache(urlImage);
 
 		if (null != cache_bitMap) {
 			simiImageView.setImageBitmap(cache_bitMap);
@@ -611,6 +666,11 @@ public class DrawableManager {
 		};
 
 		getBitmap(handler, urlImage);
+
+		if (cache_bitMap != null && !cache_bitMap.isRecycled()) {
+			cache_bitMap.recycle();
+			cache_bitMap = null;
+		}
 	}
 
 }

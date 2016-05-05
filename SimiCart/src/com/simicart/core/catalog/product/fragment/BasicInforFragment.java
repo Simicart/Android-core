@@ -27,7 +27,7 @@ public class BasicInforFragment extends SimiFragment {
 
 	public static BasicInforFragment newInstance() {
 		BasicInforFragment fragment = new BasicInforFragment();
-		
+
 		return fragment;
 	}
 
@@ -41,7 +41,7 @@ public class BasicInforFragment extends SimiFragment {
 		rootView = inflater.inflate(
 				Rconfig.getInstance().layout(
 						"core_information_basic_inf_layout"), container, false);
-		
+
 		TextView tv_Name = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_Name"));
 		tv_Name.setText(mProduct.getName().trim());
@@ -76,7 +76,7 @@ public class BasicInforFragment extends SimiFragment {
 				.getInstance().id("tv_descrip"));
 		tv_Name.setTextColor(Config.getInstance().getContent_color());
 		if (mProduct.getShortDecripition() != null
-				&& !mProduct.getShortDecripition().toLowerCase().equals("null")) {
+				&& !mProduct.getShortDecripition().equalsIgnoreCase("null")) {
 			tv_shortDescription.setText(Html.fromHtml("<font color='"
 					+ Config.getInstance().getContent_color_string() + "'>"
 					+ mProduct.getShortDecripition() + "</font>"));
@@ -95,12 +95,12 @@ public class BasicInforFragment extends SimiFragment {
 
 		return rootView;
 	}
-	
+
 	@Override
 	public void onEvent(BusEntity event) {
 		super.onEvent(event);
-		if(event.getKey().toString().equals(Constants.KeyBus.PRODUCT)){
+		if (event.getKey().toString().equals(Constants.KeyBus.PRODUCT)) {
 			mProduct = (Product) event.getValue();
-	}
+		}
 	}
 }
