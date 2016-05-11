@@ -192,7 +192,7 @@ public class CommentFragment extends DialogFragment {
 				redirect = false;
 			}
 		}
-
+		
 	}
 
 }

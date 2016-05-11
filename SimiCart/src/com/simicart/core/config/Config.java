@@ -15,8 +15,8 @@ public class Config {
 	// private String mBaseUrl = "https://anggrek-liar.com/";
 	// private String mSecretKey = "bafe5e0dd33f762b05a6be52f31b7e30";
 
-	// private String mBaseUrl = "http://www.kiranaondoor.com/index.php";
-	// private String mSecretKey = "075116eb405249fd026299a5c06d4bee";
+//	 private String mBaseUrl = "http://demo.magestore.com/simicart/simipos2/index.php/";
+//	 private String mSecretKey = "";
 
 	// private String mBaseUrl = "https://www.toysrus.co.za/";
 	// private String mSecretKey = "1367fc3f50bfe666ea487856e3b7ff95";
@@ -28,18 +28,18 @@ public class Config {
 	// private String mBaseUrl = "https://www.grocerymantra.com";
 	// private String mSecretKey = "46a76eb0981e0c494693db2f5272999f";
 
-	// private String mBaseUrl =
-	// "http://dev-vn.magestore.com/simicart/1800/index.php/";
-	// private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+//	 private String mBaseUrl =
+//	 "http://dev-vn.magestore.com/simicart/1800/index.php/";
+//	 private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 
 //	private String mBaseUrl = "https://go360store.com/index.php";
 //	private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
 
-//	private String mBaseUrl = "https://www.highstreettv.com/";
-//	private String mSecretKey = "5a4c0e94a019396ebd15eb307df71e18";
+	private String mBaseUrl = "https://www.highstreettv.com/";
+	private String mSecretKey = "5a4c0e94a019396ebd15eb307df71e18";
 	
-//	private String mBaseUrl = "http://dev-vn.magestore.com/simicart/1800/index.php/";
-//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+//	private String mBaseUrl = "http://www.cilmart.com/index.php";
+//	private String mSecretKey = "adaf796a6df0e9db798ce5acd956b4b2";
 //	private String mBaseUrl = "http://www.caswellplating.com/";
 //	private String mSecretKey = "25dabf96d8ddcf1b0e0f0c832c2a9809";
 	// private String mBaseUrl = "http://www.numbersixlondon.com";
@@ -50,9 +50,9 @@ public class Config {
 //	private String mBaseUrl = "http://opentestdrive.com/qc/milletstore_v1/";
 //	private String mSecretKey = "b3f8350dd2e9735075a0705682204bb7";
 
-	 private String mBaseUrl =
-	 "http://demo.oromoda.net";
-	 private String mSecretKey = "0e42332eaeb2c9571eb3041aed5d1790";
+//	 private String mBaseUrl =
+//	 "http://demo.oromoda.net";
+//	 private String mSecretKey = "0e42332eaeb2c9571eb3041aed5d1790";
 
 	// private String key_color = "#607D8B";
 	// private String button_background = "#0277BD";
