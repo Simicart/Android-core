@@ -236,6 +236,7 @@ public class ProductDetailParentBlock extends SimiBlock implements
 	}
 
 	protected void showAddToCart() {
+		btn_addtocart.setVisibility(View.VISIBLE);
 		boolean stock = mProduct.getStock();
 		Drawable bg_button = mContext.getResources().getDrawable(
 				Rconfig.getInstance().drawable("core_background_button"));
