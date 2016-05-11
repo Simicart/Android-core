@@ -116,7 +116,7 @@ public class NotificationController {
 
 		if (notificationData.getImage() != null
 				&& !notificationData.getImage().equals("")
-				&& !notificationData.getImage().toLowerCase().equals("null")) {
+				&& !notificationData.getImage().equalsIgnoreCase("null")) {
 			im_notification.setVisibility(View.VISIBLE);
 			DrawableManager.fetchDrawableOnThread(notificationData.getImage(),
 					im_notification);
@@ -126,7 +126,7 @@ public class NotificationController {
 
 		if (notificationData.getMessage() != null
 				&& !notificationData.getMessage().equals("")
-				&& !notificationData.getMessage().toLowerCase().equals("null")) {
+				&& !notificationData.getMessage().equalsIgnoreCase("null")) {
 			tv_notification.setVisibility(View.VISIBLE);
 			String mes = notificationData.getMessage();
 			if (im_notification.getVisibility() == View.VISIBLE) {
@@ -253,7 +253,7 @@ public class NotificationController {
 		} else {
 			if (notificationData.getUrl() != null
 					&& !notificationData.getUrl().equals("")
-					&& !notificationData.getUrl().toLowerCase().equals("null")) {
+					&& !notificationData.getUrl().equalsIgnoreCase("null")) {
 				if (notificationData.getUrl().contains("http")) {
 					fragment = WebviewFragment.newInstance(notificationData
 							.getUrl());

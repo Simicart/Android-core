@@ -259,47 +259,47 @@ public class AddressBookDetailController extends SimiController implements
 		} else {
 
 			String prefix = addressBookDetail.getPrefix();
-			if (_configCustomer.getPrefix().toLowerCase().equals("req")
+			if (_configCustomer.getPrefix().equalsIgnoreCase("req")
 					&& (null == prefix || prefix.equals(""))) {
 				return false;
 			}
 			String suffix = addressBookDetail.getSuffix();
-			if (_configCustomer.getSuffix().toLowerCase().equals("req")
+			if (_configCustomer.getSuffix().equalsIgnoreCase("req")
 					&& (null == suffix || suffix.equals(""))) {
 				return false;
 			}
 
 			String street = addressBookDetail.getStreet();
-			if (_configCustomer.getStreet().toLowerCase().equals("req")
+			if (_configCustomer.getStreet().equalsIgnoreCase("req")
 					&& (null == street || street.equals(""))) {
 				return false;
 			}
 			String city = addressBookDetail.getCity();
-			if (_configCustomer.getCity().toLowerCase().equals("req")
+			if (_configCustomer.getCity().equalsIgnoreCase("req")
 					&& (null == city || city.equals(""))) {
 				return false;
 			}
 			String zipcode = addressBookDetail.getZipCode();
-			if (_configCustomer.getZipcode().toLowerCase().equals("req")
+			if (_configCustomer.getZipcode().equalsIgnoreCase("req")
 					&& (null == zipcode || zipcode.equals(""))) {
 				return false;
 			}
 			String phone = addressBookDetail.getPhone();
-			if (_configCustomer.getTelephone().toLowerCase().equals("req")
+			if (_configCustomer.getTelephone().equalsIgnoreCase("req")
 					&& (null == phone || phone.equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getFax().toLowerCase().equals("req")
+			if (_configCustomer.getFax().equalsIgnoreCase("req")
 					&& (addressBookDetail.getFax() == null || addressBookDetail
 							.getFax().equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getVat_id().toLowerCase().equals("req")
+			if (_configCustomer.getVat_id().equalsIgnoreCase("req")
 					&& (addressBookDetail.getTaxvatCheckout() == null || addressBookDetail
 							.getTaxvatCheckout().equals(""))) {
 				return false;
 			}
-			if (_configCustomer.getCompany().toLowerCase().equals("req")
+			if (_configCustomer.getCompany().equalsIgnoreCase("req")
 					&& (addressBookDetail.getCompany() == null || addressBookDetail
 							.getCompany().equals(""))) {
 				return false;

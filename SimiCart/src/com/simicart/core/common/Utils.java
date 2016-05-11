@@ -41,8 +41,13 @@ public class Utils {
 		float factorH = height / (float) b.getWidth();
 		float factorW = width / (float) b.getWidth();
 		float factorToUse = (factorH > factorW) ? factorW : factorH;
-		return Bitmap.createScaledBitmap(b, (int) (b.getWidth() * factorToUse),
+		Bitmap bitmap = Bitmap.createScaledBitmap(b,
+				(int) (b.getWidth() * factorToUse),
 				(int) (b.getHeight() * factorToUse), true);
+		if (b != bitmap) {
+			b.recycle();
+		}
+		return bitmap;
 	}
 
 	public static void expand(final View v) {
