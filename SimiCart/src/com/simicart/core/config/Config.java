@@ -16,8 +16,8 @@ public class Config {
 	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
 	private String mSecretCloudKey = "7ff28fa2fa6976eb0804551e01c9721beb17d041";
 
-	private String mBaseUrl = "http://courts.summasolutions.net/trinidadandtobago/";
-	private String mSecretKey = "7c9591f75483db740c9a0b1812d1537138688f";
+	private String mBaseUrl = "http://www.cilmart.com/index.php/";
+	 private String mSecretKey = "795c1b6aecf5f2a8cdab06dd52c6d6f9";
 
 	private String key_color = "#FFFFFF";
 	private String top_menu_icon_color = "#FFFFFF";

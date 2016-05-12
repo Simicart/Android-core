@@ -208,6 +208,11 @@ public class ProductDetailParentController extends ProductController implements 
 			mProduct = getProductFromCollection();
 			mDelegate.updateView(model.getCollection());
 		}
+		
+		checkOptionDerect = true;
+		onShowOption();
+		SimiManager.getIntance().hideKeyboard();
+		SimiManager.getIntance().getManager().popBackStack();
 	}
 
 	protected void onUpdatePriceView(ProductModel model) {
