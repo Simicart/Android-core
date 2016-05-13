@@ -826,11 +826,10 @@ public class ProductPriceUtils {
 			String excl_tax = "";
 			String incl_tax = "";
 			if (mPriceV2.getExclTaxFrom() > -1.00f) {
-				excl_tax = "<br><font color='"
+				excl_tax = "<font color='"
 						+ color_Label
 						+ "'>"
-						+ EXCL
-						+ ": "
+						+ " "
 						+ "</font><font color='"
 						+ color_Price
 						+ "'>"
@@ -839,11 +838,10 @@ public class ProductPriceUtils {
 			}
 
 			if (mPriceV2.getInclTaxFrom() > -1.00f) {
-				incl_tax = "<br><font color='"
+				incl_tax = "<font color='"
 						+ color_Label
 						+ "'>"
-						+ INCL
-						+ ": "
+						+ " "
 						+ "</font><font color='"
 						+ color_Price
 						+ "'>"
@@ -865,11 +863,10 @@ public class ProductPriceUtils {
 			String excl_tax = "";
 			String incl_tax = "";
 			if (mPriceV2.getExclTaxTo() > -1.00f) {
-				excl_tax = "<br><font color='"
+				excl_tax = "<font color='"
 						+ color_Label
 						+ "'>"
-						+ EXCL
-						+ ": "
+						+ " "
 						+ "</font><font color='"
 						+ color_Price
 						+ "'>"
@@ -878,11 +875,10 @@ public class ProductPriceUtils {
 			}
 
 			if (mPriceV2.getInclTaxTo() > -1.00f) {
-				incl_tax = "<br><font color='"
+				incl_tax = "<font color='"
 						+ color_Label
 						+ "'>"
-						+ Config.getInstance().getText(INCL)
-						+ ": "
+						+ " "
 						+ "</font><font color='"
 						+ color_Price
 						+ "'>"

@@ -102,6 +102,7 @@ public class OptionMulti extends OptionView {
 			mOptions.setIsDefault("0");
 
 			selectOption(true);
+			isChecked = false;
 			return true;
 		}
 		return false;
@@ -122,6 +123,7 @@ public class OptionMulti extends OptionView {
 		}
 
 		if (isSelected) {
+			isChecked = false;
 			updateView(true);
 			mOptions.setChecked(true);
 			mDelegate.updateStateCacheOption(mOptions.getOptionId(), true);
@@ -147,6 +149,7 @@ public class OptionMulti extends OptionView {
 			mDelegate.updatePriceParent(mOptions, CacheOptionView.ADD_OPERATOR);
 
 		} else {
+			isChecked = true;
 			updateView(false);
 			((CacheOptionMultiDelegate) mDelegate).updatePriceMulti(
 					optionPrice, CacheOptionView.SUB_OPERATOR);
