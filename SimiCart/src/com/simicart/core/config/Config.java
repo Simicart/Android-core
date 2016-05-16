@@ -11,14 +11,12 @@ import com.simicart.core.common.Utils;
 
 @SuppressLint("DefaultLocale")
 public class Config {
-	private String mThemeColor = "#FFFFFF";
+	private String mThemeColor = "#000000";
+	 private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
+	 private String mSecretCloudKey = "7ff28fa2fa6976eb0804551e01c9721beb17d041";
 
-	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
-	private String mSecretCloudKey = "7ff28fa2fa6976eb0804551e01c9721beb17d041";
-
-	private String mBaseUrl = "http://www.cilmart.com/index.php/";
-	 private String mSecretKey = "795c1b6aecf5f2a8cdab06dd52c6d6f9";
-
+	 private String mBaseUrl = "http://courts.summasolutions.net/trinidadandtobago/";
+	 private String mSecretKey = "7c9591f75483db740c9a0b1812d1537138688f";
 	private String key_color = "#FFFFFF";
 	private String top_menu_icon_color = "#FFFFFF";
 	private String button_background = "";
@@ -41,50 +39,6 @@ public class Config {
 	private String out_stock_text = "#FFFFFF";
 	private String search_text_color = "#8b8b8b";
 	private String search_icon_color = "#8b8b8b";
-
-	private String mDemoEnable = "DEMO_ENABLE11";
-	private String mSenderID = "";
-	private String mColorPrice = "#F31A1A";
-	private String mColorIconMenu = "#FFFFFF";
-	private String mColorMenuTop = "#FFFFFF";
-	private String mColorSplashScreen = "#FFFFFF";
-	// private String mFontCustom = "fonts/atmostsphere.ttf";
-	private String mFontCustom = "fonts/ProximaNovaLight.ttf";
-
-	private String mCountryName;
-	private String mCountryCode;
-	private String mCurrencySymbol;
-	private String mCurrencyCode;
-	private String mDefaulList;
-
-	private int mStoreID;
-	private String mStoreName;
-	private String mLocaleIdentifier;
-	private String mUseStore;
-	private String mCookie = "";
-
-	private int mGuestCheckout = 1;
-	private int mEnableAgreements = 0;
-
-	private boolean isShowZeroPrice = true;
-	private boolean isShowLinkAllProduct = false;
-	private boolean isReloadPaymentMethod = false;
-	private String mCurrencyPosition = "before";
-	private Map<String, String> mLanguages;
-
-	private boolean isEnableGiftCard;
-
-	private int mTheme = 0; // 0 : default, 1 : matrix , 2 ztheme
-
-	private boolean isEnableGiftCardLeftMenu;
-
-	private String giftcard_link;
-
-	private static Config instance;
-
-	private Config() {
-		mLanguages = new HashMap<String, String>();
-	}
 
 	public int getTop_menu_icon_color() {
 		return Color.parseColor(top_menu_icon_color);
@@ -279,6 +233,44 @@ public class Config {
 		this.search_icon_color = search_icon_color;
 	}
 
+	private String mDemoEnable = "DEMO_ENABLE";
+	private String mSenderID = "";
+	private String mColorPrice = "#F31A1A";
+	private String mColorIconMenu = "#FFFFFF";
+	private String mColorMenuTop = "#FFFFFF";
+	private String mColorSplashScreen = "#123456";
+	// private String mFontCustom = "fonts/atmostsphere.ttf";
+	private String mFontCustom = "fonts/ProximaNovaLight.ttf";
+
+	private String mCountryName;
+	private String mCountryCode;
+	private String mCurrencySymbol;
+	private String mCurrencyCode;
+	private String mDefaulList;
+
+	private int mStoreID;
+	private String mStoreName;
+	private String mLocaleIdentifier;
+	private String mUseStore;
+	private String mCookie = "";
+
+	private int mGuestCheckout = 1;
+	private int mEnableAgreements = 0;
+
+	private boolean isShowZeroPrice = true;
+	private boolean isShowLinkAllProduct = false;
+	private boolean isReloadPaymentMethod = false;
+	private String mCurrencyPosition = "before";
+	private Map<String, String> mLanguages;
+
+	private int mTheme = 0; // 0 : default, 1 : matrix , 2 ztheme
+
+	private static Config instance;
+
+	private Config() {
+		mLanguages = new HashMap<String, String>();
+	}
+
 	public static Config getInstance() {
 		if (null == instance) {
 			instance = new Config();
@@ -408,10 +400,6 @@ public class Config {
 		mStoreID = store_id;
 	}
 
-	public String getCurrencySymbol() {
-		return mCurrencySymbol;
-	}
-
 	public void setCurrency_symbol(String currency_symbol) {
 		mCurrencySymbol = currency_symbol;
 	}
@@ -434,21 +422,16 @@ public class Config {
 		if (last != '/') {
 			mBaseUrl += "/";
 		}
-
-		// int lenghtCloud = mBaseCloudUrl.length();
-		// char lastCloud = mBaseCloudUrl.charAt(lenghtCloud - 1);
-		// if (lastCloud != '/') {
-		// mBaseCloudUrl += "/";
-		// }
+		
+		 int last_index = mBaseCloudUrl.length() - 1;
+	        char lastChar = mBaseCloudUrl.charAt(last_index);
+	        if (lastChar == '/') {
+	            mBaseCloudUrl = mBaseCloudUrl.substring(0, last_index);
+	        }
 	}
 
 	public String getBaseUrl() {
 		return mBaseUrl;
-	}
-
-	public void setBaseCloudUrl(String url) {
-		mBaseCloudUrl = url;
-
 	}
 
 	public String getBaseCloudUrl() {
@@ -618,30 +601,6 @@ public class Config {
 
 	public void setCookie(String _cookie) {
 		this.mCookie = _cookie;
-	}
-
-	public boolean isEnableGiftCard() {
-		return isEnableGiftCard;
-	}
-
-	public void setEnableGiftCard(boolean isEnableGiftCard) {
-		this.isEnableGiftCard = isEnableGiftCard;
-	}
-
-	public boolean isEnableGiftCardLeftMenu() {
-		return isEnableGiftCardLeftMenu;
-	}
-
-	public void setEnableGiftCardLeftMenu(boolean isEnableGiftCardLeftMenu) {
-		this.isEnableGiftCardLeftMenu = isEnableGiftCardLeftMenu;
-	}
-
-	public String getGiftcard_link() {
-		return giftcard_link;
-	}
-
-	public void setGiftcard_link(String giftcard_link) {
-		this.giftcard_link = giftcard_link;
 	}
 
 }
