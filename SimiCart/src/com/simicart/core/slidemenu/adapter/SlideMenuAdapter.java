@@ -67,7 +67,7 @@ public class SlideMenuAdapter extends BaseAdapter {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(
 					Rconfig.getInstance().layout("core_phone_slide_menu_item"),
-					parent, false);
+					null, false);
 
 			holder.img_icon = (ImageView) convertView.findViewById(Rconfig
 					.getInstance().id("img_icon"));
@@ -125,11 +125,11 @@ public class SlideMenuAdapter extends BaseAdapter {
 		String url = item.getUrl();
 		
 		if (Utils.validateString(url)) {
+			// DrawableManager.fetchDrawableIConOnThread(url, holder.img_icon,
+			// mContext, Color.parseColor("#ffffff"));
 			DrawableManager.fetchDrawableIConOnThread(url, holder.img_icon,
 					mContext, Color.TRANSPARENT);
-			
-		} 
-		else {
+		} else {
 			Drawable drawable = item.getIcon();
 			if (null != drawable) {
 				drawable.setColorFilter(Config.getInstance()
