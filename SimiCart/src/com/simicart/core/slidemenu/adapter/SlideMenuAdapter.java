@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -122,11 +123,10 @@ public class SlideMenuAdapter extends BaseAdapter {
 		}
 
 		String url = item.getUrl();
+		
 		if (Utils.validateString(url)) {
-			// DrawableManager.fetchDrawableIConOnThread(url, holder.img_icon,
-			// mContext, Color.parseColor("#ffffff"));
 			DrawableManager.fetchDrawableIConOnThread(url, holder.img_icon,
-					mContext, Config.getInstance().getMenu_icon_color());
+					mContext, Color.TRANSPARENT);
 		} else {
 			Drawable drawable = item.getIcon();
 			if (null != drawable) {
@@ -135,7 +135,6 @@ public class SlideMenuAdapter extends BaseAdapter {
 				holder.img_icon.setImageDrawable(drawable);
 			}
 		}
-
 		return convertView;
 	}
 
