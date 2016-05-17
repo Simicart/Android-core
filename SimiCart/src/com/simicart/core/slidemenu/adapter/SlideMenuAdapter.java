@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -66,7 +67,7 @@ public class SlideMenuAdapter extends BaseAdapter {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
 			convertView = inflater.inflate(
 					Rconfig.getInstance().layout("core_phone_slide_menu_item"),
-					null, false);
+					parent, false);
 
 			holder.img_icon = (ImageView) convertView.findViewById(Rconfig
 					.getInstance().id("img_icon"));
@@ -122,12 +123,13 @@ public class SlideMenuAdapter extends BaseAdapter {
 		}
 
 		String url = item.getUrl();
+		
 		if (Utils.validateString(url)) {
-			// DrawableManager.fetchDrawableIConOnThread(url, holder.img_icon,
-			// mContext, Color.parseColor("#ffffff"));
 			DrawableManager.fetchDrawableIConOnThread(url, holder.img_icon,
-					mContext, Config.getInstance().getMenu_icon_color());
-		} else {
+					mContext, Color.TRANSPARENT);
+			
+		} 
+		else {
 			Drawable drawable = item.getIcon();
 			if (null != drawable) {
 				drawable.setColorFilter(Config.getInstance()
@@ -135,7 +137,6 @@ public class SlideMenuAdapter extends BaseAdapter {
 				holder.img_icon.setImageDrawable(drawable);
 			}
 		}
-
 		return convertView;
 	}
 
