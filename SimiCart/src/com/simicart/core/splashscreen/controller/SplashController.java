@@ -12,6 +12,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.simicart.core.base.delegate.ModelDelegate;
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
 import com.simicart.core.cms.entity.Cms;
 import com.simicart.core.common.ReadXMLLanguage;
@@ -139,6 +140,8 @@ public class SplashController {
 							DataLocal.listCms.add(cms);
 						}
 					}
+					Log.e("Data local cms", "++" + DataLocal.listCms.size());
+					SimiManager.getIntance().onUpdateCms();
 				}
 			}
 		});

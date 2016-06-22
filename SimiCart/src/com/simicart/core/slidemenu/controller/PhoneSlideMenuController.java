@@ -561,5 +561,10 @@ public class PhoneSlideMenuController {
 		mDelegate.setUpdateSignIn(name);
 		mDelegate.setAdapter(mItems);
 	}
+	
+	public void refreshCms() {
+		addCMS();
+		mDelegate.setAdapter(mItems);
+	}
 
 }

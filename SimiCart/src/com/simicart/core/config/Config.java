@@ -35,8 +35,8 @@ public class Config {
 //	private String mBaseUrl = "https://go360store.com/index.php";
 //	private String mSecretKey = "58bc53914fad87c67eafe364e566b56d";
 
-	private String mBaseUrl = "https://www.highstreettv.com/";
-	private String mSecretKey = "5a4c0e94a019396ebd15eb307df71e18";
+	private String mBaseUrl = "http://www.foagroup.com/";
+	private String mSecretKey = "f681f63238e83332b6c86aedacde4173";
 	
 //	private String mBaseUrl = "http://www.cilmart.com/index.php";
 //	private String mSecretKey = "adaf796a6df0e9db798ce5acd956b4b2";
