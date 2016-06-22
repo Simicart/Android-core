@@ -73,7 +73,7 @@ public class ContactUsBlock extends SimiBlock implements ContactUsDelegate {
 					.getPhone(), contact.getMessage(), contact.getWebsite(),
 					contact.getActiveColor(), contact.getStyle(), Rconfig
 							.getInstance().drawable(
-									"plugins_contactusemail_list"), "Email"));
+									"plugins_contactusemail_list"), Config.getInstance().getText("Email")));
 		}
 		if (contact.getMessage().size() > 0) {
 			listContactUs
@@ -81,7 +81,7 @@ public class ContactUsBlock extends SimiBlock implements ContactUsDelegate {
 							.getPhone(), contact.getMessage(), contact
 							.getWebsite(), contact.getActiveColor(), contact
 							.getStyle(), Rconfig.getInstance().drawable(
-							"plugins_contactusmessage_list"), "Message"));
+							"plugins_contactusmessage_list"), Config.getInstance().getText("Message")));
 		}
 		ArrayList<String> a = contact.getPhone();
 		System.out.println(a);
@@ -90,14 +90,14 @@ public class ContactUsBlock extends SimiBlock implements ContactUsDelegate {
 					.getPhone(), contact.getMessage(), contact.getWebsite(),
 					contact.getActiveColor(), contact.getStyle(), Rconfig
 							.getInstance().drawable(
-									"plugins_contactusphone_list"), "Call"));
+									"plugins_contactusphone_list"), Config.getInstance().getText("Call")));
 		}
 		if (contact.getWebsite().length() > 0) {
 			listContactUs.add(new ContactUsEntity(contact.getEmail(), contact
 					.getPhone(), contact.getMessage(), contact.getWebsite(),
 					contact.getActiveColor(), contact.getStyle(), Rconfig
 							.getInstance()
-							.drawable("plugins_contactusweb_list"), "Website"));
+							.drawable("plugins_contactusweb_list"), Config.getInstance().getText("Website")));
 		}
 		if (listContactUs != null) {
 			adapter = new ContactUsAdapter(listContactUs, mContext);

@@ -12,11 +12,10 @@ import com.simicart.core.common.Utils;
 @SuppressLint("DefaultLocale")
 public class Config {
 	private String mThemeColor = "#000000";
-	 private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
-	 private String mSecretCloudKey = "7ff28fa2fa6976eb0804551e01c9721beb17d041";
-
-	 private String mBaseUrl = "https://tradetodayonline.com/";
-	 private String mSecretKey = "02a7f7a986fbd25821a76ea3f3abb0f9";
+	 private String mBaseUrl = "http://47.88.2.1/magento/index.php/";
+	private String mSecretKey = "ba26e969a03a521c1fd64b9432dde7b4f044e1";
+	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
+	private String mSecretCloudKey = "f77132fc93d049cc5e0fd3229c45ac786704ab61";
 	private String key_color = "#FFFFFF";
 	private String top_menu_icon_color = "#FFFFFF";
 	private String button_background = "";

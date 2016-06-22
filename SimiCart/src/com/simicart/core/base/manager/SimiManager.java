@@ -164,6 +164,12 @@ public class SimiManager {
 			mSlideMenuController.updateSignIn();
 		}
 	}
+	
+	public void onUpdateCms() {
+		if (null != mSlideMenuController) {
+			mSlideMenuController.refreshCms();
+		}
+	}
 
 	public void setChildFragment(FragmentManager childFragment) {
 		mChildFragmentManager = childFragment;

@@ -8,8 +8,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -35,6 +33,9 @@ import com.simicart.core.splashscreen.model.GetSKUPluginModel;
 import com.simicart.core.splashscreen.model.SaveCurrencyModel;
 import com.simicart.core.splashscreen.model.StoreViewModel;
 import com.simicart.core.store.entity.Stores;
+
+import android.content.Context;
+import android.util.Log;
 
 public class SplashController {
 
@@ -235,6 +236,8 @@ public class SplashController {
 							DataLocal.listCms.add(cms);
 						}
 					}
+					Log.e("Data local cms", "++" + DataLocal.listCms.size());
+					SimiManager.getIntance().onUpdateCms();
 				}
 			}
 		});
