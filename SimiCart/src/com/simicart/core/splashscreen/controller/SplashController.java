@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
@@ -235,6 +236,8 @@ public class SplashController {
 							DataLocal.listCms.add(cms);
 						}
 					}
+					
+//					SimiManager.getIntance().
 				}
 			}
 		});
@@ -296,6 +299,9 @@ public class SplashController {
 		Config.getInstance().setStore_id(js_store_config.getInt("store_id"));
 		Config.getInstance().setStore_name(
 				js_store_config.getString("store_name"));
+		
+		Log.e("SplashController","==================> JS STORE CONFIG : " + js_store_config.toString());
+		
 		Config.getInstance().setLocale_identifier(
 				js_store_config.getString("locale_identifier"));
 

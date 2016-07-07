@@ -74,6 +74,8 @@ public class HomeCategoryAdapter extends BaseAdapter {
 		txt_name.setTextColor(Config.getInstance().getContent_color());
 		if (DataLocal.isLanguageRTL) {
 			txt_name.setGravity(Gravity.RIGHT);
+		} else if (DataLocal.isTablet) {
+			txt_name.setGravity(Gravity.CENTER);
 		} else {
 			txt_name.setGravity(Gravity.LEFT);
 		}

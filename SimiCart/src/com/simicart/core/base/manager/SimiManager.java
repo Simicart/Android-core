@@ -76,6 +76,10 @@ public class SimiManager {
 
 		return instance;
 	}
+	
+	public void refreshSimiManager() {
+		SimiManager.instance = null;
+	}
 
 	public Activity getCurrentActivity() {
 		return mCurrentActivity;

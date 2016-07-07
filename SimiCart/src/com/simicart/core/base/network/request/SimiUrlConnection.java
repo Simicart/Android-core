@@ -33,6 +33,7 @@ import org.apache.http.message.BasicStatusLine;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONObject;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.simicart.core.base.network.request.SimiRequest.Method;
@@ -40,8 +41,6 @@ import com.simicart.core.config.Config;
 import com.simicart.core.config.DataLocal;
 
 public class SimiUrlConnection {
-
-	// private static SimiUrlConnection instance;
 	static final String COOKIES_HEADER = "Set-Cookie";
 	static CookieManager cookieManager = new CookieManager();
 	static boolean isSet = false;
@@ -56,9 +55,6 @@ public class SimiUrlConnection {
 	public HttpResponse makeUrlConnection(SimiRequest request) {
 
 		String url_extended = request.getUrl();
-		// if (url_extended.equals(Constants.SIGN_IN)) {
-		// request.onStopRequestQueue();
-		// }
 
 		String url = Config.getInstance().getBaseUrl() + url_extended;
 		Log.e("SimiUrlStack  ", "URL " + url);
@@ -68,10 +64,6 @@ public class SimiUrlConnection {
 		try {
 			URL url_connection = new URL(url);
 			if (url.contains("https")) {
-				// HttpsURLConnection httpsUrlConnection = (HttpsURLConnection)
-				// urlConnection;
-				// SSLSocketFactory sslSocketFactory =
-				// createTrustAllSslSocketFactory();
 				urlConnection = (HttpsURLConnection) url_connection
 						.openConnection();
 				try {
@@ -87,6 +79,11 @@ public class SimiUrlConnection {
 			} else {
 				urlConnection = (HttpURLConnection) url_connection
 						.openConnection();
+			}
+
+			if (cookieManager.getCookieStore().getCookies().size() > 0) {
+				urlConnection.setRequestProperty("Cookie", TextUtils.join(";",
+						cookieManager.getCookieStore().getCookies()));
 			}
 
 			urlConnection.setDoInput(true);
@@ -171,18 +168,12 @@ public class SimiUrlConnection {
 						response.addHeader(h);
 					}
 				}
-				// if (url_extended.equals(Constants.SIGN_IN)) {
-				// request.onStartRequestQueue();
-				// }
 				return response;
 			}
 
 		} catch (IOException e) {
 			Log.e("SimiUrlStack ", "IOException " + e.getMessage());
 		}
-		// if (url_extended.equals(Constants.SIGN_IN)) {
-		// request.onStartRequestQueue();
-		// }
 		request.cancel(true);
 		return null;
 	}

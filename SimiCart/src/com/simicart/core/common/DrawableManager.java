@@ -75,10 +75,10 @@ public class DrawableManager {
 					}
 				};
 			}
-			File cacheDir = getDiskCacheDir();
-
-			InitDiskCacheTask task = (new DrawableManager()).new InitDiskCacheTask();
-			task.execute(cacheDir);
+//			File cacheDir = getDiskCacheDir();
+//
+//			InitDiskCacheTask task = (new DrawableManager()).new InitDiskCacheTask();
+//			task.execute(cacheDir);
 
 			isInitial = true;
 		}
@@ -124,40 +124,40 @@ public class DrawableManager {
 		return cacheFile;
 	}
 
-	public static Bitmap getBitmapFromDiskCache(String key) {
-		String key_md5 = Utils.md5(key);
-		synchronized (mDiskCackeLock) {
-			// Wait while disk cache is started from background thread
-			while (mDiskCacheStarting) {
-				try {
-					mDiskCackeLock.wait();
-				} catch (InterruptedException e) {
-
-					Log.e("DrawableManager getBitmapFromDiskCache ",
-							"InterrupedException " + e.getMessage());
-				}
-			}
-
-			if (mDiskLruCache != null) {
-				try {
-					DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key_md5);
-					if (null != snapshot) {
-						InputStream inputStream = snapshot.getInputStream(0);
-						if (null != inputStream) {
-							return BitmapFactory.decodeStream(inputStream);
-						}
-					}
-				} catch (Exception e) {
-
-					Log.e("DrawableManager getBitmapFromDiskCache ",
-							"Exception " + e.getMessage());
-
-					return null;
-				}
-			}
-		}
-		return null;
-	}
+//	public static Bitmap getBitmapFromDiskCache(String key) {
+//		String key_md5 = Utils.md5(key);
+//		synchronized (mDiskCackeLock) {
+//			// Wait while disk cache is started from background thread
+//			while (mDiskCacheStarting) {
+//				try {
+//					mDiskCackeLock.wait();
+//				} catch (InterruptedException e) {
+//
+//					Log.e("DrawableManager getBitmapFromDiskCache ",
+//							"InterrupedException " + e.getMessage());
+//				}
+//			}
+//
+//			if (mDiskLruCache != null) {
+//				try {
+//					DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key_md5);
+//					if (null != snapshot) {
+//						InputStream inputStream = snapshot.getInputStream(0);
+//						if (null != inputStream) {
+//							return BitmapFactory.decodeStream(inputStream);
+//						}
+//					}
+//				} catch (Exception e) {
+//
+//					Log.e("DrawableManager getBitmapFromDiskCache ",
+//							"Exception " + e.getMessage());
+//
+//					return null;
+//				}
+//			}
+//		}
+//		return null;
+//	}
 
 	public static void addBitmapToMemoryCache(String key, Bitmap bitmap) {
 
@@ -169,42 +169,42 @@ public class DrawableManager {
 			}
 		}
 
-		synchronized (mDiskCackeLock) {
-			if (mDiskLruCache != null) {
-
-				DiskLruCache.Editor editor = null;
-				try {
-					if (mDiskLruCache.get(key_md5) == null) {
-						editor = mDiskLruCache.edit(key_md5);
-						if (null == editor) {
-							Log.e("DrawableManager  addBitMapToMemory ",
-									"EDITOR NULL");
-							return;
-						}
-
-						if (writeBitmapToFile(bitmap, editor)) {
-							mDiskLruCache.flush();
-							editor.commit();
-						} else {
-							editor.abort();
-						}
-					}
-				} catch (Exception e) {
-
-					Log.e("DrawableManager  addBitMapToMemory ", "Exception "
-							+ e.getMessage());
-
-					try {
-						mDiskLruCache.remove(key_md5);
-					} catch (IOException ex) {
-						Log.e("DrawableManager addBitMapToMemory ",
-								"DiskLruCache REMOVE IOException "
-										+ ex.getMessage());
-					}
-
-				}
-			}
-		}
+//		synchronized (mDiskCackeLock) {
+//			if (mDiskLruCache != null) {
+//
+//				DiskLruCache.Editor editor = null;
+//				try {
+//					if (mDiskLruCache.get(key_md5) == null) {
+//						editor = mDiskLruCache.edit(key_md5);
+//						if (null == editor) {
+//							Log.e("DrawableManager  addBitMapToMemory ",
+//									"EDITOR NULL");
+//							return;
+//						}
+//
+//						if (writeBitmapToFile(bitmap, editor)) {
+//							mDiskLruCache.flush();
+//							editor.commit();
+//						} else {
+//							editor.abort();
+//						}
+//					}
+//				} catch (Exception e) {
+//
+//					Log.e("DrawableManager  addBitMapToMemory ", "Exception "
+//							+ e.getMessage());
+//
+//					try {
+//						mDiskLruCache.remove(key_md5);
+//					} catch (IOException ex) {
+//						Log.e("DrawableManager addBitMapToMemory ",
+//								"DiskLruCache REMOVE IOException "
+//										+ ex.getMessage());
+//					}
+//
+//				}
+//			}
+//		}
 	}
 
 	protected static boolean writeBitmapToFile(Bitmap bitmap,
@@ -326,20 +326,22 @@ public class DrawableManager {
 		if (null != cache_bitMap) {
 			imageView.setImageBitmap(cache_bitMap);
 			return;
-		} else {
-			cache_bitMap = getBitmapFromDiskCache(urlString);
-			if (null != cache_bitMap) {
-				imageView.setImageBitmap(cache_bitMap);
-
-				String key_md5 = Utils.md5(urlString);
-				if (null != mMemoryCache) {
-					if (getBitmapFromMemCache(key_md5) == null) {
-						mMemoryCache.put(key_md5, cache_bitMap);
-					}
-				}
-				return;
-			}
 		}
+		
+//		else {
+//			cache_bitMap = getBitmapFromDiskCache(urlString);
+//			if (null != cache_bitMap) {
+//				imageView.setImageBitmap(cache_bitMap);
+//
+//				String key_md5 = Utils.md5(urlString);
+//				if (null != mMemoryCache) {
+//					if (getBitmapFromMemCache(key_md5) == null) {
+//						mMemoryCache.put(key_md5, cache_bitMap);
+//					}
+//				}
+//				return;
+//			}
+//		}
 
 		final Handler handler = new Handler() {
 			@Override
@@ -428,20 +430,21 @@ public class DrawableManager {
 		if (null != cache_bitMap) {
 			imageView.setImageBitmap(cache_bitMap);
 			return;
-		} else {
-			cache_bitMap = getBitmapFromDiskCache(urlString);
-			if (null != cache_bitMap) {
-				imageView.setImageBitmap(cache_bitMap);
-
-				String key_md5 = Utils.md5(urlString);
-				if (null != mMemoryCache) {
-					if (getBitmapFromMemCache(key_md5) == null) {
-						mMemoryCache.put(key_md5, cache_bitMap);
-					}
-				}
-				return;
-			}
-		}
+		} 
+//		else {
+//			cache_bitMap = getBitmapFromDiskCache(urlString);
+//			if (null != cache_bitMap) {
+//				imageView.setImageBitmap(cache_bitMap);
+//
+//				String key_md5 = Utils.md5(urlString);
+//				if (null != mMemoryCache) {
+//					if (getBitmapFromMemCache(key_md5) == null) {
+//						mMemoryCache.put(key_md5, cache_bitMap);
+//					}
+//				}
+//				return;
+//			}
+//		}
 
 		final Handler handler = new Handler() {
 			@Override
@@ -630,21 +633,21 @@ public class DrawableManager {
 			return;
 		}
 
-		else {
-			cache_bitMap = getBitmapFromDiskCache(urlImage);
-			if (null != cache_bitMap) {
-				simiImageView.setImageBitmap(cache_bitMap);
-
-				String key_md5 = Utils.md5(urlImage);
-
-				if (null != mMemoryCache) {
-					if (getBitmapFromMemCache(key_md5) == null) {
-						mMemoryCache.put(key_md5, cache_bitMap);
-					}
-				}
-				return;
-			}
-		}
+//		else {
+//			cache_bitMap = getBitmapFromDiskCache(urlImage);
+//			if (null != cache_bitMap) {
+//				simiImageView.setImageBitmap(cache_bitMap);
+//
+//				String key_md5 = Utils.md5(urlImage);
+//
+//				if (null != mMemoryCache) {
+//					if (getBitmapFromMemCache(key_md5) == null) {
+//						mMemoryCache.put(key_md5, cache_bitMap);
+//					}
+//				}
+//				return;
+//			}
+//		}
 
 		final Handler handler = new Handler() {
 			@Override

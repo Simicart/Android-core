@@ -414,15 +414,14 @@ public class ReviewOrderController extends SimiController implements
 					PaymentMethod.getInstance().setPlacecc_id("");
 					ConfigCheckout.checkPaymentMethod = false;
 
-					if (mAfterControll != Constants.NEW_AS_GUEST) {
-						String email = DataLocal.getEmail();
-						String password = DataLocal.getPassword();
-						DataLocal.saveEmailPassRemember(email, password);
-						DataLocal.saveSignInState(true);
-						SimiManager.getIntance().onUpdateItemSignIn();
-					}
-					// ThankyouFragment fragment =
-					// ThankyouFragment.newInstance();
+					// if (mAfterControll != Constants.NEW_AS_GUEST) {
+					// String email = DataLocal.getEmail();
+					// String password = DataLocal.getPassword();
+					// DataLocal.saveEmailPassRemember(email, password);
+					// DataLocal.saveSignInState(true);
+					// SimiManager.getIntance().onUpdateItemSignIn();
+					// }
+					
 					String mMessage = "";
 					JSONObject jsonObject;
 					SimiManager.getIntance().onUpdateCartQty(null);
@@ -435,14 +434,15 @@ public class ReviewOrderController extends SimiController implements
 						} else {
 							mMessage = message;
 							jsonObject = mModel.getCollection().getJSON();
+							ThankyouFragment fragment = ThankyouFragment
+									.newInstance(mMessage, jsonObject);
+							fragment.setTypeCheckout(mAfterControll);
 							if (DataLocal.isTablet) {
 								SimiManager.getIntance().replacePopupFragment(
-										ThankyouFragment.newInstance(mMessage,
-												jsonObject));
+										fragment);
 							} else {
 								SimiManager.getIntance().replaceFragment(
-										ThankyouFragment.newInstance(mMessage,
-												jsonObject));
+										fragment);
 							}
 						}
 						break;

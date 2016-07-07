@@ -1,5 +1,7 @@
 package com.simicart.core.splashscreen.model;
 
+import android.util.Log;
+
 import com.simicart.core.base.model.SimiModel;
 import com.simicart.core.config.Constants;
 
@@ -7,8 +9,11 @@ public class StoreModel extends SimiModel {
 
 	@Override
 	protected void paserData() {
-		// TODO Auto-generated method stub
+		
 		super.paserData();
+		
+		Log.e("StoreModel ",mJSON.toString());
+		
 	}
 
 	@Override

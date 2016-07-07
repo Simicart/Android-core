@@ -145,7 +145,7 @@ public class BannerBlock extends SimiBlock implements BannerDelegate {
 					});
 			if (DataLocal.isTablet) {
 				textSliderView
-						.setScaleType(BaseSliderView.ScaleType.CenterInside);
+						.setScaleType(BaseSliderView.ScaleType.Fit);
 			} else {
 				textSliderView.setScaleType(BaseSliderView.ScaleType.Fit);
 			}

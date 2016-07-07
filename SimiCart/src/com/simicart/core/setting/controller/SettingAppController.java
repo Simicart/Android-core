@@ -3,6 +3,7 @@ package com.simicart.core.setting.controller;
 import java.util.ArrayList;
 
 import android.content.Intent;
+import android.provider.ContactsContract.Contacts.Data;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
+import com.simicart.core.common.Utils;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.setting.delegate.SettingAppDelegate;
 import com.simicart.core.setting.entity.CurrencyEntity;
@@ -101,6 +103,9 @@ public class SettingAppController extends SimiController {
 				if (isSuccess) {
 					ArrayList<SimiEntity> entity = model.getCollection()
 							.getCollection();
+					
+					Log.e("SettingAppController ","=========================> GET STORE "  + entity.size());
+					
 					if (entity.size() > 0) {
 						for (SimiEntity simiEntity : entity) {
 							Stores store = new Stores();
@@ -109,9 +114,7 @@ public class SettingAppController extends SimiController {
 						}
 					}
 					afterStore();
-				} else {
-					Log.e("Splash Controller", "KHONG THANH CONG GETSTORE");
-				}
+				} 
 			}
 		});
 		model.request();
@@ -128,6 +131,9 @@ public class SettingAppController extends SimiController {
 				if (isSuccess) {
 					ArrayList<SimiEntity> entity = model.getCollection()
 							.getCollection();
+					
+					
+					
 					if (entity.size() > 0) {
 						for (SimiEntity simiEntity : entity) {
 							CurrencyEntity currency = new CurrencyEntity();
@@ -171,6 +177,17 @@ public class SettingAppController extends SimiController {
 	}
 
 	void afterStore() {
+		
+		String id = DataLocal.getStoreID();
+		if(!Utils.validateString(id)){
+			ArrayList<Stores> stores =	DataLocal.listStores;
+			if(null != stores && stores.size() > 0){
+				Stores store = stores.get(0);
+				String newId = store.getStoreID();
+				DataLocal.saveStoreID(newId);
+			}
+		}
+		
 		mDelegate.setLanguage();
 		if (isGetStore == true && isGetCurrency == true) {
 			mDelegate.successData();

@@ -22,6 +22,7 @@ public class CartModel extends SimiModel {
 	@Override
 	protected void paserData() {
 		try {
+
 			JSONArray list = this.mJSON.getJSONArray("data");
 			collection = new SimiCollection();
 			collection.setJSON(mJSON);

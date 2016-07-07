@@ -12,11 +12,16 @@ import com.simicart.core.common.Utils;
 @SuppressLint("DefaultLocale")
 public class Config {
 	private String mThemeColor = "#000000";
-	 private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
-	 private String mSecretCloudKey = "7ff28fa2fa6976eb0804551e01c9721beb17d041";
+	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
+	private String mSecretCloudKey = "2a772108b286752c0c2c2b19c622be942adb0997";
 
-	 private String mBaseUrl = "https://tradetodayonline.com/";
-	 private String mSecretKey = "02a7f7a986fbd25821a76ea3f3abb0f9";
+//	private String mBaseUrl = "http://www.onestopretail.in/";
+//	private String mSecretKey = "1fb65bc06e7216ed5759deef8bbc515f16873255";
+	
+	private String mBaseUrl = "http://www.fpv-direct.com/";
+	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
+	
+	
 	private String key_color = "#FFFFFF";
 	private String top_menu_icon_color = "#FFFFFF";
 	private String button_background = "";
@@ -422,12 +427,12 @@ public class Config {
 		if (last != '/') {
 			mBaseUrl += "/";
 		}
-		
-		 int last_index = mBaseCloudUrl.length() - 1;
-	        char lastChar = mBaseCloudUrl.charAt(last_index);
-	        if (lastChar == '/') {
-	            mBaseCloudUrl = mBaseCloudUrl.substring(0, last_index);
-	        }
+
+		int last_index = mBaseCloudUrl.length() - 1;
+		char lastChar = mBaseCloudUrl.charAt(last_index);
+		if (lastChar == '/') {
+			mBaseCloudUrl = mBaseCloudUrl.substring(0, last_index);
+		}
 	}
 
 	public String getBaseUrl() {

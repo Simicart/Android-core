@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import com.simicart.MainActivity;
 import com.simicart.core.config.Config;
@@ -20,7 +19,6 @@ public class ContactUs {
 	protected ArrayList<ItemNavigation> mItems;
 
 	public ContactUs(String methodName, SlideMenuData slideMenuData) {
-		Log.e("CONTACT US", "MEHTOD: " + methodName);
 		this.mSlideMenuData = slideMenuData;
 		if (methodName.equals("addItem")) {
 			mItems = mSlideMenuData.getItemNavigations();

@@ -45,14 +45,12 @@ import com.simicart.core.menutop.fragment.MenuTopFragment;
 import com.simicart.core.notification.NotificationActivity;
 import com.simicart.core.notification.common.CommonUtilities;
 import com.simicart.core.notification.controller.NotificationController;
-import com.simicart.core.reportbug.UnCaughtException;
 import com.simicart.core.shortcutbadger.ShortcutBadgeException;
 import com.simicart.core.shortcutbadger.ShortcutBadger;
 import com.simicart.core.slidemenu.fragment.SlideMenuFragment;
 
 @SuppressLint("DefaultLocale")
 public class MainActivity extends FragmentActivity {
-	// adfsflkjsdf
 	public final static int PAUSE = 2;
 	public final static int RESUME = 1;
 	public final static int START = 3;
@@ -77,7 +75,7 @@ public class MainActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// report bug
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
+		//Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		SimiManager.getIntance().setCurrentActivity(this);
 		SimiManager.getIntance().setCurrentContext(getApplicationContext());
 		getActionBar().hide();

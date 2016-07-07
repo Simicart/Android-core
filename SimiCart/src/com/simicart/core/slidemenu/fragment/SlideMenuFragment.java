@@ -2,7 +2,6 @@ package com.simicart.core.slidemenu.fragment;
 
 import java.util.ArrayList;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentManager;

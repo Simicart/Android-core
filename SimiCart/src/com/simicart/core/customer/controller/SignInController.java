@@ -52,9 +52,10 @@ public class SignInController extends SimiController {
 	private TextWatcher mPassWatcher;
 	private TextWatcher mEmailWatcher;
 	protected OnCheckedChangeListener mOnCheckBox;
-	
 
-	protected boolean isCheckout = false, isVisibleSignIn = false;// sign in into checkout
+	protected boolean isCheckout = false, isVisibleSignIn = false;// sign in
+																	// into
+																	// checkout
 
 	public boolean getIsCheckout() {
 		return isCheckout;
@@ -228,42 +229,41 @@ public class SignInController extends SimiController {
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
-				
+
 				SimiManager.getIntance().getRequestQueue().clearCacheL1();
 				Log.d("quangduy", "callBack");
 				mDelegate.getViewFull().setVisibility(View.GONE);
 				if (isSuccess) {
-					Log.d("quangduy", "success");
-//					isVisibleSignIn = true;
+					// isVisibleSignIn = true;
 					mDelegate.getViewFull().setVisibility(View.VISIBLE);
-				showToastSignIn();
-				DataLocal.isNewSignIn = true;
-				DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
+					showToastSignIn();
+					DataLocal.isNewSignIn = true;
+					DataLocal.saveTypeSignIn(Constants.NORMAL_SIGN_IN);
 
-				String name = ((SignInModel) mModel).getName();
-				String cartQty = ((SignInModel) mModel).getCartQty();
-				if (null != name) {
-					DataLocal.saveData(name, email, password);
-					DataLocal.saveEmailPassRemember(email, password);
-				}
-				DataLocal.saveSignInState(true);
-				showToastSignIn();
-				if (null != cartQty && !cartQty.equals("0")) {
-					SimiManager.getIntance().onUpdateCartQty(cartQty);
-				}
-				if (!isCheckout && DataLocal.isTablet) {
-					SimiManager.getIntance().clearAllChidFragment();
-					SimiManager.getIntance().removeDialog();
-				} else {
-					SimiManager.getIntance().backPreviousFragment();
-				}
-				// update wishlist_items_qty
-				EventController event = new EventController();
-				event.dispatchEvent(
-						"com.simicart.core.customer.controller.SignInController",
-						mModel.getJSON().toString());
-//				if (isSuccess) {
-					
+					String name = ((SignInModel) mModel).getName();
+					String cartQty = ((SignInModel) mModel).getCartQty();
+					if (null != name) {
+						DataLocal.saveData(name, email, password);
+						DataLocal.saveEmailPassRemember(email, password);
+					}
+					DataLocal.saveSignInState(true);
+					showToastSignIn();
+					if (null != cartQty && !cartQty.equals("0")) {
+						SimiManager.getIntance().onUpdateCartQty(cartQty);
+					}
+					if (!isCheckout && DataLocal.isTablet) {
+						SimiManager.getIntance().clearAllChidFragment();
+						SimiManager.getIntance().removeDialog();
+					} else {
+						SimiManager.getIntance().backPreviousFragment();
+					}
+					// update wishlist_items_qty
+					EventController event = new EventController();
+					event.dispatchEvent(
+							"com.simicart.core.customer.controller.SignInController",
+							mModel.getJSON().toString());
+					// if (isSuccess) {
+
 					if (isCheckout) {
 
 						mModel = new CartModel();
@@ -316,7 +316,7 @@ public class SignInController extends SimiController {
 						SimiFragment fragment = null;
 						fragment = HomeFragment.newInstance();
 
-//						 event for wish list
+						// event for wish list
 						CacheFragment cache = new CacheFragment();
 						cache.setFragment(fragment);
 						EventFragment eventFragment = new EventFragment();
@@ -326,9 +326,9 @@ public class SignInController extends SimiController {
 						fragment = cache.getFragment();
 
 						SimiManager.getIntance().replaceFragment(fragment);
-					
+
 					}
-					
+
 				}
 			}
 		};
@@ -355,7 +355,9 @@ public class SignInController extends SimiController {
 		TextView txt_toast = (TextView) layout_toast.findViewById(Rconfig
 				.getInstance().id("txt_custom_toast"));
 		Toast toast = new Toast(SimiManager.getIntance().getCurrentContext());
-		txt_toast.setText(String.format(Config.getInstance().getText("Welcome %s! Start shopping now"), DataLocal.getUsername())); 
+		txt_toast.setText(String.format(
+				Config.getInstance().getText("Welcome %s! Start shopping now"),
+				DataLocal.getUsername()));
 		toast.setView(layout_toast);
 		toast.setDuration(Toast.LENGTH_LONG);
 		toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 400);
@@ -418,5 +420,5 @@ public class SignInController extends SimiController {
 	public boolean isVisibleSignIn() {
 		return isVisibleSignIn;
 	}
-	
+
 }
