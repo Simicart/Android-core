@@ -15,16 +15,14 @@ public class ProductDetailParentAdapterTablet extends
 		SmartFragmentStatePagerAdapter implements ProductDetailAdapterDelegate {
 
 	private ProductDelegate productDelegate;
-	
+
 	public void setProductDelegate(ProductDelegate productDelegate) {
 		this.productDelegate = productDelegate;
 	}
-	
-	
+
 	public ProductDetailParentAdapterTablet(FragmentManager fragmentManager) {
 		super(fragmentManager);
 	}
-	
 
 	protected ArrayList<String> mListID;
 	protected String mCurrentID = "";
@@ -49,7 +47,7 @@ public class ProductDetailParentAdapterTablet extends
 
 	@Override
 	public void setPrimaryItem(ViewGroup container, int position, Object object) {
-//		super.setPrimaryItem(container, position, object);
+		super.setPrimaryItem(container, position, object);
 		String id = mListID.get(position);
 		if (mCurrentID.equals("")) {
 			mCurrentID = id;
@@ -73,7 +71,7 @@ public class ProductDetailParentAdapterTablet extends
 		fragment.setAdapterDelegate(this);
 		fragment.setProductDelegate(productDelegate);
 		fragment.setController(mController);
-//		fragment.setProductID(id);
+		// fragment.setProductID(id);
 		return fragment;
 	}
 

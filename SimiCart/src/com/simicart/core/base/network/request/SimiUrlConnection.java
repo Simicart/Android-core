@@ -81,10 +81,10 @@ public class SimiUrlConnection {
 						.openConnection();
 			}
 
-			if (cookieManager.getCookieStore().getCookies().size() > 0) {
-				urlConnection.setRequestProperty("Cookie", TextUtils.join(";",
-						cookieManager.getCookieStore().getCookies()));
-			}
+//			if (cookieManager.getCookieStore().getCookies().size() > 0) {
+//				urlConnection.setRequestProperty("Cookie", TextUtils.join(";",
+//						cookieManager.getCookieStore().getCookies()));
+//			}
 
 			urlConnection.setDoInput(true);
 			urlConnection.setDoOutput(true);

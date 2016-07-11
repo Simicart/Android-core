@@ -15,12 +15,11 @@ public class Config {
 	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
 	private String mSecretCloudKey = "2a772108b286752c0c2c2b19c622be942adb0997";
 
-//	private String mBaseUrl = "http://www.onestopretail.in/";
-//	private String mSecretKey = "1fb65bc06e7216ed5759deef8bbc515f16873255";
+	private String mBaseUrl = "http://www.onestopretail.in/";
+	private String mSecretKey = "1fb65bc06e7216ed5759deef8bbc515f16873255";
 	
-	private String mBaseUrl = "http://www.fpv-direct.com/";
-	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
-	
+//	private String mBaseUrl = "http://www.fpv-direct.com/";
+//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
 	
 	private String key_color = "#FFFFFF";
 	private String top_menu_icon_color = "#FFFFFF";

@@ -66,7 +66,6 @@ public class ProductDetailParentFragment extends SimiFragment {
 		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
 		mListID = (ArrayList<String>) getData(Constants.KeyData.LIST_ID, Constants.KeyData.TYPE_LIST_STRING, getArguments());
 		}
-		Log.d("quangdd", "=="+mID+"==="+mListID);
 		mBlock = new ProductDetailParentBlock(view, getActivity());
 		mBlock.initView();
 		if (null == mController) {
