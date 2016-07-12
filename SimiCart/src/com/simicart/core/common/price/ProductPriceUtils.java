@@ -1327,7 +1327,7 @@ public class ProductPriceUtils {
 
 	public void setProduct(Product product) {
 		this.mProduct = product;
-		if (null != product.getPriceV2()) {
+		if (null != product && null != product.getPriceV2()) {
 			this.mPriceV2 = product.getPriceV2();
 		} else {
 			this.mPriceV2 = new PriceV2();

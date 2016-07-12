@@ -33,7 +33,6 @@ import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.catalog.search.model.ConstantsSearch;
 import com.simicart.core.catalog.search.model.ModelSearchBase;
 import com.simicart.core.common.Utils;
-import com.simicart.core.config.Constants;
 import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 
@@ -154,7 +153,7 @@ public class SearchController extends SimiController implements
 					mDelegate.setQty(resultNumber);
 					mDelegate.updateView(mModel.getCollection());
 					isOnscroll = true;
-					Log.d("quangduy123", "request=="+message);
+					Log.d("quangduy123", "request==" + message);
 				}
 			}
 		});
@@ -298,21 +297,21 @@ public class SearchController extends SimiController implements
 				int count = view.getCount();
 				posItemList = view.getFirstVisiblePosition();
 				Log.e("Count :", count + "");
-//				if (scrollState == SCROLL_STATE_IDLE) {
-					if ((view.getLastVisiblePosition() >= count - threshold)
-							&& Integer.parseInt(resultNumber) > (count- threshold)) {
-						Log.e("ResultNumber :", resultNumber);
-						Log.e("IsOnscroll:", isOnscroll + "");
-						if (isOnscroll) {
-							mCurrentOffset += limit;
-							isOnscroll = false;
-							mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
-							mDelegate.addFooterView();
-							mDelegate.setIsLoadMore(true);
-							Log.d("quangduy123", "isOnscroll=="+isOnscroll);
-							requestProduct();
-						}
-//					}
+				// if (scrollState == SCROLL_STATE_IDLE) {
+				if ((view.getLastVisiblePosition() >= count - threshold)
+						&& Integer.parseInt(resultNumber) > (count - threshold)) {
+					Log.e("ResultNumber :", resultNumber);
+					Log.e("IsOnscroll:", isOnscroll + "");
+					if (isOnscroll) {
+						mCurrentOffset += limit;
+						isOnscroll = false;
+						mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
+						mDelegate.addFooterView();
+						mDelegate.setIsLoadMore(true);
+						Log.d("quangduy123", "isOnscroll==" + isOnscroll);
+						requestProduct();
+					}
+					// }
 				}
 			}
 
@@ -493,16 +492,17 @@ public class SearchController extends SimiController implements
 	}
 
 	private void selectemItemList(int position) {
-		Log.e("abc", "++" + position);
 		if (position >= 1) {
 			ArrayList<Product> listProduct = mDelegate.getListProduct();
 			String productId = listProduct.get(position - 1).getData(
 					"product_id");
 			if (productId != null) {
+
+				ArrayList<String> listID = ((ModelSearchBase) mModel)
+						.getListId();
+
 				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance(productId, mDelegate.getListProductId());
-				// fragment.setProductID(productId);
-				// fragment.setListIDProduct(mDelegate.getListProductId());
+						.newInstance(productId, listID);
 				SimiManager.getIntance().replaceFragment(fragment);
 			}
 		}
@@ -632,7 +632,7 @@ public class SearchController extends SimiController implements
 			}
 			mDelegate.setVisibilityMenuBotton(true);
 		}
-		
+
 	}
 
 	@Override
@@ -736,8 +736,8 @@ public class SearchController extends SimiController implements
 	public OnItemClickListener getmListviewClick() {
 		return mListviewClick;
 	}
-	
-	public int getPosItemList(){
+
+	public int getPosItemList() {
 		return posItemList;
 	}
 

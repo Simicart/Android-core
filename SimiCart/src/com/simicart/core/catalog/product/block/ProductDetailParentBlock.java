@@ -175,19 +175,13 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		if (null != collection) {
 			mProduct = getProductFromCollection(collection);
 			if (null != mProduct) {
-
-				Log.e("ProductDetailParentBlock ",
-						"drawView " + mProduct.getId());
-
 				ll_bottom.setVisibility(View.VISIBLE);
 				rlt_top.setVisibility(View.VISIBLE);
 
 				showNameProduct();
 				showOption();
 				showAddToCart();
-			} else {
-				Log.e("ProductDetailParentBlock ", "drawView NULL");
-			}
+			} 
 
 		}
 		ll_more.setVisibility(View.VISIBLE);
@@ -241,9 +235,6 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		Drawable bg_button = mContext.getResources().getDrawable(
 				Rconfig.getInstance().drawable("core_background_button"));
 
-		Log.e("ProductDetailParentBlock ",
-				"showAddToCart TOP " + rlt_top.getVisibility() + " BOTTOM "
-						+ ll_bottom.getVisibility() + "NORMAL " + View.VISIBLE);
 
 		if (stock) {
 			bg_button.setColorFilter(Config.getInstance().getColorMain(),

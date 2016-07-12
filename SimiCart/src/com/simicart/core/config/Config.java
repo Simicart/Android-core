@@ -11,16 +11,19 @@ import com.simicart.core.common.Utils;
 
 @SuppressLint("DefaultLocale")
 public class Config {
-	private String mThemeColor = "#000000";
-	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
-	private String mSecretCloudKey = "2a772108b286752c0c2c2b19c622be942adb0997";
 
-	private String mBaseUrl = "http://www.onestopretail.in/";
-	private String mSecretKey = "1fb65bc06e7216ed5759deef8bbc515f16873255";
-	
-//	private String mBaseUrl = "http://www.fpv-direct.com/";
-//	private String mSecretKey = "a91641e05456fcb1b08f8ab8d2afba65";
-	
+	private String mBaseUrl = "http://fashionat9.com/index.php/";
+	private String mSecretKey = "b71cca5df9fc9d6bfee669c2edefea1659313f5e";
+	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
+	private String mSecretCloudKey = "a98634abb7afc2c8b3434e8cf0ed694c8c23dc1e";
+
+	// private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
+	// private String mSecretCloudKey =
+	// "cfb7426d6af37c57940e0a960d7da7abaa85f9d5";
+	//
+	// private String mBaseUrl = "https://justwines.com.au/index.php/";
+	// private String mSecretKey = "a4abda6aca99e41f9258f62136b43aaf0c54ca9";
+	private String mThemeColor = "#000000";
 	private String key_color = "#FFFFFF";
 	private String top_menu_icon_color = "#FFFFFF";
 	private String button_background = "";

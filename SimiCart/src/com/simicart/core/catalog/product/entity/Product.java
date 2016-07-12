@@ -147,12 +147,6 @@ public class Product extends SimiEntity implements Serializable{
 			}
 		}
 
-		if (lisstDependent != null) {
-			for (String string : lisstDependent) {
-				// Log.e("LOOOOOOOOOOOOOOOOOOOOOO", "DEID: " + string);
-			}
-		}
-		// Log.e("LOOOOOOOOOOOOOOOOOOOOOO", "DEID: //////////////////////////");
 		return lisstDependent;
 	}
 

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,11 +36,12 @@ public class ProductDetailParentFragment extends SimiFragment {
 
 		Bundle args = new Bundle();
 		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, args);
-		setData(Constants.KeyData.LIST_ID, ids, Constants.KeyData.TYPE_LIST_STRING, args);
+		setData(Constants.KeyData.LIST_ID, ids,
+				Constants.KeyData.TYPE_LIST_STRING, args);
 		fragment.setArguments(args);
 		return fragment;
 	}
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,14 +57,15 @@ public class ProductDetailParentFragment extends SimiFragment {
 		return view;
 	}
 
-
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
-		if(getArguments() != null){
-		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
-		mListID = (ArrayList<String>) getData(Constants.KeyData.LIST_ID, Constants.KeyData.TYPE_LIST_STRING, getArguments());
+		if (getArguments() != null) {
+			mID = (String) getData(Constants.KeyData.ID,
+					Constants.KeyData.TYPE_STRING, getArguments());
+			mListID = (ArrayList<String>) getData(Constants.KeyData.LIST_ID,
+					Constants.KeyData.TYPE_LIST_STRING, getArguments());
 		}
 		mBlock = new ProductDetailParentBlock(view, getActivity());
 		mBlock.initView();
@@ -169,6 +170,7 @@ public class ProductDetailParentFragment extends SimiFragment {
 			pager_parent.setAdapter(adapter);
 			pager_parent.setCurrentItem(position);
 			mController.setAdapterDelegate(adapter);
+			adapter.notifyDataSetChanged();
 		}
 	}
 
@@ -177,8 +179,6 @@ public class ProductDetailParentFragment extends SimiFragment {
 			for (int i = 0; i < mListID.size(); i++) {
 				String id = mListID.get(i);
 				if (id.equals(mID)) {
-					Log.e("ProductDetailParentFragment ", "POSITION " + i
-							+ "ID " + id);
 					return i;
 				}
 			}

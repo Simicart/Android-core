@@ -1,5 +1,7 @@
 package com.simicart.core.catalog.search.model;
 
+import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -11,10 +13,11 @@ import com.simicart.core.catalog.product.entity.Product;
 
 public class ModelSearchBase extends SimiModel {
 
+	protected ArrayList<String> mListId = new ArrayList<String>();
+
 	@Override
 	protected void paserData() {
 		try {
-			Log.e("ModelSearchBase ", "paserData" + mJSON.toString());
 			JSONArray list = this.mJSON.getJSONArray("data");
 			if (null == collection) {
 				collection = new SimiCollection();
@@ -24,6 +27,7 @@ public class ModelSearchBase extends SimiModel {
 				Product product = new Product();
 				product.setJSONObject(list.getJSONObject(i));
 				collection.addEntity(product);
+				mListId.add(product.getId());
 			}
 
 		} catch (JSONException e) {
@@ -34,6 +38,10 @@ public class ModelSearchBase extends SimiModel {
 
 	public void setUrlSearch(String url) {
 		url_action = url;
-//		this.enableCache = false;
+		// this.enableCache = false;
+	}
+	
+	public ArrayList<String> getListId(){
+		return mListId;
 	}
 }

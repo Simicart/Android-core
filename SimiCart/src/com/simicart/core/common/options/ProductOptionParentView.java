@@ -37,8 +37,10 @@ public class ProductOptionParentView {
 
 	public ProductOptionParentView(Product product,
 			OptionProductDelegate delegate) {
+		if(null != product){
 		type_product = product.getType();
 		options = product.getOptions();
+		}
 		mDelegate = delegate;
 		mOptionView = new ArrayList<CacheOptionView>();
 	}

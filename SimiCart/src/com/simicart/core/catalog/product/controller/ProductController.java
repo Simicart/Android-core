@@ -262,7 +262,7 @@ public class ProductController extends SimiController implements
 					Config.getInstance().getText("Please select all options"));
 			return;
 		}
-		onShowOptionView();
+		//onShowOptionView();
 		if(url != null)
 		mDelegate.startAnimation(url);
 		ArrayList<CacheOption> options = getCacheOptions();
@@ -275,16 +275,9 @@ public class ProductController extends SimiController implements
 				mDelegate.dismissDialogLoading();
 				if (isSuccess) {
 					int mQty = getCartQtyFromJsonobject(model.getDataJSON());
-//					ConfigCheckout.getInstance().setmQty(String.valueOf(mQty));
 					SimiManager.getIntance().onUpdateCartQty(mQty + "");
 					SimiManager.getIntance().showToast(
 							Config.getInstance().getText("Added to Cart"));
-//					ConfigCheckout.getInstance().setCheckStatusCart(true);
-				} else {
-					// SimiManager.getIntance().showNotify(message);
-					// SimiManager.getIntance().showToast(message);
-					// View view_option = onShowOptionView();
-					// mDelegate.onUpdateOptionView(view_option);
 				}
 
 			}

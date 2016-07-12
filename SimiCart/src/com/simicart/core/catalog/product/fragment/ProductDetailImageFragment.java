@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,8 +80,7 @@ public class ProductDetailImageFragment extends SimiFragment {
 			}
 
 			if (null != mURL) {
-				Log.e("ProductDetailImageFragment - newInstance:", "drawImage");
-				DrawableManager.fetchDrawableOnThread(mURL, imv_image);
+				DrawableManager.fetchDrawableOnThreadForZTheme(mURL, imv_image);
 			}
 
 		} catch (Exception e) {

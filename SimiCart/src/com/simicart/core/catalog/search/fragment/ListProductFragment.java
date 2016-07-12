@@ -108,10 +108,6 @@ public class ListProductFragment extends SimiFragment {
 			setTag_search(tag_search);
 		}
 
-		Log.d("quangdd1", "=murl_search :" + url_search + "=mSortID :"
-				+ mSortID + "=mCatName :" + mCatName + "=mCatID :" + mCatID
-				+ "=mQuery :" + mQuery + "=mKey :" + mKey + "=tag_search :"
-				+ tag_search);
 		setListParam(ConstantsSearch.PARAM_CATEGORY_ID, mCatID);
 		setListParam(ConstantsSearch.PARAM_CATEGORY_NAME, mCatName);
 		setListParam(ConstantsSearch.PARAM_URL, url_search);
@@ -150,17 +146,7 @@ public class ListProductFragment extends SimiFragment {
 			mSearchController.setJsonFilter(jsonFilter);
 			mSearchController.setList_Param(list_param);
 			mSearchController.onStart();
-		} else {
-			// if (!DataLocal.isTablet) {
-			// mSearchController.setDelegate(mSearchBlock);
-			// filterEvent = new FilterEvent(mSearchController);
-			// if (type_search.equals(TagSearch.TYPE_SEARCH_QUERY)) {
-			// mSearchBlock.setmQuery(mQuery);
-			// }
-			// mSearchBlock.setFilterEvent(filterEvent);
-			// mSearchController.onResume();
-			// }
-		}
+		} 
 		if (!mCatID.equals("-1")) {
 			mSearchBlock.setCateName(mCatName);
 		}

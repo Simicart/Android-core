@@ -3,7 +3,6 @@ package com.simicart.core.common;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,19 +14,17 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.util.LruCache;
@@ -36,32 +33,18 @@ import android.view.Display;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.simicart.MainActivity;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.network.request.TLSSocketFactory;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.style.imagesimicart.SimiImageView;
-//import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
-//import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 public class DrawableManager {
 
-	// protected static LruCache<String, Bitmap> mMemoryCache;
-	protected static DiskLruCache mDiskLruCache;
-	protected static Object mDiskCackeLock = new Object();
-	protected static boolean mDiskCacheStarting = true;
-	// protected static int DISK_CACHE_SIZE = 1024 * 1024 * 100;
-	protected static String DISK_CACHE_SUBDIR = "thumbnails";
+	protected static LruCache<String, Bitmap> mMemoryCache;
 	protected static boolean isInitial = false;
-	protected static Bitmap cache_bitMap = null;
-
-	protected static int memClass = ((ActivityManager) SimiManager.getIntance()
-			.getCurrentActivity().getSystemService(Context.ACTIVITY_SERVICE))
-			.getMemoryClass();
-	protected static int DISK_CACHE_SIZE = 1024 * 1024 * memClass / 8;
-	protected static LruCache<String, Bitmap> mMemoryCache = new LruCache<String, Bitmap>(
-			DISK_CACHE_SIZE);
+	protected static int reqWidth;
+	protected static int reqHeight;
 
 	public static void init() {
 		if (!isInitial) {
@@ -75,89 +58,18 @@ public class DrawableManager {
 					}
 				};
 			}
-//			File cacheDir = getDiskCacheDir();
-//
-//			InitDiskCacheTask task = (new DrawableManager()).new InitDiskCacheTask();
-//			task.execute(cacheDir);
 
 			isInitial = true;
+
+			Display display = SimiManager.getIntance().getCurrentActivity()
+					.getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			reqWidth = (size.y * 4) / 5;
+			reqHeight = (size.y * 4) / 5;
+
 		}
 	}
-
-	public class InitDiskCacheTask extends AsyncTask<File, Void, Void> {
-
-		@Override
-		protected Void doInBackground(File... params) {
-
-			synchronized (mDiskCackeLock) {
-				File cacheDir = params[0];
-
-				try {
-					mDiskLruCache = DiskLruCache.open(cacheDir, 1, 1,
-							DISK_CACHE_SIZE);
-					mDiskCacheStarting = false;
-					mDiskCackeLock.notifyAll();
-				} catch (IOException e) {
-					Log.e("DrawableManager ", "InitDiskCacheTask IOEception "
-							+ e.getMessage());
-				}
-			}
-
-			return null;
-		}
-
-	}
-
-	public static File getDiskCacheDir() {
-		Context context = MainActivity.context;
-		String uniqueName = DISK_CACHE_SUBDIR;
-		final String cachePath = Environment.MEDIA_MOUNTED.equals(Environment
-				.getExternalStorageState())
-				|| !Environment.isExternalStorageRemovable() ? context
-				.getExternalCacheDir().getPath() : context.getCacheDir()
-				.getPath();
-
-		File cacheFile = new File(cachePath + File.separator + uniqueName);
-		if (!cacheFile.exists()) {
-			cacheFile.mkdirs();
-		}
-		return cacheFile;
-	}
-
-//	public static Bitmap getBitmapFromDiskCache(String key) {
-//		String key_md5 = Utils.md5(key);
-//		synchronized (mDiskCackeLock) {
-//			// Wait while disk cache is started from background thread
-//			while (mDiskCacheStarting) {
-//				try {
-//					mDiskCackeLock.wait();
-//				} catch (InterruptedException e) {
-//
-//					Log.e("DrawableManager getBitmapFromDiskCache ",
-//							"InterrupedException " + e.getMessage());
-//				}
-//			}
-//
-//			if (mDiskLruCache != null) {
-//				try {
-//					DiskLruCache.Snapshot snapshot = mDiskLruCache.get(key_md5);
-//					if (null != snapshot) {
-//						InputStream inputStream = snapshot.getInputStream(0);
-//						if (null != inputStream) {
-//							return BitmapFactory.decodeStream(inputStream);
-//						}
-//					}
-//				} catch (Exception e) {
-//
-//					Log.e("DrawableManager getBitmapFromDiskCache ",
-//							"Exception " + e.getMessage());
-//
-//					return null;
-//				}
-//			}
-//		}
-//		return null;
-//	}
 
 	public static void addBitmapToMemoryCache(String key, Bitmap bitmap) {
 
@@ -169,60 +81,8 @@ public class DrawableManager {
 			}
 		}
 
-//		synchronized (mDiskCackeLock) {
-//			if (mDiskLruCache != null) {
-//
-//				DiskLruCache.Editor editor = null;
-//				try {
-//					if (mDiskLruCache.get(key_md5) == null) {
-//						editor = mDiskLruCache.edit(key_md5);
-//						if (null == editor) {
-//							Log.e("DrawableManager  addBitMapToMemory ",
-//									"EDITOR NULL");
-//							return;
-//						}
-//
-//						if (writeBitmapToFile(bitmap, editor)) {
-//							mDiskLruCache.flush();
-//							editor.commit();
-//						} else {
-//							editor.abort();
-//						}
-//					}
-//				} catch (Exception e) {
-//
-//					Log.e("DrawableManager  addBitMapToMemory ", "Exception "
-//							+ e.getMessage());
-//
-//					try {
-//						mDiskLruCache.remove(key_md5);
-//					} catch (IOException ex) {
-//						Log.e("DrawableManager addBitMapToMemory ",
-//								"DiskLruCache REMOVE IOException "
-//										+ ex.getMessage());
-//					}
-//
-//				}
-//			}
-//		}
 	}
 
-	protected static boolean writeBitmapToFile(Bitmap bitmap,
-			DiskLruCache.Editor editor) throws IOException,
-			FileNotFoundException {
-		OutputStream out = null;
-		try {
-			out = new BufferedOutputStream(editor.newOutputStream(0), 8 * 1024);
-			CompressFormat mCompressFormat = CompressFormat.JPEG;
-			return bitmap.compress(mCompressFormat, 80, out);
-		}
-
-		finally {
-			if (out != null) {
-				out.close();
-			}
-		}
-	}
 
 	public static Bitmap getBitmapFromMemCache(String key) {
 
@@ -233,9 +93,6 @@ public class DrawableManager {
 
 	public static void fetchDrawableDetailOnThread(final String urlString,
 			final ImageView imageView) {
-
-		// Context context = imageView.getContext();
-		// Glide.with(context).load(urlString).into(imageView);
 
 		init();
 
@@ -316,32 +173,14 @@ public class DrawableManager {
 	public static void fetchDrawableOnThread(final String urlString,
 			final ImageView imageView) {
 
-		// Context context = imageView.getContext();
-		// Glide.with(context).load(urlString).into(imageView);
-
 		init();
 
-		cache_bitMap = getBitmapFromMemCache(urlString);
+		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
 
 		if (null != cache_bitMap) {
 			imageView.setImageBitmap(cache_bitMap);
 			return;
 		}
-		
-//		else {
-//			cache_bitMap = getBitmapFromDiskCache(urlString);
-//			if (null != cache_bitMap) {
-//				imageView.setImageBitmap(cache_bitMap);
-//
-//				String key_md5 = Utils.md5(urlString);
-//				if (null != mMemoryCache) {
-//					if (getBitmapFromMemCache(key_md5) == null) {
-//						mMemoryCache.put(key_md5, cache_bitMap);
-//					}
-//				}
-//				return;
-//			}
-//		}
 
 		final Handler handler = new Handler() {
 			@Override
@@ -363,143 +202,50 @@ public class DrawableManager {
 		};
 
 		getBitmap(handler, urlString);
-
-		if (cache_bitMap != null && !cache_bitMap.isRecycled()) {
-			cache_bitMap.recycle();
-			cache_bitMap = null;
-		}
 	}
 
 	public static void fetchDrawableOnThreadForZTheme(final String urlString,
 			final ImageView imageView) {
 
-		// init();
-		//
-		// Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
-		//
-		// Display display = SimiManager.getIntance().getCurrentActivity()
-		// .getWindowManager().getDefaultDisplay();
-		// Point size = new Point();
-		// display.getSize(size);
-		// final int w = (size.x * 4) / 5;
-		// final int h = (size.y * 4) / 5;
-		//
-		// if (null != cache_bitMap) {
-		// Bitmap bMapRotate = Utils.scaleToFill(cache_bitMap, w, h);
-		// imageView.setImageBitmap(bMapRotate);
-		// cache_bitMap = null;
-		// bMapRotate = null;
-		// return;
-		// }
-		//
-		// final Handler handler = new Handler() {
-		// @Override
-		// public void handleMessage(Message message) {
-		// Bitmap bitmap = (Bitmap) message.obj;
-		// if (bitmap != null) {
-		// try {
-		// Bitmap bMapRotate = Utils.scaleToFill(bitmap, w, h);
-		// imageView.setImageBitmap(bMapRotate);
-		// addBitmapToMemoryCache(urlString, bitmap);
-		// bitmap = null;
-		// bMapRotate = null;
-		// } catch (Exception e) {
-		//
-		// }
-		// } else {
-		// Resources resources = SimiManager.getIntance()
-		// .getCurrentContext().getResources();
-		// bitmap = BitmapFactory.decodeResource(resources, Rconfig
-		// .getInstance().drawable("default_icon"));
-		// Matrix mat = new Matrix();
-		// mat.postRotate(-90);
-		// Bitmap bMapRotate = Bitmap.createBitmap(bitmap, 0, 0,
-		// bitmap.getWidth(), bitmap.getHeight(), mat, true);
-		// imageView.setImageBitmap(bMapRotate);
-		// bitmap = null;
-		// }
-		// }
-		// };
-		//
-		// getBitmap(handler, urlString);
-
 		init();
 
-		cache_bitMap = getBitmapFromMemCache(urlString);
+		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
 
 		if (null != cache_bitMap) {
 			imageView.setImageBitmap(cache_bitMap);
+			cache_bitMap = null;
 			return;
-		} 
-//		else {
-//			cache_bitMap = getBitmapFromDiskCache(urlString);
-//			if (null != cache_bitMap) {
-//				imageView.setImageBitmap(cache_bitMap);
-//
-//				String key_md5 = Utils.md5(urlString);
-//				if (null != mMemoryCache) {
-//					if (getBitmapFromMemCache(key_md5) == null) {
-//						mMemoryCache.put(key_md5, cache_bitMap);
-//					}
-//				}
-//				return;
-//			}
-//		}
+		}
 
 		final Handler handler = new Handler() {
 			@Override
 			public void handleMessage(Message message) {
 				Bitmap bitmap = (Bitmap) message.obj;
 				if (bitmap != null) {
-					imageView.setImageBitmap(bitmap);
-					addBitmapToMemoryCache(urlString, bitmap);
+					try {
+						imageView.setImageBitmap(bitmap);
+						addBitmapToMemoryCache(urlString, bitmap);
+						bitmap = null;
+					} catch (Exception e) {
+
+					}
 				} else {
 					Resources resources = SimiManager.getIntance()
 							.getCurrentContext().getResources();
 					bitmap = BitmapFactory.decodeResource(resources, Rconfig
 							.getInstance().drawable("default_icon"));
-					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
-					imageView.setImageBitmap(bitmap);
+					Matrix mat = new Matrix();
+					mat.postRotate(-90);
+					Bitmap bMapRotate = Bitmap.createBitmap(bitmap, 0, 0,
+							bitmap.getWidth(), bitmap.getHeight(), mat, true);
+					imageView.setImageBitmap(bMapRotate);
 					bitmap = null;
 				}
 			}
 		};
 
-		getBitmap(handler, urlString);
-
-		if (cache_bitMap != null && !cache_bitMap.isRecycled()) {
-			cache_bitMap.recycle();
-			cache_bitMap = null;
-		}
+		getBitmapForDetail(handler, urlString);
 	}
-
-	// public static class GLideTransform extends BitmapTransformation {
-	// public GLideTransform(Context context) {
-	// super(context);
-	// }
-	//
-	// @Override
-	// public String getId() {
-	// // TODO Auto-generated method stub
-	// return "detail";
-	// }
-	//
-	// @Override
-	// protected Bitmap transform(BitmapPool arg0, Bitmap bitmap, int arg2,
-	// int arg3) {
-	// Display display = SimiManager.getIntance().getCurrentActivity()
-	// .getWindowManager().getDefaultDisplay();
-	// Point size = new Point();
-	// display.getSize(size);
-	// final int w = (size.x * 4) / 5;
-	// final int h = (size.y * 4) / 5;
-	//
-	// Log.e("DrawableManager ", "transform " + w + h);
-	//
-	// return Utils.scaleToFill(bitmap, w, h);
-	// }
-	//
-	// }
 
 	@SuppressWarnings("deprecation")
 	public static void fetchDrawableOnThread(final String urlString,
@@ -528,9 +274,6 @@ public class DrawableManager {
 	public static void fetchItemDrawableOnThread(final String urlString,
 			final ImageView imageView) {
 
-		// Context context = imageView.getContext();
-		// Glide.with(context).load(urlString).into(imageView);
-
 		final Handler handler = new Handler() {
 			@Override
 			public void handleMessage(Message message) {
@@ -552,11 +295,14 @@ public class DrawableManager {
 		getBitmap(handler, urlString);
 	}
 
-	public static void getBitmap(final Handler handler, final String urlString) {
+	public static void getBitmapForDetail(final Handler handler,
+			final String urlString) {
+
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
-				Bitmap bitmap = excutePostForBitMap(urlString);
+				Bitmap bitmap = excutePostForBitMap(urlString, reqWidth,
+						reqHeight);
 				if (bitmap != null) {
 					Message message = handler.obtainMessage(1, bitmap);
 					handler.sendMessage(message);
@@ -566,7 +312,22 @@ public class DrawableManager {
 		thread.start();
 	}
 
-	public static Bitmap excutePostForBitMap(String url) {
+	public static void getBitmap(final Handler handler, final String urlString) {
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				Bitmap bitmap = excutePostForBitMap(urlString, 0, 0);
+				if (bitmap != null) {
+					Message message = handler.obtainMessage(1, bitmap);
+					handler.sendMessage(message);
+				}
+			}
+		};
+		thread.start();
+	}
+
+	public static Bitmap excutePostForBitMap(String url, int reqWidth,
+			int reqHeight) {
 		try {
 			Bitmap bitMap = null;
 			URL url_con = new URL(url);
@@ -577,18 +338,14 @@ public class DrawableManager {
 					((HttpsURLConnection) conn)
 							.setSSLSocketFactory(new TLSSocketFactory());
 				} catch (KeyManagementException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (NoSuchAlgorithmException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else {
 				conn = (HttpURLConnection) url_con.openConnection();
 			}
 
-			conn.setReadTimeout(10000 /* milliseconds */);
-			conn.setConnectTimeout(15000 /* milliseconds */);
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Token", Config.getInstance()
 					.getSecretKey());
@@ -597,6 +354,9 @@ public class DrawableManager {
 			conn.connect();
 
 			int status = conn.getResponseCode();
+
+			Log.e("DrawableManager ", " URL " + url + " CODE " + status);
+
 			if (status < 300) {
 				InputStream is = conn.getInputStream();
 				ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -608,8 +368,22 @@ public class DrawableManager {
 					buff = new byte[1024];
 				}
 				byte[] bytes = bos.toByteArray();
-				bitMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-				// conn.disconnect();
+
+				if (reqWidth <= 0) {
+					reqWidth = 128;
+				}
+				if (reqHeight <= 0) {
+					reqHeight = 128;
+				}
+
+				Options option = new Options();
+				option.inJustDecodeBounds = true;
+				BitmapFactory.decodeByteArray(bytes, 0, bytes.length, option);
+				option.inSampleSize = calculateInSampleSize(option, reqWidth,
+						reqHeight);
+				option.inJustDecodeBounds = false;
+				bitMap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length,
+						option);
 				return bitMap;
 			} else {
 				Log.e("Drawable Manager ", "STATUS CODE " + status);
@@ -622,32 +396,35 @@ public class DrawableManager {
 
 	}
 
+	public static int calculateInSampleSize(BitmapFactory.Options options,
+			int reqWidth, int reqHeight) {
+
+		final int height = options.outHeight;
+		final int width = options.outWidth;
+		int inSampleSize = 1;
+
+		if (height > reqHeight || width > reqWidth) {
+			final int halfHeight = height / 2;
+			final int halfWidth = width / 2;
+			while ((halfHeight / inSampleSize) > reqHeight
+					&& (halfWidth / inSampleSize) > reqWidth) {
+				inSampleSize *= 2;
+			}
+		}
+
+		return inSampleSize;
+	}
+
 	public static void fetchDrawableOnThread(final String urlImage,
 			final SimiImageView simiImageView) {
 		init();
 
-		cache_bitMap = getBitmapFromMemCache(urlImage);
+		Bitmap cache_bitMap = getBitmapFromMemCache(urlImage);
 
 		if (null != cache_bitMap) {
 			simiImageView.setImageBitmap(cache_bitMap);
 			return;
 		}
-
-//		else {
-//			cache_bitMap = getBitmapFromDiskCache(urlImage);
-//			if (null != cache_bitMap) {
-//				simiImageView.setImageBitmap(cache_bitMap);
-//
-//				String key_md5 = Utils.md5(urlImage);
-//
-//				if (null != mMemoryCache) {
-//					if (getBitmapFromMemCache(key_md5) == null) {
-//						mMemoryCache.put(key_md5, cache_bitMap);
-//					}
-//				}
-//				return;
-//			}
-//		}
 
 		final Handler handler = new Handler() {
 			@Override
@@ -669,11 +446,6 @@ public class DrawableManager {
 		};
 
 		getBitmap(handler, urlImage);
-
-		if (cache_bitMap != null && !cache_bitMap.isRecycled()) {
-			cache_bitMap.recycle();
-			cache_bitMap = null;
-		}
 	}
 
 }
