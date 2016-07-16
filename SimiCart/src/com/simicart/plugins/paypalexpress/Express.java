@@ -149,7 +149,7 @@ public class Express {
 	}
 
 	public void addButtonPayPalToCart() {
-		
+
 		int size1 = Utils.getValueDp(42);
 
 		ColorButton b_express = new ColorButton(context);
@@ -160,9 +160,9 @@ public class Express {
 		RelativeLayout.LayoutParams lp_express = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.MATCH_PARENT, size1);
 		lp_express.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-//		Button b_checkout = (Button) rootView.findViewById(Rconfig
-//				.getInstance().id("checkout"));
-//		lp_express.addRule(RelativeLayout.BELOW, b_checkout.getId());
+		// Button b_checkout = (Button) rootView.findViewById(Rconfig
+		// .getInstance().id("checkout"));
+		// lp_express.addRule(RelativeLayout.BELOW, b_checkout.getId());
 		lp_express.setMargins(0, Utils.getValueDp(5), 0, 0);
 		b_express.setLayoutParams(lp_express);
 		b_express.setOnTouchListener(new OnTouchListener() {
@@ -251,6 +251,7 @@ public class Express {
 			});
 			mModel.addParam("product_id", product.getId());
 			mModel.addParam("product_qty", String.valueOf(product.getQty()));
+			mModel.addParam("product_type", product.getType());
 
 			if (null != options) {
 				try {
@@ -281,7 +282,13 @@ public class Express {
 			ArrayList<CacheOption> options) throws JSONException {
 		JSONArray array = new JSONArray();
 		for (CacheOption cacheOption : options) {
-			array.put(cacheOption.toParameter());
+			ArrayList<JSONObject> listObject = cacheOption.toParameter();
+			if (listObject != null && listObject.size() > 0) {
+				for (int i = 0; i < listObject.size(); i++) {
+					JSONObject jsonObj = listObject.get(i);
+					array.put(jsonObj);
+				}
+			}
 		}
 		return array;
 	}
@@ -302,8 +309,6 @@ public class Express {
 					WebFragment fragment = WebFragment.newInstance(
 							mModel.getUrl(), mModel.getReview_address());
 					SimiManager.getIntance().addPopupFragment(fragment);
-					Log.e("AAAAAAAAAAAA",
-							"BBBBBBBBB" + mModel.getReview_address());
 				} else {
 					SimiManager.getIntance().showToast(message);
 				}
