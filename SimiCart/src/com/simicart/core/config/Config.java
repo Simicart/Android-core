@@ -17,12 +17,6 @@ public class Config {
 	private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
 	private String mSecretCloudKey = "a98634abb7afc2c8b3434e8cf0ed694c8c23dc1e";
 
-	// private String mBaseCloudUrl = "https://api.jajahub.com/rest/";
-	// private String mSecretCloudKey =
-	// "cfb7426d6af37c57940e0a960d7da7abaa85f9d5";
-	//
-	// private String mBaseUrl = "https://justwines.com.au/index.php/";
-	// private String mSecretKey = "a4abda6aca99e41f9258f62136b43aaf0c54ca9";
 	private String mThemeColor = "#000000";
 	private String key_color = "#FFFFFF";
 	private String top_menu_icon_color = "#FFFFFF";

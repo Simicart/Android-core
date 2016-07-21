@@ -3,7 +3,6 @@ package com.simicart.core.catalog.product.fragment;
 import java.util.ArrayList;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
@@ -58,7 +57,7 @@ public class ProductDetailParentFragment extends SimiFragment {
 	}
 
 	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
 		if (getArguments() != null) {
@@ -101,76 +100,9 @@ public class ProductDetailParentFragment extends SimiFragment {
 				.getInstance().id("pager_parent"));
 
 		if (DataLocal.isTablet) {
-			try {
-				ProductDetailParentAdapterTablet adapter_tablet = new ProductDetailParentAdapterTablet(
-						SimiManager.getIntance().getChilFragmentManager());
-				adapter_tablet.setListID(mListID);
-				adapter_tablet.setController(mController);
-				adapter_tablet.setProductDelegate(mBlock);
-				pager_parent.setAdapter(adapter_tablet);
-				pager_parent.setCurrentItem(position);
-				adapter_tablet.setCurrentID(mID);
-				pager_parent.setClipToPadding(false);
-				pager_parent.setPageMargin(50);
-
-				pager_parent.setOffscreenPageLimit(3);
-
-				CirclePageIndicator mIndicator = (CirclePageIndicator) view
-						.findViewById(Rconfig.getInstance().id("indicator"));
-				mIndicator.setScaleX(1.5f);
-				mIndicator.setScaleY(1.5f);
-				LayoutParams params = new LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-				String message = getActivity().getString(
-						Rconfig.getInstance().string("values"));
-
-				if (message.equals("sw800dp")) {
-					params.leftMargin = Utils.getValueDp(310);
-				} else {
-					params.leftMargin = Utils.getValueDp(260);
-				}
-				mIndicator.setLayoutParams(params);
-				mController.setAdapterDelegate(adapter_tablet);
-				pager_parent
-						.setOnPageChangeListener(new OnPageChangeListener() {
-
-							@Override
-							public void onPageSelected(int position) {
-								if (position == mListID.size() - 1) {
-									pager_parent.setPadding(
-											Utils.getValueDp(50), 0,
-											Utils.getValueDp(200), 0);
-								} else {
-									pager_parent.setPadding(
-											Utils.getValueDp(200), 0,
-											Utils.getValueDp(50), 0);
-								}
-							}
-
-							@Override
-							public void onPageScrolled(int arg0, float arg1,
-									int arg2) {
-
-							}
-
-							@Override
-							public void onPageScrollStateChanged(int arg0) {
-
-							}
-						});
-			} catch (Exception e) {
-				System.err.println("Error Product detail:" + e.getMessage());
-			}
+			createTabletAdapter(pager_parent, position, view);
 		} else {
-			ProductDetailParentAdapter adapter = new ProductDetailParentAdapter(
-					SimiManager.getIntance().getChilFragmentManager());
-			adapter.setController(mController);
-			adapter.setListID(mListID);
-			pager_parent.setOffscreenPageLimit(3);
-			pager_parent.setAdapter(adapter);
-			pager_parent.setCurrentItem(position);
-			mController.setAdapterDelegate(adapter);
-			adapter.notifyDataSetChanged();
+			createPhoneAdapter(pager_parent, position);
 		}
 	}
 
@@ -185,6 +117,74 @@ public class ProductDetailParentFragment extends SimiFragment {
 		}
 
 		return -1;
+	}
+
+	protected void createTabletAdapter(final ViewPager pager_parent,
+			int position, View rootView) {
+		ProductDetailParentAdapterTablet adapter_tablet = new ProductDetailParentAdapterTablet(
+				SimiManager.getIntance().getChilFragmentManager());
+		adapter_tablet.setListID(mListID);
+		adapter_tablet.setController(mController);
+		adapter_tablet.setProductDelegate(mBlock);
+		pager_parent.setAdapter(adapter_tablet);
+		pager_parent.setCurrentItem(position);
+		adapter_tablet.setCurrentID(mID);
+		pager_parent.setClipToPadding(false);
+		pager_parent.setPageMargin(50);
+
+		pager_parent.setOffscreenPageLimit(3);
+
+		CirclePageIndicator mIndicator = (CirclePageIndicator) rootView
+				.findViewById(Rconfig.getInstance().id("indicator"));
+		mIndicator.setScaleX(1.5f);
+		mIndicator.setScaleY(1.5f);
+		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.MATCH_PARENT);
+		String message = getActivity().getString(
+				Rconfig.getInstance().string("values"));
+
+		if (message.equals("sw800dp")) {
+			params.leftMargin = Utils.getValueDp(310);
+		} else {
+			params.leftMargin = Utils.getValueDp(260);
+		}
+		mIndicator.setLayoutParams(params);
+		mController.setAdapterDelegate(adapter_tablet);
+		pager_parent.setOnPageChangeListener(new OnPageChangeListener() {
+
+			@Override
+			public void onPageSelected(int position) {
+				if (position == mListID.size() - 1) {
+					pager_parent.setPadding(Utils.getValueDp(50), 0,
+							Utils.getValueDp(200), 0);
+				} else {
+					pager_parent.setPadding(Utils.getValueDp(200), 0,
+							Utils.getValueDp(50), 0);
+				}
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+
+			}
+		});
+	}
+
+	protected void createPhoneAdapter(ViewPager pager_parent, int position) {
+		ProductDetailParentAdapter adapter = new ProductDetailParentAdapter(
+				SimiManager.getIntance().getChilFragmentManager());
+		adapter.setController(mController);
+		adapter.setListID(mListID);
+		pager_parent.setOffscreenPageLimit(3);
+		pager_parent.setAdapter(adapter);
+		pager_parent.setCurrentItem(position);
+		mController.setAdapterDelegate(adapter);
+		adapter.notifyDataSetChanged();
 	}
 
 }

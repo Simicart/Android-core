@@ -28,6 +28,7 @@ import com.simicart.core.catalog.product.entity.Product;
 import com.simicart.core.catalog.product.entity.ProductOption;
 import com.simicart.core.catalog.product.model.AddToCartModel;
 import com.simicart.core.catalog.product.model.ProductModel;
+import com.simicart.core.common.Utils;
 import com.simicart.core.common.options.ProductOptionParentView;
 import com.simicart.core.common.options.base.CacheOptionView;
 import com.simicart.core.common.options.delegate.OptionProductDelegate;
@@ -262,9 +263,10 @@ public class ProductController extends SimiController implements
 					Config.getInstance().getText("Please select all options"));
 			return;
 		}
-		//onShowOptionView();
-		if(url != null)
-		mDelegate.startAnimation(url);
+
+		if (url != null) {
+			mDelegate.startAnimation(url);
+		}
 		ArrayList<CacheOption> options = getCacheOptions();
 		mDelegate.showDialogLoading();
 		final AddToCartModel model = new AddToCartModel();
@@ -283,17 +285,14 @@ public class ProductController extends SimiController implements
 			}
 		});
 
-		model.addParam("product_id", getProductFromCollection().getId());
-		if (getProductFromCollection().getData("variant_id") != null) {
-			model.addParam("variant_id",
-					getProductFromCollection().getData("variant_id"));
+		Product product = getProductFromCollection();
+		String id = product.getId();
+		model.addParam("product_id", id);
+		String type = product.getType();
+		if (Utils.validateString(type)) {
+			model.addParam("product_type", type);
 		}
-		if (getProductFromCollection().getData("product_type") != null) {
-			model.addParam("product_type",
-					getProductFromCollection().getData("product_type"));
-		}
-		model.addParam("product_qty",
-				String.valueOf(getProductFromCollection().getQty()));
+		model.addParam("product_qty", "1");
 
 		if (null != options) {
 			try {
@@ -304,7 +303,6 @@ public class ProductController extends SimiController implements
 			} catch (JSONException e) {
 				mDelegate.dismissLoading();
 				SimiManager.getIntance().showNotify("Cannot convert data");
-				e.printStackTrace();
 				return;
 			}
 		}
@@ -358,15 +356,16 @@ public class ProductController extends SimiController implements
 	}
 
 	protected boolean checkSelectedCacheOption(ArrayList<CacheOption> options) {
-		if(options != null){
-		for (CacheOption cacheOption : options) {
-			if (cacheOption.isRequired() && !cacheOption.isCompleteRequired()) {
-				return false;
+		if (options != null) {
+			for (CacheOption cacheOption : options) {
+				if (cacheOption.isRequired()
+						&& !cacheOption.isCompleteRequired()) {
+					return false;
+				}
 			}
 		}
-		}
 		return true;
-		
+
 	}
 
 	protected JSONArray convertCacheOptionToParams(

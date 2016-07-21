@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,7 +42,6 @@ import com.simicart.core.style.VerticalViewPager2;
 
 public class ProductDetailParentBlock extends SimiBlock implements
 		ProductDelegate, ProductDetailAdapterDelegate {
-	// protected LinearLayout ll_top;
 	protected RelativeLayout rlt_top;
 	protected LinearLayout ll_bottom;
 	protected LinearLayout ll_more;
@@ -92,10 +90,8 @@ public class ProductDetailParentBlock extends SimiBlock implements
 				.getSection_color()));
 		rlt_top.getBackground().setAlpha(100);
 
-		// details
 		ll_more = (LinearLayout) mView.findViewById(Rconfig.getInstance().id(
 				"ll_more"));
-		// ll_more.setVisibility(View.INVISIBLE);
 
 		TextView tv_more = (TextView) mView.findViewById(Rconfig.getInstance()
 				.id("tv_more"));
@@ -148,9 +144,8 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		img_animation = (ImageView) mView.findViewById(Rconfig.getInstance()
 				.id("img_animation"));
 		img_animation.setVisibility(View.INVISIBLE);
-		tv_name_product.setVisibility(View.VISIBLE);
-		rlt_top.setVisibility(View.VISIBLE);
-		ll_bottom.setVisibility(View.VISIBLE);
+		rlt_top.setVisibility(View.INVISIBLE);
+		ll_bottom.setVisibility(View.INVISIBLE);
 	}
 
 	public void setAnimation() {
@@ -177,14 +172,12 @@ public class ProductDetailParentBlock extends SimiBlock implements
 			if (null != mProduct) {
 				ll_bottom.setVisibility(View.VISIBLE);
 				rlt_top.setVisibility(View.VISIBLE);
-
 				showNameProduct();
 				showOption();
 				showAddToCart();
-			} 
+			}
 
 		}
-		ll_more.setVisibility(View.VISIBLE);
 	}
 
 	protected void showNameProduct() {
@@ -194,12 +187,7 @@ public class ProductDetailParentBlock extends SimiBlock implements
 			tv_name_product.setTextColor(Config.getInstance()
 					.getContent_color());
 			if (Utils.validateString(name_product)) {
-
-				Log.e("ProductDetailParentBlock ", "showNameProduct "
-						+ name_product + tv_name_product.getVisibility());
-
 				tv_name_product.setText(name_product.trim());
-
 			}
 		}
 	}
@@ -235,7 +223,6 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		Drawable bg_button = mContext.getResources().getDrawable(
 				Rconfig.getInstance().drawable("core_background_button"));
 
-
 		if (stock) {
 			bg_button.setColorFilter(Config.getInstance().getColorMain(),
 					PorterDuff.Mode.SRC_ATOP);
@@ -259,15 +246,10 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		if (isVisible) {
 			if (rlt_top.getVisibility() == View.VISIBLE
 					&& ll_bottom.getVisibility() == View.VISIBLE) {
-
-				Log.e("ProductDetailParentBlock ", "onVisibleTopBottom GONE ");
-
 				tv_name_product.setVisibility(View.GONE);
 				rlt_top.setVisibility(View.GONE);
 				ll_bottom.setVisibility(View.GONE);
 			} else {
-				Log.e("ProductDetailParentBlock ",
-						"onVisibleTopBottom VISIBLE ");
 				tv_name_product.setVisibility(View.VISIBLE);
 				rlt_top.setVisibility(View.VISIBLE);
 				ll_bottom.setVisibility(View.VISIBLE);
@@ -351,11 +333,6 @@ public class ProductDetailParentBlock extends SimiBlock implements
 		return null;
 	}
 
-//	@Override
-//	public int getCurrenPosition() {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
 
 	@Override
 	public void startAnimation(String urlImage) {

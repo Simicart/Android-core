@@ -214,9 +214,6 @@ public class ProductDetailParentController extends ProductController implements
 		}
 
 		checkOptionDerect = true;
-		onShowOption();
-		SimiManager.getIntance().hideKeyboard();
-		SimiManager.getIntance().getManager().popBackStack();
 	}
 
 	protected void onUpdatePriceView(ProductModel model) {

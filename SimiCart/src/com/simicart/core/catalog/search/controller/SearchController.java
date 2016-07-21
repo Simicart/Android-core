@@ -69,6 +69,8 @@ public class SearchController extends SimiController implements
 	protected int firstPos = -1;
 	protected int posItemList;
 
+	protected ArrayList<String> mListID;
+
 	public void setList_Param(Map<String, String> list_query) {
 		this.list_param = list_query;
 	}
@@ -149,11 +151,12 @@ public class SearchController extends SimiController implements
 				mDelegate.dismissLoading();
 				mDelegate.removeFooterView();
 				if (isSuccess) {
+					Log.e("Search Controller ","+++++++++++++++++++++++++++ SUCCESS");
 					resultNumber = message;
 					mDelegate.setQty(resultNumber);
 					mDelegate.updateView(mModel.getCollection());
 					isOnscroll = true;
-					Log.d("quangduy123", "request==" + message);
+					mListID = ((ModelSearchBase) mModel).getListId();
 				}
 			}
 		});
@@ -296,22 +299,16 @@ public class SearchController extends SimiController implements
 				int threshold = 1;
 				int count = view.getCount();
 				posItemList = view.getFirstVisiblePosition();
-				Log.e("Count :", count + "");
-				// if (scrollState == SCROLL_STATE_IDLE) {
 				if ((view.getLastVisiblePosition() >= count - threshold)
 						&& Integer.parseInt(resultNumber) > (count - threshold)) {
-					Log.e("ResultNumber :", resultNumber);
-					Log.e("IsOnscroll:", isOnscroll + "");
 					if (isOnscroll) {
 						mCurrentOffset += limit;
 						isOnscroll = false;
 						mDelegate.setTagSearch(TagSearch.TAG_LISTVIEW);
 						mDelegate.addFooterView();
 						mDelegate.setIsLoadMore(true);
-						Log.d("quangduy123", "isOnscroll==" + isOnscroll);
 						requestProduct();
 					}
-					// }
 				}
 			}
 
@@ -494,34 +491,27 @@ public class SearchController extends SimiController implements
 	private void selectemItemList(int position) {
 		if (position >= 1) {
 			ArrayList<Product> listProduct = mDelegate.getListProduct();
-			String productId = listProduct.get(position - 1).getData(
-					"product_id");
-			if (productId != null) {
-
-				ArrayList<String> listID = ((ModelSearchBase) mModel)
-						.getListId();
-
-				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance(productId, listID);
-				SimiManager.getIntance().replaceFragment(fragment);
-			}
+			String productId = listProduct.get(position - 1).getId();
+			openProductDetail(productId);
 		}
-		SimiManager.getIntance().hideKeyboard();
 	}
 
 	private void selectemItemGrid(int position) {
 		if (position >= 0) {
 			ArrayList<Product> listProduct = mDelegate.getListProduct();
-			String productId = listProduct.get(position).getData("product_id");
-			if (productId != null) {
-				ProductDetailParentFragment fragment = ProductDetailParentFragment
-						.newInstance(productId, mDelegate.getListProductId());
-				// fragment.setProductID(productId);
-				// fragment.setListIDProduct(mDelegate.getListProductId());
-				SimiManager.getIntance().replaceFragment(fragment);
-			}
+			String productId = listProduct.get(position).getId();
+			openProductDetail(productId);
 		}
-		SimiManager.getIntance().hideKeyboard();
+	}
+
+	protected void openProductDetail(String productId) {
+		if (productId != null && isOnscroll) {
+			ProductDetailParentFragment fragment = ProductDetailParentFragment
+					.newInstance(productId, mListID);
+			SimiManager.getIntance().replaceFragment(fragment);
+			SimiManager.getIntance().hideKeyboard();
+		}
+
 	}
 
 	private void changeDataView() {
@@ -531,8 +521,6 @@ public class SearchController extends SimiController implements
 			mDelegate.getListView().setVisibility(View.GONE);
 			mDelegate.getGridView().setVisibility(View.VISIBLE);
 			if (mDelegate.getListProduct().size() > 0) {
-				Log.e("ProductListZThemeBlock ", "Product Size "
-						+ mDelegate.getListProduct().size());
 				if (null == mDelegate.getAdapterGridview()) {
 					mDelegate.setGridviewAdapter(mDelegate.getmContext(),
 							mDelegate.getListProduct(), mDelegate.getmIDs(), 2);

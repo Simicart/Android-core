@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.util.Log;
 
@@ -13,7 +14,7 @@ import com.simicart.core.catalog.product.entity.Product;
 
 public class ModelSearchBase extends SimiModel {
 
-	protected ArrayList<String> mListId = new ArrayList<String>();
+	protected ArrayList<String> mListId;
 
 	@Override
 	protected void paserData() {
@@ -27,7 +28,15 @@ public class ModelSearchBase extends SimiModel {
 				Product product = new Product();
 				product.setJSONObject(list.getJSONObject(i));
 				collection.addEntity(product);
-				mListId.add(product.getId());
+				// mListId.add(product.getId());
+			}
+
+			if (mJSON.has("other") && null == mListId) {
+				JSONArray array = mJSON.getJSONArray("other");
+				if (null != array && array.length() > 0) {
+					mListId = new ArrayList<String>();
+					parseListID(array);
+				}
 			}
 
 		} catch (JSONException e) {
@@ -36,12 +45,25 @@ public class ModelSearchBase extends SimiModel {
 		}
 	}
 
+	protected void parseListID(JSONArray array) throws JSONException {
+		JSONObject json = array.getJSONObject(0);
+		if (json.has("product_id_array")) {
+			JSONArray arrayID = json.getJSONArray("product_id_array");
+			if (null != arrayID && arrayID.length() > 0) {
+				for (int i = 0; i < arrayID.length(); i++) {
+					String id = arrayID.getString(i);
+					mListId.add(id);
+				}
+			}
+		}
+
+	}
+
 	public void setUrlSearch(String url) {
 		url_action = url;
-		// this.enableCache = false;
 	}
-	
-	public ArrayList<String> getListId(){
+
+	public ArrayList<String> getListId() {
 		return mListId;
 	}
 }

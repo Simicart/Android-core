@@ -3,7 +3,6 @@ package com.simicart.core.catalog.product.controller;
 import java.util.ArrayList;
 
 import android.util.Log;
-import android.view.View;
 
 import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.delegate.ModelDelegate;
@@ -81,10 +80,11 @@ public class ProductDetailChildController extends SimiController {
 						String current_id = mAdapterDelegate.getCurrentID();
 						String id = getProductFromCollection().getId();
 						if (current_id.equals(id)) {
+							
+							Log.e("Child Controller ","---------> PRoduct  " + getProductFromCollection().getName() + " CALL UPDATE TOP");
+							
 							mController
 									.onUpdateTopBottom((ProductModel) mModel);
-							Log.e("ProductDetailChildController ",
-									"requestData " + id);
 							mDelegate.updateIndicator();
 						}
 					}

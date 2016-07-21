@@ -42,10 +42,10 @@ public class ProductDetailChildFragment extends SimiFragment {
 
 	public static ProductDetailChildFragment newInstance(String id) {
 		ProductDetailChildFragment fragment = new ProductDetailChildFragment();
-		
-		Bundle bundle= new Bundle();
-		  setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
-		    fragment.setArguments(bundle);
+
+		Bundle bundle = new Bundle();
+		setData(Constants.KeyData.ID, id, Constants.KeyData.TYPE_STRING, bundle);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -64,8 +64,9 @@ public class ProductDetailChildFragment extends SimiFragment {
 				Rconfig.getInstance().layout("core_product_detail_child"),
 				null, false);
 		SimiManager.getIntance().setChildFragment(getChildFragmentManager());
-		if(getArguments() != null){
-		mID = (String) getData(Constants.KeyData.ID, Constants.KeyData.TYPE_STRING, getArguments());
+		if (getArguments() != null) {
+			mID = (String) getData(Constants.KeyData.ID,
+					Constants.KeyData.TYPE_STRING, getArguments());
 		}
 
 		mBlock = new ProductDetailChildBlock(view, getActivity(),

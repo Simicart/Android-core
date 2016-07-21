@@ -43,7 +43,6 @@ public class ProductDetailParentAdapter extends FragmentPagerAdapter implements
 
 	@Override
 	public Fragment getItem(int position) {
-		
 		String id = mListID.get(position);
 		ProductDetailChildFragment fragment = ProductDetailChildFragment
 				.newInstance(id);
