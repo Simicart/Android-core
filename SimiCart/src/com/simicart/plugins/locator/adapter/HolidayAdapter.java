@@ -21,7 +21,7 @@ public class HolidayAdapter extends ArrayAdapter<SpecialObject> {
 	private List<SpecialObject> list;
 
 	public HolidayAdapter(Context context, List<SpecialObject> list) {
-		super(context, Rconfig.getInstance().getId("plugins_storelocator_item_list_special", "layout"), list);
+		super(context, Rconfig.getInstance().getId("plugins_store_locator_item_list_special", "layout"), list);
 		this.context = context;
 		this.list = list;
 	}
@@ -31,7 +31,7 @@ public class HolidayAdapter extends ArrayAdapter<SpecialObject> {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null) {
 			convertView = inflater
-					.inflate(Rconfig.getInstance().getId("plugins_storelocator_item_list_special", "layout"), null);
+					.inflate(Rconfig.getInstance().getId("plugins_store_locator_item_list_special", "layout"), null);
 		}
 		final SpecialObject object = list.get(position);
 		Calendar cal = Calendar.getInstance();

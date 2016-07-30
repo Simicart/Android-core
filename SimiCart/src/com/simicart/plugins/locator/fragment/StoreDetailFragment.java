@@ -67,7 +67,7 @@ public class StoreDetailFragment extends SimiFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		view = inflater.inflate(Rconfig.getInstance().getId("plugins_storelocator_detail", "layout"), null);
+		view = inflater.inflate(Rconfig.getInstance().getId("plugins_store_locator_detail", "layout"), null);
 
 		// getdata
 		if (getArguments() != null) {

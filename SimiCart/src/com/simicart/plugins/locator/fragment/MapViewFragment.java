@@ -73,7 +73,7 @@ public class MapViewFragment extends SimiFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = inflater.inflate(
-				Rconfig.getInstance().getId("plugins_storelocator_map_view",
+				Rconfig.getInstance().getId("plugins_store_locator_map",
 						"layout"), null);
 		if (getArguments() != null) {
 			storeObject = (StoreObject) getArguments().getSerializable(
@@ -177,7 +177,7 @@ public class MapViewFragment extends SimiFragment {
 	protected View gotInforContent(Marker marker) {
 		LayoutInflater inflater = LayoutInflater.from(getActivity());
 		int idView = Rconfig.getInstance().layout(
-				"plugins_storelocator_info_window_layout");
+				"plugins_store_locator_info_window_layout");
 		View v = inflater.inflate(idView, null);
 		v.setMinimumWidth(200);
 		v.setBackgroundColor(getResources().getColor(android.R.color.white));

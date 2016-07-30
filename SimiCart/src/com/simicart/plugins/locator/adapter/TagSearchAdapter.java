@@ -20,7 +20,7 @@ public class TagSearchAdapter extends ArrayAdapter<String> {
 	private int count_tag = 0;
 
 	public TagSearchAdapter(Context context, List<String> list, int count_tag) {
-		super(context, Rconfig.getInstance().getId("storelocator_item_tag",
+		super(context, Rconfig.getInstance().getId("plugins_store_locator_item_tag",
 				"layout"), list);
 		this.context = context;
 		this.list = list;

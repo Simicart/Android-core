@@ -32,7 +32,7 @@ public class StoreListAdapter extends ArrayAdapter<StoreObject> {
 
 	public StoreListAdapter(Context context, List<StoreObject> list) {
 		super(context, Rconfig.getInstance().getId(
-				"plugins_storelocator_item_list_store", "layout"), list);
+				"plugins_store_locator_item_list_store", "layout"), list);
 		this.context = context;
 		this.listObject = list;
 	}
@@ -47,7 +47,7 @@ public class StoreListAdapter extends ArrayAdapter<StoreObject> {
 		if (convertView == null) {
 			convertView = inflater.inflate(
 					Rconfig.getInstance().getId(
-							"plugins_storelocator_item_list_store",
+							"plugins_store_locator_item_list_store",
 							"layout"), null);
 		}
 		final StoreObject object = listObject.get(position);

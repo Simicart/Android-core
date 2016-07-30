@@ -256,7 +256,7 @@ public class StoreLocatorMapBlock extends SimiBlock implements StoreLocatorMapDe
 
 	protected View gotInforContent(Marker marker) {
 		LayoutInflater inflater = LayoutInflater.from(mContext);
-		int idView = Rconfig.getInstance().layout("plugins_storelocator_info_window_layout");
+		int idView = Rconfig.getInstance().layout("plugins_store_locator_info_window_layout");
 		View v = inflater.inflate(idView, null);
 		v.setMinimumWidth(200);
 		v.setBackgroundColor(mContext.getResources().getColor(android.R.color.white));
