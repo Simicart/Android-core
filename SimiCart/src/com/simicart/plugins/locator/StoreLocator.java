@@ -2,16 +2,18 @@ package com.simicart.plugins.locator;
 
 import java.util.ArrayList;
 
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
-
 import com.simicart.MainActivity;
 import com.simicart.core.config.Config;
+import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
 import com.simicart.core.event.slidemenu.SlideMenuData;
 import com.simicart.core.slidemenu.entity.ItemNavigation;
-import com.simicart.plugins.locator.fragment.StoreLocatorFragment;
+import com.simicart.plugins.locator.fragment.StoreLocatorMainPageFragment;
+import com.simicart.plugins.locator.fragment.StoreLocatorMainPageTabletFragment;
+
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 public class StoreLocator {
 	SlideMenuData mSlideMenuData;
@@ -32,9 +34,15 @@ public class StoreLocator {
 			mItemNavigation.setIcon(icon);
 			mItems.add(mItemNavigation);
 
-			StoreLocatorFragment fragment = new StoreLocatorFragment();
-			mSlideMenuData.getPluginFragment().put(mItemNavigation.getName(),
-					fragment.getClass().getName());
+			if(DataLocal.isTablet) {
+				StoreLocatorMainPageTabletFragment fragment = StoreLocatorMainPageTabletFragment.newInstance();
+				mSlideMenuData.getPluginFragment().put(mItemNavigation.getName(),
+						fragment.getClass().getName());
+			} else {
+				StoreLocatorMainPageFragment fragment = StoreLocatorMainPageFragment.newInstance();
+				mSlideMenuData.getPluginFragment().put(mItemNavigation.getName(),
+						fragment.getClass().getName());
+			}
 		}
 	}
 }

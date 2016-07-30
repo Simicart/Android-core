@@ -209,7 +209,7 @@
                             android:gravity="center"
                             android:orientation="vertical" >
 
-                            <com.simicart.plugins.locator.RoundedImageView
+                            <ImageView
                                 android:id="@+id/image_map"
                                 android:layout_width="110dp"
                                 android:layout_height="110dp"

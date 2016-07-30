@@ -8,41 +8,40 @@ import java.util.List;
 
 import org.json.JSONObject;
 
-import android.app.Activity;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
-import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.DrawableManager;
+import com.simicart.core.common.GPSTracker;
 import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
+import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
-import com.simicart.plugins.locator.DataLocator;
-import com.simicart.plugins.locator.MathForDummies;
-import com.simicart.plugins.locator.RoundedImageView;
-import com.simicart.plugins.locator.ShowMapError;
-import com.simicart.plugins.locator.StoreParser;
+import com.simicart.plugins.locator.common.DataLocator;
+import com.simicart.plugins.locator.common.MathForDummies;
+import com.simicart.plugins.locator.common.ShowMapError;
 import com.simicart.plugins.locator.entity.StoreObject;
+import com.simicart.plugins.locator.style.RoundedImageView;
+
+import android.app.Activity;
+import android.location.Location;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class MapViewFragment extends SimiFragment {
 	private View view;
@@ -115,18 +114,18 @@ public class MapViewFragment extends SimiFragment {
 		CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
 		ggmap.moveCamera(center);
 		ggmap.animateCamera(zoom);
-		ggmap.setOnCameraChangeListener(new OnCameraChangeListener() {
-
-			@Override
-			public void onCameraChange(CameraPosition camera) {
-				TaskLoadMaker loadMaker = new TaskLoadMaker();
-				loadMaker.data = putData(
-						String.valueOf(camera.target.latitude),
-						String.valueOf(camera.target.longitude),
-						String.valueOf(page * 10));
-				loadMaker.execute();
-			}
-		});
+//		ggmap.setOnCameraChangeListener(new OnCameraChangeListener() {
+//
+//			@Override
+//			public void onCameraChange(CameraPosition camera) {
+//				TaskLoadMaker loadMaker = new TaskLoadMaker();
+//				loadMaker.data = putData(
+//						String.valueOf(camera.target.latitude),
+//						String.valueOf(camera.target.longitude),
+//						String.valueOf(page * 10));
+//				loadMaker.execute();
+//			}
+//		});
 		ggmap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 
 			@Override
@@ -150,7 +149,11 @@ public class MapViewFragment extends SimiFragment {
 							&& roundLongMaker == roundLong) {
 						StoreDetailFragment detail = StoreDetailFragment
 								.newInstance(store);
-						SimiManager.getIntance().addFragmentSub(detail);
+						if (DataLocal.isTablet) {
+							SimiManager.getIntance().addPopupFragment(detail);
+						} else {
+							SimiManager.getIntance().replaceFragment(detail);
+						}
 					}
 
 				}
@@ -188,9 +191,15 @@ public class MapViewFragment extends SimiFragment {
 		LatLng latLngMarker = marker.getPosition();
 		Double latMarker = latLngMarker.latitude;
 		Double longMarker = latLngMarker.longitude;
-		Double latCurrent = StoreLocatorFragment.currrentLocation.getLatitude();
-		Double longCurrent = StoreLocatorFragment.currrentLocation
-				.getLongitude();
+		Location currentLocation = new Location("");
+		GPSTracker gpsTracker = new GPSTracker(getActivity());
+		Location location = gpsTracker.getLocation();
+		if (location != null) {
+			currentLocation.setLongitude(location.getLongitude());
+			currentLocation.setLatitude(location.getLatitude());
+		}
+		Double latCurrent = currentLocation.getLatitude();
+		Double longCurrent = currentLocation.getLongitude();
 
 		Double roundLatMarker = MathForDummies.round(latMarker, 5);
 		Double roundLongMarker = MathForDummies.round(longMarker, 5);
@@ -317,48 +326,48 @@ public class MapViewFragment extends SimiFragment {
 		return target;
 	}
 
-	public class TaskLoadMaker extends AsyncTask<Void, Void, JSONObject> {
-		JSONObject data;
-
-		@Override
-		protected JSONObject doInBackground(Void... params) {
-			return StoreLocatorFragment.getJon(data,
-					StoreLocatorFragment.url_list_store);
-
-		}
-
-		@Override
-		protected void onPostExecute(JSONObject result) {
-			StoreParser parser = new StoreParser();
-			List<StoreObject> stores = parser.getResult(result);
-
-			if (null != stores && stores.size() > 0) {
-				for (int i = 0; i < stores.size(); i++) {
-					StoreObject store = stores.get(i);
-
-					if (StoreLocatorFragment.check(store, store_maker) == 0) {
-
-						String langtitude = store.getLatitude();
-						String longtitude = store.getLongtitude();
-						if (Utils.validateString(langtitude)
-								&& Utils.validateString(longtitude)) {
-							langtitude = langtitude.trim();
-							longtitude = longtitude.trim();
-							Double dLang = convertToDouble(langtitude);
-							Double dLong = convertToDouble(longtitude);
-							if (dLang != 0 && dLong != 0) {
-								store_maker.add(store);
-							}
-
-						}
-					}
-
-				}
-				addMaker();
-			}
-			super.onPostExecute(result);
-		}
-
-	}
+//	public class TaskLoadMaker extends AsyncTask<Void, Void, JSONObject> {
+//		JSONObject data;
+//
+//		@Override
+//		protected JSONObject doInBackground(Void... params) {
+//			return StoreLocatorFragment.getJon(data,
+//					StoreLocatorFragment.url_list_store);
+//
+//		}
+//
+//		@Override
+//		protected void onPostExecute(JSONObject result) {
+//			StoreParser parser = new StoreParser();
+//			List<StoreObject> stores = parser.getResult(result);
+//
+//			if (null != stores && stores.size() > 0) {
+//				for (int i = 0; i < stores.size(); i++) {
+//					StoreObject store = stores.get(i);
+//
+//					if (StoreLocatorFragment.check(store, store_maker) == 0) {
+//
+//						String langtitude = store.getLatitude();
+//						String longtitude = store.getLongtitude();
+//						if (Utils.validateString(langtitude)
+//								&& Utils.validateString(longtitude)) {
+//							langtitude = langtitude.trim();
+//							longtitude = longtitude.trim();
+//							Double dLang = convertToDouble(langtitude);
+//							Double dLong = convertToDouble(longtitude);
+//							if (dLang != 0 && dLong != 0) {
+//								store_maker.add(store);
+//							}
+//
+//						}
+//					}
+//
+//				}
+//				addMaker();
+//			}
+//			super.onPostExecute(result);
+//		}
+//
+//	}
 
 }

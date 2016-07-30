@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="#FFFFFF">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF" >
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/map"
@@ -14,8 +14,8 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/plugins_locator_text_item"
-        android:visibility="gone"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone" >
 
         <TextView
             android:id="@+id/txt_km"
@@ -23,9 +23,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="18dp"
-             />
-
+            android:textSize="18dp" />
     </LinearLayout>
 
 </RelativeLayout>

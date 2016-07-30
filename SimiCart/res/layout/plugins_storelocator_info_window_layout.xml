@@ -23,7 +23,7 @@
                 android:gravity="center"
                 android:orientation="vertical" >
 
-                <com.simicart.plugins.locator.RoundedImageView
+                <com.simicart.plugins.locator.style.RoundedImageView
                     android:id="@+id/img_store"
                     android:layout_width="50dp"
                     android:layout_height="50dp"

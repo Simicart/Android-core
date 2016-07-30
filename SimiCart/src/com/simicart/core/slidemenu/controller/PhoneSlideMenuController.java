@@ -563,8 +563,10 @@ public class PhoneSlideMenuController {
 	}
 	
 	public void refreshCms() {
-		addCMS();
-		mDelegate.setAdapter(mItems);
+        mItems.remove(mItems.size()-1);
+        addCMS();
+        addSetting();
+        mDelegate.setAdapter(mItems);
 	}
 
 }
