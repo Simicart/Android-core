@@ -18,7 +18,7 @@ public class SearchObject implements Serializable{
 		city = "";
 		state = "";
 		zipcode = "";
-		tag = 0;
+		tag = -1;
 		name_country = "";
 		position_country = 0;
 	}

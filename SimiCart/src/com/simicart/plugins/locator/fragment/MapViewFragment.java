@@ -1,45 +1,47 @@
 package com.simicart.plugins.locator.fragment;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
-import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.simicart.core.base.fragment.SimiFragment;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.common.DrawableManager;
+import com.simicart.core.common.GPSTracker;
+import com.simicart.core.common.Utils;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.Constants;
+import com.simicart.core.config.DataLocal;
 import com.simicart.core.config.Rconfig;
-import com.simicart.plugins.locator.DataLocator;
-import com.simicart.plugins.locator.MathForDummies;
-import com.simicart.plugins.locator.ShowMapError;
-import com.simicart.plugins.locator.StoreParser;
+import com.simicart.plugins.locator.common.DataLocator;
+import com.simicart.plugins.locator.common.MathForDummies;
+import com.simicart.plugins.locator.common.ShowMapError;
 import com.simicart.plugins.locator.entity.StoreObject;
+import com.simicart.plugins.locator.style.RoundedImageView;
+
+import android.app.Activity;
+import android.location.Location;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class MapViewFragment extends SimiFragment {
 	private View view;
@@ -54,10 +56,10 @@ public class MapViewFragment extends SimiFragment {
 
 	public static MapViewFragment newInstance(StoreObject storeObject) {
 		MapViewFragment map = new MapViewFragment();
-		Bundle bundle= new Bundle();
+		Bundle bundle = new Bundle();
 		bundle.putSerializable(Constants.KeyData.STORE_OBJECT, storeObject);
 		map.setArguments(bundle);
-//		map.storeObject = storeObject;
+		// map.storeObject = storeObject;
 		return map;
 	}
 
@@ -71,12 +73,13 @@ public class MapViewFragment extends SimiFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = inflater.inflate(
-				Rconfig.getInstance().getId("plugins_storelocator_map_view",
+				Rconfig.getInstance().getId("plugins_store_locator_map",
 						"layout"), null);
-		if(getArguments() != null){
-		storeObject = (StoreObject) getArguments().getSerializable(Constants.KeyData.STORE_OBJECT);
+		if (getArguments() != null) {
+			storeObject = (StoreObject) getArguments().getSerializable(
+					Constants.KeyData.STORE_OBJECT);
 		}
-		
+
 		store_maker = new ArrayList<StoreObject>();
 		try {
 			MapsInitializer.initialize(getActivity());
@@ -86,8 +89,11 @@ public class MapViewFragment extends SimiFragment {
 				.getIdLayout("map"));
 		mMapView.onCreate(bundle);
 		mMapView.onResume();
-		start = new LatLng(Double.parseDouble(storeObject.getLatitude()),
-				Double.parseDouble(storeObject.getLongtitude()));
+
+		Double dLat = getLatDoubleWithStore(storeObject);
+		Double dLong = getLongDoubleWithStore(storeObject);
+
+		start = new LatLng(dLat, dLong);
 
 		ggmap = mMapView.getMap();
 		if (ggmap == null) {
@@ -96,7 +102,6 @@ public class MapViewFragment extends SimiFragment {
 					Config.getInstance().getText(
 							"First, You must update Google Maps."));
 			;
-			Log.e("ggmap", "hhee");
 			return view;
 		}
 		ggmap.getUiSettings().setMyLocationButtonEnabled(false);
@@ -109,34 +114,48 @@ public class MapViewFragment extends SimiFragment {
 		CameraUpdate zoom = CameraUpdateFactory.zoomTo(15);
 		ggmap.moveCamera(center);
 		ggmap.animateCamera(zoom);
-		ggmap.setOnCameraChangeListener(new OnCameraChangeListener() {
-
-			@Override
-			public void onCameraChange(CameraPosition camera) {
-				TaskLoadMaker loadMaker = new TaskLoadMaker();
-				loadMaker.data = putData(
-						String.valueOf(camera.target.latitude),
-						String.valueOf(camera.target.longitude),
-						String.valueOf(page * 10));
-				loadMaker.execute();
-			}
-		});
+//		ggmap.setOnCameraChangeListener(new OnCameraChangeListener() {
+//
+//			@Override
+//			public void onCameraChange(CameraPosition camera) {
+//				TaskLoadMaker loadMaker = new TaskLoadMaker();
+//				loadMaker.data = putData(
+//						String.valueOf(camera.target.latitude),
+//						String.valueOf(camera.target.longitude),
+//						String.valueOf(page * 10));
+//				loadMaker.execute();
+//			}
+//		});
 		ggmap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
 
 			@Override
 			public void onInfoWindowClick(Marker maker) {
 				for (int i = 0; i < store_maker.size(); i++) {
-					if (MathForDummies.round(Double.parseDouble(store_maker
-							.get(i).getLatitude()), 5) == MathForDummies.round(
-							maker.getPosition().latitude, 5)
-							&& MathForDummies.round(Double
-									.parseDouble(store_maker.get(i)
-											.getLongtitude()), 5) == MathForDummies
-									.round(maker.getPosition().longitude, 5)) {
+
+					StoreObject store = store_maker.get(i);
+					Double dLat = getLatDoubleWithStore(store);
+					Double dLong = getLongDoubleWithStore(store);
+
+					LatLng latLng = maker.getPosition();
+					Double roundLatMaker = MathForDummies.round(
+							latLng.latitude, 5);
+					Double roundLongMaker = MathForDummies.round(
+							latLng.longitude, 5);
+
+					Double roundLat = MathForDummies.round(dLat, 5);
+					Double roundLong = MathForDummies.round(dLong, 5);
+
+					if (roundLatMaker == roundLat
+							&& roundLongMaker == roundLong) {
 						StoreDetailFragment detail = StoreDetailFragment
-								.newInstance(store_maker.get(i));
-						SimiManager.getIntance().addFragmentSub(detail);
+								.newInstance(store);
+						if (DataLocal.isTablet) {
+							SimiManager.getIntance().addPopupFragment(detail);
+						} else {
+							SimiManager.getIntance().replaceFragment(detail);
+						}
 					}
+
 				}
 			}
 		});
@@ -148,67 +167,105 @@ public class MapViewFragment extends SimiFragment {
 			}
 
 			@Override
-			public View getInfoContents(Marker arg0) {
-				LayoutInflater inflater = (LayoutInflater) getActivity()
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				View v = inflater.inflate(
-						Rconfig.getInstance().getId(
-								"plugins_storelocator_info_window_layout",
-								"layout"), null);
-				v.setMinimumWidth(200);
-				v.setBackgroundColor(getResources().getColor(
-						android.R.color.white));
-				TextView tvName = (TextView) v.findViewById(Rconfig
-						.getInstance().getIdLayout("tv_name"));
-				TextView tvAddress = (TextView) v.findViewById(Rconfig
-						.getInstance().getIdLayout("tv_address"));
-				ImageView img = (ImageView) v.findViewById(Rconfig
-						.getInstance().getIdLayout("img_store"));
-				LatLng latLng = arg0.getPosition();
-				for (int i = 0; i < store_maker.size(); i++) {
-					if (Long.parseLong(store_maker.get(i).getLatitude()
-							.replaceAll("\\.", "")) != 0
-							&& Long.parseLong(store_maker.get(i)
-									.getLongtitude().replaceAll("\\.", "")) != 0) {
-						if (MathForDummies.round(Double.parseDouble(store_maker
-								.get(i).getLatitude()), 5) == MathForDummies
-								.round(arg0.getPosition().latitude, 5)
-								&& MathForDummies.round(Double
-										.parseDouble(store_maker.get(i)
-												.getLongtitude()), 5) == MathForDummies
-										.round(arg0.getPosition().longitude, 5)) {
-							if (latLng
-									.equals(StoreLocatorFragment.currrentLocation)) {
-								if (StoreLocatorFragment.currrentLocation != null) {
-									tvName.setText(Config.getInstance()
-											.getText("You are here!"));
-									tvAddress.setText("");
-								}
-							} else {
-								tvName.setText(store_maker.get(i).getName());
-								tvAddress.setText(DataLocator
-										.convertAddress(store_maker.get(i)));
-							}
-							if (store_maker.get(i).getImage_icon() != null
-									&& !store_maker.get(i).getImage_icon()
-											.equals("")) {
-								DrawableManager
-										.fetchItemDrawableOnThread(store_maker
-												.get(i).getImage_icon(), img);
-							} else {
-								img.setImageDrawable(getResources()
-										.getDrawable(
-												Rconfig.getInstance()
-														.getIdDraw(
-																"plugins_locator_ic_store_android")));
-							}
-						}
-					}
-				}
-				return v;
+			public View getInfoContents(Marker marker) {
+				return gotInforContent(marker);
 			}
 		});
 		return view;
+	}
+
+	protected View gotInforContent(Marker marker) {
+		LayoutInflater inflater = LayoutInflater.from(getActivity());
+		int idView = Rconfig.getInstance().layout(
+				"plugins_store_locator_info_window_layout");
+		View v = inflater.inflate(idView, null);
+		v.setMinimumWidth(200);
+		v.setBackgroundColor(getResources().getColor(android.R.color.white));
+		TextView tvName = (TextView) v.findViewById(Rconfig.getInstance()
+				.getIdLayout("tv_name"));
+		TextView tvAddress = (TextView) v.findViewById(Rconfig.getInstance()
+				.getIdLayout("tv_address"));
+		RoundedImageView img = (RoundedImageView) v.findViewById(Rconfig
+				.getInstance().getIdLayout("img_store"));
+
+		LatLng latLngMarker = marker.getPosition();
+		Double latMarker = latLngMarker.latitude;
+		Double longMarker = latLngMarker.longitude;
+		Location currentLocation = new Location("");
+		GPSTracker gpsTracker = new GPSTracker(getActivity());
+		Location location = gpsTracker.getLocation();
+		if (location != null) {
+			currentLocation.setLongitude(location.getLongitude());
+			currentLocation.setLatitude(location.getLatitude());
+		}
+		Double latCurrent = currentLocation.getLatitude();
+		Double longCurrent = currentLocation.getLongitude();
+
+		Double roundLatMarker = MathForDummies.round(latMarker, 5);
+		Double roundLongMarker = MathForDummies.round(longMarker, 5);
+		Double roundLatCurrent = MathForDummies.round(latCurrent, 5);
+		Double roundLongCurrent = MathForDummies.round(longCurrent, 5);
+
+		if (roundLatMarker == roundLatCurrent
+				&& roundLongMarker == roundLongCurrent) {
+			tvName.setText(Config.getInstance().getText("You are here"));
+			tvAddress.setText("");
+		} else if (roundLatMarker != roundLatCurrent
+				&& roundLongMarker != roundLongCurrent) {
+			for (int i = 0; i < store_maker.size(); i++) {
+
+				StoreObject store = store_maker.get(i);
+
+				Double latStore = getLatDoubleWithStore(store);
+				Double longStore = getLongDoubleWithStore(store);
+
+				Double roundLatStore = MathForDummies.round(latStore, 5);
+				Double roundLongStore = MathForDummies.round(longStore, 5);
+
+				if (roundLatStore == roundLatMarker
+						&& roundLongStore == roundLongMarker) {
+					tvName.setText(store_maker.get(i).getName());
+					tvAddress.setText(DataLocator.convertAddress(store));
+
+					String urlImage = store.getImage_icon();
+
+					if (Utils.validateString(urlImage)) {
+						DrawableManager
+								.fetchItemDrawableOnThread(urlImage, img);
+					}
+				} else {
+					img.setImageDrawable(getResources().getDrawable(
+							Rconfig.getInstance().getIdDraw(
+									"plugins_locator_ic_store_android")));
+				}
+
+			}
+		}
+
+		return v;
+	}
+
+	protected Double getLatDoubleWithStore(StoreObject store) {
+		String latitude = store.getLatitude();
+		if (Utils.validateString(latitude)) {
+			latitude = latitude.trim();
+
+			Double dLat = convertToDouble(latitude);
+			return dLat;
+		}
+
+		return null;
+	}
+
+	protected Double getLongDoubleWithStore(StoreObject store) {
+		String longtitude = store.getLongtitude();
+		if (Utils.validateString(longtitude)) {
+			longtitude = longtitude.trim();
+			Double dLong = convertToDouble(longtitude);
+			return dLong;
+		}
+
+		return null;
 	}
 
 	private JSONObject putData(String lat, String lng, String offset) {
@@ -224,56 +281,93 @@ public class MapViewFragment extends SimiFragment {
 	}
 
 	private void addMaker() {
+
 		for (int i = 0; i < store_maker.size(); i++) {
-			if (!storeObject.getLatitude().equals(
-					store_maker.get(i).getLatitude())
-					&& !storeObject.getLongtitude().equals(
-							store_maker.get(i).getLongtitude())) {
-				LatLng end = new LatLng(Double.parseDouble(store_maker.get(i)
-						.getLatitude()), Double.parseDouble(store_maker.get(i)
-						.getLongtitude()));
+
+			StoreObject store = store_maker.get(i);
+			String latitude = store.getLatitude();
+			String longtitude = store.getLongtitude();
+
+			if (Utils.validateString(latitude)
+					&& Utils.validateString(longtitude)) {
+
+				latitude = latitude.trim();
+				longtitude = longtitude.trim();
+
+				Double dLat = convertToDouble(latitude);
+				Double dLong = convertToDouble(longtitude);
+
+				LatLng end = new LatLng(dLat, dLong);
 				MarkerOptions options = new MarkerOptions().position(end).icon(
 						BitmapDescriptorFactory.fromResource(Rconfig
-								.getInstance().getIdDraw(
+								.getInstance().drawable(
 										"plugins_locator_maker_default")));
 				ggmap.addMarker(options);
 			}
+
 		}
 
 	}
 
-	public class TaskLoadMaker extends AsyncTask<Void, Void, JSONObject> {
-		JSONObject data;
-
-		@Override
-		protected JSONObject doInBackground(Void... params) {
-			return StoreLocatorFragment.getJon(data,
-					StoreLocatorFragment.url_list_store);
-
+	protected Double convertToDouble(String source) {
+		DecimalFormat df = new DecimalFormat();
+		DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+		symbols.setDecimalSeparator('.');
+		df.setDecimalFormatSymbols(symbols);
+		Double target = null;
+		try {
+			target = df.parse(source).doubleValue();
+		} catch (ParseException e) {
+			Log.e("MapViewFragment ",
+					"=======================> convertToDouble "
+							+ e.getMessage());
 		}
 
-		@Override
-		protected void onPostExecute(JSONObject result) {
-			StoreParser parser = new StoreParser();
-			if (parser.getResult(result) != null
-					&& parser.getResult(result).size() != 0) {
-				for (int i = 0; i < parser.getResult(result).size(); i++) {
-					if (StoreLocatorFragment.check(parser.getResult(result)
-							.get(i), store_maker) == 0) {
-						if (Long.parseLong(parser.getResult(result).get(i)
-								.getLatitude().replaceAll("\\.", "")) != 0
-								&& Long.parseLong(parser.getResult(result)
-										.get(i).getLongtitude()
-										.replaceAll("\\.", "")) != 0) {
-							store_maker.add(parser.getResult(result).get(i));
-						}
-					}
-				}
-				addMaker();
-			}
-			super.onPostExecute(result);
-		}
-
+		return target;
 	}
+
+//	public class TaskLoadMaker extends AsyncTask<Void, Void, JSONObject> {
+//		JSONObject data;
+//
+//		@Override
+//		protected JSONObject doInBackground(Void... params) {
+//			return StoreLocatorFragment.getJon(data,
+//					StoreLocatorFragment.url_list_store);
+//
+//		}
+//
+//		@Override
+//		protected void onPostExecute(JSONObject result) {
+//			StoreParser parser = new StoreParser();
+//			List<StoreObject> stores = parser.getResult(result);
+//
+//			if (null != stores && stores.size() > 0) {
+//				for (int i = 0; i < stores.size(); i++) {
+//					StoreObject store = stores.get(i);
+//
+//					if (StoreLocatorFragment.check(store, store_maker) == 0) {
+//
+//						String langtitude = store.getLatitude();
+//						String longtitude = store.getLongtitude();
+//						if (Utils.validateString(langtitude)
+//								&& Utils.validateString(longtitude)) {
+//							langtitude = langtitude.trim();
+//							longtitude = longtitude.trim();
+//							Double dLang = convertToDouble(langtitude);
+//							Double dLong = convertToDouble(longtitude);
+//							if (dLang != 0 && dLong != 0) {
+//								store_maker.add(store);
+//							}
+//
+//						}
+//					}
+//
+//				}
+//				addMaker();
+//			}
+//			super.onPostExecute(result);
+//		}
+//
+//	}
 
 }
