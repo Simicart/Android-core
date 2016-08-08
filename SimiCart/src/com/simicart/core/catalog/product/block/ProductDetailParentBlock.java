@@ -176,7 +176,7 @@ public class ProductDetailParentBlock extends SimiBlock implements
 				showOption();
 				showAddToCart();
 			}
-
+			ll_more.setVisibility(View.VISIBLE);
 		}
 	}
 
