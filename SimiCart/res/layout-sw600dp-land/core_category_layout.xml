@@ -25,35 +25,24 @@
 
                 <ImageView
                     android:id="@+id/iv_back"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
                     android:padding="5dp"
                     android:src="@drawable/ic_back" />
 
-                <TextView
-                    android:id="@+id/tv_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/iv_back"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
                 <RelativeLayout
                     android:id="@+id/layout_showmore"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true" >
-
+                    
                     <TextView
                         android:id="@+id/tv_viewmore"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@+id/iv_showmore"
                         android:textColor="#FFFFFF"
                         android:textSize="14sp" />
 
@@ -61,11 +50,26 @@
                         android:id="@+id/iv_showmore"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginTop="5dp"
-                        android:src="@drawable/ic_view_all" />
+                        android:src="@drawable/ic_view_all"
+                        android:layout_toRightOf="@+id/tv_viewmore" />
+                    
                 </RelativeLayout>
+                
+                <TextView
+                    android:id="@+id/tv_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/iv_back"
+                    android:layout_toLeftOf="@+id/layout_showmore"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:singleLine="true" />
+                
             </RelativeLayout>
 
             <LinearLayout

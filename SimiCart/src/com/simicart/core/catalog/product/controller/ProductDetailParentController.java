@@ -27,7 +27,7 @@ import com.simicart.core.common.price.ProductPriceViewV03;
 import com.simicart.core.style.VerticalViewPager2;
 
 @SuppressLint("DefaultLocale")
-public class ProductDetailParentController extends ProductController implements Serializable{
+public class ProductDetailParentController extends ProductController implements Serializable {
 
 	protected OnClickListener onTouchAddToCart;
 	protected OnTouchListener onTouchDetails;
@@ -143,17 +143,17 @@ public class ProductDetailParentController extends ProductController implements 
 
 	@Override
 	protected View onShowOptionView() {
-		if (null == mProduct) {
+		if(getProductFromCollection() != null) {
 			mProduct = getProductFromCollection();
+			mPriceViewZTheme = new ProductPriceViewV03(mProduct);
+
+			ProductOptionParentView option_parent = new ProductOptionParentView(mProduct, this);
+
+			mOptionView = option_parent.getOptionView();
+
+			return option_parent.initOptionView();
 		}
-		mPriceViewZTheme = new ProductPriceViewV03(mProduct);
-
-		ProductOptionParentView option_parent = new ProductOptionParentView(
-				mProduct, this);
-
-		mOptionView = option_parent.getOptionView();
-
-		return option_parent.initOptionView();
+		return new View(SimiManager.getIntance().getCurrentContext());
 
 	}
 
@@ -161,7 +161,7 @@ public class ProductDetailParentController extends ProductController implements 
 		SimiManager.getIntance().hideKeyboard();
 		mProduct.setAddedPriceDependent(false);
 		if (null != mProduct && mProduct.getStock()) {
-			String url = mProduct.getImages()[0];	
+			String url = mProduct.getImages()[0];
 			addtoCart(url);
 		}
 	}
@@ -170,17 +170,17 @@ public class ProductDetailParentController extends ProductController implements 
 	protected boolean checkSelectedAllOption() {
 		if (getProductFromCollection().getStock()) {
 			ArrayList<CacheOption> options = getCacheOptions();
-		
+
 			if (null == options) {
-				if(mProduct.getOptions() !=  null){
-				options = mProduct.getOptions();
-				
-				for (CacheOption option : options) {
-					if (option.isRequired() && !option.isCompleteRequired()) {
-						onShowOption();
-						return false;
+				if (mProduct.getOptions() != null) {
+					options = mProduct.getOptions();
+
+					for (CacheOption option : options) {
+						if (option.isRequired() && !option.isCompleteRequired()) {
+							onShowOption();
+							return false;
+						}
 					}
-				}
 				}
 			}
 
@@ -193,9 +193,9 @@ public class ProductDetailParentController extends ProductController implements 
 	}
 
 	protected void onShowDetail() {
-		
+
 		InformationFragment fragment = InformationFragment.newInstance(getProductFromCollection());
-//		fragment.setProduct(getProductFromCollection());
+		// fragment.setProduct(getProductFromCollection());
 		SimiManager.getIntance().addPopupFragment(fragment);
 	}
 
@@ -208,7 +208,7 @@ public class ProductDetailParentController extends ProductController implements 
 			mProduct = getProductFromCollection();
 			mDelegate.updateView(model.getCollection());
 		}
-		
+
 		checkOptionDerect = true;
 		onShowOption();
 		SimiManager.getIntance().hideKeyboard();
@@ -227,10 +227,9 @@ public class ProductDetailParentController extends ProductController implements 
 
 	@Override
 	protected View onShowPriceView(Product product) {
-		LinearLayout ll_price = new LinearLayout(SimiManager.getIntance()
-				.getCurrentContext());
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		LinearLayout ll_price = new LinearLayout(SimiManager.getIntance().getCurrentContext());
+		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT);
 		params.gravity = Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL;
 		mPriceViewZTheme = new ProductPriceViewV03(product);
 		View view = mPriceViewZTheme.getViewPrice();
@@ -246,16 +245,14 @@ public class ProductDetailParentController extends ProductController implements 
 		if (null != mPriceViewZTheme) {
 			if (cacheOption.getDependence_options() != null) {
 				if (mProduct.getType().equals("configurable")) {
-					View view = mPriceViewZTheme
-							.updatePriceWithOptionConfigable(mProduct, isAdd);
+					View view = mPriceViewZTheme.updatePriceWithOptionConfigable(mProduct, isAdd);
 					mProduct.updateCurrentListDependence();
 					if (null != view) {
 						mDelegate.onUpdatePriceView(view);
 					}
 				}
 			} else {
-				View view = mPriceViewZTheme.updatePriceWithOption(cacheOption,
-						isAdd);
+				View view = mPriceViewZTheme.updatePriceWithOption(cacheOption, isAdd);
 				if (null != view) {
 					mDelegate.onUpdatePriceView(view);
 				}
@@ -269,7 +266,7 @@ public class ProductDetailParentController extends ProductController implements 
 		if (null != entity && entity.size() > 0) {
 			product = (Product) entity.get(0);
 		}
-		
+
 		return product;
 	}
 
