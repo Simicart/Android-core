@@ -11,7 +11,7 @@ import com.simicart.core.style.material.floatingactionbutton.FloatingActionButto
 public class ButtonAddWishList {
 
 	FloatingActionButton imageAddWishList;
-	boolean isEnable;
+	boolean isEnable = false;
 	Drawable icon;
 	Drawable icon2;
 
@@ -28,12 +28,12 @@ public class ButtonAddWishList {
 	}
 
 	public void setEnable(boolean isEnable) {
-		if (isEnable) {
-			getImageAddWishList().setIconDrawable(icon2);
-		} else {
-			getImageAddWishList().setIconDrawable(icon);
-		}
-		this.isEnable = isEnable;
+        if (isEnable == true) {
+            getImageAddWishList().setIconDrawable(icon);
+        } else {
+            getImageAddWishList().setIconDrawable(icon2);
+        }
+        this.isEnable = isEnable;
 	}
 	
 	public ButtonAddWishList(Context context) {
@@ -54,7 +54,7 @@ public class ButtonAddWishList {
 		imageAddWishList = new FloatingActionButton(context);
 		imageAddWishList.setColorNormal(Color.parseColor("#FFFFFF"));
 		imageAddWishList.setColorPressed(Color.parseColor("#f4f4f4"));
-		imageAddWishList.setIconDrawable(icon);
+		imageAddWishList.setIconDrawable(icon2);
 		imageAddWishList.setColorFilter(Color.YELLOW);
 	}
 

@@ -74,14 +74,6 @@ public class ProductWishListController extends ProductController {
 			}
 		};
 
-		mListenerInfor = new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				return false;
-			}
-		};
-
 		mClickerRating = new OnClickListener() {
 
 			@Override

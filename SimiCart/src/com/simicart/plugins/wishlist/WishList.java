@@ -143,14 +143,14 @@ public class WishList {
 			addItemWishListForMyAccount(context, view);
 			break;
 		case "onChangeOption":
-			try {
-				bt_addWish.setEnable(true);
-			} catch (Exception e) {
-			}
-			try {
-				ProductWishlistBlock.bt_addWish.setEnable(true);
-			} catch (Exception e) {
-			}
+//			try {
+//				bt_addWish.setEnable(true);
+//			} catch (Exception e) {
+//			}
+//			try {
+//				ProductWishlistBlock.bt_addWish.setEnable(true);
+//			} catch (Exception e) {
+//			}
 			break;
 		default:
 			break;
@@ -240,8 +240,7 @@ public class WishList {
 		
 		Log.e("WishList ", "addButtonMyWishList " + product.getId());
 		
-		if (productWishList.getWishlist_item_id().equals("0")
-				|| productWishList.getProduct().getOptions().size() > 0) {
+		if (!productWishList.getWishlist_item_id().equals("0")) {
 			bt_addWish.setEnable(true);
 		}
 		ControllerAddWishList controllerAddWishList = new ControllerAddWishList(
