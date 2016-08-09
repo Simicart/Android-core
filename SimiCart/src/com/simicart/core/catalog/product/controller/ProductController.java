@@ -45,7 +45,6 @@ public class ProductController extends SimiController implements
 	protected OnTouchListener mListenerAddToCart;
 	protected OnClickListener mClickerRating;
 	protected OnClickListener mClickerImage;
-	protected OnTouchListener mListenerInfor;
 
 	public ProductController() {
 		mOptionView = new ArrayList<CacheOptionView>();
@@ -61,10 +60,6 @@ public class ProductController extends SimiController implements
 
 	public OnTouchListener getListenerAddToCart() {
 		return mListenerAddToCart;
-	}
-
-	public OnTouchListener getListenerInfor() {
-		return mListenerInfor;
 	}
 
 	public OnClickListener getClickerRating() {
@@ -89,9 +84,6 @@ public class ProductController extends SimiController implements
 					onUpdateOptionView();
 					if (DataLocal.isTablet) {
 						boolean isFocus = mDelegate.isShown();
-						if (isFocus) {
-							// showInforDetail();
-						}
 					}
 				}
 			}
@@ -138,27 +130,6 @@ public class ProductController extends SimiController implements
 			}
 		};
 
-		mListenerInfor = new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				switch (event.getAction()) {
-				case MotionEvent.ACTION_DOWN: {
-					break;
-				}
-				case MotionEvent.ACTION_UP: {
-					// showInforDetail();
-				}
-				case MotionEvent.ACTION_CANCEL: {
-					break;
-				}
-				default:
-					break;
-				}
-				return true;
-			}
-		};
-
 		mClickerRating = new OnClickListener() {
 
 			@Override
@@ -181,10 +152,6 @@ public class ProductController extends SimiController implements
 		mDelegate.updateView(mModel.getCollection());
 		onUpdatePriceView();
 		onUpdateOptionView();
-
-		if (DataLocal.isTablet) {
-			// showInforDetail();
-		}
 
 	}
 

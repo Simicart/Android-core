@@ -37,6 +37,6 @@ public class ProductModel extends SimiModel {
 
 	@Override
 	protected void setEnableCache() {
-		this.enableCache = true;
+		this.enableCache = false;
 	}
 }

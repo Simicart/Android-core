@@ -104,8 +104,9 @@ public class ControllerAddWishList implements OptionProductDelegate {
 								.getImageAddWishList());
 						zoomAnimation.start();
 						if (DataLocal.isSignInComplete()) {
-							if (bt_addWishList.isEnable()) {
-								checkOption(productWishList.getProduct(), view);
+							if (bt_addWishList.isEnable() == false) {
+								//checkOption(productWishList.getProduct(), view);
+								addToWishList();
 							} else {
 								removeFromWishList();
 							}
@@ -207,7 +208,7 @@ public class ControllerAddWishList implements OptionProductDelegate {
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissDialogLoading();
 				if (isSuccess) {
-					bt_addWishList.setEnable(false);
+					bt_addWishList.setEnable(true);
 					ItemWishList item = null;
 					ArrayList<SimiEntity> entity = model.getCollection()
 							.getCollection();
@@ -280,7 +281,7 @@ public class ControllerAddWishList implements OptionProductDelegate {
 				mDelegate.dismissDialogLoading();
 				if (isSuccess) {
 					SimiManager.getIntance().showToast("Removed from Wishlist");
-					bt_addWishList.setEnable(true);
+					bt_addWishList.setEnable(false);
 					productWishList.setWishlist_item_id("0");
 					if (isUpdateWishList) {
 						ArrayList<SimiEntity> entity = model.getCollection()
