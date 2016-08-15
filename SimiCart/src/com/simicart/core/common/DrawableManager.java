@@ -294,6 +294,54 @@ public class DrawableManager {
 
 		getBitmap(handler, urlString);
 	}
+	
+	public static void fetchDrawableOnThread(final String urlString,
+			final SimiImageView imageView, int reqWidth, int reqHeight) {
+
+		init();
+
+		Bitmap cache_bitMap = getBitmapFromMemCache(urlString);
+
+		if (null != cache_bitMap) {
+			imageView.setImageBitmap(cache_bitMap);
+			return;
+		}
+
+		final Handler handler = new Handler() {
+			@Override
+			public void handleMessage(Message message) {
+				Bitmap bitmap = (Bitmap) message.obj;
+				if (bitmap != null) {
+					imageView.setImageBitmap(bitmap);
+					addBitmapToMemoryCache(urlString, bitmap);
+				} else {
+					Resources resources = SimiManager.getIntance()
+							.getCurrentContext().getResources();
+					bitmap = BitmapFactory.decodeResource(resources, Rconfig
+							.getInstance().drawable("default_icon"));
+					bitmap = Bitmap.createScaledBitmap(bitmap, 80, 80, true);
+					imageView.setImageBitmap(bitmap);
+					bitmap = null;
+				}
+			}
+		};
+
+		getBitmap(handler, urlString,reqWidth,reqHeight);
+	}
+	
+	public static void getBitmap(final Handler handler, final String urlString, final int reqWidth, final int reqHeight) {
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				Bitmap bitmap = excutePostForBitMap(urlString, reqWidth, reqHeight);
+				if (bitmap != null) {
+					Message message = handler.obtainMessage(1, bitmap);
+					handler.sendMessage(message);
+				}
+			}
+		};
+		thread.start();
+	}
 
 	public static void getBitmapForDetail(final Handler handler,
 			final String urlString) {

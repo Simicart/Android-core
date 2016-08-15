@@ -3,6 +3,7 @@ package com.simicart.theme.ztheme.home.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.category.entity.Category;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
@@ -70,7 +72,11 @@ public class HomeZThemeAdapterTablet extends BaseAdapter {
 				url = object.getImage();
 			}
 			if (Utils.validateString(url)) {
-				DrawableManager.fetchDrawableOnThread(url, holder.im_cate);
+				int width = SimiManager.getIntance().getCurrentContext().getResources().getDisplayMetrics().widthPixels;
+				int height = (int) (600 * SimiManager.getIntance().getCurrentContext()
+						.getResources().getDisplayMetrics().densityDpi/DisplayMetrics.DENSITY_DEFAULT);
+				DrawableManager.fetchDrawableOnThread(url,
+						holder.im_cate, width, height);
 			}
 
 			if (Utils.validateString(category.getTitle())) {

@@ -3,6 +3,7 @@ package com.simicart.theme.ztheme.home.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.ImageView.ScaleType;
 
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.catalog.category.entity.Category;
 import com.simicart.core.common.DrawableManager;
 import com.simicart.core.common.Utils;
@@ -44,8 +46,7 @@ public class HomeZThemeAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		return mCategories.get(groupPosition).getmCategories()
-				.get(childPosition);
+		return mCategories.get(groupPosition).getmCategories().get(childPosition);
 	}
 
 	@Override
@@ -108,8 +109,11 @@ public class HomeZThemeAdapter extends BaseExpandableListAdapter {
 		if (Utils.validateString(url)) {
 			try {
 				if (holder.img_category != null) {
+					int width = SimiManager.getIntance().getCurrentContext().getResources().getDisplayMetrics().widthPixels;
+					int height = (int) (230 * SimiManager.getIntance().getCurrentContext()
+							.getResources().getDisplayMetrics().densityDpi/DisplayMetrics.DENSITY_DEFAULT);
 					DrawableManager.fetchDrawableOnThread(url,
-							holder.img_category);
+							holder.img_category, width, height);
 					notifyDataSetChanged();
 				}
 			} catch (Exception e) {
@@ -121,18 +125,13 @@ public class HomeZThemeAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getChildView(int groupPosition, int childPosition,
-			boolean isLastChild, View convertView, ViewGroup parent) {
+	public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView,
+			ViewGroup parent) {
 		// if (convertView == null) {
-		LayoutInflater inflater = (LayoutInflater) mContext
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		convertView = inflater.inflate(
-				Rconfig.getInstance().getId("ztheme_item_list_category_layout",
-						"layout"), null);
-		TextView txt_category = (TextView) convertView.findViewById(Rconfig
-				.getInstance().getId("tv_catename", "id"));
-		txt_category.setText(mCategories.get(groupPosition).getmCategories()
-				.get(childPosition).getCategoryName());
+		LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		convertView = inflater.inflate(Rconfig.getInstance().getId("ztheme_item_list_category_layout", "layout"), null);
+		TextView txt_category = (TextView) convertView.findViewById(Rconfig.getInstance().getId("tv_catename", "id"));
+		txt_category.setText(mCategories.get(groupPosition).getmCategories().get(childPosition).getCategoryName());
 		// }
 		return convertView;
 	}
