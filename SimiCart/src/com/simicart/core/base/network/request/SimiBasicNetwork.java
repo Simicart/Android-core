@@ -61,6 +61,10 @@ public class SimiBasicNetwork implements SimiNetwork {
 					// no-content request.
 					responseContents = new byte[0];
 				}
+				
+                if(statusCode == 302 || statusCode == 301){
+                    return new SimiNetworkResponse(statusCode, responseContents);
+                }
 
 				if (statusCode < 200 || statusCode > 299) {
 					throw new IOException();

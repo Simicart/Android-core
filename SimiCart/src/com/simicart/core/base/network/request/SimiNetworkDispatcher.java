@@ -62,6 +62,12 @@ public class SimiNetworkDispatcher extends Thread {
 				mDelivery.postResponse(request, response);
 				return;
 			}
+			
+            int statusCode = netResponse.getStatusCode();
+            if(statusCode == 302 || statusCode == 301){
+                return;
+            }
+			
 			CoreResponse response = request.parseNetworkResponse(netResponse);
 			if (null == response) {
 				SimiManager.getIntance().getRequestQueue().getNetworkQueue()

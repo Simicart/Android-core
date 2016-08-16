@@ -57,6 +57,8 @@ public class SimiRequest implements Comparable<SimiRequest> {
 	protected boolean isShowNotify = true;
 	protected boolean mShouldCache = false;
 	protected String mCacheKey;
+    protected boolean isRedirect = false;
+    protected String mUrlRedirect;
 
 	public void setShouldCache(boolean should_cache) {
 		mShouldCache = should_cache;
@@ -235,5 +237,21 @@ public class SimiRequest implements Comparable<SimiRequest> {
 		int result = left == right ? tmp1 : tmp2;
 		return result;
 	}
+	
+    public void setRedirect(boolean is_redirect) {
+        this.isRedirect = is_redirect;
+    }
+
+    public boolean isRedirect() {
+        return this.isRedirect;
+    }
+
+    public void setUrlRedirect(String url) {
+        this.mUrlRedirect = url;
+    }
+
+    public String getUrlRedirect() {
+        return this.mUrlRedirect;
+    }
 
 }

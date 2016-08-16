@@ -33,11 +33,13 @@ import org.apache.http.message.BasicStatusLine;
 import org.apache.http.protocol.HTTP;
 import org.json.JSONObject;
 
-import android.util.Log;
-
+import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.network.request.SimiRequest.Method;
 import com.simicart.core.config.Config;
 import com.simicart.core.config.DataLocal;
+
+import android.text.TextUtils;
+import android.util.Log;
 
 public class SimiUrlConnection {
 
@@ -63,6 +65,10 @@ public class SimiUrlConnection {
 		String url = Config.getInstance().getBaseUrl() + url_extended;
 		Log.e("SimiUrlStack  ", "URL " + url);
 		int type = request.getTypeMethod();
+		
+        if (request.isRedirect) {
+            url = request.getUrlRedirect();
+        }
 
 		HttpURLConnection urlConnection = null;
 		try {
@@ -101,6 +107,11 @@ public class SimiUrlConnection {
 				userAgent = userAgent + " Mobile";
 			}
 			urlConnection.setRequestProperty(HTTP.USER_AGENT, userAgent);
+			
+            if (cookieManager.getCookieStore().getCookies().size() > 0) {
+                urlConnection.setRequestProperty("Cookie", TextUtils.join(";",
+                        cookieManager.getCookieStore().getCookies()));
+            }
 
 			// add header
 			HashMap<String, String> headerAddtional = request
@@ -134,7 +145,15 @@ public class SimiUrlConnection {
 			List<String> locationHeader = headerFields.get("Location");
 			if (null != locationHeader) {
 				for (String location : locationHeader) {
-					Log.e("SimiUrlConnection ", "LOCATION " + location);
+//                  Log.e("SimiUrlConnection ", "LOCATION " + location);
+                    
+                  Log.e("SimiUrlConnection ", "LOCATION ===========> "
+                          + location);
+                  SimiManager.getIntance().getRequestQueue()
+                          .getNetworkQueue().remove(request);
+                  request.setRedirect(true);
+                  request.setUrlRedirect(location);
+                  SimiManager.getIntance().getRequestQueue().add(request);
 				}
 			}
 
