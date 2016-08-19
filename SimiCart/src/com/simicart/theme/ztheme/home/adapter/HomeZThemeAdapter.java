@@ -80,7 +80,7 @@ public class HomeZThemeAdapter extends BaseExpandableListAdapter {
 						.getId("ztheme_item_home_layout", "layout"), null);
 		holder.img_category = (SimiImageView) rootView.findViewById(Rconfig
 				.getInstance().getId("img_category", "id"));
-		holder.img_category.setScaleType(ScaleType.FIT_XY);
+		holder.img_category.setScaleType(ScaleType.FIT_CENTER);
 		holder.tv_catename = (TextView) rootView.findViewById(Rconfig
 				.getInstance().id("tv_title"));
 		rootView.setTag(holder);

@@ -43,7 +43,7 @@ public class HomeZThemeAdapterTablet extends BaseAdapter {
 		holder = new ViewHolder();
 		holder.im_cate = (SimiImageView) convertView.findViewById(Rconfig
 				.getInstance().getId("img_category", "id"));
-		holder.im_cate.setScaleType(ScaleType.FIT_XY);
+		holder.im_cate.setScaleType(ScaleType.FIT_CENTER);
 		holder.tv_title = (TextView) convertView.findViewById(Rconfig
 				.getInstance().id("tv_title"));
 		convertView.setTag(holder);
@@ -57,7 +57,7 @@ public class HomeZThemeAdapterTablet extends BaseAdapter {
 		if (Utils.validateString(id_category) && id_category.equals("fake")) {
 			holder.im_cate.setImageResource(Rconfig.getInstance().drawable(
 					"ztheme_fake_cate_tablet"));
-			holder.im_cate.setScaleType(ScaleType.FIT_XY);
+			holder.im_cate.setScaleType(ScaleType.FIT_CENTER);
 			ImageView img_default = (ImageView) convertView
 					.findViewById(Rconfig.getInstance().getId("img_default",
 							"id"));
