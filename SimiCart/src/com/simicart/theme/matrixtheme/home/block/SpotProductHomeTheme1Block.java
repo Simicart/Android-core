@@ -35,8 +35,8 @@ public class SpotProductHomeTheme1Block extends SimiBlock {
 			CategoryCustomAdapter adapter = new CategoryCustomAdapter(mContext,
 					categories);
 			lv_CategoryBottom.setAdapter(mContext, adapter);
-			YoYo.with(Techniques.Shake).duration(2000)
-					.playOn(lv_CategoryBottom);
+//			YoYo.with(Techniques.Shake).duration(2000)
+//					.playOn(lv_CategoryBottom);
 		}
 
 	}

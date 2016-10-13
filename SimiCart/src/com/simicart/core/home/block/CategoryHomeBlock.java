@@ -34,6 +34,29 @@ public class CategoryHomeBlock extends SimiBlock implements
 		super(view, context);
 		this.mView = view;
 	}
+	
+	@Override
+	public void drawView(SimiCollection collection) {
+		ArrayList<SimiEntity> entity = collection.getCollection();
+		if (null != entity && entity.size() > 0) {
+			ArrayList<Category> categories = new ArrayList<Category>();
+			for (SimiEntity simiEntity : entity) {
+				Category category = (Category) simiEntity;
+				categories.add(category);
+			}
+			if (categories.size() > 0) {
+				showCategorys(categories);
+			}
+		} else {
+			if (Config.getInstance().getDemoEnable().equals("DEMO_ENABLE")
+					|| Config.getInstance().getDemoEnable().toUpperCase()
+							.equals("YES")) {
+				showFakeCategorys();
+			} else {
+				mView.setVisibility(View.GONE);
+			}
+		}
+	}
 
 	public void showCategorys(ArrayList<Category> listCategory) {
 		LinearLayout ll_category = (LinearLayout) mView;
@@ -56,6 +79,8 @@ public class CategoryHomeBlock extends SimiBlock implements
 		if (DataLocal.isLanguageRTL) {
 			tv_name.setGravity(Gravity.RIGHT);
 		}
+		
+		
 		tv_name.setTextColor(Config.getInstance().getContent_color());
 
 		LinearLayout ll_cat = new LinearLayout(mContext);
@@ -97,7 +122,7 @@ public class CategoryHomeBlock extends SimiBlock implements
 				RelativeLayout.LayoutParams.MATCH_PARENT, 1);
 		ll_category.addView(view, lp_view);
 
-		YoYo.with(Techniques.Shake).duration(2000).playOn(listview_category);
+//		YoYo.with(Techniques.Shake).duration(2000).playOn(listview_category);
 
 	}
 
@@ -114,26 +139,5 @@ public class CategoryHomeBlock extends SimiBlock implements
 		showCategorys(categories);
 	}
 
-	@Override
-	public void drawView(SimiCollection collection) {
-		ArrayList<SimiEntity> entity = collection.getCollection();
-		if (null != entity && entity.size() > 0) {
-			ArrayList<Category> categories = new ArrayList<Category>();
-			for (SimiEntity simiEntity : entity) {
-				Category category = (Category) simiEntity;
-				categories.add(category);
-			}
-			if (categories.size() > 0) {
-				showCategorys(categories);
-			}
-		} else {
-			if (Config.getInstance().getDemoEnable().equals("DEMO_ENABLE")
-					|| Config.getInstance().getDemoEnable().toUpperCase()
-							.equals("YES")) {
-				showFakeCategorys();
-			} else {
-				mView.setVisibility(View.GONE);
-			}
-		}
-	}
+	
 }
