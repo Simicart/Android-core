@@ -105,8 +105,8 @@ public class ControllerAddWishList implements OptionProductDelegate {
 						zoomAnimation.start();
 						if (DataLocal.isSignInComplete()) {
 							if (bt_addWishList.isEnable() == false) {
-//								checkOption(productWishList.getProduct(), view);
-                                addToWishList();
+								//checkOption(productWishList.getProduct(), view);
+								addToWishList();
 							} else {
 								removeFromWishList();
 							}

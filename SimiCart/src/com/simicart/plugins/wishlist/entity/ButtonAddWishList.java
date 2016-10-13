@@ -3,6 +3,7 @@ package com.simicart.plugins.wishlist.entity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.config.Rconfig;
@@ -28,12 +29,12 @@ public class ButtonAddWishList {
 	}
 
 	public void setEnable(boolean isEnable) {
-        if (isEnable == true) {
-            getImageAddWishList().setIconDrawable(icon);
-        } else {
-            getImageAddWishList().setIconDrawable(icon2);
-        }
-        this.isEnable = isEnable;
+		if (isEnable == true) {
+			getImageAddWishList().setIconDrawable(icon);
+		} else {
+			getImageAddWishList().setIconDrawable(icon2);
+		}
+		this.isEnable = isEnable;
 	}
 	
 	public ButtonAddWishList(Context context) {

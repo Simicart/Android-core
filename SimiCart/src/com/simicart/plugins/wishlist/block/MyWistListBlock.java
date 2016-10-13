@@ -11,8 +11,10 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.AbsListView.OnScrollListener;
 
 import com.simicart.core.base.block.SimiBlock;
 import com.simicart.core.base.model.collection.SimiCollection;
@@ -39,9 +41,15 @@ public class MyWistListBlock extends SimiBlock implements MyWishListDelegate {
 	protected TextView tv_shareAll;
 	protected AdapterMyWishList mAdapter;
 	protected RelativeLayout rlt_layout_top;
+	protected ProgressBar pbLoadMore;
+	protected ListView lv_mywishlist;
 
 	public void setShareListener(OnTouchListener touchListener) {
 		ll_share_wishlist.setOnTouchListener(touchListener);
+	}
+
+	public void onListScroll(OnScrollListener listener) {
+		lv_mywishlist.setOnScrollListener(listener);
 	}
 
 	public MyWistListBlock(View view, Context context) {
@@ -50,47 +58,45 @@ public class MyWistListBlock extends SimiBlock implements MyWishListDelegate {
 
 	@Override
 	public void initView() {
-		tv_shareAll = (TextView) mView.findViewById(Rconfig.getInstance().id(
-				"tv_shareall"));
+		tv_shareAll = (TextView) mView.findViewById(Rconfig.getInstance().id("tv_shareall"));
 		tv_shareAll.setText(Config.getInstance().getText(SHARE_WISHLIST));
 
-		ll_share_wishlist = (LinearLayout) mView.findViewById(Rconfig
-				.getInstance().id("ll_share_wishlist"));
-		im_shareAll = (ImageView) mView.findViewById(Rconfig.getInstance().id(
-				"im_shareall"));
-		final Drawable icon = mContext.getResources().getDrawable(
-				Rconfig.getInstance().drawable("wishlist_share_icon"));
+		ll_share_wishlist = (LinearLayout) mView.findViewById(Rconfig.getInstance().id("ll_share_wishlist"));
+		im_shareAll = (ImageView) mView.findViewById(Rconfig.getInstance().id("im_shareall"));
+		final Drawable icon = mContext.getResources()
+				.getDrawable(Rconfig.getInstance().drawable("wishlist_share_icon"));
 		im_shareAll.setBackgroundDrawable(icon);
-		rlt_layout_top = (RelativeLayout) mView.findViewById(Rconfig
-				.getInstance().id("rl_mywishlist_top"));
+		rlt_layout_top = (RelativeLayout) mView.findViewById(Rconfig.getInstance().id("rl_mywishlist_top"));
+		lv_mywishlist = (ListView) mView.findViewById(Rconfig.getInstance().id("lv_mywistlist"));
+		pbLoadMore = (ProgressBar) mView.findViewById(Rconfig.getInstance().id("progressBar_load"));
+		pbLoadMore.setVisibility(View.GONE);
 	}
 
 	public void setWishLists(ArrayList<ItemWishList> wishLists) {
 		if (null == mWishLists || mWishLists.size() == 0) {
 			rlt_layout_top.setVisibility(View.GONE);
-			LinearLayout ll_body = (LinearLayout) mView.findViewById(Rconfig
-					.getInstance().id("ll_body"));
+			LinearLayout ll_body = (LinearLayout) mView.findViewById(Rconfig.getInstance().id("ll_body"));
 			ll_body.removeAllViewsInLayout();
 			TextView tv_notify = new TextView(mContext);
-			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-					LinearLayout.LayoutParams.MATCH_PARENT,
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
 					LinearLayout.LayoutParams.MATCH_PARENT);
 			params.gravity = Gravity.CENTER;
-			tv_notify.setText(Config.getInstance().getText(
-					"Your Wishlist is empty"));
+			tv_notify.setText(Config.getInstance().getText("Your Wishlist is empty"));
 			tv_notify.setGravity(Gravity.CENTER);
 			tv_notify.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
 			ll_body.addView(tv_notify, params);
 			return;
 		}
-		ListView lv_mywishlist = (ListView) mView.findViewById(Rconfig
-				.getInstance().id("lv_mywistlist"));
 
-		ItemWishListController controller = new ItemWishListController(this,
-				mContext);
-		mAdapter = new AdapterMyWishList(mContext, this.mWishLists, controller);
-		mAdapter.setDelegate(this);
-		lv_mywishlist.setAdapter(mAdapter);
+		ItemWishListController controller = new ItemWishListController(this, mContext);
+		if (mAdapter == null) {
+			mAdapter = new AdapterMyWishList(mContext, this.mWishLists, controller);
+			mAdapter.setDelegate(this);
+			lv_mywishlist.setAdapter(mAdapter);
+		} else {
+			mAdapter.setWishItems(this.mWishLists);
+			mAdapter.notifyDataSetChanged();
+		}
 	}
 
 	@Override
@@ -109,16 +115,12 @@ public class MyWistListBlock extends SimiBlock implements MyWishListDelegate {
 	// MyWishListDelegate
 	@Override
 	public void setWishlist_qty(int wishlist_qty) {
-		TextView tv_qtyItem = (TextView) mView.findViewById(Rconfig
-				.getInstance().id("tv_qtyItem"));
-		WishListManager.getInstance().updateQtyWishList(
-				String.valueOf(wishlist_qty));
+		TextView tv_qtyItem = (TextView) mView.findViewById(Rconfig.getInstance().id("tv_qtyItem"));
+		WishListManager.getInstance().updateQtyWishList(String.valueOf(wishlist_qty));
 		if (wishlist_qty < 2) {
-			tv_qtyItem.setText(wishlist_qty + " "
-					+ Config.getInstance().getText(ITEM));
+			tv_qtyItem.setText(wishlist_qty + " " + Config.getInstance().getText(ITEM));
 		} else {
-			tv_qtyItem.setText(wishlist_qty + " "
-					+ Config.getInstance().getText(ITEMS));
+			tv_qtyItem.setText(wishlist_qty + " " + Config.getInstance().getText(ITEMS));
 		}
 	}
 
@@ -142,5 +144,15 @@ public class MyWistListBlock extends SimiBlock implements MyWishListDelegate {
 	public void requestShowNext() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void setIsLoadMore(boolean show) {
+		// TODO Auto-generated method stub
+		if (show == true) {
+			pbLoadMore.setVisibility(View.VISIBLE);
+		} else {
+			pbLoadMore.setVisibility(View.GONE);
+		}
 	}
 }

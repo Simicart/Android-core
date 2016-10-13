@@ -16,9 +16,8 @@ public class MyWishListModel extends SimiModel {
 
 	private int wishlist_qty;
 	protected String mShareMessage;
-	
-	public String getShareMessage()
-	{
+
+	public String getShareMessage() {
 		return mShareMessage;
 	}
 
@@ -29,7 +28,9 @@ public class MyWishListModel extends SimiModel {
 	@Override
 	protected void paserData() {
 		try {
-			collection = new SimiCollection();
+			if (collection == null) {
+				collection = new SimiCollection();
+			}
 			if (mJSON.has(Constants.DATA)) {
 				JSONArray array = mJSON.getJSONArray(Constants.DATA);
 				if (null != array && array.length() > 0) {
@@ -42,20 +43,17 @@ public class MyWishListModel extends SimiModel {
 				}
 			}
 			if (mJSON.has(WishListConstants.WISHLIST_INFO)) {
-				JSONArray array = mJSON
-						.getJSONArray(WishListConstants.WISHLIST_INFO);
+				JSONArray array = mJSON.getJSONArray(WishListConstants.WISHLIST_INFO);
 				if (null != array && array.length() > 0) {
 					JSONObject jsonItem = array.getJSONObject(0);
-					
+
 					Log.e("MyWishListModel parserData ", jsonItem.toString());
-					
+
 					if (jsonItem.has(WishListConstants.WISHLIST_ITEMS_QTY)) {
-						wishlist_qty = jsonItem
-								.getInt(WishListConstants.WISHLIST_ITEMS_QTY);
+						wishlist_qty = jsonItem.getInt(WishListConstants.WISHLIST_ITEMS_QTY);
 					}
 					if (jsonItem.has(WishListConstants.SHARING_MESSAGE)) {
-						mShareMessage = jsonItem
-								.getString(WishListConstants.SHARING_MESSAGE);
+						mShareMessage = jsonItem.getString(WishListConstants.SHARING_MESSAGE);
 					}
 				}
 			}
