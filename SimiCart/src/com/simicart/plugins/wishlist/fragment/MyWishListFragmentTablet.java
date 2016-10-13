@@ -42,6 +42,7 @@ public class MyWishListFragmentTablet extends SimiFragment {
 			mController.onResume();
 		}
 		// mBlock.setShareListener(mController.getTabletShareListener());
+		mBlock.onListScroll(mController.getListScrollListener());
 		return view;
 	}
 }

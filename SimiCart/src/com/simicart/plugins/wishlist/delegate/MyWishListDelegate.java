@@ -13,4 +13,5 @@ public interface MyWishListDelegate extends SimiDelegate {
 	public void showDetail(String id);
 	public void requestShowNext();
 	public boolean isShown();
+	public void setIsLoadMore(boolean show);
 }

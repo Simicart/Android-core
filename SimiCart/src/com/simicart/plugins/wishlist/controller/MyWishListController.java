@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +21,7 @@ import com.simicart.core.base.controller.SimiController;
 import com.simicart.core.base.delegate.ModelDelegate;
 import com.simicart.core.base.manager.SimiManager;
 import com.simicart.core.base.model.entity.SimiEntity;
+import com.simicart.core.catalog.search.entity.TagSearch;
 import com.simicart.core.config.Rconfig;
 import com.simicart.plugins.wishlist.delegate.MyWishListDelegate;
 import com.simicart.plugins.wishlist.entity.ItemWishList;
@@ -30,9 +33,11 @@ public class MyWishListController extends SimiController {
 	protected MyWishListDelegate mDelegate;
 
 	protected OnTouchListener onTouchShare;
-
+	protected OnScrollListener onListScroll;
 	private int mCurrentOffset = 0;
 	int limit = 10;
+	protected int resultNumber;
+	protected boolean isOnscroll = true;
 
 	protected String mShareMessage = "";
 	protected OnTouchListener mShareListener;
@@ -45,35 +50,58 @@ public class MyWishListController extends SimiController {
 	public OnTouchListener getTabletShareListener() {
 		return mTabletShareListener;
 	}
-	
+
+	public OnScrollListener getListScrollListener() {
+		return onListScroll;
+	}
+
 	@Override
 	public void onStart() {
 		getMyWishList();
 
 		createTabletTouchShare();
-		
+
 		createTouchShare();
 
-		
+		onListScroll = new OnScrollListener() {
+
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				int threshold = 1;
+				int count = view.getCount();
+				Log.e("Count :", count + "");
+				// if (scrollState == SCROLL_STATE_IDLE) {
+				if ((view.getLastVisiblePosition() == mCurrentOffset + limit - threshold)
+						&& resultNumber > (count - threshold)) {
+					if (isOnscroll) {
+						mCurrentOffset += limit;
+						isOnscroll = false;
+						mDelegate.setIsLoadMore(true);
+						getMyWishList();
+					}
+					// }
+				}
+			}
+
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+				// TODO Auto-generated method stub
+			}
+		};
+
 	}
 
 	private void createTouchShare() {
-		final Drawable icon = SimiManager
-				.getIntance()
-				.getCurrentContext()
-				.getResources()
-				.getDrawable(
-						Rconfig.getInstance().drawable("wishlist_share_icon"));
+		final Drawable icon = SimiManager.getIntance().getCurrentContext().getResources()
+				.getDrawable(Rconfig.getInstance().drawable("wishlist_share_icon"));
 
 		mShareListener = new OnTouchListener() {
 
 			@SuppressWarnings("deprecation")
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				TextView tv_shareAll = (TextView) v.findViewById(Rconfig
-						.getInstance().id("tv_shareall"));
-				ImageView im_shareAll = (ImageView) v.findViewById(Rconfig
-						.getInstance().id("im_shareall"));
+				TextView tv_shareAll = (TextView) v.findViewById(Rconfig.getInstance().id("tv_shareall"));
+				ImageView im_shareAll = (ImageView) v.findViewById(Rconfig.getInstance().id("im_shareall"));
 				switch (event.getAction()) {
 				case MotionEvent.ACTION_DOWN: {
 					tv_shareAll.setTextColor(Color.GRAY);
@@ -98,7 +126,7 @@ public class MyWishListController extends SimiController {
 			}
 		};
 	}
-	
+
 	private void createTabletTouchShare() {
 
 		mTabletShareListener = new OnTouchListener() {
@@ -131,36 +159,38 @@ public class MyWishListController extends SimiController {
 			intent2.setAction(Intent.ACTION_SEND);
 			intent2.setType("text/plain");
 			intent2.putExtra(Intent.EXTRA_TEXT, sharing_mes);
-			MainActivity.context.startActivity(Intent.createChooser(intent2,
-					"Share via"));
+			MainActivity.context.startActivity(Intent.createChooser(intent2, "Share via"));
 		}
 	}
 
 	private void getMyWishList() {
-		mDelegate.showLoading();
-		mModel = new MyWishListModel();
+		if (mModel == null) {
+			mDelegate.showLoading();
+			mModel = new MyWishListModel();
+		}
 		mModel.setDelegate(new ModelDelegate() {
 
 			@Override
 			public void callBack(String message, boolean isSuccess) {
 				mDelegate.dismissLoading();
 				if (isSuccess) {
-					mShareMessage = ((MyWishListModel) mModel)
-							.getShareMessage();
+					mShareMessage = ((MyWishListModel) mModel).getShareMessage();
 
-					mDelegate.setWishlist_qty(((MyWishListModel) mModel)
-							.getWishlist_qty());
+					mDelegate.setWishlist_qty(((MyWishListModel) mModel).getWishlist_qty());
 					mDelegate.updateView(mModel.getCollection());
 
-					ArrayList<SimiEntity> entity = mModel.getCollection()
-							.getCollection();
+					ArrayList<SimiEntity> entity = mModel.getCollection().getCollection();
 					if (null == entity || entity.size() <= 0) {
 						ArrayList<ItemWishList> mWishLists = new ArrayList<ItemWishList>();
 						mDelegate.updateData(mWishLists);
 					}
+
+					resultNumber = ((MyWishListModel) mModel).getWishlist_qty();
+					isOnscroll = true;
+					mDelegate.setIsLoadMore(false);
+
 				} else {
-					SimiManager.getIntance().showToast(
-							"Error! Please try again.");
+					SimiManager.getIntance().showToast("Error! Please try again.");
 				}
 
 			}
@@ -172,9 +202,10 @@ public class MyWishListController extends SimiController {
 
 	@Override
 	public void onResume() {
-//		mDelegate.setWishlist_qty(((MyWishListModel) mModel).getWishlist_qty());
-//		mDelegate.updateView(mModel.getCollection());
-		Log.e("MyWishListController","onResume");
+		// mDelegate.setWishlist_qty(((MyWishListModel)
+		// mModel).getWishlist_qty());
+		// mDelegate.updateView(mModel.getCollection());
+		Log.e("MyWishListController", "onResume");
 		getMyWishList();
 	}
 

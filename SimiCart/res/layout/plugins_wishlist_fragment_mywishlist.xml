@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical" >
+    android:background="#ffffff" >
 
     <RelativeLayout
         android:id="@+id/rl_mywishlist_top"
@@ -29,9 +28,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:paddingBottom="2dp"
             android:actionProviderClass="android.widget.ShareActionProvider"
-            android:gravity="center_vertical" >
+            android:gravity="center_vertical"
+            android:paddingBottom="2dp" >
 
             <ImageView
                 android:id="@+id/im_shareall"
@@ -48,32 +47,22 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_body"
+    <ListView
+        android:id="@+id/lv_mywistlist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_below="@+id/rl_mywishlist_top"
+        android:paddingBottom="40dp"
+        android:clipToPadding="false" />
 
-        <ListView
-            android:id="@+id/lv_mywistlist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/fcart_rl" />
-    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar_load"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:indeterminateDrawable="@drawable/progressbar_indeterminate"
+        android:visibility="gone" />
 
-    <!-- <com.simicart.helper.CustomScrollView -->
-    <!-- android:id="@+id/wishlist_scroll" -->
-    <!-- android:layout_width="match_parent" -->
-    <!-- android:layout_height="wrap_content" -->
-    <!-- android:fillViewport="true" > -->
-
-
-    <!-- <com.simicart.helper.NoScrollListView -->
-    <!-- android:id="@+id/lv_mywistlist" -->
-    <!-- android:layout_width="match_parent" -->
-    <!-- android:layout_height="match_parent" -->
-    <!-- android:layout_below="@+id/fcart_rl" > -->
-    <!-- </com.simicart.helper.NoScrollListView> -->
-    <!-- </com.simicart.helper.CustomScrollView> -->
-
-</LinearLayout>
+</RelativeLayout>
