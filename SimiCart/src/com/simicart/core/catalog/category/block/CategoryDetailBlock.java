@@ -166,8 +166,8 @@ public class CategoryDetailBlock extends SimiBlock implements SimiDelegate {
 							.createTouchProductList());
 					ll_listParent.addView(listview_spotproduct);
 
-					YoYo.with(Techniques.Shake).duration(2000)
-							.playOn(listview_spotproduct);
+//					YoYo.with(Techniques.Shake).duration(2000)
+//							.playOn(listview_spotproduct);
 					layout_category.setVisibility(View.VISIBLE);
 				}
 

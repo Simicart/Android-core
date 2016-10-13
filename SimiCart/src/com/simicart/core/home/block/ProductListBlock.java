@@ -127,8 +127,8 @@ public class ProductListBlock extends SimiBlock implements ProductListDelegate {
 											RelativeLayout.LayoutParams.MATCH_PARENT, 1);
 									ll_listProduct.addView(view, lp_view);
 								}
-								YoYo.with(Techniques.Shake).duration(2000)
-										.playOn(listview_spotproduct);
+//								YoYo.with(Techniques.Shake).duration(2000)
+//										.playOn(listview_spotproduct);
 							}
 						}
 					});

@@ -122,7 +122,7 @@ public class CategoryHomeBlock extends SimiBlock implements
 				RelativeLayout.LayoutParams.MATCH_PARENT, 1);
 		ll_category.addView(view, lp_view);
 
-		YoYo.with(Techniques.Shake).duration(2000).playOn(listview_category);
+//		YoYo.with(Techniques.Shake).duration(2000).playOn(listview_category);
 
 	}
 
